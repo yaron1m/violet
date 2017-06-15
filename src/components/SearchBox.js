@@ -1,26 +1,27 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import {white, blue500} from 'material-ui/styles/colors';
+import {white, purple500} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 
 const SearchBox = () => {
+    var labels = require('../lables.json');
 
   const styles = {
     iconButton: {
-      float: 'left',
+      float: 'right',
       paddingTop: 17
     },
     textField: {
       color: white,
-      backgroundColor: blue500,
+      backgroundColor: purple500,
       borderRadius: 2,
       height: 35,
       paddingRight:10,
     },
     inputStyle: {
-      color: white,
-      paddingLeft: 5
+      webkitTextFillColor: white,
+      paddingRight: 5
     },
     hintStyle: {
       height: 16,
@@ -35,7 +36,7 @@ const SearchBox = () => {
         <Search color={white} />
       </IconButton>
       <TextField
-        hintText="חיפוש..."
+        hintText={labels.header.search}
         underlineShow={false}
         fullWidth={true}
         style={styles.textField}

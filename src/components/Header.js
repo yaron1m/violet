@@ -4,7 +4,7 @@ import IconButton from 'material-ui/IconButton';
 // import IconMenu from 'material-ui/IconMenu';
 // import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-// import Menu from 'material-ui/svg-icons/navigation/menu';
+import Menu from 'material-ui/svg-icons/navigation/menu';
 import ViewModule from 'material-ui/svg-icons/action/view-module';
 import {white} from 'material-ui/styles/colors';
 import SearchBox from './SearchBox';
@@ -20,8 +20,8 @@ class Header extends React.Component {
         top: 0,
         overflow: 'hidden',
         maxHeight: 57,
-        paddingLeft:0 ,
-        paddingRight: 24
+        paddingLeft:24 ,
+        paddingRight: 0
       },
       menuButton: {
         marginLeft: 10
@@ -38,11 +38,13 @@ class Header extends React.Component {
               title={
                 <SearchBox />
               }
-              // iconElementLeft={
-              //     {/*<IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>*/}
-              //       {/*<Menu color={white} />*/}
-              //     {/*</IconButton>*/}
-              // }
+               iconElementLeft={
+                   <IconButton style={style.menuButton}
+                               //onClick={handleChangeRequestNavDrawer}
+                       >
+                     <Menu color={white} />
+                   </IconButton>
+               }
             //   iconElementRight={
             //     <div style={style.iconsRightContainer}>
             //       <IconMenu color={white}
