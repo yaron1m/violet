@@ -4,6 +4,7 @@ import SectionBase from "./SectionBase";
 import FormTextField from "../LectureFormFields/FormTextField";
 import FormToggle from "../LectureFormFields/FormToggle";
 import FormToggleBox from "../LectureFormFields/FormToggleBox";
+import LectureTimes from "./LectureTimes";
 
 class LectureDetailsSection extends React.Component {
 
@@ -12,6 +13,8 @@ class LectureDetailsSection extends React.Component {
 
         return (
             <SectionBase title={sectionLabels.sectionName}>
+                <LectureTimes/>
+
                 <div>
                     <FormTextField title={sectionLabels.fields.location}/>
                     <FormTextField title={sectionLabels.fields.floor} size="S"/>

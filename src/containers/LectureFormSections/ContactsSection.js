@@ -20,9 +20,6 @@ class ContactsSection extends React.Component {
                 displaySelectAll: false,
                 marginTop: 20,
             },
-            textBox: {
-                textAlign: "right !important"
-            },
             height: 100
         };
 
@@ -30,7 +27,6 @@ class ContactsSection extends React.Component {
             <SectionBase title={sectionLabels.sectionName}>
                 <Table
                     height={style.height}
-                    style={style.textBox}
                 >
                     <TableHeader
                         displaySelectAll={style.header.displaySelectAll}>
