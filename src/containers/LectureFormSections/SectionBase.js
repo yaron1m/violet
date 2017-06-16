@@ -15,7 +15,7 @@ class SectionBase extends React.Component {
             pageTitle: {
                 fontSize: 24,
                 fontWeight: typography.fontWeightLight, //TODO check
-                marginBottom: 20
+                marginBottom: 10
             }
         };
 

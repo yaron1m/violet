@@ -14,22 +14,9 @@
         "howReachedUs": "איך הגיע אלינו"
       }
     },
-    "lectureTimesSection": {
-      "table": "lectureTimes",
-      "sectionName": "הרצאות",
-      "fields": {
-        "date": "תאריך",
-        "startTime": "שעת התחלה",
-        "endTime": "שעת סיום",
-        "topic": "נושא",
-        "audienceSize": "כמות משתתפים",
-        "shirtColor": "צבע חולצה",
-        "tie": "עניבה"
-      }
-    },
     "lectureDetailsSection": {
       "table": "lectures",
-      "sectionName": "פרטים נוספים",
+      "sectionName": "פרטי ההרצאה",
       "fields": {
         "location": "מיקום ההרצאה",
         "floor": "קומה",
@@ -42,6 +29,19 @@
         "parking": "חניה",
         "orderApproved": "הזמנה אושרה",
         "sameAudience": "קהל יעד זהה"
+      },
+      "lectureTimesSection": {
+        "table": "lectureTimes",
+        "sectionName": "הרצאות",
+        "fields": {
+          "date": "תאריך",
+          "startTime": "שעת התחלה",
+          "endTime": "שעת סיום",
+          "topic": "נושא",
+          "audienceSize": "כמות משתתפים",
+          "shirtColor": "צבע חולצה",
+          "tie": "עניבה"
+        }
       }
     },
     "contactsSection": {

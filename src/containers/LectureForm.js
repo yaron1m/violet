@@ -4,6 +4,7 @@ import {white} from 'material-ui/styles/colors';
 import labels from '../lables.json';
 import {typography} from 'material-ui/styles';
 import OrganizationDetailsSection from "./LectureFormSections/OrganizationDetailsSection";
+import LectureDetailsSection from "./LectureFormSections/LectureDetailsSection";
 
 class LectureForm extends React.Component {
 
@@ -27,10 +28,8 @@ class LectureForm extends React.Component {
 
                 <OrganizationDetailsSection/>
 
+                <LectureDetailsSection/>
 
-                <Paper style={style.paper}>
-
-                </Paper>
             </div>
         );
     }
