@@ -1,6 +1,4 @@
-import React, {PropTypes} from 'react';
-import Paper from 'material-ui/Paper';
-import {white} from 'material-ui/styles/colors';
+import React from 'react';
 import labels from '../lables.json';
 import {typography} from 'material-ui/styles';
 import OrganizationDetailsSection from "./LectureFormSections/OrganizationDetailsSection";

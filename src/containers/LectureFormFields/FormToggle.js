@@ -1,6 +1,5 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
-import {black} from 'material-ui/styles/colors';
 
 class FormToggle extends React.Component {
 

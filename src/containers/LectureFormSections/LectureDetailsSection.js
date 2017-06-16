@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import labels from '../../lables.json';
 import SectionBase from "./SectionBase";
 import FormTextField from "../LectureFormFields/FormTextField";
@@ -33,17 +33,5 @@ class LectureDetailsSection extends React.Component {
         );
     }
 }
-
-//      "location": "מיקום ההרצאה",
-//     "floor": "קומה",
-//     "room": "חדר",
-//     "audienceType": "קהל היעד",
-//     "daySchedule": "מהות היום + לו\"ז",
-//     "projector": "מקרן",
-//     "soundSystem": "מערכת הגברה",
-//     "microphone": "מיקרופון דש",
-//     "parking": "חניה",
-//     "orderApproved": "הזמנה אושרה",
-//     "sameAudience": "קהל יעד זהה"
 
 export default LectureDetailsSection;

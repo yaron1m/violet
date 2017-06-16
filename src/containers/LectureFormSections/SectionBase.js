@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Paper from 'material-ui/Paper';
 import {typography} from 'material-ui/styles';
 
@@ -20,12 +20,12 @@ class SectionBase extends React.Component {
         };
 
         return (
-                <Paper style={style.paper}>
-                    <span style={style.pageTitle}>{title}</span>
-                    <div>
-                        {this.props.children}
-                    </div>
-                </Paper>
+            <Paper style={style.paper}>
+                <span style={style.pageTitle}>{title}</span>
+                <div>
+                    {this.props.children}
+                </div>
+            </Paper>
         );
     }
 }

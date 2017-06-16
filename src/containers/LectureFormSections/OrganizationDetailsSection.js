@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import labels from '../../lables.json';
 import SectionBase from "./SectionBase";
 import FormTextField from "../LectureFormFields/FormTextField";
