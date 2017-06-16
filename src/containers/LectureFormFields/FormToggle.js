@@ -14,18 +14,6 @@ class FormToggle extends React.Component {
                 marginBottom: 6,
                 marginTop: 6,
             },
-            thumbOff: {
-                backgroundColor: '#ffcccc',
-            },
-            trackOff: {
-                backgroundColor: '#ff9d9d',
-            },
-            thumbSwitched: {
-                backgroundColor: 'red',
-            },
-            trackSwitched: {
-                backgroundColor: '#ff9d9d',
-            },
             labelStyle: {
                 marginRight: 10,
             },
