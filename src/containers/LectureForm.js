@@ -4,16 +4,13 @@ import {typography} from 'material-ui/styles';
 import OrganizationDetailsSection from "./LectureFormSections/OrganizationDetailsSection";
 import LectureDetailsSection from "./LectureFormSections/LectureDetailsSection";
 import ContactsSection from "./LectureFormSections/ContactsSection";
+import FollowUpSection from "./LectureFormSections/FollowUpSection";
 
 class LectureForm extends React.Component {
 
     render() {
 
         const style = {
-            paper: {
-                padding: 10,
-                marginTop: 20,
-            },
             pageTitle: {
                 fontSize: 24,
                 fontWeight: typography.fontWeightLight,
@@ -30,6 +27,8 @@ class LectureForm extends React.Component {
                 <LectureDetailsSection/>
 
                 <ContactsSection/>
+
+                <FollowUpSection/>
             </div>
         );
     }

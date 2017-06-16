@@ -58,6 +58,15 @@
         "job": "תפקיד"
       }
     },
+    "followUpSection": {
+      "table": "lectures",
+      "sectionName": "המשך טיפול",
+      "fields": {
+        "followUpRequired": "המשך טיפול",
+        "followUpDate": "תאריך המשך טיפול",
+        "followUpDetails": "פרטים"
+      }
+    },
     "paymentSection": {
       "table": "lectures",
       "sectionName": "תשלום",
@@ -84,15 +93,6 @@
         "job": "תפקיד"
       }
     },
-    "followUpSection": {
-      "table": "lectures",
-      "sectionName": "המשך טיפול",
-      "fields": {
-        "followUpRequired": "המשך טיפול",
-        "followUpDate": "תאריך המשך טיפול",
-        "followUpDetails": "פרטים"
-      }
-    },
     "notesSection": {
       "table": "lectures",
       "sectionName": "הערות",
@@ -100,5 +100,9 @@
         "notes": "הערות"
       }
     }
+  },
+  "buttons":{
+    "ok":"אישור",
+    "cancel":"ביטול"
   }
 }

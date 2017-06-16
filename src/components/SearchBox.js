@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import {white, purple500} from 'material-ui/styles/colors';
+import {white, purple600} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 import labels from '../lables.json';
@@ -14,7 +14,7 @@ const SearchBox = () => {
     },
     textField: {
       color: white,
-      backgroundColor: purple500,
+      backgroundColor: purple600,
       borderRadius: 2,
       height: 35,
       paddingRight:10,
