@@ -12,7 +12,7 @@ class OrganizationDetailsSection extends React.Component {
             <SectionBase title={sectionLabels.sectionName}>
                 <FormTextField title={sectionLabels.fields.name}/>
                 <FormTextField title={sectionLabels.fields.address}/>
-                <FormTextField title={sectionLabels.fields.companyId}/>
+                <FormTextField title={sectionLabels.fields.companyId} size="M"/>
                 <FormTextField title={sectionLabels.fields.howReachedUs}/>
             </SectionBase>
         );

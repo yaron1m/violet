@@ -14,7 +14,7 @@ class LectureDetailsSection extends React.Component {
             <SectionBase title={sectionLabels.sectionName}>
                 <div>
                     <FormTextField title={sectionLabels.fields.location}/>
-                    <FormTextField title={sectionLabels.fields.floor}/>
+                    <FormTextField title={sectionLabels.fields.floor} size="S"/>
                     <FormTextField title={sectionLabels.fields.room}/>
                     <FormTextField title={sectionLabels.fields.audienceType}/>
                     <FormTextField title={sectionLabels.fields.daySchedule}/>

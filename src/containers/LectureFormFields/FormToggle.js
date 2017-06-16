@@ -7,24 +7,22 @@ class FormToggle extends React.Component {
         const {title} = this.props;
 
         const style = {
-            toggleBlock: {
-                width: 170,
-            },
             toggle: {
                 marginBottom: 6,
                 marginTop: 6,
             },
             labelStyle: {
                 marginRight: 10,
+                marginLeft: 50
             },
         };
 
         return (
-            <div style={style.toggleBlock}>
+            <div>
                 <Toggle
                     style={style.toggle}
                     label={title}
-                    labelStyle = {style.labelStyle}
+                    labelStyle={style.labelStyle}
                     labelPosition="right"
                 />
             </div>

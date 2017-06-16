@@ -8,13 +8,19 @@ class FormToggleBox extends React.Component {
             paper: {
                 padding: 5,
                 marginTop: 20,
-                paddingBottom:2,
-                maxWidth: 200
+                paddingBottom: 2,
+                display: "inline-flex"
+            }, flex: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "flex-end"
             }
         };
+
         return (
             <Paper style={style.paper}>
-                <div>
+                <div style={style.flex}>
                     {this.props.children}
                 </div>
             </Paper>

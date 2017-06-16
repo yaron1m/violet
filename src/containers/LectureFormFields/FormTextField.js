@@ -4,17 +4,28 @@ import {black} from 'material-ui/styles/colors';
 
 class FormTextField extends React.Component {
 
-    render() {
-        const {title} = this.props;
 
-        const style = {
-            textField:{
-                marginLeft:20,
+
+    render() {
+        const {title, size} = this.props;
+
+        var style = {
+            textField: {
+                marginLeft: 20,
             },
             floatingLabelText: {
                 color: black
             }
         };
+
+        switch (size) {
+            case "S":
+                style.textField.width = 50;
+                break;
+            case "M":
+                style.textField.width = 100;
+                break;
+        }
 
         return (
             <TextField
