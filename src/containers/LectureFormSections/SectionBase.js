@@ -1,6 +1,5 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
-import {typography} from 'material-ui/styles';
 
 class SectionBase extends React.Component {
 
@@ -14,17 +13,13 @@ class SectionBase extends React.Component {
             },
             pageTitle: {
                 fontSize: 24,
-                fontWeight: typography.fontWeightLight, //TODO check
-                marginBottom: 10
             }
         };
 
         return (
             <Paper style={style.paper}>
-                <span style={style.pageTitle}>{title}</span>
-                <div>
-                    {this.props.children}
-                </div>
+                <div style={style.pageTitle}>{title}</div>
+                {this.props.children}
             </Paper>
         );
     }
