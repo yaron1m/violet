@@ -8,7 +8,6 @@ import Paper from 'material-ui/Paper';
 // import ViewModule from 'material-ui/svg-icons/action/view-module';
 import {white} from 'material-ui/styles/colors';
 // import SearchBox from '../components/SearchBox';
-import globalStyles from '../styles';
 import labels from '../lables.json';
 import {typography} from 'material-ui/styles';
 
@@ -35,7 +34,7 @@ class Header extends React.Component {
                 <span style={style.pageTitle}>{labels.lectureForm.title}</span>
 
                 <Paper style={style.paper}>
-                    <h3 style={globalStyles.title}>Hello</h3>
+                    <h3 style={style.pageTitle}>Hello</h3>
 
                     {/*<Divider/>*/}
                     {/*{props.children}*/}
