@@ -13,33 +13,37 @@ class LectureDetailsSection extends React.Component {
         const sectionLabels = labels.lectureForm.followUpSection;
         const style = {
             toggle: {
-                maxWidth: 250
+                maxWidth: 50,
+                paddingBottom: 10
             },
-            textField: {
-                marginLeft: 20,
-            },
-            floatingLabelText: {
-                color: black
+            flex: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "flex-end"
             }
         };
 
+
         return (
             <SectionBase title={sectionLabels.sectionName}>
-                <Toggle
-                    label={sectionLabels.fields.followUpRequired}
-                    style={style.toggle}
-                />
+                <div style={style.flex}>
+                    <Toggle
+                        //label={sectionLabels.fields.followUpRequired}
+                        style={style.toggle}
+                    />
 
-                <FormDatePicker title={sectionLabels.fields.followUpDate}/>
+                    <FormDatePicker title={sectionLabels.fields.followUpDate}/>
+                </div>
+
 
                 <div>
                     <TextField
-                        style={style.textField}
                         floatingLabelText={sectionLabels.fields.followUpDetails}
                         floatingLabelStyle={style.floatingLabelText}
                         fullWidth={true}
                         multiLine={true}
-                        rowsMax = {4}
+                        rowsMax={4}
                     />
                 </div>
             </SectionBase>
