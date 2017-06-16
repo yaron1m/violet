@@ -6,6 +6,7 @@ import LectureDetailsSection from "./LectureFormSections/LectureDetailsSection";
 import ContactsSection from "./LectureFormSections/ContactsSection";
 import FollowUpSection from "./LectureFormSections/FollowUpSection";
 import PaymentSection from "./LectureFormSections/PaymentSection";
+import NotesSection from "./LectureFormSections/NotesSection";
 
 class LectureForm extends React.Component {
 
@@ -32,6 +33,8 @@ class LectureForm extends React.Component {
                 <FollowUpSection/>
 
                 <PaymentSection/>
+
+                <NotesSection/>
             </div>
         );
     }
