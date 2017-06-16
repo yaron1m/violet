@@ -3,6 +3,7 @@ import labels from '../lables.json';
 import {typography} from 'material-ui/styles';
 import OrganizationDetailsSection from "./LectureFormSections/OrganizationDetailsSection";
 import LectureDetailsSection from "./LectureFormSections/LectureDetailsSection";
+import ContactsSection from "./LectureFormSections/ContactsSection";
 
 class LectureForm extends React.Component {
 
@@ -28,6 +29,7 @@ class LectureForm extends React.Component {
 
                 <LectureDetailsSection/>
 
+                <ContactsSection/>
             </div>
         );
     }
