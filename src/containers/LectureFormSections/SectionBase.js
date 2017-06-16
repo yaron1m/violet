@@ -1,13 +1,11 @@
 import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
-import {white} from 'material-ui/styles/colors';
-import labels from '../lables.json';
 import {typography} from 'material-ui/styles';
-import OrganizationDetailsSection from "./LectureFormSections/OrganizationDetailsSection";
 
-class LectureForm extends React.Component {
+class SectionBase extends React.Component {
 
     render() {
+        const {title} = this.props;
 
         const style = {
             paper: {
@@ -16,24 +14,20 @@ class LectureForm extends React.Component {
             },
             pageTitle: {
                 fontSize: 24,
-                fontWeight: typography.fontWeightLight,
+                fontWeight: typography.fontWeightLight, //TODO check
                 marginBottom: 20
             }
         };
 
         return (
-            <div>
-                <span style={style.pageTitle}>{labels.lectureForm.title}</span>
-
-                <OrganizationDetailsSection/>
-
-
                 <Paper style={style.paper}>
-
+                    <span style={style.pageTitle}>{title}</span>
+                    <div>
+                        {this.props.children}
+                    </div>
                 </Paper>
-            </div>
         );
     }
 }
 
-export default LectureForm;
+export default SectionBase;
