@@ -4,6 +4,7 @@ import Header from './components/Header';
 // import LeftDrawer from './components/LeftDrawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
+import LectureForm from './containers/LectureForm';
 // import Web from 'material-ui/svg-icons/av/web';
 
 
@@ -53,18 +54,16 @@ class App extends React.Component {
                                 {/*menus={{ text: 'DashBoard', icon: <Web/>, link: '/dashboard' }}*/}
                                 {/*username="User Admin"/>*/}
 
-                    <div style={styles.container}>
-                        {this.props.children}
+
+                    <div className="AppContainer" style={styles.container}>
+                        <LectureForm/>
                     </div>
+
                 </div>
             </MuiThemeProvider>
         );
     }
 }
 
-App.propTypes = {
-    children: PropTypes.element,
-    width: PropTypes.number
-};
 
 export default withWidth()(App);
