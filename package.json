@@ -5,10 +5,10 @@
   "dependencies": {
     "material-ui": "^0.18.3",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.7"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
