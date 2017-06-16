@@ -12,7 +12,8 @@ class FormToggle extends React.Component {
                 maxWidth: 250,
             },
             toggle: {
-                marginBottom: 16,
+                marginBottom: 6,
+                marginTop: 6
             },
             thumbOff: {
                 backgroundColor: '#ffcccc',

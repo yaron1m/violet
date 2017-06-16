@@ -3,6 +3,7 @@ import labels from '../../lables.json';
 import SectionBase from "./SectionBase";
 import FormTextField from "../LectureFormFields/FormTextField";
 import FormToggle from "../LectureFormFields/FormToggle";
+import FormToggleBox from "../LectureFormFields/FormToggleBox";
 
 class LectureDetailsSection extends React.Component {
 
@@ -11,17 +12,23 @@ class LectureDetailsSection extends React.Component {
 
         return (
             <SectionBase title={sectionLabels.sectionName}>
-                <FormTextField title={sectionLabels.fields.location}/>
-                <FormTextField title={sectionLabels.fields.floor}/>
-                <FormTextField title={sectionLabels.fields.room}/>
-                <FormTextField title={sectionLabels.fields.audienceType}/>
-                <FormTextField title={sectionLabels.fields.daySchedule}/>
-                <FormToggle title={sectionLabels.fields.projector}/>
-                <FormToggle title={sectionLabels.fields.soundSystem}/>
-                <FormToggle title={sectionLabels.fields.microphone}/>
-                <FormToggle title={sectionLabels.fields.parking}/>
-                <FormToggle title={sectionLabels.fields.orderApproved}/>
-                <FormToggle title={sectionLabels.fields.sameAudience}/>
+                <div>
+                    <FormTextField title={sectionLabels.fields.location}/>
+                    <FormTextField title={sectionLabels.fields.floor}/>
+                    <FormTextField title={sectionLabels.fields.room}/>
+                    <FormTextField title={sectionLabels.fields.audienceType}/>
+                    <FormTextField title={sectionLabels.fields.daySchedule}/>
+                </div>
+
+                <FormToggleBox>
+                    <FormToggle title={sectionLabels.fields.projector}/>
+                    <FormToggle title={sectionLabels.fields.soundSystem}/>
+                    <FormToggle title={sectionLabels.fields.microphone}/>
+                    <FormToggle title={sectionLabels.fields.parking}/>
+                    <FormToggle title={sectionLabels.fields.orderApproved}/>
+                    <FormToggle title={sectionLabels.fields.sameAudience}/>
+                </FormToggleBox>
+
             </SectionBase>
         );
     }
