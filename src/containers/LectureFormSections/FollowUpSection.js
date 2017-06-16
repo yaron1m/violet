@@ -29,15 +29,19 @@ class LectureDetailsSection extends React.Component {
                     label={sectionLabels.fields.followUpRequired}
                     style={style.toggle}
                 />
+
                 <FormDatePicker title={sectionLabels.fields.followUpDate}/>
-                <TextField
-                    style={style.textField}
-                    floatingLabelText={sectionLabels.fields.followUpDetails}
-                    floatingLabelStyle={style.floatingLabelText}
-                    fullWidth={true}
-                    multiLine={true}
-                    rowsMax = {4}
-                />
+
+                <div>
+                    <TextField
+                        style={style.textField}
+                        floatingLabelText={sectionLabels.fields.followUpDetails}
+                        floatingLabelStyle={style.floatingLabelText}
+                        fullWidth={true}
+                        multiLine={true}
+                        rowsMax = {4}
+                    />
+                </div>
             </SectionBase>
         );
     }
