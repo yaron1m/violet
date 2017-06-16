@@ -5,18 +5,15 @@ import labels from '../../lables.json';
 import {black} from 'material-ui/styles/colors';
 
 
-
 class FormDatePicker extends React.Component {
 
     render() {
         const {title} = this.props;
 
         const style = {
-            textField:{
-                marginLeft:20,
-            },
             floatingLabelText: {
-                color: black
+                color: black,
+                marginLeft: 20,
             }
         };
 
@@ -36,12 +33,10 @@ class FormDatePicker extends React.Component {
                 hintText={title}
                 DateTimeFormat={DateTimeFormat}
                 style={style.floatingLabelText}
-
                 okLabel={labels.buttons.ok}
                 cancelLabel={labels.buttons.cancel}
                 locale="he"
                 firstDayOfWeek={0}
-                autoOk = {true}
             />
 
         );

@@ -8,11 +8,11 @@ class FormToggle extends React.Component {
 
         const style = {
             toggleBlock: {
-                maxWidth: 250,
+                width: 170,
             },
             toggle: {
                 marginBottom: 6,
-                marginTop: 6
+                marginTop: 6,
             },
             thumbOff: {
                 backgroundColor: '#ffcccc',
@@ -27,15 +27,17 @@ class FormToggle extends React.Component {
                 backgroundColor: '#ff9d9d',
             },
             labelStyle: {
-                color: 'red',
+                marginRight: 10,
             },
         };
 
         return (
             <div style={style.toggleBlock}>
                 <Toggle
-                    label={title}
                     style={style.toggle}
+                    label={title}
+                    labelStyle = {style.labelStyle}
+                    labelPosition="right"
                 />
             </div>
 
