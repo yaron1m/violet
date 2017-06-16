@@ -24,6 +24,7 @@ class PaymentSection extends React.Component {
             >
                 <div style={style.flex}>
                     <FormTextField title={sectionLabels.fields.paymentConditions}/>
+                    <FormTextField title={sectionLabels.fields.expectedPayDay}/>
                     <FormTextField title={sectionLabels.fields.actualPayDay}/>
                     <FormTextField title={sectionLabels.fields.proformaInvoiceNumber}/>
                     <FormDatePicker title={sectionLabels.fields.proformaInvoiceDate}/>

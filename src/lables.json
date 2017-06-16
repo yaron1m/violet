@@ -72,6 +72,7 @@
       "sectionName": "תשלום",
       "fields": {
         "paymentConditions": "תנאי תשלום",
+        "expectedPayDay": "תאריך לתשלום",
         "actualPayDay": "תאריך תשלום בפועל",
         "proformaInvoiceNumber": "מספר חשבונית עסקה",
         "proformaInvoiceDate": "תאריך חשבונית עסקה",
