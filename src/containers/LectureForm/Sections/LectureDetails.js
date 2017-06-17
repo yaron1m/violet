@@ -1,12 +1,12 @@
 import React from 'react';
-import labels from '../../lables.json';
-import SectionBase from "./SectionBase";
-import FormTextField from "../LectureFormFields/FormTextField";
-import FormToggle from "../LectureFormFields/FormToggle";
-import FormToggleBox from "../LectureFormFields/FormToggleBox";
+import labels from '../../../lables.json';
+import SectionBase from "../SectionBases/PageBase";
+import FormTextField from "../Fields/FormTextField";
+import FormToggle from "../Fields/FormToggle";
+import FormToggleBox from "../Fields/FormToggleBox";
 import LectureTimes from "./LectureTimes";
 
-class LectureDetailsSection extends React.Component {
+class LectureDetails extends React.Component {
 
     render() {
         const sectionLabels = labels.lectureForm.lectureDetailsSection;
@@ -37,4 +37,4 @@ class LectureDetailsSection extends React.Component {
     }
 }
 
-export default LectureDetailsSection;
+export default LectureDetails;

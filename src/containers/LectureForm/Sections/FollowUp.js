@@ -1,13 +1,13 @@
 import React from 'react';
-import labels from '../../lables.json';
-import SectionBase from "./SectionBase";
+import labels from '../../../lables.json';
+import SectionBase from "../SectionBases/PageBase";
 import Toggle from "material-ui/Toggle";
-import FormDatePicker from "../LectureFormFields/FormDatePicker";
+import FormDatePicker from "../Fields/FormDatePicker";
 import TextField from 'material-ui/TextField';
 import {black} from 'material-ui/styles/colors';
 
 
-class LectureDetailsSection extends React.Component {
+class FollowUp extends React.Component {
 
     render() {
         const sectionLabels = labels.lectureForm.followUpSection;
@@ -51,4 +51,4 @@ class LectureDetailsSection extends React.Component {
     }
 }
 
-export default LectureDetailsSection;
+export default FollowUp;

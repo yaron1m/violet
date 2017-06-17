@@ -1,11 +1,11 @@
 import React from 'react';
-import labels from '../../lables.json';
-import SectionBase from "./SectionBase";
+import labels from '../../../lables.json';
+import SectionBase from "../SectionBases/PageBase";
 import TextField from 'material-ui/TextField';
 import {black} from 'material-ui/styles/colors';
 
 
-class NotesSection extends React.Component {
+class Notes extends React.Component {
 
     render() {
         const sectionLabels = labels.lectureForm.notesSection;
@@ -33,4 +33,4 @@ class NotesSection extends React.Component {
     }
 }
 
-export default NotesSection;
+export default Notes;

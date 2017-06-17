@@ -1,11 +1,11 @@
 import React from 'react';
-import labels from '../../lables.json';
-import SectionBase from "./SectionBase";
-import FormDatePicker from "../LectureFormFields/FormDatePicker";
-import FormTextField from "../LectureFormFields/FormTextField";
+import labels from '../../../lables.json';
+import SectionBase from "../SectionBases/PageBase";
+import FormDatePicker from "../Fields/FormDatePicker";
+import FormTextField from "../Fields/FormTextField";
 
 
-class PaymentSection extends React.Component {
+class Payment extends React.Component {
 
     render() {
         const sectionLabels = labels.lectureForm.paymentSection;
@@ -38,4 +38,4 @@ class PaymentSection extends React.Component {
     }
 }
 
-export default PaymentSection;
+export default Payment;

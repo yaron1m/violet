@@ -1,5 +1,5 @@
 import React from 'react';
-import labels from '../../lables.json';
+import labels from '../../../lables.json';
 import {
     Table,
     TableBody,
@@ -8,7 +8,7 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import SectionBase from "./SectionBase";
+import SectionBase from "../SectionBases/PageBase";
 
 class LectureTimes extends React.Component {
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import labels from '../lables.json';
+import labels from '../../lables.json';
 import {typography} from 'material-ui/styles';
-import OrganizationDetailsSection from "./LectureFormSections/OrganizationDetailsSection";
-import LectureDetailsSection from "./LectureFormSections/LectureDetailsSection";
-import ContactsSection from "./LectureFormSections/ContactsSection";
-import FollowUpSection from "./LectureFormSections/FollowUpSection";
-import PaymentSection from "./LectureFormSections/PaymentSection";
-import NotesSection from "./LectureFormSections/NotesSection";
+import OrganizationDetailsSection from "./Sections/Organization";
+import LectureDetailsSection from "./Sections/LectureDetails";
+import ContactsSection from "./Sections/Contacts";
+import FollowUpSection from "./Sections/FollowUp";
+import PaymentSection from "./Sections/Payment";
+import NotesSection from "./Sections/Notes";
 
 class LectureForm extends React.Component {
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import labels from '../../lables.json';
-import SectionBase from "./SectionBase";
-import FormTextField from "../LectureFormFields/FormTextField";
+import labels from '../../../lables.json';
+import SectionBase from "../SectionBases/PageBase";
+import FormTextField from "../Fields/FormTextField";
 
-class OrganizationDetailsSection extends React.Component {
+class Organization extends React.Component {
 
     render() {
         const sectionLabels = labels.lectureForm.organizationSection;
@@ -19,4 +19,4 @@ class OrganizationDetailsSection extends React.Component {
     }
 }
 
-export default OrganizationDetailsSection;
+export default Organization;
