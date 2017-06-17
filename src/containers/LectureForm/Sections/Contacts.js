@@ -8,7 +8,7 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import SectionBase from "../SectionBases/PageBase";
+import PageBase from "../SectionBases/PageBase";
 
 class Contacts extends React.Component {
 
@@ -24,7 +24,7 @@ class Contacts extends React.Component {
         };
 
         return (
-            <SectionBase title={sectionLabels.sectionName}>
+            <PageBase title={sectionLabels.sectionName}>
                 <Table
                     height={style.height}
                 >
@@ -95,7 +95,7 @@ class Contacts extends React.Component {
                         </TableRow>
                     </TableBody>
                 </Table>
-            </SectionBase>
+            </PageBase>
         );
     }
 }

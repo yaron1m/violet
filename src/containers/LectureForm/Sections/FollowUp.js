@@ -1,11 +1,9 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import SectionBase from "../SectionBases/PageBase";
+import PageBase from "../SectionBases/PageBase";
 import Toggle from "material-ui/Toggle";
 import FormDatePicker from "../Fields/FormDatePicker";
 import TextField from 'material-ui/TextField';
-import {black} from 'material-ui/styles/colors';
-
 
 class FollowUp extends React.Component {
 
@@ -26,7 +24,7 @@ class FollowUp extends React.Component {
 
 
         return (
-            <SectionBase title={sectionLabels.sectionName}>
+            <PageBase title={sectionLabels.sectionName}>
                 <div style={style.flex}>
                     <Toggle
                         //label={sectionLabels.fields.followUpRequired}
@@ -46,7 +44,7 @@ class FollowUp extends React.Component {
                         rowsMax={4}
                     />
                 </div>
-            </SectionBase>
+            </PageBase>
         );
     }
 }

@@ -11,14 +11,14 @@ class PageBase extends React.Component {
                 padding: 10,
                 marginTop: 20,
             },
-            pageTitle: {
+            title: {
                 fontSize: 24,
             }
         };
 
         return (
             <Paper style={style.paper}>
-                <div style={style.pageTitle}>{title}</div>
+                <div style={style.title}>{title}</div>
                 {this.props.children}
             </Paper>
         );

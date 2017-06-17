@@ -1,6 +1,6 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import SectionBase from "../SectionBases/PageBase";
+import PageBase from "../SectionBases/PageBase";
 import FormDatePicker from "../Fields/FormDatePicker";
 import FormTextField from "../Fields/FormTextField";
 
@@ -19,7 +19,7 @@ class Payment extends React.Component {
         };
 
         return (
-            <SectionBase
+            <PageBase
                 title={sectionLabels.sectionName}
             >
                 <div style={style.flex}>
@@ -33,7 +33,7 @@ class Payment extends React.Component {
                 </div>
 
 
-            </SectionBase>
+            </PageBase>
         );
     }
 }

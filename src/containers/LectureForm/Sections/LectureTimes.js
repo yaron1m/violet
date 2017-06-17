@@ -8,7 +8,6 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
-import SectionBase from "../SectionBases/PageBase";
 
 class LectureTimes extends React.Component {
 

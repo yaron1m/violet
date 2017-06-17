@@ -1,6 +1,6 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import SectionBase from "../SectionBases/PageBase";
+import PageBase from "../SectionBases/PageBase";
 import TextField from 'material-ui/TextField';
 import {black} from 'material-ui/styles/colors';
 
@@ -19,7 +19,7 @@ class Notes extends React.Component {
         };
 
         return (
-            <SectionBase title={sectionLabels.sectionName}>
+            <PageBase title={sectionLabels.sectionName}>
 
                 <TextField
                     style={style.textField}
@@ -28,7 +28,7 @@ class Notes extends React.Component {
                     fullWidth={true}
                     multiLine={true}
                 />
-            </SectionBase>
+            </PageBase>
         );
     }
 }
