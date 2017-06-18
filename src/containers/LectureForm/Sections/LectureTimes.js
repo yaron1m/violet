@@ -13,14 +13,15 @@ class LectureTimes extends React.Component {
 
         const style = {
             paper: {
-                //backgroundColor:purple100,
-                padding: 10,
+                //backgroundColor: purple100,
+                display: "inline-block",
             },
             flex: {
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
-                alignItems: "flex-end"
+                alignItems: "flex-end",
+                padding: 10,
             },
             divider: {
                 marginTop: 10,
@@ -31,25 +32,29 @@ class LectureTimes extends React.Component {
             <Paper
                 style={style.paper}
             >
-                <div style={style.flex}>
-                    <FormDatePicker title={sectionLabels.fields.date}/>
-                    <FormTextField title={sectionLabels.fields.startTime} size="M"/>
-                    <FormTextField title={sectionLabels.fields.endTime} size="M"/>
-                    <FormTextField title={sectionLabels.fields.topic}/>
-                    <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
-                    <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
-                    <FormTextField title={sectionLabels.fields.tie} size="M"/>
+                <div>
+                    <div style={style.flex}>
+                        <FormDatePicker title={sectionLabels.fields.date}/>
+                        <FormTextField title={sectionLabels.fields.startTime} size="M"/>
+                        <FormTextField title={sectionLabels.fields.endTime} size="M"/>
+                        <FormTextField title={sectionLabels.fields.topic}/>
+                        <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
+                        <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
+                        <FormTextField title={sectionLabels.fields.tie} size="M"/>
+                    </div>
                 </div>
 
                 <Divider style={style.divider}/>
-                <div style={style.flex}>
-                    <FormDatePicker title={sectionLabels.fields.date}/>
-                    <FormTextField title={sectionLabels.fields.startTime} size="M"/>
-                    <FormTextField title={sectionLabels.fields.endTime} size="M"/>
-                    <FormTextField title={sectionLabels.fields.topic}/>
-                    <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
-                    <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
-                    <FormTextField title={sectionLabels.fields.tie} size="M"/>
+                <div>
+                    <div style={style.flex}>
+                        <FormDatePicker title={sectionLabels.fields.date}/>
+                        <FormTextField title={sectionLabels.fields.startTime} size="M"/>
+                        <FormTextField title={sectionLabels.fields.endTime} size="M"/>
+                        <FormTextField title={sectionLabels.fields.topic}/>
+                        <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
+                        <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
+                        <FormTextField title={sectionLabels.fields.tie} size="M"/>
+                    </div>
                 </div>
             </Paper>
         );
