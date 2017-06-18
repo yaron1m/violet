@@ -4,6 +4,7 @@ import CardBase from "../SectionBases/CardBase";
 import Toggle from "material-ui/Toggle";
 import FormDatePicker from "../Fields/FormDatePicker";
 import TextField from 'material-ui/TextField';
+import {black} from 'material-ui/styles/colors';
 
 class FollowUp extends React.Component {
 
@@ -19,6 +20,9 @@ class FollowUp extends React.Component {
                 flexDirection: "row",
                 flexWrap: "wrap",
                 alignItems: "flex-end"
+            },
+            floatingLabelText: {
+                color: black
             }
         };
 
