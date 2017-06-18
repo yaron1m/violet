@@ -1,6 +1,6 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import PageBase from "../SectionBases/PageBase";
+import CardBase from "../SectionBases/CardBase";
 import FormTextField from "../Fields/FormTextField";
 import FormToggle from "../Fields/FormToggle";
 import FormToggleBox from "../Fields/FormToggleBox";
@@ -12,7 +12,7 @@ class LectureDetails extends React.Component {
         const sectionLabels = labels.lectureForm.lectureDetailsSection;
 
         return (
-            <PageBase title={sectionLabels.sectionName}>
+            <CardBase title={sectionLabels.sectionName} isOpen={true}>
                 <LectureTimes/>
 
                 <div>
@@ -32,7 +32,7 @@ class LectureDetails extends React.Component {
                     <FormToggle title={sectionLabels.fields.sameAudience}/>
                 </FormToggleBox>
 
-            </PageBase>
+            </CardBase>
         );
     }
 }

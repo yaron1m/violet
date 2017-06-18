@@ -6,7 +6,7 @@ import Toggle from 'material-ui/Toggle';
 class PageBase extends React.Component {
 
     render() {
-        const {title} = this.props;
+        const {title, isOpen} = this.props;
 
         const style = {
             card: {
@@ -20,7 +20,10 @@ class PageBase extends React.Component {
 
         return (
 
-            <Card style={style.card}>
+            <Card
+                style={style.card}
+                initiallyExpanded ={isOpen}
+            >
                 <CardHeader
                     title={title}
                     actAsExpander={true}

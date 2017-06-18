@@ -1,6 +1,6 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import PageBase from "../SectionBases/PageBase";
+import CardBase from "../SectionBases/CardBase";
 import Toggle from "material-ui/Toggle";
 import FormDatePicker from "../Fields/FormDatePicker";
 import TextField from 'material-ui/TextField';
@@ -24,7 +24,10 @@ class FollowUp extends React.Component {
 
 
         return (
-            <PageBase title={sectionLabels.sectionName}>
+            <CardBase
+                title={sectionLabels.sectionName}
+                // isOpen = {} //Base this on the toggle state
+            >
                 <div style={style.flex}>
                     <Toggle
                         //label={sectionLabels.fields.followUpRequired}
@@ -44,7 +47,7 @@ class FollowUp extends React.Component {
                         rowsMax={4}
                     />
                 </div>
-            </PageBase>
+            </CardBase>
         );
     }
 }
