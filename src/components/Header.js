@@ -6,13 +6,13 @@ import {white} from 'material-ui/styles/colors';
 import SearchBox from './SearchBox';
 import {IconMenu, MenuItem} from "material-ui";
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import ViewModule from 'material-ui/svg-icons/action/view-module';
-
 
 class Header extends React.Component {
 
     render() {
-        const {styles, handleChangeRequestNavDrawer} = this.props;
+        const {styles,
+            //handleChangeRequestNavDrawer
+        } = this.props;
 
         const style = {
             appBar: {

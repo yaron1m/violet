@@ -5,11 +5,10 @@ import {black} from 'material-ui/styles/colors';
 class FormTextField extends React.Component {
 
 
-
     render() {
         const {title, size} = this.props;
 
-        var style = {
+        const style = {
             textField: {
                 marginLeft: 20,
             },
@@ -24,6 +23,9 @@ class FormTextField extends React.Component {
                 break;
             case "M":
                 style.textField.width = 100;
+                break;
+
+            default:
                 break;
         }
 

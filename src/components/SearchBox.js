@@ -1,11 +1,9 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import {white, purple600} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 import labels from '../lables.json';
 import AutoComplete from 'material-ui/AutoComplete';
-
 
 const SearchBox = () => {
     const styles = {
