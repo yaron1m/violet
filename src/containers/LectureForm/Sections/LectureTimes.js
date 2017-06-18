@@ -1,13 +1,10 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn,
-} from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
+import FormTextField from "../Fields/FormTextField";
+import FormDatePicker from "../Fields/FormDatePicker";
+import {Divider} from "material-ui";
+import {purple100} from "material-ui/styles/colors";
 
 class LectureTimes extends React.Component {
 
@@ -15,60 +12,46 @@ class LectureTimes extends React.Component {
         const sectionLabels = labels.lectureForm.lectureDetailsSection.lectureTimesSection;
 
         const style = {
-            header: {
-                displaySelectAll: false,
-                marginTop: 20,
+            paper: {
+                //backgroundColor:purple100,
+                padding: 10,
             },
-            height: 100,
-            table:{
-                width:1500
+            flex: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "flex-end"
+            },
+            divider: {
+                marginTop: 10,
             }
         };
 
         return (
-            <Table>
-                <TableHeader
-                    displaySelectAll={style.header.displaySelectAll}>
-                    <TableRow>
-                        <TableHeaderColumn>{sectionLabels.fields.date}</TableHeaderColumn>
-                        <TableHeaderColumn>{sectionLabels.fields.startTime}</TableHeaderColumn>
-                        <TableHeaderColumn>{sectionLabels.fields.endTime}</TableHeaderColumn>
-                        <TableHeaderColumn>{sectionLabels.fields.topic}</TableHeaderColumn>
-                        <TableHeaderColumn>{sectionLabels.fields.audienceSize}</TableHeaderColumn>
-                        <TableHeaderColumn>{sectionLabels.fields.shirtColor}</TableHeaderColumn>
-                        <TableHeaderColumn>{sectionLabels.fields.tie}</TableHeaderColumn>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    <TableRow>
-                        <TableRowColumn >13.08.1992</TableRowColumn>
-                        <TableRowColumn>08:00</TableRowColumn>
-                        <TableRowColumn>13:00</TableRowColumn>
-                        <TableRowColumn>חשיבה יצירתית</TableRowColumn>
-                        <TableRowColumn>352</TableRowColumn>
-                        <TableRowColumn>כחולה</TableRowColumn>
-                        <TableRowColumn>כבשים</TableRowColumn>
-                    </TableRow>
-                    <TableRow>
-                        <TableRowColumn >13.08.1992</TableRowColumn>
-                        <TableRowColumn>08:00</TableRowColumn>
-                        <TableRowColumn>13:00</TableRowColumn>
-                        <TableRowColumn>חשיבה יצירתית</TableRowColumn>
-                        <TableRowColumn>352</TableRowColumn>
-                        <TableRowColumn>כחולה</TableRowColumn>
-                        <TableRowColumn>כבשים</TableRowColumn>
-                    </TableRow>
-                    <TableRow>
-                        <TableRowColumn >13.08.1992</TableRowColumn>
-                        <TableRowColumn>08:00</TableRowColumn>
-                        <TableRowColumn>13:00</TableRowColumn>
-                        <TableRowColumn>חשיבה יצירתית</TableRowColumn>
-                        <TableRowColumn>352</TableRowColumn>
-                        <TableRowColumn>כחולה</TableRowColumn>
-                        <TableRowColumn>כבשים</TableRowColumn>
-                    </TableRow>
-                </TableBody>
-            </Table>
+            <Paper
+                style={style.paper}
+            >
+                <div style={style.flex}>
+                    <FormDatePicker title={sectionLabels.fields.date}/>
+                    <FormTextField title={sectionLabels.fields.startTime} size="M"/>
+                    <FormTextField title={sectionLabels.fields.endTime} size="M"/>
+                    <FormTextField title={sectionLabels.fields.topic}/>
+                    <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
+                    <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
+                    <FormTextField title={sectionLabels.fields.tie} size="M"/>
+                </div>
+
+                <Divider style={style.divider}/>
+                <div style={style.flex}>
+                    <FormDatePicker title={sectionLabels.fields.date}/>
+                    <FormTextField title={sectionLabels.fields.startTime} size="M"/>
+                    <FormTextField title={sectionLabels.fields.endTime} size="M"/>
+                    <FormTextField title={sectionLabels.fields.topic}/>
+                    <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
+                    <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
+                    <FormTextField title={sectionLabels.fields.tie} size="M"/>
+                </div>
+            </Paper>
         );
     }
 }
