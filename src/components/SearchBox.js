@@ -29,7 +29,7 @@ const SearchBox = () => {
         },
     };
 
-    var dataSource = ["asdasd", "מכבי", "רפאל"];
+    const dataSource = ["asdasd", "מכבי", "רפאל"];
 
     return (
         <div className="this is search box">

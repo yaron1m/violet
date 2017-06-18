@@ -5,6 +5,7 @@ import FormTextField from "../Fields/FormTextField";
 import FormDatePicker from "../Fields/FormDatePicker";
 import {Divider} from "material-ui";
 import {purple100} from "material-ui/styles/colors";
+import FormAutocomleteTextField from "../Fields/FormAutocomleteTextField";
 
 class LectureTimes extends React.Component {
 
@@ -37,7 +38,7 @@ class LectureTimes extends React.Component {
                         <FormDatePicker title={sectionLabels.fields.date}/>
                         <FormTextField title={sectionLabels.fields.startTime} size="M"/>
                         <FormTextField title={sectionLabels.fields.endTime} size="M"/>
-                        <FormTextField title={sectionLabels.fields.topic}/>
+                        <FormAutocomleteTextField title={sectionLabels.fields.topic}/>
                         <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
                         <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
                         <FormTextField title={sectionLabels.fields.tie} size="M"/>
@@ -50,7 +51,7 @@ class LectureTimes extends React.Component {
                         <FormDatePicker title={sectionLabels.fields.date}/>
                         <FormTextField title={sectionLabels.fields.startTime} size="M"/>
                         <FormTextField title={sectionLabels.fields.endTime} size="M"/>
-                        <FormTextField title={sectionLabels.fields.topic}/>
+                        <FormAutocomleteTextField title={sectionLabels.fields.topic}/>
                         <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
                         <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
                         <FormTextField title={sectionLabels.fields.tie} size="M"/>
