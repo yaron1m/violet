@@ -38,6 +38,7 @@ class LectureTimes extends React.Component {
                         <FormDatePicker title={sectionLabels.fields.date}/>
                         <FormTextField title={sectionLabels.fields.startTime} size="M"/>
                         <FormTextField title={sectionLabels.fields.endTime} size="M"/>
+                        <FormTextField title={sectionLabels.fields.length} size="M"/>
                         <FormAutocomleteTextField title={sectionLabels.fields.topic}/>
                         <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
                         <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
@@ -46,11 +47,13 @@ class LectureTimes extends React.Component {
                 </div>
 
                 <Divider style={style.divider}/>
+                
                 <div>
                     <div style={style.flex}>
                         <FormDatePicker title={sectionLabels.fields.date}/>
                         <FormTextField title={sectionLabels.fields.startTime} size="M"/>
                         <FormTextField title={sectionLabels.fields.endTime} size="M"/>
+                        <FormTextField title={sectionLabels.fields.length} size="M"/>
                         <FormAutocomleteTextField title={sectionLabels.fields.topic}/>
                         <FormTextField title={sectionLabels.fields.audienceSize} size="M"/>
                         <FormTextField title={sectionLabels.fields.shirtColor} size="M"/>
