@@ -10,9 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 class Header extends React.Component {
 
     render() {
-        const {styles,
-            //handleChangeRequestNavDrawer
-        } = this.props;
+        const {styles, handleChangeRequestNavDrawer} = this.props;
 
         const style = {
             appBar: {
@@ -21,7 +19,6 @@ class Header extends React.Component {
                 overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
-                paddingRight: 0
             },
             menuButton: {
                 marginLeft: 10,
@@ -46,7 +43,7 @@ class Header extends React.Component {
                         titleStyle={style.title}
                         iconElementLeft={
                             <IconButton style={style.menuButton}
-                                //onClick={handleChangeRequestNavDrawer}
+                                onClick={handleChangeRequestNavDrawer}
                             >
                                 <Menu color={white}/>
                             </IconButton>
