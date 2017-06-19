@@ -43,7 +43,7 @@ class Header extends React.Component {
                         titleStyle={style.title}
                         iconElementLeft={
                             <IconButton style={style.menuButton}
-                                onClick={handleChangeRequestNavDrawer}
+                                        onClick={handleChangeRequestNavDrawer}
                             >
                                 <Menu color={white}/>
                             </IconButton>

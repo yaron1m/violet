@@ -1,7 +1,7 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import {spacing, typography} from 'material-ui/styles';
-import {white, blue600} from 'material-ui/styles/colors';
+import {white, purple900} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import labels from '../lables.json';
@@ -19,7 +19,7 @@ const RightDrawer = (props) => {
             color: typography.textFullWhite,
             lineHeight: `${spacing.desktopKeylineIncrement}px`,
             fontWeight: typography.fontWeightLight,
-            backgroundColor: blue600,
+            backgroundColor: purple900,
             textAlign: "center",
             height: 64,
         },
