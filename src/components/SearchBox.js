@@ -16,16 +16,16 @@ const SearchBox = () => {
             borderRadius: 2,
             height: 35,
             paddingRight: 10,
-            webkitTextFillColor: white,
+            color:white,
         },
         white: {
-            webkitTextFillColor: white,
-
+            WebkitTextFillColor: "inherit",
+            color:white,
         },
         hintStyle: {
             height: 16,
             //paddingLeft: 5,
-            webkitTextFillColor: white,
+            color:white,
         },
     };
 

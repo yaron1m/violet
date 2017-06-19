@@ -23,7 +23,7 @@ class Notes extends React.Component {
 
                 <TextField
                     style={style.textField}
-                    floatingLabelText={sectionLabels.fields.followUpDetails}
+                    floatingLabelText={sectionLabels.fields.notes}
                     floatingLabelStyle={style.floatingLabelText}
                     fullWidth={true}
                     multiLine={true}
