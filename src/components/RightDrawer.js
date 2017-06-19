@@ -4,9 +4,13 @@ import {spacing, typography} from 'material-ui/styles';
 import {white, blue600} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
+import labels from '../lables.json';
 
 const RightDrawer = (props) => {
     let { navDrawerOpen } = props;
+
+    const thisLabels = labels.drawer;
+
 
     const styles = {
         logo: {
@@ -16,8 +20,8 @@ const RightDrawer = (props) => {
             lineHeight: `${spacing.desktopKeylineIncrement}px`,
             fontWeight: typography.fontWeightLight,
             backgroundColor: blue600,
-            paddingLeft: 40,
-            height: 56,
+            textAlign: "center",
+            height: 64,
         },
         menuItem: {
             color: white,
@@ -51,7 +55,7 @@ const RightDrawer = (props) => {
             docked={true}
             open={navDrawerOpen}>
           <div style={styles.logo}>
-            Material Admin
+              {thisLabels.softwareName} {thisLabels.version}
           </div>
           <div style={styles.avatar.div}>
             <Avatar src="http://www.material-ui.com/images/uxceo-128.jpg"
