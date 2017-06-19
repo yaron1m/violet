@@ -1,15 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import areIntlLocalesSupported from 'intl-locales-supported';
 import labels from '../../../lables.json';
 import {black} from 'material-ui/styles/colors';
 
-
 class FormDatePicker extends React.Component {
 
     render() {
-        const {title} = this.props;
-
         const style = {
             floatingLabelText: {
                 color: black,
@@ -30,17 +28,27 @@ class FormDatePicker extends React.Component {
 
         return (
             <DatePicker
-                hintText={title}
+                hintText={this.props.title}
                 DateTimeFormat={DateTimeFormat}
                 style={style.floatingLabelText}
                 okLabel={labels.buttons.ok}
                 cancelLabel={labels.buttons.cancel}
                 locale="he"
                 firstDayOfWeek={0}
+                disabled={this.props.disabled}
             />
 
         );
     }
 }
 
+FormDatePicker.propTypes = {
+    title: PropTypes.string,
+    disabled: PropTypes.bool,
+};
+
 export default FormDatePicker;
+
+FormDatePicker.defaultProps = {
+    disabled: false
+};
