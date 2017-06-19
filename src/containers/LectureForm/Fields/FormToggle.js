@@ -1,5 +1,6 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
+import {Paper} from "material-ui";
 
 class FormToggle extends React.Component {
 
@@ -31,4 +32,35 @@ class FormToggle extends React.Component {
     }
 }
 
-export default FormToggle;
+export {FormToggle};
+
+class FormToggleBox extends React.Component {
+
+    render() {
+        const style = {
+            paper: {
+                padding: 5,
+                marginTop: 20,
+                paddingBottom: 2,
+                display: "inline-flex"
+            }, flex: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "flex-end"
+            }
+        };
+
+        return (
+            <Paper style={style.paper}>
+                <div style={style.flex}>
+                    {this.props.children}
+                </div>
+            </Paper>
+
+        );
+    }
+}
+
+export {FormToggleBox};
+

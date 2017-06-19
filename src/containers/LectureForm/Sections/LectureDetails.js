@@ -2,8 +2,7 @@ import React from 'react';
 import labels from '../../../lables.json';
 import CardBase from "../SectionBases/CardBase";
 import FormTextField from "../Fields/FormTextField";
-import FormToggle from "../Fields/FormToggle";
-import FormToggleBox from "../Fields/FormToggleBox";
+import {FormToggle, FormToggleBox} from "../Fields/FormToggle";
 import LectureTimes from "./LectureTimes";
 
 class LectureDetails extends React.Component {
