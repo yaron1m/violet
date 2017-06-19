@@ -8,6 +8,20 @@ import {black} from 'material-ui/styles/colors';
 
 class FollowUp extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            disabled: true
+        };
+    }
+
+
+    onToggle(event, isInputChecked) {
+        this.setState({
+            disabled: !isInputChecked
+        });
+    }
+
     render() {
         const sectionLabels = labels.lectureForm.followUpSection;
         const style = {
@@ -26,7 +40,6 @@ class FollowUp extends React.Component {
             }
         };
 
-
         return (
             <CardBase
                 title={sectionLabels.sectionName}
@@ -36,9 +49,10 @@ class FollowUp extends React.Component {
                     <Toggle
                         //label={sectionLabels.fields.followUpRequired}
                         style={style.toggle}
+                        onToggle={this.onToggle.bind(this)}
                     />
 
-                    <FormDatePicker title={sectionLabels.fields.followUpDate}/>
+                    <FormDatePicker title={sectionLabels.fields.followUpDate} disabled={this.state.disabled}/>
                 </div>
 
 
@@ -49,6 +63,7 @@ class FollowUp extends React.Component {
                         fullWidth={true}
                         multiLine={true}
                         rowsMax={4}
+                        disabled={this.state.disabled}
                     />
                 </div>
             </CardBase>
