@@ -1,15 +1,7 @@
 import React from 'react';
 import labels from '../../../lables.json';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn,
-} from 'material-ui/Table';
 import CardBase from "../SectionBases/CardBase";
-import FormLectureField from "../Fields/FormContactField";
+import FormContactField from "../Fields/FormContactField";
 import {Divider, Paper} from "material-ui";
 
 class Contacts extends React.Component {
@@ -19,7 +11,6 @@ class Contacts extends React.Component {
 
         const style = {
             paper: {
-                //backgroundColor: purple100,
                 display: "inline-block",
             },
             divider: {
@@ -32,11 +23,11 @@ class Contacts extends React.Component {
                 <Paper
                     style={style.paper}
                 >
-                    <FormLectureField/>
+                    <FormContactField/>
 
                     <Divider style={style.divider}/>
 
-                    <FormLectureField/>
+                    <FormContactField/>
                 </Paper>
             </CardBase>
         );

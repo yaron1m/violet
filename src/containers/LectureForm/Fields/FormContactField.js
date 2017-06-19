@@ -1,8 +1,6 @@
 import React from 'react';
 import labels from '../../../lables.json';
 import FormTextField from "../Fields/FormTextField";
-import FormDatePicker from "../Fields/FormDatePicker";
-import FormAutocomleteTextField from "../Fields/FormAutocomleteTextField";
 import {Checkbox} from "material-ui";
 
 class FormLectureField extends React.Component {
