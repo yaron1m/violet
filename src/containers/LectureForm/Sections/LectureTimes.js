@@ -3,29 +3,69 @@ import Paper from 'material-ui/Paper';
 import {Divider} from "material-ui";
 import {grey100} from "material-ui/styles/colors";
 import FormLectureField from "../Fields/FormLectureField";
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class LectureTimes extends React.Component {
 
-    render() {
-        const style = {
-            paper: {
-                backgroundColor: grey100,
-                display: "inline-block",
-            },
+    constructor() {
+        super();
+        this.state = {
+            lectureTimes: [{}, {}]
+        };
+    }
+
+
+    addLectureTimeField(event) {
+        var lectureTimesArray = this.state.lectureTimes;
+        lectureTimesArray = lectureTimesArray.concat({})
+        this.setState({
+            lectureTimes: lectureTimesArray
+        });
+    }
+
+
+    eachLectureTime() {
+        const styles = {
             divider: {
                 marginTop: 10,
             }
         };
 
         return (
+            <div>
+                <FormLectureField
+                    //removeLectureTime =  {this.addLectureTimeField.bind(this)}
+                />
+                <Divider style={styles.divider}/>
+            </div>
+        )
+    }
+
+    render() {
+        const styles = {
+            paper: {
+                backgroundColor: grey100,
+                display: "inline-block",
+            },
+            divider: {
+                marginTop: 10,
+            },
+            addButton: {}
+        };
+
+        return (
             <Paper
-                style={style.paper}
+                style={styles.paper}
             >
-                <FormLectureField/>
+                <FloatingActionButton
+                    onTouchTap={this.addLectureTimeField.bind(this)}
+                    mini={true}
+                    style={styles.addButton}>
+                    <ContentAdd />
+                </FloatingActionButton>
 
-                <Divider style={style.divider}/>
-
-                <FormLectureField/>
+                {this.state.lectureTimes.map(this.eachLectureTime)}
             </Paper>
         );
     }
