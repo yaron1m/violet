@@ -19,7 +19,7 @@
       }
     },
     "lectureDetailsSection": {
-      "table": "lectures",
+      "table": "lectureDetails",
       "sectionName": "פרטי ההרצאה",
       "fields": {
         "location": "מיקום ההרצאה",
