@@ -28,9 +28,9 @@ class FormDatePicker extends React.Component {
 
         return (
             <DatePicker
-                hintText={this.props.title}
+                floatingLabelText={this.props.title}
+                floatingLabelStyle={style.floatingLabelText}
                 DateTimeFormat={DateTimeFormat}
-                style={style.floatingLabelText}
                 okLabel={labels.buttons.ok}
                 cancelLabel={labels.buttons.cancel}
                 locale="he"
