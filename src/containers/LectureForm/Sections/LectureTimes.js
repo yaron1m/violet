@@ -11,7 +11,7 @@ class LectureTimes extends React.Component {
     constructor() {
         super();
         this.state = {
-            lectureTimes: [{}, {}]
+            lectureTimes: []
         };
     }
 
