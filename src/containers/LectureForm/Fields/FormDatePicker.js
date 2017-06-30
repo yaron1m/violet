@@ -8,10 +8,15 @@ import {black} from 'material-ui/styles/colors';
 class FormDatePicker extends React.Component {
 
     render() {
-        const style = {
+        const styles = {
+            field:{
+                marginLeft: 20,
+            },
+            textField:{
+                width: 100
+            },
             floatingLabelText: {
                 color: black,
-                marginLeft: 20,
             }
         };
 
@@ -29,15 +34,16 @@ class FormDatePicker extends React.Component {
         return (
             <DatePicker
                 floatingLabelText={this.props.title}
-                floatingLabelStyle={style.floatingLabelText}
+                floatingLabelStyle={styles.floatingLabelText}
                 DateTimeFormat={DateTimeFormat}
                 okLabel={labels.buttons.ok}
                 cancelLabel={labels.buttons.cancel}
                 locale="he"
                 firstDayOfWeek={0}
                 disabled={this.props.disabled}
+                style={styles.field}
+                textFieldStyle={styles.textField}
             />
-
         );
     }
 }
