@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import {white} from 'material-ui/styles/colors';
-import SearchBox from './SearchBox';
+import SearchBox from './search-box';
 import {IconMenu, MenuItem} from "material-ui";
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
