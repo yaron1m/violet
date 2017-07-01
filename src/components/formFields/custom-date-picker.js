@@ -2,17 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import areIntlLocalesSupported from 'intl-locales-supported';
-import labels from '../../../lables.json';
 import {black} from 'material-ui/styles/colors';
 
-class FormDatePicker extends React.Component {
+class CustomDatePicker extends React.Component {
 
     render() {
         const styles = {
-            field:{
+            field: {
                 marginLeft: 20,
             },
-            textField:{
+            textField: {
                 width: 100
             },
             floatingLabelText: {
@@ -27,8 +26,6 @@ class FormDatePicker extends React.Component {
          */
         if (areIntlLocalesSupported(['he', 'he-IL'])) {
             DateTimeFormat = global.Intl.DateTimeFormat;
-        } else {
-            alert("failed");
         }
 
         return (
@@ -36,8 +33,8 @@ class FormDatePicker extends React.Component {
                 floatingLabelText={this.props.title}
                 floatingLabelStyle={styles.floatingLabelText}
                 DateTimeFormat={DateTimeFormat}
-                okLabel={labels.buttons.ok}
-                cancelLabel={labels.buttons.cancel}
+                okLabel="אישור"
+                cancelLabel="ביטול"
                 locale="he"
                 firstDayOfWeek={0}
                 disabled={this.props.disabled}
@@ -48,13 +45,13 @@ class FormDatePicker extends React.Component {
     }
 }
 
-FormDatePicker.propTypes = {
+CustomDatePicker.propTypes = {
     title: PropTypes.string,
     disabled: PropTypes.bool,
 };
 
-export default FormDatePicker;
-
-FormDatePicker.defaultProps = {
+CustomDatePicker.defaultProps = {
     disabled: false
 };
+
+export default CustomDatePicker;

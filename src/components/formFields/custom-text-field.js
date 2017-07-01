@@ -2,8 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import {black} from 'material-ui/styles/colors';
 
-class FormTextField extends React.Component {
-
+class CustomTextField extends React.Component {
 
     render() {
         const {title, size} = this.props;
@@ -39,4 +38,4 @@ class FormTextField extends React.Component {
     }
 }
 
-export default FormTextField;
+export default CustomTextField;

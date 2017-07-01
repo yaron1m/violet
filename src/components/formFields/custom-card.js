@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardHeader, CardMedia} from 'material-ui/Card';
 
-class PageBase extends React.Component {
+class CustomCard extends React.Component {
 
     render() {
         const {title, isOpen} = this.props;
@@ -38,4 +38,4 @@ class PageBase extends React.Component {
     }
 }
 
-export default PageBase;
+export default CustomCard;

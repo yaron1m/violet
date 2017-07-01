@@ -1,12 +1,12 @@
 import React from 'react';
-import labels from '../../../lables.json';
-import CardBase from "../SectionBases/CardBase";
+import CustomCard from "../../../components/formFields/custom-card";
 import Toggle from "material-ui/Toggle";
-import FormDatePicker from "../Fields/FormDatePicker";
+import CustomDatePicker from "../../../components/formFields/custom-date-picker";
 import TextField from 'material-ui/TextField';
 import {black} from 'material-ui/styles/colors';
+import {connect} from 'react-redux';
 
-class FollowUp extends React.Component {
+class FollowUpSection extends React.Component {
 
     constructor() {
         super();
@@ -14,8 +14,7 @@ class FollowUp extends React.Component {
             disabled: true
         };
     }
-
-
+    
     onToggle(event, isInputChecked) {
         this.setState({
             disabled: !isInputChecked
@@ -23,7 +22,6 @@ class FollowUp extends React.Component {
     }
 
     render() {
-        const sectionLabels = labels.lectureForm.followUpSection;
         const style = {
             toggle: {
                 maxWidth: 50,
@@ -41,24 +39,24 @@ class FollowUp extends React.Component {
         };
 
         return (
-            <CardBase
-                title={sectionLabels.sectionName}
+            <CustomCard
+                title={this.props.labels.sectionName}
                 // isOpen = {} //Base this on the toggle state
             >
                 <div style={style.flex}>
                     <Toggle
-                        //label={sectionLabels.fields.followUpRequired}
+                        //label={this.props.labels.fields.followUpRequired}
                         style={style.toggle}
                         onToggle={this.onToggle.bind(this)}
                     />
 
-                    <FormDatePicker title={sectionLabels.fields.followUpDate} disabled={this.state.disabled}/>
+                    <CustomDatePicker title={this.props.labels.fields.followUpDate} disabled={this.state.disabled}/>
                 </div>
 
 
                 <div>
                     <TextField
-                        floatingLabelText={sectionLabels.fields.followUpDetails}
+                        floatingLabelText={this.props.labels.fields.followUpDetails}
                         floatingLabelStyle={style.floatingLabelText}
                         fullWidth={true}
                         multiLine={true}
@@ -66,9 +64,14 @@ class FollowUp extends React.Component {
                         disabled={this.state.disabled}
                     />
                 </div>
-            </CardBase>
+            </CustomCard>
         );
     }
 }
 
-export default FollowUp;
+function mapStateToProps(state) {
+    return {
+        labels: state.softwareLabels.lectureForm.followUpSection,
+    };
+}
+export default connect(mapStateToProps)(FollowUpSection);

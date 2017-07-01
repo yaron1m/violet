@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 
-class PageBase extends React.Component {
+class CustomPage extends React.Component {
 
     render() {
         const {title} = this.props;
@@ -25,4 +25,4 @@ class PageBase extends React.Component {
     }
 }
 
-export default PageBase;
+export default CustomPage;

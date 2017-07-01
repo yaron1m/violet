@@ -2,7 +2,7 @@ import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import {Paper} from "material-ui";
 
-class FormToggle extends React.Component {
+class CustomToggle extends React.Component {
 
     render() {
         const {title} = this.props;
@@ -32,9 +32,9 @@ class FormToggle extends React.Component {
     }
 }
 
-export {FormToggle};
+export {CustomToggle};
 
-class FormToggleBox extends React.Component {
+class CustomToggleBox extends React.Component {
 
     render() {
         const style = {
@@ -62,5 +62,5 @@ class FormToggleBox extends React.Component {
     }
 }
 
-export {FormToggleBox};
+export {CustomToggleBox};
 

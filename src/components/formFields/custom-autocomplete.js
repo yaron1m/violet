@@ -2,7 +2,7 @@ import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import {black} from 'material-ui/styles/colors';
 
-class FormAutocompleteTextField extends React.Component {
+class CustomAutoCompleteTextField extends React.Component {
 
 
     render() {
@@ -43,4 +43,4 @@ class FormAutocompleteTextField extends React.Component {
     }
 }
 
-export default FormAutocompleteTextField;
+export default CustomAutoCompleteTextField;

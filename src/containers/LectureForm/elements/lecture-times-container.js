@@ -2,22 +2,22 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import {Divider} from "material-ui";
 import {grey100} from "material-ui/styles/colors";
-import FormLectureField from "../Fields/FormLectureField";
+import LectureTime from "./lecture-time";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-class LectureTimes extends React.Component {
+class LectureTimesContainer extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            lectureTimes: []
+            lectureTimes: [{}]
         };
     }
 
 
     addLectureTimeField(event) {
-        var lectureTimesArray = this.state.lectureTimes;
+        let lectureTimesArray = this.state.lectureTimes;
         lectureTimesArray = lectureTimesArray.concat({})
         this.setState({
             lectureTimes: lectureTimesArray
@@ -34,7 +34,7 @@ class LectureTimes extends React.Component {
 
         return (
             <div>
-                <FormLectureField
+                <LectureTime
                     //removeLectureTime =  {this.addLectureTimeField.bind(this)}
                 />
                 <Divider style={styles.divider}/>
@@ -71,4 +71,4 @@ class LectureTimes extends React.Component {
     }
 }
 
-export default LectureTimes;
+export default LectureTimesContainer;
