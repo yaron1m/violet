@@ -4,8 +4,9 @@ import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
-import {IconMenu, MenuItem} from "material-ui";
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import SaveIcon from 'material-ui/svg-icons/content/save';
+import ClearIcon from 'material-ui/svg-icons/content/clear';
+import PrintIcon from 'material-ui/svg-icons/action/print';
 
 class Header extends React.Component {
 
@@ -50,16 +51,9 @@ class Header extends React.Component {
                         }
                         iconElementRight={
                             <div style={style.iconsRightContainer}>
-
-                                <IconMenu color={white}
-                                          iconButtonElement={
-                                              <IconButton><MoreVertIcon color={white}/></IconButton>
-                                          }
-                                          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                                          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-                                >
-                                    <MenuItem primaryText="Sign out"/>
-                                </IconMenu>
+                                <IconButton><SaveIcon color={white}/></IconButton>
+                                <IconButton><ClearIcon color={white}/></IconButton>
+                                <IconButton><PrintIcon color={white}/></IconButton>
                             </div>
                         }
                 />
