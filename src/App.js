@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header from './containers/Header';
-import RightDrawer from './containers/RightDrawer';
+import Header from './containers/site-header';
+import RightDrawer from './containers/right-drawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
 import LectureForm from './containers/LectureForm/lecture-form';
