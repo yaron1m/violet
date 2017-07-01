@@ -37,6 +37,8 @@ class CustomAutoCompleteTextField extends React.Component {
                 floatingLabelStyle={style.floatingLabelText}
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
+                multiLine={true}
+                rowsMax={4}
             />
         );
     }
