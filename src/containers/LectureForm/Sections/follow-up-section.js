@@ -50,7 +50,11 @@ class FollowUpSection extends React.Component {
                         onToggle={this.onToggle.bind(this)}
                     />
 
-                    <CustomDatePicker title={this.props.labels.fields.followUpDate} disabled={this.state.disabled}/>
+                    <CustomDatePicker
+                        title={this.props.labels.fields.followUpDate}
+                        disabled={this.state.disabled}
+                        size="L"
+                    />
                 </div>
 
 

@@ -26,9 +26,9 @@ class OrganizationSection extends React.Component {
                     <CustomTextField title={this.props.labels.fields.expectedPayDay}/>
                     <CustomTextField title={this.props.labels.fields.actualPayDay}/>
                     <CustomTextField title={this.props.labels.fields.proformaInvoiceNumber}/>
-                    <CustomDatePicker title={this.props.labels.fields.proformaInvoiceDate}/>
+                    <CustomDatePicker title={this.props.labels.fields.proformaInvoiceDate} size="L"/>
                     <CustomTextField title={this.props.labels.fields.taxInvoiceNumber}/>
-                    <CustomDatePicker title={this.props.labels.fields.taxInvoiceDate}/>
+                    <CustomDatePicker title={this.props.labels.fields.taxInvoiceDate} size="L"/>
                 </div>
 
 

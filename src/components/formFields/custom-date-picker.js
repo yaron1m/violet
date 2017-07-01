@@ -19,6 +19,24 @@ class CustomDatePicker extends React.Component {
             }
         };
 
+        switch (this.props.size) {
+            case "S":
+                styles.textField.width = 50;
+                break;
+            case "M":
+                styles.textField.width = 100;
+                break;
+            case "L":
+                styles.textField.width = 150;
+                break;
+            case "XL":
+                styles.textField.width = 200;
+                break;
+
+            default:
+                break;
+        }
+
         let DateTimeFormat;
 
         /**

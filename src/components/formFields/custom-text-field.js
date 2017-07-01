@@ -5,8 +5,6 @@ import {black} from 'material-ui/styles/colors';
 class CustomTextField extends React.Component {
 
     render() {
-        const {title, size} = this.props;
-
         const style = {
             textField: {
                 marginLeft: 20,
@@ -16,7 +14,7 @@ class CustomTextField extends React.Component {
             }
         };
 
-        switch (size) {
+        switch (this.props.size) {
             case "S":
                 style.textField.width = 50;
                 break;
@@ -31,7 +29,7 @@ class CustomTextField extends React.Component {
         return (
             <TextField
                 style={style.textField}
-                floatingLabelText={title}
+                floatingLabelText={this.props.title}
                 floatingLabelStyle={style.floatingLabelText}
             />
         );
