@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header from './components/Header';
-import RightDrawer from './components/RightDrawer';
+import Header from './containers/Header';
+import RightDrawer from './containers/RightDrawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
 import LectureForm from './containers/LectureForm/LectureForm';
@@ -30,7 +30,7 @@ class App extends React.Component {
     }
 
     render() {
-        let { navDrawerOpen } = this.state;
+        let {navDrawerOpen} = this.state;
         const paddingRightDrawerOpen = 236;
 
         const styles = {
@@ -51,14 +51,14 @@ class App extends React.Component {
                     />
 
                     <RightDrawer navDrawerOpen={navDrawerOpen}
-                                menus={Data.menus}
-                                username="User Admin"/>
+                                 menus={Data.menus}
+                                 userName="User Admin"
+                    />
 
 
                     <div className="AppContainer" style={styles.container}>
                         <LectureForm/>
                     </div>
-
                 </div>
             </MuiThemeProvider>
         );

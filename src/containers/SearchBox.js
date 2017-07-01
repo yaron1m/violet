@@ -2,9 +2,7 @@ import React from 'react';
 import {white, purple600} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
-import labels from '../lables.json';
 import AutoComplete from 'material-ui/AutoComplete';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class SearchBox extends React.Component {
@@ -28,12 +26,13 @@ class SearchBox extends React.Component {
             },
             hintStyle: {
                 height: 16,
-                //paddingLeft: 5,
                 color: white,
             },
         };
 
-        const dataSource = ["asdasd", "מכבי", "רפאל"];
+        const organizationNames = this.props.organizations.map((lecture) => {
+            return lecture.name;
+        });
 
         return (
             <div className="this is search box">
@@ -41,7 +40,7 @@ class SearchBox extends React.Component {
                     <Search color={white}/>
                 </IconButton>
                 <AutoComplete
-                    dataSource={this.props.lectures.map((lecture) =>{ return lecture.name;})}
+                    dataSource={organizationNames}
                     // onUpdateInput = {this.onUpdateInput}
                     hintText={this.props.labels.search}
                     underlineShow={false}
@@ -55,16 +54,11 @@ class SearchBox extends React.Component {
     }
 }
 
-
-// Get apps state and pass it as props to UserList
-//      > whenever state changes, the UserList will automatically re-render
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.header,
-        lectures: state.lectures
+        organizations: state.organizations
     };
 }
-
-
 
 export default connect(mapStateToProps)(SearchBox);
