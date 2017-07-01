@@ -4,7 +4,7 @@ import Header from './containers/Header';
 import RightDrawer from './containers/RightDrawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
-import LectureForm from './containers/LectureForm/LectureForm';
+import LectureForm from './containers/LectureForm/lecture-form';
 import Data from './data';
 
 

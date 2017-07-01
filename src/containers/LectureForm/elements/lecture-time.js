@@ -22,6 +22,12 @@ class LectureTime extends React.Component {
             }
         };
 
+        const lecturesOffered = this.props.lecturesOffered.map((lecture) => {
+            if(lecture.isActive) {
+                return lecture.name;
+            }
+        });
+
         return (
             <div style={styles.flex}>
 
@@ -38,7 +44,12 @@ class LectureTime extends React.Component {
                 <CustomTextField title={this.props.labels.fields.startTime} size="M"/>
                 <CustomTextField title={this.props.labels.fields.endTime} size="M"/>
                 <CustomTextField title={this.props.labels.fields.length} size="M"/>
-                <CustomAutoCompleteTextField title={this.props.labels.fields.topic}/>
+
+                <CustomAutoCompleteTextField
+                    title={this.props.labels.fields.topic}
+                    dataSource={lecturesOffered}
+                />
+
                 <CustomTextField title={this.props.labels.fields.audienceSize} size="M"/>
                 <CustomTextField title={this.props.labels.fields.shirtColor} size="M"/>
                 <CustomTextField title={this.props.labels.fields.tie} size="M"/>
@@ -50,6 +61,7 @@ class LectureTime extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.lectureForm.lectureDetailsSection.lectureTimesSection,
+        lecturesOffered: state.lecturesOffered,
     };
 }
 export default connect(mapStateToProps)(LectureTime);

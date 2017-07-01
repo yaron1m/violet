@@ -1,6 +1,7 @@
 import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import {black} from 'material-ui/styles/colors';
+import PropTypes from 'prop-types';
 
 class CustomAutoCompleteTextField extends React.Component {
 
@@ -29,18 +30,21 @@ class CustomAutoCompleteTextField extends React.Component {
                 break;
         }
 
-        const dataSource = ["asdasd", "חשיבה יצירתית", "מודעות לאיכות"];
-
         return (
             <AutoComplete
                 style={style.textField}
                 floatingLabelText={title}
                 floatingLabelStyle={style.floatingLabelText}
                 filter={AutoComplete.fuzzyFilter}
-                dataSource={dataSource}
+                dataSource={this.props.dataSource}
             />
         );
     }
 }
+
+CustomAutoCompleteTextField.propTypes = {
+    dataSource: PropTypes.array,
+};
+
 
 export default CustomAutoCompleteTextField;
