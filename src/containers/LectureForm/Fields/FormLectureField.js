@@ -2,7 +2,7 @@ import React from 'react';
 import labels from '../../../lables.json';
 import FormTextField from "../Fields/FormTextField";
 import FormDatePicker from "../Fields/FormDatePicker";
-import FormAutocomleteTextField from "../Fields/FormAutocomleteTextField";
+import FormAutocomleteTextField from "./FormAutocompleteTextField";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import PropTypes from 'prop-types';
