@@ -5,6 +5,7 @@ import CustomAutoCompleteTextField from "../../../components/formFields/custom-a
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import {connect} from 'react-redux';
+import {removeLectureTime} from "../../../actions/index";
 
 class LectureTime extends React.Component {
 
@@ -23,16 +24,16 @@ class LectureTime extends React.Component {
         };
 
         const lecturesOffered = this.props.lecturesOffered.map((lecture) => {
-            if(lecture.isActive) {
+            //if(lecture.isActive) {
                 return lecture.name;
-            }
+            //}
         });
 
         return (
             <div style={styles.flex}>
 
                 <FloatingActionButton
-                    //onTouchTap = {this.prop.removeLectureTime}
+                    //onTouchTap = {this.props.dispatch(removeLectureTime(this.props.index))}
                     mini={true}
                     secondary={true}
                     style={styles.removeButton}
@@ -58,10 +59,12 @@ class LectureTime extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     return {
         labels: state.softwareLabels.lectureForm.lectureDetailsSection.lectureTimesSection,
         lecturesOffered: state.lecturesOffered,
+        index: ownProps.index,
     };
 }
+
 export default connect(mapStateToProps)(LectureTime);

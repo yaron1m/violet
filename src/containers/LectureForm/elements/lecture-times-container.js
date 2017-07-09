@@ -5,27 +5,12 @@ import {grey100} from "material-ui/styles/colors";
 import LectureTime from "./lecture-time";
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import {connect} from "react-redux";
+import {addLectureTime} from "../../../actions";
 
 class LectureTimesContainer extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            lectureTimes: [{}]
-        };
-    }
-
-
-    addLectureTimeField(event) {
-        let lectureTimesArray = this.state.lectureTimes;
-        lectureTimesArray = lectureTimesArray.concat({})
-        this.setState({
-            lectureTimes: lectureTimesArray
-        });
-    }
-
-
-    eachLectureTime() {
+    eachLectureTime(element, index) {
         const styles = {
             divider: {
                 marginTop: 10,
@@ -33,13 +18,15 @@ class LectureTimesContainer extends React.Component {
         };
 
         return (
-            <div>
-                <LectureTime
-                    //removeLectureTime =  {this.addLectureTimeField.bind(this)}
-                />
+            <div key={index}>
+                <LectureTime index={index}/>
                 <Divider style={styles.divider}/>
             </div>
         )
+    }
+
+    addButtonClick(event){
+        this.props.dispatch(addLectureTime());
     }
 
     render() {
@@ -51,7 +38,6 @@ class LectureTimesContainer extends React.Component {
             divider: {
                 marginTop: 10,
             },
-            addButton: {}
         };
 
         return (
@@ -59,16 +45,21 @@ class LectureTimesContainer extends React.Component {
                 style={styles.paper}
             >
                 <FloatingActionButton
-                    onTouchTap={this.addLectureTimeField.bind(this)}
+                    onTouchTap={this.addButtonClick.bind(this)}
                     mini={true}
-                    style={styles.addButton}>
+                >
                     <ContentAdd />
                 </FloatingActionButton>
 
-                {this.state.lectureTimes.map(this.eachLectureTime)}
+                {this.props.lectureTimes.map(this.eachLectureTime)}
             </Paper>
         );
     }
 }
 
-export default LectureTimesContainer;
+function mapStateToProps(state) {
+    return {
+        lectureTimes: state.lectureTimes,
+    };
+}
+export default connect(mapStateToProps)(LectureTimesContainer);
