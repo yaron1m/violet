@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
-import LecturesOffered from './reducer-lectures';
+import OfferedLectures from './reducer-offered-lectures';
 import Labels from './reducer-labels';
 import Organizations from './reducer-organizations';
 import LectureTimes from './reducer-lecture-times';
 
 const allReducers = combineReducers({
     softwareLabels: Labels,
-    lecturesOffered: LecturesOffered,
+    offeredLectures: OfferedLectures,
     organizations: Organizations,
     lectureTimes: LectureTimes
 });

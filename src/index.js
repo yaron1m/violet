@@ -6,9 +6,8 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import allReducers from './reducers';
+import injectTapEventPlugin from "react-tap-event-plugin";
 
-
-var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
 const store = createStore(
