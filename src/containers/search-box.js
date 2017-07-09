@@ -30,9 +30,12 @@ class SearchBox extends React.Component {
             },
         };
 
-        const organizationNames = this.props.organizations.map((lecture) => {
-            return lecture.name;
-        });
+        const organizationNames = [];
+        for(var organizationID in this.props.organizations.data){
+            if(this.props.organizations.data[organizationID].isActive){
+                organizationNames.push(this.props.organizations.data[organizationID].name);
+            }
+        }
 
         return (
             <div className="this is search box">
