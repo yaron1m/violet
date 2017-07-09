@@ -27,7 +27,7 @@ class LectureTime extends React.Component {
             }
         };
 
-        const lecturesOffered = this.props.lecturesOffered.map((lecture) => {
+        const lecturesOffered = this.props.offeredLectures.map((lecture) => {
             //if(lecture.isActive) {
             return lecture.name;
             //}
@@ -66,7 +66,7 @@ class LectureTime extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         labels: state.softwareLabels.lectureForm.lectureDetailsSection.lectureTimesSection,
-        lecturesOffered: state.lecturesOffered,
+        offeredLectures: state.offeredLectures,
         index: ownProps.index,
     };
 }
