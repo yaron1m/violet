@@ -9,6 +9,10 @@ import {removeLectureTime} from "../../../actions/index";
 
 class LectureTime extends React.Component {
 
+    removeThisLecture() {
+        this.props.dispatch(removeLectureTime(this.props.index));
+    }
+
     render() {
         const styles = {
             flex: {
@@ -25,15 +29,15 @@ class LectureTime extends React.Component {
 
         const lecturesOffered = this.props.lecturesOffered.map((lecture) => {
             //if(lecture.isActive) {
-                return lecture.name;
+            return lecture.name;
             //}
         });
 
         return (
-            <div style={styles.flex}>
+            <div style={styles.flex} key={this.props.index}>
 
                 <FloatingActionButton
-                    //onTouchTap = {this.props.dispatch(removeLectureTime(this.props.index))}
+                    onTouchTap={this.removeThisLecture.bind(this)}
                     mini={true}
                     secondary={true}
                     style={styles.removeButton}

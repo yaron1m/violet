@@ -9,7 +9,8 @@ export default function(state = [{}], action){
             if(action.index >= state.length){
                 return state;
             }
-            return state.splice(action.index, 1);
+            state.splice(action.index, 1);
+            return state;
 
         default:
             return state;
