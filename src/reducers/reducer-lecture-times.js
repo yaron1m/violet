@@ -1,16 +1,22 @@
 import {ADD_LECTURE_TIME, REMOVE_LECTURE_TIME} from '../actions/action-types'
 
-export default function(state = [{}], action){
+const initialState = {
+    array: [{}]
+};
+
+export default function (state = initialState, action) {
     switch (action.type) {
         case ADD_LECTURE_TIME:
-            return state.concat({}); //TODO I read somewhere I should not modify state but return a new one
+            return Object.assign({}, state, {
+                array: state.array.concat({})
+            });
 
         case REMOVE_LECTURE_TIME:
-            if(action.index >= state.length){
-                return state;
-            }
-            state.splice(action.index, 1);
-            return state;
+            const thisArray = state.array;
+            thisArray.splice(action.index, 1);
+            return Object.assign({}, state, {
+                array: thisArray
+            });
 
         default:
             return state;

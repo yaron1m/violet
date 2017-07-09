@@ -25,8 +25,8 @@ class LectureTimesContainer extends React.Component {
         )
     }
 
-    addButtonClick(event){
-        this.props.dispatch(addLectureTime());
+    addButtonClick(){
+        this.props.dispatch(addLectureTime(this.props.lectureTimes.array.length));
     }
 
     render() {
@@ -51,7 +51,7 @@ class LectureTimesContainer extends React.Component {
                     <ContentAdd />
                 </FloatingActionButton>
 
-                {this.props.lectureTimes.map(this.eachLectureTime)}
+                {this.props.lectureTimes.array.map(this.eachLectureTime)}
             </Paper>
         );
     }
