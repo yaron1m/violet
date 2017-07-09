@@ -1,12 +1,20 @@
-export default function () {
-    return [
-        {name:'מכבי שירותי בריאות'},
-        {name:'רפא"ל'},
-        {name:'טבע'},
-        {name:'תנובה'},
-        {name:'סלקום'},
-        {name:'תעשיה אווירית'},
-        {name:'תעשיה צבאית'},
-        {name:'מפעלי ים המלח'}
-    ]
+import {REQUEST_ORGANIZATIONS, RECEIVE_ORGANIZATIONS} from '../actions/action-organizations';
+
+export default (state = {isFetching: false, data:{}}, action) => {
+    switch (action.type) {
+        case REQUEST_ORGANIZATIONS:
+            return Object.assign({}, state, {
+                isFetching: true,
+            });
+        case RECEIVE_ORGANIZATIONS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                didInvalidate: false,
+                data: action.payload,
+            });
+        default:
+            return state
+    }
 }
+
+
