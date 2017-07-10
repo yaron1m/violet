@@ -33,9 +33,10 @@ class CustomTextField extends React.Component {
                 style={style.textField}
                 floatingLabelText={this.props.title}
                 floatingLabelStyle={style.floatingLabelText}
+                floatingLabelFixed={true}
                 multiLine={true}
                 rowsMax={4}
-                value={value}
+                //value={value}
             />
         );
     }

@@ -50,6 +50,7 @@ class CustomDatePicker extends React.Component {
             <DatePicker
                 floatingLabelText={this.props.title}
                 floatingLabelStyle={styles.floatingLabelText}
+                floatingLabelFixed={true}
                 DateTimeFormat={DateTimeFormat}
                 okLabel="אישור"
                 cancelLabel="ביטול"

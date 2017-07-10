@@ -14,7 +14,7 @@ class CustomAutoCompleteTextField extends React.Component {
                 marginLeft: 20,
             },
             floatingLabelText: {
-                color: black
+                color: black,
             }
         };
 
@@ -35,6 +35,7 @@ class CustomAutoCompleteTextField extends React.Component {
                 style={style.textField}
                 floatingLabelText={title}
                 floatingLabelStyle={style.floatingLabelText}
+                floatingLabelFixed={true}
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
                 multiLine={true}

@@ -3,10 +3,7 @@ import Paper from 'material-ui/Paper';
 import {Divider} from "material-ui";
 import {grey100} from "material-ui/styles/colors";
 import LectureTime from "./lecture-time";
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import {connect} from "react-redux";
-import {addLectureTime} from "../../../actions";
 
 class LectureTimesContainer extends React.Component {
 
