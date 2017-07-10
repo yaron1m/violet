@@ -2,7 +2,7 @@ import React from 'react';
 import CustomTextField from "../../../components/formFields/custom-text-field";
 import CustomDatePicker from "../../../components/formFields/custom-date-picker";
 import CustomAutoCompleteTextField from "../../../components/formFields/custom-autocomplete";
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import {connect} from 'react-redux';
 import {removeLectureTime} from "../../../actions/index";
@@ -23,7 +23,13 @@ class LectureTime extends React.Component {
                 padding: 10,
             },
             removeButton: {
-                marginLeft: 20,
+                verticalAlign: "bottom",
+                minWidth: 40,
+                marginLeft: 5,
+                marginBottom: 5,
+            },
+            removeIcon: {
+                verticalAlign: "middle",
             }
         };
 
@@ -35,15 +41,14 @@ class LectureTime extends React.Component {
 
         return (
             <div style={styles.flex} key={this.props.index}>
-
-                <FloatingActionButton
+                <RaisedButton
                     onTouchTap={this.removeThisLecture.bind(this)}
-                    mini={true}
-                    secondary={true}
                     style={styles.removeButton}
                 >
-                    <ContentRemove />
-                </FloatingActionButton>
+                    <ContentRemove
+                        style={styles.removeIcon}
+                    />
+                </RaisedButton>
 
                 <CustomDatePicker title={this.props.labels.fields.date}/>
                 <CustomTextField title={this.props.labels.fields.startTime} size="M"/>

@@ -25,10 +25,6 @@ class LectureTimesContainer extends React.Component {
         )
     }
 
-    addButtonClick(){
-        this.props.dispatch(addLectureTime(this.props.lectureTimes.array.length));
-    }
-
     render() {
         const styles = {
             paper: {
@@ -41,16 +37,7 @@ class LectureTimesContainer extends React.Component {
         };
 
         return (
-            <Paper
-                style={styles.paper}
-            >
-                <FloatingActionButton
-                    onTouchTap={this.addButtonClick.bind(this)}
-                    mini={true}
-                >
-                    <ContentAdd />
-                </FloatingActionButton>
-
+            <Paper style={styles.paper}>
                 {this.props.lectureTimes.array.map(this.eachLectureTime)}
             </Paper>
         );
