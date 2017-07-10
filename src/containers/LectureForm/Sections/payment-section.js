@@ -17,18 +17,23 @@ class OrganizationSection extends React.Component {
             }
         };
 
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: {}
+        };
+
         return (
             <CustomCard
                 title={this.props.labels.sectionName}
             >
                 <div style={style.flex}>
-                    <CustomTextField title={this.props.labels.fields.paymentConditions}/>
-                    <CustomTextField title={this.props.labels.fields.expectedPayDay}/>
-                    <CustomTextField title={this.props.labels.fields.actualPayDay}/>
-                    <CustomTextField title={this.props.labels.fields.proformaInvoiceNumber}/>
-                    <CustomDatePicker title={this.props.labels.fields.proformaInvoiceDate} size="L"/>
-                    <CustomTextField title={this.props.labels.fields.taxInvoiceNumber}/>
-                    <CustomDatePicker title={this.props.labels.fields.taxInvoiceDate} size="L"/>
+                    <CustomTextField data={fieldData} name="paymentConditions"/>
+                    <CustomTextField data={fieldData} name="expectedPayDay"/>
+                    <CustomTextField data={fieldData} name="actualPayDay"/>
+                    <CustomTextField data={fieldData} name="proformaInvoiceNumber"/>
+                    <CustomDatePicker title={this.props.labels.titles.proformaInvoiceDate} size="L"/>
+                    <CustomTextField data={fieldData} name="taxInvoiceNumber"/>
+                    <CustomDatePicker title={this.props.labels.titles.taxInvoiceDate} size="L"/>
                 </div>
 
 

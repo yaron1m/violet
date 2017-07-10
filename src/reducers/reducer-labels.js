@@ -12,7 +12,7 @@ export default function () {
             "organizationSection": {
                 "table": "organizations",
                 "sectionName": "פרטי הארגון",
-                "fields": {
+                "titles": {
                     "name": "שם הארגון",
                     "address": "כתובת הארגון",
                     "companyId": "ח.פ / ע.מ",
@@ -22,7 +22,7 @@ export default function () {
             "lectureDetailsSection": {
                 "table": "lectureDetails",
                 "sectionName": "פרטי ההרצאה",
-                "fields": {
+                "titles": {
                     "location": "מיקום ההרצאה",
                     "floor": "קומה",
                     "room": "חדר",
@@ -38,7 +38,7 @@ export default function () {
                 "lectureTimesSection": {
                     "table": "lectureTimes",
                     "sectionName": "הרצאות",
-                    "fields": {
+                    "titles": {
                         "date": "תאריך",
                         "startTime": "שעת התחלה",
                         "endTime": "שעת סיום",
@@ -53,7 +53,7 @@ export default function () {
             "contactsSection": {
                 "table": "contacts",
                 "sectionName": "איש קשר",
-                "fields": {
+                "titles": {
                     "firstName": "שם פרטי",
                     "lastName": "שם משפחה",
                     "phone1": "טלפון",
@@ -67,8 +67,7 @@ export default function () {
             "followUpSection": {
                 "table": "lectures",
                 "sectionName": "המשך טיפול",
-                "fields": {
-                    "followUpRequired": "המשך טיפול",
+                "titles": {
                     "followUpDate": "תאריך המשך טיפול",
                     "followUpDetails": "פרטים"
                 }
@@ -76,7 +75,7 @@ export default function () {
             "paymentSection": {
                 "table": "lectures",
                 "sectionName": "תשלום",
-                "fields": {
+                "titles": {
                     "paymentConditions": "תנאי תשלום",
                     "expectedPayDay": "תאריך לתשלום",
                     "actualPayDay": "תאריך תשלום בפועל",
@@ -89,7 +88,7 @@ export default function () {
             "financialContactsSection": {
                 "table": "contacts",
                 "sectionName": "איש קשר לתשלום",
-                "fields": {
+                "titles": {
                     "firstName": "שם פרטי",
                     "lastName": "שם משפחה",
                     "phone1": "טלפון",
@@ -103,7 +102,7 @@ export default function () {
             "notesSection": {
                 "table": "lectures",
                 "sectionName": "הערות",
-                "fields": {
+                "titles": {
                     "notes": "הערות נוספות"
                 }
             }

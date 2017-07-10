@@ -2,9 +2,8 @@ import React from 'react';
 import CustomCard from "../../../components/formFields/custom-card";
 import Toggle from "material-ui/Toggle";
 import CustomDatePicker from "../../../components/formFields/custom-date-picker";
-import TextField from 'material-ui/TextField';
-import {black} from 'material-ui/styles/colors';
 import {connect} from 'react-redux';
+import CustomTextField from "../../../components/formFields/custom-text-field";
 
 class FollowUpSection extends React.Component {
 
@@ -33,9 +32,11 @@ class FollowUpSection extends React.Component {
                 flexWrap: "wrap",
                 alignItems: "flex-end"
             },
-            floatingLabelText: {
-                color: black
-            }
+        };
+
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: {}
         };
 
         return (
@@ -45,13 +46,12 @@ class FollowUpSection extends React.Component {
             >
                 <div style={style.flex}>
                     <Toggle
-                        //label={this.props.labels.fields.followUpRequired}
                         style={style.toggle}
                         onToggle={this.onToggle.bind(this)}
                     />
 
                     <CustomDatePicker
-                        title={this.props.labels.fields.followUpDate}
+                        title={this.props.labels.titles.followUpDate}
                         disabled={this.state.disabled}
                         size="L"
                     />
@@ -59,12 +59,10 @@ class FollowUpSection extends React.Component {
 
 
                 <div>
-                    <TextField
-                        floatingLabelText={this.props.labels.fields.followUpDetails}
-                        floatingLabelStyle={style.floatingLabelText}
+                    <CustomTextField
+                        data={fieldData}
+                        name="followUpDetails"
                         fullWidth={true}
-                        multiLine={true}
-                        rowsMax={4}
                         disabled={this.state.disabled}
                     />
                 </div>

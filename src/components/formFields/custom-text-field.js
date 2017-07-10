@@ -5,20 +5,21 @@ import {black} from 'material-ui/styles/colors';
 class CustomTextField extends React.Component {
     constructor(props) {
         super(props);
-
+        let name = this.props.name;
         this.state = {
-            value: '',
+            name: name,
+            title: this.props.data.titles[name],
+            value: this.props.data.values[name]
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        // You don't have to do this check first, but it can help prevent an unneeded render
-        if (nextProps.value !== this.state.value) {
-            if(nextProps.value)
-            this.setState({ value: nextProps.value });
-            else
-                this.setState({ value: "" });
-
+        let name = nextProps.name;
+        if (nextProps.data.values[name] !== this.state.value) {
+            this.setState({
+                title: nextProps.data.titles[name],
+                value: nextProps.data.values[name] ? nextProps.data.values[name] : ""
+            });
         }
     }
 
@@ -53,13 +54,15 @@ class CustomTextField extends React.Component {
         return (
             <TextField
                 style={style.textField}
-                floatingLabelText={this.props.title}
+                floatingLabelText={this.state.title}
                 floatingLabelStyle={style.floatingLabelText}
                 floatingLabelFixed={true}
                 multiLine={true}
                 rowsMax={4}
                 value={this.state.value}
                 onChange={this.handleChange}
+                fullWidth={this.props.fullWidth}
+                disabled={this.props.disabled}
             />
         );
     }

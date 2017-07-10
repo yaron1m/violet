@@ -39,6 +39,11 @@ class LectureTime extends React.Component {
             //}
         });
 
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: {}
+        };
+
         return (
             <div style={styles.flex} key={this.props.index}>
                 <FlatButton
@@ -51,19 +56,19 @@ class LectureTime extends React.Component {
                     />
                 </FlatButton>
 
-                <CustomDatePicker title={this.props.labels.fields.date}/>
-                <CustomTextField title={this.props.labels.fields.startTime} size="M"/>
-                <CustomTextField title={this.props.labels.fields.endTime} size="M"/>
-                <CustomTextField title={this.props.labels.fields.length} size="M"/>
+                <CustomDatePicker title={this.props.labels.titles.date}/>
+                <CustomTextField data={fieldData} name="startTime"  size="M"/>
+                <CustomTextField data={fieldData} name="endTime"  size="M"/>
+                <CustomTextField data={fieldData} name="length"  size="M"/>
 
                 <CustomAutoCompleteTextField
-                    title={this.props.labels.fields.topic}
+                    title={this.props.labels.titles.topic}
                     dataSource={lecturesOffered}
                 />
 
-                <CustomTextField title={this.props.labels.fields.audienceSize} size="M"/>
-                <CustomTextField title={this.props.labels.fields.shirtColor} size="M"/>
-                <CustomTextField title={this.props.labels.fields.tie} size="M"/>
+                <CustomTextField data={fieldData} name="audienceSize"  size="M"/>
+                <CustomTextField data={fieldData} name="shirtColor"  size="M"/>
+                <CustomTextField data={fieldData} name="tie"  size="M"/>
             </div>
         );
     }

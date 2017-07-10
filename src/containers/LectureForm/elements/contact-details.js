@@ -16,21 +16,26 @@ class ContactDetails extends React.Component {
             },
             checkbox: {
                 marginBottom: 10,
-                maxWidth:50
+                maxWidth: 50
             },
+        };
+
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: {}
         };
 
         return (
             <div style={style.flex}>
-                <Checkbox style={style.checkbox} />
-                <CustomTextField title={this.props.labels.firstName}/>
-                <CustomTextField title={this.props.labels.lastName}/>
-                <CustomTextField title={this.props.labels.phone1} size="M"/>
-                <CustomTextField title={this.props.labels.phone2} size="M"/>
-                <CustomTextField title={this.props.labels.phoneExtension} size="M"/>
-                <CustomTextField title={this.props.labels.email}/>
-                <CustomTextField title={this.props.labels.fax} size="M"/>
-                <CustomTextField title={this.props.labels.job} size="M"/>
+                <Checkbox style={style.checkbox}/>
+                <CustomTextField name="firstName" data={fieldData}/>
+                <CustomTextField name="lastName" data={fieldData}/>
+                <CustomTextField name="phone1" data={fieldData} size="M"/>
+                <CustomTextField name="phone2" data={fieldData} size="M"/>
+                <CustomTextField name="phoneExtension" data={fieldData} size="M"/>
+                <CustomTextField name="email" data={fieldData}/>
+                <CustomTextField name="fax" data={fieldData} size="M"/>
+                <CustomTextField name="job" data={fieldData} size="M"/>
             </div>
         );
     }
@@ -38,7 +43,7 @@ class ContactDetails extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.lectureForm.contactsSection.fields,
+        labels: state.softwareLabels.lectureForm.contactsSection,
         organizations: state.organizations
     };
 }

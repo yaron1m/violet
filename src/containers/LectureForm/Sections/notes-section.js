@@ -1,32 +1,19 @@
 import React from 'react';
 import CustomPage from "../../../components/formFields/custom-page";
-import TextField from 'material-ui/TextField';
-import {black} from 'material-ui/styles/colors';
 import {connect} from 'react-redux';
-
+import CustomTextField from "../../../components/formFields/custom-text-field";
 
 class NotesSection extends React.Component {
 
     render() {
-        const style = {
-            textField: {
-                marginLeft: 20,
-            },
-            floatingLabelText: {
-                color: black
-            }
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: {}
         };
 
         return (
             <CustomPage title={this.props.labels.sectionName}>
-
-                <TextField
-                    style={style.textField}
-                    floatingLabelText={this.props.labels.fields.notes}
-                    floatingLabelStyle={style.floatingLabelText}
-                    fullWidth={true}
-                    multiLine={true}
-                />
+                <CustomTextField data={fieldData} name="notes" fullWidth={true}/>
             </CustomPage>
         );
     }

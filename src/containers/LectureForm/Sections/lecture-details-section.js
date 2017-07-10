@@ -26,6 +26,10 @@ class LectureDetailsSection extends React.Component {
             }
         };
 
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: {}
+        };
 
         return (
             <CustomCard
@@ -45,20 +49,20 @@ class LectureDetailsSection extends React.Component {
                         />
                     </RaisedButton>
 
-                    <CustomTextField title={this.props.labels.fields.location}/>
-                    <CustomTextField title={this.props.labels.fields.floor} size="S"/>
-                    <CustomTextField title={this.props.labels.fields.room}/>
-                    <CustomTextField title={this.props.labels.fields.audienceType}/>
-                    <CustomTextField title={this.props.labels.fields.daySchedule}/>
+                    <CustomTextField data={fieldData} name="location"/>
+                    <CustomTextField data={fieldData} name="floor" size="S"/>
+                    <CustomTextField data={fieldData} name="room"/>
+                    <CustomTextField data={fieldData} name="audienceType"/>
+                    <CustomTextField data={fieldData} name="daySchedule"/>
                 </div>
 
                 <CustomToggleBox>
-                    <CustomToggle title={this.props.labels.fields.projector}/>
-                    <CustomToggle title={this.props.labels.fields.soundSystem}/>
-                    <CustomToggle title={this.props.labels.fields.microphone}/>
-                    <CustomToggle title={this.props.labels.fields.parking}/>
-                    <CustomToggle title={this.props.labels.fields.orderApproved}/>
-                    <CustomToggle title={this.props.labels.fields.sameAudience}/>
+                    <CustomToggle title={this.props.labels.titles.projector}/>
+                    <CustomToggle title={this.props.labels.titles.soundSystem}/>
+                    <CustomToggle title={this.props.labels.titles.microphone}/>
+                    <CustomToggle title={this.props.labels.titles.parking}/>
+                    <CustomToggle title={this.props.labels.titles.orderApproved}/>
+                    <CustomToggle title={this.props.labels.titles.sameAudience}/>
                 </CustomToggleBox>
 
             </CustomCard>
