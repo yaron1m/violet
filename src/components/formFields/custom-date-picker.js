@@ -42,8 +42,8 @@ class CustomDatePicker extends React.Component {
         /**
          * Use the native Intl.DateTimeFormat if available, or a polyfill if not.
          */
-        if (areIntlLocalesSupported(['he', 'he-IL'])) {
-            DateTimeFormat = global.Intl.DateTimeFormat;
+        if (areIntlLocalesSupported('he-IL')) {
+            DateTimeFormat = window.Intl.DateTimeFormat;
         }
 
         return (
@@ -54,7 +54,7 @@ class CustomDatePicker extends React.Component {
                 DateTimeFormat={DateTimeFormat}
                 okLabel="אישור"
                 cancelLabel="ביטול"
-                locale="he"
+                locale='he-IL'
                 firstDayOfWeek={0}
                 disabled={this.props.disabled}
                 style={styles.field}

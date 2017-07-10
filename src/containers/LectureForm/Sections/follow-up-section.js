@@ -10,13 +10,13 @@ class FollowUpSection extends React.Component {
     constructor() {
         super();
         this.state = {
-            disabled: true
+            toggled: false
         };
     }
     
-    onToggle(event, isInputChecked) {
+    onToggle(event, toggled) {
         this.setState({
-            disabled: !isInputChecked
+            toggled: toggled
         });
     }
 
@@ -42,17 +42,18 @@ class FollowUpSection extends React.Component {
         return (
             <CustomCard
                 title={this.props.labels.sectionName}
-                // isOpen = {} //Base this on the toggle state
+                isOpen = {this.state.toggled}
             >
                 <div style={style.flex}>
                     <Toggle
                         style={style.toggle}
                         onToggle={this.onToggle.bind(this)}
+                        toggled={this.state.toggled}
                     />
 
                     <CustomDatePicker
                         title={this.props.labels.titles.followUpDate}
-                        disabled={this.state.disabled}
+                        disabled={!this.state.toggled}
                         size="L"
                     />
                 </div>
@@ -63,7 +64,7 @@ class FollowUpSection extends React.Component {
                         data={fieldData}
                         name="followUpDetails"
                         fullWidth={true}
-                        disabled={this.state.disabled}
+                        disabled={!this.state.toggled}
                     />
                 </div>
             </CustomCard>
