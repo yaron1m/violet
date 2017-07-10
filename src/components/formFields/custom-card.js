@@ -20,7 +20,7 @@ class CustomCard extends React.Component {
 
             <Card
                 style={style.card}
-                initiallyExpanded ={isOpen}
+                initiallyExpanded={isOpen}
             >
                 <CardHeader
                     title={title}
@@ -29,8 +29,11 @@ class CustomCard extends React.Component {
                     titleStyle={style.title}
                 />
                 <CardMedia expandable={true}>
-                    {this.props.children}
+                    <div>
+                        {this.props.children}
+                    </div>
                 </CardMedia>
+
             </Card>
 
 
