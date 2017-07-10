@@ -15,6 +15,7 @@
     "react-scripts": "1.0.7",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.1",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {},
