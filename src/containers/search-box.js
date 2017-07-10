@@ -4,6 +4,7 @@ import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
+import {loadOrganizationToLectureForm} from "../actions/action-organizations";
 
 class SearchBox extends React.Component {
 
@@ -31,26 +32,27 @@ class SearchBox extends React.Component {
         };
 
         const organizationNames = [];
-        for(var organizationID in this.props.organizations.data){
-            if(this.props.organizations.data[organizationID].isActive){
-                organizationNames.push(this.props.organizations.data[organizationID].name);
-            }
+        for (let orgIndex in this.props.organizations.data) {
+            if (this.props.organizations.data.hasOwnProperty(orgIndex))
+                organizationNames.push(this.props.organizations.data[orgIndex].name);
         }
 
         return (
-            <div className="this is search box">
+            <div>
                 <IconButton style={styles.iconButton}>
                     <Search color={white}/>
                 </IconButton>
                 <AutoComplete
                     dataSource={organizationNames}
-                    // onUpdateInput = {this.onUpdateInput}
                     hintText={this.props.labels.search}
                     underlineShow={false}
                     fullWidth={true}
                     inputStyle={styles.white}
                     textFieldStyle={styles.textField}
                     hintStyle={styles.hintStyle}
+                    onNewRequest={(chosenRequest, index) => {
+                        this.props.dispatch(loadOrganizationToLectureForm(index));
+                    }}
                 />
             </div>
         );

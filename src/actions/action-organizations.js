@@ -19,10 +19,19 @@ export function fetchOrganizations() {
     return function (dispatch) {
         dispatch(requestOrganizations());
 
-        return database.ref('organizations').on('value',snapshot => {
-            dispatch(receiveOrganizations(snapshot.val()));
-        },
-            error => {console.log("The request for organizations failed: " + error.code);
-        });
+        return database.ref('organizations').on('value', snapshot => {
+                dispatch(receiveOrganizations(snapshot.val()));
+            },
+            error => {
+                console.log("The request for organizations failed: " + error.code);
+            });
+    }
+}
+
+export const LOAD_ORGANIZATION_TO_FORM = "LOAD_ORGANIZATION_TO_FORM";
+export function loadOrganizationToLectureForm(organizationId) {
+    return {
+        type: LOAD_ORGANIZATION_TO_FORM,
+        payload: organizationId
     }
 }

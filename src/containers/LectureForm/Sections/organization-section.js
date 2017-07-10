@@ -6,12 +6,15 @@ import {connect} from 'react-redux';
 class OrganizationSection extends React.Component {
 
     render() {
+        const fields = this.props.labels.fields;
+        const org = this.props.organizations.selected;
+
         return (
             <CustomPage title={this.props.labels.sectionName}>
-                <CustommTextField title={this.props.labels.fields.name}/>
-                <CustommTextField title={this.props.labels.fields.address}/>
-                <CustommTextField title={this.props.labels.fields.companyId} size="M"/>
-                <CustommTextField title={this.props.labels.fields.howReachedUs}/>
+                <CustommTextField title={fields.name} value={org.name}/>
+                <CustommTextField title={fields.address} value={org.address}/>
+                <CustommTextField title={fields.companyId} value={org.companyId} size="M"/>
+                <CustommTextField title={fields.howReachedUs} value={org.howReachedUs}/>
             </CustomPage>
         );
     }
@@ -20,6 +23,7 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.lectureForm.organizationSection,
+        organizations: state.organizations,
     };
 }
 

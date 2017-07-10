@@ -26,6 +26,8 @@ class CustomTextField extends React.Component {
                 break;
         }
 
+        const value = this.props.value ? this.props.value : "";
+
         return (
             <TextField
                 style={style.textField}
@@ -33,6 +35,7 @@ class CustomTextField extends React.Component {
                 floatingLabelStyle={style.floatingLabelText}
                 multiLine={true}
                 rowsMax={4}
+                value={value}
             />
         );
     }
