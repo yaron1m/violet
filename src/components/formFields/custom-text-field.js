@@ -3,6 +3,30 @@ import TextField from 'material-ui/TextField';
 import {black} from 'material-ui/styles/colors';
 
 class CustomTextField extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: '',
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // You don't have to do this check first, but it can help prevent an unneeded render
+        if (nextProps.value !== this.state.value) {
+            if(nextProps.value)
+            this.setState({ value: nextProps.value });
+            else
+                this.setState({ value: "" });
+
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            value: event.target.value,
+        });
+    };
 
     render() {
         const style = {
@@ -26,8 +50,6 @@ class CustomTextField extends React.Component {
                 break;
         }
 
-        const value = this.props.value ? this.props.value : "";
-
         return (
             <TextField
                 style={style.textField}
@@ -36,7 +58,8 @@ class CustomTextField extends React.Component {
                 floatingLabelFixed={true}
                 multiLine={true}
                 rowsMax={4}
-                //value={value}
+                value={this.state.value}
+                onChange={this.handleChange}
             />
         );
     }
