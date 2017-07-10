@@ -4,7 +4,6 @@ import Header from './containers/site-header';
 import RightDrawer from './containers/right-drawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
-import LectureForm from './containers/LectureForm/lecture-form';
 import Data from './data';
 
 
@@ -46,18 +45,19 @@ class App extends React.Component {
         return (
             <MuiThemeProvider muiTheme={ThemeDefault}>
                 <div>
-                    <Header styles={styles.header}
-                            handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}
+                    <Header
+                        styles={styles.header}
+                        handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}
                     />
 
-                    <RightDrawer navDrawerOpen={navDrawerOpen}
-                                 menus={Data.menus}
-                                 userName="User Admin"
+                    <RightDrawer
+                        navDrawerOpen={navDrawerOpen}
+                        menus={Data.menus}
+                        userName="User Admin"
                     />
-
 
                     <div className="AppContainer" style={styles.container}>
-                        <LectureForm/>
+                        {this.props.children}
                     </div>
                 </div>
             </MuiThemeProvider>
