@@ -2,11 +2,9 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from './containers/site-header';
 import RightDrawer from './containers/right-drawer';
-import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
+import withWidth, {LARGE} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
 import Data from './data';
-import muiThemeable from 'material-ui/styles/muiThemeable';
-
 
 class App extends React.Component {
 
