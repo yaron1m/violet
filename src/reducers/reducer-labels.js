@@ -1,11 +1,9 @@
 export default function () {
     return {
+        "softwareName": "Violet",
+        "version": "0.0.0",
         "header": {
             "search": "חיפוש..."
-        },
-        "drawer": {
-            "softwareName": "Violet",
-            "version": "0.0.0"
         },
         "lectureForm": {
             "title": "טופס הרצאה",

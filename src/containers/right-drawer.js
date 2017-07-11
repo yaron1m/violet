@@ -5,7 +5,9 @@ import {white, purple900} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import Web from 'material-ui/svg-icons/av/web';
+
 
 class RightDrawer extends React.Component {
 
@@ -27,7 +29,7 @@ class RightDrawer extends React.Component {
             },
             avatar: {
                 div: {
-                    padding: '15px 0 20px 15px',
+                    padding: '15px 15px 20px 0',
                     backgroundImage: 'url(' + require('../images/material_bg.png') + ')',
                     height: 45
                 },
@@ -47,30 +49,35 @@ class RightDrawer extends React.Component {
             }
         };
 
+        const userName = "User Admin";
+
         return (
             <Drawer
                 docked={true}
-                open={this.props.navDrawerOpen}>
-                <div style={styles.logo}>
-                    {this.props.labels.softwareName} {this.props.labels.version}
-                </div>
+                open={this.props.navDrawerOpen}
+            >
+
+                <Link to="/">
+                    <div style={styles.logo}>
+                        {this.props.labels.softwareName} {this.props.labels.version}
+                    </div>
+                </Link>
+
                 <div style={styles.avatar.div}>
                     <Avatar src="http://www.material-ui.com/images/uxceo-128.jpg"
                             size={50}
                             style={styles.avatar.icon}/>
-                    <span style={styles.avatar.span}>{this.props.userName}</span>
+                    <span style={styles.avatar.span}>{userName}</span>
                 </div>
-                <div>
-                    {this.props.menus.map((menu, index) =>
-                        <MenuItem
-                            key={index}
-                            style={styles.menuItem}
-                            primaryText={menu.text}
-                            leftIcon={menu.icon}
-                            containerElement={<Link to="/form"/>}
-                        />
-                    )}
-                </div>
+
+                <MenuItem
+                    key={0}
+                    style={styles.menuItem}
+                    primaryText={this.props.labels.lectureForm.title}
+                    leftIcon={<Web/>}
+                    containerElement={<Link to="/form"/>}
+                />
+
             </Drawer>
         );
     }
@@ -78,11 +85,8 @@ class RightDrawer extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: state.softwareLabels.drawer,
-        lectures: state.lectures,
+        labels: state.softwareLabels,
         navDrawerOpen: ownProps.navDrawerOpen,
-        userName: ownProps.userName,
-        menus: ownProps.menus
     };
 }
 export default connect(mapStateToProps)(RightDrawer);

@@ -4,7 +4,6 @@ import Header from './containers/site-header';
 import RightDrawer from './containers/right-drawer';
 import withWidth, {LARGE} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
-import Data from './data';
 
 class App extends React.Component {
 
@@ -44,8 +43,6 @@ class App extends React.Component {
 
                     <RightDrawer
                         navDrawerOpen={this.state.navDrawerOpen}
-                        menus={Data.menus}
-                        userName="User Admin"
                     />
 
                     <div className="AppContainer" style={styles.container}>
