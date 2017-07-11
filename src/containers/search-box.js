@@ -11,14 +11,14 @@ class SearchBox extends React.Component {
     render() {
         const styles = {
             iconButton: {
-                float: 'right',
+                float: 'left',
                 paddingTop: 21,
             },
             textField: {
                 backgroundColor: purple600,
                 borderRadius: 2,
                 height: 35,
-                paddingRight: 10,
+                paddingLeft: 10,
                 color: white,
             },
             white: {

@@ -31,7 +31,7 @@ class CustomTextField extends React.Component {
     render() {
         const style = {
             textField: {
-                marginLeft: 20,
+                marginRight: 20,
             },
         };
 

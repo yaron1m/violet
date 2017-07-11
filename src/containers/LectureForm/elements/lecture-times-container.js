@@ -27,6 +27,8 @@ class LectureTimesContainer extends React.Component {
             paper: {
                 backgroundColor: grey100,
                 display: "inline-block",
+                paddingLeft: 10,
+                paddingRight: 10,
             },
             divider: {
                 marginTop: 10,

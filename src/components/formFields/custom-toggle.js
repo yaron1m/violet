@@ -13,8 +13,8 @@ class CustomToggle extends React.Component {
                 marginTop: 6,
             },
             labelStyle: {
-                marginRight: 10,
-                marginLeft: 50
+                marginRight: 50,
+                marginLeft: 10
             },
         };
 

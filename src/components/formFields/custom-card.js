@@ -9,7 +9,7 @@ class CustomCard extends React.Component {
         const style = {
             card: {
                 padding: 10,
-                marginTop: 20,
+                marginTop: 20, //Space between two cards
             },
             title: {
                 fontSize: 24,

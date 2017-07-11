@@ -20,44 +20,38 @@ class Header extends React.Component {
                 overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
+                // paddingLeft: 20,
+                paddingRight: 20,
             },
             menuButton: {
-                marginLeft: 10,
+                marginRight: -20,
                 marginTop: 3
             },
             iconsRightContainer: {
-                marginRight: 20,
+                //marginLeft: 20,
                 marginTop: 3
             },
-            title: {
-                paddingLeft: 50,
-            }
         };
 
         return (
-            <div>
-                <AppBar className="this is app bar"
-                        style={{...styles, ...style.appBar}}
-                        title={
-                            <SearchBox />
-                        }
-                        titleStyle={style.title}
-                        iconElementLeft={
-                            <IconButton style={style.menuButton}
-                                        onClick={handleChangeRequestNavDrawer}
-                            >
-                                <Menu color={white}/>
-                            </IconButton>
-                        }
-                        iconElementRight={
-                            <div style={style.iconsRightContainer}>
-                                <IconButton><SaveIcon color={white}/></IconButton>
-                                <IconButton><ClearIcon color={white}/></IconButton>
-                                <IconButton><PrintIcon color={white}/></IconButton>
-                            </div>
-                        }
-                />
-            </div>
+            <AppBar
+                style={{...styles, ...style.appBar}}
+                title={<SearchBox /> }
+                iconElementLeft={
+                    <IconButton style={style.menuButton}
+                                onClick={handleChangeRequestNavDrawer}
+                    >
+                        <Menu color={white}/>
+                    </IconButton>
+                }
+                iconElementRight={
+                    <div style={style.iconsRightContainer}>
+                        <IconButton><SaveIcon color={white}/></IconButton>
+                        <IconButton><ClearIcon color={white}/></IconButton>
+                        <IconButton><PrintIcon color={white}/></IconButton>
+                    </div>
+                }
+            />
         );
     }
 }

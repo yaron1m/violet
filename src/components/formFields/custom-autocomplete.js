@@ -10,7 +10,7 @@ class CustomAutoCompleteTextField extends React.Component {
 
         const style = {
             textField: {
-                marginLeft: 20,
+                marginRight: 20,
             },
         };
 

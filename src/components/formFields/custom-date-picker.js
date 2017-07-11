@@ -8,7 +8,7 @@ class CustomDatePicker extends React.Component {
     render() {
         const styles = {
             field: {
-                marginLeft: 20,
+                marginRight: 20,
             },
             textField: {
                 width: 100

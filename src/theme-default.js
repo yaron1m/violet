@@ -6,7 +6,9 @@ const muiTheme = {
     palette: {
 
     },
-    //isRtl:true,
+
+    isRtl:true,
+
     appBar: {
         height: 57,
         color: purple800
