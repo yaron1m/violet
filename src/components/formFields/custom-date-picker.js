@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import areIntlLocalesSupported from 'intl-locales-supported';
-import {black} from 'material-ui/styles/colors';
 
 class CustomDatePicker extends React.Component {
 
@@ -14,9 +13,6 @@ class CustomDatePicker extends React.Component {
             textField: {
                 width: 100
             },
-            floatingLabelText: {
-                color: black,
-            }
         };
 
         switch (this.props.size) {
@@ -49,7 +45,6 @@ class CustomDatePicker extends React.Component {
         return (
             <DatePicker
                 floatingLabelText={this.props.title}
-                floatingLabelStyle={styles.floatingLabelText}
                 floatingLabelFixed={true}
                 DateTimeFormat={DateTimeFormat}
                 okLabel="אישור"

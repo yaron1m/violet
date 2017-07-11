@@ -1,6 +1,5 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import {black} from 'material-ui/styles/colors';
 
 class CustomTextField extends React.Component {
     constructor(props) {
@@ -34,9 +33,6 @@ class CustomTextField extends React.Component {
             textField: {
                 marginLeft: 20,
             },
-            floatingLabelText: {
-                color: black
-            }
         };
 
         switch (this.props.size) {
@@ -55,7 +51,6 @@ class CustomTextField extends React.Component {
             <TextField
                 style={style.textField}
                 floatingLabelText={this.state.title}
-                floatingLabelStyle={style.floatingLabelText}
                 floatingLabelFixed={true}
                 multiLine={true}
                 rowsMax={4}

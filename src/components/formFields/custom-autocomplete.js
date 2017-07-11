@@ -1,6 +1,5 @@
 import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
-import {black} from 'material-ui/styles/colors';
 import PropTypes from 'prop-types';
 
 class CustomAutoCompleteTextField extends React.Component {
@@ -13,9 +12,6 @@ class CustomAutoCompleteTextField extends React.Component {
             textField: {
                 marginLeft: 20,
             },
-            floatingLabelText: {
-                color: black,
-            }
         };
 
         switch (size) {
@@ -34,7 +30,6 @@ class CustomAutoCompleteTextField extends React.Component {
             <AutoComplete
                 style={style.textField}
                 floatingLabelText={title}
-                floatingLabelStyle={style.floatingLabelText}
                 floatingLabelFixed={true}
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
