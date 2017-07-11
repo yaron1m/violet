@@ -5,7 +5,7 @@ import {white, purple900} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
-
+import { Link } from 'react-router-dom';
 
 class RightDrawer extends React.Component {
 
@@ -68,7 +68,7 @@ class RightDrawer extends React.Component {
                             style={styles.menuItem}
                             primaryText={menu.text}
                             leftIcon={menu.icon}
-                            // containerElement={<Link to={menu.link}/>}
+                            containerElement={<Link to="/form"/>}
                         />
                     )}
                 </div>
