@@ -25,7 +25,7 @@ class LectureTime extends React.Component {
             removeButton: {
                 verticalAlign: "bottom",
                 minWidth: 40,
-                marginLeft: 5,
+                marginRight: 5,
                 marginBottom: 5,
             },
             removeIcon: {

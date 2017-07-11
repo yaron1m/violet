@@ -49,7 +49,6 @@ class RightDrawer extends React.Component {
 
         return (
             <Drawer
-                openSecondary={true}
                 docked={true}
                 open={this.props.navDrawerOpen}>
                 <div style={styles.logo}>

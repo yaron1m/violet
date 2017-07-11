@@ -5,6 +5,7 @@ import RightDrawer from './containers/right-drawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from './theme-default';
 import Data from './data';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 
 class App extends React.Component {
@@ -29,16 +30,9 @@ class App extends React.Component {
     }
 
     render() {
-        let {navDrawerOpen} = this.state;
-        const paddingRightDrawerOpen = 236;
-
         const styles = {
-            header: {
-                paddingRight: navDrawerOpen ? paddingRightDrawerOpen : 0
-            },
             container: {
                 margin: '80px 20px 20px 15px',
-                paddingRight: navDrawerOpen && this.props.width !== SMALL ? paddingRightDrawerOpen : 0
             }
         };
 
@@ -46,12 +40,12 @@ class App extends React.Component {
             <MuiThemeProvider muiTheme={ThemeDefault}>
                 <div>
                     <Header
-                        styles={styles.header}
+                        navDrawerOpen={this.state.navDrawerOpen}
                         handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}
                     />
 
                     <RightDrawer
-                        navDrawerOpen={navDrawerOpen}
+                        navDrawerOpen={this.state.navDrawerOpen}
                         menus={Data.menus}
                         userName="User Admin"
                     />

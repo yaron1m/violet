@@ -18,7 +18,7 @@ class LectureDetailsSection extends React.Component {
             addButton: {
                 verticalAlign: "bottom",
                 minWidth: 40,
-                marginLeft: 5,
+                marginRight: 5,
                 marginBottom: 5,
             },
             addIcon: {

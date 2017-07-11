@@ -7,6 +7,7 @@ import SearchBox from './search-box';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 class Header extends React.Component {
 
@@ -20,7 +21,7 @@ class Header extends React.Component {
                 overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
-                // paddingLeft: 20,
+                paddingLeft: 20 + (this.props.navDrawerOpen ? this.props.muiTheme.drawer.width : 0),
                 paddingRight: 20,
             },
             menuButton: {
@@ -56,4 +57,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default muiThemeable()(Header);
