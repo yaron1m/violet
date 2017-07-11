@@ -1,9 +1,8 @@
 import React from 'react';
 import CustomCard from "../../../components/formFields/custom-card";
 import Toggle from "material-ui/Toggle";
-import CustomDatePicker from "../../../components/formFields/custom-date-picker";
 import {connect} from 'react-redux';
-import CustomTextField from "../../../components/formFields/custom-text-field";
+import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 
 class FollowUpSection extends React.Component {
 
@@ -52,7 +51,8 @@ class FollowUpSection extends React.Component {
                     />
 
                     <CustomDatePicker
-                        title={this.props.labels.titles.followUpDate}
+                        data={fieldData}
+                        name="followUpDate"
                         disabled={!this.state.toggled}
                         size="L"
                     />
@@ -60,7 +60,7 @@ class FollowUpSection extends React.Component {
 
 
                 <div>
-                    <CustomTextField
+                    <CustomText
                         data={fieldData}
                         name="followUpDetails"
                         fullWidth={true}

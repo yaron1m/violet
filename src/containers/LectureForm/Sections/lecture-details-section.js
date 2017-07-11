@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomCard from "../../../components/formFields/custom-card";
-import CustomTextField from "../../../components/formFields/custom-text-field";
+import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {CustomToggle, CustomToggleBox} from "../../../components/formFields/custom-toggle";
 import LectureTimes from "../elements/lecture-times-container";
 import {connect} from 'react-redux';
@@ -49,11 +49,11 @@ class LectureDetailsSection extends React.Component {
                         />
                     </RaisedButton>
 
-                    <CustomTextField data={fieldData} name="location"/>
-                    <CustomTextField data={fieldData} name="floor" size="S"/>
-                    <CustomTextField data={fieldData} name="room" size="M"/>
-                    <CustomTextField data={fieldData} name="audienceType"/>
-                    <CustomTextField data={fieldData} name="daySchedule"/>
+                    <CustomText data={fieldData} name="location"/>
+                    <CustomText data={fieldData} name="floor" size="S"/>
+                    <CustomText data={fieldData} name="room" size="M"/>
+                    <CustomText data={fieldData} name="audienceType"/>
+                    <CustomText data={fieldData} name="daySchedule"/>
                 </div>
 
                 <CustomToggleBox>

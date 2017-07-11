@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomTextField from "../../../components/formFields/custom-text-field";
+import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {Checkbox} from "material-ui";
 import {connect} from 'react-redux';
 
@@ -28,14 +28,14 @@ class ContactDetails extends React.Component {
         return (
             <div style={style.flex}>
                 <Checkbox style={style.checkbox}/>
-                <CustomTextField name="firstName" data={fieldData}/>
-                <CustomTextField name="lastName" data={fieldData}/>
-                <CustomTextField name="phone1" data={fieldData} size="M"/>
-                <CustomTextField name="phone2" data={fieldData} size="M"/>
-                <CustomTextField name="phoneExtension" data={fieldData} size="M"/>
-                <CustomTextField name="email" data={fieldData}/>
-                <CustomTextField name="fax" data={fieldData} size="M"/>
-                <CustomTextField name="job" data={fieldData} size="M"/>
+                <CustomText name="firstName" data={fieldData}/>
+                <CustomText name="lastName" data={fieldData}/>
+                <CustomText name="phone1" data={fieldData} size="M"/>
+                <CustomText name="phone2" data={fieldData} size="M"/>
+                <CustomText name="phoneExtension" data={fieldData} size="M"/>
+                <CustomText name="email" data={fieldData}/>
+                <CustomText name="fax" data={fieldData} size="M"/>
+                <CustomText name="job" data={fieldData} size="M"/>
             </div>
         );
     }

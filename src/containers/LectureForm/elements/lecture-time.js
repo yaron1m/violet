@@ -1,7 +1,5 @@
 import React from 'react';
-import CustomTextField from "../../../components/formFields/custom-text-field";
-import CustomDatePicker from "../../../components/formFields/custom-date-picker";
-import CustomAutoCompleteTextField from "../../../components/formFields/custom-autocomplete";
+import {CustomText, CustomDatePicker, CustomAutoComplete} from "../../../components/custom-components/custom-text-field";
 import FlatButton from 'material-ui/FlatButton';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import {connect} from 'react-redux';
@@ -56,19 +54,16 @@ class LectureTime extends React.Component {
                     />
                 </FlatButton>
 
-                <CustomDatePicker title={this.props.labels.titles.date}/>
-                <CustomTextField data={fieldData} name="startTime"  size="M"/>
-                <CustomTextField data={fieldData} name="endTime"  size="M"/>
-                <CustomTextField data={fieldData} name="length"  size="M"/>
+                <CustomDatePicker data={fieldData} name="date"/>
+                <CustomText data={fieldData} name="startTime" size="M"/>
+                <CustomText data={fieldData} name="endTime" size="M"/>
+                <CustomText data={fieldData} name="length" size="M"/>
 
-                <CustomAutoCompleteTextField
-                    title={this.props.labels.titles.topic}
-                    dataSource={lecturesOffered}
-                />
+                <CustomAutoComplete data={fieldData} name="topic" dataSource={lecturesOffered}/>
 
-                <CustomTextField data={fieldData} name="audienceSize"  size="M"/>
-                <CustomTextField data={fieldData} name="shirtColor"  size="M"/>
-                <CustomTextField data={fieldData} name="tie"  size="M"/>
+                <CustomText data={fieldData} name="audienceSize" size="M"/>
+                <CustomText data={fieldData} name="shirtColor" size="M"/>
+                <CustomText data={fieldData} name="tie" size="M"/>
             </div>
         );
     }

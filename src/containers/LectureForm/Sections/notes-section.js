@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomPage from "../../../components/formFields/custom-page";
 import {connect} from 'react-redux';
-import CustomTextField from "../../../components/formFields/custom-text-field";
+import {CustomText} from "../../../components/custom-components/custom-text-field";
 
 class NotesSection extends React.Component {
 
@@ -13,7 +13,7 @@ class NotesSection extends React.Component {
 
         return (
             <CustomPage title={this.props.labels.sectionName}>
-                <CustomTextField data={fieldData} name="notes" fullWidth={true}/>
+                <CustomText data={fieldData} name="notes" fullWidth={true}/>
             </CustomPage>
         );
     }

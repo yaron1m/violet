@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomPage from "../../../components/formFields/custom-page";
-import CustomTextField from "../../../components/formFields/custom-text-field";
+import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 
 class OrganizationSection extends React.Component {
@@ -13,10 +13,10 @@ class OrganizationSection extends React.Component {
 
         return (
             <CustomPage title={this.props.labels.sectionName}>
-                <CustomTextField data={fieldData} name="name"/>
-                <CustomTextField data={fieldData} name="address"/>
-                <CustomTextField data={fieldData} name="companyId" size="M"/>
-                <CustomTextField data={fieldData} name="howReachedUs"/>
+                <CustomText data={fieldData} name="name"/>
+                <CustomText data={fieldData} name="address"/>
+                <CustomText data={fieldData} name="companyId" size="M"/>
+                <CustomText data={fieldData} name="howReachedUs"/>
             </CustomPage>
         );
     }

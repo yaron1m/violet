@@ -1,7 +1,6 @@
 import React from 'react';
 import CustomCard from "../../../components/formFields/custom-card";
-import CustomDatePicker from "../../../components/formFields/custom-date-picker";
-import CustomTextField from "../../../components/formFields/custom-text-field";
+import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 
 
@@ -27,13 +26,13 @@ class OrganizationSection extends React.Component {
                 title={this.props.labels.sectionName}
             >
                 <div style={style.flex}>
-                    <CustomTextField data={fieldData} name="paymentConditions"/>
-                    <CustomTextField data={fieldData} name="expectedPayDay"/>
-                    <CustomTextField data={fieldData} name="actualPayDay"/>
-                    <CustomTextField data={fieldData} name="proformaInvoiceNumber"/>
-                    <CustomDatePicker title={this.props.labels.titles.proformaInvoiceDate} size="L"/>
-                    <CustomTextField data={fieldData} name="taxInvoiceNumber"/>
-                    <CustomDatePicker title={this.props.labels.titles.taxInvoiceDate} size="L"/>
+                    <CustomText data={fieldData} name="paymentConditions"/>
+                    <CustomText data={fieldData} name="expectedPayDay"/>
+                    <CustomDatePicker data={fieldData} name="actualPayDay"/>
+                    <CustomText data={fieldData} name="proformaInvoiceNumber"/>
+                    <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size="L"/>
+                    <CustomText data={fieldData} name="taxInvoiceNumber"/>
+                    <CustomDatePicker data={fieldData} name="taxInvoiceDate" size="L"/>
                 </div>
 
 
