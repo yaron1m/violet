@@ -3,7 +3,7 @@ import {CustomText, CustomDatePicker, CustomAutoComplete} from "../../../compone
 import FlatButton from 'material-ui/FlatButton';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import {connect} from 'react-redux';
-import {removeLectureTime} from "../../../actions/index";
+import {removeLectureTime} from "../../../actions/action-lecture-times";
 import {grey100} from "material-ui/styles/colors";
 
 class LectureTime extends React.Component {

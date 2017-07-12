@@ -1,4 +1,4 @@
-import {ADD_LECTURE_TIME, REMOVE_LECTURE_TIME} from '../actions/action-types'
+import {ADD_LECTURE_TIME, REMOVE_LECTURE_TIME} from '../actions/action-lecture-times'
 
 const initialState = {
     array: [{}]

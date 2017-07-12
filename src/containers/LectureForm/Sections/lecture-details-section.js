@@ -6,7 +6,7 @@ import LectureTimes from "../elements/lecture-times-container";
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import {addLectureTime} from "../../../actions";
+import {addLectureTime} from "../../../actions/action-lecture-times";
 
 class LectureDetailsSection extends React.Component {
     addButtonClick() {
