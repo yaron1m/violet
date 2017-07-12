@@ -8,12 +8,12 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import muiThemeable from 'material-ui/styles/muiThemeable';
+import {changeDrawerState} from "../actions/action-drawer";
+import {connect} from "react-redux";
 
 class Header extends React.Component {
 
     render() {
-        const {styles, handleChangeRequestNavDrawer} = this.props;
-
         const style = {
             appBar: {
                 position: 'fixed',
@@ -21,7 +21,7 @@ class Header extends React.Component {
                 overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
-                paddingLeft: 20 + (this.props.navDrawerOpen ? this.props.muiTheme.drawer.width : 0),
+                paddingLeft: 20 + (this.props.drawerOpen.isOpen ? this.props.muiTheme.drawer.width : 0),
                 paddingRight: 20,
             },
             menuButton: {
@@ -36,11 +36,11 @@ class Header extends React.Component {
 
         return (
             <AppBar
-                style={{...styles, ...style.appBar}}
+                style={style.appBar}
                 title={<SearchBox /> }
                 iconElementLeft={
                     <IconButton style={style.menuButton}
-                                onClick={handleChangeRequestNavDrawer}
+                               onClick={()=>this.props.dispatch(changeDrawerState())}
                     >
                         <Menu color={white}/>
                     </IconButton>
@@ -57,4 +57,10 @@ class Header extends React.Component {
     }
 }
 
-export default muiThemeable()(Header);
+function mapStateToProps(state) {
+    return {
+        drawerOpen: state.drawerOpen,
+    };
+}
+
+export default connect(mapStateToProps)(muiThemeable() (Header));

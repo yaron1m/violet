@@ -7,9 +7,15 @@ import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Web from 'material-ui/svg-icons/av/web';
+import {changeDrawerState} from "../actions/action-drawer";
 
 
 class RightDrawer extends React.Component {
+
+    closeDrawer(){
+        this.props.dispatch(changeDrawerState());
+    }
+
 
     render() {
         const styles = {
@@ -54,7 +60,7 @@ class RightDrawer extends React.Component {
         return (
             <Drawer
                 docked={true}
-                open={this.props.navDrawerOpen}
+                open={this.props.drawerOpen.isOpen}
             >
 
                 <Link to="/">
@@ -76,6 +82,16 @@ class RightDrawer extends React.Component {
                     primaryText={this.props.labels.orderForm.title}
                     leftIcon={<Web/>}
                     containerElement={<Link to="/form"/>}
+                    onClick={this.closeDrawer.bind(this)}
+                />
+
+                <MenuItem
+                    key={1}
+                    style={styles.menuItem}
+                    primaryText={this.props.labels.OrganizationPage.title}
+                    leftIcon={<Web/>}
+                    containerElement={<Link to="/org"/>}
+                    onClick={this.closeDrawer.bind(this)}
                 />
 
             </Drawer>
@@ -83,10 +99,10 @@ class RightDrawer extends React.Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
         labels: state.softwareLabels,
-        navDrawerOpen: ownProps.navDrawerOpen,
+        drawerOpen: state.drawerOpen,
     };
 }
 export default connect(mapStateToProps)(RightDrawer);

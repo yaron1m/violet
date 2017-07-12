@@ -46,8 +46,8 @@ class OrdersTable extends React.Component {
                     >
 
                         <TableRow>
-                            {this.props.labels.tableHeaders.map(title =>
-                                <TableHeaderColumn>{title}</TableHeaderColumn>)}
+                            {this.props.labels.tableHeaders.map((title, index) =>
+                                <TableHeaderColumn key={index}>{title}</TableHeaderColumn>)}
                         </TableRow>
 
                     </TableHeader>
@@ -59,7 +59,7 @@ class OrdersTable extends React.Component {
                         {
                             Object.keys(tempData).map(
                                 orderId =>
-                                    <TableRow>
+                                    <TableRow key={orderId}>
                                         <TableRowColumn>{orderId}</TableRowColumn>
                                         <TableRowColumn>{tempData[orderId].date}</TableRowColumn>
                                         <TableRowColumn>{tempData[orderId].topic}</TableRowColumn>
