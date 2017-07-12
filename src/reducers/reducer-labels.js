@@ -105,6 +105,13 @@ export default function () {
                 }
             }
         },
+        "OrganizationPage":{
+            title: "פרטי ארגונים",
+            ordersTable:{
+                title: "הזמנות",
+                tableHeaders:["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס"]
+            }
+        },
         "buttons": {
             "ok": "אישור",
             "cancel": "ביטול"

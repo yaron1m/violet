@@ -6,7 +6,7 @@ import {createHashHistory} from 'history';
 
 import App from './App'
 import LectureForm from './containers/LectureForm/order-form';
-import OrganizationSection from './containers/LectureForm/Sections/organization-section';
+import OrganizationPage from './containers/organization-page';
 
 
 const history = createHashHistory();
@@ -16,7 +16,7 @@ const Root = ({store}) => (
         <Router history={history}>
             <App>
                 <Route path="/form" component={LectureForm}/>
-                <Route path="/org" component={OrganizationSection}/>
+                <Route path="/org" component={OrganizationPage}/>
             </App>
         </Router>
     </Provider>
