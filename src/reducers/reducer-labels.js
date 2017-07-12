@@ -109,7 +109,7 @@ export default function () {
             title: "פרטי ארגונים",
             ordersTable:{
                 title: "הזמנות",
-                tableHeaders:["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס"]
+                tableHeaders:["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס" ,"עריכה"]
             }
         },
         "buttons": {

@@ -9,6 +9,9 @@ import {
 } from 'material-ui/Table';
 import {connect} from 'react-redux';
 import CustomPage from "../../components/formFields/custom-page";
+import EditIcon from 'material-ui/svg-icons/image/edit';
+import {IconButton} from "material-ui";
+
 
 class OrdersTable extends React.Component {
 
@@ -59,11 +62,16 @@ class OrdersTable extends React.Component {
                         {
                             Object.keys(tempData).map(
                                 orderId =>
-                                    <TableRow key={orderId}>
+                                    <TableRow key={orderId} selectable={false}>
                                         <TableRowColumn>{orderId}</TableRowColumn>
                                         <TableRowColumn>{tempData[orderId].date}</TableRowColumn>
                                         <TableRowColumn>{tempData[orderId].topic}</TableRowColumn>
                                         <TableRowColumn>{tempData[orderId].status}</TableRowColumn>
+                                        <TableRowColumn>
+                                            <IconButton>
+                                                <EditIcon/>
+                                            </IconButton>
+                                        </TableRowColumn>
                                     </TableRow>
                             )
                         }
