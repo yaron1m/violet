@@ -7,22 +7,15 @@ import FollowUpSection from "./Sections/follow-up-section";
 import PaymentSection from "./Sections/payment-section";
 import NotesSection from "./Sections/notes-section";
 import {connect} from 'react-redux';
+import PageTitle from "../../components/page-title";
 
 class OrderForm extends React.Component {
 
     render() {
 
-        const style = {
-            pageTitle: {
-                fontSize: 24,
-                fontWeight: typography.fontWeightLight,
-                marginBottom: 20
-            }
-        };
-
         return (
             <div>
-                <span style={style.pageTitle}>{this.props.labels.title}</span>
+                <PageTitle>{this.props.labels.title}</PageTitle>
 
                 <OrganizationSection/>
 
