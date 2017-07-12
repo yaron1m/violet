@@ -1,5 +1,4 @@
 import React from 'react';
-import {typography} from 'material-ui/styles';
 import OrganizationSection from "./Sections/organization-section";
 import LectureDetailsSection from "./Sections/lecture-details-section";
 import ContactsSection from "./Sections/contacts-section";
