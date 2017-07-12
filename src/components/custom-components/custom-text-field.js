@@ -25,14 +25,6 @@ class AbstractCustomField extends React.Component {
         }
     }
 
-    handleChange = (event) => {
-        this.setState({
-            value: event.target.value,
-        });
-
-        console.log(event.target.value)
-    };
-
     getStyle = () => {
         const style = {
             field: {
@@ -81,6 +73,13 @@ export const Types = {
 };
 
 export class CustomText extends AbstractCustomField {
+    handleChange = (event) => {
+        this.setState({
+            value: event.target.value,
+        });
+    };
+
+
     render() {
         const style = this.getStyle();
 
@@ -102,6 +101,15 @@ export class CustomText extends AbstractCustomField {
 }
 
 export class CustomDatePicker extends AbstractCustomField {
+
+    handleChange = (nothing, date) => {
+        this.setState({
+            value: date,
+        });
+
+        console.log(date);
+    };
+
     render() {
         const style = this.getStyle();
 
@@ -113,7 +121,7 @@ export class CustomDatePicker extends AbstractCustomField {
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
                 value={this.state.value}
-                onChange={this.handleChange} //TODO not working
+                onChange={this.handleChange}
 
                 textFieldStyle={style.datePickerTextFieldStyle}
                 DateTimeFormat={window.Intl.DateTimeFormat}
@@ -127,6 +135,13 @@ export class CustomDatePicker extends AbstractCustomField {
 }
 
 export class CustomAutoComplete extends AbstractCustomField {
+    handleChange = (searchText, dataSource, params) => {
+        this.setState({
+            value: searchText,
+        });
+    };
+
+
     render() {
         const style = this.getStyle();
 
@@ -137,8 +152,9 @@ export class CustomAutoComplete extends AbstractCustomField {
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                value={this.state.value}
-                onChange={this.handleChange} //TODO not working
+
+                searchText={this.state.value}
+                onUpdateInput={this.handleChange}
 
                 multiLine={true}
                 rowsMax={style.maxRows}
