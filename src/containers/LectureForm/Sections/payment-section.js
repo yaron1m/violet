@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomCard from "../../../components/formFields/custom-card";
+import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 

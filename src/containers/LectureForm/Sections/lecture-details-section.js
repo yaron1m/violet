@@ -1,7 +1,7 @@
 import React from 'react';
-import CustomCard from "../../../components/formFields/custom-card";
+import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText} from "../../../components/custom-components/custom-text-field";
-import {CustomToggle, CustomToggleBox} from "../../../components/formFields/custom-toggle";
+import {CustomToggle, CustomToggleBox} from "../../../components/custom-components/custom-toggle";
 import LectureTimes from "../elements/lecture-times-container";
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/FlatButton';
