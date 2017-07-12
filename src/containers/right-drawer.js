@@ -63,7 +63,9 @@ class RightDrawer extends React.Component {
                 open={this.props.drawerOpen.isOpen}
             >
 
-                <Link to="/">
+                <Link to="/"
+                      onClick={this.closeDrawer.bind(this)}
+                >
                     <div style={styles.logo}>
                         {this.props.labels.softwareName} {this.props.labels.version}
                     </div>
