@@ -8,7 +8,7 @@ import PaymentSection from "./Sections/payment-section";
 import NotesSection from "./Sections/notes-section";
 import {connect} from 'react-redux';
 
-class LectureForm extends React.Component {
+class OrderForm extends React.Component {
 
     render() {
 
@@ -43,8 +43,8 @@ class LectureForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.lectureForm,
+        labels: state.softwareLabels.orderForm,
     };
 }
 
-export default connect(mapStateToProps)(LectureForm);
+export default connect(mapStateToProps)(OrderForm);

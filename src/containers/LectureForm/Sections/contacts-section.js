@@ -34,7 +34,7 @@ class ContactsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.lectureForm.contactsSection,
+        labels: state.softwareLabels.orderForm.contactsSection,
     };
 }
 export default connect(mapStateToProps)(ContactsSection);

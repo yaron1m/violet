@@ -5,7 +5,7 @@ import {Router, Route} from 'react-router';
 import {createHashHistory} from 'history';
 
 import App from './App'
-import LectureForm from './containers/LectureForm/lecture-form';
+import LectureForm from './containers/LectureForm/order-form';
 import OrganizationSection from './containers/LectureForm/Sections/organization-section';
 
 

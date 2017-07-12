@@ -24,7 +24,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.lectureForm.organizationSection,
+        labels: state.softwareLabels.orderForm.organizationSection,
         organizations: state.organizations,
     };
 }

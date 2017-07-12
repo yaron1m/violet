@@ -5,7 +5,7 @@ export default function () {
         "header": {
             "search": "חיפוש..."
         },
-        "lectureForm": {
+        "orderForm": {
             "title": "טופס הרצאה",
             "organizationSection": {
                 "table": "organizations",
