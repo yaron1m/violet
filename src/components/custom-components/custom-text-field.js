@@ -91,7 +91,7 @@ export class CustomText extends AbstractCustomField {
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
                 value={this.state.value}
-                onChange={this.handleChange}
+                onChange={this.props.allowEdit ? this.handleChange : null}
 
                 multiLine={true}
                 rowsMax={style.maxRows}
@@ -99,6 +99,10 @@ export class CustomText extends AbstractCustomField {
         );
     }
 }
+
+CustomText.defaultProps = {
+    allowEdit: true,
+};
 
 export class CustomDatePicker extends AbstractCustomField {
 

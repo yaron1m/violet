@@ -16,7 +16,7 @@ class OrderForm extends React.Component {
             <div>
                 <PageTitle>{this.props.labels.title}</PageTitle>
 
-                <OrganizationSection/>
+                <OrganizationSection allowEdit={false}/>
 
                 <LectureDetailsSection/>
 
