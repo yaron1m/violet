@@ -105,6 +105,9 @@ export default function () {
             ordersTable: {
                 title: "הזמנות",
                 tableHeaders: ["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס", "עריכה"]
+            },
+            contactsTable:{
+                title: "אנשי קשר בארגון"
             }
         },
     };

@@ -41,7 +41,6 @@ class OrdersTable extends React.Component {
         };
 
         return (
-            <CustomPage title={this.props.labels.title}>
                 <Table>
                     <TableHeader
                         adjustForCheckbox={false}
@@ -78,7 +77,6 @@ class OrdersTable extends React.Component {
                     </TableBody>
 
                 </Table>
-            </CustomPage>
         );
     }
 }

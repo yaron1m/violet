@@ -2,7 +2,9 @@ import React from 'react';
 import PageTitle from '../page-title';
 import OrganizationSection from "../order-page/Sections/organization-section";
 import OrdersTable from './orders-table'
+import ContactsTable from "../order-page/contacts-table"
 import {connect} from 'react-redux';
+import CustomPage from "../../../components/custom-components/custom-page";
 
 class OrganizationPage extends React.Component {
 
@@ -13,9 +15,13 @@ class OrganizationPage extends React.Component {
 
                 <OrganizationSection/>
 
-                <OrdersTable/>
+                <CustomPage title={this.props.labels.ordersTable.title}>
+                    <OrdersTable/>
+                </CustomPage>
 
-
+                <CustomPage title={this.props.labels.contactsTable.title}>
+                    <ContactsTable/>
+                </CustomPage>
             </div>
         );
     }
