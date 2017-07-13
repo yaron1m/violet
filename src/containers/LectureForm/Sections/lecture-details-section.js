@@ -72,7 +72,7 @@ class LectureDetailsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderForm.lectureDetailsSection,
+        labels: state.softwareLabels.orderPage.lectureDetailsSection,
         lectureTimes: state.lectureTimes
     };
 }

@@ -81,7 +81,7 @@ class RightDrawer extends React.Component {
                 <MenuItem
                     key={0}
                     style={styles.menuItem}
-                    primaryText={this.props.labels.orderForm.title}
+                    primaryText={this.props.labels.orderPage.title}
                     leftIcon={<Web/>}
                     containerElement={<Link to="/form"/>}
                     onClick={this.closeDrawer.bind(this)}

@@ -43,7 +43,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderForm.paymentSection,
+        labels: state.softwareLabels.orderPage.paymentSection,
     };
 }
 

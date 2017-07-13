@@ -35,7 +35,7 @@ class OrderForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderForm,
+        labels: state.softwareLabels.orderPage,
     };
 }
 

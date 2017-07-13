@@ -71,7 +71,7 @@ class LectureTime extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: state.softwareLabels.orderForm.lectureDetailsSection.lectureTimesSection,
+        labels: state.softwareLabels.orderPage.lectureDetailsSection.lectureTimesSection,
         offeredLectures: state.offeredLectures,
         index: ownProps.index,
     };

@@ -1,16 +1,15 @@
 export default function () {
     return {
-        "softwareName": "Violet",
-        "version": "0.0.0",
-        "header": {
-            "search": "חיפוש..."
+        softwareName: "Violet",
+        version: "0.0.0",
+        header: {
+            searchLineHint: "חיפוש..."
         },
-        "orderForm": {
-            "title": "טופס הרצאה",
+        orderPage: {
+            "title": "טופס הזמנת הרצאה",
             "organizationSection": {
-                "table": "organizations",
-                "sectionName": "פרטי הארגון",
-                "titles": {
+                sectionName: "פרטי הארגון",
+                titles: {
                     "name": "שם הארגון",
                     "address": "כתובת הארגון",
                     "companyId": "ח.פ / ע.מ",
@@ -105,11 +104,11 @@ export default function () {
                 }
             }
         },
-        "OrganizationPage":{
+        "OrganizationPage": {
             title: "פרטי ארגונים",
-            ordersTable:{
+            ordersTable: {
                 title: "הזמנות",
-                tableHeaders:["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס" ,"עריכה"]
+                tableHeaders: ["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס", "עריכה"]
             }
         },
         "buttons": {

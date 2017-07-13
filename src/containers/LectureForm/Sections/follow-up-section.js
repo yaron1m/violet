@@ -74,7 +74,7 @@ class FollowUpSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderForm.followUpSection,
+        labels: state.softwareLabels.orderPage.followUpSection,
     };
 }
 export default connect(mapStateToProps)(FollowUpSection);

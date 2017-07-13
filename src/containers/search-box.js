@@ -44,7 +44,7 @@ class SearchBox extends React.Component {
                 </IconButton>
                 <AutoComplete
                     dataSource={organizationNames}
-                    hintText={this.props.labels.search}
+                    hintText={this.props.labels.searchLineHint}
                     underlineShow={false}
                     fullWidth={true}
                     inputStyle={styles.white}

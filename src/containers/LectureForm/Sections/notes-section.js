@@ -22,7 +22,7 @@ class NotesSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderForm.notesSection,
+        labels: state.softwareLabels.orderPage.notesSection,
     };
 }
 export default connect(mapStateToProps)(NotesSection);

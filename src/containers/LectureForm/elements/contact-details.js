@@ -43,7 +43,7 @@ class ContactDetails extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderForm.contactsSection,
+        labels: state.softwareLabels.orderPage.contactsSection,
         organizations: state.organizations
     };
 }

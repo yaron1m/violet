@@ -1,12 +1,12 @@
 {
   "header": {
-    "search": "חיפוש..."
+    "searchLineHint": "חיפוש..."
   },
   "drawer":{
     "softwareName":"Violet",
     "version":"0.0.0"
   },
-  "orderForm": {
+  "orderPage": {
     "title": "טופס הרצאה",
     "organizationSection": {
       "table": "organizations",
