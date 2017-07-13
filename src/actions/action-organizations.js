@@ -1,4 +1,4 @@
-import database from '../database';
+import database from '../util/database';
 
 export const REQUEST_ORGANIZATIONS = "REQUEST_ORGANIZATIONS";
 export function requestOrganizations() {
