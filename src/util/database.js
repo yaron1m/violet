@@ -13,11 +13,16 @@ firebase.initializeApp(firebaseConfig);
 
 export default firebase.database();
 
-export function fetchData(name, actionCallback, dispatch) {
-    firebase.database().ref(name).on('value', snapshot => {
+export function fetchData(collectionName, actionCallback, dispatch) {
+    firebase.database().ref(collectionName).on('value', snapshot => {
             dispatch(actionCallback(snapshot.val()));
         },
         error => {
-            console.log("The request for " + name + " failed: " + error.code);
+            console.log("The request for " + collectionName + " failed: " + error.code);
+        });
+}
+export function sendData(collectionName, value) {
+    firebase.database().ref(collectionName).set(value, error => {
+            console.log("The request for " + collectionName + " failed: " + error.code);
         });
 }
