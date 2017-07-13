@@ -2,9 +2,9 @@ import React from 'react';
 import PageTitle from '../page-title';
 import OrganizationSection from "../page-sections/organization-section";
 import OrdersTable from './orders-table'
-import ContactsTable from "../order-page/contacts-table"
 import {connect} from 'react-redux';
 import CustomPage from "../../../components/custom-components/custom-page";
+import CustomTable from "../../../components/custom-components/custom-table";
 
 class OrganizationPage extends React.Component {
 
@@ -20,7 +20,10 @@ class OrganizationPage extends React.Component {
                 </CustomPage>
 
                 <CustomPage title={this.props.labels.contactsTable.title}>
-                    <ContactsTable/>
+                    <CustomTable
+                        headers={this.props.labels.contactsTable.tableHeaders}
+                        data={this.props.selected.organization.contacts}
+                    />
                 </CustomPage>
             </div>
         );
@@ -31,6 +34,7 @@ class OrganizationPage extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.OrganizationPage,
+        selected: state.selected,
     };
 }
 

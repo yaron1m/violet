@@ -5,8 +5,8 @@ import {CustomToggle, CustomToggleBox} from "../../../components/custom-componen
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import LectureTimesTable from '../order-page/lecture-times-table'
 import {Paper} from "material-ui";
+import CustomTable from "../../../components/custom-components/custom-table";
 
 class LectureDetailsSection extends React.Component {
     addButtonClick() {
@@ -31,6 +31,11 @@ class LectureDetailsSection extends React.Component {
             values: this.props.selected.order,
         };
 
+        // //Filter offered lectures
+        // const lecturesObj = this.props.offeredLectures;
+        // const allLectures = Object.keys(lecturesObj);
+        // const filteredLectures = allLectures.filter((lecture) => (lecturesObj[lecture]));
+
         return (
             <CustomCard
                 title={this.props.labels.sectionName}
@@ -38,7 +43,10 @@ class LectureDetailsSection extends React.Component {
             >
 
                 <Paper>
-                    <LectureTimesTable/>
+                    <CustomTable
+                        headers={this.props.labels.lectureTimesSection.tableHeaders}
+                        data={this.props.selected.order.lectureTimes}
+                    />
                 </Paper>
 
                 <div>

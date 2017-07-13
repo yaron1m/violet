@@ -44,13 +44,15 @@ export default function () {
                         shirtColor: "צבע חולצה",
                         tie: "עניבה"
                     },
-                    tableHeaders: ["תאריך", "שעת התחלה", "שעת סיום", "משך", "נושא", "מס' משתתפים", "צבע חולצה", "עניבה"]
+                    tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {length: "משך"}, {topic: "נושא"},
+                        {audienceSize: "מס' משתתפים"}, {shirtColor: "צבע חולצה"}, {tie: "עניבה"}, {edit: "עריכה"}]
 
                 }
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
-                tableHeaders: ["שם פרטי", "שם משפחה", "טלפון", "טלפון נוסף", "שלוחה", "דואר אלקטרוני", "פקס", "תפקיד"]
+                tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
+                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}]
             },
             followUpSection: {
                 sectionName: "המשך טיפול",
@@ -97,8 +99,10 @@ export default function () {
                 title: "הזמנות",
                 tableHeaders: ["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס", "עריכה"]
             },
-            contactsTable:{
-                title: "אנשי קשר בארגון"
+            contactsTable: {
+                title: "אנשי קשר בארגון",
+                tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
+                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}, {edit: "עריכה"}]
             }
         },
     };
