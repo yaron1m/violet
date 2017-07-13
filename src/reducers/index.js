@@ -6,6 +6,7 @@ import DrawerOpen from './reducer-drawer';
 import IsFetching from './reducer-is-fetching'
 import Organizations from './reducer-organizations'
 import Selected from './reducer-selected'
+import Orders from './reducer-orders'
 
 const allReducers = combineReducers({
     softwareLabels: Labels,
@@ -15,6 +16,7 @@ const allReducers = combineReducers({
     isFetching: IsFetching,
     organizations: Organizations,
     selected: Selected,
+    orders: Orders
 
 });
 

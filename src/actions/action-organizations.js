@@ -7,9 +7,9 @@ export function receiveOrganizations(organizations) {
 }
 
 export const SELECT_ORGANIZATION = "SELECT_ORGANIZATION";
-export function selectOrganization(organization) {
+export function selectOrganization(organizationData) {
     return {
         type: SELECT_ORGANIZATION,
-        payload: organization
+        payload: organizationData
     }
 }

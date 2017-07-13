@@ -10,72 +10,62 @@ import {
 import {connect} from 'react-redux';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import {IconButton} from "material-ui";
+import {selectOrder} from "../../../actions/action-orders";
+import {withRouter} from "react-router";
 
 
 class OrdersTable extends React.Component {
 
     render() {
+        let data = Object.values(this.props.orders)
+            .filter((order) => order.id === this.props.selected.organization.id);
 
-        const tempData = {
-            0: {
-                date: "01/01/17",
-                topic: "חשיבה יצירתית",
-                status: "הצעת מחיר"
-            },
-            40: {
-                date: "01/01/17",
-                topic: "חשיבה יצירתית",
-                status: "הזמנה"
-            },
-            202: {
-                date: "01/01/17",
-                topic: "מודעות לאיכות",
-                status: "ממתין לתשלום"
-            },
-            13: {
-                date: "01/01/17",
-                topic: "חשיבה יצירתית",
-                status: "שולם"
-            },
-        };
+
+        if (!data)
+            data = {}; //TODO think about this
 
         return (
-                <Table style={{tableLayout: 'auto'}} fixedHeader={false}>
-                    <TableHeader
-                        adjustForCheckbox={false}
-                        displaySelectAll={false}
-                    >
+            <Table style={{tableLayout: 'auto'}} fixedHeader={false}>
+                <TableHeader
+                    adjustForCheckbox={false}
+                    displaySelectAll={false}
+                >
 
-                        <TableRow>
-                            {this.props.labels.tableHeaders.map((title, index) =>
-                                <TableHeaderColumn key={index}>{title}</TableHeaderColumn>)}
-                        </TableRow>
+                    <TableRow>
+                        {this.props.labels.tableHeaders.map((title, index) =>
+                            <TableHeaderColumn key={index}>{title}</TableHeaderColumn>)}
+                    </TableRow>
 
-                    </TableHeader>
+                </TableHeader>
 
-                    <TableBody
-                        displayRowCheckbox={false}
-                        showRowHover={true}
-                    >
-                        {
-                            Object.keys(tempData).map(
-                                orderId =>
-                                    <TableRow key={orderId} selectable={false}>
-                                        <TableRowColumn>{orderId}</TableRowColumn>
-                                        <TableRowColumn>{tempData[orderId].date}</TableRowColumn>
-                                        <TableRowColumn>{tempData[orderId].topic}</TableRowColumn>
-                                        <TableRowColumn>{tempData[orderId].status}</TableRowColumn>
-                                        <TableRowColumn>
-                                            <IconButton>
-                                                <EditIcon/>
-                                            </IconButton>
-                                        </TableRowColumn>
-                                    </TableRow>
-                            )
-                        }
-                    </TableBody>
+                <TableBody
+                    displayRowCheckbox={false}
+                    showRowHover={true}
+                >
+                    {
+                        Object.keys(data).map(
+                            index =>
+                                <TableRow key={index} selectable={false}>
+                                    <TableRowColumn>{data[index].id}</TableRowColumn>
+                                    <TableRowColumn>{data[index].date}</TableRowColumn>
+                                    <TableRowColumn>{data[index].topic}</TableRowColumn>
+                                    <TableRowColumn>{data[index].status}</TableRowColumn>
+                                    <TableRowColumn>
+                                        <IconButton
+                                            onClick={() => {
+                                                this.props.dispatch(selectOrder(data[index]));
+                                                this.props.history.push('/form');
+                                            }}
+                                        >
+                                            <EditIcon/>
+                                        </IconButton>
+                                    </TableRowColumn>
+                                </TableRow>
+                        )
+                    }
+                </TableBody>
 
-                </Table>
+            </Table>
         );
     }
 }
@@ -84,7 +74,9 @@ class OrdersTable extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.OrganizationPage.ordersTable,
+        orders: state.orders,
+        selected: state.selected,
     };
 }
 
-export default connect(mapStateToProps)(OrdersTable);
+export default withRouter(connect(mapStateToProps)(OrdersTable));
