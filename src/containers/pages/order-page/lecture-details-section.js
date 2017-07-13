@@ -28,7 +28,7 @@ class LectureDetailsSection extends React.Component {
 
         const fieldData = {
             titles: this.props.labels.titles,
-            values: {}
+            values: this.props.selected.order,
         };
 
         return (
@@ -73,7 +73,8 @@ class LectureDetailsSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.orderPage.lectureDetailsSection,
-        lectureTimes: state.lectureTimes
+        lectureTimes: state.lectureTimes,
+        selected: state.selected,
     };
 }
 export default connect(mapStateToProps)(LectureDetailsSection);

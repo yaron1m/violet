@@ -18,7 +18,7 @@ class OrganizationSection extends React.Component {
 
         const fieldData = {
             titles: this.props.labels.titles,
-            values: {}
+            values: this.props.selected.order,
         };
 
         return (
@@ -44,6 +44,7 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.orderPage.paymentSection,
+        selected: state.selected,
     };
 }
 

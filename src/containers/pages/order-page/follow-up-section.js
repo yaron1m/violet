@@ -35,7 +35,7 @@ class FollowUpSection extends React.Component {
 
         const fieldData = {
             titles: this.props.labels.titles,
-            values: {}
+            values: this.props.selected.order,
         };
 
         return (
@@ -75,6 +75,7 @@ class FollowUpSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.orderPage.followUpSection,
+        selected: state.selected
     };
 }
 export default connect(mapStateToProps)(FollowUpSection);

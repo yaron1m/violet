@@ -8,7 +8,7 @@ class NotesSection extends React.Component {
     render() {
         const fieldData = {
             titles: this.props.labels.titles,
-            values: {}
+            values: this.props.selected.order,
         };
 
         return (
@@ -23,6 +23,7 @@ class NotesSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.orderPage.notesSection,
+        selected: state.selected,
     };
 }
 export default connect(mapStateToProps)(NotesSection);
