@@ -1,4 +1,4 @@
-import {RECEIVE_ORDERS} from '../actions/action-database';
+import {RECEIVE_ORDERS} from '../actions/action-orders';
 
 
 export default (state = {}, action) => {

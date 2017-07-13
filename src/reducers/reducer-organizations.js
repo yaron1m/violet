@@ -1,4 +1,4 @@
-import {RECEIVE_ORGANIZATIONS} from '../actions/action-database';
+import {RECEIVE_ORGANIZATIONS} from '../actions/action-organizations';
 
 
 

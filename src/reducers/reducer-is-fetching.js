@@ -1,7 +1,6 @@
-import {
-    REQUEST_DATA, RECEIVE_ORDERS, RECEIVE_OFFERED_LECTURES,
-    RECEIVE_ORGANIZATIONS
-} from "../actions/action-database";
+import {REQUEST_DATA, RECEIVE_OFFERED_LECTURES} from "../actions/action-database";
+import {RECEIVE_ORDERS} from "../actions/action-orders";
+import {RECEIVE_ORGANIZATIONS} from "../actions/action-organizations";
 
 const initialState = {
     isFetching: false,
@@ -15,6 +14,7 @@ export default(state = initialState, action) => {
                 isFetching: true,
                 numberOfFetchingActions: action.payload
             };
+
 
         case RECEIVE_ORDERS:
         case RECEIVE_ORGANIZATIONS:
