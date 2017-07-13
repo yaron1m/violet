@@ -1,6 +1,6 @@
 import React from 'react';
-import CustomCard from "../../../components/custom-components/custom-card";
-import ContactDetails from "../elements/contact-details";
+import CustomCard from "../../../../components/custom-components/custom-card";
+import ContactDetails from "../../../LectureForm/elements/contact-details";
 import {Divider, Paper} from "material-ui";
 import {connect} from 'react-redux';
 

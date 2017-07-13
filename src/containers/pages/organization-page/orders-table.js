@@ -8,7 +8,7 @@ import {
     TableRowColumn,
 } from 'material-ui/Table';
 import {connect} from 'react-redux';
-import CustomPage from "../../components/custom-components/custom-page";
+import CustomPage from "../../../components/custom-components/custom-page";
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import {IconButton} from "material-ui";
 
