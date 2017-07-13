@@ -8,7 +8,7 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import {changeDrawerState} from "../actions/action-drawer";
+import {changeDrawerState} from "../../actions/action-drawer";
 import {connect} from "react-redux";
 
 class Header extends React.Component {

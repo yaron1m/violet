@@ -1,6 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header from './containers/site-header';
+import Header from './containers/header';
 import RightDrawer from './containers/right-drawer';
 import ThemeDefault from './theme-default';
 

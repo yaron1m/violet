@@ -4,7 +4,7 @@ import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
-import {loadOrganizationToLectureForm} from "../actions/action-organizations";
+import {loadOrganizationToLectureForm} from "../../actions/action-organizations";
 
 class SearchBox extends React.Component {
 
