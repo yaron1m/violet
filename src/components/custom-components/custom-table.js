@@ -52,11 +52,12 @@ class CustomTable extends React.Component {
                                         headerKeys.map((headerKey) => {
                                             if (headerKey === "edit")
                                                 return ( <TableRowColumn key={headerKey}>
-                                                             <IconButton onClick={this.props.onEditButton}>
-                                                                 <EditIcon/>
-                                                             </IconButton>
-                                                         </TableRowColumn>);
-                                            return (<TableRowColumn key={headerKey}>{data[index][headerKey]}</TableRowColumn>);
+                                                    <IconButton onClick={() => this.props.onEditButton(data[index])}>
+                                                        <EditIcon/>
+                                                    </IconButton>
+                                                </TableRowColumn>);
+                                            return (<TableRowColumn
+                                                key={headerKey}>{data[index][headerKey]}</TableRowColumn>);
 
                                         })}
                                 </TableRow>
