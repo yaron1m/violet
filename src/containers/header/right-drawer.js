@@ -7,7 +7,7 @@ import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Web from 'material-ui/svg-icons/av/web';
-import {changeDrawerState} from "../actions/action-drawer";
+import {changeDrawerState} from "../../actions/action-drawer";
 
 
 class RightDrawer extends React.Component {
@@ -36,7 +36,7 @@ class RightDrawer extends React.Component {
             avatar: {
                 div: {
                     padding: '15px 15px 20px 0',
-                    backgroundImage: 'url(' + require('../images/material_bg.png') + ')',
+                    backgroundImage: 'url(' + require('../../images/material_bg.png') + ')',
                     height: 45
                 },
                 icon: {

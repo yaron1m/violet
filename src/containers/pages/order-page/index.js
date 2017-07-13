@@ -6,7 +6,7 @@ import FollowUpSection from "./Sections/follow-up-section";
 import PaymentSection from "./Sections/payment-section";
 import NotesSection from "./Sections/notes-section";
 import {connect} from 'react-redux';
-import PageTitle from "../../../components/page-title";
+import PageTitle from "../page-title";
 
 class OrderForm extends React.Component {
 

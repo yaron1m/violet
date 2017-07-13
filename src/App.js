@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from './containers/header';
-import RightDrawer from './containers/right-drawer';
+import RightDrawer from './containers/header/right-drawer';
 import ThemeDefault from './theme-default';
 
 class App extends React.Component {
