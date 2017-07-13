@@ -1,6 +1,6 @@
 import React from 'react';
-import CustomPage from "../../../../components/custom-components/custom-page";
-import {CustomText} from "../../../../components/custom-components/custom-text-field";
+import CustomPage from "../../../components/custom-components/custom-page";
+import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 
 class OrganizationSection extends React.Component {

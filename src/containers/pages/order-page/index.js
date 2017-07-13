@@ -1,10 +1,10 @@
 import React from 'react';
-import OrganizationSection from "./Sections/organization-section";
-import LectureDetailsSection from "./Sections/lecture-details-section";
-import ContactsSection from "./Sections/contacts-section";
-import FollowUpSection from "./Sections/follow-up-section";
-import PaymentSection from "./Sections/payment-section";
-import NotesSection from "./Sections/notes-section";
+import OrganizationSection from "./organization-section";
+import LectureDetailsSection from "./lecture-details-section";
+import ContactsSection from "./contacts-section";
+import FollowUpSection from "./follow-up-section";
+import PaymentSection from "./payment-section";
+import NotesSection from "./notes-section";
 import {connect} from 'react-redux';
 import PageTitle from "../page-title";
 

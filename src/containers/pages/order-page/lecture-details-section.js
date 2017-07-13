@@ -1,12 +1,12 @@
 import React from 'react';
-import CustomCard from "../../../../components/custom-components/custom-card";
-import {CustomText} from "../../../../components/custom-components/custom-text-field";
-import {CustomToggle, CustomToggleBox} from "../../../../components/custom-components/custom-toggle";
-import LectureTimes from "../../../LectureForm/elements/lecture-times-container";
+import CustomCard from "../../../components/custom-components/custom-card";
+import {CustomText} from "../../../components/custom-components/custom-text-field";
+import {CustomToggle, CustomToggleBox} from "../../../components/custom-components/custom-toggle";
+import LectureTimes from "../../LectureForm/elements/lecture-times-container";
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import {addLectureTime} from "../../../../actions/action-lecture-times";
+import {addLectureTime} from "../../../actions/action-lecture-times";
 
 class LectureDetailsSection extends React.Component {
     addButtonClick() {

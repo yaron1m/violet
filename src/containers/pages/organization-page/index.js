@@ -1,6 +1,6 @@
 import React from 'react';
 import PageTitle from '../page-title';
-import OrganizationSection from "../order-page/Sections/organization-section";
+import OrganizationSection from "../order-page/organization-section";
 import OrdersTable from './orders-table'
 import ContactsTable from "../order-page/contacts-table"
 import {connect} from 'react-redux';
