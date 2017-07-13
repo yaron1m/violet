@@ -21,7 +21,7 @@ class OrganizationPage extends React.Component {
                         headers={this.props.labels.ordersTable.tableHeaders}
                         data={
                             Object.values(this.props.orders)
-                                .filter((order) => order.id === this.props.selected.organization.id)
+                                .filter((order) => order.organizationId === this.props.selected.organization.id)
                         }
                         onEditButton={(order) => {
                             this.props.dispatch(selectOrder(order));

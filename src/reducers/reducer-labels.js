@@ -97,7 +97,7 @@ export default function () {
             title: "פרטי ארגונים",
             ordersTable: {
                 title: "הזמנות",
-                tableHeaders: [{orderId: "מספר הזמנה"}, {lectureDate: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}, {edit: "עריכה"}]
+                tableHeaders: [{id: "מספר הזמנה"}, {lectureDate: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}, {edit: "עריכה"}]
             },
             contactsTable: {
                 title: "אנשי קשר בארגון",
