@@ -5,8 +5,20 @@ import Search from 'material-ui/svg-icons/action/search';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
 import {loadOrganizationToLectureForm} from "../../actions/action-organizations";
+import {withRouter} from 'react-router'
 
 class SearchBox extends React.Component {
+
+    handleRequest(chosenRequest, index) {
+        if( this.props.location !== '/org'){
+            this.props.history.push('/org');
+        }
+        if(index !== -1){
+            this.props.dispatch(loadOrganizationToLectureForm(index));
+        }
+        //TODO handle enter press
+    }
+
 
     render() {
         const styles = {
@@ -50,9 +62,7 @@ class SearchBox extends React.Component {
                     inputStyle={styles.white}
                     textFieldStyle={styles.textField}
                     hintStyle={styles.hintStyle}
-                    onNewRequest={(chosenRequest, index) => {
-                        this.props.dispatch(loadOrganizationToLectureForm(index));
-                    }}
+                    onNewRequest={this.handleRequest.bind(this)}
                 />
             </div>
         );
@@ -66,4 +76,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(SearchBox);
+export default withRouter(connect(mapStateToProps)(SearchBox));
