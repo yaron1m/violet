@@ -1,10 +1,10 @@
 import React from 'react';
-import PageTitle from '../page-title';
-import OrganizationSection from "../page-sections/organization-section";
+import PageTitle from './page-title';
+import OrganizationSection from "./page-sections/organization-section";
 import {connect} from 'react-redux';
-import CustomPage from "../../../components/custom-components/custom-page";
-import CustomTable from "../../../components/custom-components/custom-table";
-import {selectOrder} from "../../../actions/action-orders";
+import CustomPage from "../../components/custom-components/custom-page";
+import CustomTable from "../../components/custom-components/custom-table";
+import {selectOrder} from "../../actions/action-orders";
 
 class OrganizationPage extends React.Component {
 
