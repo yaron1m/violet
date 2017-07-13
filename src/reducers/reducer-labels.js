@@ -48,7 +48,7 @@ export default function () {
                 }
             },
             contactsSection: {
-                sectionName: "איש קשר",
+                sectionName: "אנשי קשר",
                 titles: {
                     firstName: "שם פרטי",
                     lastName: "שם משפחה",
@@ -58,7 +58,8 @@ export default function () {
                     email: "דואר אלקטרוני",
                     fax: "פקס",
                     job: "תפקיד"
-                }
+                },
+                tableHeaders: ["שם פרטי", "שם משפחה", "טלפון", "טלפון נוסף", "שלוחה", "דואר אלקטרוני", "פקס", "תפקיד"]
             },
             followUpSection: {
                 sectionName: "המשך טיפול",
@@ -82,14 +83,14 @@ export default function () {
             financialContactsSection: {
                 sectionName: "איש קשר לתשלום",
                 titles: {
-                   firstName: "שם פרטי",
-                   lastName: "שם משפחה",
-                   phone1: "טלפון",
-                   phone2: "טלפון נוסף",
-                   phoneExtension: "שלוחה",
-                   email: "דואר אלקטרוני",
-                   fax: "פקס",
-                   job: "תפקיד"
+                    firstName: "שם פרטי",
+                    lastName: "שם משפחה",
+                    phone1: "טלפון",
+                    phone2: "טלפון נוסף",
+                    phoneExtension: "שלוחה",
+                    email: "דואר אלקטרוני",
+                    fax: "פקס",
+                    job: "תפקיד"
                 }
             },
             notesSection: {
@@ -106,9 +107,5 @@ export default function () {
                 tableHeaders: ["מספר הזמנה", "תאריך הרצאה", "נושא", "סטאטוס", "עריכה"]
             }
         },
-        buttons: {
-            ok: "אישור",
-            cancel: "ביטול"
-        }
     };
 }

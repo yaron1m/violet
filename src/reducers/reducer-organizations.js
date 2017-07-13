@@ -3,7 +3,9 @@ import {REQUEST_ORGANIZATIONS, RECEIVE_ORGANIZATIONS, LOAD_ORGANIZATION_TO_FORM}
 const initialState = {
     isFetching: false,
     data: {},
-    selected: {},
+    selected: {
+        contacts: {}
+    },
 };
 
 export default (state = initialState, action) => {
