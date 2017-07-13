@@ -2,15 +2,15 @@ import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {CustomToggle, CustomToggleBox} from "../../../components/custom-components/custom-toggle";
-import LectureTimes from "../../LectureForm/elements/lecture-times-container";
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import {addLectureTime} from "../../../actions/action-lecture-times";
+import LectureTimesTable from '../order-page/lecture-times-table'
+import {Paper} from "material-ui";
 
 class LectureDetailsSection extends React.Component {
     addButtonClick() {
-        this.props.dispatch(addLectureTime(this.props.lectureTimes.array.length));
+        //TODO
     }
 
     render() {
@@ -23,7 +23,7 @@ class LectureDetailsSection extends React.Component {
             },
             addIcon: {
                 verticalAlign: "middle",
-            }
+            },
         };
 
         const fieldData = {
@@ -37,7 +37,9 @@ class LectureDetailsSection extends React.Component {
                 isOpen={true}
             >
 
-                <LectureTimes/>
+                <Paper>
+                    <LectureTimesTable/>
+                </Paper>
 
                 <div>
                     <RaisedButton

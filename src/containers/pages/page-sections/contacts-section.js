@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
-import ContactsTable from "./contacts-table"
+import ContactsTable from "../order-page/contacts-table"
 import {connect} from 'react-redux';
 
 

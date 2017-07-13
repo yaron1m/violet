@@ -43,21 +43,13 @@ export default function () {
                         audienceSize: "מס' משתתפים",
                         shirtColor: "צבע חולצה",
                         tie: "עניבה"
-                    }
+                    },
+                    tableHeaders: ["תאריך", "שעת התחלה", "שעת סיום", "משך", "נושא", "מס' משתתפים", "צבע חולצה", "עניבה"]
+
                 }
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
-                titles: {
-                    firstName: "שם פרטי",
-                    lastName: "שם משפחה",
-                    phone1: "טלפון",
-                    phone2: "טלפון נוסף",
-                    phoneExtension: "שלוחה",
-                    email: "דואר אלקטרוני",
-                    fax: "פקס",
-                    job: "תפקיד"
-                },
                 tableHeaders: ["שם פרטי", "שם משפחה", "טלפון", "טלפון נוסף", "שלוחה", "דואר אלקטרוני", "פקס", "תפקיד"]
             },
             followUpSection: {
