@@ -4,17 +4,17 @@ import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
-import {loadOrganizationToLectureForm} from "../../actions/action-organizations";
+import {selectOrganization} from "../../actions/action-organizations";
 import {withRouter} from 'react-router'
 
 class SearchBox extends React.Component {
 
     handleRequest(chosenRequest, index) {
-        if( this.props.location !== '/org'){
+        if (this.props.location !== '/org') {
             this.props.history.push('/org');
         }
-        if(index !== -1){
-            this.props.dispatch(loadOrganizationToLectureForm(index));
+        if (index !== -1) {
+            this.props.dispatch(selectOrganization(this.props.organizations[index]));
         }
         //TODO handle enter press
     }
@@ -44,9 +44,9 @@ class SearchBox extends React.Component {
         };
 
         const organizationNames = [];
-        for (let orgIndex in this.props.organizations.data) {
-            if (this.props.organizations.data.hasOwnProperty(orgIndex))
-                organizationNames.push(this.props.organizations.data[orgIndex].name);
+        for (let orgIndex in this.props.organizations) {
+            if (this.props.organizations.hasOwnProperty(orgIndex))
+                organizationNames.push(this.props.organizations[orgIndex].name);
         }
 
         return (

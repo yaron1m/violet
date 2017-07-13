@@ -11,8 +11,8 @@ import registerServiceWorker from './util/registerServiceWorker';
 import './index.css';
 
 import allReducers from './reducers';
-import {fetchOrganizations} from "./actions/action-organizations";
 import Routes from "./routes";
+import {fetchInformation} from "./actions/action-database";
 
 
 injectTapEventPlugin();
@@ -26,7 +26,7 @@ const store = createStore(
     )
 );
 
-store.dispatch(fetchOrganizations());
+store.dispatch(fetchInformation());
 
 ReactDOM.render(
     <Routes store={store} />,

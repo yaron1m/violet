@@ -8,7 +8,7 @@ class OrganizationSection extends React.Component {
     render() {
         const fieldData = {
             titles: this.props.labels.titles,
-            values: this.props.organizations.selected
+            values: this.props.selected.organization
         };
 
         return (
@@ -25,7 +25,7 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         labels: state.softwareLabels.orderPage.organizationSection,
-        organizations: state.organizations,
+        selected: state.selected,
         allowEdit: ownProps.allowEdit
     };
 }

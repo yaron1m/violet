@@ -13,7 +13,7 @@ class ContactsTable extends React.Component {
 
     render() {
 
-        const data = this.props.organizations.selected.contacts;
+        const data = this.props.selected.organization.contacts;
 
         return (
             <Table style={{tableLayout: 'auto'}} fixedHeader={false}>
@@ -48,10 +48,11 @@ class ContactsTable extends React.Component {
     }
 }
 
+
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.orderPage.contactsSection,
-        organizations: state.organizations,
+        selected: state.selected,
     };
 }
 

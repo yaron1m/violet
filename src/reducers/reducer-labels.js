@@ -33,7 +33,6 @@ export default function () {
                     sameAudience: "קהל יעד זהה"
                 },
                 lectureTimesSection: {
-                    table: "lectureTimes",
                     sectionName: "הרצאות",
                     titles: {
                         date: "תאריך",

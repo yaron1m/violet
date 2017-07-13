@@ -31,11 +31,11 @@ class LectureTime extends React.Component {
             }
         };
 
-        const lecturesOffered = this.props.offeredLectures.map((lecture) => {
-            //if(lecture.isActive) {
-            return lecture.name;
-            //}
-        });
+
+        //Filter offered lectures
+        const lecturesObj = this.props.offeredLectures;
+        const allLectures = Object.keys(lecturesObj);
+        const filteredLectures = allLectures.filter((lecture) => (lecturesObj[lecture]));
 
         const fieldData = {
             titles: this.props.labels.titles,
@@ -59,7 +59,7 @@ class LectureTime extends React.Component {
                 <CustomText data={fieldData} name="endTime" size="M"/>
                 <CustomText data={fieldData} name="length" size="M"/>
 
-                <CustomAutoComplete data={fieldData} name="topic" dataSource={lecturesOffered}/>
+                <CustomAutoComplete data={fieldData} name="topic" dataSource={filteredLectures}/>
 
                 <CustomText data={fieldData} name="audienceSize" size="M"/>
                 <CustomText data={fieldData} name="shirtColor" size="M"/>

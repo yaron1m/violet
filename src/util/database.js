@@ -12,3 +12,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default firebase.database();
+
+export function fetchData(name, actionCallback, dispatch) {
+    firebase.database().ref(name).on('value', snapshot => {
+            dispatch(actionCallback(snapshot.val()));
+        },
+        error => {
+            console.log("The request for " + name + " failed: " + error.code);
+        });
+}
