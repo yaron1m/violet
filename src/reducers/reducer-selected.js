@@ -1,9 +1,7 @@
 import {SELECT_ORGANIZATION} from '../actions/action-organizations';
 
 const initialState={
-    organization:{
-        contacts:{}
-    },
+    organization:{},
     order:{}
 };
 

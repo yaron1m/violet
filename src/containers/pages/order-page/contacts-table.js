@@ -13,7 +13,7 @@ class ContactsTable extends React.Component {
 
     render() {
 
-        const data = this.props.selected.organization.contacts;
+        const data = this.props.selected.organization.contacts ? this.props.selected.organization.contacts : {};
 
         return (
             <Table style={{tableLayout: 'auto'}} fixedHeader={false}>
