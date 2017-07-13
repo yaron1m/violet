@@ -19,7 +19,6 @@ const muiTheme = {
     },
     textField: {
         floatingLabelColor: black,
-        // height:1000
     },
 
 };
