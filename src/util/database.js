@@ -23,6 +23,6 @@ export function fetchData(collectionName, actionCallback, dispatch) {
 }
 export function sendData(collectionName, value) {
     firebase.database().ref(collectionName).set(value, error => {
-            console.log("The request for " + collectionName + " failed: " + error.code);
+            console.log("The data send request for " + collectionName + " failed: " + error.code);
         });
 }
