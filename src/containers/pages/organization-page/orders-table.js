@@ -40,7 +40,7 @@ class OrdersTable extends React.Component {
         };
 
         return (
-                <Table>
+                <Table style={{tableLayout: 'auto'}} fixedHeader={false}>
                     <TableHeader
                         adjustForCheckbox={false}
                         displaySelectAll={false}
