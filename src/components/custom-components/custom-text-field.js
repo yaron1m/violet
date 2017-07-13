@@ -66,12 +66,6 @@ AbstractCustomField.defaultProps = {
     fullWidth: false,
 };
 
-export const Types = {
-    Text: "TEXT",
-    DatePicker: "DATE_PICKER",
-    AutoComplete: "AUTOCOMPLETE"
-};
-
 export class CustomText extends AbstractCustomField {
     handleChange = (event) => {
         this.setState({
@@ -110,8 +104,6 @@ export class CustomDatePicker extends AbstractCustomField {
         this.setState({
             value: date,
         });
-
-        console.log(date);
     };
 
     render() {
