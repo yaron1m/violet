@@ -7,12 +7,12 @@ import RaisedButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
-import {sendSelectedOrder} from "../../../actions/action-selected";
-import {sendInformation} from "../../../actions/action-database";
+import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {sendInformationToDatabase} from "../../../actions/action-database";
 
 class LectureDetailsSection extends React.Component {
     addButtonClick() {
-        this.props.dispatch(sendInformation("/orders/" + this.props.selected.order.id, this.props.selected.order));
+        this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order));
         //TODO
     }
 
@@ -37,7 +37,7 @@ class LectureDetailsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
-            updateAction: sendSelectedOrder,
+            updateAction: updateValueInSelectedOrder,
             dispatch: this.props.dispatch,
         };
 

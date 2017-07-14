@@ -12,7 +12,7 @@ export function fetchInformation() {
     }
 }
 
-export function sendInformation(collectionName, value) {
+export function sendInformationToDatabase(collectionName, value) {
     return function (dispatch) {
         sendData(collectionName, value);
         //TODO dispatch sent

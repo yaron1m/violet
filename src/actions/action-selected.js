@@ -9,7 +9,7 @@ export function sendSelectedOrganization(key, value) {
 
 
 export const SEND_SELECTED_ORDER = "SEND_SELECTED_ORDER";
-export function sendSelectedOrder(key, value) {
+export function updateValueInSelectedOrder(key, value) {
     return {
         type: SEND_SELECTED_ORDER,
         key: key,
