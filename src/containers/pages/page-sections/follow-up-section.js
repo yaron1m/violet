@@ -6,7 +6,7 @@ import {updateValueInSelectedOrder} from "../../../actions/action-selected";
 import CustomToggle from "../../../components/custom-components/custom-toggle";
 
 class FollowUpSection extends React.Component {
-    
+
     render() {
         const style = {
             toggle: {
@@ -31,7 +31,7 @@ class FollowUpSection extends React.Component {
         return (
             <CustomCard
                 title={this.props.labels.sectionName}
-                isOpen = {this.state.toggled}
+                isOpen = {this.props.selected.order.followUpRequired}
             >
                 <div style={style.flex}>
                     <CustomToggle data={fieldData} name="followUpRequired"/>
