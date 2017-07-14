@@ -3,31 +3,13 @@ import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {CustomToggle, CustomToggleBox} from "../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
-import RaisedButton from 'material-ui/FlatButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
-import {sendInformationToDatabase} from "../../../actions/action-database";
 
 class LectureDetailsSection extends React.Component {
-    addButtonClick() {
-        this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order));
-        //TODO
-    }
 
     render() {
-        const styles = {
-            addButton: {
-                verticalAlign: "bottom",
-                minWidth: 40,
-                marginRight: 5,
-                marginBottom: 5,
-            },
-            addIcon: {
-                verticalAlign: "middle",
-            },
-        };
 
         // //Filter offered lectures
         // const lecturesObj = this.props.offeredLectures;
@@ -56,15 +38,6 @@ class LectureDetailsSection extends React.Component {
                 </Paper>
 
                 <div>
-                    <RaisedButton
-                        onTouchTap={this.addButtonClick.bind(this)}
-                        style={styles.addButton}
-                    >
-                        <ContentAdd
-                            style={styles.addIcon}
-                        />
-                    </RaisedButton>
-
                     <CustomText data={fieldData} name="location"/>
                     <CustomText data={fieldData} name="floor" size="S"/>
                     <CustomText data={fieldData} name="room" size="M"/>

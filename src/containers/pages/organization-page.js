@@ -11,7 +11,7 @@ class OrganizationPage extends React.Component {
     render() {
         return (
             <div>
-                <PageTitle>{this.props.labels.title}</PageTitle>
+                <PageTitle title={this.props.labels.title}/>
 
                 <OrganizationSection/>
 

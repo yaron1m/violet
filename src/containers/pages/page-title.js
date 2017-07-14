@@ -2,16 +2,24 @@ import React from 'react';
 
 export default class PageTitle extends React.Component {
 
-    render(){
+    render() {
         const style = {
             pageTitle: {
                 fontSize: 24,
-                marginBottom: 20
+            },
+            buttons: {
+                float: "left",
             }
         };
 
-        return(
-            <div style={style.pageTitle}>{this.props.children}</div>
+        return (
+            <div >
+                <span style={style.pageTitle}>{this.props.title}</span>
+
+                <span style={style.buttons}>{this.props.buttons}</span>
+
+            </div>
+
         )
     }
 

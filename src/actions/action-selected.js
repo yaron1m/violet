@@ -16,3 +16,10 @@ export function updateValueInSelectedOrder(key, value) {
         payload: value
     }
 }
+
+export const CLEAR_SELECTED = "CLEAR_SELECTED";
+export function clearSelected(){
+    return {
+        type: CLEAR_SELECTED,
+    }
+}
