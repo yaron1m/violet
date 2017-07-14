@@ -17,7 +17,6 @@ export default function () {
                 }
             },
             lectureDetailsSection: {
-                table: "lectureDetails",
                 sectionName: "פרטי ההרצאה",
                 titles: {
                     location: "מיקום ההרצאה",
@@ -44,7 +43,7 @@ export default function () {
                         shirtColor: "צבע חולצה",
                         tie: "עניבה"
                     },
-                    tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {length: "משך"}, {topic: "נושא"},
+                    tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
                         {audienceSize: "מס' משתתפים"}, {shirtColor: "צבע חולצה"}, {tie: "עניבה"}, {edit: "עריכה"}]
 
                 }
