@@ -6,20 +6,7 @@ import {updateValueInSelectedOrder} from "../../../actions/action-selected";
 import CustomToggle from "../../../components/custom-components/custom-toggle";
 
 class FollowUpSection extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            toggled: false
-        };
-    }
     
-    onToggle(event, toggled) {
-        this.setState({
-            toggled: toggled
-        });
-    }
-
     render() {
         const style = {
             toggle: {
