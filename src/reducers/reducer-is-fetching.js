@@ -7,7 +7,7 @@ const initialState = {
     numberOfFetchingActions: 0,
 };
 
-export default(state = initialState, action) => {
+export default(state = initialState, action) => { //TODO needs fix
     switch (action.type) {
         case REQUEST_DATA:
             return {

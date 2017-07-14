@@ -34,3 +34,5 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+
+export default store;

@@ -1,4 +1,6 @@
 import * as firebase from 'firebase';
+import Store from '../index'
+import {sentToDatabase} from '../actions/action-database'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
@@ -23,10 +25,11 @@ export function fetchData(collectionName, actionCallback, dispatch) {
 }
 export function sendData(collectionName, value) {
     firebase.database().ref(collectionName).set(value, error => {
-        if(error)
-            console.log("The data send request for " + collectionName + " failed: " + error.code);
+        if(error) {
+            console.error("The data send request for " + collectionName + " failed: " + error.code);
+            Store.dispatch(sentToDatabase(false));
+        }
         else
-            console.log("Writing completed successfully:");
-            console.log(value);
+            Store.dispatch(sentToDatabase(true));
         });
 }

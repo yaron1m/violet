@@ -14,6 +14,7 @@ export function fetchInformation() {
 
 export function sendInformationToDatabase(collectionName, value) {
     return function (dispatch) {
+        dispatch(isSendingToDatabase());
         sendData(collectionName, value);
         //TODO dispatch sent
 
@@ -33,5 +34,21 @@ function receiveOfferedLectures(offeredLectures) {
     return {
         type: RECEIVE_OFFERED_LECTURES,
         payload: offeredLectures,
+    };
+}
+
+
+export const IS_SENDING_TO_DATABASE = "IS_SENDING_TO_DATABASE";
+export function isSendingToDatabase() {
+    return {
+        type: IS_SENDING_TO_DATABASE,
+    };
+}
+
+export const SENT_TO_DATABASE = "SENT_TO_DATABASE";
+export function sentToDatabase(successfully) {
+    return {
+        type: SENT_TO_DATABASE,
+        payload: successfully,
     };
 }
