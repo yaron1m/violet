@@ -73,7 +73,6 @@ class CustomTable extends React.Component {
 
 CustomTable.propTypes = {
     headers: PropTypes.array,
-    //data: PropTypes.object,
     data: PropTypes.array,
     showCheckBox: PropTypes.bool,
     showEditButton: PropTypes.bool,

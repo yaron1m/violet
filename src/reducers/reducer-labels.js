@@ -33,18 +33,22 @@ export default function () {
                 },
                 lectureTimesSection: {
                     sectionName: "הרצאות",
-                    titles: {
-                        date: "תאריך",
-                        startTime: "שעת התחלה",
-                        endTime: "שעת סיום",
-                        length: "משך",
-                        topic: "נושא",
-                        audienceSize: "מס' משתתפים",
-                        shirtColor: "צבע חולצה",
-                        tie: "עניבה"
-                    },
                     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
-                        {audienceSize: "מס' משתתפים"}, {shirtColor: "צבע חולצה"}, {tie: "עניבה"}, {edit: "עריכה"}]
+                        {audienceSize: "מס' משתתפים"}, {shirtColor: "צבע חולצה"}, {tie: "עניבה"}, {edit: "עריכה"}],
+
+                    editDialog: {
+                        dialogTitle: "ערוך פרטי הרצאה",
+                        titles: {
+                            date: "תאריך",
+                            startTime: "שעת התחלה",
+                            endTime: "שעת סיום",
+                            length: "משך",
+                            topic: "נושא",
+                            audienceSize: "מס' משתתפים",
+                            shirtColor: "צבע חולצה",
+                            tie: "עניבה"
+                        },
+                    }
 
                 }
             },
