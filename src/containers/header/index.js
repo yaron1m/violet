@@ -4,9 +4,7 @@ import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
-import SaveIcon from 'material-ui/svg-icons/content/save';
-import ClearIcon from 'material-ui/svg-icons/content/clear';
-import PrintIcon from 'material-ui/svg-icons/action/print';
+import MoreIcon from 'material-ui/svg-icons/navigation/more-vert';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import {changeDrawerState} from "../../actions/action-drawer";
 import {connect} from "react-redux";
@@ -29,7 +27,6 @@ class Header extends React.Component {
                 marginTop: 3
             },
             iconsRightContainer: {
-                //marginLeft: 20,
                 marginTop: 3
             },
         };
@@ -47,9 +44,7 @@ class Header extends React.Component {
                 }
                 iconElementRight={
                     <div style={style.iconsRightContainer}>
-                        <IconButton><SaveIcon color={white}/></IconButton>
-                        <IconButton><ClearIcon color={white}/></IconButton>
-                        <IconButton><PrintIcon color={white}/></IconButton>
+                        <IconButton><MoreIcon color={white}/></IconButton>
                     </div>
                 }
             />
