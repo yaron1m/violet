@@ -8,10 +8,10 @@ export function sendSelectedOrganization(key, value) {
 }
 
 
-export const SEND_SELECTED_ORDER = "SEND_SELECTED_ORDER";
+export const UPDATE_VALUE_IN_SELECTED_ORDER = "UPDATE_VALUE_IN_SELECTED_ORDER";
 export function updateValueInSelectedOrder(key, value) {
     return {
-        type: SEND_SELECTED_ORDER,
+        type: UPDATE_VALUE_IN_SELECTED_ORDER,
         key: key,
         payload: value
     }
