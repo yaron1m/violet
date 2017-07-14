@@ -1,7 +1,10 @@
 import {SELECT_ORGANIZATION} from '../actions/action-organizations';
 import {SELECT_ORDER} from "../actions/action-orders";
 import {calculateDuration} from "../util/time-util";
-import {CLEAR_SELECTED, UPDATE_VALUE_IN_SELECTED_ORDER} from "../actions/action-selected";
+import {
+    CLEAR_SELECTED, UPDATE_VALUE_IN_SELECTED_ORDER,
+    UPDATE_VALUE_IN_SELECTED_ORGANIZATION
+} from "../actions/action-selected";
 
 const initialState = {
     organization: {},
@@ -28,6 +31,13 @@ export default (state = initialState, action) => {
             updatedOrder[action.key] = action.payload;
             return Object.assign({}, state, {
                 order: updatedOrder
+            });
+
+        case UPDATE_VALUE_IN_SELECTED_ORGANIZATION:
+            let updatedOrganization = state.organization;
+            updatedOrganization[action.key] = action.payload;
+            return Object.assign({}, state, {
+                order: updatedOrganization
             });
 
         case CLEAR_SELECTED:

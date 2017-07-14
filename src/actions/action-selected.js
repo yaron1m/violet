@@ -1,7 +1,7 @@
-export const SEND_SELECTED_ORGANIZATION = "SEND_SELECTED_ORGANIZATION";
-export function sendSelectedOrganization(key, value) {
+export const UPDATE_VALUE_IN_SELECTED_ORGANIZATION = "UPDATE_VALUE_IN_SELECTED_ORGANIZATION";
+export function updateValueInSelectedOrganization(key, value) {
     return {
-        type: SEND_SELECTED_ORGANIZATION,
+        type: UPDATE_VALUE_IN_SELECTED_ORGANIZATION,
         key: key,
         payload: value
     };
