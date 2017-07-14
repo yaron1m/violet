@@ -10,9 +10,8 @@ import {withRouter} from 'react-router'
 class SearchBox extends React.Component {
 
     handleRequest(chosenRequest, index) {
-        if (this.props.location.pathname !== '/org') {
-            this.props.history.push('/org');
-        }
+        this.props.history.push('/org');
+
         if (index !== -1) {
             this.props.dispatch(selectOrganization(this.props.organizations[index]));
         }
