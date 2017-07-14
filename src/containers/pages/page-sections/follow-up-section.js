@@ -1,9 +1,9 @@
 import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
-import Toggle from "material-ui/Toggle";
 import {connect} from 'react-redux';
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import CustomToggle from "../../../components/custom-components/custom-toggle";
 
 class FollowUpSection extends React.Component {
 
@@ -47,17 +47,12 @@ class FollowUpSection extends React.Component {
                 isOpen = {this.state.toggled}
             >
                 <div style={style.flex}>
-                    <Toggle
-                        style={style.toggle}
-                        onToggle={this.onToggle.bind(this)}
-                        toggled={this.state.toggled}
-                    />
+                    <CustomToggle data={fieldData} name="followUpRequired"/>
 
                     <CustomDatePicker
                         data={fieldData}
                         name="followUpDate"
-                        disabled={!this.state.toggled}
-                        size="L"
+                        disabled={!this.props.selected.order.followUpRequired}
                     />
                 </div>
 
@@ -67,7 +62,7 @@ class FollowUpSection extends React.Component {
                         data={fieldData}
                         name="followUpDetails"
                         fullWidth={true}
-                        disabled={!this.state.toggled}
+                        disabled={!this.props.selected.order.followUpRequired}
                     />
                 </div>
             </CustomCard>

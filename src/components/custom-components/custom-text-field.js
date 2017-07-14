@@ -31,7 +31,7 @@ class AbstractCustomField extends React.Component {
                 marginRight: 20,
             },
             datePickerTextFieldStyle: {
-                width: 100
+                width: 150
             },
             maxRows: 4,
         };
@@ -68,9 +68,9 @@ AbstractCustomField.defaultProps = {
 
 export class CustomText extends AbstractCustomField {
     handleChange = (event) => {
-        if(this.props.data.updateAction){
+        if (this.props.data.updateAction) {
             this.props.data.dispatch(this.props.data.updateAction(this.state.name, event.target.value));
-        }else{
+        } else {
             console.error("No updateAction function here")
         }
     };
@@ -99,7 +99,7 @@ export class CustomText extends AbstractCustomField {
 export class CustomDatePicker extends AbstractCustomField {
 
     handleChange = (nothing, date) => {
-        if(this.props.data.updateAction){
+        if (this.props.data.updateAction) {
             this.props.data.dispatch(this.props.data.updateAction(this.state.name, date.toDateString()));
         }
     };
@@ -114,7 +114,7 @@ export class CustomDatePicker extends AbstractCustomField {
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                value={this.state.value? new Date(this.state.value) : null}
+                value={this.state.value ? new Date(this.state.value) : null}
                 onChange={this.handleChange}
 
                 textFieldStyle={style.datePickerTextFieldStyle}
@@ -130,7 +130,7 @@ export class CustomDatePicker extends AbstractCustomField {
 
 export class CustomAutoComplete extends AbstractCustomField {
     handleChange = (searchText, dataSource, params) => {
-        if(this.props.data.updateAction){
+        if (this.props.data.updateAction) {
             this.props.data.dispatch(this.props.data.updateAction(this.state.name, searchText));
         }
     };
