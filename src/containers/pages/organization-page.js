@@ -5,13 +5,38 @@ import {connect} from 'react-redux';
 import CustomPage from "../../components/custom-components/custom-page";
 import CustomTable from "../../components/custom-components/custom-table";
 import {selectOrder} from "../../actions/action-orders";
+import IconButton from "material-ui/IconButton";
+import SaveIcon from 'material-ui/svg-icons/content/save';
+import ClearIcon from 'material-ui/svg-icons/content/clear';
+import {sendInformationToDatabase} from "../../actions/action-database";
+import {clearSelected} from "../../actions/action-selected";
 
 class OrganizationPage extends React.Component {
 
     render() {
         return (
             <div>
-                <PageTitle title={this.props.labels.title}/>
+                <PageTitle
+                    title={this.props.labels.title}
+                    buttons={<div>
+                        <IconButton
+                            onClick={function () {
+                                if (!this.props.selected.organization.hasOwnProperty('id')){
+                                    alert("Tried to save empty organization");
+                                    return;
+                                }
+                                this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
+                            }.bind(this)}
+                        > <SaveIcon /></IconButton>
+
+                        <IconButton><ClearIcon
+                            onClick={function () {
+                                this.props.dispatch(clearSelected())
+                            }.bind(this)}
+                        /></IconButton>
+                    </div>
+                    }
+                />
 
                 <OrganizationSection/>
 

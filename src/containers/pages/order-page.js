@@ -26,7 +26,7 @@ class OrderForm extends React.Component {
                         <IconButton
                             onClick={function () {
                                 if (!this.props.selected.order.hasOwnProperty('id')){
-                                    console.warn("Tried to save empty order");
+                                    alert("Tried to save empty order");
                                     return;
                                 }
                                     this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
