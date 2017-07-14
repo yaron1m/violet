@@ -20,7 +20,8 @@ export default (state = initialState, action) => {
 
         case SELECT_ORDER:
             let selectedOrder = action.payload;
-            selectedOrder.lectureTimes = calculateDuration(selectedOrder.lectureTimes);
+            if (selectedOrder.lectureTimes) //if there are times //TODO what if there were and deleted?
+                selectedOrder.lectureTimes = calculateDuration(selectedOrder.lectureTimes);
 
             return Object.assign({}, state, {
                 order: selectedOrder,
