@@ -70,6 +70,8 @@ export class CustomText extends AbstractCustomField {
     handleChange = (event) => {
         if(this.props.data.updateAction){
             this.props.data.dispatch(this.props.data.updateAction(this.state.name, event.target.value));
+        }else{
+            console.error("No updateAction function here")
         }
     };
 

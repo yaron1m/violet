@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText} from "../../../components/custom-components/custom-text-field";
-import {CustomToggle, CustomToggleBox} from "../../../components/custom-components/custom-toggle";
+import CustomToggle, {CustomToggleBox} from "../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
@@ -46,12 +46,12 @@ class LectureDetailsSection extends React.Component {
                 </div>
 
                 <CustomToggleBox>
-                    <CustomToggle title={this.props.labels.titles.projector}/>
-                    <CustomToggle title={this.props.labels.titles.soundSystem}/>
-                    <CustomToggle title={this.props.labels.titles.microphone}/>
-                    <CustomToggle title={this.props.labels.titles.parking}/>
-                    <CustomToggle title={this.props.labels.titles.orderApproved}/>
-                    <CustomToggle title={this.props.labels.titles.sameAudience}/>
+                    <CustomToggle data={fieldData} name="projector"/>
+                    <CustomToggle data={fieldData} name="soundSystem"/>
+                    <CustomToggle data={fieldData} name="microphone"/>
+                    <CustomToggle data={fieldData} name="parking"/>
+                    <CustomToggle data={fieldData} name="orderApproved"/>
+                    <CustomToggle data={fieldData} name="sameAudience"/>
                 </CustomToggleBox>
 
             </CustomCard>

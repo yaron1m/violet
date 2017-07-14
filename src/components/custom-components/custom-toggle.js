@@ -5,8 +5,6 @@ import {Paper} from "material-ui";
 class CustomToggle extends React.Component {
 
     render() {
-        const {title} = this.props;
-
         const style = {
             toggle: {
                 marginBottom: 6,
@@ -22,9 +20,12 @@ class CustomToggle extends React.Component {
             <div>
                 <Toggle
                     style={style.toggle}
-                    label={title}
+                    label={this.props.data.titles[this.props.name]}
                     labelStyle={style.labelStyle}
                     labelPosition="right"
+                    toggled={this.props.data.values[this.props.name]}
+                    onToggle={(event, isInputChecked) =>
+                        this.props.data.dispatch(this.props.data.updateAction(this.props.name, isInputChecked))}
                 />
             </div>
 
@@ -32,7 +33,7 @@ class CustomToggle extends React.Component {
     }
 }
 
-export {CustomToggle};
+export default CustomToggle;
 
 class CustomToggleBox extends React.Component {
 
