@@ -13,10 +13,10 @@ class OrganizationSection extends React.Component {
 
         return (
             <CustomPage title={this.props.labels.sectionName}>
-                <CustomText data={fieldData} name="name" allowEdit={this.props.allowEdit} />
-                <CustomText data={fieldData} name="address" allowEdit={this.props.allowEdit} />
-                <CustomText data={fieldData} name="companyId" size="M" allowEdit={this.props.allowEdit} />
-                <CustomText data={fieldData} name="howReachedUs" allowEdit={this.props.allowEdit}/>
+                <CustomText data={fieldData} name="name"  />
+                <CustomText data={fieldData} name="address"  />
+                <CustomText data={fieldData} name="companyId" size="M"  />
+                <CustomText data={fieldData} name="howReachedUs" />
             </CustomPage>
         );
     }

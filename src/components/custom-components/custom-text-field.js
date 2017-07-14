@@ -68,9 +68,9 @@ AbstractCustomField.defaultProps = {
 
 export class CustomText extends AbstractCustomField {
     handleChange = (event) => {
-        this.setState({
-            value: event.target.value,
-        });
+        if(this.props.data.updateAction){
+            this.props.data.dispatch(this.props.data.updateAction(this.state.name, event.target.value));
+        }
     };
 
 
@@ -85,7 +85,7 @@ export class CustomText extends AbstractCustomField {
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
                 value={this.state.value}
-                onChange={this.props.allowEdit ? this.handleChange : null}
+                onChange={this.handleChange}
 
                 multiLine={true}
                 rowsMax={style.maxRows}
@@ -94,16 +94,12 @@ export class CustomText extends AbstractCustomField {
     }
 }
 
-CustomText.defaultProps = {
-    allowEdit: true,
-};
-
 export class CustomDatePicker extends AbstractCustomField {
 
     handleChange = (nothing, date) => {
-        this.setState({
-            value: date,
-        });
+        if(this.props.data.updateAction){
+            this.props.data.dispatch(this.props.data.updateAction(this.state.name, date.toDateString()));
+        }
     };
 
     render() {
@@ -116,7 +112,7 @@ export class CustomDatePicker extends AbstractCustomField {
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                value={this.state.value}
+                value={this.state.value? new Date(this.state.value) : null}
                 onChange={this.handleChange}
 
                 textFieldStyle={style.datePickerTextFieldStyle}
@@ -132,9 +128,9 @@ export class CustomDatePicker extends AbstractCustomField {
 
 export class CustomAutoComplete extends AbstractCustomField {
     handleChange = (searchText, dataSource, params) => {
-        this.setState({
-            value: searchText,
-        });
+        if(this.props.data.updateAction){
+            this.props.data.dispatch(this.props.data.updateAction(this.state.name, searchText));
+        }
     };
 
 

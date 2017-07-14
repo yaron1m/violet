@@ -2,6 +2,7 @@ import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
+import {sendSelectedOrder} from "../../../actions/action-selected";
 
 
 class OrganizationSection extends React.Component {
@@ -19,6 +20,8 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
+            updateAction: sendSelectedOrder,
+            dispatch: this.props.dispatch,
         };
 
         return (

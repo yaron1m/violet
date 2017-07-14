@@ -1,6 +1,7 @@
 import {SELECT_ORGANIZATION} from '../actions/action-organizations';
 import {SELECT_ORDER} from "../actions/action-orders";
 import {calculateDuration} from "../util/time-util";
+import {SEND_SELECTED_ORDER} from "../actions/action-selected";
 
 const initialState = {
     organization: {},
@@ -20,6 +21,13 @@ export default (state = initialState, action) => {
 
             return Object.assign({}, state, {
                 order: selectedOrder,
+            });
+
+        case SEND_SELECTED_ORDER:
+            let updatedOrder = state.order;
+            updatedOrder[action.key] = action.payload;
+            return Object.assign({}, state, {
+                order: updatedOrder
             });
 
         default:

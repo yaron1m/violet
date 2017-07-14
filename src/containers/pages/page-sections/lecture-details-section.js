@@ -7,9 +7,12 @@ import RaisedButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
+import {sendSelectedOrder} from "../../../actions/action-selected";
+import {sendInformation} from "../../../actions/action-database";
 
 class LectureDetailsSection extends React.Component {
     addButtonClick() {
+        this.props.dispatch(sendInformation("/orders/" + this.props.selected.order.id, this.props.selected.order));
         //TODO
     }
 
@@ -26,15 +29,17 @@ class LectureDetailsSection extends React.Component {
             },
         };
 
-        const fieldData = {
-            titles: this.props.labels.titles,
-            values: this.props.selected.order,
-        };
-
         // //Filter offered lectures
         // const lecturesObj = this.props.offeredLectures;
         // const allLectures = Object.keys(lecturesObj);
         // const filteredLectures = allLectures.filter((lecture) => (lecturesObj[lecture]));
+
+        const fieldData = {
+            titles: this.props.labels.titles,
+            values: this.props.selected.order,
+            updateAction: sendSelectedOrder,
+            dispatch: this.props.dispatch,
+        };
 
         return (
             <CustomCard
@@ -42,6 +47,7 @@ class LectureDetailsSection extends React.Component {
                 isOpen={true}
             >
 
+                {/*lecture times table*/}
                 <Paper>
                     <CustomTable
                         headers={this.props.labels.lectureTimesSection.tableHeaders}

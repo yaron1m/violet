@@ -1,4 +1,4 @@
-import {fetchData} from '../util/database';
+import {fetchData, sendData} from '../util/database';
 import {receiveOrganizations} from './action-organizations'
 import {receiveOrders} from './action-orders'
 
@@ -8,6 +8,14 @@ export function fetchInformation() {
         fetchData('orders', receiveOrders, dispatch);
         fetchData('organizations', receiveOrganizations, dispatch);
         fetchData('offered-lectures', receiveOfferedLectures, dispatch);
+
+    }
+}
+
+export function sendInformation(collectionName, value) {
+    return function (dispatch) {
+        sendData(collectionName, value);
+        //TODO dispatch sent
 
     }
 }

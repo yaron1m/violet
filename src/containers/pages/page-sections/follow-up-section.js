@@ -3,6 +3,7 @@ import CustomCard from "../../../components/custom-components/custom-card";
 import Toggle from "material-ui/Toggle";
 import {connect} from 'react-redux';
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
+import {sendSelectedOrder} from "../../../actions/action-selected";
 
 class FollowUpSection extends React.Component {
 
@@ -36,6 +37,8 @@ class FollowUpSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
+            updateAction: sendSelectedOrder,
+            dispatch: this.props.dispatch,
         };
 
         return (
