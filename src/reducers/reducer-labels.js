@@ -76,25 +76,12 @@ export default function () {
                     taxInvoiceDate: "תאריך חשבונית מס"
                 }
             },
-            financialContactsSection: {
-                sectionName: "איש קשר לתשלום",
-                titles: {
-                    firstName: "שם פרטי",
-                    lastName: "שם משפחה",
-                    phone1: "טלפון",
-                    phone2: "טלפון נוסף",
-                    phoneExtension: "שלוחה",
-                    email: "דואר אלקטרוני",
-                    fax: "פקס",
-                    job: "תפקיד"
-                }
-            },
             notesSection: {
                 sectionName: "הערות",
                 titles: {
                     notes: "הערות נוספות"
                 }
-            }
+            },
         },
         OrganizationPage: {
             title: "פרטי ארגונים",
