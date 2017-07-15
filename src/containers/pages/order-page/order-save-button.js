@@ -1,8 +1,8 @@
 import React from 'react';
 import {IconButton} from "material-ui";
-import {updateValueInSelectedOrder} from "../../actions/action-selected";
-import {sendInformationToDatabase} from "../../actions/action-database";
-import {selectOrder} from "../../actions/action-orders";
+import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {sendInformationToDatabase} from "../../../actions/action-database";
+import {selectOrder} from "../../../actions/action-orders";
 import connect from "react-redux/es/connect/connect";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 
