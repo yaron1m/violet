@@ -6,16 +6,31 @@ import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
 import {selectOrganization} from "../../actions/action-organizations";
 import {withRouter} from 'react-router'
+import {selectOrder} from "../../actions/action-orders";
 
 class SearchBox extends React.Component {
 
     handleRequest(chosenRequest, index) {
-        this.props.history.push('/org');
-
-        if (index !== -1) {
-            this.props.dispatch(selectOrganization(this.props.organizations[index]));
+        if (index === -1) {
+            return; //TODO handle enter press
         }
-        //TODO handle enter press
+
+        if(chosenRequest.startsWith(this.props.labels.organizationPrefix)) {
+            //Find by index
+            this.props.dispatch(selectOrganization(this.props.organizations[index]));
+            this.props.history.push('/org');
+            return;
+        }
+
+        if(chosenRequest.startsWith(this.props.labels.orderPrefix)) {
+            const orderId = parseInt(chosenRequest.replace(this.props.labels.orderPrefix,""));
+            //Find by orderNumber
+            this.props.dispatch(selectOrder(this.props.orders[orderId]));
+            const organizationId = this.props.orders[orderId].organizationId;
+            this.props.dispatch(selectOrganization(this.props.organizations[organizationId]));
+            this.props.history.push('/form');
+            return;
+        }
     }
 
 
@@ -42,7 +57,12 @@ class SearchBox extends React.Component {
             },
         };
 
-        const organizationNames = Object.values(this.props.organizations).map((org) => (org.name));
+        const organizationNames = Object.values(this.props.organizations).map(
+            (org) => (this.props.labels.organizationPrefix + org.name));
+        const orderNumbers = Object.values(this.props.orders).map(
+            (order) => (this.props.labels.orderPrefix + order.id));
+
+        const dataSource = organizationNames.concat(orderNumbers);
 
         return (
             <div>
@@ -50,7 +70,7 @@ class SearchBox extends React.Component {
                     <Search color={white}/>
                 </IconButton>
                 <AutoComplete
-                    dataSource={organizationNames}
+                    dataSource={dataSource}
                     hintText={this.props.labels.searchLineHint}
                     underlineShow={false}
                     fullWidth={true}
@@ -67,7 +87,8 @@ class SearchBox extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.header,
-        organizations: state.organizations
+        organizations: state.organizations,
+        orders: state.orders
     };
 }
 

@@ -3,7 +3,9 @@ export default function () {
         softwareName: "Violet",
         version: "0.0.0",
         header: {
-            searchLineHint: "חיפוש..."
+            searchLineHint: "חיפוש...",
+            organizationPrefix: "ארגון: ",
+            orderPrefix: "הזמנה: ",
         },
         orderPage: {
             title: "טופס הזמנת הרצאה",
