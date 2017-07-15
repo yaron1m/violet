@@ -10,23 +10,35 @@ import {selectOrder} from "../../actions/action-orders";
 
 class SearchBox extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchText: "",
+        };
+    }
+
+    sourceTypes = {
+        organization: 0,
+        order: 1,
+    };
+
     handleRequest(chosenRequest, index) {
         if (index === -1) {
             return; //TODO handle enter press
         }
+        this.setState({searchText: ""});
 
-        if(chosenRequest.startsWith(this.props.labels.organizationPrefix)) {
+
+        if (chosenRequest.value.type === this.sourceTypes.organization) {
             //Find by index
-            this.props.dispatch(selectOrganization(this.props.organizations[index]));
+            this.props.dispatch(selectOrganization(chosenRequest.value.obj));
             this.props.history.push('/org');
             return;
         }
 
-        if(chosenRequest.startsWith(this.props.labels.orderPrefix)) {
-            const orderId = parseInt(chosenRequest.replace(this.props.labels.orderPrefix,""));
-            //Find by orderNumber
-            this.props.dispatch(selectOrder(this.props.orders[orderId]));
-            const organizationId = this.props.orders[orderId].organizationId;
+        if (chosenRequest.value.type === this.sourceTypes.order) {
+            this.props.dispatch(selectOrder(chosenRequest.value.obj));
+            const organizationId = chosenRequest.value.obj.organizationId;
             this.props.dispatch(selectOrganization(this.props.organizations[organizationId]));
             this.props.history.push('/form');
             return;
@@ -57,12 +69,12 @@ class SearchBox extends React.Component {
             },
         };
 
-        const organizationNames = Object.values(this.props.organizations).map(
-            (org) => (this.props.labels.organizationPrefix + org.name));
-        const orderNumbers = Object.values(this.props.orders).map(
-            (order) => (this.props.labels.orderPrefix + order.id));
+        const organizationNamesObjects = Object.values(this.props.organizations).map(
+            (org) => ({text: org.name, value: {type: this.sourceTypes.organization, obj: org}}));
+        const orderNumbersObjects = Object.values(this.props.orders).map(
+            (order) => ({text: order.id.toString(), value: {type: this.sourceTypes.order, obj: order}}));
 
-        const dataSource = organizationNames.concat(orderNumbers);
+        const dataSource = organizationNamesObjects.concat(orderNumbersObjects);
 
         return (
             <div>
@@ -78,6 +90,8 @@ class SearchBox extends React.Component {
                     textFieldStyle={styles.textField}
                     hintStyle={styles.hintStyle}
                     onNewRequest={this.handleRequest.bind(this)}
+                    searchText={this.state.searchText}
+                    onUpdateInput={(searchText) => this.setState({searchText: searchText})}
                 />
             </div>
         );
