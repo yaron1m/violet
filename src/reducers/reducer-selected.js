@@ -6,12 +6,14 @@ import {
     UPDATE_VALUE_IN_SELECTED_ORGANIZATION
 } from "../actions/action-selected";
 
-const initialState = {
-    organization: {},
-    order: {}
+function getInitialState(){
+    return {
+        organization: {},
+        order: {},
+    }
 };
 
-export default (state = initialState, action) => {
+export default (state = getInitialState(), action) => {
     switch (action.type) {
         case SELECT_ORGANIZATION:
             return Object.assign({}, state, {
@@ -42,7 +44,7 @@ export default (state = initialState, action) => {
             });
 
         case CLEAR_SELECTED:
-            return initialState;
+            return getInitialState();
 
         default:
             return state
