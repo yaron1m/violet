@@ -12,7 +12,8 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import {sendInformationToDatabase} from "../../actions/action-database";
-import {clearSelected} from "../../actions/action-selected";
+import {clearSelectedOrder, updateValueInSelectedOrder} from "../../actions/action-selected";
+import {selectOrder} from "../../actions/action-orders";
 
 class OrderForm extends React.Component {
 
@@ -21,15 +22,23 @@ class OrderForm extends React.Component {
         return (
             <div>
                 <PageTitle
-                    title={this.props.labels.title}
+                    title={this.props.labels.title +
+                    (this.props.isSelected.order ? this.props.labels.orderNumberTitle + this.props.selected.order.id : this.props.labels.newOrderTitle)
+                    }
                     buttons={<div>
                         <IconButton
                             onClick={function () {
-                                if (!this.props.selected.order.hasOwnProperty('id')){
-                                    alert("Tried to save empty order");
-                                    return;
+                                if (!this.props.isSelected.order) {
+                                    const newOrderId = Math.max.apply(null, Object.keys(this.props.orders)) + 1;
+                                    this.props.dispatch(updateValueInSelectedOrder("id", newOrderId));
+                                    this.props.dispatch(updateValueInSelectedOrder("organizationId", this.props.selected.organization.id));
                                 }
-                                    this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
+                                this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
+                                    .then(() => {
+                                        if (!this.props.isSelected.order)
+                                            this.props.dispatch(selectOrder(this.props.selected.order))
+                                    });
+
                             }.bind(this)}
                         > <SaveIcon /></IconButton>
 
@@ -37,7 +46,7 @@ class OrderForm extends React.Component {
 
                         <IconButton><ClearIcon
                             onClick={function () {
-                                this.props.dispatch(clearSelected())
+                                this.props.dispatch(clearSelectedOrder())
                             }.bind(this)}
                         /></IconButton>
                     </div>
@@ -65,6 +74,8 @@ function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.orderPage,
         selected: state.selected,
+        isSelected: state.isSelected,
+        orders: state.orders,
     };
 }
 

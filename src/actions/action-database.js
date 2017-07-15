@@ -15,7 +15,7 @@ export function fetchInformation() {
 export function sendInformationToDatabase(collectionName, value) {
     return function (dispatch) {
         dispatch(isSendingToDatabase());
-        sendData(collectionName, value);
+        return sendData(collectionName, value);
         //TODO dispatch sent
 
     }

@@ -24,7 +24,7 @@ export function fetchData(collectionName, actionCallback, dispatch) {
         });
 }
 export function sendData(collectionName, value) {
-    firebase.database().ref(collectionName).set(value, error => {
+    return firebase.database().ref(collectionName).set(value, error => {
         if(error) {
             console.error("The data send request for " + collectionName + " failed: " + error.code);
             Store.dispatch(sentToDatabase(false));

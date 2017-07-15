@@ -7,6 +7,8 @@ export default function () {
         },
         orderPage: {
             title: "טופס הזמנת הרצאה",
+            orderNumberTitle: " - הזמנה מספר ",
+            newOrderTitle: " - הזמנה חדשה",
             organizationSection: {
                 sectionName: "פרטי הארגון",
                 titles: {
