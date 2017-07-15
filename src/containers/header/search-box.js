@@ -42,11 +42,7 @@ class SearchBox extends React.Component {
             },
         };
 
-        const organizationNames = [];
-        for (let orgIndex in this.props.organizations) {
-            if (this.props.organizations.hasOwnProperty(orgIndex))
-                organizationNames.push(this.props.organizations[orgIndex].name);
-        }
+        const organizationNames = Object.values(this.props.organizations).map((org) => (org.name));
 
         return (
             <div>

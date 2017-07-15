@@ -15,11 +15,6 @@ import {RaisedButton} from "material-ui";
 
 class OrganizationPage extends React.Component {
 
-
-    isOrgSelected() {
-        return this.props.selected.organization.hasOwnProperty('id')
-    }
-
     saveExistingOrganization() {
         if (!this.props.isSelected.organization) {
             alert("Can not save unselected organization");
