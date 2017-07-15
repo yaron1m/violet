@@ -87,6 +87,7 @@ export default function () {
             title: "פרטי ארגונים",
             ordersTable: {
                 title: "הזמנות",
+                newOrderButton: "הזמנה חדשה",
                 tableHeaders: [{id: "מספר הזמנה"}, {lectureDate: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}, {edit: "עריכה"}]
             },
             contactsTable: {

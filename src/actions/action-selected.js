@@ -23,3 +23,10 @@ export function clearSelected(){
         type: CLEAR_SELECTED,
     }
 }
+
+export const CLEAR_SELECTED_ORDER = "CLEAR_SELECTED_ORDER";
+export function clearSelectedOrder(){
+    return {
+        type: CLEAR_SELECTED_ORDER,
+    }
+}

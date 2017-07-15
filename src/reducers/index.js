@@ -5,6 +5,7 @@ import DrawerOpen from './reducer-drawer';
 import IsFetching from './reducer-is-fetching'
 import Organizations from './reducer-organizations'
 import Selected from './reducer-selected'
+import IsSelected from './reducer-is-selected'
 import Orders from './reducer-orders'
 import DatabaseStatus from './reducer-database-status'
 
@@ -15,6 +16,7 @@ const allReducers = combineReducers({
     isFetching: IsFetching,
     organizations: Organizations,
     selected: Selected,
+    isSelected: IsSelected,
     orders: Orders,
     databaseStatus: DatabaseStatus,
 

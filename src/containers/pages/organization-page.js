@@ -10,13 +10,18 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {sendInformationToDatabase} from "../../actions/action-database";
-import {clearSelected, updateValueInSelectedOrganization} from "../../actions/action-selected";
+import {clearSelected, clearSelectedOrder, updateValueInSelectedOrganization} from "../../actions/action-selected";
+import {RaisedButton} from "material-ui";
 
 class OrganizationPage extends React.Component {
 
 
+    isOrgSelected() {
+        return this.props.selected.organization.hasOwnProperty('id')
+    }
+
     saveExistingOrganization() {
-        if (!this.props.selected.organization.hasOwnProperty('id')) {
+        if (!this.props.isSelected.organization) {
             alert("Can not save unselected organization");
             return;
         }
@@ -24,7 +29,7 @@ class OrganizationPage extends React.Component {
     }
 
     saveNewOrganization() {
-        if (this.props.selected.organization.hasOwnProperty('id')) {
+        if (this.props.isSelected.organization) {
             alert("Can not create new organization when other one is open");
             return;
         }
@@ -61,7 +66,17 @@ class OrganizationPage extends React.Component {
                 <OrganizationSection/>
 
                 {/*Orders summary*/}
-                <CustomPage title={this.props.labels.ordersTable.title}>
+                <CustomPage
+                    title={this.props.labels.ordersTable.title}
+                    titleButton={
+                        <RaisedButton primary={true} label={this.props.labels.ordersTable.newOrderButton}
+                                      onClick={() => {
+                                          this.props.dispatch(clearSelectedOrder());
+                                          this.props.history.push('/form');
+                                      }}
+                        />}
+                    titleButtonCondition={this.props.isSelected.organization}
+                >
                     <CustomTable
                         headers={this.props.labels.ordersTable.tableHeaders}
                         data={
@@ -92,10 +107,10 @@ function mapStateToProps(state) {
     return {
         labels: state.softwareLabels.OrganizationPage,
         selected: state.selected,
+        isSelected: state.isSelected,
         orders: state.orders,
         organizations: state.organizations,
     };
 }
 
 export default connect(mapStateToProps)(OrganizationPage);
-

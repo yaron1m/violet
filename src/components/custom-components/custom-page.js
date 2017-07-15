@@ -4,8 +4,6 @@ import Paper from 'material-ui/Paper';
 class CustomPage extends React.Component {
 
     render() {
-        const {title} = this.props;
-
         const style = {
             paper: {
                 padding: 10,
@@ -13,13 +11,19 @@ class CustomPage extends React.Component {
             },
             title: {
                 fontSize: 24,
+            },
+            titleButton:{
+                paddingRight: 20,
             }
         };
 
         return (
             <Paper style={style.paper}>
-                <div style={style.title}>{title}</div>
-                {this.props.children}
+                <span style={style.title}>{this.props.title}</span>
+                <span style={style.titleButton}>{this.props.titleButtonCondition ? this.props.titleButton : null}</span>
+                <div>
+                    {this.props.children}
+                </div>
             </Paper>
         );
     }
