@@ -7,11 +7,32 @@ import CustomTable from "../../components/custom-components/custom-table";
 import {selectOrder} from "../../actions/action-orders";
 import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
+import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {sendInformationToDatabase} from "../../actions/action-database";
-import {clearSelected} from "../../actions/action-selected";
+import {clearSelected, updateValueInSelectedOrganization} from "../../actions/action-selected";
 
 class OrganizationPage extends React.Component {
+
+
+    saveExistingOrganization() {
+        if (!this.props.selected.organization.hasOwnProperty('id')) {
+            alert("Can not save unselected organization");
+            return;
+        }
+        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
+    }
+
+    saveNewOrganization() {
+        if (this.props.selected.organization.hasOwnProperty('id')) {
+            alert("Can not create new organization when other one is open");
+            return;
+        }
+        const newOrganizationId = Math.max.apply(null, Object.keys(this.props.organizations)) + 1;
+        this.props.dispatch(updateValueInSelectedOrganization('id', newOrganizationId));
+        this.saveExistingOrganization();
+    }
+
 
     render() {
         return (
@@ -19,21 +40,20 @@ class OrganizationPage extends React.Component {
                 <PageTitle
                     title={this.props.labels.title}
                     buttons={<div>
-                        <IconButton
-                            onClick={function () {
-                                if (!this.props.selected.organization.hasOwnProperty('id')){
-                                    alert("Tried to save empty organization");
-                                    return;
-                                }
-                                this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
-                            }.bind(this)}
-                        > <SaveIcon /></IconButton>
+                        {/*save icon*/}
+                        <IconButton onClick={this.saveExistingOrganization.bind(this)}>
+                            < SaveIcon />
+                        </IconButton>
 
-                        <IconButton><ClearIcon
-                            onClick={function () {
-                                this.props.dispatch(clearSelected())
-                            }.bind(this)}
-                        /></IconButton>
+                        {/*add icon*/}
+                        <IconButton onClick={this.saveNewOrganization.bind(this)}>
+                            <AddIcon />
+                        </IconButton>
+
+                        {/*clear icon*/}
+                        <IconButton onClick={() => this.props.dispatch(clearSelected()) }>
+                            <ClearIcon/>
+                        </IconButton>
                     </div>
                     }
                 />
@@ -73,7 +93,9 @@ function mapStateToProps(state) {
         labels: state.softwareLabels.OrganizationPage,
         selected: state.selected,
         orders: state.orders,
+        organizations: state.organizations,
     };
 }
 
 export default connect(mapStateToProps)(OrganizationPage);
+
