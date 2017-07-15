@@ -8,12 +8,10 @@ import NotesSection from "./page-sections/notes-section";
 import {connect} from 'react-redux';
 import PageTitle from "./page-title";
 import IconButton from "material-ui/IconButton";
-import SaveIcon from 'material-ui/svg-icons/content/save';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
-import {sendInformationToDatabase} from "../../actions/action-database";
-import {clearSelectedOrder, updateValueInSelectedOrder} from "../../actions/action-selected";
-import {selectOrder} from "../../actions/action-orders";
+import {clearSelectedOrder} from "../../actions/action-selected";
+import OrderSaveButton from './order-save-button'
 
 class OrderForm extends React.Component {
 
@@ -26,21 +24,7 @@ class OrderForm extends React.Component {
                     (this.props.isSelected.order ? this.props.labels.orderNumberTitle + this.props.selected.order.id : this.props.labels.newOrderTitle)
                     }
                     buttons={<div>
-                        <IconButton
-                            onClick={function () {
-                                if (!this.props.isSelected.order) {
-                                    const newOrderId = Math.max.apply(null, Object.keys(this.props.orders)) + 1;
-                                    this.props.dispatch(updateValueInSelectedOrder("id", newOrderId));
-                                    this.props.dispatch(updateValueInSelectedOrder("organizationId", this.props.selected.organization.id));
-                                }
-                                this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
-                                    .then(() => {
-                                        if (!this.props.isSelected.order)
-                                            this.props.dispatch(selectOrder(this.props.selected.order))
-                                    });
-
-                            }.bind(this)}
-                        > <SaveIcon /></IconButton>
+                        <OrderSaveButton/>
 
                         <IconButton><PrintIcon/></IconButton>
 
