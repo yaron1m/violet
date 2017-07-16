@@ -12,8 +12,18 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {sendInformationToDatabase} from "../../actions/action-database";
 import {clearSelected, clearSelectedOrder, updateValueInSelectedOrganization} from "../../actions/action-selected";
 import {RaisedButton} from "material-ui";
+import Snackbar from "material-ui/Snackbar";
+import {setIsSelectedOrganization} from "../../actions/action-organizations";
 
 class OrganizationPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            snackbarOpen: false,
+            snackbarMessage: "",
+        }
+    }
 
     saveExistingOrganization() {
         if (!this.props.isSelected.organization) {
@@ -21,6 +31,10 @@ class OrganizationPage extends React.Component {
             return;
         }
         this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
+            .then(this.setState({
+                snackbarOpen: true,
+                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.organization.name),
+            }))
     }
 
     saveNewOrganization() {
@@ -28,9 +42,15 @@ class OrganizationPage extends React.Component {
             alert("Can not create new organization when other one is open");
             return;
         }
-        const newOrganizationId = Math.max.apply(null, Object.keys(this.props.organizations)) + 1;
-        this.props.dispatch(updateValueInSelectedOrganization('id', newOrganizationId));
-        this.saveExistingOrganization();
+        const selectedOrganization = this.props.selected.organization;
+        selectedOrganization.id = Math.max.apply(null, Object.keys(this.props.organizations)) + 1;
+        this.props.dispatch(updateValueInSelectedOrganization('id', selectedOrganization.id));
+        this.props.dispatch(setIsSelectedOrganization(true));
+        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
+            .then(this.setState({
+                snackbarOpen: true,
+                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.organization.name),
+            }))
     }
 
 
@@ -54,6 +74,13 @@ class OrganizationPage extends React.Component {
                         <IconButton onClick={() => this.props.dispatch(clearSelected()) }>
                             <ClearIcon/>
                         </IconButton>
+
+                        <Snackbar
+                            open={this.state.snackbarOpen}
+                            message={this.state.snackbarMessage}
+                            autoHideDuration={4000}
+                            onRequestClose={() => this.setState({snackbarOpen: false})}
+                        />
                     </div>
                     }
                 />

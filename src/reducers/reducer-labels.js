@@ -98,6 +98,9 @@ export default function () {
                 title: "אנשי קשר בארגון",
                 tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
                     {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}, {edit: "עריכה"}]
+            },
+            snackBar:{
+                savedSuccessfully: 'ארגון "{0}" נשמר בהצלחה',
             }
         },
     };
