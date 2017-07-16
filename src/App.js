@@ -10,6 +10,12 @@ class App extends React.Component {
         const styles = {
             container: {
                 margin: '80px 20px 20px 15px',
+            },
+            footer: {
+                marginBottom: 5,
+                textAlign: "center",
+                fontSize: 10,
+                color: "gray"
             }
         };
 
@@ -23,6 +29,8 @@ class App extends React.Component {
                     <div style={styles.container}>
                         {this.props.children}
                     </div>
+
+                    <div style={styles.footer}>Copyright © 2017 C-Point LTD - All Rights Reserved</div>
                 </div>
             </MuiThemeProvider>
         );
