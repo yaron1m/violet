@@ -1,5 +1,5 @@
 import React from 'react';
-import {IconButton} from "material-ui";
+import {IconButton, Snackbar} from "material-ui";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
 import {sendInformationToDatabase} from "../../../actions/action-database";
 import {selectOrder} from "../../../actions/action-orders";
@@ -8,12 +8,20 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 
 
 class OrderSaveButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            snackbarOpen: false,
+            snackbarMessage: "",
+        }
+    }
 
     render() {
         return (
+            <span>
             <IconButton
                 onClick={function () {
-                    if(!this.props.isSelected.organization){
+                    if (!this.props.isSelected.organization) {
                         alert("No organization selected");
                         return;
                     }
@@ -26,11 +34,22 @@ class OrderSaveButton extends React.Component {
                         .then(() => {
                             if (!this.props.isSelected.order)
                                 this.props.dispatch(selectOrder(this.props.selected.order))
+
+                            this.setState({
+                                snackbarOpen: true,
+                                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.order.id),
+                            })
                         });
 
                 }.bind(this)}
             > <SaveIcon /></IconButton>
-
+            <Snackbar
+                open={this.state.snackbarOpen}
+                message={this.state.snackbarMessage}
+                autoHideDuration={4000}
+                onRequestClose={() => this.setState({snackbarOpen: false})}
+            />
+        </span>
         )
     }
 

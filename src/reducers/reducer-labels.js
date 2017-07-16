@@ -86,6 +86,9 @@ export default function () {
                     notes: "הערות נוספות"
                 }
             },
+            snackBar:{
+                savedSuccessfully: 'הזמנה מספר {0} נשמרה בהצלחה',
+            }
         },
         OrganizationPage: {
             title: "פרטי ארגונים",
