@@ -88,6 +88,10 @@ export default function () {
             },
             snackBar:{
                 savedSuccessfully: 'הזמנה מספר {0} נשמרה בהצלחה',
+            },
+            dialog:{
+                noOrganizationSelectedTitle: "לא נבחר ארגון",
+                noOrganizationSelectedContent: "לשמירת הזמנה יש לבחור ארגון",
             }
         },
         OrganizationPage: {

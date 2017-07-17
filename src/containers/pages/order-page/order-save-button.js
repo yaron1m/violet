@@ -1,5 +1,5 @@
 import React from 'react';
-import {IconButton, Snackbar} from "material-ui";
+import {Dialog, FlatButton, IconButton, Snackbar} from "material-ui";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
 import {sendInformationToDatabase} from "../../../actions/action-database";
 import {selectOrder} from "../../../actions/action-orders";
@@ -13,6 +13,7 @@ class OrderSaveButton extends React.Component {
         this.state = {
             snackbarOpen: false,
             snackbarMessage: "",
+            dialogOpen: false,
         }
     }
 
@@ -22,7 +23,9 @@ class OrderSaveButton extends React.Component {
             <IconButton
                 onClick={function () {
                     if (!this.props.isSelected.organization) {
-                        alert("No organization selected");
+                        this.setState(Object.assign({}, this.state, {
+                            dialogOpen: true,
+                        }));
                         return;
                     }
                     if (!this.props.isSelected.order) {
@@ -33,22 +36,45 @@ class OrderSaveButton extends React.Component {
                     this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
                         .then(() => {
                             if (!this.props.isSelected.order)
-                                this.props.dispatch(selectOrder(this.props.selected.order))
+                                this.props.dispatch(selectOrder(this.props.selected.order));
 
-                            this.setState({
+                            this.setState(Object.assign({}, this.state, {
                                 snackbarOpen: true,
                                 snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.order.id),
-                            })
+                            }));
                         });
 
                 }.bind(this)}
             > <SaveIcon /></IconButton>
+
+
             <Snackbar
                 open={this.state.snackbarOpen}
                 message={this.state.snackbarMessage}
                 autoHideDuration={4000}
-                onRequestClose={() => this.setState({snackbarOpen: false})}
+                onRequestClose={() => this.setState(Object.assign({}, this.state, {
+                    snackbarOpen: true,
+                    snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.order.id),
+                }))}
             />
+
+            <Dialog
+                title={this.props.labels.dialog.noOrganizationSelectedTitle}
+                actions={      <FlatButton
+                    label="אישור"
+                    primary={true}
+                    onTouchTap={() => this.setState(Object.assign({}, this.state, {
+                        dialogOpen: false,
+                    }))}
+                />}
+                modal={false}
+                open={this.state.dialogOpen}
+                onRequestClose={() => this.setState(Object.assign({}, this.state, {
+                    dialogOpen: false,
+                }))}
+            >
+                 {this.props.labels.dialog.noOrganizationSelectedContent}
+            </Dialog>
         </span>
         )
     }
