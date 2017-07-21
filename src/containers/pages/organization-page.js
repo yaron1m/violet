@@ -47,7 +47,7 @@ class OrganizationPage extends React.Component {
         this.props.dispatch(updateValueInSelectedOrganization('id', selectedOrganization.id));
         this.props.dispatch(setIsSelectedOrganization(true));
         this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
-            .then(this.setState({
+            .then(this.setState({ //TODO what if writing failed?
                 snackbarOpen: true,
                 snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.organization.name),
             }))
