@@ -2,7 +2,7 @@ import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
-import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {updateValueInSelectedOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 
 

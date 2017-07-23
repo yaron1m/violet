@@ -10,9 +10,11 @@ import PageTitle from "../page-title";
 import IconButton from "material-ui/IconButton";
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
-import {clearSelectedOrder} from "../../../actions/action-selected";
+import {clearSelectedOrder} from "../../../store/selected/actions";
 import OrderSaveButton from './order-save-button'
 import {getLabels} from "../../../store/labels/reducer";
+import {getSelectedOrder, isSelectedOrder} from "../../../store/selected/reducer";
+import {getOrders} from "../../../store/orders/reducer";
 
 class OrderForm extends React.Component {
 
@@ -22,7 +24,7 @@ class OrderForm extends React.Component {
             <div>
                 <PageTitle
                     title={this.props.labels.title +
-                    (this.props.isSelected.order ? this.props.labels.orderNumberTitle + this.props.selected.order.id : this.props.labels.newOrderTitle)
+                    (this.props.isSelectedOrder ? this.props.labels.orderNumberTitle + this.props.selectedOrder.id : this.props.labels.newOrderTitle)
                     }
                     buttons={<div>
                         <OrderSaveButton/>
@@ -58,9 +60,9 @@ class OrderForm extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage,
-        selected: state.selected,
-        isSelected: state.isSelected,
-        orders: state.orders,
+        selectedOrder: getSelectedOrder(state),
+        isSelectedOrder: isSelectedOrder(state),
+        orders: getOrders(state),
     };
 }
 

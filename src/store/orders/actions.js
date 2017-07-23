@@ -1,9 +1,9 @@
 import * as actionTypes from './action-types';
 
-export function receiveOrganizations(organizations) {
+
+export function receiveOrders(organizations) {
     return {
-        type: actionTypes.RECEIVE_ORGANIZATIONS,
+        type: actionTypes.RECEIVE_ORDERS,
         payload: organizations,
     };
 }
-

@@ -4,18 +4,21 @@ import OrganizationSection from "./page-sections/organization-section";
 import {connect} from 'react-redux';
 import CustomPage from "../../components/custom-components/custom-page";
 import CustomTable from "../../components/custom-components/custom-table";
-import {selectOrder} from "../../actions/action-orders";
 import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {sendInformationToDatabase} from "../../actions/action-database";
-import {clearSelected, clearSelectedOrder, updateValueInSelectedOrganization} from "../../actions/action-selected";
+import {
+    clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization,
+    updateValueInSelectedOrganization
+} from "../../store/selected/actions";
 import {RaisedButton} from "material-ui";
 import Snackbar from "material-ui/Snackbar";
-import {setIsSelectedOrganization} from "../../store/organizations/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getNextOrganizationId} from "../../store/organizations/reducer";
+import {getOrdersByOrganization} from "../../store/orders/reducer";
+import {getSelectedOrganization, isSelectedOrganization} from "../../store/selected/reducer";
 
 class OrganizationPage extends React.Component {
 
@@ -28,30 +31,30 @@ class OrganizationPage extends React.Component {
     }
 
     saveExistingOrganization() {
-        if (!this.props.isSelected.organization) {
+        if (!this.props.isSelectedOrganization.organization) {
             alert("Can not save unselected organization");
             return;
         }
-        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
+        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
             .then(this.setState({
                 snackbarOpen: true,
-                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.organization.name),
+                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
             }))
     }
 
     saveNewOrganization() {
-        if (this.props.isSelected.organization) {
+        if (this.props.isSelectedOrganization.organization) {
             alert("Can not create new organization when other one is open");
             return;
         }
-        const selectedOrganization = this.props.selected.organization;
+        const selectedOrganization = this.props.selectedOrganization;
         selectedOrganization.id = this.props.getNextOrganizationId();
         this.props.dispatch(updateValueInSelectedOrganization('id', selectedOrganization.id));
         this.props.dispatch(setIsSelectedOrganization(true));
-        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
+        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
             .then(this.setState({ //TODO what if writing failed?
                 snackbarOpen: true,
-                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.organization.name),
+                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
             }))
     }
 
@@ -99,14 +102,11 @@ class OrganizationPage extends React.Component {
                                           this.props.history.push('/form');
                                       }}
                         />}
-                    titleButtonCondition={this.props.isSelected.organization}
+                    titleButtonCondition={this.props.isSelectedOrganization.organization}
                 >
                     <CustomTable
                         headers={this.props.labels.ordersTable.tableHeaders}
-                        data={
-                            Object.values(this.props.orders)
-                                .filter((order) => order.organizationId === this.props.selected.organization.id)
-                        }
+                        data={this.props.getOrdersByOrganization(this.props.selectedOrganization.id) }
                         onEditButton={(order) => {
                             this.props.dispatch(selectOrder(order));
                             this.props.history.push('/form');
@@ -118,7 +118,7 @@ class OrganizationPage extends React.Component {
                 <CustomPage title={this.props.labels.contactsTable.title}>
                     <CustomTable
                         headers={this.props.labels.contactsTable.tableHeaders}
-                        data={this.props.selected.organization.contacts}
+                        data={this.props.selectedOrganization.contacts}
                     />
                 </CustomPage>
             </div>
@@ -130,9 +130,9 @@ class OrganizationPage extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).OrganizationPage,
-        selected: state.selected,
-        isSelected: state.isSelected,
-        orders: state.orders,
+        selectedOrganization: getSelectedOrganization(state),
+        isSelectedOrganization: isSelectedOrganization(state),
+        getOrdersByOrganization : getOrdersByOrganization(state),
         getNextOrganizationId: getNextOrganizationId(state),
     };
 }

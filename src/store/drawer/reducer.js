@@ -1,4 +1,5 @@
-import {CHANGE_DRAWER_STATE} from '../actions/action-drawer'
+import * as actionTypes from './action-types';
+
 
 const initialState = {
     isOpen: false
@@ -6,7 +7,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case CHANGE_DRAWER_STATE:
+        case actionTypes.CHANGE_DRAWER_STATE:
             return {
                 isOpen: !state.isOpen,
             };
@@ -14,4 +15,8 @@ export default function (state = initialState, action) {
         default:
             return state;
     }
+}
+
+export function isDrawerOpen(state){
+    return state.drawer.isOpen;
 }

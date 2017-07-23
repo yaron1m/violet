@@ -1,6 +1,6 @@
 import {fetchData, sendData} from '../util/database';
 import {receiveOrganizations} from '../store/organizations/actions'
-import {receiveOrders} from './action-orders'
+import {receiveOrders} from '../store/orders/actions'
 import {receiveOfferedLectures} from "../store/offered-lectures/actions";
 
 

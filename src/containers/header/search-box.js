@@ -4,11 +4,11 @@ import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
-import {selectOrganization} from "../../store/organizations/actions";
 import {withRouter} from 'react-router'
-import {selectOrder} from "../../actions/action-orders";
 import {getLabels} from "../../store/labels/reducer";
 import {getOrganizations} from "../../store/organizations/reducer";
+import {selectOrder, selectOrganization} from "../../store/selected/actions";
+import {getOrders} from "../../store/orders/reducer";
 
 class SearchBox extends React.Component {
 
@@ -104,7 +104,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).header,
         organizations: getOrganizations(state),
-        orders: state.orders
+        orders: getOrders(state),
     };
 }
 

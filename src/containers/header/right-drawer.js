@@ -7,8 +7,9 @@ import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Web from 'material-ui/svg-icons/av/web';
-import {changeDrawerState} from "../../actions/action-drawer";
+import {changeDrawerState} from "../../store/drawer/actions";
 import {getLabels} from "../../store/labels/reducer";
+import {isDrawerOpen} from "../../store/drawer/reducer";
 
 
 class RightDrawer extends React.Component {
@@ -61,7 +62,7 @@ class RightDrawer extends React.Component {
         return (
             <Drawer
                 docked={true}
-                open={this.props.drawerOpen.isOpen}
+                open={this.props.isDrawerOpen}
             >
 
                 <Link to="/"
@@ -105,7 +106,7 @@ class RightDrawer extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state),
-        drawerOpen: state.drawerOpen,
+        isDrawerOpen: isDrawerOpen(state),
     };
 }
 export default connect(mapStateToProps)(RightDrawer);

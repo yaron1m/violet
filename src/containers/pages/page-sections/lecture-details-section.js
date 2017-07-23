@@ -5,7 +5,7 @@ import CustomToggle, {CustomToggleBox} from "../../../components/custom-componen
 import {connect} from 'react-redux';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
-import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {updateValueInSelectedOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 
 class LectureDetailsSection extends React.Component {

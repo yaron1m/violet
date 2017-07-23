@@ -6,8 +6,9 @@ import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
 import MoreIcon from 'material-ui/svg-icons/navigation/more-vert';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import {changeDrawerState} from "../../actions/action-drawer";
+import {changeDrawerState} from "../../store/drawer/actions";
 import {connect} from "react-redux";
+import {isDrawerOpen} from "../../store/drawer/reducer";
 
 class Header extends React.Component {
 
@@ -19,7 +20,7 @@ class Header extends React.Component {
                 overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
-                paddingLeft: 20 + (this.props.drawerOpen.isOpen ? this.props.muiTheme.drawer.width : 0),
+                paddingLeft: 20 + (this.props.isDrawerOpen ? this.props.muiTheme.drawer.width : 0),
                 paddingRight: 20,
             },
             menuButton: {
@@ -54,7 +55,7 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        drawerOpen: state.drawerOpen,
+        isDrawerOpen: isDrawerOpen(state),
     };
 }
 
