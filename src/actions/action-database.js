@@ -1,5 +1,5 @@
 import {fetchData, sendData} from '../util/database';
-import {receiveOrganizations} from './action-organizations'
+import {receiveOrganizations} from '../store/organizations/actions'
 import {receiveOrders} from './action-orders'
 import {receiveOfferedLectures} from "../store/offered-lectures/actions";
 

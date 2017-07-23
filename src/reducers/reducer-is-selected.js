@@ -1,8 +1,8 @@
-import {SELECT_ORGANIZATION, SET_IS_SELECTED_ORGANIZATION} from '../actions/action-organizations';
 import {SELECT_ORDER} from "../actions/action-orders";
 import {
     CLEAR_SELECTED, CLEAR_SELECTED_ORDER
 } from "../actions/action-selected";
+import {SELECT_ORGANIZATION, SET_IS_SELECTED_ORGANIZATION} from "../store/organizations/action-types";
 
 function getInitialState(){
     return {

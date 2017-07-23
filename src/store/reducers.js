@@ -1,20 +1,18 @@
 import {combineReducers} from 'redux';
-import OfferedLectures from './offered-lectures/reducer';
+import offeredLectures from './offered-lectures/reducer';
 import labels from './labels/reducer';
 import DrawerOpen from '../reducers/reducer-drawer';
-import IsFetching from '../reducers/reducer-is-fetching'
-import Organizations from '../reducers/reducer-organizations'
+import organizations from './organizations/reducer'
 import Selected from '../reducers/reducer-selected'
 import IsSelected from '../reducers/reducer-is-selected'
 import Orders from '../reducers/reducer-orders'
 import DatabaseStatus from '../reducers/reducer-database-status'
 
 const combinedReducers = combineReducers({
-    OfferedLectures,
+    offeredLectures,
     labels,
     drawerOpen: DrawerOpen,
-    isFetching: IsFetching,
-    organizations: Organizations,
+    organizations,
     selected: Selected,
     isSelected: IsSelected,
     orders: Orders,

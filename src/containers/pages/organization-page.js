@@ -13,8 +13,9 @@ import {sendInformationToDatabase} from "../../actions/action-database";
 import {clearSelected, clearSelectedOrder, updateValueInSelectedOrganization} from "../../actions/action-selected";
 import {RaisedButton} from "material-ui";
 import Snackbar from "material-ui/Snackbar";
-import {setIsSelectedOrganization} from "../../actions/action-organizations";
+import {setIsSelectedOrganization} from "../../store/organizations/actions";
 import {getLabels} from "../../store/labels/reducer";
+import {getNextOrganizationId} from "../../store/organizations/reducer";
 
 class OrganizationPage extends React.Component {
 
@@ -44,7 +45,7 @@ class OrganizationPage extends React.Component {
             return;
         }
         const selectedOrganization = this.props.selected.organization;
-        selectedOrganization.id = Math.max.apply(null, Object.keys(this.props.organizations)) + 1;
+        selectedOrganization.id = this.props.getNextOrganizationId();
         this.props.dispatch(updateValueInSelectedOrganization('id', selectedOrganization.id));
         this.props.dispatch(setIsSelectedOrganization(true));
         this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selected.organization.id, this.props.selected.organization))
@@ -132,7 +133,7 @@ function mapStateToProps(state) {
         selected: state.selected,
         isSelected: state.isSelected,
         orders: state.orders,
-        organizations: state.organizations,
+        getNextOrganizationId: getNextOrganizationId(state),
     };
 }
 

@@ -1,10 +1,10 @@
-import {SELECT_ORGANIZATION} from '../actions/action-organizations';
 import {SELECT_ORDER} from "../actions/action-orders";
 import {calculateDuration} from "../util/time-util";
 import {
     CLEAR_SELECTED, CLEAR_SELECTED_ORDER, UPDATE_VALUE_IN_SELECTED_ORDER,
     UPDATE_VALUE_IN_SELECTED_ORGANIZATION
 } from "../actions/action-selected";
+import {SELECT_ORGANIZATION} from "../store/organizations/action-types";
 
 function getInitialState(){
     return {
