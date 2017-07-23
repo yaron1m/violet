@@ -2,6 +2,7 @@ import React from 'react';
 import CustomCard from "../../../components/custom-components/custom-card";
 import {connect} from 'react-redux';
 import CustomTable from "../../../components/custom-components/custom-table";
+import {getLabels} from "../../../store/labels/reducer";
 
 
 class ContactsSection extends React.Component {
@@ -20,7 +21,7 @@ class ContactsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage.contactsSection,
+        labels: getLabels(state).orderPage.contactsSection,
         organizations: state.organizations,
         selected: state.selected,
     };

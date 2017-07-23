@@ -10,7 +10,7 @@ import registerServiceWorker from './util/registerServiceWorker';
 
 import './index.css';
 
-import allReducers from './reducers';
+import allReducers from './store/reducers';
 import Routes from "./routes";
 import {fetchInformation} from "./actions/action-database";
 

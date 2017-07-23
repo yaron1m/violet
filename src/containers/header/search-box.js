@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {selectOrganization} from "../../actions/action-organizations";
 import {withRouter} from 'react-router'
 import {selectOrder} from "../../actions/action-orders";
+import {getLabels} from "../../store/labels/reducer";
 
 class SearchBox extends React.Component {
 
@@ -100,7 +101,7 @@ class SearchBox extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.header,
+        labels: getLabels(state).header,
         organizations: state.organizations,
         orders: state.orders
     };

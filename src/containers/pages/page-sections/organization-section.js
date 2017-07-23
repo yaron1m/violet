@@ -3,6 +3,7 @@ import CustomPage from "../../../components/custom-components/custom-page";
 import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 import {updateValueInSelectedOrganization} from "../../../actions/action-selected";
+import {getLabels} from "../../../store/labels/reducer";
 
 class OrganizationSection extends React.Component {
 
@@ -27,7 +28,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: state.softwareLabels.orderPage.organizationSection,
+        labels: getLabels(state).orderPage.organizationSection,
         selected: state.selected,
         allowEdit: ownProps.allowEdit
     };

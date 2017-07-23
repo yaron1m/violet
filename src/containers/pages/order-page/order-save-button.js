@@ -5,6 +5,7 @@ import {sendInformationToDatabase} from "../../../actions/action-database";
 import {selectOrder} from "../../../actions/action-orders";
 import connect from "react-redux/es/connect/connect";
 import SaveIcon from 'material-ui/svg-icons/content/save';
+import {getLabels} from "../../../store/labels/reducer";
 
 
 class OrderSaveButton extends React.Component {
@@ -84,7 +85,7 @@ class OrderSaveButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage,
+        labels: getLabels(state).orderPage,
         selected: state.selected,
         isSelected: state.isSelected,
         orders: state.orders,

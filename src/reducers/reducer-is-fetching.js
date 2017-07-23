@@ -1,6 +1,7 @@
-import {REQUEST_DATA, RECEIVE_OFFERED_LECTURES} from "../actions/action-database";
+import {REQUEST_DATA} from "../actions/action-database";
 import {RECEIVE_ORDERS} from "../actions/action-orders";
 import {RECEIVE_ORGANIZATIONS} from "../actions/action-organizations";
+import {RECEIVE_OFFERED_LECTURES} from "../store/offered-lectures/action-types";
 
 const initialState = {
     isFetching: false,

@@ -3,6 +3,7 @@ import CustomPage from "../../../components/custom-components/custom-page";
 import {connect} from 'react-redux';
 import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {getLabels} from "../../../store/labels/reducer";
 
 class NotesSection extends React.Component {
 
@@ -25,7 +26,7 @@ class NotesSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage.notesSection,
+        labels: getLabels(state).orderPage.notesSection,
         selected: state.selected,
     };
 }

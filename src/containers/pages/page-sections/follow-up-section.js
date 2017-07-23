@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
 import CustomToggle from "../../../components/custom-components/custom-toggle";
+import {getLabels} from "../../../store/labels/reducer";
 
 class FollowUpSection extends React.Component {
 
@@ -59,7 +60,7 @@ class FollowUpSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage.followUpSection,
+        labels: getLabels(state).orderPage.followUpSection,
         selected: state.selected
     };
 }

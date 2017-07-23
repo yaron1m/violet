@@ -3,6 +3,7 @@ import CustomCard from "../../../components/custom-components/custom-card";
 import {CustomText, CustomDatePicker} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {getLabels} from "../../../store/labels/reducer";
 
 
 class OrganizationSection extends React.Component {
@@ -46,7 +47,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage.paymentSection,
+        labels: getLabels(state).orderPage.paymentSection,
         selected: state.selected,
     };
 }

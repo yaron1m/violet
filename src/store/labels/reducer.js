@@ -1,3 +1,8 @@
+export function getLabels(state){
+    return state.labels
+}
+
+
 export default function () {
     return {
         softwareName: "Violet",

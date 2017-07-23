@@ -14,6 +14,7 @@ import {clearSelected, clearSelectedOrder, updateValueInSelectedOrganization} fr
 import {RaisedButton} from "material-ui";
 import Snackbar from "material-ui/Snackbar";
 import {setIsSelectedOrganization} from "../../actions/action-organizations";
+import {getLabels} from "../../store/labels/reducer";
 
 class OrganizationPage extends React.Component {
 
@@ -127,7 +128,7 @@ class OrganizationPage extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.OrganizationPage,
+        labels: getLabels(state).OrganizationPage,
         selected: state.selected,
         isSelected: state.isSelected,
         orders: state.orders,

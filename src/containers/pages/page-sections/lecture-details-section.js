@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
 import {updateValueInSelectedOrder} from "../../../actions/action-selected";
+import {getLabels} from "../../../store/labels/reducer";
 
 class LectureDetailsSection extends React.Component {
 
@@ -61,7 +62,7 @@ class LectureDetailsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage.lectureDetailsSection,
+        labels:getLabels(state).orderPage.lectureDetailsSection,
         lectureTimes: state.lectureTimes,
         selected: state.selected,
     };

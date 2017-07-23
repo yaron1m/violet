@@ -12,6 +12,7 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import {clearSelectedOrder} from "../../../actions/action-selected";
 import OrderSaveButton from './order-save-button'
+import {getLabels} from "../../../store/labels/reducer";
 
 class OrderForm extends React.Component {
 
@@ -56,7 +57,7 @@ class OrderForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels.orderPage,
+        labels: getLabels(state).orderPage,
         selected: state.selected,
         isSelected: state.isSelected,
         orders: state.orders,

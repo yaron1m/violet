@@ -1,6 +1,8 @@
 import {fetchData, sendData} from '../util/database';
 import {receiveOrganizations} from './action-organizations'
 import {receiveOrders} from './action-orders'
+import {receiveOfferedLectures} from "../store/offered-lectures/actions";
+
 
 export function fetchInformation() {
     return function (dispatch) {
@@ -28,15 +30,6 @@ function requestData(numberOfRequests) {
         payload: numberOfRequests,
     };
 }
-
-export const RECEIVE_OFFERED_LECTURES = "RECEIVE_OFFERED_LECTURES";
-function receiveOfferedLectures(offeredLectures) {
-    return {
-        type: RECEIVE_OFFERED_LECTURES,
-        payload: offeredLectures,
-    };
-}
-
 
 export const IS_SENDING_TO_DATABASE = "IS_SENDING_TO_DATABASE";
 export function isSendingToDatabase() {

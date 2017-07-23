@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Web from 'material-ui/svg-icons/av/web';
 import {changeDrawerState} from "../../actions/action-drawer";
+import {getLabels} from "../../store/labels/reducer";
 
 
 class RightDrawer extends React.Component {
@@ -103,7 +104,7 @@ class RightDrawer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: state.softwareLabels,
+        labels: getLabels(state),
         drawerOpen: state.drawerOpen,
     };
 }
