@@ -4,6 +4,7 @@ import {CustomText} from "../../../components/custom-components/custom-text-fiel
 import {connect} from 'react-redux';
 import {updateValueInSelectedOrganization} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
+import {getSelectedOrder} from "../../../store/selected/reducer";
 
 class OrganizationSection extends React.Component {
 
@@ -29,7 +30,7 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).orderPage.organizationSection,
-        selected: state.selected,
+        selected: getSelectedOrder(state),
         allowEdit: ownProps.allowEdit
     };
 }

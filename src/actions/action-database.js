@@ -1,4 +1,4 @@
-import {fetchData, sendData} from '../util/database';
+import {fetchData, sendData} from '../util/firebase-handler';
 import {receiveOrganizations} from '../store/organizations/actions'
 import {receiveOrders} from '../store/orders/actions'
 import {receiveOfferedLectures} from "../store/offered-lectures/actions";

@@ -102,7 +102,7 @@ class OrganizationPage extends React.Component {
                                           this.props.history.push('/form');
                                       }}
                         />}
-                    titleButtonCondition={this.props.isSelectedOrganization.organization}
+                    titleButtonCondition={this.props.isSelectedOrganization}
                 >
                     <CustomTable
                         headers={this.props.labels.ordersTable.tableHeaders}

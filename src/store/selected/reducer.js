@@ -1,14 +1,11 @@
-import {calculateDuration} from "../../util/time-util";
 import * as actionTypes from './action-types';
 import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({
     organization: {},
     order: {},
-    isSelected:{
-        organization: false,
-        order: false,
-    }
+    isSelectedOrganization: false,
+    isSelectedOrder: false,
 });
 
 export default (state = initialState, action) => {
@@ -16,15 +13,18 @@ export default (state = initialState, action) => {
         case actionTypes.SELECT_ORGANIZATION:
             return state.merge({
                 organization: action.payload,
+                isSelectedOrganization: true,
+            });
+
+        case actionTypes.SET_IS_SELECTED_ORGANIZATION:
+            return state.merge({
+                isSelectedOrganization: true,
             });
 
         case actionTypes.SELECT_ORDER:
-            let selectedOrder = action.payload;
-            if (selectedOrder.lectureTimes) //if there are times //TODO what if there were and deleted?
-                selectedOrder.lectureTimes = calculateDuration(selectedOrder.lectureTimes);
-
             return state.merge({
-                order: selectedOrder,
+                order: action.payload,
+                isSelectedOrder: true,
             });
 
         case actionTypes.UPDATE_VALUE_IN_SELECTED_ORDER:
@@ -60,7 +60,7 @@ export function getSelectedOrganization(state){
 }
 
 export function isSelectedOrganization(state){
-    return state.selected.isSelected.organization;
+    return state.selected.isSelectedOrganization;
 }
 
 export function getSelectedOrder(state){
@@ -68,7 +68,7 @@ export function getSelectedOrder(state){
 }
 
 export function isSelectedOrder(state){
-    return state.selected.isSelected.order;
+    return state.selected.isSelectedOrder;
 }
 
 

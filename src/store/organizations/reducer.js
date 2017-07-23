@@ -19,3 +19,7 @@ export function getOrganizations(state){
 export function getNextOrganizationId(state){
     return () => _.parseInt(_.max(_.keys(getOrganizations(state)))) + 1;
 }
+
+export function getOrganizationById(state, id){
+    return getOrganizations(state)[id];
+}

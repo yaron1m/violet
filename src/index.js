@@ -6,7 +6,6 @@ import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 import injectTapEventPlugin from "react-tap-event-plugin";
-import registerServiceWorker from './util/registerServiceWorker';
 
 import './index.css';
 
@@ -33,6 +32,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-registerServiceWorker();
 
 export default store;
