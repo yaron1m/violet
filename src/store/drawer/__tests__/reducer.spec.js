@@ -18,20 +18,20 @@ describe('store/offered-lectures/reducer', () => {
 
     it('should switch isOpen with default state', () => {
         const action = {type: actionTypes.CHANGE_DRAWER_STATE};
-        Reducer(uut).expect(action).toReturnState( {isOpen: true});
+        Reducer(uut).expect(action).toReturnState({isOpen: true});
     });
 
     it('should switch isOpen with false state', () => {
         const action = {type: actionTypes.CHANGE_DRAWER_STATE};
         const existingState = {isOpen: false};
 
-        Reducer(uut).withState(existingState).expect(action).toReturnState( {isOpen: true});
+        Reducer(uut).withState(existingState).expect(action).toReturnState({isOpen: true});
     });
 
     it('should switch isOpen with true sate', () => {
         const action = {type: actionTypes.CHANGE_DRAWER_STATE};
         const existingState = {isOpen: true};
 
-        Reducer(uut).withState(existingState).expect(action).toReturnState( {isOpen: false});
+        Reducer(uut).withState(existingState).expect(action).toReturnState({isOpen: false});
     });
 });

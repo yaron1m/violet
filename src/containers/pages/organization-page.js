@@ -132,7 +132,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).OrganizationPage,
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),
-        getOrdersByOrganization : getOrdersByOrganization(state),
+        getOrdersByOrganization : (organizationId) => getOrdersByOrganization(state, organizationId),
         getNextOrganizationId: getNextOrganizationId(state),
     };
 }
