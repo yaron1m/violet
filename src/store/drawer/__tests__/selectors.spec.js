@@ -3,7 +3,7 @@ import {Selector} from 'redux-testkit';
 import * as uut from '../reducer';
 
 
-describe('store/offered-lectures/selectors', () => {
+describe('store/drawer/selectors', () => {
 
     it('should get drawer- isOpen', () => {
         const existingState = {drawer: {isOpen: false}};

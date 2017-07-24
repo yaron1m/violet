@@ -1,7 +1,7 @@
 import * as actionTypes from './action-types';
 import _ from 'lodash';
 
-export default (state = {}, action) => {
+export default (state = {}, action = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_ORGANIZATIONS:
             return action.payload;
@@ -17,7 +17,7 @@ export function getOrganizations(state){
 }
 
 export function getNextOrganizationId(state){
-    return () => _.parseInt(_.max(_.keys(getOrganizations(state)))) + 1;
+    return _.parseInt(_.max(_.keys(getOrganizations(state)))) + 1;
 }
 
 export function getOrganizationById(state, id){

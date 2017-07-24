@@ -6,7 +6,7 @@ const initialState = {
     isOpen: false
 };
 
-describe('store/offered-lectures/reducer', () => {
+describe('store/drawer/reducer', () => {
 
     it('should have initial state', () => {
         expect(uut()).toEqual(initialState);
