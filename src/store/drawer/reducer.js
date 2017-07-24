@@ -5,7 +5,7 @@ const initialState = {
     isOpen: false
 };
 
-export default function (state = initialState, action) {
+export default function (state = initialState, action = {}) {
     switch (action.type) {
         case actionTypes.CHANGE_DRAWER_STATE:
             return {
@@ -17,6 +17,6 @@ export default function (state = initialState, action) {
     }
 }
 
-export function isDrawerOpen(state){
+export function isDrawerOpen(state) {
     return state.drawer.isOpen;
 }
