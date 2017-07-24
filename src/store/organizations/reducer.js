@@ -12,14 +12,18 @@ export default (state = {}, action = {}) => {
 }
 
 // Selectors:
-export function getOrganizations(state){
+export function getOrganizations(state) {
     return state.organizations;
 }
 
-export function getNextOrganizationId(state){
-    return _.parseInt(_.max(_.keys(getOrganizations(state)))) + 1;
+export function getNextOrganizationId(state) {
+    const organizations = getOrganizations(state);
+    const keys = _.keys(organizations);
+    if (!organizations || keys.length === 0)
+        return null;
+    return _.parseInt(_.max(_.keys(organizations))) + 1;
 }
 
-export function getOrganizationById(state, id){
+export function getOrganizationById(state, id) {
     return getOrganizations(state)[id];
 }

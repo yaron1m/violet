@@ -40,10 +40,18 @@ const sampleState = Immutable({
     }
 });
 
+const emptyState = {
+    organizations:{}
+};
+
 describe('store/organizations/selectors', () => {
 
     it('should get organizations', () => {
         Selector(uut.getOrganizations).expect(sampleState).toReturn(sampleState.organizations);
+    });
+
+    it('should get empty object', () => {
+        Selector(uut.getOrganizations).expect(emptyState).toReturn({});
     });
 
     it('should get next organization id', () => {
@@ -52,8 +60,16 @@ describe('store/organizations/selectors', () => {
         Selector(uut.getNextOrganizationId).expect(sampleState).toReturn(result);
     });
 
+    it('should get null', () => {
+        Selector(uut.getNextOrganizationId).expect(emptyState).toReturn(null);
+    });
+
     it('should get organization by id', () => {
         Selector(uut.getOrganizationById).expect(sampleState, 0).toReturn(sampleState.organizations[0]);
         Selector(uut.getOrganizationById).expect(sampleState, 2).toReturn(sampleState.organizations[2]);
+    });
+
+    it('should get undefined', () => {
+        Selector(uut.getOrganizationById).expect(sampleState, 999).toReturn(undefined);
     });
 });
