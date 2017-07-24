@@ -24,7 +24,10 @@
     "redux-thunk": "^2.2.0",
     "seamless-immutable": "^7.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^20.0.4",
+    "redux-testkit": "^1.0.6"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

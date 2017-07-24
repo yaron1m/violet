@@ -1,7 +1,8 @@
 import * as actionTypes from './action-types';
+import _ from 'lodash';
 
 
-export default (state = {}, action) => {
+export default (state = {}, action={}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_OFFERED_LECTURES:
             return action.payload;
@@ -12,5 +13,5 @@ export default (state = {}, action) => {
 }
 
 export function getOfferedLectures(state){
-    return state.offeredLectures;
+    return _.keys(state.offeredLectures).filter((lecture) => state.offeredLectures[lecture]);
 }
