@@ -1,6 +1,5 @@
 import * as firebase from 'firebase';
-import Store from '../index'
-import {sentToDatabase} from '../actions/action-database'
+import {sentToDatabase} from './actions'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
@@ -13,23 +12,27 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export default firebase.database();
+firebase.database();
 
-export function fetchData(collectionName, actionCallback, dispatch) {
+export function fetchData(collectionName, actionCallback, dispatch, errorCallback) {
     firebase.database().ref(collectionName).on('value', snapshot => {
             dispatch(actionCallback(snapshot.val()));
         },
         error => {
-            console.log("The request for " + collectionName + " failed: " + error.code);
+            if (errorCallback)
+                errorCallback(collectionName, error.code);
+            else
+                console.Error("The request for " + collectionName + " failed: " + error.code);
         });
 }
-export function sendData(collectionName, value) {
+
+export function sendData(collectionName, value, dispatch) {
     return firebase.database().ref(collectionName).set(value, error => {
-        if(error) {
+        if (error) {
             console.error("The data send request for " + collectionName + " failed: " + error.code);
-            Store.dispatch(sentToDatabase(false));
+            dispatch(sentToDatabase(false));
         }
         else
-            Store.dispatch(sentToDatabase(true));
-        });
+            dispatch(sentToDatabase(true));
+    });
 }

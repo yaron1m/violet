@@ -1,7 +1,42 @@
-import {fetchData, sendData} from '../util/firebase-handler';
-import {receiveOrganizations} from '../store/organizations/actions'
-import {receiveOrders} from '../store/orders/actions'
-import {receiveOfferedLectures} from "../store/offered-lectures/actions";
+import * as actionTypes from './action-types';
+import {fetchData, sendData} from './firebase-handler';
+import {receiveOrganizations} from '../organizations/actions'
+import {receiveOrders} from '../orders/actions'
+import {receiveOfferedLectures} from "../offered-lectures/actions";
+
+
+export function changeLoginStatus(userId){
+    return{
+        type: actionTypes.CHANGE_LOGIN_STATUS,
+        payload: userId,
+    }
+}
+
+
+export function fetchDataFromDatabase(){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export function fetchInformation() {

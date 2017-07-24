@@ -11,7 +11,7 @@ import './index.css';
 
 import allReducers from './store/reducers';
 import Routes from "./routes";
-import {fetchInformation} from "./actions/action-database";
+import {fetchInformation} from "./store/firebase/actions";
 
 
 injectTapEventPlugin();

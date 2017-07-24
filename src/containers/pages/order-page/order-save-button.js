@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dialog, FlatButton, IconButton, Snackbar} from "material-ui";
 import {selectOrder, updateValueInSelectedOrder} from "../../../store/selected/actions";
-import {sendInformationToDatabase} from "../../../actions/action-database";
+import {sendInformationToDatabase} from "../../../store/firebase/actions";
 import connect from "react-redux/es/connect/connect";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import {getLabels} from "../../../store/labels/reducer";

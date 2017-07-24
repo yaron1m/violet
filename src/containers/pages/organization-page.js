@@ -8,7 +8,7 @@ import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
-import {sendInformationToDatabase} from "../../actions/action-database";
+import {sendInformationToDatabase} from "../../store/firebase/actions";
 import {
     clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization,
     updateValueInSelectedOrganization
