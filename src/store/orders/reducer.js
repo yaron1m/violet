@@ -16,6 +16,10 @@ export function getOrders(state){
     return state.orders;
 }
 
+export function getOrderById(state, id){
+    return state.orders[id];
+}
+
 export function getOrdersByOrganization(state, organizationId){
     return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId)
 

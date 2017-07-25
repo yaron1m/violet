@@ -27,18 +27,16 @@ export default (state = initialState, action) => {
                 isSelectedOrder: true,
             });
 
-        case actionTypes.UPDATE_VALUE_IN_SELECTED_ORDER:
+        case actionTypes.UPDATE_SELECTED_ORDER:
             let updatedOrder = state.order;
             updatedOrder[action.key] = action.payload;
             return state.merge({
                 order: updatedOrder
             });
 
-        case actionTypes.UPDATE_VALUE_IN_SELECTED_ORGANIZATION:
-            let updatedOrganization = state.organization;
-            updatedOrganization[action.key] = action.payload;
+        case actionTypes.UPDATE_SELECTED_ORGANIZATION:
             return state.merge({
-                order: updatedOrganization
+                organization: action.payload
             });
 
         case actionTypes.CLEAR_SELECTED:

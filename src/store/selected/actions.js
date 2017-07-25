@@ -1,10 +1,12 @@
 import * as actionTypes from './action-types';
 import {calculateDuration} from "../../util/time-util";
 import {getOrganizationById} from "../organizations/reducer";
+import {getOrderById} from "../orders/reducer";
+import {getSelectedOrder, getSelectedOrganization} from "./reducer";
 
 // Organizations:
 export function selectOrganization(organizationId) {
-    return async function selectOrganization(dispatch, getState) {
+    return function selectOrganization(dispatch, getState) {
         const organization = getOrganizationById(getState(), organizationId);
         dispatch({
             type: actionTypes.SELECT_ORGANIZATION,
@@ -13,6 +15,16 @@ export function selectOrganization(organizationId) {
     };
 }
 
+export function updateSelectedOrganization(key, value) {
+    return function updateSelectedOrganization(dispatch, getState) {
+        const selectedOrganization = getSelectedOrganization(getState());
+        selectedOrganization[key] = value;
+        dispatch({
+            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
+            payload: selectedOrganization,
+        });
+    }
+}
 
 export function setIsSelectedOrganization(isSelected) {
     return {
@@ -24,36 +36,28 @@ export function setIsSelectedOrganization(isSelected) {
 
 // Orders:
 
-export function selectOrder(order) {
-    if (order.lectureTimes) //if there are times //TODO what if there were and deleted?
-        order.lectureTimes = calculateDuration(order.lectureTimes);
-
-    return {
-        type: actionTypes.SELECT_ORDER,
-        payload: order
-    }
-}
-
-
-
-
-
-export function updateValueInSelectedOrganization(key, value) {
-    return {
-        type: actionTypes.UPDATE_VALUE_IN_SELECTED_ORGANIZATION,
-        key: key,
-        payload: value
+export function selectOrder(orderId) {
+    return async function selectOrganization(dispatch, getState) {
+        const order = getOrderById(getState(), orderId);
+        dispatch({
+            type: actionTypes.SELECT_ORDER,
+            payload: order
+        })
     };
 }
 
-
-export function updateValueInSelectedOrder(key, value) {
-    return {
-        type: actionTypes.UPDATE_VALUE_IN_SELECTED_ORDER,
-        key: key,
-        payload: value
+export function updateSelectedOrder(key, value) {
+    return function updateSelectedOrganization(dispatch, getState) {
+        const selectedOrder = getSelectedOrder(getState());
+        selectedOrder[key] = value;
+        dispatch({
+            type: actionTypes.UPDATE_SELECTED_ORDER,
+            payload: selectedOrder,
+        });
     }
 }
+
+// Clear
 
 export function clearSelected(){
     return {

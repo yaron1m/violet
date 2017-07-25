@@ -76,6 +76,10 @@ describe('store/orders/selectors', () => {
         Selector(uut.getOrders).expect(sampleState).toReturn(sampleState.orders);
     });
 
+    it('should get order by id', () => {
+        Selector(uut.getOrderById).expect(sampleState, 0).toReturn(sampleState.orders[0]);
+    });
+
     it('should get orders of organization 1', () => {
         const result = [sampleState.orders[1], sampleState.orders[3]];
         const organizationId = 1;
