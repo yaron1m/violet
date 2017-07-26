@@ -20,16 +20,15 @@ export function updateSelectedOrganization(key, value) {
         const selectedOrganization = getSelectedOrganization(getState());
         selectedOrganization[key] = value;
         dispatch({
-            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
+            type: actionTypes.SELECT_ORGANIZATION,
             payload: selectedOrganization,
         });
     }
 }
 
-export function setIsSelectedOrganization(isSelected) {
+export function setIsSelectedOrganization() {
     return {
         type: actionTypes.SET_IS_SELECTED_ORGANIZATION,
-        payload: isSelected
     }
 }
 

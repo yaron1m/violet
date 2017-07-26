@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case actionTypes.CHANGE_LOGIN_STATUS:
             let logged = !(action.payload === null);
-            return state.merge({
+            return Immutable.merge(state,{
                 loggedIn: logged,
                 userId: logged ? action.payload : undefined,
             });

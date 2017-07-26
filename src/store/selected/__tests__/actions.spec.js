@@ -110,7 +110,7 @@ describe('store/selected/actions/organizations', () => {
         const expectedOrganization = sampleOrganization();
         expectedOrganization[key] = value;
         const expectedAction = {
-            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
+            type: actionTypes.SELECT_ORGANIZATION,
             payload: expectedOrganization,
         };
 
@@ -121,14 +121,8 @@ describe('store/selected/actions/organizations', () => {
     });
 
     it('should create an action', () => {
-        expect(actions.setIsSelectedOrganization(true)).toEqual({
+        expect(actions.setIsSelectedOrganization()).toEqual({
             type: actionTypes.SET_IS_SELECTED_ORGANIZATION,
-            payload: true,
-        });
-
-        expect(actions.setIsSelectedOrganization(false)).toEqual({
-            type: actionTypes.SET_IS_SELECTED_ORGANIZATION,
-            payload: false,
         });
     });
 });
