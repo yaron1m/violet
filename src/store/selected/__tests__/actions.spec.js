@@ -160,6 +160,12 @@ describe('store/selected/actions/orders', () => {
         expect(dispatches.length).toBe(1);
         expect(dispatches[0].getAction()).toEqual(expectedAction);
     });
+
+    it('should create an action', () => {
+        expect(actions.setIsSelectedOrder()).toEqual({
+            type: actionTypes.SET_IS_SELECTED_ORDER,
+        });
+    });
 });
 
 describe('store/selected/actions/clear', () => {

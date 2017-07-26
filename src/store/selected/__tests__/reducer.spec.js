@@ -7,6 +7,7 @@ const initialState = Immutable({
     organization: {},
     order: {},
     isSelectedOrganization: false,
+    isSelectedOrder: false,
 });
 
 function sampleOrganization() {
@@ -98,7 +99,8 @@ function sampleState(){
         selected:{
             organization: sampleOrganization(),
             isSelectedOrganization: true,
-            order:{id:1}
+            order:{id:1},
+            isSelectedOrder: false,
         }
     };
 }
@@ -153,6 +155,7 @@ describe('store/selected/reducer/orders', () => {
 
         Reducer(uut).expect(action).toChangeInState({
             order: sampleOrder(),
+            isSelectedOrder: true,
         });
     });
 
@@ -162,6 +165,18 @@ describe('store/selected/reducer/orders', () => {
         Reducer(uut).withState(sampleState()).expect(action).toChangeInState({
             organization: sampleOrder(),
             isSelectedOrganization: true,
+        });
+    });
+
+    it('should change isSelectedOrder to true', () => {
+        const action = {type: actionTypes.SET_IS_SELECTED_ORDER};
+
+        Reducer(uut).expect(action).toChangeInState({
+            isSelectedOrder: true,
+        });
+
+        Reducer(uut).withState(sampleState()).expect(action).toChangeInState({
+            isSelectedOrder: true,
         });
     });
 });

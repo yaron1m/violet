@@ -56,6 +56,12 @@ export function updateSelectedOrder(key, value) {
     }
 }
 
+export function setIsSelectedOrder() {
+    return {
+        type: actionTypes.SET_IS_SELECTED_ORDER,
+    }
+}
+
 // Clear
 
 export function clearSelected(){

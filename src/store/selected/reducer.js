@@ -5,6 +5,7 @@ const initialState = Immutable({
     organization: {},
     order: {},
     isSelectedOrganization: false,
+    isSelectedOrder: false,
 });
 
 export default (state = initialState, action = {}) => {
@@ -23,6 +24,12 @@ export default (state = initialState, action = {}) => {
         case actionTypes.SELECT_ORDER:
             return Immutable.merge(state,{
                 order: action.payload,
+                isSelectedOrder: true,
+            });
+
+        case actionTypes.SET_IS_SELECTED_ORDER:
+            return Immutable.merge(state,{
+                isSelectedOrder: true,
             });
 
         case actionTypes.CLEAR_SELECTED:
@@ -49,4 +56,8 @@ export function isSelectedOrganization(state){
 
 export function getSelectedOrder(state){
     return state.selected.order;
+}
+
+export function isSelectedOrder(state){
+    return state.selected.isSelectedOrder;
 }
