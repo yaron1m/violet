@@ -10,6 +10,7 @@ import {
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import {IconButton} from "material-ui";
 import PropTypes from 'prop-types';
+import * as _ from "lodash";
 
 
 class CustomTable extends React.Component {
@@ -29,12 +30,12 @@ class CustomTable extends React.Component {
                 >
 
                     <TableRow>
-                        {headerValues.map((title, index) => {
+                        {_.map(headerValues,((title, index) => {
                             if (title === "עריכה")
                                 return ( <TableHeaderColumn key={index}>{title}</TableHeaderColumn>);
                             return ( <TableHeaderColumn key={index}>{title}</TableHeaderColumn>);
 
-                        })}
+                        }))}
 
                     </TableRow>
 
@@ -45,11 +46,11 @@ class CustomTable extends React.Component {
                     showRowHover={true}
                 >
                     {
-                        Object.keys(data).map(
+                        _.map(data, (
                             index =>
                                 <TableRow key={index} selectable={!this.props.showCheckBox}>
                                     {
-                                        headerKeys.map((headerKey) => {
+                                        _.map(headerKeys,(headerKey) => {
                                             if (headerKey === "edit")
                                                 return ( <TableRowColumn key={headerKey}>
                                                     <IconButton onClick={() => this.props.onEditButton(data[index])}>
@@ -61,7 +62,7 @@ class CustomTable extends React.Component {
 
                                         })}
                                 </TableRow>
-                        )
+                        ))
                     }
                 </TableBody>
 

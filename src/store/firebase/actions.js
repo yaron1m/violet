@@ -55,9 +55,7 @@ export function signOutRequest() {
 
         firebase.auth().signOut()
             .then(() => {
-                dispatch({
-                    type: actionTypes.SIGNED_OUT,
-                })
+                dispatch({type: actionTypes.SIGNED_OUT})
             })
             .catch(function (error) {
                 console.error(error);
@@ -65,27 +63,17 @@ export function signOutRequest() {
     }
 }
 
-export function afterSignedIn(user){
-    return function afterSignedIn(dispatch){
+export function afterSignedIn(user) {
+    return function afterSignedIn(dispatch) {
         dispatch({
             type: actionTypes.SIGNED_IN,
-            userId: user
+            userId: user.uid,
         });
 
+        fetchData('orders', receiveOrders, dispatch);
+        fetchData('organizations', receiveOrganizations, dispatch);
+        fetchData('offered-lectures', receiveOfferedLectures, dispatch);
     }
-}
-
-
-export function changeLoginStatus(userId) {
-    return {
-        type: actionTypes.CHANGE_LOGIN_STATUS,
-        payload: userId,
-    }
-}
-
-
-export function fetchDataFromDatabase() {
-
 }
 
 
@@ -113,16 +101,6 @@ export function sendData(collectionName, value, dispatch) {
 }
 
 
-export function fetchInformation() {
-    return function (dispatch) {
-        dispatch(requestData(3));
-        fetchData('orders', receiveOrders, dispatch);
-        fetchData('organizations', receiveOrganizations, dispatch);
-        fetchData('offered-lectures', receiveOfferedLectures, dispatch);
-
-    }
-}
-
 export function sendInformationToDatabase(collectionName, value) {
     return function (dispatch) {
         dispatch(isSendingToDatabase());
@@ -130,14 +108,6 @@ export function sendInformationToDatabase(collectionName, value) {
         //TODO dispatch sent
 
     }
-}
-
-export const REQUEST_DATA = "REQUEST_DATA";
-function requestData(numberOfRequests) {
-    return {
-        type: REQUEST_DATA,
-        payload: numberOfRequests,
-    };
 }
 
 export const IS_SENDING_TO_DATABASE = "IS_SENDING_TO_DATABASE";
