@@ -40,7 +40,7 @@ export default (state = initialState, action = {}) => {
 
 // Selectors:
 export function getSelectedOrganization(state){
-    return state.selected.organization;
+    return isSelectedOrganization(state) ? state.selected.organization : {};
 }
 
 export function isSelectedOrganization(state){
@@ -50,35 +50,3 @@ export function isSelectedOrganization(state){
 export function getSelectedOrder(state){
     return state.selected.order;
 }
-
-//Is selected:
-
-// export default (state = getInitialState(), action) => {
-//     switch (action.type) {
-//         case SELECT_ORGANIZATION:
-//             return Object.assign({}, state, {
-//                 organization: true,
-//             });
-//
-//         case SELECT_ORDER:
-//             return Object.assign({}, state, {
-//                 order: true,
-//             });
-//
-//         case CLEAR_SELECTED:
-//             return getInitialState();
-//
-//         case CLEAR_SELECTED_ORDER:
-//             return Object.assign({}, state, {
-//                 order: false,
-//             });
-//
-//         case SET_IS_SELECTED_ORGANIZATION:
-//             return Object.assign({}, state, {
-//                 organization: action.payload,
-//             });
-//
-//         default:
-//             return state
-//     }
-// }
