@@ -5,7 +5,7 @@ import CustomToggle, {CustomToggleBox} from "../../../components/custom-componen
 import {connect} from 'react-redux';
 import {Paper} from "material-ui";
 import CustomTable from "../../../components/custom-components/custom-table";
-import {updateValueInSelectedOrder} from "../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 
 class LectureDetailsSection extends React.Component {
@@ -20,7 +20,7 @@ class LectureDetailsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
-            updateAction: updateValueInSelectedOrder,
+            updateAction: updateSelectedOrder,
             dispatch: this.props.dispatch,
         };
 

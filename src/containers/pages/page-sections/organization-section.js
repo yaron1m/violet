@@ -2,7 +2,7 @@ import React from 'react';
 import CustomPage from "../../../components/custom-components/custom-page";
 import {CustomText} from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
-import {updateValueInSelectedOrganization} from "../../../store/selected/actions";
+import {updateSelectedOrganization} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../store/selected/reducer";
 
@@ -12,7 +12,7 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.organization,
-            updateAction: this.props.allowEdit ? updateValueInSelectedOrganization : null,
+            updateAction: this.props.allowEdit ? updateSelectedOrganization : null,
             dispatch: this.props.dispatch,
         };
 

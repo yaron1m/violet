@@ -1,5 +1,4 @@
 import * as actionTypes from './action-types';
-import {calculateDuration} from "../../util/time-util";
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderById} from "../orders/reducer";
 import {getSelectedOrder, getSelectedOrganization} from "./reducer";
@@ -50,7 +49,7 @@ export function updateSelectedOrder(key, value) {
         const selectedOrder = getSelectedOrder(getState());
         selectedOrder[key] = value;
         dispatch({
-            type: actionTypes.UPDATE_SELECTED_ORDER,
+            type: actionTypes.SELECT_ORDER,
             payload: selectedOrder,
         });
     }

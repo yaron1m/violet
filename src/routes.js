@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import {Router, Route} from 'react-router';
 import {createHashHistory} from 'history';
@@ -7,12 +6,13 @@ import {createHashHistory} from 'history';
 import App from './App'
 import LectureForm from './containers/pages/order-page/index';
 import OrganizationPage from './containers/pages/organization-page';
+import Store from './store'
 
 
 const history = createHashHistory();
 
-const Root = ({store}) => (
-    <Provider store={store}>
+const Root = () => (
+    <Provider store={Store}>
         <Router history={history}>
             <App>
                 <Route path="/form" component={LectureForm}/>
@@ -22,8 +22,4 @@ const Root = ({store}) => (
     </Provider>
 );
 
-Root.propTypes = {
-    store: PropTypes.object.isRequired
-};
-
-export default Root
+export default Root;

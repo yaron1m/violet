@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dialog, FlatButton, IconButton, Snackbar} from "material-ui";
-import {selectOrder, updateValueInSelectedOrder} from "../../../store/selected/actions";
+import {selectOrder, updateSelectedOrder} from "../../../store/selected/actions";
 import {sendInformationToDatabase} from "../../../store/firebase/actions";
 import connect from "react-redux/es/connect/connect";
 import SaveIcon from 'material-ui/svg-icons/content/save';
@@ -30,8 +30,8 @@ class OrderSaveButton extends React.Component {
                     }
                     if (!this.props.isSelected.order) {
                         const newOrderId = Math.max.apply(null, Object.keys(this.props.orders)) + 1;
-                        this.props.dispatch(updateValueInSelectedOrder("id", newOrderId));
-                        this.props.dispatch(updateValueInSelectedOrder("organizationId", this.props.selected.organization.id));
+                        this.props.dispatch(updateSelectedOrder("id", newOrderId));
+                        this.props.dispatch(updateSelectedOrder("organizationId", this.props.selected.organization.id));
                     }
                     this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
                         .then(() => {

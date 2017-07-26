@@ -1,5 +1,4 @@
 import * as actionTypes from './action-types';
-import {fetchData, sendData} from './firebase-handler';
 import {receiveOrganizations} from '../organizations/actions'
 import {receiveOrders} from '../orders/actions'
 import {receiveOfferedLectures} from "../offered-lectures/actions";
@@ -15,19 +14,36 @@ const firebaseConfig = {
     messagingSenderId: "259015014878"
 };
 
-firebase.initializeApp(firebaseConfig);
+export function initFirebase() {
+    return async function signInRequest(dispatch, getState) {
 
-export function signInRequest(email, password){
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                dispatch({
+                    type: actionTypes.SIGNED_IN,
+                    userId: user
+                });
+            } else {
+                dispatch({type: actionTypes.SIGNED_OUT});
+            }
+        });
+    }
+}
+
+
+export function signInRequest(email, password) {
     return async function signInRequest(dispatch, getState) {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(function(firebaseUser) {
+            .then(function (firebaseUser) {
                 dispatch({
                     type: actionTypes.SIGNED_IN,
                     userId: firebaseUser
                 })
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 if (error.code === 'auth/wrong-password') {
                     alert('Wrong password.');
                 } else {
@@ -38,46 +54,35 @@ export function signInRequest(email, password){
     }
 }
 
-export function signOutRequest(){
+export function signOutRequest() {
     return async function signInRequest(dispatch, getState) {
-        if(!reducer.isLoggedIn(getState()))
+        if (!reducer.isLoggedIn(getState()))
             return;
 
         firebase.auth().signOut()
-            .then(()=> {
+            .then(() => {
                 dispatch({
                     type: actionTypes.SIGNED_OUT,
                 })
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.error(error);
             });
     }
 }
 
 
-
-export function changeLoginStatus(userId){
-    return{
+export function changeLoginStatus(userId) {
+    return {
         type: actionTypes.CHANGE_LOGIN_STATUS,
         payload: userId,
     }
 }
 
 
-export function fetchDataFromDatabase(){
+export function fetchDataFromDatabase() {
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 export function fetchData(collectionName, actionCallback, dispatch, errorCallback) {
@@ -102,19 +107,6 @@ export function sendData(collectionName, value, dispatch) {
             dispatch(sentToDatabase(true));
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export function fetchInformation() {

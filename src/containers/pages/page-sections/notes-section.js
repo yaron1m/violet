@@ -2,7 +2,7 @@ import React from 'react';
 import CustomPage from "../../../components/custom-components/custom-page";
 import {connect} from 'react-redux';
 import {CustomText} from "../../../components/custom-components/custom-text-field";
-import {updateValueInSelectedOrder} from "../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 
 class NotesSection extends React.Component {
@@ -11,7 +11,7 @@ class NotesSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
-            updateAction: updateValueInSelectedOrder,
+            updateAction: updateSelectedOrder,
             dispatch: this.props.dispatch,
         };
 

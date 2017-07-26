@@ -10,8 +10,7 @@ import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {sendInformationToDatabase} from "../../store/firebase/actions";
 import {
-    clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization,
-    updateValueInSelectedOrganization
+    clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization, updateSelectedOrganization
 } from "../../store/selected/actions";
 import {RaisedButton} from "material-ui";
 import Snackbar from "material-ui/Snackbar";
@@ -49,7 +48,7 @@ class OrganizationPage extends React.Component {
         }
         const selectedOrganization = this.props.selectedOrganization;
         selectedOrganization.id = this.props.getNextOrganizationId();
-        this.props.dispatch(updateValueInSelectedOrganization('id', selectedOrganization.id));
+        this.props.dispatch(updateSelectedOrganization('id', selectedOrganization.id));
         this.props.dispatch(setIsSelectedOrganization(true));
         this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
             .then(this.setState({ //TODO what if writing failed?
