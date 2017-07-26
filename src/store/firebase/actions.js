@@ -21,10 +21,7 @@ export function initFirebase() {
 
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                dispatch({
-                    type: actionTypes.SIGNED_IN,
-                    userId: user
-                });
+                dispatch(afterSignedIn(user));
             } else {
                 dispatch({type: actionTypes.SIGNED_OUT});
             }
@@ -37,11 +34,8 @@ export function signInRequest(email, password) {
     return async function signInRequest(dispatch, getState) {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(function (firebaseUser) {
-                dispatch({
-                    type: actionTypes.SIGNED_IN,
-                    userId: firebaseUser
-                })
+            .then(function (user) {
+                dispatch(afterSignedIn(user));
             })
             .catch(function (error) {
                 if (error.code === 'auth/wrong-password') {
@@ -68,6 +62,16 @@ export function signOutRequest() {
             .catch(function (error) {
                 console.error(error);
             });
+    }
+}
+
+export function afterSignedIn(user){
+    return function afterSignedIn(dispatch){
+        dispatch({
+            type: actionTypes.SIGNED_IN,
+            userId: user
+        });
+
     }
 }
 

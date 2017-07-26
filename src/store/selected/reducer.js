@@ -1,5 +1,6 @@
 import * as actionTypes from './action-types';
 import Immutable from 'seamless-immutable';
+import {SIGNED_OUT} from "../firebase/action-types";
 
 const initialState = Immutable({
     organization: {},
@@ -33,6 +34,7 @@ export default (state = initialState, action = {}) => {
             });
 
         case actionTypes.CLEAR_SELECTED:
+        case SIGNED_OUT:
             return initialState;
 
         case actionTypes.CLEAR_SELECTED_ORDER:

@@ -1,8 +1,12 @@
 import {Reducer} from 'redux-testkit';
 import uut from '../reducer';
 import * as actionTypes from '../action-types'
+import {SIGNED_OUT} from "../../firebase/action-types";
 
 const initialState = {};
+
+const sampleState = {0:{}, 1:{}};
+
 
 describe('store/orders/reducer', () => {
 
@@ -15,9 +19,14 @@ describe('store/orders/reducer', () => {
     });
 
     it('should store orders in state', () => {
-        const data = {0:{}, 1:{}};
-        const action = {type: actionTypes.RECEIVE_ORGANIZATIONS, payload:data};
+        const action = {type: actionTypes.RECEIVE_ORGANIZATIONS, payload:sampleState};
 
-        Reducer(uut).expect(action).toReturnState({...initialState, ...data});
+        Reducer(uut).expect(action).toReturnState(sampleState);
+    });
+
+    it('should clear all organizations', () => {
+        const action = {type: SIGNED_OUT};
+
+        Reducer(uut).withState(sampleState).expect(action).toReturnState(initialState);
     });
 });

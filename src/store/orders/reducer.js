@@ -1,11 +1,15 @@
 import * as actionTypes from './action-types';
 import * as _ from "lodash";
+import {SIGNED_OUT} from "../firebase/action-types";
 
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_ORDERS:
             return action.payload;
+
+        case SIGNED_OUT:
+            return {};
 
         default:
             return state

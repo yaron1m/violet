@@ -151,7 +151,7 @@ describe('store/selected/actions/orders', () => {
         const expectedOrder = sampleOrder();
         expectedOrder[key] = value;
         const expectedAction = {
-            type: actionTypes.UPDATE_SELECTED_ORDER,
+            type: actionTypes.SELECT_ORDER,
             payload: expectedOrder,
         };
 
