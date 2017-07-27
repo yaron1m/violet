@@ -30,7 +30,7 @@ class CustomTable extends React.Component {
                 >
 
                     <TableRow>
-                        {_.map(headerValues,((title, index) => {
+                        {_.map(headerValues, ((title, index) => {
                             if (title === "עריכה")
                                 return ( <TableHeaderColumn key={index}>{title}</TableHeaderColumn>);
                             return ( <TableHeaderColumn key={index}>{title}</TableHeaderColumn>);
@@ -46,19 +46,19 @@ class CustomTable extends React.Component {
                     showRowHover={true}
                 >
                     {
-                        _.map(data, (
-                            index =>
-                                <TableRow key={index} selectable={!this.props.showCheckBox}>
+                        _.map(data, (dataElement =>
+                                <TableRow key={dataElement.id} selectable={!this.props.showCheckBox}>
                                     {
-                                        _.map(headerKeys,(headerKey) => {
+                                        _.map(headerKeys, (headerKey) => {
                                             if (headerKey === "edit")
                                                 return ( <TableRowColumn key={headerKey}>
-                                                    <IconButton onClick={() => this.props.onEditButton(data[index])}>
+                                                    <IconButton
+                                                        onClick={() => this.props.onEditButton(data[dataElement])}>
                                                         <EditIcon/>
                                                     </IconButton>
                                                 </TableRowColumn>);
                                             return (<TableRowColumn
-                                                key={headerKey}>{data[index][headerKey]}</TableRowColumn>);
+                                                key={headerKey}>{dataElement[headerKey]}</TableRowColumn>);
 
                                         })}
                                 </TableRow>
@@ -73,8 +73,8 @@ class CustomTable extends React.Component {
 
 
 CustomTable.propTypes = {
-    headers: PropTypes.array,
-    data: PropTypes.array,
+    headers: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
     showCheckBox: PropTypes.bool,
     showEditButton: PropTypes.bool,
     onEditButton: PropTypes.func,

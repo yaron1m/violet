@@ -1,23 +1,26 @@
 import React from 'react';
-import PageTitle from './page-title';
-import OrganizationSection from "./page-sections/organization-section";
+import PageTitle from '../page-title';
+import OrganizationSection from "../page-sections/organization-section";
 import {connect} from 'react-redux';
-import CustomPage from "../../components/custom-components/custom-page";
-import CustomTable from "../../components/custom-components/custom-table";
+import CustomPage from "../../../components/custom-components/custom-page";
+import CustomTable from "../../../components/custom-components/custom-table";
 import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
-import {sendInformationToDatabase} from "../../store/firebase/actions";
+import {sendInformationToDatabase} from "../../../store/firebase/actions";
 import {
     clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization, updateSelectedOrganization
-} from "../../store/selected/actions";
+} from "../../../store/selected/actions";
 import {RaisedButton} from "material-ui";
 import Snackbar from "material-ui/Snackbar";
-import {getLabels} from "../../store/labels/reducer";
-import {getNextOrganizationId} from "../../store/organizations/reducer";
-import {getOrdersByOrganization} from "../../store/orders/reducer";
-import {getSelectedOrganization, isSelectedOrganization} from "../../store/selected/reducer";
+import {getLabels} from "../../../store/labels/reducer";
+import {getNextOrganizationId} from "../../../store/organizations/reducer";
+import {getOrdersByOrganization} from "../../../store/orders/reducer";
+import {
+    getOrderOfSelectedOrganization, getSelectedOrganization,
+    isSelectedOrganization
+} from "../../../store/selected/reducer";
 
 class OrganizationPage extends React.Component {
 
@@ -89,7 +92,7 @@ class OrganizationPage extends React.Component {
                     }
                 />
 
-                <OrganizationSection/>
+                {/*<OrganizationSection/>*/}
 
                 {/*Orders summary*/}
                 <CustomPage
@@ -105,7 +108,7 @@ class OrganizationPage extends React.Component {
                 >
                     <CustomTable
                         headers={this.props.labels.ordersTable.tableHeaders}
-                        data={this.props.getOrdersByOrganization(this.props.selectedOrganization.id) }
+                        data={this.props.OrderOfSelectedOrganization}
                         onEditButton={(order) => {
                             this.props.dispatch(selectOrder(order));
                             this.props.history.push('/form');
@@ -114,12 +117,12 @@ class OrganizationPage extends React.Component {
                 </CustomPage>
 
                 {/*Contacts*/}
-                <CustomPage title={this.props.labels.contactsTable.title}>
-                    <CustomTable
-                        headers={this.props.labels.contactsTable.tableHeaders}
-                        data={this.props.selectedOrganization.contacts}
-                    />
-                </CustomPage>
+                {/*<CustomPage title={this.props.labels.contactsTable.title}>*/}
+                    {/*<CustomTable*/}
+                        {/*headers={this.props.labels.contactsTable.tableHeaders}*/}
+                        {/*data={this.props.selectedOrganization.contacts}*/}
+                    {/*/>*/}
+                {/*</CustomPage>*/}
             </div>
         );
     }
@@ -131,7 +134,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).OrganizationPage,
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),
-        getOrdersByOrganization : (organizationId) => getOrdersByOrganization(state, organizationId),
+        OrderOfSelectedOrganization : getOrdersByOrganization(state),
         getNextOrganizationId: getNextOrganizationId(state),
     };
 }

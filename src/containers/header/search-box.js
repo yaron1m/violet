@@ -6,7 +6,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import {getLabels} from "../../store/labels/reducer";
-import {getOrganizations, getOrganizationsArray} from "../../store/organizations/reducer";
+import {getOrganizations} from "../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../store/selected/actions";
 import {getOrders} from "../../store/orders/reducer";
 import * as _ from "lodash";
@@ -41,6 +41,9 @@ class SearchBox extends React.Component {
                 this.props.dispatch(selectOrder(chosenRequest.value.id));
                 this.props.dispatch(selectOrganization(chosenRequest.value.organizationId));
                 this.props.history.push('/form');
+                return;
+
+            default:
                 return;
         }
     }
@@ -88,7 +91,7 @@ class SearchBox extends React.Component {
                 <IconButton style={styles.iconButton}>
                     <Search color={white}/>
                 </IconButton>
-                
+
                 <AutoComplete
                     dataSource={dataSource}
                     hintText={this.props.labels.searchLineHint}
