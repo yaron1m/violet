@@ -6,9 +6,10 @@ import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import {getLabels} from "../../store/labels/reducer";
-import {getOrganizations} from "../../store/organizations/reducer";
+import {getOrganizations, getOrganizationsArray} from "../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../store/selected/actions";
 import {getOrders} from "../../store/orders/reducer";
+import * as _ from "lodash";
 
 class SearchBox extends React.Component {
 
@@ -30,20 +31,17 @@ class SearchBox extends React.Component {
         }
         this.setState({searchText: ""});
 
+        switch (chosenRequest.value.type) {
+            case this.sourceTypes.organization:
+                this.props.dispatch(selectOrganization(chosenRequest.value.id));
+                this.props.history.push('/org');
+                return;
 
-        if (chosenRequest.value.type === this.sourceTypes.organization) {
-            //Find by index
-            this.props.dispatch(selectOrganization(chosenRequest.value.obj));
-            this.props.history.push('/org');
-            return;
-        }
-
-        if (chosenRequest.value.type === this.sourceTypes.order) {
-            this.props.dispatch(selectOrder(chosenRequest.value.obj));
-            const organizationId = chosenRequest.value.obj.organizationId;
-            this.props.dispatch(selectOrganization(this.props.organizations[organizationId]));
-            this.props.history.push('/form');
-            return;
+            case this.sourceTypes.order:
+                this.props.dispatch(selectOrder(chosenRequest.value.id));
+                this.props.dispatch(selectOrganization(chosenRequest.value.organizationId));
+                this.props.history.push('/form');
+                return;
         }
     }
 
@@ -71,18 +69,26 @@ class SearchBox extends React.Component {
             },
         };
 
-        const organizationNamesObjects = Object.values(this.props.organizations).map(
-            (org) => ({text: org.name, value: {type: this.sourceTypes.organization, obj: org}}));
-        const orderNumbersObjects = Object.values(this.props.orders).map(
-            (order) => ({text: order.id.toString(), value: {type: this.sourceTypes.order, obj: order}}));
+        const organizationNamesObjects = _.values(this.props.organizations).map(
+            (org) => ({text: org.name, value: {type: this.sourceTypes.organization, id: org.id}}));
 
-        const dataSource = organizationNamesObjects.concat(orderNumbersObjects);
+        const orderNumbersObjects = _.values(this.props.orders).map(
+            (order) => ({
+                text: order.id.toString(), value: {
+                    type: this.sourceTypes.order,
+                    id: order.id,
+                    organizationId: order.organizationId,
+                }
+            }));
+
+        const dataSource = _.concat(organizationNamesObjects, orderNumbersObjects);
 
         return (
             <div>
                 <IconButton style={styles.iconButton}>
                     <Search color={white}/>
                 </IconButton>
+                
                 <AutoComplete
                     dataSource={dataSource}
                     hintText={this.props.labels.searchLineHint}
