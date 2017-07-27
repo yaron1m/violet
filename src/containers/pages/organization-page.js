@@ -34,11 +34,11 @@ class OrganizationPage extends React.Component {
             alert("Can not save unselected organization");
             return;
         }
-        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
-            .then(this.setState({
-                snackbarOpen: true,
-                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
-            }))
+        // this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
+        //     .then(this.setState({
+        //         snackbarOpen: true,
+        //         snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
+        //     }))
     }
 
     saveNewOrganization() {
@@ -50,11 +50,11 @@ class OrganizationPage extends React.Component {
         selectedOrganization.id = this.props.getNextOrganizationId();
         this.props.dispatch(updateSelectedOrganization('id', selectedOrganization.id));
         this.props.dispatch(setIsSelectedOrganization(true));
-        this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
-            .then(this.setState({ //TODO what if writing failed?
-                snackbarOpen: true,
-                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
-            }))
+        // this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
+        //     .then(this.setState({ //TODO what if writing failed?
+        //         snackbarOpen: true,
+        //         snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
+        //     }))
     }
 
 

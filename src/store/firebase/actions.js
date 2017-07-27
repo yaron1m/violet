@@ -93,34 +93,10 @@ export function sendData(collectionName, value, dispatch) {
     return firebase.database().ref(collectionName).set(value, error => {
         if (error) {
             console.error("The data send request for " + collectionName + " failed: " + error.code);
-            dispatch(sentToDatabase(false));
+            //TODO failed sending
         }
-        else
-            dispatch(sentToDatabase(true));
+        else{
+            // TODO success
+        }
     });
-}
-
-
-export function sendInformationToDatabase(collectionName, value) {
-    return function (dispatch) {
-        dispatch(isSendingToDatabase());
-        return sendData(collectionName, value);
-        //TODO dispatch sent
-
-    }
-}
-
-export const IS_SENDING_TO_DATABASE = "IS_SENDING_TO_DATABASE";
-export function isSendingToDatabase() {
-    return {
-        type: IS_SENDING_TO_DATABASE,
-    };
-}
-
-export const SENT_TO_DATABASE = "SENT_TO_DATABASE";
-export function sentToDatabase(successfully) {
-    return {
-        type: SENT_TO_DATABASE,
-        payload: successfully,
-    };
 }

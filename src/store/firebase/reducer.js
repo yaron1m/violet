@@ -2,7 +2,7 @@ import * as actionTypes from './action-types';
 import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({
-    loggedIn: false,
+    loggedIn: undefined,
     userId: undefined,
 });
 
@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
         case actionTypes.SIGNED_OUT:
             return Immutable.merge(state,{
                 loggedIn: false,
-                userId: action.undefined,
+                userId: undefined,
             });
 
         default:

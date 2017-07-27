@@ -33,16 +33,16 @@ class OrderSaveButton extends React.Component {
                         this.props.dispatch(updateSelectedOrder("id", newOrderId));
                         this.props.dispatch(updateSelectedOrder("organizationId", this.props.selected.organization.id));
                     }
-                    this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
-                        .then(() => {
-                            if (!this.props.isSelected.order)
-                                this.props.dispatch(selectOrder(this.props.selected.order));
-
-                            this.setState(Object.assign({}, this.state, {
-                                snackbarOpen: true,
-                                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.order.id),
-                            }));
-                        });
+                    // this.props.dispatch(sendInformationToDatabase("/orders/" + this.props.selected.order.id, this.props.selected.order))
+                    //     .then(() => {
+                    //         if (!this.props.isSelected.order)
+                    //             this.props.dispatch(selectOrder(this.props.selected.order));
+                    //
+                    //         this.setState(Object.assign({}, this.state, {
+                    //             snackbarOpen: true,
+                    //             snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selected.order.id),
+                    //         }));
+                    //     });
 
                 }.bind(this)}
             > <SaveIcon /></IconButton>
