@@ -23,7 +23,7 @@ export function initFirebase() {
             if (user) {
                 dispatch(afterSignedIn(user));
             } else {
-                dispatch({type: actionTypes.SIGNED_OUT});
+                dispatch({type: actionTypes.LOGGED_OUT});
             }
         });
     }
@@ -55,7 +55,7 @@ export function signOutRequest() {
 
         firebase.auth().signOut()
             .then(() => {
-                dispatch({type: actionTypes.SIGNED_OUT})
+                dispatch({type: actionTypes.LOGGED_OUT})
             })
             .catch(function (error) {
                 console.error(error);
@@ -66,7 +66,7 @@ export function signOutRequest() {
 export function afterSignedIn(user) {
     return function afterSignedIn(dispatch) {
         dispatch({
-            type: actionTypes.SIGNED_IN,
+            type: actionTypes.LOGGED_IN,
             userId: user.uid,
         });
 

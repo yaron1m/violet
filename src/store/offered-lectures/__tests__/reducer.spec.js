@@ -1,7 +1,7 @@
 import {Reducer} from 'redux-testkit';
 import uut from '../reducer';
 import * as actionTypes from '../action-types'
-import {SIGNED_OUT} from "../../firebase/action-types";
+import {LOGGED_OUT} from "../../firebase/action-types";
 
 const initialState = {};
 
@@ -31,7 +31,7 @@ describe('store/offered-lectures/reducer', () => {
     });
 
     it('should clear all offered lectures', () => {
-        const action = {type: SIGNED_OUT};
+        const action = {type: LOGGED_OUT};
 
         Reducer(uut).withState(sampleState).expect(action).toReturnState(initialState);
     });

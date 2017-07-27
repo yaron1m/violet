@@ -1,6 +1,6 @@
 import * as actionTypes from './action-types';
 import * as _ from "lodash";
-import {SIGNED_OUT} from "../firebase/action-types";
+import {LOGGED_OUT} from "../firebase/action-types";
 
 
 export default (state = {}, action = {}) => {
@@ -8,7 +8,7 @@ export default (state = {}, action = {}) => {
         case actionTypes.RECEIVE_ORDERS:
             return action.payload;
 
-        case SIGNED_OUT:
+        case LOGGED_OUT:
             return {};
 
         default:

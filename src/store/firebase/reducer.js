@@ -6,15 +6,15 @@ const initialState = Immutable({
     userId: undefined,
 });
 
-export default function (state = initialState, action) {
+export default function (state = initialState, action = {}) {
     switch (action.type) {
-        case actionTypes.SIGNED_IN:
+        case actionTypes.LOGGED_IN:
             return Immutable.merge(state,{
                 loggedIn: true,
                 userId: action.userId,
             });
 
-        case actionTypes.SIGNED_OUT:
+        case actionTypes.LOGGED_OUT:
             return Immutable.merge(state,{
                 loggedIn: false,
                 userId: undefined,
