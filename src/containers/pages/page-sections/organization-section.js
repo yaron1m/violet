@@ -4,7 +4,7 @@ import {CustomText} from "../../../components/custom-components/custom-text-fiel
 import {connect} from 'react-redux';
 import {updateSelectedOrganization} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
-import {getSelectedOrder, getSelectedOrganization} from "../../../store/selected/reducer";
+import {getSelectedOrganization} from "../../../store/selected/reducer";
 
 class OrganizationSection extends React.Component {
 
