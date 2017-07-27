@@ -30,5 +30,5 @@ export function isLoggedIn(state) {
 }
 
 export function getUserId(state){
-    return state.firebase.userId;
+    return isLoggedIn(state) ? state.firebase.userId : undefined;
 }
