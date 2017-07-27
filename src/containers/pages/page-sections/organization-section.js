@@ -4,14 +4,14 @@ import {CustomText} from "../../../components/custom-components/custom-text-fiel
 import {connect} from 'react-redux';
 import {updateSelectedOrganization} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
-import {getSelectedOrder} from "../../../store/selected/reducer";
+import {getSelectedOrder, getSelectedOrganization} from "../../../store/selected/reducer";
 
 class OrganizationSection extends React.Component {
 
     render() {
         const fieldData = {
             titles: this.props.labels.titles,
-            values: this.props.selected.organization,
+            values: this.props.selectedOrganization,
             updateAction: this.props.allowEdit ? updateSelectedOrganization : null,
             dispatch: this.props.dispatch,
         };
@@ -30,7 +30,7 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).orderPage.organizationSection,
-        selected: getSelectedOrder(state),
+        selectedOrganization: getSelectedOrganization(state),
         allowEdit: ownProps.allowEdit
     };
 }

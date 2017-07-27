@@ -8,7 +8,6 @@ import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
-import {sendInformationToDatabase} from "../../../store/firebase/actions";
 import {
     clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization, updateSelectedOrganization
 } from "../../../store/selected/actions";
@@ -17,10 +16,7 @@ import Snackbar from "material-ui/Snackbar";
 import {getLabels} from "../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../store/organizations/reducer";
 import {getOrdersByOrganization} from "../../../store/orders/reducer";
-import {
-    getOrderOfSelectedOrganization, getSelectedOrganization,
-    isSelectedOrganization
-} from "../../../store/selected/reducer";
+import {getSelectedOrganization, isSelectedOrganization} from "../../../store/selected/reducer";
 
 class OrganizationPage extends React.Component {
 
@@ -92,9 +88,9 @@ class OrganizationPage extends React.Component {
                     }
                 />
 
-                {/*<OrganizationSection/>*/}
+                <OrganizationSection/>
 
-                {/*Orders summary*/}
+                {/*/!*Orders summary*!/*/}
                 <CustomPage
                     title={this.props.labels.ordersTable.title}
                     titleButton={
@@ -117,12 +113,12 @@ class OrganizationPage extends React.Component {
                 </CustomPage>
 
                 {/*Contacts*/}
-                {/*<CustomPage title={this.props.labels.contactsTable.title}>*/}
-                    {/*<CustomTable*/}
-                        {/*headers={this.props.labels.contactsTable.tableHeaders}*/}
-                        {/*data={this.props.selectedOrganization.contacts}*/}
-                    {/*/>*/}
-                {/*</CustomPage>*/}
+                <CustomPage title={this.props.labels.contactsTable.title}>
+                    <CustomTable
+                        headers={this.props.labels.contactsTable.tableHeaders}
+                        data={this.props.selectedOrganization.contacts}
+                    />
+                </CustomPage>
             </div>
         );
     }
