@@ -5,12 +5,10 @@ import {
     TableHeader,
     TableHeaderColumn,
     TableRow,
-    TableRowColumn,
 } from 'material-ui/Table';
-import EditIcon from 'material-ui/svg-icons/image/edit';
-import {IconButton} from "material-ui";
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
+import CustomTableRow from "./custom-table-row";
 
 
 class CustomTable extends React.Component {
@@ -47,21 +45,12 @@ class CustomTable extends React.Component {
                 >
                     {
                         _.map(data, (dataElement =>
-                                <TableRow key={dataElement.id} selectable={!this.props.showCheckBox}>
-                                    {
-                                        _.map(headerKeys, (headerKey) => {
-                                            if (headerKey === "edit")
-                                                return ( <TableRowColumn key={headerKey}>
-                                                    <IconButton
-                                                        onClick={() => this.props.onEditButton(data[dataElement])}>
-                                                        <EditIcon/>
-                                                    </IconButton>
-                                                </TableRowColumn>);
-                                            return (<TableRowColumn
-                                                key={headerKey}>{dataElement[headerKey]}</TableRowColumn>);
-
-                                        })}
-                                </TableRow>
+                                <CustomTableRow
+                                    key={dataElement.id}
+                                    headerKeys={headerKeys}
+                                    element={dataElement}
+                                    onEditButton={this.props.onEditButton}
+                                />
                         ))
                     }
                 </TableBody>
