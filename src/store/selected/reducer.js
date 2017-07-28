@@ -17,6 +17,11 @@ export default (state = initialState, action = {}) => {
                 isSelectedOrganization: true,
             });
 
+        case actionTypes.UPDATE_SELECTED_ORGANIZATION:
+            return Immutable.merge(state,{
+                organization: action.payload,
+            });
+
         case actionTypes.SET_IS_SELECTED_ORGANIZATION:
             return Immutable.merge(state,{
                 isSelectedOrganization: true,
@@ -26,6 +31,11 @@ export default (state = initialState, action = {}) => {
             return Immutable.merge(state,{
                 order: action.payload,
                 isSelectedOrder: true,
+            });
+
+        case actionTypes.UPDATE_SELECTED_ORDER:
+            return Immutable.merge(state,{
+                order: action.payload,
             });
 
         case actionTypes.SET_IS_SELECTED_ORDER:

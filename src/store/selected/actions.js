@@ -22,7 +22,7 @@ export function updateSelectedOrganization(key, value) {
             [key]: value
         });
         dispatch({
-            type: actionTypes.SELECT_ORGANIZATION,
+            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
             payload: selectedOrganization,
         });
     }
@@ -62,7 +62,7 @@ export function updateSelectedOrder(key, value) {
         const selectedOrder = getSelectedOrder(getState());
         selectedOrder[key] = value;
         dispatch({
-            type: actionTypes.SELECT_ORDER,
+            type: actionTypes.UPDATE_SELECTED_ORDER,
             payload: selectedOrder,
         });
     }
