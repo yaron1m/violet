@@ -119,7 +119,6 @@ class OrganizationPageTitle extends React.Component {
                 <Dialog
                     title={this.state.dialogTitle}
                     actions={dialogAction}
-                    modal={false}
                     open={this.state.dialogOpen}
                     onRequestClose={() => this.setState(Object.assign({}, this.state, {
                         dialogOpen: false,
