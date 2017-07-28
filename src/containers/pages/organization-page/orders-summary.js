@@ -7,6 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import {getLabels} from "../../../store/labels/reducer";
 import {getOrdersByOrganization} from "../../../store/orders/reducer";
 import {isSelectedOrganization} from "../../../store/selected/reducer";
+import {withRouter} from "react-router";
 
 class OrdersSummary extends React.Component {
     render() {
@@ -26,7 +27,7 @@ class OrdersSummary extends React.Component {
                     headers={this.props.labels.tableHeaders}
                     data={this.props.OrderOfSelectedOrganization}
                     onEditButton={(order) => {
-                        this.props.dispatch(selectOrder(order));
+                        this.props.dispatch(selectOrder(order.id));
                         this.props.history.push('/form');
                     }}
                 />
@@ -44,4 +45,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(OrdersSummary);
+export default withRouter(connect(mapStateToProps)(OrdersSummary));
