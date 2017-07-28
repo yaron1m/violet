@@ -1,8 +1,8 @@
 import React from 'react';
-import CustomCard from "../../../components/custom-components/custom-card";
+import CustomCard from "../../../../components/custom-components/custom-card";
 import {connect} from 'react-redux';
-import CustomTable from "../../../components/custom-components/custom-table";
-import {getLabels} from "../../../store/labels/reducer";
+import CustomTable from "../../../../components/custom-components/custom-table";
+import {getLabels} from "../../../../store/labels/reducer";
 
 
 class ContactsSection extends React.Component {

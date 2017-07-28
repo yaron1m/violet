@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PageTitle from "../../../components/page-title";
+import PageTitle from "../../../../components/page-title";
 import IconButton from "material-ui/IconButton";
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
-import {clearSelectedOrder} from "../../../store/selected/actions";
+import {clearSelectedOrder} from "../../../../store/selected/actions";
 import OrderSaveButton from './order-save-button'
-import {getLabels} from "../../../store/labels/reducer";
-import {getSelectedOrder, isSelectedOrder} from "../../../store/selected/reducer";
+import {getLabels} from "../../../../store/labels/reducer";
+import {getSelectedOrder, isSelectedOrder} from "../../../../store/selected/reducer";
 
 class OrderPageTitle extends React.Component {
 

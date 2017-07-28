@@ -1,9 +1,9 @@
 import React from 'react';
 import {Dialog, FlatButton, IconButton, Snackbar} from "material-ui";
-import {updateSelectedOrder} from "../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../store/selected/actions";
 import connect from "react-redux/es/connect/connect";
 import SaveIcon from 'material-ui/svg-icons/content/save';
-import {getLabels} from "../../../store/labels/reducer";
+import {getLabels} from "../../../../store/labels/reducer";
 
 
 class OrderSaveButton extends React.Component {

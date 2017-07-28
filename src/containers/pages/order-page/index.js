@@ -1,14 +1,13 @@
 import React from 'react';
-import OrderPageTitle from './order-page-title';
-import OrganizationSection from "../page-sections/organization-section";
-import LectureDetailsSection from "../page-sections/lecture-details-section";
-import ContactsSection from "../page-sections/contacts-section";
-import FollowUpSection from "../page-sections/follow-up-section";
-import PaymentSection from "../page-sections/payment-section";
-import NotesSection from "../page-sections/notes-section";
-import {connect} from 'react-redux';
+import OrderPageTitle from './title/order-page-title';
+import OrganizationSection from "../organization-page/organization-section";
+import LectureDetailsSection from "./sections/lecture-details-section";
+import ContactsSection from "./sections/contacts-section";
+import FollowUpSection from "./sections/follow-up-section";
+import PaymentSection from "./sections/payment-section";
+import NotesSection from "./sections/notes-section";
 
-class OrderForm extends React.Component {
+export default class OrderForm extends React.Component {
 
     render() {
 
@@ -31,11 +30,3 @@ class OrderForm extends React.Component {
         );
     }
 }
-
-
-function mapStateToProps(state) {
-    return {
-    };
-}
-
-export default connect(mapStateToProps)(OrderForm);

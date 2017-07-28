@@ -1,12 +1,12 @@
 import React from 'react';
-import CustomCard from "../../../components/custom-components/custom-card";
-import {CustomText} from "../../../components/custom-components/custom-text-field";
-import CustomToggle, {CustomToggleBox} from "../../../components/custom-components/custom-toggle";
+import CustomCard from "../../../../components/custom-components/custom-card";
+import {CustomText} from "../../../../components/custom-components/custom-text-field";
+import CustomToggle, {CustomToggleBox} from "../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import {Paper} from "material-ui";
-import CustomTable from "../../../components/custom-components/custom-table";
-import {updateSelectedOrder} from "../../../store/selected/actions";
-import {getLabels} from "../../../store/labels/reducer";
+import CustomTable from "../../../../components/custom-components/custom-table";
+import {updateSelectedOrder} from "../../../../store/selected/actions";
+import {getLabels} from "../../../../store/labels/reducer";
 
 class LectureDetailsSection extends React.Component {
 

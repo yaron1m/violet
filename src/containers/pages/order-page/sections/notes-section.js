@@ -1,9 +1,9 @@
 import React from 'react';
-import CustomPage from "../../../components/custom-components/custom-page";
+import CustomPage from "../../../../components/custom-components/custom-page";
 import {connect} from 'react-redux';
-import {CustomText} from "../../../components/custom-components/custom-text-field";
-import {updateSelectedOrder} from "../../../store/selected/actions";
-import {getLabels} from "../../../store/labels/reducer";
+import {CustomText} from "../../../../components/custom-components/custom-text-field";
+import {updateSelectedOrder} from "../../../../store/selected/actions";
+import {getLabels} from "../../../../store/labels/reducer";
 
 class NotesSection extends React.Component {
 
