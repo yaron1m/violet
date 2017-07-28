@@ -6,8 +6,7 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {
-    clearSelected, clearSelectedOrder, selectOrder, sendSelectedOrganizationToDatabase, setIsSelectedOrganization,
-    updateSelectedOrganization
+    clearSelected,  sendSelectedOrganizationToDatabase, setIsSelectedOrganization
 } from "../../../store/selected/actions";
 import Snackbar from "material-ui/Snackbar";
 import Dialog from "material-ui/Dialog";
