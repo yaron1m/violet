@@ -37,8 +37,8 @@ class OrderPageTitle extends React.Component {
         if (!this.props.isSelectedOrganization) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                dialogTitle: "No organization selected",
-                dialogMessage: "You must select and organization first",
+                dialogTitle: this.props.labels.dialog.noOrganizationSelectedTitle,
+                dialogMessage:  this.props.labels.dialog.noOrganizationSelectedContent,
             }));
             return;
         }
@@ -47,8 +47,8 @@ class OrderPageTitle extends React.Component {
             if(_.isEmpty(this.props.selectedOrder)) {
                 this.setState(Object.assign({}, this.state, {
                     dialogOpen: true,
-                    dialogTitle: "No data",
-                    dialogMessage: "No data inserted",
+                    dialogTitle: this.props.labels.dialog.noDataTitle,
+                    dialogMessage:  this.props.labels.dialog.noDataContent,
                 }));
                 return;
             }
@@ -71,8 +71,8 @@ class OrderPageTitle extends React.Component {
         function failure(error) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                dialogTitle: "Problem sending order database",
-                dialogMessage: "Failed sending order to database",
+                dialogTitle: this.props.labels.dialog.sendingToDatabaseFailedTitle,
+                dialogMessage:  this.props.labels.dialog.sendingToDatabaseFailedContent,
             }));
             console.error(error);
         }

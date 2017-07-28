@@ -97,6 +97,10 @@ export default function () {
             dialog:{
                 noOrganizationSelectedTitle: "לא נבחר ארגון",
                 noOrganizationSelectedContent: "לשמירת הזמנה יש לבחור ארגון",
+                noDataTitle: "לא הוכנסו נתונים",
+                noDataContent: "לשמירת הזמנה חדשה יש להכניס נתונים",
+                sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
+                sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
             }
         },
         OrganizationPage: {
@@ -113,6 +117,14 @@ export default function () {
             },
             snackBar:{
                 savedSuccessfully: 'ארגון "{0}" נשמר בהצלחה',
+            },
+            dialog:{
+                noOrganizationSelectedTitle: "לא נבחר ארגון",
+                noOrganizationSelectedContent: "עדכון פרטי ארגון אפשרי רק עבור ארגונים קיימים, נסה לשמור ארגון חדש",
+                organizationAlreadySelectedTitle: "פרטי ארגון כבר טעונים במערכת",
+                organizationAlreadySelectedContent: "לשמירת ארגון חדש יש ראשית לנקות את הארגון הטעון",
+                sendingToDatabaseFailedTitle: "שגיאה בשמירת פרטי ארגון",
+                sendingToDatabaseFailedContent: "חלה שגיאה בשמירת פרטי הארגון בשרת",
             }
         },
     };

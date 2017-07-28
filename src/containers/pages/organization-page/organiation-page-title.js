@@ -33,8 +33,8 @@ class OrganizationPageTitle extends React.Component {
         if (!this.props.isSelectedOrganization) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                dialogTitle: "No organization selected", //TODO replace with labels
-                dialogMessage: "You can not save unselected organization",
+                dialogTitle: this.props.labels.dialog.noOrganizationSelectedTitle,
+                dialogMessage:  this.props.labels.dialog.noOrganizationSelectedContent,
             }));
             return;
         }
@@ -46,8 +46,8 @@ class OrganizationPageTitle extends React.Component {
         if (this.props.isSelectedOrganization) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                dialogTitle: "Organization already selected",
-                dialogMessage: "Can not create new organization when other one is open",
+                dialogTitle: this.props.labels.dialog.organizationAlreadySelectedTitle,
+                dialogMessage:  this.props.labels.dialog.organizationAlreadySelectedContent,
             }));
             return;
         }
@@ -70,8 +70,8 @@ class OrganizationPageTitle extends React.Component {
         function failure(error) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                dialogTitle: "Problem sending to database",
-                dialogMessage: "Failed sending to database",
+                dialogTitle: this.props.labels.dialog.sendingToDatabaseFailedTitle,
+                dialogMessage:  this.props.labels.dialog.sendingToDatabaseFailedContent,
             }));
             console.error(error);
         }
