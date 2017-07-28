@@ -18,6 +18,7 @@ import {
     isSelectedOrganization
 } from "../../../../store/selected/reducer";
 import {getNextOrderId} from "../../../../store/orders/reducer";
+import * as _ from "lodash";
 
 class OrderPageTitle extends React.Component {
 
@@ -42,6 +43,15 @@ class OrderPageTitle extends React.Component {
             return;
         }
         if (!this.props.isSelectedOrder) {
+            //Check if only data in order is id and organization:
+            if(_.isEmpty(this.props.selectedOrder)) {
+                this.setState(Object.assign({}, this.state, {
+                    dialogOpen: true,
+                    dialogTitle: "No data",
+                    dialogMessage: "No data inserted",
+                }));
+                return;
+            }
             await this.props.dispatch(updateSelectedOrder("id", this.props.nextOrderId));
             await this.props.dispatch(updateSelectedOrder("organizationId", this.props.selectedOrganization.id));
         }
