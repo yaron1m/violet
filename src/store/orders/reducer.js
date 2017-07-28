@@ -29,3 +29,11 @@ export function getOrdersByOrganization(state) {
     const organizationId = getSelectedOrganization(state).id;
     return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId);
 }
+
+export function getNextOrderId(state) {
+    const orders = getOrders(state);
+    const keys = _.keys(orders);
+    if (!orders || keys.length === 0)
+        return null;
+    return _.max(_.map(_.keys(orders), _.parseInt)) + 1;
+}

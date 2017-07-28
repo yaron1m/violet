@@ -50,6 +50,7 @@ export default (state = initialState, action = {}) => {
         case actionTypes.CLEAR_SELECTED_ORDER:
             return Immutable.merge(state,{
                 order: {},
+                isSelectedOrder: false,
             });
 
         default:

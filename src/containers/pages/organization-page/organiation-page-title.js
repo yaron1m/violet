@@ -6,7 +6,7 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {
-    clearSelected,  sendSelectedOrganizationToDatabase, setIsSelectedOrganization
+    clearSelected, sendSelectedOrganizationToDatabase, setIsSelectedOrganization, updateSelectedOrganization
 } from "../../../store/selected/actions";
 import Snackbar from "material-ui/Snackbar";
 import Dialog from "material-ui/Dialog";
@@ -14,7 +14,7 @@ import {getLabels} from "../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../store/organizations/reducer";
 import {getOrdersByOrganization} from "../../../store/orders/reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../store/selected/reducer";
-import {FlatButton} from "material-ui";
+import FlatButton from "material-ui/FlatButton";
 
 class OrganizationPageTitle extends React.Component {
 
@@ -42,7 +42,7 @@ class OrganizationPageTitle extends React.Component {
         this.handleDatabasePromise(promise);
     }
 
-    saveNewOrganization() {
+    async saveNewOrganization() {
         if (this.props.isSelectedOrganization) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
@@ -53,7 +53,8 @@ class OrganizationPageTitle extends React.Component {
         }
 
         const newOrganizationId = this.props.nextOrganizationId;
-        const promise = this.props.dispatch(sendSelectedOrganizationToDatabase(newOrganizationId));
+        await this.props.dispatch(updateSelectedOrganization("id", newOrganizationId));
+        const promise = this.props.dispatch(sendSelectedOrganizationToDatabase());
         this.handleDatabasePromise(promise);
     }
 
@@ -63,7 +64,7 @@ class OrganizationPageTitle extends React.Component {
                 snackbarOpen: true,
                 snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
             }));
-            this.props.dispatch(setIsSelectedOrganization(true));
+            this.props.dispatch(setIsSelectedOrganization());
         }
 
         function failure(error) {

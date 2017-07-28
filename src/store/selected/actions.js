@@ -34,11 +34,8 @@ export function setIsSelectedOrganization() {
     }
 }
 
-export function sendSelectedOrganizationToDatabase(newOrganizationId) {
+export function sendSelectedOrganizationToDatabase() {
     return async function sendSelectedOrganizationToDatabase(dispatch, getState) {
-        if (newOrganizationId) {
-            await dispatch(updateSelectedOrganization("id", newOrganizationId));
-        }
         const selectedOrganization = getSelectedOrganization(getState());
 
         return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);
@@ -59,8 +56,9 @@ export function selectOrder(orderId) {
 
 export function updateSelectedOrder(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
-        const selectedOrder = getSelectedOrder(getState());
-        selectedOrder[key] = value;
+        const selectedOrder = Immutable.merge(getSelectedOrder(getState()), {
+            [key]: value
+        });
         dispatch({
             type: actionTypes.UPDATE_SELECTED_ORDER,
             payload: selectedOrder,
@@ -74,6 +72,13 @@ export function setIsSelectedOrder() {
     }
 }
 
+export function sendSelectedOrderToDatabase() {
+    return async function sendSelectedOrderToDatabase(dispatch, getState) {
+        const selectedOrder = getSelectedOrder(getState());
+
+        return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
+    }
+}
 // Clear
 
 export function clearSelected() {
