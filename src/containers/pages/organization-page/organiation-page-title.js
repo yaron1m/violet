@@ -6,7 +6,8 @@ import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {
-    clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization, updateSelectedOrganization
+    clearSelected, clearSelectedOrder, selectOrder, sendSelectedOrganizationToDatabase, setIsSelectedOrganization,
+    updateSelectedOrganization
 } from "../../../store/selected/actions";
 import Snackbar from "material-ui/Snackbar";
 import Dialog from "material-ui/Dialog";
@@ -31,23 +32,32 @@ class OrganizationPageTitle extends React.Component {
 
     saveExistingOrganization() {
         if (!this.props.isSelectedOrganization) {
-            this.setState(Object.assign({}, this.state,{
+            this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                dialogTitle: "No organization selected",
+                dialogTitle: "No organization selected", //TODO replace with labels
                 dialogMessage: "You can not save unselected organization",
             }));
             return;
         }
-        // this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
-        //     .then(this.setState({
-        //         snackbarOpen: true,
-        //         snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
-        //     }))
+        const promise = this.props.dispatch(sendSelectedOrganizationToDatabase());
+        promise.then(
+            () => this.setState(Object.assign({}, this.state, {
+                snackbarOpen: true,
+                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
+            })),
+            (error) => {
+                this.setState(Object.assign({}, this.state, {
+                    dialogOpen: true,
+                    dialogTitle: "Problem sending to database",
+                    dialogMessage: "Failed sending to database",
+                }));
+                console.error(error);
+            })
     }
 
     saveNewOrganization() {
         if (this.props.isSelectedOrganization) {
-            this.setState(Object.assign({}, this.state,{
+            this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
                 dialogTitle: "Organization already selected",
                 dialogMessage: "Can not create new organization when other one is open",
@@ -66,16 +76,14 @@ class OrganizationPageTitle extends React.Component {
     }
 
 
-
     render() {
-        const dialogAction =<FlatButton
+        const dialogAction = <FlatButton
             label="אישור"
             primary={true}
             onTouchTap={() => this.setState(Object.assign({}, this.state, {
                 dialogOpen: false,
             }))}
         />;
-
 
 
         return (

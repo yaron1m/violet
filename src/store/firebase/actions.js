@@ -15,9 +15,9 @@ const firebaseConfig = {
 };
 
 export function initFirebase() {
-    return async function signInRequest(dispatch, getState) {
+    return async function signInRequest(dispatch) {
 
-        firebase.initializeApp(firebaseConfig);
+        const promise = firebase.initializeApp(firebaseConfig);
 
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
@@ -26,9 +26,10 @@ export function initFirebase() {
                 dispatch({type: actionTypes.LOGGED_OUT});
             }
         });
+
+        return promise;
     }
 }
-
 
 export function signInRequest(email, password) {
     return async function signInRequest(dispatch, getState) {
@@ -48,6 +49,19 @@ export function signInRequest(email, password) {
     }
 }
 
+export function afterSignedIn(user) {
+    return function afterSignedIn(dispatch) {
+        dispatch({
+            type: actionTypes.LOGGED_IN,
+            userId: user.uid,
+        });
+
+        fetchData('orders', receiveOrders, dispatch);
+        fetchData('organizations', receiveOrganizations, dispatch);
+        fetchData('offered-lectures', receiveOfferedLectures, dispatch);
+    }
+}
+
 export function signOutRequest() {
     return async function signInRequest(dispatch, getState) {
         if (!reducer.isLoggedIn(getState()))
@@ -63,20 +77,6 @@ export function signOutRequest() {
     }
 }
 
-export function afterSignedIn(user) {
-    return function afterSignedIn(dispatch) {
-        dispatch({
-            type: actionTypes.LOGGED_IN,
-            userId: user.uid,
-        });
-
-        fetchData('orders', receiveOrders, dispatch);
-        fetchData('organizations', receiveOrganizations, dispatch);
-        fetchData('offered-lectures', receiveOfferedLectures, dispatch);
-    }
-}
-
-
 export function fetchData(collectionName, actionCallback, dispatch, errorCallback) {
     firebase.database().ref(collectionName).on('value', snapshot => {
             dispatch(actionCallback(snapshot.val()));
@@ -89,14 +89,6 @@ export function fetchData(collectionName, actionCallback, dispatch, errorCallbac
         });
 }
 
-export function sendData(collectionName, value, dispatch) {
-    return firebase.database().ref(collectionName).set(value, error => {
-        if (error) {
-            console.error("The data send request for " + collectionName + " failed: " + error.code);
-            //TODO failed sending
-        }
-        else{
-            // TODO success
-        }
-    });
+export function sendDataToDatabase(collectionPath, value) {
+    return firebase.database().ref(collectionPath).set(value);
 }

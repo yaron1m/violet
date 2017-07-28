@@ -2,6 +2,8 @@ import * as actionTypes from './action-types';
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderById} from "../orders/reducer";
 import {getSelectedOrder, getSelectedOrganization} from "./reducer";
+import {sendDataToDatabase} from "../firebase/actions";
+import * as Immutable from "seamless-immutable";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -16,8 +18,9 @@ export function selectOrganization(organizationId) {
 
 export function updateSelectedOrganization(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
-        const selectedOrganization = getSelectedOrganization(getState());
-        selectedOrganization[key] = value;
+        const selectedOrganization = Immutable.merge(getSelectedOrganization(getState()), {
+            [key]: value
+        });
         dispatch({
             type: actionTypes.SELECT_ORGANIZATION,
             payload: selectedOrganization,
@@ -31,6 +34,16 @@ export function setIsSelectedOrganization() {
     }
 }
 
+export function sendSelectedOrganizationToDatabase(newOrganizationId) {
+    return async function sendSelectedOrganizationToDatabase(dispatch, getState) {
+        if (newOrganizationId) {
+            await dispatch(updateSelectedOrganization("id", newOrganizationId));
+        }
+        const selectedOrganization = getSelectedOrganization(getState());
+
+        return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);
+    }
+}
 
 // Orders:
 
@@ -63,13 +76,13 @@ export function setIsSelectedOrder() {
 
 // Clear
 
-export function clearSelected(){
+export function clearSelected() {
     return {
         type: actionTypes.CLEAR_SELECTED,
     }
 }
 
-export function clearSelectedOrder(){
+export function clearSelectedOrder() {
     return {
         type: actionTypes.CLEAR_SELECTED_ORDER,
     }
