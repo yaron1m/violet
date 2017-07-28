@@ -40,19 +40,7 @@ class OrganizationPageTitle extends React.Component {
             return;
         }
         const promise = this.props.dispatch(sendSelectedOrganizationToDatabase());
-        promise.then(
-            () => this.setState(Object.assign({}, this.state, {
-                snackbarOpen: true,
-                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
-            })),
-            (error) => {
-                this.setState(Object.assign({}, this.state, {
-                    dialogOpen: true,
-                    dialogTitle: "Problem sending to database",
-                    dialogMessage: "Failed sending to database",
-                }));
-                console.error(error);
-            })
+        this.handleDatabasePromise(promise);
     }
 
     saveNewOrganization() {
@@ -64,15 +52,31 @@ class OrganizationPageTitle extends React.Component {
             }));
             return;
         }
-        const selectedOrganization = this.props.selectedOrganization;
-        selectedOrganization.id = this.props.getNextOrganizationId();
-        this.props.dispatch(updateSelectedOrganization('id', selectedOrganization.id));
-        this.props.dispatch(setIsSelectedOrganization(true));
-        // this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
-        //     .then(this.setState({ //TODO what if writing failed?
-        //         snackbarOpen: true,
-        //         snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
-        //     }))
+
+        const newOrganizationId = this.props.nextOrganizationId;
+        const promise = this.props.dispatch(sendSelectedOrganizationToDatabase(newOrganizationId));
+        this.handleDatabasePromise(promise);
+    }
+
+    handleDatabasePromise(promise) {
+        function success() {
+            this.setState(Object.assign({}, this.state, {
+                snackbarOpen: true,
+                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name),
+            }));
+            this.props.dispatch(setIsSelectedOrganization(true));
+        }
+
+        function failure(error) {
+            this.setState(Object.assign({}, this.state, {
+                dialogOpen: true,
+                dialogTitle: "Problem sending to database",
+                dialogMessage: "Failed sending to database",
+            }));
+            console.error(error);
+        }
+
+        promise.then(success, failure);
     }
 
 
@@ -135,7 +139,7 @@ function mapStateToProps(state) {
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),
         OrderOfSelectedOrganization: getOrdersByOrganization(state),
-        getNextOrganizationId: getNextOrganizationId(state),
+        nextOrganizationId: getNextOrganizationId(state),
     };
 }
 
