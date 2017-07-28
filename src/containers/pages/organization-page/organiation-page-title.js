@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTitle from '../page-title';
+import PageTitle from '../../../components/page-title';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
@@ -8,12 +8,13 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 import {
     clearSelected, clearSelectedOrder, selectOrder, setIsSelectedOrganization, updateSelectedOrganization
 } from "../../../store/selected/actions";
-import {RaisedButton} from "material-ui";
 import Snackbar from "material-ui/Snackbar";
+import Dialog from "material-ui/Dialog";
 import {getLabels} from "../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../store/organizations/reducer";
 import {getOrdersByOrganization} from "../../../store/orders/reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../store/selected/reducer";
+import {FlatButton} from "material-ui";
 
 class OrganizationPageTitle extends React.Component {
 
@@ -22,12 +23,19 @@ class OrganizationPageTitle extends React.Component {
         this.state = {
             snackbarOpen: false,
             snackbarMessage: "",
-        }
+            dialogOpen: false,
+            dialogTitle: "",
+            dialogMessage: "",
+        };
     }
 
     saveExistingOrganization() {
-        if (!this.props.isSelectedOrganization.organization) {
-            alert("Can not save unselected organization");
+        if (!this.props.isSelectedOrganization) {
+            this.setState(Object.assign({}, this.state,{
+                dialogOpen: true,
+                dialogTitle: "No organization selected",
+                dialogMessage: "You can not save unselected organization",
+            }));
             return;
         }
         // this.props.dispatch(sendInformationToDatabase("/organizations/" + this.props.selectedOrganization.id, this.props.selectedOrganization))
@@ -38,8 +46,12 @@ class OrganizationPageTitle extends React.Component {
     }
 
     saveNewOrganization() {
-        if (this.props.isSelectedOrganization.organization) {
-            alert("Can not create new organization when other one is open");
+        if (this.props.isSelectedOrganization) {
+            this.setState(Object.assign({}, this.state,{
+                dialogOpen: true,
+                dialogTitle: "Organization already selected",
+                dialogMessage: "Can not create new organization when other one is open",
+            }));
             return;
         }
         const selectedOrganization = this.props.selectedOrganization;
@@ -54,35 +66,56 @@ class OrganizationPageTitle extends React.Component {
     }
 
 
+
     render() {
+        const dialogAction =<FlatButton
+            label="אישור"
+            primary={true}
+            onTouchTap={() => this.setState(Object.assign({}, this.state, {
+                dialogOpen: false,
+            }))}
+        />;
+
+
+
         return (
-                <PageTitle
-                    title={this.props.labels.title}
-                    buttons={<div>
-                        {/*save icon*/}
-                        <IconButton onClick={this.saveExistingOrganization.bind(this)}>
-                            < SaveIcon />
-                        </IconButton>
+            <PageTitle
+                title={this.props.labels.title}
+            >
+                {/*save icon*/}
+                <IconButton onClick={this.saveExistingOrganization.bind(this)}>
+                    < SaveIcon/>
+                </IconButton>
 
-                        {/*add icon*/}
-                        <IconButton onClick={this.saveNewOrganization.bind(this)}>
-                            <AddIcon />
-                        </IconButton>
+                {/*add icon*/}
+                <IconButton onClick={this.saveNewOrganization.bind(this)}>
+                    <AddIcon/>
+                </IconButton>
 
-                        {/*clear icon*/}
-                        <IconButton onClick={() => this.props.dispatch(clearSelected()) }>
-                            <ClearIcon/>
-                        </IconButton>
+                {/*clear icon*/}
+                <IconButton onClick={() => this.props.dispatch(clearSelected())}>
+                    <ClearIcon/>
+                </IconButton>
 
-                        <Snackbar
-                            open={this.state.snackbarOpen}
-                            message={this.state.snackbarMessage}
-                            autoHideDuration={4000}
-                            onRequestClose={() => this.setState({snackbarOpen: false})}
-                        />
-                    </div>
-                    }
+                <Snackbar
+                    open={this.state.snackbarOpen}
+                    message={this.state.snackbarMessage}
+                    autoHideDuration={4000}
+                    onRequestClose={() => this.setState({snackbarOpen: false})}
                 />
+
+                <Dialog
+                    title={this.state.dialogTitle}
+                    actions={dialogAction}
+                    modal={false}
+                    open={this.state.dialogOpen}
+                    onRequestClose={() => this.setState(Object.assign({}, this.state, {
+                        dialogOpen: false,
+                    }))}
+                >
+                    {this.state.dialogMessage}
+                </Dialog>
+            </PageTitle>
         );
     }
 }
@@ -93,7 +126,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).OrganizationPage,
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),
-        OrderOfSelectedOrganization : getOrdersByOrganization(state),
+        OrderOfSelectedOrganization: getOrdersByOrganization(state),
         getNextOrganizationId: getNextOrganizationId(state),
     };
 }

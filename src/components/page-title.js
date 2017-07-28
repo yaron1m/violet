@@ -13,10 +13,12 @@ export default class PageTitle extends React.Component {
         };
 
         return (
-            <div >
+            <div>
                 <span style={style.pageTitle}>{this.props.title}</span>
 
-                <span style={style.buttons}>{this.props.buttons}</span>
+                <span style={style.buttons}>
+                    {this.props.children}
+                </span>
 
             </div>
 
