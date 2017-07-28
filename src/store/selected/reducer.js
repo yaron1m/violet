@@ -59,7 +59,7 @@ export default (state = initialState, action = {}) => {
 
 // Selectors:
 export function getSelectedOrganization(state){
-    return isSelectedOrganization(state) ? state.selected.organization : {};
+    return state.selected.organization;
 }
 
 export function isSelectedOrganization(state){

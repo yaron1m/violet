@@ -25,7 +25,7 @@ export function getNextOrganizationId(state) {
     const keys = _.keys(organizations);
     if (!organizations || keys.length === 0)
         return null;
-    return _.parseInt(_.max(_.keys(organizations))) + 1;
+    return _.max(_.map(_.keys(organizations), _.parseInt)) + 1;
 }
 
 export function getOrganizationById(state, id) {
