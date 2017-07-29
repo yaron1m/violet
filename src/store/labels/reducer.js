@@ -129,6 +129,7 @@ export default function () {
             }
         },
         loginPage: {
+            title: "כניסת משתמשים",
             email: "דואר אלקטרוני:",
             password: "סיסמה:",
             signIn: "כניסה",
