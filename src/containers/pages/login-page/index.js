@@ -18,6 +18,15 @@ class LoginPage extends React.Component {
         }
     }
 
+     startSignInRequest(){
+        function errorCallback(message){
+            this.setState(Object.assign({}, this.state, {
+                errorMessage:  message,
+            }));
+        }
+        this.props.dispatch(signInRequest(this.state.email, this.state.password, errorCallback.bind(this)));
+    }
+
 
     render() {
         const style = {
@@ -41,16 +50,7 @@ class LoginPage extends React.Component {
 
         function onEnter(event) {
             if (event.key === "Enter")
-                startSignInRequest().bind(this);
-        }
-
-        function startSignInRequest(){
-            function errorCallback(message){
-                this.setState(Object.assign({}, this.state, {
-                    errorMessage:  message,
-                }));
-            }
-            this.props.dispatch(signInRequest(this.state.email, this.state.password, errorCallback.bind(this)));
+                this.startSignInRequest();
         }
 
         return (
@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
                             email: event.target.value,
                             errorMessage:"",
                         })))}
-                        onKeyDown={onEnter}
+                        onKeyDown={onEnter.bind(this)}
                     />
 
                     <TextField
@@ -81,14 +81,14 @@ class LoginPage extends React.Component {
                         })}
                         errorText={this.state.errorMessage}
 
-                        onKeyDown={onEnter}
+                        onKeyDown={onEnter.bind(this)}
                     />
 
                     <RaisedButton
                         label={this.props.labels.signIn}
                         primary={true}
                         style={style.button}
-                        onClick={startSignInRequest.bind(this)}
+                        onClick={this.startSignInRequest.bind(this)}
                     />
                 </Paper>
 
