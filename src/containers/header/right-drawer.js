@@ -10,7 +10,7 @@ import Web from 'material-ui/svg-icons/av/web';
 import {changeDrawerState} from "../../store/drawer/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {isDrawerOpen} from "../../store/drawer/reducer";
-import {getDispalyName} from "../../store/firebase/reducer";
+import {getDisplayName, getPhotoURL} from "../../store/firebase/reducer";
 
 
 class RightDrawer extends React.Component {
@@ -73,7 +73,7 @@ class RightDrawer extends React.Component {
                 </Link>
 
                 <div style={styles.avatar.div}>
-                    <Avatar src="http://www.material-ui.com/images/uxceo-128.jpg"
+                    <Avatar src={this.props.photoURL}
                             size={50}
                             style={styles.avatar.icon}/>
                     <span style={styles.avatar.span}>{this.props.displayName}</span>
@@ -106,7 +106,8 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state),
         isDrawerOpen: isDrawerOpen(state),
-        displayName: getDispalyName(state),
+        displayName: getDisplayName(state),
+        photoURL: getPhotoURL(state),
     };
 }
 export default connect(mapStateToProps)(RightDrawer);

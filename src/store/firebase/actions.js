@@ -23,6 +23,7 @@ export function initFirebase() {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 console.log("Login status - " + user.uid);
+                console.log(user);
                 dispatch(afterSignedIn(user));
             } else {
                 console.log("Logged out");
@@ -87,6 +88,7 @@ export function afterSignedIn(user) {
             type: actionTypes.LOGGED_IN,
             userId: user.uid,
             displayName: user.displayName,
+            photoURL: user.photoURL,
         });
 
         dispatch(fetchData('orders', receiveOrders));

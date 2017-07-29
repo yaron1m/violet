@@ -5,6 +5,7 @@ const initialState = Immutable({
     loggedIn: undefined,
     userId: undefined,
     displayName: "",
+    photoURL: "",
 });
 
 export default function (state = initialState, action = {}) {
@@ -14,13 +15,15 @@ export default function (state = initialState, action = {}) {
                 loggedIn: true,
                 userId: action.userId,
                 displayName: action.displayName,
+                photoURL: action.photoURL,
             });
 
         case actionTypes.LOGGED_OUT:
             return Immutable.merge(state,{
                 loggedIn: false,
                 userId: undefined,
-                displayName: ""
+                displayName: "",
+                photoURL: "",
             });
 
         default:
@@ -36,6 +39,10 @@ export function getUserId(state){
     return isLoggedIn(state) ? state.firebase.userId : undefined;
 }
 
-export function getDispalyName(state){
+export function getDisplayName(state){
     return state.firebase.displayName;
+}
+
+export function getPhotoURL(state){
+    return state.firebase.photoURL;
 }
