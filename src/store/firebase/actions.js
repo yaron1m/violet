@@ -34,12 +34,15 @@ export function initFirebase() {
     }
 }
 
-export function signInWithGoogle(errorCallback){
+export function signInWithGoogle(errorCallback) {
     return function signInRequest(dispatch) {
         const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithRedirect(provider).then(function(result) {
+        firebase.auth().signInWithRedirect(provider).then(function (result) {
             dispatch(afterSignedIn(result.user));
-        }).catch((error) => errorCallback(error.message));
+        }).catch(function (error) {
+            errorCallback(error.message);
+            console.log(error);
+        });
     }
 }
 
