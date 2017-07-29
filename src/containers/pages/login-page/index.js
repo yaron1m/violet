@@ -17,6 +17,11 @@ class LoginPage extends React.Component {
         }
     }
 
+    onEnter(event) {
+        if (event.key === "Enter")
+            this.props.dispatch(signInRequest(this.state.email, this.state.password))
+    }
+
 
     render() {
         const style = {
@@ -49,15 +54,19 @@ class LoginPage extends React.Component {
                         onChange={(event) => (this.setState(Object.assign({}, this.state, {
                             email: event.target.value,
                         })))}
+                        onKeyDown={this.onEnter.bind(this)}
                     />
 
                     <TextField
                         style={style.field}
                         floatingLabelText={this.props.labels.password}
                         type="password"
-                        onChange={(event) => (this.setState(Object.assign({}, this.state, {
-                            password: event.target.value,
-                        })))}
+                        onChange={((event) => {
+                            this.setState(Object.assign({}, this.state, {
+                                password: event.target.value,
+                            }))
+                        })}
+                        onKeyDown={this.onEnter.bind(this)}
                     />
 
                     <RaisedButton

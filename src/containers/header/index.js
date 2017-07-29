@@ -55,7 +55,7 @@ class Header extends React.Component {
                             targetOrigin={{horizontal: 'left', vertical: 'top'}}
                         >
                             <MenuItem
-                                primaryText="יציאה"
+                                primaryText={this.props.labels.logOut}
                                 onClick={() => this.props.dispatch(signOutRequest())}
 
                             />
@@ -69,7 +69,7 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state),
+        labels: getLabels(state).header,
         isDrawerOpen: isDrawerOpen(state),
     };
 }
