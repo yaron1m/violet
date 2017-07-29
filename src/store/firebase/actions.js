@@ -86,6 +86,7 @@ export function afterSignedIn(user) {
         dispatch({
             type: actionTypes.LOGGED_IN,
             userId: user.uid,
+            displayName: user.displayName,
         });
 
         dispatch(fetchData('orders', receiveOrders));

@@ -4,6 +4,7 @@ import Immutable from 'seamless-immutable';
 const initialState = Immutable({
     loggedIn: undefined,
     userId: undefined,
+    displayName: "",
 });
 
 export default function (state = initialState, action = {}) {
@@ -12,12 +13,14 @@ export default function (state = initialState, action = {}) {
             return Immutable.merge(state,{
                 loggedIn: true,
                 userId: action.userId,
+                displayName: action.displayName,
             });
 
         case actionTypes.LOGGED_OUT:
             return Immutable.merge(state,{
                 loggedIn: false,
                 userId: undefined,
+                displayName: ""
             });
 
         default:
@@ -31,4 +34,8 @@ export function isLoggedIn(state) {
 
 export function getUserId(state){
     return isLoggedIn(state) ? state.firebase.userId : undefined;
+}
+
+export function getDispalyName(state){
+    return state.firebase.displayName;
 }
