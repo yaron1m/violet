@@ -9,6 +9,10 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 import {changeDrawerState} from "../../store/drawer/actions";
 import {connect} from "react-redux";
 import {isDrawerOpen} from "../../store/drawer/reducer";
+import IconMenu from "material-ui/IconMenu";
+import MenuItem from "material-ui/MenuItem";
+import {signOutRequest} from "../../store/firebase/actions";
+import {getLabels} from "../../store/labels/reducer";
 
 class Header extends React.Component {
 
@@ -35,17 +39,27 @@ class Header extends React.Component {
         return (
             <AppBar
                 style={style.appBar}
-                title={<SearchBox /> }
+                title={<SearchBox/>}
                 iconElementLeft={
                     <IconButton style={style.menuButton}
-                               onClick={()=>this.props.dispatch(changeDrawerState())}
+                                onClick={() => this.props.dispatch(changeDrawerState())}
                     >
                         <Menu color={white}/>
                     </IconButton>
                 }
                 iconElementRight={
                     <div style={style.iconsRightContainer}>
-                        <IconButton><MoreIcon color={white}/></IconButton>
+                        <IconMenu
+                            iconButtonElement={<IconButton><MoreIcon color={white}/></IconButton>}
+                            anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                        >
+                            <MenuItem
+                                primaryText="יציאה"
+                                onClick={() => this.props.dispatch(signOutRequest())}
+
+                            />
+                        </IconMenu>
                     </div>
                 }
             />
@@ -55,8 +69,9 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        labels: getLabels(state),
         isDrawerOpen: isDrawerOpen(state),
     };
 }
 
-export default connect(mapStateToProps)(muiThemeable() (Header));
+export default connect(mapStateToProps)(muiThemeable()(Header));

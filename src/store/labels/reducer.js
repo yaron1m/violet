@@ -11,6 +11,7 @@ export default function () {
             searchLineHint: "חיפוש...",
             organizationPrefix: "ארגון: ",
             orderPrefix: "הזמנה: ",
+            logOut: "יציאה",
         },
         orderPage: {
             title: "טופס הזמנת הרצאה",

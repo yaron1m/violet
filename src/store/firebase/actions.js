@@ -20,10 +20,11 @@ export function initFirebase() {
         const promise = firebase.initializeApp(firebaseConfig);
 
         firebase.auth().onAuthStateChanged(function (user) {
-            console.log("Login status - " + user.uid);
             if (user) {
+                console.log("Login status - " + user.uid);
                 dispatch(afterSignedIn(user));
             } else {
+                console.log("Logged out");
                 dispatch({type: actionTypes.LOGGED_OUT});
             }
         });
@@ -34,7 +35,6 @@ export function initFirebase() {
 
 export function signInRequest(email, password) {
     return async function signInRequest(dispatch, getState) {
-
         function signInSuccess(user){
             dispatch(afterSignedIn(user));
         }
