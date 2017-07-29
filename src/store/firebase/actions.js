@@ -20,6 +20,7 @@ export function initFirebase() {
         const promise = firebase.initializeApp(firebaseConfig);
 
         firebase.auth().onAuthStateChanged(function (user) {
+            console.log("Login status - " + user.uid);
             if (user) {
                 dispatch(afterSignedIn(user));
             } else {

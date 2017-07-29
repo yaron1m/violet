@@ -2,9 +2,20 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from './containers/header';
 import RightDrawer from './containers/header/right-drawer';
+import LoginPage from './containers/pages/login-page';
 import ThemeDefault from './theme-default';
 
 class App extends React.Component {
+
+    appBody() {
+        if (this.props.isLoggedIn)
+            return this.props.children;
+
+        if (this.props.isLoggedIn === undefined) {
+            return <div/>;
+        }
+        return <LoginPage/>;
+    }
 
     render() {
         const styles = {
@@ -19,15 +30,16 @@ class App extends React.Component {
             }
         };
 
+
         return (
             <MuiThemeProvider muiTheme={ThemeDefault}>
                 <div>
                     <Header/>
 
-                    <RightDrawer />
+                    <RightDrawer/>
 
                     <div style={styles.container}>
-                        {this.props.children}
+                        {this.appBody()}
                     </div>
 
                     <div style={styles.footer}>Copyright © 2017 C-Point LTD - All Rights Reserved</div>
@@ -36,6 +48,5 @@ class App extends React.Component {
         );
     }
 }
-
 
 export default App;

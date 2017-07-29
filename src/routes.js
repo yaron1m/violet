@@ -1,25 +1,34 @@
 import React from 'react';
-import {Provider} from 'react-redux';
 import {Router, Route} from 'react-router';
 import {createHashHistory} from 'history';
 
 import App from './App'
 import LectureForm from './containers/pages/order-page/';
 import OrganizationPage from './containers/pages/organization-page/';
-import Store from './store'
+import {isLoggedIn} from "./store/firebase/reducer";
+import connect from "react-redux/es/connect/connect";
 
 
 const history = createHashHistory();
 
-const Root = () => (
-    <Provider store={Store}>
-        <Router history={history}>
-            <App>
-                <Route path="/form" component={LectureForm}/>
-                <Route path="/org" component={OrganizationPage}/>
-            </App>
-        </Router>
-    </Provider>
-);
+class Root extends React.Component {
 
-export default Root;
+    render() {
+        return (
+            <Router history={history}>
+                <App isLoggedIn={this.props.isLoggedIn}>
+                    <Route path="/form" component={LectureForm}/>
+                    <Route path="/org" component={OrganizationPage}/>
+                </App>
+            </Router>
+        )
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: isLoggedIn(state),
+    };
+}
+
+export default connect(mapStateToProps)(Root);

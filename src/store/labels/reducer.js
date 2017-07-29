@@ -1,4 +1,4 @@
-export function getLabels(state){
+export function getLabels(state) {
     return state.labels
 }
 
@@ -91,10 +91,10 @@ export default function () {
                     notes: "הערות נוספות"
                 }
             },
-            snackBar:{
+            snackBar: {
                 savedSuccessfully: 'הזמנה מספר {0} נשמרה בהצלחה',
             },
-            dialog:{
+            dialog: {
                 noOrganizationSelectedTitle: "לא נבחר ארגון",
                 noOrganizationSelectedContent: "לשמירת הזמנה יש לבחור ארגון",
                 noDataTitle: "לא הוכנסו נתונים",
@@ -115,10 +115,10 @@ export default function () {
                 tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
                     {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}, {edit: "עריכה"}]
             },
-            snackBar:{
+            snackBar: {
                 savedSuccessfully: 'ארגון "{0}" נשמר בהצלחה',
             },
-            dialog:{
+            dialog: {
                 noOrganizationSelectedTitle: "לא נבחר ארגון",
                 noOrganizationSelectedContent: "עדכון פרטי ארגון אפשרי רק עבור ארגונים קיימים, נסה לשמור ארגון חדש",
                 organizationAlreadySelectedTitle: "פרטי ארגון כבר טעונים במערכת",
@@ -127,5 +127,10 @@ export default function () {
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת פרטי הארגון בשרת",
             }
         },
+        loginPage: {
+            email: "דואר אלקטרוני:",
+            password: "סיסמה:",
+            signIn: "כניסה",
+        }
     };
 }
