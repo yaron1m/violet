@@ -34,18 +34,21 @@ export function initFirebase() {
 export function signInRequest(email, password) {
     return async function signInRequest(dispatch, getState) {
 
+        function signInSuccess(user){
+            dispatch(afterSignedIn(user));
+        }
+
+        function signInFailure(error){
+            if (error.code === 'auth/wrong-password') {
+                alert('Wrong password.');
+            } else {
+                alert(error.message);
+            }
+            console.error(error);
+        }
+
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(function (user) {
-                dispatch(afterSignedIn(user));
-            })
-            .catch(function (error) {
-                if (error.code === 'auth/wrong-password') {
-                    alert('Wrong password.');
-                } else {
-                    alert(error.message);
-                }
-                console.error(error);
-            });
+            .then(signInSuccess, signInFailure);
     }
 }
 
