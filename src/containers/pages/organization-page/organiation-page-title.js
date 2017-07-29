@@ -77,6 +77,7 @@ class OrganizationPageTitle extends React.Component {
         }
 
         promise.then(success.bind(this), failure.bind(this));
+        return promise;
     }
 
 

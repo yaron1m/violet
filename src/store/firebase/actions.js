@@ -56,9 +56,9 @@ export function afterSignedIn(user) {
             userId: user.uid,
         });
 
-        fetchData('orders', receiveOrders, dispatch);
-        fetchData('organizations', receiveOrganizations, dispatch);
-        fetchData('offered-lectures', receiveOfferedLectures, dispatch);
+        dispatch(fetchData('orders', receiveOrders));
+        dispatch(fetchData('organizations', receiveOrganizations));
+        dispatch(fetchData('offered-lectures', receiveOfferedLectures));
     }
 }
 
@@ -77,16 +77,15 @@ export function signOutRequest() {
     }
 }
 
-export function fetchData(collectionName, actionCallback, dispatch, errorCallback) {
-    firebase.database().ref(collectionName).on('value', snapshot => {
-            dispatch(actionCallback(snapshot.val()));
-        },
-        error => {
-            if (errorCallback)
-                errorCallback(collectionName, error.code);
-            else
-                console.Error("The request for " + collectionName + " failed: " + error.code);
-        });
+export function fetchData(collectionName, actionCallback) {
+    return function afterSignedIn(dispatch) {
+        firebase.database().ref(collectionName).on('value', snapshot => {
+                dispatch(actionCallback(snapshot.val()));
+            },
+            error => {
+                console.error("The request for " + collectionName + " failed: " + error.code);
+            });
+    }
 }
 
 export function sendDataToDatabase(collectionPath, value) {

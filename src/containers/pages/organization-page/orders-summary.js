@@ -29,7 +29,6 @@ class OrdersSummary extends React.Component {
                     data={this.props.OrderOfSelectedOrganization}
                     onEditButton={(order) => {
                         this.props.dispatch(selectOrder(order.id));
-                        console.log(this.props.history);
                         if (this.props.history.location.pathname !== '/form')
                             this.props.history.push('/form');
                     }}
