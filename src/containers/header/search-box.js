@@ -34,13 +34,16 @@ class SearchBox extends React.Component {
         switch (chosenRequest.value.type) {
             case this.sourceTypes.organization:
                 this.props.dispatch(selectOrganization(chosenRequest.value.id));
-                this.props.history.push('/org');
+                if (this.props.history.location.pathname !== '/org')
+                    this.props.history.push('/org');
                 return;
 
             case this.sourceTypes.order:
                 this.props.dispatch(selectOrder(chosenRequest.value.id));
                 this.props.dispatch(selectOrganization(chosenRequest.value.organizationId));
-                this.props.history.push('/form');
+
+                if (this.props.history.location.pathname !== '/form')
+                    this.props.history.push('/form');
                 return;
 
             default:

@@ -18,7 +18,8 @@ class OrdersSummary extends React.Component {
                     <RaisedButton primary={true} label={this.props.labels.newOrderButton}
                                   onClick={() => {
                                       this.props.dispatch(clearSelectedOrder());
-                                      this.props.history.push('/form');
+                                      if (this.props.history.location.pathname !== '/form')
+                                          this.props.history.push('/form');
                                   }}
                     />}
                 titleButtonCondition={this.props.isSelectedOrganization}
@@ -28,7 +29,9 @@ class OrdersSummary extends React.Component {
                     data={this.props.OrderOfSelectedOrganization}
                     onEditButton={(order) => {
                         this.props.dispatch(selectOrder(order.id));
-                        this.props.history.push('/form');
+                        console.log(this.props.history);
+                        if (this.props.history.location.pathname !== '/form')
+                            this.props.history.push('/form');
                     }}
                 />
             </CustomPage>
