@@ -14,12 +14,8 @@ class LoginPage extends React.Component {
         this.state = {
             email: "",
             password: "",
+            errorMessage:"",
         }
-    }
-
-    onEnter(event) {
-        if (event.key === "Enter")
-            this.props.dispatch(signInRequest(this.state.email, this.state.password))
     }
 
 
@@ -42,6 +38,21 @@ class LoginPage extends React.Component {
             },
         };
 
+
+        function onEnter(event) {
+            if (event.key === "Enter")
+                startSignInRequest().bind(this);
+        }
+
+        function startSignInRequest(){
+            function errorCallback(message){
+                this.setState(Object.assign({}, this.state, {
+                    errorMessage:  message,
+                }));
+            }
+            this.props.dispatch(signInRequest(this.state.email, this.state.password, errorCallback.bind(this)));
+        }
+
         return (
             <div style={style.div}>
                 <PageTitle title={this.props.labels.title}/>
@@ -53,8 +64,9 @@ class LoginPage extends React.Component {
                         type="email"
                         onChange={(event) => (this.setState(Object.assign({}, this.state, {
                             email: event.target.value,
+                            errorMessage:"",
                         })))}
-                        onKeyDown={this.onEnter.bind(this)}
+                        onKeyDown={onEnter}
                     />
 
                     <TextField
@@ -64,17 +76,19 @@ class LoginPage extends React.Component {
                         onChange={((event) => {
                             this.setState(Object.assign({}, this.state, {
                                 password: event.target.value,
+                                errorMessage:"",
                             }))
                         })}
-                        onKeyDown={this.onEnter.bind(this)}
+                        errorText={this.state.errorMessage}
+
+                        onKeyDown={onEnter}
                     />
 
                     <RaisedButton
                         label={this.props.labels.signIn}
                         primary={true}
                         style={style.button}
-                        onClick={() =>
-                            this.props.dispatch(signInRequest(this.state.email, this.state.password))}
+                        onClick={startSignInRequest.bind(this)}
                     />
                 </Paper>
 

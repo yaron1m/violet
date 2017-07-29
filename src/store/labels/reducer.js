@@ -133,6 +133,12 @@ export default function () {
             email: "דואר אלקטרוני:",
             password: "סיסמה:",
             signIn: "כניסה",
+            errors: {
+                wrongPassword: "שם משתמש ו/או סיסמה אינם נכונים",
+                invalidEmail: "דואר אלקטרוני לא תקין",
+                userDisabled: "המשתמש אינו תקין",
+                userNotFound: "משתמש אינו קיים",
+            }
         }
     };
 }

@@ -4,6 +4,7 @@ import {receiveOrders} from '../orders/actions'
 import {receiveOfferedLectures} from "../offered-lectures/actions";
 import * as firebase from 'firebase';
 import * as reducer from './reducer';
+import {getLabels} from "../labels/reducer";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
@@ -33,22 +34,37 @@ export function initFirebase() {
     }
 }
 
-export function signInRequest(email, password) {
+export function signInRequest(email, password, errorCallback) {
     return async function signInRequest(dispatch, getState) {
-        function signInSuccess(user){
+        function signInSuccess(user) {
             dispatch(afterSignedIn(user));
         }
 
-        function signInFailure(error){
-            if (error.code === 'auth/wrong-password') {
-                alert('Wrong password.');
-            } else {
-                alert(error.message);
+        function signInFailure(error) {
+            switch (error.code) {
+                case 'auth/invalid-email':
+                    errorCallback(getLabels(getState()).loginPage.errors.invalidEmail);
+                    return;
+
+                case 'auth/wrong-password':
+                    errorCallback(getLabels(getState()).loginPage.errors.wrongPassword);
+                    return;
+
+                case 'auth/user-disabled':
+                    errorCallback(getLabels(getState()).loginPage.errors.userDisabled);
+                    return;
+
+                case 'auth/user-not-found':
+                    errorCallback(getLabels(getState()).loginPage.errors.userNotFound);
+                    return;
+
+                default:
+                    errorCallback(error.message);
+                    return;
             }
-            console.error(error);
         }
 
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        return firebase.auth().signInWithEmailAndPassword(email, password)
             .then(signInSuccess, signInFailure);
     }
 }
