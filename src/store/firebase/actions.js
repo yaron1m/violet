@@ -34,8 +34,20 @@ export function initFirebase() {
     }
 }
 
+export function signInWithGoogle(errorCallback){
+    return function signInRequest(dispatch) {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithRedirect(provider).then(function(result) {
+            dispatch(afterSignedIn(result.user));
+        }).catch((error) => errorCallback(error.message));
+    }
+}
+
 export function signInRequest(email, password, errorCallback) {
-    return async function signInRequest(dispatch, getState) {
+    return function signInRequest(dispatch, getState) {
+        return firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(signInSuccess, signInFailure);
+
         function signInSuccess(user) {
             dispatch(afterSignedIn(user));
         }
@@ -63,9 +75,6 @@ export function signInRequest(email, password, errorCallback) {
                     return;
             }
         }
-
-        return firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(signInSuccess, signInFailure);
     }
 }
 

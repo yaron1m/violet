@@ -5,7 +5,11 @@ import Paper from "material-ui/Paper";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import {getLabels} from "../../../store/labels/reducer";
-import {signInRequest} from "../../../store/firebase/actions";
+import {signInRequest, signInWithGoogle} from "../../../store/firebase/actions";
+
+import signInWithGoogleNormal from '../../../images/google-sign-in/btn_google_signin_light_normal_web@2x.png';
+import signInWithGooglePressed from '../../../images/google-sign-in/btn_google_signin_light_pressed_web@2x.png';
+import signInWithGoogleFocused from '../../../images/google-sign-in/btn_google_signin_light_focus_web@2x.png';
 
 class LoginPage extends React.Component {
 
@@ -14,17 +18,29 @@ class LoginPage extends React.Component {
         this.state = {
             email: "",
             password: "",
-            errorMessage:"",
+            errorMessage: "",
+            signInWithGoogleImage: signInWithGoogleNormal,
         }
     }
 
-     startSignInRequest(){
-        function errorCallback(message){
+    signInRequest() {
+        function errorCallback(message) {
             this.setState(Object.assign({}, this.state, {
-                errorMessage:  message,
+                errorMessage: message,
             }));
         }
+
         this.props.dispatch(signInRequest(this.state.email, this.state.password, errorCallback.bind(this)));
+    }
+
+    signInWithGoogleRequest() {
+        function errorCallback(message) {
+            this.setState(Object.assign({}, this.state, {
+                errorMessage: message,
+            }));
+        }
+
+        this.props.dispatch(signInWithGoogle(errorCallback.bind(this)));
     }
 
 
@@ -45,12 +61,17 @@ class LoginPage extends React.Component {
             button: {
                 marginTop: 10,
             },
+            signInWithGoogle: {
+                height: 60,
+                marginTop: 10,
+                marginBottom: 10,
+            }
         };
 
 
         function onEnter(event) {
             if (event.key === "Enter")
-                this.startSignInRequest();
+                this.signInRequest();
         }
 
         return (
@@ -64,7 +85,7 @@ class LoginPage extends React.Component {
                         type="email"
                         onChange={(event) => (this.setState(Object.assign({}, this.state, {
                             email: event.target.value,
-                            errorMessage:"",
+                            errorMessage: "",
                         })))}
                         onKeyDown={onEnter.bind(this)}
                     />
@@ -76,7 +97,7 @@ class LoginPage extends React.Component {
                         onChange={((event) => {
                             this.setState(Object.assign({}, this.state, {
                                 password: event.target.value,
-                                errorMessage:"",
+                                errorMessage: "",
                             }))
                         })}
                         errorText={this.state.errorMessage}
@@ -88,7 +109,24 @@ class LoginPage extends React.Component {
                         label={this.props.labels.signIn}
                         primary={true}
                         style={style.button}
-                        onClick={this.startSignInRequest.bind(this)}
+                        onClick={this.signInRequest.bind(this)}
+                    />
+
+                    <img src={this.state.signInWithGoogleImage }
+                         alt="Sign in with Google"
+                         style={style.signInWithGoogle}
+                         onMouseOver={() => this.setState(Object.assign({}, this.state, {
+                             signInWithGoogleImage: signInWithGoogleFocused,
+                         }))}
+                         onMouseOut={() => this.setState(Object.assign({}, this.state, {
+                             signInWithGoogleImage: signInWithGoogleNormal,
+                         }))}
+                         onClick={function(){
+                             this.setState(Object.assign({}, this.state, {
+                             signInWithGoogleImage: signInWithGooglePressed,
+                         }));
+                             this.signInWithGoogleRequest()
+                         }.bind(this)}
                     />
                 </Paper>
 
