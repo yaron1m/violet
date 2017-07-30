@@ -22,11 +22,8 @@ export function initFirebase() {
 
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                console.log("Login status - " + user.uid);
-                console.log(user);
                 dispatch(afterSignedIn(user));
             } else {
-                console.log("Logged out");
                 dispatch({type: actionTypes.LOGGED_OUT});
             }
         });

@@ -33,7 +33,7 @@ class App extends React.Component {
 
         return (
             <MuiThemeProvider muiTheme={ThemeDefault}>
-                <div>
+                <div dir={this.props.rtl? "rtl" : ""}>
                     <Header/>
 
                     <RightDrawer/>

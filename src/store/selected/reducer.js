@@ -2,12 +2,12 @@ import * as actionTypes from './action-types';
 import Immutable from 'seamless-immutable';
 import {LOGGED_OUT} from "../firebase/action-types";
 
-const initialState = {
+const initialState = Immutable({
     organization: {},
     order: {},
     isSelectedOrganization: false,
     isSelectedOrder: false,
-};
+});
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {

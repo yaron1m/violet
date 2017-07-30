@@ -7,9 +7,9 @@ import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Web from 'material-ui/svg-icons/av/web';
-import {changeDrawerState} from "../../store/drawer/actions";
+import {changeDrawerState} from "../../store/appearance/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {isDrawerOpen} from "../../store/drawer/reducer";
+import {isDrawerOpen} from "../../store/appearance/reducer";
 import {getDisplayName, getPhotoURL} from "../../store/firebase/reducer";
 
 
