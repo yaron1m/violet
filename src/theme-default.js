@@ -1,26 +1,26 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {black, grey900, purple800} from 'material-ui/styles/colors';
 
-const muiTheme = {
 
-    palette: {
+export default function getTheme(isRtl) {
+    const muiTheme = {
 
-    },
+        palette: {},
 
-    isRtl:true,
+        isRtl: isRtl,
 
-    appBar: {
-        height: 57,
-        color: purple800
-    },
-    drawer: {
-        width: 230,
-        color: grey900
-    },
-    textField: {
-        floatingLabelColor: black,
-    },
+        appBar: {
+            height: 57,
+            color: purple800
+        },
+        drawer: {
+            width: 230,
+            color: grey900
+        },
+        textField: {
+            floatingLabelColor: black,
+        },
 
-};
-
-export default getMuiTheme(muiTheme);
+    };
+    return getMuiTheme(muiTheme);
+}
