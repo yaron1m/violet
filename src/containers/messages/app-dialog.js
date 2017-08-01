@@ -18,7 +18,7 @@ class AppDialog extends React.Component {
                     onTouchTap={() => this.props.dispatch(closeDialog())}
                 />}
 
-                onRequestClose={() => () => this.props.dispatch(closeDialog())}
+                onRequestClose={() => this.props.dispatch(closeDialog())}
             >
                 {this.props.dialogMessage}
             </Dialog>
