@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomCard from "../../../../components/custom-components/custom-card";
-import {CustomText} from "../../../../components/custom-components/custom-text-field";
+import CustomText from "../../../../components/custom-components/custom-text-field";
 import CustomToggle, {CustomToggleBox} from "../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import Paper from "material-ui/Paper";
