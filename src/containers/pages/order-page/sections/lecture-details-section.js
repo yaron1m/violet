@@ -3,23 +3,19 @@ import CustomCard from "../../../../components/custom-components/custom-card";
 import {CustomText} from "../../../../components/custom-components/custom-text-field";
 import CustomToggle, {CustomToggleBox} from "../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
-import {Paper} from "material-ui";
+import Paper from "material-ui/Paper";
 import CustomTable from "../../../../components/custom-components/custom-table";
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
+import {getSelectedOrder} from "../../../../store/selected/reducer";
 
 class LectureDetailsSection extends React.Component {
 
     render() {
 
-        // //Filter offered lectures
-        // const lecturesObj = this.props.offeredLectures;
-        // const allLectures = Object.keys(lecturesObj);
-        // const filteredLectures = allLectures.filter((lecture) => (lecturesObj[lecture]));
-
         const fieldData = {
             titles: this.props.labels.titles,
-            values: this.props.selected.order,
+            values: this.props.selectedOrder,
             updateAction: updateSelectedOrder,
             dispatch: this.props.dispatch,
         };
@@ -34,7 +30,7 @@ class LectureDetailsSection extends React.Component {
                 <Paper>
                     <CustomTable
                         headers={this.props.labels.lectureTimesSection.tableHeaders}
-                        data={this.props.selected.order.lectureTimes}
+                        data={this.props.selectedOrder.lectureTimes}
                     />
                 </Paper>
 
@@ -62,9 +58,9 @@ class LectureDetailsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels:getLabels(state).orderPage.lectureDetailsSection,
-        lectureTimes: state.lectureTimes,
-        selected: state.selected,
+        labels: getLabels(state).orderPage.lectureDetailsSection,
+        selectedOrder: getSelectedOrder(state),
     };
 }
+
 export default connect(mapStateToProps)(LectureDetailsSection);
