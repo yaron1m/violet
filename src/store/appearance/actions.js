@@ -20,6 +20,19 @@ export function closeDialog() {
     }
 }
 
+export function openSnackbar(message) {
+    return {
+        type: actionTypes.OPEN_SNACKBAR,
+        message,
+    }
+}
+
+export function closeSnackbar() {
+    return {
+        type: actionTypes.CLOSE_SNACKBAR,
+    }
+}
+
 export function changeLanguage(langCode, isRTL) {
     return {
         type: actionTypes.CHANGE_LANGUAGE,

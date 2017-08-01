@@ -9,6 +9,10 @@ const initialState = Immutable({
         isOpen: false,
         title: "",
         message: "",
+    },
+    snackbar:{
+        isOpen: false,
+        message: "",
     }
 });
 
@@ -43,6 +47,22 @@ export default function (state = initialState, action = {}) {
                 }
             });
 
+        case actionTypes.OPEN_SNACKBAR:
+            return Immutable.merge(state, {
+                snackbar: {
+                    isOpen: true,
+                    message: action.message,
+                }
+            });
+
+        case actionTypes.CLOSE_SNACKBAR:
+            return Immutable.merge(state, {
+                snackbar: {
+                    isOpen: false,
+                    message: "",
+                }
+            });
+
         default:
             return state;
     }
@@ -66,6 +86,14 @@ export function getDialogTitle(state) {
 
 export function getDialogMessage(state) {
     return state.appearance.dialog.message;
+}
+
+export function isSnackbarOpen(state) {
+    return state.appearance.snackbar.isOpen;
+}
+
+export function getSnackbarMessage(state) {
+    return state.appearance.snackbar.message;
 }
 
 export function getLanguage(state) {

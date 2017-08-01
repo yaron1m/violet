@@ -4,6 +4,7 @@ import Header from './containers/header';
 import RightDrawer from './containers/header/right-drawer';
 import LoginPage from './containers/pages/login-page';
 import AppDialog from './containers/messages/app-dialog';
+import AppSnackbar from './containers/messages/app-snackbar';
 import ThemeDefault from './theme-default';
 
 
@@ -47,6 +48,7 @@ class App extends React.Component {
                     <div style={styles.footer}>Copyright © 2017 C-Point LTD - All Rights Reserved</div>
 
                     <AppDialog/>
+                    <AppSnackbar/>
                 </div>
             </MuiThemeProvider>
         );

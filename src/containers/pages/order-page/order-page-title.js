@@ -5,7 +5,6 @@ import IconButton from "material-ui/IconButton";
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import SaveIcon from 'material-ui/svg-icons/content/save';
-import Snackbar from "material-ui/Snackbar";
 import {
     clearSelectedOrder, sendSelectedOrderToDatabase, setIsSelectedOrder,
     updateSelectedOrder
@@ -17,17 +16,9 @@ import {
 } from "../../../store/selected/reducer";
 import {getNextOrderId} from "../../../store/orders/reducer";
 import * as _ from "lodash";
-import {openDialog} from "../../../store/appearance/actions";
+import {openDialog, openSnackbar} from "../../../store/appearance/actions";
 
 class OrderPageTitle extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            snackbarOpen: false,
-            snackbarMessage: "",
-        };
-    }
 
     async saveOrder() {
         if (!this.props.isSelectedOrganization) {
@@ -51,10 +42,8 @@ class OrderPageTitle extends React.Component {
 
     handleDatabasePromise(promise) {
         function success() {
-            this.setState(Object.assign({}, this.state, {
-                snackbarOpen: true,
-                snackbarMessage: this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrder.id),
-            }));
+            const snackbarMessage = this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrder.id);
+            this.props.dispatch(openSnackbar(snackbarMessage));
             this.props.dispatch(setIsSelectedOrder());
         }
 
@@ -85,14 +74,6 @@ class OrderPageTitle extends React.Component {
                 <IconButton>
                     <ClearIcon onClick={() => this.props.dispatch(clearSelectedOrder())}/>
                 </IconButton>
-
-
-                <Snackbar
-                    open={this.state.snackbarOpen}
-                    message={this.state.snackbarMessage}
-                    autoHideDuration={4000}
-                    onRequestClose={() => this.setState({snackbarOpen: false})}
-                />
             </PageTitle>
         );
     }
