@@ -5,13 +5,30 @@ import CustomToggle, {CustomToggleBox} from "../../../../components/custom-compo
 import {connect} from 'react-redux';
 import Paper from "material-ui/Paper";
 import CustomTable from "../../../../components/custom-components/custom-table";
-import {updateSelectedOrder} from "../../../../store/selected/actions";
+import {getUpdateSelectedLectureTimeAction, updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
+import CustomDialog from "../../../../components/custom-components/custom-dialog";
+import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
 
 class LectureDetailsSection extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            dialogOpen: false,
+            selectedLectureTimeIndex: null,
+        };
+    }
+
     render() {
+
+        function editLectureTime(index) {
+            this.setState(Object.assign({}, this.state,{
+                dialogOpen: true,
+                selectedLectureTimeIndex: index.id //TODO get index instead of object form table
+            }));
+        }
 
         const fieldData = {
             titles: this.props.labels.titles,
@@ -19,6 +36,19 @@ class LectureDetailsSection extends React.Component {
             updateAction: updateSelectedOrder,
             dispatch: this.props.dispatch,
         };
+
+        function dialogFieldData() {
+            const index = this.state.selectedLectureTimeIndex;
+            if (index === null)
+                return {};
+
+            return {
+                titles: this.props.labels.lectureTimesSection.editDialog.titles,
+                values: this.props.selectedOrder.lectureTimes[index],
+                updateAction: getUpdateSelectedLectureTimeAction(index),
+                dispatch: this.props.dispatch,
+            };
+        }
 
         return (
             <CustomCard
@@ -31,7 +61,26 @@ class LectureDetailsSection extends React.Component {
                     <CustomTable
                         headers={this.props.labels.lectureTimesSection.tableHeaders}
                         data={this.props.selectedOrder.lectureTimes}
+                        onEditButton={editLectureTime.bind(this)}
                     />
+
+                    <CustomDialog
+                        open={this.state.dialogOpen}
+                        title="hi"
+                        onRequestClose={() => this.setState(Object.assign({}, this.state,{
+                            dialogOpen: false,
+                            selectedLectureTimeIndex: null,
+                        }))}
+                    >
+                        <CustomDatePicker data={dialogFieldData.bind(this)()} name="date"/>
+                        <CustomText data={dialogFieldData.bind(this)()} name="startTime"/>
+                        <CustomText data={dialogFieldData.bind(this)()} name="endTime"/>
+                        <CustomText data={dialogFieldData.bind(this)()} name="topic"/>
+                        <CustomText data={dialogFieldData.bind(this)()} name="audienceSize"/>
+                        <CustomText data={dialogFieldData.bind(this)()} name="shirtColor"/>
+                        <CustomText data={dialogFieldData.bind(this)()} name="tie"/>
+                    </CustomDialog>
+
                 </Paper>
 
                 <div>
