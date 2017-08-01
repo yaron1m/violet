@@ -102,6 +102,12 @@ export default function () {
                 noDataContent: "לשמירת הזמנה חדשה יש להכניס נתונים",
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
+            },
+            orderStatus:{
+                contact: "פניה",
+                offer:"",
+                approvedOffer:"",
+
             }
         },
         OrganizationPage: {

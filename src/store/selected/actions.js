@@ -4,6 +4,7 @@ import {getOrderById} from "../orders/reducer";
 import {getSelectedOrder, getSelectedOrganization} from "./reducer";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";
+import calculateOrderStatus from '../../util/order-status'
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -59,9 +60,11 @@ export function updateSelectedOrder(key, value) {
         const selectedOrder = Immutable.merge(getSelectedOrder(getState()), {
             [key]: value
         });
+        const updatedOrder = calculateOrderStatus(selectedOrder);
+
         dispatch({
             type: actionTypes.UPDATE_SELECTED_ORDER,
-            payload: selectedOrder,
+            payload: updatedOrder,
         });
     }
 }
