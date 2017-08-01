@@ -122,6 +122,8 @@ export default function () {
             dialog: {
                 noOrganizationSelectedTitle: "לא נבחר ארגון",
                 noOrganizationSelectedContent: "עדכון פרטי ארגון אפשרי רק עבור ארגונים קיימים, נסה לשמור ארגון חדש",
+                noDataTitle: "לא הוכנסו נתונים",
+                noDataContent: "לשמירת ארגון חדש יש להכניס נתונים",
                 organizationAlreadySelectedTitle: "פרטי ארגון כבר טעונים במערכת",
                 organizationAlreadySelectedContent: "לשמירת ארגון חדש יש ראשית לנקות את הארגון הטעון",
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת פרטי ארגון",

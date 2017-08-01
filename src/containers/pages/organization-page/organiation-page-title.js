@@ -13,6 +13,7 @@ import {getNextOrganizationId} from "../../../store/organizations/reducer";
 import {getOrdersByOrganization} from "../../../store/orders/reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../store/selected/reducer";
 import {openDialog, openSnackbar} from "../../../store/appearance/actions";
+import * as _ from "lodash";
 
 class OrganizationPageTitle extends React.Component {
 
@@ -30,6 +31,13 @@ class OrganizationPageTitle extends React.Component {
         if (this.props.isSelectedOrganization) {
             const dialogText = this.props.labels.dialog;
             this.props.dispatch(openDialog(dialogText.organizationAlreadySelectedTitle, dialogText.organizationAlreadySelectedContent));
+            return;
+        }
+
+        //Check if only data in order is id and organization:
+        if (_.isEmpty(this.props.selectedOrganization)) {
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.noDataTitle, dialogText.noDataContent));
             return;
         }
 
