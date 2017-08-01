@@ -2,7 +2,7 @@ import React from 'react';
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import connect from "react-redux/es/connect/connect";
-import {getDialogMessage, getDialogTitle, isDialogOpen} from "../../store/appearance/reducer";
+import {getDialogContent, getDialogTitle, isDialogOpen} from "../../store/appearance/reducer";
 import {closeDialog} from "../../store/appearance/actions";
 
 class AppDialog extends React.Component {
@@ -20,7 +20,7 @@ class AppDialog extends React.Component {
 
                 onRequestClose={() => this.props.dispatch(closeDialog())}
             >
-                {this.props.dialogMessage}
+                {this.props.dialogContent}
             </Dialog>
         );
     }
@@ -30,7 +30,7 @@ function mapStateToProps(state) {
     return {
         isDialogOpen: isDialogOpen(state),
         dialogTitle: getDialogTitle(state),
-        dialogMessage: getDialogMessage(state),
+        dialogContent: getDialogContent(state),
     };
 }
 

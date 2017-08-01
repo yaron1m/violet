@@ -6,11 +6,11 @@ export function changeDrawerState() {
     };
 }
 
-export function openDialog(title, message) {
+export function openDialog(title, content) {
     return {
         type: actionTypes.OPEN_DIALOG,
         title,
-        message,
+        content,
     }
 }
 
