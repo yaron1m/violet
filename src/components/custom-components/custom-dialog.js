@@ -1,4 +1,5 @@
-import {Dialog, FlatButton} from "material-ui";
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
 import React from "react";
 import PropTypes from 'prop-types';
 
@@ -31,8 +32,8 @@ class CustomDialog extends React.Component {
 
 
 CustomDialog.propTypes = {
+    open: PropTypes.bool.isRequired,
     title: PropTypes.string,
-    data: PropTypes.bool,
     onRequestClose: PropTypes.func,
 };
 
