@@ -3,7 +3,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from './containers/header';
 import RightDrawer from './containers/header/right-drawer';
 import LoginPage from './containers/pages/login-page';
+import AppDialog from './containers/messages/app-dialog';
 import ThemeDefault from './theme-default';
+
 
 class App extends React.Component {
 
@@ -43,6 +45,8 @@ class App extends React.Component {
                     </div>
 
                     <div style={styles.footer}>Copyright © 2017 C-Point LTD - All Rights Reserved</div>
+
+                    <AppDialog/>
                 </div>
             </MuiThemeProvider>
         );

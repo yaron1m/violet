@@ -9,12 +9,11 @@ import {
     clearSelected, sendSelectedOrganizationToDatabase, setIsSelectedOrganization, updateSelectedOrganization
 } from "../../../store/selected/actions";
 import Snackbar from "material-ui/Snackbar";
-import Dialog from "material-ui/Dialog";
 import {getLabels} from "../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../store/organizations/reducer";
 import {getOrdersByOrganization} from "../../../store/orders/reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../store/selected/reducer";
-import FlatButton from "material-ui/FlatButton";
+import {openDialog} from "../../../store/appearance/actions";
 
 class OrganizationPageTitle extends React.Component {
 
@@ -23,19 +22,13 @@ class OrganizationPageTitle extends React.Component {
         this.state = {
             snackbarOpen: false,
             snackbarMessage: "",
-            dialogOpen: false,
-            dialogTitle: "",
-            dialogMessage: "",
         };
     }
 
     saveExistingOrganization() {
         if (!this.props.isSelectedOrganization) {
-            this.setState(Object.assign({}, this.state, {
-                dialogOpen: true,
-                dialogTitle: this.props.labels.dialog.noOrganizationSelectedTitle,
-                dialogMessage:  this.props.labels.dialog.noOrganizationSelectedContent,
-            }));
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.noOrganizationSelectedContent));
             return;
         }
         const promise = this.props.dispatch(sendSelectedOrganizationToDatabase());
@@ -44,11 +37,8 @@ class OrganizationPageTitle extends React.Component {
 
     async saveNewOrganization() {
         if (this.props.isSelectedOrganization) {
-            this.setState(Object.assign({}, this.state, {
-                dialogOpen: true,
-                dialogTitle: this.props.labels.dialog.organizationAlreadySelectedTitle,
-                dialogMessage:  this.props.labels.dialog.organizationAlreadySelectedContent,
-            }));
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.organizationAlreadySelectedTitle, dialogText.organizationAlreadySelectedContent));
             return;
         }
 
@@ -68,11 +58,8 @@ class OrganizationPageTitle extends React.Component {
         }
 
         function failure(error) {
-            this.setState(Object.assign({}, this.state, {
-                dialogOpen: true,
-                dialogTitle: this.props.labels.dialog.sendingToDatabaseFailedTitle,
-                dialogMessage:  this.props.labels.dialog.sendingToDatabaseFailedContent,
-            }));
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
             console.error(error);
         }
 
@@ -82,15 +69,6 @@ class OrganizationPageTitle extends React.Component {
 
 
     render() {
-        const dialogAction = <FlatButton
-            label="אישור"
-            primary={true}
-            onTouchTap={() => this.setState(Object.assign({}, this.state, {
-                dialogOpen: false,
-            }))}
-        />;
-
-
         return (
             <PageTitle
                 title={this.props.labels.title}
@@ -117,16 +95,6 @@ class OrganizationPageTitle extends React.Component {
                     onRequestClose={() => this.setState({snackbarOpen: false})}
                 />
 
-                <Dialog
-                    title={this.state.dialogTitle}
-                    actions={dialogAction}
-                    open={this.state.dialogOpen}
-                    onRequestClose={() => this.setState(Object.assign({}, this.state, {
-                        dialogOpen: false,
-                    }))}
-                >
-                    {this.state.dialogMessage}
-                </Dialog>
             </PageTitle>
         );
     }

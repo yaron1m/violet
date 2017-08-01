@@ -5,6 +5,11 @@ const initialState = Immutable({
     isOpen: false,
     rtl: true,
     language: "he",
+    dialog: {
+        isOpen: false,
+        title: "",
+        message: "",
+    }
 });
 
 export default function (state = initialState, action = {}) {
@@ -20,6 +25,24 @@ export default function (state = initialState, action = {}) {
                 language: action.language,
             });
 
+        case actionTypes.OPEN_DIALOG:
+            return Immutable.merge(state, {
+                dialog: {
+                    isOpen: true,
+                    title: action.title,
+                    message: action.message,
+                }
+            });
+
+        case actionTypes.CLOSE_DIALOG:
+            return Immutable.merge(state, {
+                dialog: {
+                    isOpen: false,
+                    title: "",
+                    message: "",
+                }
+            });
+
         default:
             return state;
     }
@@ -29,10 +52,22 @@ export function isDrawerOpen(state) {
     return state.appearance.isOpen;
 }
 
-export function isRTL(state){
+export function isRTL(state) {
     return state.appearance.rtl;
 }
 
-export function getLanguage(state){
+export function isDialogOpen(state) {
+    return state.appearance.dialog.isOpen;
+}
+
+export function getDialogTitle(state) {
+    return state.appearance.dialog.title;
+}
+
+export function getDialogMessage(state) {
+    return state.appearance.dialog.message;
+}
+
+export function getLanguage(state) {
     return state.appearance.language;
 }

@@ -1,24 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PageTitle from "../../../../components/page-title";
+import PageTitle from "../../../components/page-title";
 import IconButton from "material-ui/IconButton";
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import Snackbar from "material-ui/Snackbar";
-import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
 import {
     clearSelectedOrder, sendSelectedOrderToDatabase, setIsSelectedOrder,
     updateSelectedOrder
-} from "../../../../store/selected/actions";
-import {getLabels} from "../../../../store/labels/reducer";
+} from "../../../store/selected/actions";
+import {getLabels} from "../../../store/labels/reducer";
 import {
     getSelectedOrder, getSelectedOrganization, isSelectedOrder,
     isSelectedOrganization
-} from "../../../../store/selected/reducer";
-import {getNextOrderId} from "../../../../store/orders/reducer";
+} from "../../../store/selected/reducer";
+import {getNextOrderId} from "../../../store/orders/reducer";
 import * as _ from "lodash";
+import {openDialog} from "../../../store/appearance/actions";
 
 class OrderPageTitle extends React.Component {
 
@@ -27,35 +26,26 @@ class OrderPageTitle extends React.Component {
         this.state = {
             snackbarOpen: false,
             snackbarMessage: "",
-            dialogOpen: false,
-            dialogTitle: "",
-            dialogMessage: "",
         };
     }
 
     async saveOrder() {
         if (!this.props.isSelectedOrganization) {
-            this.setState(Object.assign({}, this.state, {
-                dialogOpen: true,
-                dialogTitle: this.props.labels.dialog.noOrganizationSelectedTitle,
-                dialogMessage:  this.props.labels.dialog.noOrganizationSelectedContent,
-            }));
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.noOrganizationSelectedContent));
             return;
         }
         if (!this.props.isSelectedOrder) {
             //Check if only data in order is id and organization:
-            if(_.isEmpty(this.props.selectedOrder)) {
-                this.setState(Object.assign({}, this.state, {
-                    dialogOpen: true,
-                    dialogTitle: this.props.labels.dialog.noDataTitle,
-                    dialogMessage:  this.props.labels.dialog.noDataContent,
-                }));
+            if (_.isEmpty(this.props.selectedOrder)) {
+                const dialogText = this.props.labels.dialog;
+                this.props.dispatch(openDialog(dialogText.noDataTitle, dialogText.noDataContent));
                 return;
             }
             await this.props.dispatch(updateSelectedOrder("id", this.props.nextOrderId));
             await this.props.dispatch(updateSelectedOrder("organizationId", this.props.selectedOrganization.id));
         }
-        const promise =  this.props.dispatch(sendSelectedOrderToDatabase());
+        const promise = this.props.dispatch(sendSelectedOrderToDatabase());
         this.handleDatabasePromise(promise);
     }
 
@@ -69,11 +59,8 @@ class OrderPageTitle extends React.Component {
         }
 
         function failure(error) {
-            this.setState(Object.assign({}, this.state, {
-                dialogOpen: true,
-                dialogTitle: this.props.labels.dialog.sendingToDatabaseFailedTitle,
-                dialogMessage:  this.props.labels.dialog.sendingToDatabaseFailedContent,
-            }));
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
             console.error(error);
         }
 
@@ -85,14 +72,6 @@ class OrderPageTitle extends React.Component {
     render() {
         const pageTitle = this.props.labels.title +
             (this.props.isSelectedOrder ? this.props.labels.orderNumberTitle + this.props.selectedOrder.id : this.props.labels.newOrderTitle);
-
-        const dialogAction = <FlatButton
-            label="אישור"
-            primary={true}
-            onTouchTap={() => this.setState(Object.assign({}, this.state, {
-                dialogOpen: false,
-            }))}
-        />;
 
         return (
             <PageTitle title={pageTitle}>
@@ -108,26 +87,12 @@ class OrderPageTitle extends React.Component {
                 </IconButton>
 
 
-
-
-
                 <Snackbar
                     open={this.state.snackbarOpen}
                     message={this.state.snackbarMessage}
                     autoHideDuration={4000}
                     onRequestClose={() => this.setState({snackbarOpen: false})}
                 />
-
-                <Dialog
-                    title={this.state.dialogTitle}
-                    actions={dialogAction}
-                    open={this.state.dialogOpen}
-                    onRequestClose={() => this.setState(Object.assign({}, this.state, {
-                        dialogOpen: false,
-                    }))}
-                >
-                    {this.state.dialogMessage}
-                </Dialog>
             </PageTitle>
         );
     }
@@ -141,7 +106,7 @@ function mapStateToProps(state) {
         isSelectedOrganization: isSelectedOrganization(state),
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
-        nextOrderId : getNextOrderId(state),
+        nextOrderId: getNextOrderId(state),
     };
 }
 

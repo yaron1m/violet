@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderPageTitle from './title/order-page-title';
+import OrderPageTitle from './order-page-title';
 import OrganizationSection from "../organization-page/organization-section";
 import LectureDetailsSection from "./sections/lecture-details-section";
 import ContactsSection from "./sections/contacts-section";
