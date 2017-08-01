@@ -17,9 +17,7 @@ class CustomTableRow extends React.Component {
                         if (headerKey === "edit")
                             return ( <TableRowColumn key={headerKey}>
                                 <IconButton
-                                    onClick={this.props.onEditButton ?
-                                        () => this.props.onEditButton(this.props.element) :
-                                        null}
+                                    onClick={() => this.props.onEditButton(this.props.element)}
                                 >
                                     <EditIcon/>
                                 </IconButton>
@@ -39,7 +37,7 @@ CustomTableRow.propTypes = {
 };
 
 CustomTableRow.defaultProps = {
-    showCheckBox: true,
+    onEditButton: null,
 };
 
 export default CustomTableRow;
