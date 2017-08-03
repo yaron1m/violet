@@ -11,8 +11,9 @@ class NotesSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
-            updateAction: updateSelectedOrder,
-            dispatch: this.props.dispatch,
+            updateAction: function (key, value) {
+                this.props.dispatch(updateSelectedOrder(key, value));
+            }.bind(this)
         };
 
         return (

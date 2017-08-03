@@ -24,13 +24,15 @@ export default class CustomDatePicker extends React.Component {
 
     handleChange = (nothing, date) => {
         if (this.props.data.updateAction) {
-            this.props.data.dispatch(this.props.data.updateAction(this.state.name, date.toDateString()));
+            this.props.data.updateAction(this.state.name, date.toDateString());
+        } else {
+            console.error("No update callback in date - " + this.state.name);
         }
     };
 
     render() {
         const style = {
-            field:{
+            field: {
                 marginRight: 20,
             },
             datePickerTextFieldStyle: {

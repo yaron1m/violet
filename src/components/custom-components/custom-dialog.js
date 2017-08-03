@@ -23,6 +23,7 @@ class CustomDialog extends React.Component {
                 //modal={false}
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
+                autoScrollBodyContent={true}
             >
                 {this.props.children}
             </Dialog>
@@ -34,7 +35,7 @@ class CustomDialog extends React.Component {
 CustomDialog.propTypes = {
     open: PropTypes.bool.isRequired,
     title: PropTypes.string,
-    onRequestClose: PropTypes.func,
+    onRequestClose: PropTypes.func.isRequired,
 };
 
 
