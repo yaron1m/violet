@@ -66,7 +66,7 @@ class LectureDetailsSection extends React.Component {
 
                     <CustomDialog
                         open={this.state.dialogOpen}
-                        title="hi"
+                        title={this.props.labels.editDialog.dialogTitle}
                         onRequestClose={() => this.setState(Object.assign({}, this.state,{
                             dialogOpen: false,
                             selectedLectureTimeIndex: null,
