@@ -45,7 +45,6 @@ export default function () {
                     sectionName: "הרצאות",
                     tableHeaders: [{edit: "עריכה"}, {date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
                         {audienceSize: "מס' משתתפים"}, {shirtColor: "צבע חולצה"}, {tie: "עניבה"}],
-
                     editDialog: {
                         dialogTitle: "ערוך פרטי הרצאה",
                         titles: {
@@ -59,7 +58,6 @@ export default function () {
                             tie: "עניבה"
                         },
                     }
-
                 }
             },
             contactsSection: {
@@ -109,12 +107,25 @@ export default function () {
             ordersTable: {
                 title: "הזמנות",
                 newOrderButton: "הזמנה חדשה",
-                tableHeaders: [{id: "מספר הזמנה"}, {lectureDate: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}, {edit: "עריכה"}]
+                tableHeaders: [{edit: "עריכה"}, {id: "מספר הזמנה"}, {lectureDate: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}]
             },
             contactsTable: {
                 title: "אנשי קשר בארגון",
-                tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
-                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}, {edit: "עריכה"}]
+                tableHeaders: [{edit: "עריכה"}, {firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
+                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}],
+                editDialog: {
+                    dialogTitle: "ערוך פרטי איש קשר",
+                    titles: {
+                        firstName: "שם פרטי",
+                        lastName: "שם משפחה",
+                        phone1: "טלפון",
+                        phone2: "טלפון נוסף",
+                        phoneExtension: "שלוחה",
+                        email: "דואר אלקטרוני",
+                        fax: "פקס",
+                        job: "תפקיד",
+                    },
+                }
             },
             snackBar: {
                 savedSuccessfully: 'ארגון "{0}" נשמר בהצלחה',

@@ -25,7 +25,7 @@ class CustomToggle extends React.Component {
                     labelPosition="right"
                     toggled={this.props.data.values[this.props.name]}
                     onToggle={(event, isInputChecked) =>
-                        this.props.data.dispatch(this.props.data.updateAction(this.props.name, isInputChecked))}
+                        this.props.data.updateAction(this.props.name, isInputChecked)}
                 />
             </div>
 

@@ -17,7 +17,7 @@ class CustomTableRow extends React.Component {
                         if (headerKey === "edit")
                             return ( <TableRowColumn key={headerKey}>
                                 <IconButton
-                                    onClick={() => this.props.onEditButton(this.props.element)}
+                                    onClick={() => this.props.onEditButton(this.props.element.id)}
                                 >
                                     <EditIcon/>
                                 </IconButton>

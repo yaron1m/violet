@@ -28,7 +28,7 @@ class LectureDetailsSection extends React.Component {
         function editLectureTime(index) {
             this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
-                selectedLectureTimeIndex: index.id //TODO get index instead of object form table
+                selectedLectureTimeIndex: index
             }));
         }
 
@@ -48,9 +48,8 @@ class LectureDetailsSection extends React.Component {
 
         const tableFieldData = {
             titles: this.props.labels.lectureTimesSection.editDialog.titles,
-            values: this.state.selectedLectureTimeIndex ?
-                this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex] :
-                null,
+            values: this.state.selectedLectureTimeIndex === null ? null :
+                this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex],
             updateAction: updateLectureTime.bind(this)
         };
 

@@ -27,8 +27,8 @@ class OrdersSummary extends React.Component {
                 <CustomTable
                     headers={this.props.labels.tableHeaders}
                     data={this.props.OrderOfSelectedOrganization}
-                    onEditButton={(order) => {
-                        this.props.dispatch(selectOrder(order.id));
+                    onEditButton={(orderId) => {
+                        this.props.dispatch(selectOrder(orderId));
                         if (this.props.history.location.pathname !== '/form')
                             this.props.history.push('/form');
                     }}

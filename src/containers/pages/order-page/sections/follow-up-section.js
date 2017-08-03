@@ -28,7 +28,7 @@ class FollowUpSection extends React.Component {
             values: this.props.selected.order,
             updateAction : function(key, value){
                 this.props.dispatch(updateSelectedOrder(key,value));
-            }
+            }.bind(this)
         };
 
         return (
