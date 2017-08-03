@@ -5,7 +5,7 @@ import CustomToggle, {CustomToggleBox} from "../../../../components/custom-compo
 import {connect} from 'react-redux';
 import Paper from "material-ui/Paper";
 import CustomTable from "../../../../components/custom-components/custom-table";
-import {getUpdateSelectedLectureTimeAction, updateSelectedOrder} from "../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
 import CustomDialog from "../../../../components/custom-components/custom-dialog";
@@ -38,20 +38,6 @@ class LectureDetailsSection extends React.Component {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
         };
-
-        function dialogFieldData() {
-            const index = this.state.selectedLectureTimeIndex;
-            if (index === null)
-                return {};
-
-            return {
-                titles: this.props.labels.lectureTimesSection.editDialog.titles,
-                values: this.props.selectedOrder.lectureTimes[index],
-                updateAction: function (key, value) {
-                    this.props.dispatch(updateSelectedOrder(key, value));
-                }.bind(this)
-            };
-        }
 
         const tableFieldData = {
             titles: this.props.labels.lectureTimesSection.editDialog.titles,
