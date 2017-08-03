@@ -12,8 +12,10 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrganization,
-            updateAction: this.props.allowEdit ? updateSelectedOrganization : null,
-            dispatch: this.props.dispatch,
+            updateAction: function (key, value) {
+                if (this.props.allowEdit)
+                    this.props.dispatch(updateSelectedOrganization(key, value));
+            }.bind(this)
         };
 
         return (

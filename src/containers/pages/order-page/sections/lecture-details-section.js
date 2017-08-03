@@ -10,6 +10,7 @@ import {getLabels} from "../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
 import CustomDialog from "../../../../components/custom-components/custom-dialog";
 import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
+import * as Immutable from "seamless-immutable";
 
 class LectureDetailsSection extends React.Component {
 
@@ -24,7 +25,7 @@ class LectureDetailsSection extends React.Component {
     render() {
 
         function editLectureTime(index) {
-            this.setState(Object.assign({}, this.state,{
+            this.setState(Object.assign({}, this.state, {
                 dialogOpen: true,
                 selectedLectureTimeIndex: index.id //TODO get index instead of object form table
             }));
@@ -33,8 +34,9 @@ class LectureDetailsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
-            updateAction: updateSelectedOrder,
-            dispatch: this.props.dispatch,
+            updateAction: function (key, value) {
+                this.props.dispatch(updateSelectedOrder(key, value));
+            }.bind(this)
         };
 
         function dialogFieldData() {
@@ -45,10 +47,25 @@ class LectureDetailsSection extends React.Component {
             return {
                 titles: this.props.labels.lectureTimesSection.editDialog.titles,
                 values: this.props.selectedOrder.lectureTimes[index],
-                updateAction: getUpdateSelectedLectureTimeAction(index),
-                dispatch: this.props.dispatch,
+                updateAction: function (key, value) {
+                    this.props.dispatch(updateSelectedOrder(key, value));
+                }.bind(this)
             };
         }
+
+        const tableFieldData = {
+            titles: this.props.labels.lectureTimesSection.editDialog.titles,
+            values: this.state.selectedLectureTimeIndex ?
+                this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex] :
+                null,
+            updateAction: function (key, value) {
+                let lectureTimes = Immutable.asMutable(this.props.selectedOrder.lectureTimes, {deep: true});
+                ;
+                lectureTimes[this.state.selectedLectureTimeIndex][key] = value;
+
+                this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+            }.bind(this)
+        };
 
         return (
             <CustomCard
@@ -66,19 +83,21 @@ class LectureDetailsSection extends React.Component {
 
                     <CustomDialog
                         open={this.state.dialogOpen}
-                        title={this.props.labels.editDialog.dialogTitle}
-                        onRequestClose={() => this.setState(Object.assign({}, this.state,{
-                            dialogOpen: false,
-                            selectedLectureTimeIndex: null,
-                        }))}
+                        title={this.props.labels.lectureTimesSection.editDialog.dialogTitle}
+                        onRequestClose={() =>
+                            this.setState(Object.assign({}, this.state, {
+                                dialogOpen: false,
+                                selectedLectureTimeIndex: null,
+                            }))
+                        }
                     >
-                        <CustomDatePicker data={dialogFieldData.bind(this)()} name="date"/>
-                        <CustomText data={dialogFieldData.bind(this)()} name="startTime"/>
-                        <CustomText data={dialogFieldData.bind(this)()} name="endTime"/>
-                        <CustomText data={dialogFieldData.bind(this)()} name="topic"/>
-                        <CustomText data={dialogFieldData.bind(this)()} name="audienceSize"/>
-                        <CustomText data={dialogFieldData.bind(this)()} name="shirtColor"/>
-                        <CustomText data={dialogFieldData.bind(this)()} name="tie"/>
+                        <CustomDatePicker data={tableFieldData} name="date"/>
+                        <CustomText data={tableFieldData} name="startTime"/>
+                        <CustomText data={tableFieldData} name="endTime"/>
+                        <CustomText data={tableFieldData} name="topic"/>
+                        <CustomText data={tableFieldData} name="audienceSize"/>
+                        <CustomText data={tableFieldData} name="shirtColor"/>
+                        <CustomText data={tableFieldData} name="tie"/>
                     </CustomDialog>
 
                 </Paper>

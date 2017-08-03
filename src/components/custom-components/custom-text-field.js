@@ -24,7 +24,9 @@ export default class CustomText extends React.Component {
 
     handleChange = (event, newValue) => {
         if (this.props.data.updateAction) {
-            this.props.data.dispatch(this.props.data.updateAction(this.state.name, newValue));
+            this.props.data.updateAction(this.state.name, newValue);
+        }else{
+            console.error("No update action to text field - " + this.state.name);
         }
     };
 
