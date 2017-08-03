@@ -11,6 +11,7 @@ import {getSelectedOrder} from "../../../../store/selected/reducer";
 import CustomDialog from "../../../../components/custom-components/custom-dialog";
 import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
 import * as Immutable from "seamless-immutable";
+import {calculateDuration} from "../../../../util/time-util";
 
 class LectureDetailsSection extends React.Component {
 
@@ -39,18 +40,18 @@ class LectureDetailsSection extends React.Component {
             }.bind(this)
         };
 
+        function updateLectureTime(key, value) {
+            let lectureTimes = Immutable.asMutable(this.props.selectedOrder.lectureTimes, {deep: true});
+            lectureTimes[this.state.selectedLectureTimeIndex][key] = value;
+            this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+        }
+
         const tableFieldData = {
             titles: this.props.labels.lectureTimesSection.editDialog.titles,
             values: this.state.selectedLectureTimeIndex ?
                 this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex] :
                 null,
-            updateAction: function (key, value) {
-                let lectureTimes = Immutable.asMutable(this.props.selectedOrder.lectureTimes, {deep: true});
-                ;
-                lectureTimes[this.state.selectedLectureTimeIndex][key] = value;
-
-                this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-            }.bind(this)
+            updateAction: updateLectureTime.bind(this)
         };
 
         return (
@@ -70,12 +71,18 @@ class LectureDetailsSection extends React.Component {
                     <CustomDialog
                         open={this.state.dialogOpen}
                         title={this.props.labels.lectureTimesSection.editDialog.dialogTitle}
-                        onRequestClose={() =>
+                        onRequestClose={function () {
+                            let duration = calculateDuration(this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex]);
+                            if (!duration)
+                                duration = "";
+
+                            updateLectureTime.bind(this)("duration", duration);
+
                             this.setState(Object.assign({}, this.state, {
                                 dialogOpen: false,
                                 selectedLectureTimeIndex: null,
                             }))
-                        }
+                        }.bind(this)}
                     >
                         <CustomDatePicker data={tableFieldData} name="date"/>
                         <CustomText data={tableFieldData} name="startTime"/>

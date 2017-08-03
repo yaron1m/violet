@@ -1,9 +1,22 @@
-export function calculateDuration(lectureTimes) {
-    if (!lectureTimes)
-        return;
-    return lectureTimes.map((lectureTime) =>
-        Object.assign(lectureTime, {duration: getDuration(lectureTime.startTime, lectureTime.endTime)})
-    );
+export function calculateDuration(lectureTime) {
+    if (!lectureTime)
+        return null;
+
+    if (!isValidFormat(lectureTime.startTime) || !isValidFormat(lectureTime.endTime))
+        return null;
+
+    return getDuration(lectureTime.startTime, lectureTime.endTime);
+}
+
+function isValidFormat(time) {
+    const s = time.split(':');
+    if(s.length !== 2)
+        return false;
+
+    if( s[1].length !== 2)
+        return false;
+
+    return s[0].length !== 1 || s[0].length !== 2;
 }
 
 function getDuration(startTime, endTime) {

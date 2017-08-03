@@ -66,23 +66,6 @@ export function updateSelectedOrder(key, value) {
     }
 }
 
-export function getUpdateSelectedLectureTimeAction(lectureTimeIndex) {
-    return function updateSelectedOrder(key, value) {
-        return function updateSelectedOrganization(dispatch, getState) {
-            const selectedOrder = getSelectedOrder(getState());
-            const selectedOrderLectureTimesArray = Immutable.asMutable(selectedOrder.lectureTimes, {deep:true});
-            selectedOrderLectureTimesArray[lectureTimeIndex][key] = value;
-            const updatedSelectedOrder = Immutable.merge(selectedOrder, {
-                lectureTimes: selectedOrderLectureTimesArray
-            });
-            dispatch({
-                type: actionTypes.UPDATE_SELECTED_ORDER,
-                payload: updatedSelectedOrder,
-            });
-        }
-    }
-}
-
 export function setIsSelectedOrder() {
     return {
         type: actionTypes.SET_IS_SELECTED_ORDER,
