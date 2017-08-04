@@ -5,7 +5,7 @@ import CustomTable from "../../../components/custom-components/custom-table";
 import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
 import RaisedButton from "material-ui/RaisedButton";
 import {getLabels} from "../../../store/labels/reducer";
-import {getOrdersByOrganization, getOrdersSummary} from "../../../store/orders/reducer";
+import {getOrdersSummary} from "../../../store/orders/reducer";
 import {isSelectedOrganization} from "../../../store/selected/reducer";
 import {withRouter} from "react-router";
 
