@@ -10,7 +10,7 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
 
 class LectureDetailsSection extends React.Component {
-    
+
     render() {
         const fieldData = {
             titles: this.props.labels.titles,

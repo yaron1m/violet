@@ -54,7 +54,7 @@ export default class CustomDatePicker extends React.Component {
 
         return (
             <DatePicker
-                style={style}
+                style={style.field}
                 floatingLabelText={this.state.title}
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
