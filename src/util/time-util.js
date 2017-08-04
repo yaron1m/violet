@@ -9,14 +9,7 @@ export function calculateDuration(lectureTime) {
 }
 
 function isValidFormat(time) {
-    const s = time.split(':');
-    if(s.length !== 2)
-        return false;
-
-    if( s[1].length !== 2)
-        return false;
-
-    return s[0].length !== 1 || s[0].length !== 2;
+    return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
 }
 
 function getDuration(startTime, endTime) {
