@@ -24,7 +24,7 @@ export default class CustomDatePicker extends React.Component {
 
     handleChange = (nothing, date) => {
         if (this.props.data.updateAction) {
-            this.props.data.updateAction(this.state.name, date.toDateString());
+            this.props.data.updateAction(this.state.name, date.toJSON());
         } else {
             console.error("No update callback in date - " + this.state.name);
         }
