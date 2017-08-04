@@ -124,7 +124,7 @@ export default function () {
             ordersTable: {
                 title: "הזמנות",
                 newOrderButton: "הזמנה חדשה",
-                tableHeaders: [{edit: "עריכה"}, {id: "מספר הזמנה"}, {lectureDate: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}]
+                tableHeaders: [{edit: "עריכה"}, {id: "מספר הזמנה"}, {date: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}]
             },
             contactsTable: {
                 title: "אנשי קשר בארגון",

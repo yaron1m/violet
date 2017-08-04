@@ -30,6 +30,22 @@ export function getOrdersByOrganization(state) {
     return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId);
 }
 
+export function getOrdersSummary(state){
+    const orders = getOrdersByOrganization(state);
+
+    function map(order){
+        const result={ id: order.id};
+        if(!_.isEmpty(order.lectureTimes)){
+            result.date = order.lectureTimes[0].date;
+            result.topic = order.lectureTimes[0].topic;
+        }
+
+        return result;
+    }
+
+    return _.map(orders, map)
+}
+
 export function getNextOrderId(state) {
     const orders = getOrders(state);
     const keys = _.keys(orders);
