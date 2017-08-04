@@ -1,11 +1,10 @@
 import React from 'react';
 import {Card, CardHeader, CardMedia} from 'material-ui/Card';
+import PropTypes from 'prop-types';
 
 class CustomCard extends React.Component {
 
     render() {
-        const {title, isOpen} = this.props;
-
         const style = {
             card: {
                 padding: 10,
@@ -20,10 +19,10 @@ class CustomCard extends React.Component {
 
             <Card
                 style={style.card}
-                initiallyExpanded={isOpen}
+                initiallyExpanded={this.props.isOpen}
             >
                 <CardHeader
-                    title={title}
+                    title={this.props.title}
                     actAsExpander={true}
                     showExpandableButton={true}
                     titleStyle={style.title}
@@ -40,5 +39,14 @@ class CustomCard extends React.Component {
         );
     }
 }
+
+CustomCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    isOpen: PropTypes.bool,
+};
+
+CustomCard.defaultProps = {
+    isOpen: false,
+};
 
 export default CustomCard;
