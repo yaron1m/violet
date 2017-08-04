@@ -4,6 +4,7 @@ import CustomText from "../../../../components/custom-components/custom-text-fie
 import CustomToggle, {CustomToggleBox} from "../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import Paper from "material-ui/Paper";
+import IconButton from "material-ui/IconButton";
 import CustomTable from "../../../../components/custom-components/custom-table";
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
@@ -12,6 +13,8 @@ import CustomDialog from "../../../../components/custom-components/custom-dialog
 import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
 import * as Immutable from "seamless-immutable";
 import {calculateDuration} from "../../../../util/time-util";
+import AddIcon from 'material-ui/svg-icons/content/add';
+import * as _ from "lodash";
 
 class LectureDetailsSection extends React.Component {
 
@@ -103,6 +106,24 @@ class LectureDetailsSection extends React.Component {
                 </div>
 
                 <CustomToggleBox>
+                    <IconButton
+                        onClick={() => {
+                            let selectedOrder = Immutable.asMutable(this.props.selectedOrder, {deep: true});
+                            let newLectureTimeIndex = 0;
+                            let lectureTimes;
+                            if (_.hasIn(selectedOrder, 'lectureTimes')) {
+                                lectureTimes = selectedOrder.lectureTimes;
+                                if (selectedOrder.lectureTimes !== null && !_.isEmpty(lectureTimes))
+                                    newLectureTimeIndex = _.maxBy(lectureTimes, time => time.id).id + 1;
+                            } else {
+                                lectureTimes = [];
+                            }
+                            lectureTimes[newLectureTimeIndex] = {id: newLectureTimeIndex};
+                            this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+                        }}
+                    >
+                        <AddIcon/>
+                    </IconButton>
                     <CustomToggle data={fieldData} name="projector"/>
                     <CustomToggle data={fieldData} name="soundSystem"/>
                     <CustomToggle data={fieldData} name="microphone"/>
