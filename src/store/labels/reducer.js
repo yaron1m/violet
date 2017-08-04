@@ -62,8 +62,25 @@ export default function () {
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
-                tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
-                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}]
+                titles:{
+                    contactFirstName: "שם פרטי",
+                    contactLastName: "שם משפחה",
+                    contactPhone1: "טלפון",
+                    contactPhone2: "טלפון נוסף",
+                    contactPhoneExtension: "שלוחה",
+                    contactEmail: "דואר אלקטרוני",
+                    contactFax: "פקס",
+                    contactJob: "תפקיד",
+
+                    financialContactFirstName: "שם פרטי",
+                    financialContactLastName: "שם משפחה",
+                    financialContactPhone1: "טלפון",
+                    financialContactPhone2: "טלפון נוסף",
+                    financialContactPhoneExtension: "שלוחה",
+                    financialContactEmail: "דואר אלקטרוני",
+                    financialContactFax: "פקס",
+                    financialContactJob: "תפקיד",
+                }
             },
             followUpSection: {
                 sectionName: "המשך טיפול",
