@@ -13,8 +13,6 @@ export default class OrganizationPage extends React.Component {
                 <OrganizationSection/>
 
                 <OrdersSummary/>
-
-                <OrganizationContacts/>
             </div>
         );
     }
