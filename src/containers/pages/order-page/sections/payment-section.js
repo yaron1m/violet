@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomCard from "../../../../components/custom-components/custom-card";
-import {CustomText, CustomDatePicker} from "../../../../components/custom-components/custom-text-field";
+import CustomText from "../../../../components/custom-components/custom-text-field";
+import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
@@ -21,8 +22,9 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selected.order,
-            updateAction: updateSelectedOrder,
-            dispatch: this.props.dispatch,
+            updateAction: function (key, value) {
+                this.props.dispatch(updateSelectedOrder(key, value));
+            }.bind(this)
         };
 
         return (

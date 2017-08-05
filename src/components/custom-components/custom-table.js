@@ -23,7 +23,7 @@ class CustomTable extends React.Component {
         return (
             <Table style={{tableLayout: 'auto'}} fixedHeader={false}>
                 <TableHeader
-                    adjustForCheckbox={!this.props.showCheckBox}
+                    adjustForCheckbox={false}
                     displaySelectAll={false}
                 >
 
@@ -40,7 +40,7 @@ class CustomTable extends React.Component {
                 </TableHeader>
 
                 <TableBody
-                    displayRowCheckbox={!this.props.showCheckBox}
+                    displayRowCheckbox={false}
                     showRowHover={true}
                 >
                     {
@@ -68,8 +68,5 @@ CustomTable.propTypes = {
     onEditButton: PropTypes.func,
 };
 
-CustomTable.defaultProps = {
-    showCheckBox: true,
-};
 
 export default CustomTable;

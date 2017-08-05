@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
 
-export default class CustomText extends React.Component {
+export default class CustomDatePicker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,18 +22,22 @@ export default class CustomText extends React.Component {
 
     }
 
-    handleChange = (event, newValue) => {
+    handleChange = (nothing, date) => {
         if (this.props.data.updateAction) {
-            this.props.data.updateAction(this.state.name, newValue);
-        }else{
-            console.error("No update action to text field - " + this.state.name);
+            this.props.data.updateAction(this.state.name, date.toJSON());
+        } else {
+            console.error("No update callback in date - " + this.state.name);
         }
     };
 
-
     render() {
         const style = {
-            marginRight: 20,
+            field: {
+                marginRight: 20,
+            },
+            datePickerTextFieldStyle: {
+                width: 150
+            },
         };
 
         switch (this.props.size) {
@@ -49,29 +53,34 @@ export default class CustomText extends React.Component {
         }
 
         return (
-            <TextField
-                style={style}
+            <DatePicker
+                style={style.field}
                 floatingLabelText={this.state.title}
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                value={this.state.value}
+                value={this.state.value ? new Date(this.state.value) : null}
                 onChange={this.handleChange}
-                multiLine={true}
-                rowsMax={4}
+
+                textFieldStyle={style.datePickerTextFieldStyle}
+                DateTimeFormat={window.Intl.DateTimeFormat}
+                okLabel="אישור"
+                cancelLabel="ביטול"
+                locale='he-IL'
+                firstDayOfWeek={0}
             />
         );
     }
 }
 
-CustomText.propTypes = {
+CustomDatePicker.propTypes = {
     name: PropTypes.string.isRequired,
     data: PropTypes.object.isRequired,
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
 };
 
-CustomText.defaultProps = {
+CustomDatePicker.defaultProps = {
     disabled: false,
     fullWidth: false,
 };

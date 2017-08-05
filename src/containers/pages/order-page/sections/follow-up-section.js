@@ -1,10 +1,12 @@
 import React from 'react';
 import CustomCard from "../../../../components/custom-components/custom-card";
 import {connect} from 'react-redux';
-import {CustomText, CustomDatePicker} from "../../../../components/custom-components/custom-text-field";
+import CustomText from "../../../../components/custom-components/custom-text-field";
+import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import CustomToggle from "../../../../components/custom-components/custom-toggle";
 import {getLabels} from "../../../../store/labels/reducer";
+import {getSelectedOrder} from "../../../../store/selected/reducer";
 
 class FollowUpSection extends React.Component {
 
@@ -24,15 +26,16 @@ class FollowUpSection extends React.Component {
 
         const fieldData = {
             titles: this.props.labels.titles,
-            values: this.props.selected.order,
-            updateAction: updateSelectedOrder,
-            dispatch: this.props.dispatch,
+            values: this.props.selectedOrder,
+            updateAction : function(key, value){
+                this.props.dispatch(updateSelectedOrder(key,value));
+            }.bind(this)
         };
 
         return (
             <CustomCard
                 title={this.props.labels.sectionName}
-                isOpen = {this.props.selected.order.followUpRequired}
+                isOpen = {this.props.selectedOrder.followUpRequired}
             >
                 <div style={style.flex}>
                     <CustomToggle data={fieldData} name="followUpRequired"/>
@@ -40,7 +43,7 @@ class FollowUpSection extends React.Component {
                     <CustomDatePicker
                         data={fieldData}
                         name="followUpDate"
-                        disabled={!this.props.selected.order.followUpRequired}
+                        disabled={!this.props.selectedOrder.followUpRequired}
                     />
                 </div>
 
@@ -50,7 +53,7 @@ class FollowUpSection extends React.Component {
                         data={fieldData}
                         name="followUpDetails"
                         fullWidth={true}
-                        disabled={!this.props.selected.order.followUpRequired}
+                        disabled={!this.props.selectedOrder.followUpRequired}
                     />
                 </div>
             </CustomCard>
@@ -61,7 +64,7 @@ class FollowUpSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.followUpSection,
-        selected: state.selected
+        selectedOrder: getSelectedOrder(state)
     };
 }
 export default connect(mapStateToProps)(FollowUpSection);

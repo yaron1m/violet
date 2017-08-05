@@ -1,27 +1,23 @@
 import React from 'react';
-import CustomCard from "../../../../components/custom-components/custom-card";
-import {CustomText} from "../../../../components/custom-components/custom-text-field";
-import CustomToggle, {CustomToggleBox} from "../../../../components/custom-components/custom-toggle";
+import CustomCard from "../../../../../components/custom-components/custom-card";
+import CustomText from "../../../../../components/custom-components/custom-text-field";
+import LectureTimesTable from './lecture-times-table';
+import AddLectureTimeButton from './add-lecture-time-button';
+import CustomToggle, {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
-import {Paper} from "material-ui";
-import CustomTable from "../../../../components/custom-components/custom-table";
-import {updateSelectedOrder} from "../../../../store/selected/actions";
-import {getLabels} from "../../../../store/labels/reducer";
+import {updateSelectedOrder} from "../../../../../store/selected/actions";
+import {getLabels} from "../../../../../store/labels/reducer";
+import {getSelectedOrder} from "../../../../../store/selected/reducer";
 
 class LectureDetailsSection extends React.Component {
 
     render() {
-
-        // //Filter offered lectures
-        // const lecturesObj = this.props.offeredLectures;
-        // const allLectures = Object.keys(lecturesObj);
-        // const filteredLectures = allLectures.filter((lecture) => (lecturesObj[lecture]));
-
         const fieldData = {
             titles: this.props.labels.titles,
-            values: this.props.selected.order,
-            updateAction: updateSelectedOrder,
-            dispatch: this.props.dispatch,
+            values: this.props.selectedOrder,
+            updateAction: function (key, value) {
+                this.props.dispatch(updateSelectedOrder(key, value));
+            }.bind(this)
         };
 
         return (
@@ -30,13 +26,7 @@ class LectureDetailsSection extends React.Component {
                 isOpen={true}
             >
 
-                {/*lecture times table*/}
-                <Paper>
-                    <CustomTable
-                        headers={this.props.labels.lectureTimesSection.tableHeaders}
-                        data={this.props.selected.order.lectureTimes}
-                    />
-                </Paper>
+                <LectureTimesTable/>
 
                 <div>
                     <CustomText data={fieldData} name="location"/>
@@ -47,6 +37,7 @@ class LectureDetailsSection extends React.Component {
                 </div>
 
                 <CustomToggleBox>
+                    <AddLectureTimeButton/>
                     <CustomToggle data={fieldData} name="projector"/>
                     <CustomToggle data={fieldData} name="soundSystem"/>
                     <CustomToggle data={fieldData} name="microphone"/>
@@ -62,9 +53,9 @@ class LectureDetailsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels:getLabels(state).orderPage.lectureDetailsSection,
-        lectureTimes: state.lectureTimes,
-        selected: state.selected,
+        labels: getLabels(state).orderPage.lectureDetailsSection,
+        selectedOrder: getSelectedOrder(state),
     };
 }
+
 export default connect(mapStateToProps)(LectureDetailsSection);

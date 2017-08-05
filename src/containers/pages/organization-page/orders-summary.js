@@ -5,7 +5,7 @@ import CustomTable from "../../../components/custom-components/custom-table";
 import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
 import RaisedButton from "material-ui/RaisedButton";
 import {getLabels} from "../../../store/labels/reducer";
-import {getOrdersByOrganization} from "../../../store/orders/reducer";
+import {getOrdersSummary} from "../../../store/orders/reducer";
 import {isSelectedOrganization} from "../../../store/selected/reducer";
 import {withRouter} from "react-router";
 
@@ -26,9 +26,9 @@ class OrdersSummary extends React.Component {
             >
                 <CustomTable
                     headers={this.props.labels.tableHeaders}
-                    data={this.props.OrderOfSelectedOrganization}
-                    onEditButton={(order) => {
-                        this.props.dispatch(selectOrder(order.id));
+                    data={this.props.ordersSummary}
+                    onEditButton={(orderId) => {
+                        this.props.dispatch(selectOrder(orderId));
                         if (this.props.history.location.pathname !== '/form')
                             this.props.history.push('/form');
                     }}
@@ -43,7 +43,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).OrganizationPage.ordersTable,
         isSelectedOrganization: isSelectedOrganization(state),
-        OrderOfSelectedOrganization: getOrdersByOrganization(state),
+        ordersSummary: getOrdersSummary(state),
     };
 }
 

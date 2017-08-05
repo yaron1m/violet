@@ -82,6 +82,7 @@ export function sendSelectedOrderToDatabase() {
         return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
     }
 }
+
 // Clear
 
 export function clearSelected() {

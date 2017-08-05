@@ -2,7 +2,6 @@ import React from 'react';
 import OrganizationSection from "./organization-section";
 import OrganizationPageTitle from './organiation-page-title';
 import OrdersSummary from './orders-summary';
-import OrganizationContacts from './organization-contacts';
 
 export default class OrganizationPage extends React.Component {
     render() {
@@ -13,8 +12,6 @@ export default class OrganizationPage extends React.Component {
                 <OrganizationSection/>
 
                 <OrdersSummary/>
-
-                <OrganizationContacts/>
             </div>
         );
     }

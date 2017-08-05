@@ -14,17 +14,25 @@ class CustomTableRow extends React.Component {
             <TableRow selectable={!this.props.showCheckBox}>
                 {
                     _.map(this.props.headerKeys, (headerKey) => {
-                        if (headerKey === "edit")
-                            return ( <TableRowColumn key={headerKey}>
-                                <IconButton
-                                    onClick={this.props.onEditButton ?
-                                        () => this.props.onEditButton(this.props.element) :
-                                        null}
-                                >
-                                    <EditIcon/>
-                                </IconButton>
-                            </TableRowColumn>);
-                        return (<TableRowColumn key={headerKey}>{this.props.element[headerKey]}</TableRowColumn>);
+                        switch (headerKey) {
+                            case "edit":
+                                return ( <TableRowColumn key={headerKey}>
+                                    <IconButton
+                                        onClick={() => this.props.onEditButton(this.props.element.id)}
+                                    >
+                                        <EditIcon/>
+                                    </IconButton>
+                                </TableRowColumn>);
+                            case "date":
+                                return (
+                                    <TableRowColumn key={headerKey}>
+                                        {this.props.element[headerKey] === undefined ? "" : new Date(this.props.element[headerKey]).toLocaleDateString()}
+                                    </TableRowColumn>);
+
+                            default:
+                                return (
+                                    <TableRowColumn key={headerKey}>{this.props.element[headerKey]}</TableRowColumn>);
+                        }
                     })}
             </TableRow>
         );
@@ -39,7 +47,7 @@ CustomTableRow.propTypes = {
 };
 
 CustomTableRow.defaultProps = {
-    showCheckBox: true,
+    onEditButton: null,
 };
 
 export default CustomTableRow;
