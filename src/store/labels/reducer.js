@@ -120,9 +120,16 @@ export default function () {
             },
             orderStatus:{
                 contact: "פניה",
-                offer:"",
-                approvedOffer:"",
+                offer:"הזמנה",
+                approvedOffer:"הזמנה מאושרת",
+                isExecuting:"בביצוע",
+                executed:"בוצע",
+                waitingPayment:"ממתין לתשלום",
+                payed:"שולם",
 
+                cancelled:"בוטל",
+                disapproved:"לא אושר",
+                followUp:", המשך טיפול",
             }
         },
         OrganizationPage: {
