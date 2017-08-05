@@ -1,7 +1,7 @@
 import * as Immutable from "seamless-immutable";
 import * as _ from "lodash";
 
-const possibleStatus = ["contact", "offer", "order", "approvedOffer", "isExecuting", "executed",
+const possibleStatus = ["contact", "offer", "order", "approvedOrder", "isExecuting", "executed",
     "waitingPayment", "payed", "cancelled", "disapproved", "followUp"];
 
 export default function calculateOrderStatus(order) {
@@ -40,7 +40,7 @@ function meetsRequirements(order, requirement) {
         case "order":
             return Boolean(order.lectureTimes[0].date);
 
-        case "approvedOffer":
+        case "approvedOrder":
             return existsAndNotEmpty(order,"orderApproved");
 
         case "isExecuting":

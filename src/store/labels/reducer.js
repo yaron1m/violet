@@ -121,7 +121,7 @@ export default function () {
             orderStatus:{
                 contact: "פניה",
                 offer:"הזמנה",
-                approvedOffer:"הזמנה מאושרת",
+                approvedOrder:"הזמנה מאושרת",
                 isExecuting:"בביצוע",
                 executed:"בוצע",
                 waitingPayment:"ממתין לתשלום",
