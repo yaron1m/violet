@@ -6,7 +6,7 @@ export function getLabels(state) {
 export default function () {
     return {
         softwareName: "Violet",
-        version: "0.0.0",
+        version: "0.1.0",
         header: {
             searchLineHint: "חיפוש...",
             organizationPrefix: "ארגון: ",
