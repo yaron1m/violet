@@ -50,7 +50,7 @@ class App extends React.Component {
                             {this.appBody()}
                         </div>
                     </div>
-                    
+
                     <div style={styles.footer}>Copyright © 2017 C-Point LTD - All Rights Reserved</div>
 
                     <AppDialog/>

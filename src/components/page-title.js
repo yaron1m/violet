@@ -6,22 +6,12 @@ export default class PageTitle extends React.Component {
         const style = {
             pageTitle: {
                 fontSize: 24,
+                maxWidth: this.props.maxWidth
             },
-            buttons: {
-                float: "left",
-            }
         };
 
         return (
-            <div>
-                <span style={style.pageTitle}>{this.props.title}</span>
-
-                <span style={style.buttons}>
-                    {this.props.children}
-                </span>
-
-            </div>
-
+            <span style={style.pageTitle}>{this.props.title}</span>
         )
     }
 

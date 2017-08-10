@@ -1,5 +1,6 @@
 import React from 'react';
 import OrderPageTitle from './order-page-title';
+import OrderActionButtons from './order-action-buttons';
 import OrganizationSection from "../organization-page/organization-section";
 import LectureDetailsSection from "./sections/lecture-details-section/index";
 import ContactsSection from "./sections/contacts-section";
@@ -14,6 +15,7 @@ export default class OrderForm extends React.Component {
         return (
             <div>
                 <OrderPageTitle/>
+                <OrderActionButtons/>
 
                 <OrganizationSection allowEdit={false}/>
 
