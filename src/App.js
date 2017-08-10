@@ -24,6 +24,9 @@ class App extends React.Component {
         const styles = {
             container: {
                 margin: '80px 20px 20px 15px',
+                width:1200,
+                marginRight: "auto",
+                marginLeft: "auto",
             },
             footer: {
                 marginBottom: 5,
