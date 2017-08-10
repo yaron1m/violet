@@ -22,11 +22,13 @@ class App extends React.Component {
 
     render() {
         const styles = {
-            container: {
-                margin: '80px 20px 20px 15px',
-                width:1200,
+            app:{
+                maxWidth:1200,
                 marginRight: "auto",
                 marginLeft: "auto",
+            },
+            container: {
+                margin: '80px 20px 20px 15px',
             },
             footer: {
                 marginBottom: 5,
@@ -43,11 +45,12 @@ class App extends React.Component {
                     <Header/>
 
                     <RightDrawer/>
-
-                    <div style={styles.container}>
-                        {this.appBody()}
+                    <div style={styles.app}>
+                        <div style={styles.container}>
+                            {this.appBody()}
+                        </div>
                     </div>
-
+                    
                     <div style={styles.footer}>Copyright © 2017 C-Point LTD - All Rights Reserved</div>
 
                     <AppDialog/>
