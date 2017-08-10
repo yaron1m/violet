@@ -16,6 +16,7 @@ import {
 import {getNextOrderId} from "../../../store/orders/reducer";
 import * as _ from "lodash";
 import {openDialog, openSnackbar} from "../../../store/appearance/actions";
+import {ActionButtonsBox} from "../../../components/action-buttons-box";
 
 class OrderActionButtons extends React.Component {
 
@@ -58,20 +59,8 @@ class OrderActionButtons extends React.Component {
 
 
     render() {
-        const styles = {
-            buttonsBox: {
-                backgroundColor: "#888888",
-                borderBottomLeftRadius: 15,
-                borderBottomRightRadius: 15,
-                marginLeft: "auto",
-                top: 60,
-                position: 'fixed',
-                zIndex: 10, //TODO move to left
-            }
-        };
-
         return (
-            <div style={styles.buttonsBox}>
+            <ActionButtonsBox>
                 <IconButton onClick={this.saveOrder.bind(this)}>
                     <SaveIcon/>
                 </IconButton>
@@ -81,7 +70,7 @@ class OrderActionButtons extends React.Component {
                 <IconButton>
                     <ClearIcon onClick={() => this.props.dispatch(clearSelectedOrder())}/>
                 </IconButton>
-            </div>
+            </ActionButtonsBox>
 
         );
     }
