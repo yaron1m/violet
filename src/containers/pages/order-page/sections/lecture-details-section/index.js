@@ -30,8 +30,8 @@ class LectureDetailsSection extends React.Component {
 
                 <div>
                     <CustomText data={fieldData} name="location"/>
-                    <CustomText data={fieldData} name="floor" size="S"/>
-                    <CustomText data={fieldData} name="room" size="M"/>
+                    <CustomText data={fieldData} name="floor" size="M"/>
+                    <CustomText data={fieldData} name="room"/>
                     <CustomText data={fieldData} name="audienceType"/>
                     <CustomText data={fieldData} name="daySchedule"/>
                 </div>
