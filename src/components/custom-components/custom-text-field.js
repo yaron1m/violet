@@ -45,6 +45,8 @@ export default class CustomText extends React.Component {
                 break;
             case "L":
             default:
+                if(this.props.fullWidth)
+                    break;
                 style.width = 150;
                 break;
             case "XL":

@@ -26,8 +26,6 @@ class LectureDetailsSection extends React.Component {
                 isOpen={true}
             >
 
-                <LectureTimesTable/>
-
                 <div>
                     <CustomText data={fieldData} name="location"/>
                     <CustomText data={fieldData} name="floor" size="M"/>
@@ -37,7 +35,6 @@ class LectureDetailsSection extends React.Component {
                 </div>
 
                 <CustomToggleBox>
-                    <AddLectureTimeButton/>
                     <CustomToggle data={fieldData} name="projector"/>
                     <CustomToggle data={fieldData} name="soundSystem"/>
                     <CustomToggle data={fieldData} name="microphone"/>
@@ -45,6 +42,11 @@ class LectureDetailsSection extends React.Component {
                     <CustomToggle data={fieldData} name="orderApproved"/>
                     <CustomToggle data={fieldData} name="sameAudience"/>
                 </CustomToggleBox>
+
+                <LectureTimesTable/>
+
+                <AddLectureTimeButton/>
+
 
             </CustomCard>
         );

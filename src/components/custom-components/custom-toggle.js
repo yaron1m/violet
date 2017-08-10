@@ -1,6 +1,5 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
-import {Paper} from "material-ui";
 
 class CustomToggle extends React.Component {
 
@@ -39,26 +38,19 @@ class CustomToggleBox extends React.Component {
 
     render() {
         const style = {
-            paper: {
-                padding: 5,
-                marginTop: 20,
-                paddingBottom: 2,
-                display: "inline-flex"
-            }, flex: {
+            div: {
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
-                alignItems: "flex-end"
+                alignItems: "flex-end",
+                marginBottom: 10,
             }
         };
 
         return (
-            <Paper style={style.paper}>
-                <div style={style.flex}>
-                    {this.props.children}
-                </div>
-            </Paper>
-
+            <div style={style.div}>
+                {this.props.children}
+            </div>
         );
     }
 }
