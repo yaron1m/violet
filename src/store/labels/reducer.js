@@ -85,6 +85,7 @@ export default function () {
             followUpSection: {
                 sectionName: "המשך טיפול",
                 titles: {
+                    followUpRequired: "נדרש המשך טיפול",
                     followUpDate: "תאריך המשך טיפול",
                     followUpDetails: "פרטים"
                 }
