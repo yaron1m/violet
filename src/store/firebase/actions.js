@@ -39,7 +39,7 @@ export function signInWithGoogle(errorCallback) {
             dispatch(afterSignedIn(result.user));
         }).catch(function (error) {
             errorCallback(error.message);
-            console.log(error);
+            console.error(error);
         });
     }
 }

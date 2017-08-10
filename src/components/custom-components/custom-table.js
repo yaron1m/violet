@@ -18,8 +18,6 @@ class CustomTable extends React.Component {
             <Table
                 style={{tableLayout: 'auto'}}
                 fixedHeader={false}
-                onCellClick={a => console.log(a)}
-                onRowClick={a => console.log(a)}
             >
                 <TableHeader
                     adjustForCheckbox={false}
