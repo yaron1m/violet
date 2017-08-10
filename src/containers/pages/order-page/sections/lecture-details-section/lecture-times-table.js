@@ -1,18 +1,15 @@
 import React from 'react';
-import CustomText from "../../../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 import Paper from "material-ui/Paper";
+import LectureTimeEditDialog from "./lecture-time-edit-dialog";
 import CustomTable from "../../../../../components/custom-components/custom-table";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
-import CustomDialog from "../../../../../components/custom-components/custom-dialog";
-import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import * as Immutable from "seamless-immutable";
-import {calculateDuration} from "../../../../../util/time-util";
 import CustomTableRow from "../../../../../components/custom-components/custom-table-row";
 import * as _ from 'lodash';
-import {TableRow, TableRowColumn} from "material-ui";
+import {TableRow, TableRowColumn} from "material-ui/Table";
 
 class LectureTimesTable extends React.Component {
 
@@ -39,27 +36,14 @@ class LectureTimesTable extends React.Component {
         this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
     }
 
+    editLectureTime(index) {
+        this.setState(Object.assign({}, this.state, {
+            dialogOpen: true,
+            selectedLectureTimeIndex: index
+        }));
+    }
+
     render() {
-
-        function editLectureTime(index) {
-            this.setState(Object.assign({}, this.state, {
-                dialogOpen: true,
-                selectedLectureTimeIndex: index
-            }));
-        }
-
-        function updateLectureTime(key, value) {
-            let lectureTimes = Immutable.asMutable(this.props.selectedOrder.lectureTimes, {deep: true});
-            lectureTimes[this.state.selectedLectureTimeIndex][key] = value;
-            this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-        }
-
-        const tableFieldData = {
-            titles: this.props.labels.editDialog.titles,
-            values: this.state.selectedLectureTimeIndex === null ? null :
-                this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex],
-            updateAction: updateLectureTime.bind(this)
-        };
 
         let headerKeys = this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]));
 
@@ -72,7 +56,7 @@ class LectureTimesTable extends React.Component {
                                     key={lectureTime.id}
                                     headerKeys={headerKeys}
                                     element={lectureTime}
-                                    onEditButton={editLectureTime.bind(this)}
+                                    onEditButton={this.editLectureTime.bind(this)}
                                 />
                         ))
                     }
@@ -94,30 +78,13 @@ class LectureTimesTable extends React.Component {
                     </TableRow>
                 </CustomTable>
 
-                <CustomDialog
-                    open={this.state.dialogOpen}
-                    title={this.props.labels.editDialog.dialogTitle}
-                    onRequestClose={function () {
-                        let duration = calculateDuration(this.props.selectedOrder.lectureTimes[this.state.selectedLectureTimeIndex]);
-                        if (!duration)
-                            duration = "";
-
-                        updateLectureTime.bind(this)("duration", duration);
-
-                        this.setState(Object.assign({}, this.state, {
-                            dialogOpen: false,
-                            selectedLectureTimeIndex: null,
-                        }))
-                    }.bind(this)}
-                >
-                    <CustomDatePicker data={tableFieldData} name="date"/>
-                    <CustomText data={tableFieldData} name="startTime"/>
-                    <CustomText data={tableFieldData} name="endTime"/>
-                    <CustomText data={tableFieldData} name="topic"/>
-                    <CustomText data={tableFieldData} name="audienceSize"/>
-                    <CustomText data={tableFieldData} name="shirtColor"/>
-                    <CustomText data={tableFieldData} name="tie"/>
-                </CustomDialog>
+                <LectureTimeEditDialog
+                    dialogOpen={this.state.dialogOpen}
+                    selectedLectureTimeIndex={this.state.selectedLectureTimeIndex}
+                    onRequestClose={() => this.setState(Object.assign({}, this.state, {
+                        dialogOpen: false,
+                    }))}
+                    />
 
             </Paper>
         );
