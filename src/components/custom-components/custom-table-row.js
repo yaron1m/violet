@@ -11,7 +11,10 @@ class CustomTableRow extends React.Component {
     render() {
         return (
 
-            <TableRow selectable={!this.props.showCheckBox}>
+            <TableRow
+                selectable={false}
+                hoverable={true}
+            >
                 {
                     _.map(this.props.headerKeys, (headerKey) => {
                         switch (headerKey) {

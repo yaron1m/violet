@@ -2,7 +2,6 @@ import React from 'react';
 import CustomCard from "../../../../../components/custom-components/custom-card";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import LectureTimesTable from './lecture-times-table';
-import AddLectureTimeButton from './add-lecture-time-button';
 import CustomToggle, {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
@@ -44,9 +43,6 @@ class LectureDetailsSection extends React.Component {
                 </CustomToggleBox>
 
                 <LectureTimesTable/>
-
-                <AddLectureTimeButton/>
-
 
             </CustomCard>
         );
