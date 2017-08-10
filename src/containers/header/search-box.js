@@ -106,6 +106,7 @@ class SearchBox extends React.Component {
                     onNewRequest={this.handleRequest.bind(this)}
                     searchText={this.state.searchText}
                     onUpdateInput={(searchText) => this.setState({searchText: searchText})}
+                    maxSearchResults={10}
                 />
             </div>
         );
