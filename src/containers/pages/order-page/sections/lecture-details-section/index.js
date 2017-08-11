@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomCard from "../../../../../components/custom-components/custom-card";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import LectureTimesTable from './lecture-times-table';
 import CustomToggle, {CustomCheckbox, CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
@@ -22,7 +22,7 @@ class LectureDetailsSection extends React.Component {
         };
 
         return (
-            <CustomCard
+            <CustomPaper
                 title={this.props.labels.sectionName}
                 isOpen={true}
             >
@@ -50,7 +50,7 @@ class LectureDetailsSection extends React.Component {
 
                 <LectureTimesTable/>
 
-            </CustomCard>
+            </CustomPaper>
         );
     }
 }

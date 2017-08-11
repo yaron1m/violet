@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomCard from "../../../../components/custom-components/custom-card";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
 import CustomText from "../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
 import {connect} from 'react-redux';
@@ -32,7 +32,7 @@ class OrganizationSection extends React.Component {
         };
 
         return (
-            <CustomCard
+            <CustomPaper
                 title={this.props.labels.sectionName}
             >
 
@@ -51,7 +51,7 @@ class OrganizationSection extends React.Component {
                     <CustomDatePicker data={fieldData} name="actualPayDay"/>
                 </div>
 
-            </CustomCard>
+            </CustomPaper>
         );
     }
 }

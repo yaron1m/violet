@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomCard from "../../../../components/custom-components/custom-card";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../store/labels/reducer";
 import CustomText from "../../../../components/custom-components/custom-text-field";
@@ -23,7 +23,7 @@ class ContactsSection extends React.Component {
         };
 
         return (
-            <CustomCard title={this.props.labels.sectionName}>
+            <CustomPaper title={this.props.labels.sectionName}>
                 <CustomText data={fieldData} name="contactFirstName" size="M"/>
                 <CustomText data={fieldData} name="contactLastName" size="M"/>
                 <CustomText data={fieldData} name="contactPhone1" size="M"/>
@@ -45,7 +45,7 @@ class ContactsSection extends React.Component {
                 <CustomText data={fieldData} name="financialContactPhone2" size="M"/>
                 <CustomText data={fieldData} name="financialContactFax" size="M"/>
                 <CustomText data={fieldData} name="financialContactJob" size="M"/>
-            </CustomCard>
+            </CustomPaper>
         );
     }
 }
