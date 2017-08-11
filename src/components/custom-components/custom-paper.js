@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
 
-class CustomPage extends React.Component {
+class CustomPaper extends React.Component {
 
     render() {
         const style = {
@@ -30,14 +30,14 @@ class CustomPage extends React.Component {
     }
 }
 
-CustomPage.propTypes = {
+CustomPaper.propTypes = {
     title: PropTypes.string.isRequired,
     titleButton: PropTypes.element,
     titleButtonCondition: PropTypes.bool,
 };
 
-CustomPage.defaultProps = {
+CustomPaper.defaultProps = {
     titleButtonCondition: false,
 };
 
-export default CustomPage;
+export default CustomPaper;

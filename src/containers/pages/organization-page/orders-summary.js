@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CustomPage from "../../../components/custom-components/custom-page";
+import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomTable from "../../../components/custom-components/custom-table";
 import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
@@ -26,7 +26,7 @@ class OrdersSummary extends React.Component {
 
     render() {
         return (
-            <CustomPage title={this.props.labels.title}>
+            <CustomPaper title={this.props.labels.title}>
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
 
@@ -54,7 +54,7 @@ class OrdersSummary extends React.Component {
                         ))
                     }
                 </CustomTable>
-            </CustomPage>
+            </CustomPaper>
         );
     }
 }

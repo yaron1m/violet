@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPage from "../../../../components/custom-components/custom-page";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
 import {connect} from 'react-redux';
 import CustomText from "../../../../components/custom-components/custom-text-field";
 import {updateSelectedOrder} from "../../../../store/selected/actions";
@@ -17,9 +17,9 @@ class NotesSection extends React.Component {
         };
 
         return (
-            <CustomPage title={this.props.labels.sectionName}>
+            <CustomPaper title={this.props.labels.sectionName}>
                 <CustomText data={fieldData} name="notes" fullWidth={true}/>
-            </CustomPage>
+            </CustomPaper>
         );
     }
 }
