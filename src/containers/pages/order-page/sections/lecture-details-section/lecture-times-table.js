@@ -34,6 +34,7 @@ class LectureTimesTable extends React.Component {
         }
         lectureTimes[newLectureTimeIndex] = {id: newLectureTimeIndex};
         this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+        this.editLectureTime.bind(this)(newLectureTimeIndex);
     }
 
     editLectureTime(index) {
