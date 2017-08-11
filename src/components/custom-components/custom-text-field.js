@@ -5,10 +5,34 @@ import TextField from 'material-ui/TextField';
 export default class CustomText extends React.Component {
     constructor(props) {
         super(props);
+
+        const style = {
+            marginRight: 20,
+        };
+
+        switch (this.props.size) {
+            case "S":
+                style.width = 50;
+                break;
+            case "M":
+                style.width = 100;
+                break;
+            case "L":
+            default:
+                if(this.props.fullWidth)
+                    break;
+                style.width = 150;
+                break;
+            case "XL":
+                style.width = 200;
+                break;
+        }
+
         this.state = {
             name: this.props.name,
             title: this.props.data.titles[this.props.name],
-            value: this.props.data.values[this.props.name]
+            value: this.props.data.values[this.props.name],
+            style,
         };
     }
 
@@ -32,31 +56,9 @@ export default class CustomText extends React.Component {
 
 
     render() {
-        const style = {
-            marginRight: 20,
-        };
-
-        switch (this.props.size) {
-            case "S":
-                style.width = 50;
-                break;
-            case "M":
-                style.width = 100;
-                break;
-            case "L":
-            default:
-                if(this.props.fullWidth)
-                    break;
-                style.width = 150;
-                break;
-            case "XL":
-                style.width = 200;
-                break;
-        }
-
         return (
             <TextField
-                style={style}
+                style={this.state.style}
                 floatingLabelText={this.state.title}
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}

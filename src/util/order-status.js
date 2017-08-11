@@ -79,7 +79,7 @@ function meetsRequirements(order, requirement) {
     }
 }
 
-function existsAndNotEmpty(order, key) {
+export function existsAndNotEmpty(order, key) {
     return _.has(order, key) && order[key];
 }
 
