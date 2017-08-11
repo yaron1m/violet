@@ -33,7 +33,7 @@ class ContactsSection extends React.Component {
                 <CustomText data={fieldData} name="contactFax" size="M"/>
                 <CustomText data={fieldData} name="contactJob" size="M"/>
 
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <Divider style={{marginBottom: 10}}/>
 
                 <div>איש קשר לתשלום</div>
 

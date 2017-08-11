@@ -25,38 +25,45 @@ export default class CustomAutoComplete extends React.Component {
     handleChange = (searchText, dataSource, params) => {
         if (this.props.data.updateAction) {
             this.props.data.updateAction(this.state.name, searchText);
-        }else{
+        } else {
             console.error("No update action to text field - " + this.state.name);
         }
     };
 
     render() {
         const style = {
-            marginRight: 20,
+            autoComplete: {
+                marginRight: 20,
+            },
+            textField: {
+                verticalAlign: "bottom",
+                marginBottom: 10,
+            },
         };
 
         switch (this.props.size) {
             case "S":
-                style.width = 50;
+                style.autoComplete.width = 50;
                 break;
             case "M":
-                style.width = 100;
+                style.autoComplete.width = 100;
                 break;
             case "L":
             default:
-                if(this.props.fullWidth)
+                if (this.props.fullWidth)
                     break;
-                style.width = 150;
+                style.autoComplete.width = 150;
                 break;
             case "XL":
-                style.width = 200;
+                style.autoComplete.width = 250;
                 break;
         }
+        style.textField.width = style.autoComplete.width;
 
         return (
             <AutoComplete
-                style={style}
-                textFieldStyle={style}
+                style={style.autoComplete}
+                textFieldStyle={style.textField}
                 floatingLabelText={this.state.title}
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
@@ -65,7 +72,6 @@ export default class CustomAutoComplete extends React.Component {
                 onUpdateInput={this.handleChange}
                 multiLine={true}
                 rowsMax={4}
-
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
             />

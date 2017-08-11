@@ -9,6 +9,8 @@ export default class CustomText extends React.Component {
 
         const style = {
             marginRight: 20,
+            verticalAlign: "bottom",
+            marginBottom: 10,
         };
 
         switch (this.props.size) {
@@ -59,7 +61,7 @@ export default class CustomText extends React.Component {
     render() {
 
         let showError = false;
-        if(!this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.state.name))
+        if (!this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.state.name))
             showError = true;
 
         return (
@@ -73,8 +75,8 @@ export default class CustomText extends React.Component {
                 onChange={this.handleChange}
                 multiLine={true}
                 rowsMax={4}
-                errorText={showError ? " " : ""}
-            />
+                errorText={showError ? "שדה חובה" : ""}
+            />//TODO extract string to labels
         );
     }
 }

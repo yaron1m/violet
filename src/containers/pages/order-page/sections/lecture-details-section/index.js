@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../components/custom-components/custom-paper";
+import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import LectureTimesTable from './lecture-times-table';
 import CustomToggle, {CustomCheckbox, CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
