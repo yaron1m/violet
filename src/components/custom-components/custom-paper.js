@@ -13,15 +13,11 @@ class CustomPaper extends React.Component {
             title: {
                 fontSize: 24,
             },
-            titleButton:{
-                paddingRight: 20,
-            }
         };
 
         return (
             <Paper style={style.paper}>
-                <span style={style.title}>{this.props.title}</span>
-                <span style={style.titleButton}>{this.props.titleButtonCondition ? this.props.titleButton : null}</span>
+                {this.props.title ? (<span style={style.title}>{this.props.title}</span>) : null}
                 <div>
                     {this.props.children}
                 </div>
@@ -31,13 +27,8 @@ class CustomPaper extends React.Component {
 }
 
 CustomPaper.propTypes = {
-    title: PropTypes.string.isRequired,
-    titleButton: PropTypes.element,
-    titleButtonCondition: PropTypes.bool,
+    title: PropTypes.string,
 };
 
-CustomPaper.defaultProps = {
-    titleButtonCondition: false,
-};
 
 export default CustomPaper;

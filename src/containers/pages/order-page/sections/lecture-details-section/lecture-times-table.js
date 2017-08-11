@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Paper from "material-ui/Paper";
 import LectureTimeEditDialog from "./lecture-time-edit-dialog";
 import CustomTable from "../../../../../components/custom-components/custom-table";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
@@ -10,6 +9,7 @@ import * as Immutable from "seamless-immutable";
 import CustomTableRow from "../../../../../components/custom-components/custom-table-row";
 import * as _ from 'lodash';
 import {TableRow, TableRowColumn} from "material-ui/Table";
+import CustomPaper from "../../../../../components/custom-components/custom-paper";
 
 class LectureTimesTable extends React.Component {
 
@@ -45,7 +45,7 @@ class LectureTimesTable extends React.Component {
 
     render() {
         return (
-            <Paper>
+            <CustomPaper>
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
                         _.map(this.props.selectedOrder.lectureTimes, (lectureTime =>
@@ -83,7 +83,7 @@ class LectureTimesTable extends React.Component {
                     }))}
                 />
 
-            </Paper>
+            </CustomPaper>
         );
     }
 }
