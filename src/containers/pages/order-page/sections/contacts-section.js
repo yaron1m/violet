@@ -33,9 +33,9 @@ class ContactsSection extends React.Component {
                 <CustomText data={fieldData} name="contactFax" size="M"/>
                 <CustomText data={fieldData} name="contactJob" size="M"/>
 
-                <Divider style={{marginBottom: 10}}/>
+                <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
-                <div>איש קשר לתשלום</div>
+                <div>{this.props.labels.finnancialContactTitle}</div>
 
                 <CustomText data={fieldData} name="financialContactFirstName" size="M"/>
                 <CustomText data={fieldData} name="financialContactLastName" size="M"/>

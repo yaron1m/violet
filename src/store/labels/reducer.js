@@ -56,6 +56,7 @@ export default function labels() {
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
+                finnancialContactTitle: "איש קשר לתשלום",
                 titles: {
                     contactFirstName: "שם פרטי",
                     contactLastName: "שם משפחה",

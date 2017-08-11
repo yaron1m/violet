@@ -42,6 +42,7 @@ class OrganizationSection extends React.Component {
                     <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size="L"/>
                     <CustomText data={fieldData} name="expectedPayDay"/>
                 </div>
+
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
                 <div style={style.flex}>

@@ -18,7 +18,7 @@ import * as _ from "lodash";
 import {openDialog, openSnackbar} from "../../../store/appearance/actions";
 import {ActionButtonsBox} from "../../../components/action-buttons-box";
 import {getMissingFields} from "../../../store/required-fields/reducer";
-import {showRequieredFields} from "../../../store/required-fields/actions";
+import {hideRequieredFields, showRequieredFields} from "../../../store/required-fields/actions";
 
 class OrderActionButtons extends React.Component {
 
@@ -42,6 +42,7 @@ class OrderActionButtons extends React.Component {
         if (_.isEmpty(missingFields)) {
             const promise = this.props.dispatch(sendSelectedOrderToDatabase());
             this.handleDatabasePromise(promise);
+            await this.props.dispatch(hideRequieredFields());
         } else {
             await this.props.dispatch(showRequieredFields());
             let dialogContent = dialogText.missingFieldsContent;
