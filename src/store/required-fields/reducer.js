@@ -58,6 +58,6 @@ export function getRequiredFields(state) {
 export function getMissingFields(state){
     const requiredFields = getRequiredFields(state);
     const selectedOrder = getSelectedOrder(state);
-
-    return _.difference(requiredFields, _.keys(selectedOrder));
+    const nonEmptyKeys = _.filter(_.keys(selectedOrder),key => selectedOrder[key]);
+    return _.difference(requiredFields, nonEmptyKeys);
 }
