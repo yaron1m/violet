@@ -63,7 +63,7 @@ export default function () {
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
-                titles:{
+                titles: {
                     contactFirstName: "שם פרטי",
                     contactLastName: "שם משפחה",
                     contactPhone1: "טלפון",
@@ -120,31 +120,32 @@ export default function () {
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
             },
-            orderStatus:{
+            orderStatus: {
                 contact: "פניה",
-                offer:"הזמנה",
-                approvedOrder:"הזמנה מאושרת",
-                isExecuting:"בביצוע",
-                executed:"בוצע",
-                waitingPayment:"ממתין לתשלום",
-                payed:"שולם",
+                offer: "הזמנה",
+                approvedOrder: "הזמנה מאושרת",
+                isExecuting: "בביצוע",
+                executed: "בוצע",
+                waitingPayment: "ממתין לתשלום",
+                payed: "שולם",
 
-                cancelled:"בוטל",
-                disapproved:"לא אושר",
-                followUp:", המשך טיפול",
+                cancelled: "בוטל",
+                disapproved: "לא אושר",
+                followUp: ", המשך טיפול",
             }
         },
         OrganizationPage: {
             title: "פרטי ארגונים",
             ordersTable: {
                 title: "הזמנות",
+                addRow: "הוסף הזמנה חדשה",
                 newOrderButton: "הזמנה חדשה",
-                tableHeaders: [{edit: "עריכה"}, {id: "מספר הזמנה"}, {date: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}]
+                tableHeaders: [{id: "מספר הזמנה"}, {date: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}, {edit: "עריכה"}]
             },
             contactsTable: {
                 title: "אנשי קשר בארגון",
-                tableHeaders: [{edit: "עריכה"}, {firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
-                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}],
+                tableHeaders: [{firstName: "שם פרטי"}, {lastName: "שם משפחה"}, {phone1: "טלפון"}, {phone2: "טלפון נוסף"}, {phoneExtension: "שלוחה"},
+                    {email: "דואר אלקטרוני"}, {fax: "פקס"}, {job: "תפקיד"}, {edit: "עריכה"}],
                 editDialog: {
                     dialogTitle: "ערוך פרטי איש קשר",
                     titles: {

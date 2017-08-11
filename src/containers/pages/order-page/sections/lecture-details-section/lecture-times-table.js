@@ -21,7 +21,7 @@ class LectureTimesTable extends React.Component {
         };
     }
 
-    addNewLectureTime(){
+    addNewLectureTime() {
         let selectedOrder = Immutable.asMutable(this.props.selectedOrder, {deep: true});
         let newLectureTimeIndex = 0;
         let lectureTimes;
@@ -44,9 +44,6 @@ class LectureTimesTable extends React.Component {
     }
 
     render() {
-
-        let headerKeys = this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]));
-
         return (
             <Paper>
                 <CustomTable headers={this.props.labels.tableHeaders}>
@@ -54,7 +51,7 @@ class LectureTimesTable extends React.Component {
                         _.map(this.props.selectedOrder.lectureTimes, (lectureTime =>
                                 <CustomTableRow
                                     key={lectureTime.id}
-                                    headerKeys={headerKeys}
+                                    headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
                                     element={lectureTime}
                                     onEditButton={this.editLectureTime.bind(this)}
                                 />
@@ -65,11 +62,11 @@ class LectureTimesTable extends React.Component {
                         <TableRowColumn/>
                         <TableRowColumn/>
                         <TableRowColumn/>
-                        <TableRowColumn key="edit">
+                        <TableRowColumn>
                             <div style={{cursor: "pointer"}} onClick={this.addNewLectureTime.bind(this)}>
                                 {this.props.labels.addRow}
                             </div>
-                            </TableRowColumn>
+                        </TableRowColumn>
                         <TableRowColumn/>
                         <TableRowColumn/>
                         <TableRowColumn/>
@@ -84,7 +81,7 @@ class LectureTimesTable extends React.Component {
                     onRequestClose={() => this.setState(Object.assign({}, this.state, {
                         dialogOpen: false,
                     }))}
-                    />
+                />
 
             </Paper>
         );
