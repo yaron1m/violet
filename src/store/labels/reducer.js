@@ -2,8 +2,11 @@ export function getLabels(state) {
     return state.labels
 }
 
+export function convertStatus(status){
+    return labels().orderPage.orderStatus[status];
+}
 
-export default function () {
+export default function labels() {
     return {
         softwareName: "Violet",
         version: "0.1.0",
@@ -136,10 +139,9 @@ export default function () {
         },
         OrganizationPage: {
             title: "פרטי ארגונים",
-            ordersTable: {
+            ordersSummary: {
                 title: "הזמנות",
                 addRow: "הוסף הזמנה חדשה",
-                newOrderButton: "הזמנה חדשה",
                 tableHeaders: [{id: "מספר הזמנה"}, {date: "תאריך הרצאה"}, {topic: "נושא"}, {status: "סטאטוס"}, {edit: "עריכה"}]
             },
             contactsTable: {

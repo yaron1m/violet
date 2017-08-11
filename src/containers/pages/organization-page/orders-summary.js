@@ -29,7 +29,7 @@ class OrdersSummary extends React.Component {
             <CustomPage title={this.props.labels.title}>
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
-                    
+
                     <TableRow selectable={false}>
                         <TableRowColumn/>
                         <TableRowColumn/>
@@ -62,7 +62,7 @@ class OrdersSummary extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).OrganizationPage.ordersTable,
+        labels: getLabels(state).OrganizationPage.ordersSummary,
         isSelectedOrganization: isSelectedOrganization(state),
         ordersSummary: getOrdersSummary(state),
     };
