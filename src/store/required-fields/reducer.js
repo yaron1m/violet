@@ -6,7 +6,8 @@ import Immutable from "seamless-immutable";
 const contact = ["organizationId", "contactFirstName", "contactLastName", "contactPhone1", "contactEmail"];
 const offer = _.concat(contact, []);
 const order = _.concat(offer, []);
-const approvedOrder = _.concat(order, ["location", "financialContactFirstName", "financialContactLastName", "financialContactPhone1", "financialContactEmail"]);
+const approvedOrder = _.concat(order, ["location",
+    "financialContactFirstName", "financialContactLastName", "financialContactPhone1", "financialContactEmail"]);
 const isExecuting = _.concat(approvedOrder, []);
 const executed = _.concat(isExecuting, []);
 const waitingPayment = _.concat(executed, []);
@@ -23,7 +24,7 @@ const initialState = Immutable({
     waitingPayment,
     payed,
     cancelled,
-    showRequiredFields: true,
+    showRequiredFields: false,
 });
 
 export default (state = initialState, action = {}) => {
@@ -44,20 +45,24 @@ export default (state = initialState, action = {}) => {
 }
 
 export function getRequiredFields(state) {
-    if(!state.requiredFields.showRequiredFields)
+    return getArrayOfRequiredFields(state, state.requiredFields.showRequiredFields);
+}
+
+function getArrayOfRequiredFields(state, showRequiredFields){
+    if (!showRequiredFields)
         return [];
 
     const selectedOrder = getSelectedOrder(state);
 
-    if(!selectedOrder.status)
+    if (!selectedOrder.status)
         return state.requiredFields.contact;
 
     return state.requiredFields[selectedOrder.status];
 }
 
-export function getMissingFields(state){
-    const requiredFields = getRequiredFields(state);
+export function getMissingFields(state) {
+    const requiredFields = getArrayOfRequiredFields(state, true);
     const selectedOrder = getSelectedOrder(state);
-    const nonEmptyKeys = _.filter(_.keys(selectedOrder),key => selectedOrder[key]);
+    const nonEmptyKeys = _.filter(_.keys(selectedOrder), key => selectedOrder[key]);
     return _.difference(requiredFields, nonEmptyKeys);
 }

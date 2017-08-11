@@ -49,7 +49,7 @@ class OrganizationPageTitle extends React.Component {
 
     handleDatabasePromise(promise) {
         function success() {
-            const snackbarMessage = this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.name);
+            const snackbarMessage = this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrganization.organizationName);
             this.props.dispatch(openSnackbar(snackbarMessage));
             this.props.dispatch(setIsSelectedOrganization());
         }

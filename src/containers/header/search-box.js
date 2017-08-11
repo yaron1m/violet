@@ -76,7 +76,7 @@ class SearchBox extends React.Component {
         };
 
         const organizationNamesObjects = _.values(this.props.organizations).map(
-            (org) => ({text: org.name, value: {type: this.sourceTypes.organization, id: org.id}}));
+            (org) => ({text: org.organizationName, value: {type: this.sourceTypes.organization, id: org.id}}));
 
         const orderNumbersObjects = _.values(this.props.orders).map(
             (order) => ({

@@ -43,8 +43,12 @@ class OrderActionButtons extends React.Component {
             const promise = this.props.dispatch(sendSelectedOrderToDatabase());
             this.handleDatabasePromise(promise);
         } else {
-            this.props.dispatch(showRequieredFields());
-            this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
+            await this.props.dispatch(showRequieredFields());
+            let dialogContent = dialogText.missingFieldsContent;
+            for(let i = 0 ; i < missingFields.length; i++){
+                dialogContent += missingFields[i] + " ";
+            }
+            this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogContent));
             return;
         }
 

@@ -115,7 +115,7 @@ export default function labels() {
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
                 missingFieldsTitle: "שדות חובה חסרים",
-                missingFieldsContent: "יש למלא את כל שדות החובה לסטאטוס זה",
+                missingFieldsContent: "יש למלא את כל שדות החובה לסטאטוס זה: ",
             },
             orderStatus: {
                 contact: "פנייה",
