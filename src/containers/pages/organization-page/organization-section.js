@@ -23,6 +23,7 @@ class OrganizationSection extends React.Component {
                 <CustomText data={fieldData} name="name"/>
                 <CustomText data={fieldData} name="address"/>
                 <CustomText data={fieldData} name="companyId" size="M"/>
+                <CustomText data={fieldData} name="paymentConditions"/>
                 <CustomText data={fieldData} name="howReachedUs"/>
             </CustomPage>
         );
@@ -31,7 +32,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: getLabels(state).orderPage.organizationSection,
+        labels: getLabels(state).OrganizationPage.organizationSection,
         selectedOrganization: getSelectedOrganization(state),
         allowEdit: ownProps.allowEdit
     };

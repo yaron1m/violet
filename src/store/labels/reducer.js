@@ -20,15 +20,6 @@ export default function labels() {
             title: "טופס הזמנת הרצאה",
             orderNumberTitle: " - הזמנה מספר ",
             newOrderTitle: " - הזמנה חדשה",
-            organizationSection: {
-                sectionName: "פרטי הארגון",
-                titles: {
-                    name: "שם הארגון",
-                    address: "כתובת הארגון",
-                    companyId: "ח.פ / ע.מ",
-                    howReachedUs: "איך הגיע אלינו"
-                }
-            },
             lectureDetailsSection: {
                 sectionName: "פרטי ההרצאה",
                 titles: {
@@ -97,13 +88,15 @@ export default function labels() {
             paymentSection: {
                 sectionName: "תשלום",
                 titles: {
-                    paymentConditions: "תנאי תשלום",
-                    expectedPayDay: "תאריך לתשלום",
-                    actualPayDay: "תאריך תשלום בפועל",
+                    amount: "סכום לתשלום",
                     proformaInvoiceNumber: "מספר חשבונית עסקה",
                     proformaInvoiceDate: "תאריך חשבונית עסקה",
+                    expectedPayDay: "תאריך לתשלום",
+
                     taxInvoiceNumber: "מספר חשבונית מס",
-                    taxInvoiceDate: "תאריך חשבונית מס"
+                    taxInvoiceDate: "תאריך חשבונית מס",
+                    receiptNumber: "מספר קבלה",
+                    actualPayDay: "תאריך תשלום בפועל",
                 }
             },
             notesSection: {
@@ -139,6 +132,16 @@ export default function labels() {
         },
         OrganizationPage: {
             title: "פרטי ארגונים",
+            organizationSection: {
+                sectionName: "פרטי הארגון",
+                titles: {
+                    name: "שם הארגון",
+                    address: "כתובת הארגון",
+                    companyId: "ח.פ / ע.מ",
+                    paymentConditions: "תנאי תשלום",
+                    howReachedUs: "איך הגיע אלינו"
+                }
+            },
             ordersSummary: {
                 title: "הזמנות",
                 addRow: "הוסף הזמנה חדשה",
