@@ -2,10 +2,6 @@ export function getLabels(state) {
     return state.labels
 }
 
-export function convertStatus(status){
-    return labels().orderPage.orderStatus[status];
-}
-
 export default function labels() {
     return {
         softwareName: "Violet",
@@ -19,6 +15,7 @@ export default function labels() {
         orderPage: {
             title: "טופס הזמנת הרצאה",
             orderNumberTitle: " - הזמנה מספר ",
+            orderStatusTitle: " -    סטאטוס: ",
             newOrderTitle: " - הזמנה חדשה",
             lectureDetailsSection: {
                 sectionName: "פרטי ההרצאה",
@@ -33,7 +30,9 @@ export default function labels() {
                     microphone: "מיקרופון דש",
                     parking: "חניה",
                     orderApproved: "הזמנה אושרה",
-                    sameAudience: "קהל יעד זהה"
+                    sameAudience: "קהל יעד זהה",
+                    cancelled: "הזמנה בוטלה",
+                    cancellationReason: "סיבת ביטול",
                 },
                 lectureTimesSection: {
                     sectionName: "הרצאות",
@@ -117,17 +116,17 @@ export default function labels() {
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
             },
             orderStatus: {
-                contact: "פניה",
-                offer: "הזמנה",
+                contact: "פנייה",
+                offer: "הצעת מחיר",
+                order: "הזמנה",
                 approvedOrder: "הזמנה מאושרת",
                 isExecuting: "בביצוע",
                 executed: "בוצע",
                 waitingPayment: "ממתין לתשלום",
                 payed: "שולם",
-
                 cancelled: "בוטל",
                 disapproved: "לא אושר",
-                followUp: ", המשך טיפול",
+                followUp: " + נדרש המשך טיפול",
             }
         },
         OrganizationPage: {

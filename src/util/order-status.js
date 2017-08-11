@@ -1,20 +1,36 @@
 import * as Immutable from "seamless-immutable";
 import * as _ from "lodash";
+import {getLabels} from "../store/labels/reducer";
+import {getSelectedOrder} from "../store/selected/reducer";
 
-const possibleStatus = ["contact", "offer", "order", "approvedOrder", "isExecuting", "executed",
-    "waitingPayment", "payed", "cancelled", "disapproved", "followUp"];
+export const Status = {
+    contact: "contact",
+    offer: "offer",
+    order: "order",
+    approvedOrder: "approvedOrder",
+    isExecuting: "isExecuting",
+    executed: "executed",
+    waitingPayment: "waitingPayment",
+    payed: "payed",
+    cancelled: "cancelled",
+};
 
 export default function calculateOrderStatus(order) {
 
     let status;
 
-    for (let i = 0; i < possibleStatus.length; i++) {
-        if (meetsRequirements(order, possibleStatus[i])) {
-            status = possibleStatus[i];
+    const possibleStatuses = _.values(Status);
+
+    for (let i = 0; i < possibleStatuses.length; i++) {
+        if (meetsRequirements(order, possibleStatuses[i])) {
+            status = possibleStatuses[i];
         } else {
             break;
         }
     }
+
+    if (meetsRequirements(order, Status.cancelled))
+        status = Status.cancelled;
 
     //TODO use status
 
@@ -29,44 +45,39 @@ function meetsRequirements(order, requirement) {
     let now;
 
     switch (requirement) {
-        case "contact":
+        case Status.contact:
             return true;
 
-        case "offer":
-            //return _.has(order, "organizationId") &&  _.has(order, "lectureTimes") && order.lectureTimes[0].topic;
-            //TODO check for organization id
-            return existsAndNotEmpty(order,"lectureTimes") && order.lectureTimes[0].topic;
+        case Status.offer:
+            return existsAndNotEmpty(order, "lectureTimes") && _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
 
-        case "order":
+        case Status.order:
             return Boolean(order.lectureTimes[0].date);
 
-        case "approvedOrder":
-            return existsAndNotEmpty(order,"orderApproved");
+        case Status.approvedOrder:
+            return existsAndNotEmpty(order, "orderApproved");
 
-        case "isExecuting":
+        case Status.isExecuting:
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             now = new Date();
             return _.some(lectureTimesDates, date => new Date(date) < now);
 
-        case "executed":
+        case Status.executed:
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             now = new Date();
             return _.every(lectureTimesDates, date => new Date(date) <= now);
 
-        case "waitingPayment":
-            return existsAndNotEmpty(order,"proformaInvoiceNumber") || existsAndNotEmpty(order,"taxInvoiceNumber");
+        case Status.waitingPayment:
+            return existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber");
 
-        case "payed":
-            return existsAndNotEmpty(order,"receiptNumber");
+        case Status.payed:
+            return existsAndNotEmpty(order, "receiptNumber");
 
-        case "cancelled":
-            return false;
-
-        case "disapproved":
-            return false;
+        case Status.cancelled:
+            return order.cancelled;
 
         //Followup
-            
+
         default:
             return false;
 
@@ -77,4 +88,16 @@ function meetsRequirements(order, requirement) {
 
 function existsAndNotEmpty(order, key) {
     return _.has(order, key) && order[key];
+}
+
+export function getStatus(state) {
+    const labels = getLabels(state);
+    const selectedOrder = getSelectedOrder(state);
+    if (_.isEmpty(selectedOrder))
+        return labels.orderPage.orderStatus[Status.contact];
+
+    let status = labels.orderPage.orderStatus[selectedOrder.status];
+    if(selectedOrder.followUpRequired)
+        status += labels.orderPage.orderStatus.followUp;
+    return status;
 }

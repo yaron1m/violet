@@ -2,8 +2,6 @@ import * as actionTypes from './action-types';
 import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
-import {convertStatus} from "../labels/reducer";
-
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
@@ -35,7 +33,7 @@ export function getOrdersSummary(state){
     const orders = getOrdersByOrganization(state);
 
     function map(order){
-        const result={ id: order.id, status: convertStatus(order.status)};
+        const result={ id: order.id, status: order.status};
         if(!_.isEmpty(order.lectureTimes)){
             result.date = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
