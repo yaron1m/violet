@@ -32,8 +32,6 @@ export default function calculateOrderStatus(order) {
     if (meetsRequirements(order, Status.cancelled))
         status = Status.cancelled;
 
-    //TODO use status
-
     return Immutable.merge(order, {
         status: status
     });
@@ -76,14 +74,9 @@ function meetsRequirements(order, requirement) {
         case Status.cancelled:
             return order.cancelled;
 
-        //Followup
-
         default:
             return false;
-
-
     }
-
 }
 
 function existsAndNotEmpty(order, key) {
