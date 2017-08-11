@@ -2,7 +2,7 @@ import React from 'react';
 import CustomCard from "../../../../../components/custom-components/custom-card";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import LectureTimesTable from './lecture-times-table';
-import CustomToggle, {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
+import CustomToggle, {CustomCheckbox, CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
@@ -40,7 +40,11 @@ class LectureDetailsSection extends React.Component {
                     <CustomToggle data={fieldData} name="parking"/>
                     <CustomToggle data={fieldData} name="orderApproved"/>
                     <CustomToggle data={fieldData} name="sameAudience"/>
+                    <CustomCheckbox data={fieldData} name="cancelled"/>
                 </CustomToggleBox>
+
+                {this.props.selectedOrder.cancelled ? (
+                    <CustomText data={fieldData} name="cancellationReason" fullWidth={true}/> ) : null}
 
                 <LectureTimesTable/>
 
