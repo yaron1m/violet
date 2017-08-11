@@ -6,6 +6,7 @@ import CustomText from "../../../../components/custom-components/custom-text-fie
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
+import {getRequiredFields} from "../../../../store/required-fields/reducer";
 
 
 class ContactsSection extends React.Component {
@@ -15,11 +16,11 @@ class ContactsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
         };
-
 
         return (
             <CustomCard title={this.props.labels.sectionName}>
@@ -53,6 +54,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.contactsSection,
         selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state),
     };
 }
 

@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
+import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class LectureDetailsSection extends React.Component {
 
@@ -14,6 +15,7 @@ class LectureDetailsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
@@ -57,6 +59,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.lectureDetailsSection,
         selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state),
     };
 }
 

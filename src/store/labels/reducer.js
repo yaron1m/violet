@@ -114,6 +114,8 @@ export default function labels() {
                 noDataContent: "לשמירת הזמנה חדשה יש להכניס נתונים",
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
+                missingFieldsTitle: "שדות חובה חסרים",
+                missingFieldsContent: "יש למלא את כל שדות החובה לסטאטוס זה",
             },
             orderStatus: {
                 contact: "פנייה",
@@ -134,8 +136,8 @@ export default function labels() {
             organizationSection: {
                 sectionName: "פרטי הארגון",
                 titles: {
-                    name: "שם הארגון",
-                    address: "כתובת הארגון",
+                    organizationName: "שם הארגון",
+                    organizationAddress: "כתובת הארגון",
                     companyId: "ח.פ / ע.מ",
                     paymentConditions: "תנאי תשלום",
                     howReachedUs: "איך הגיע אלינו"

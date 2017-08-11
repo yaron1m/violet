@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
+import * as _ from "lodash";
 
 export default class CustomText extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export default class CustomText extends React.Component {
                 break;
             case "L":
             default:
-                if(this.props.fullWidth)
+                if (this.props.fullWidth)
                     break;
                 style.width = 150;
                 break;
@@ -49,13 +50,18 @@ export default class CustomText extends React.Component {
     handleChange = (event, newValue) => {
         if (this.props.data.updateAction) {
             this.props.data.updateAction(this.state.name, newValue);
-        }else{
+        } else {
             console.error("No update action to text field - " + this.state.name);
         }
     };
 
 
     render() {
+
+        let showError = false;
+        if(!this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.state.name))
+            showError = true;
+
         return (
             <TextField
                 style={this.state.style}
@@ -67,6 +73,7 @@ export default class CustomText extends React.Component {
                 onChange={this.handleChange}
                 multiLine={true}
                 rowsMax={4}
+                errorText={showError ? " " : ""}
             />
         );
     }

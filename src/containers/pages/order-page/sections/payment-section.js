@@ -7,6 +7,7 @@ import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import Divider from 'material-ui/Divider';
 import {getSelectedOrder} from "../../../../store/selected/reducer";
+import {getRequiredFields} from "../../../../store/required-fields/reducer";
 
 
 class OrganizationSection extends React.Component {
@@ -24,6 +25,7 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
@@ -58,6 +60,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.paymentSection,
         selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state),
     };
 }
 
