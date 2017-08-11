@@ -9,6 +9,8 @@ import CustomDatePicker from "../../../../../components/custom-components/custom
 import * as Immutable from "seamless-immutable";
 import {calculateDuration} from "../../../../../util/time-util";
 import PropTypes from 'prop-types';
+import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import {getOfferedLectures} from "../../../../../store/offered-lectures/reducer";
 
 class LectureTimeEditDialog extends React.Component {
 
@@ -43,9 +45,9 @@ class LectureTimeEditDialog extends React.Component {
                 }.bind(this)}
             >
                 <CustomDatePicker data={tableFieldData} name="date"/>
+                <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size="XL"/>
                 <CustomText data={tableFieldData} name="startTime"/>
                 <CustomText data={tableFieldData} name="endTime"/>
-                <CustomText data={tableFieldData} name="topic"/>
                 <CustomText data={tableFieldData} name="audienceSize"/>
                 <CustomText data={tableFieldData} name="shirtColor"/>
                 <CustomText data={tableFieldData} name="tie"/>
@@ -58,6 +60,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection.editDialog,
         selectedOrder: getSelectedOrder(state),
+        offeredLectures: getOfferedLectures(state),
     };
 }
 

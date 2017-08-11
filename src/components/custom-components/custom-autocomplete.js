@@ -1,161 +1,89 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
 import AutoComplete from 'material-ui/AutoComplete';
 
-class AbstractCustomField extends React.Component {
+export default class CustomAutoComplete extends React.Component {
     constructor(props) {
         super(props);
-        let name = this.props.name;
         this.state = {
-            name: name,
-            title: this.props.data.titles[name],
-            value: this.props.data.values[name]
+            name: this.props.name,
+            title: this.props.data.titles[this.props.name],
+            value: this.props.data.values[this.props.name]
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        let name = nextProps.name;
-        if (nextProps.data.values[name] !== this.state.value) {
-            this.setState({
-                title: nextProps.data.titles[name],
-                value: nextProps.data.values[name] ? nextProps.data.values[name] : ""
-            });
-        }
+        if (nextProps.data.values[this.state.name] === this.state.value)
+            return;
+
+        this.setState(Object.assign({}, this.state, {
+            value: nextProps.data.values[this.state.name] ? nextProps.data.values[this.state.name] : ""
+        }));
+
     }
 
-    getStyle = () => {
+    handleChange = (searchText, dataSource, params) => {
+        if (this.props.data.updateAction) {
+            this.props.data.updateAction(this.state.name, searchText);
+        }else{
+            console.error("No update action to text field - " + this.state.name);
+        }
+    };
+
+    render() {
         const style = {
-            field: {
-                marginRight: 20,
-            },
-            datePickerTextFieldStyle: {
-                width: 150
-            },
-            maxRows: 4,
+            marginRight: 20,
         };
 
         switch (this.props.size) {
             case "S":
-                style.field.width = 50;
+                style.width = 50;
                 break;
             case "M":
-                style.field.width = 100;
+                style.width = 100;
                 break;
-
+            case "L":
             default:
+                if(this.props.fullWidth)
+                    break;
+                style.width = 150;
+                break;
+            case "XL":
+                style.width = 200;
                 break;
         }
-
-        return style;
-    };
-}
-
-AbstractCustomField.propTypes = {
-    name: PropTypes.string,
-    type: PropTypes.string,
-    data: PropTypes.object,
-    dataSource: PropTypes.array,
-    fullWidth: PropTypes.bool,
-
-};
-
-AbstractCustomField.defaultProps = {
-    disabled: false,
-    fullWidth: false,
-};
-
-export class CustomText extends AbstractCustomField {
-    handleChange = (event) => {
-        if (this.props.data.updateAction) {
-            this.props.data.dispatch(this.props.data.updateAction(this.state.name, event.target.value));
-        }
-    };
-
-
-    render() {
-        const style = this.getStyle();
-
-        return (
-            <TextField
-                style={style.field}
-                floatingLabelText={this.state.title}
-                floatingLabelFixed={true}
-                fullWidth={this.props.fullWidth}
-                disabled={this.props.disabled}
-                value={this.state.value}
-                onChange={this.handleChange}
-
-                multiLine={true}
-                rowsMax={style.maxRows}
-            />
-        );
-    }
-}
-
-export class CustomDatePicker extends AbstractCustomField {
-
-    handleChange = (nothing, date) => {
-        if (this.props.data.updateAction) {
-            this.props.data.dispatch(this.props.data.updateAction(this.state.name, date.toDateString()));
-        }
-    };
-
-    render() {
-        const style = this.getStyle();
-
-        return (
-            <DatePicker
-                style={style.field}
-                floatingLabelText={this.state.title}
-                floatingLabelFixed={true}
-                fullWidth={this.props.fullWidth}
-                disabled={this.props.disabled}
-                value={this.state.value ? new Date(this.state.value) : null}
-                onChange={this.handleChange}
-
-                textFieldStyle={style.datePickerTextFieldStyle}
-                DateTimeFormat={window.Intl.DateTimeFormat}
-                okLabel="אישור"
-                cancelLabel="ביטול"
-                locale='he-IL'
-                firstDayOfWeek={0}
-            />
-        );
-    }
-}
-
-export class CustomAutoComplete extends AbstractCustomField {
-    handleChange = (searchText, dataSource, params) => {
-        if (this.props.data.updateAction) {
-            this.props.data.dispatch(this.props.data.updateAction(this.state.name, searchText));
-        }
-    };
-
-
-    render() {
-        const style = this.getStyle();
 
         return (
             <AutoComplete
-                style={style.field}
+                style={style}
+                textFieldStyle={style}
                 floatingLabelText={this.state.title}
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-
                 searchText={this.state.value}
                 onUpdateInput={this.handleChange}
-
                 multiLine={true}
-                rowsMax={style.maxRows}
-
+                rowsMax={4}
 
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
             />
+
+
         );
     }
 }
 
+CustomAutoComplete.propTypes = {
+    name: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired,
+    dataSource: PropTypes.array.isRequired,
+    fullWidth: PropTypes.bool,
+    disabled: PropTypes.bool,
+};
+
+CustomAutoComplete.defaultProps = {
+    disabled: false,
+    fullWidth: false,
+};

@@ -2,13 +2,13 @@ export function calculateDuration(lectureTime) {
     if (!lectureTime)
         return null;
 
-    if (!isValidFormat(lectureTime.startTime) || !isValidFormat(lectureTime.endTime))
+    if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.endTime))
         return null;
 
     return getDuration(lectureTime.startTime, lectureTime.endTime);
 }
 
-function isValidFormat(time) {
+function isValidTimeFormat(time) {
     return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
 }
 
