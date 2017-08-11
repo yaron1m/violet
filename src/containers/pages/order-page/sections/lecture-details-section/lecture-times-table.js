@@ -66,7 +66,7 @@ class LectureTimesTable extends React.Component {
                         <TableRowColumn/>
                         <TableRowColumn/>
                         <TableRowColumn key="edit">
-                            <div onClick={this.addNewLectureTime.bind(this)}>
+                            <div style={{cursor: "pointer"}} onClick={this.addNewLectureTime.bind(this)}>
                                 {this.props.labels.addRow}
                             </div>
                             </TableRowColumn>

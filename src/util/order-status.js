@@ -17,7 +17,7 @@ export default function calculateOrderStatus(order) {
     }
 
     //TODO use status
-    
+
     return Immutable.merge(order, {
         status: status
     });
