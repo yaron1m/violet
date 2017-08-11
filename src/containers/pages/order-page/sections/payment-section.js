@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import Divider from 'material-ui/Divider';
+import {getSelectedOrder} from "../../../../store/selected/reducer";
 
 
 class OrganizationSection extends React.Component {
@@ -22,7 +23,7 @@ class OrganizationSection extends React.Component {
 
         const fieldData = {
             titles: this.props.labels.titles,
-            values: this.props.selected.order,
+            values: this.props.selectedOrder,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
@@ -56,7 +57,7 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.paymentSection,
-        selected: state.selected,
+        selectedOrder: getSelectedOrder(state),
     };
 }
 
