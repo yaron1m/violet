@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import AddIcon from 'material-ui/svg-icons/content/add';
-import ClearIcon from 'material-ui/svg-icons/content/clear';
+import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 import {
     clearSelected, sendSelectedOrganizationToDatabase, setIsSelectedOrganization, updateSelectedOrganization
 } from "../../../store/selected/actions";
@@ -79,7 +79,7 @@ class OrganizationPageTitle extends React.Component {
 
                 {/*clear icon*/}
                 <IconButton onClick={() => this.props.dispatch(clearSelected())}>
-                    <ClearIcon/>
+                    <RefreshIcon/>
                 </IconButton>
             </ActionButtonsBox>
         );

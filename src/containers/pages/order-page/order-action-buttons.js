@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
-import ClearIcon from 'material-ui/svg-icons/content/clear';
+import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import {
@@ -67,8 +67,8 @@ class OrderActionButtons extends React.Component {
 
                 <IconButton><PrintIcon/></IconButton>
 
-                <IconButton>
-                    <ClearIcon onClick={() => this.props.dispatch(clearSelectedOrder())}/>
+                <IconButton onClick={() => this.props.dispatch(clearSelectedOrder())}>
+                    <RefreshIcon/>
                 </IconButton>
             </ActionButtonsBox>
 
