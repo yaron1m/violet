@@ -29,6 +29,15 @@ class LectureTimeEditDialog extends React.Component {
             updateAction: this.updateLectureTime.bind(this)
         };
 
+        const style = {
+            flex: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "flex-end"
+            }
+        };
+
 
         return (
             <CustomDialog
@@ -44,13 +53,16 @@ class LectureTimeEditDialog extends React.Component {
                     this.props.onRequestClose();
                 }.bind(this)}
             >
-                <CustomDatePicker data={tableFieldData} name="date"/>
-                <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size="XL"/>
-                <CustomText data={tableFieldData} name="startTime"/>
-                <CustomText data={tableFieldData} name="endTime"/>
-                <CustomText data={tableFieldData} name="audienceSize"/>
-                <CustomText data={tableFieldData} name="shirtColor"/>
-                <CustomText data={tableFieldData} name="tie"/>
+                <div style={style.flex}>
+                    <CustomDatePicker data={tableFieldData} name="date"/>
+                    <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size="XL"/>
+                    <CustomText data={tableFieldData} name="startTime"/>
+                    <CustomText data={tableFieldData} name="endTime"/>
+                    <CustomText data={tableFieldData} name="audienceSize"/>
+                    <CustomText data={tableFieldData} name="shirtColor"/>
+                    <CustomText data={tableFieldData} name="tie"/>
+                </div>
+
             </CustomDialog>
         );
     }
