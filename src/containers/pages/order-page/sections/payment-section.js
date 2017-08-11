@@ -32,7 +32,7 @@ class OrganizationSection extends React.Component {
             <CustomCard
                 title={this.props.labels.sectionName}
             >
-                
+
                 <div style={style.flex}>
                     <CustomText data={fieldData} name="amount"/>
                     <CustomText data={fieldData} name="proformaInvoiceNumber"/>

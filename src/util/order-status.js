@@ -51,7 +51,7 @@ function meetsRequirements(order, requirement) {
         case "executed":
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             now = new Date();
-            return _.every(lectureTimesDates, date => new Date(date) < now);
+            return _.every(lectureTimesDates, date => new Date(date) <= now);
 
         case "waitingPayment":
             return existsAndNotEmpty(order,"proformaInvoiceNumber") || existsAndNotEmpty(order,"taxInvoiceNumber");
