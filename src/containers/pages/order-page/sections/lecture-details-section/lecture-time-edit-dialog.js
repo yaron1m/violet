@@ -11,6 +11,7 @@ import {calculateDuration} from "../../../../../util/time-util";
 import PropTypes from 'prop-types';
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import {getOfferedLectures} from "../../../../../store/offered-lectures/reducer";
+import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class LectureTimeEditDialog extends React.Component {
 
@@ -26,6 +27,7 @@ class LectureTimeEditDialog extends React.Component {
             titles: this.props.labels.titles,
             values: this.props.selectedLectureTimeIndex === null ? null :
                 this.props.selectedOrder.lectureTimes[this.props.selectedLectureTimeIndex],
+            requiredFields: this.props.requiredFields.lectureTimes,
             updateAction: this.updateLectureTime.bind(this)
         };
 
@@ -73,6 +75,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection.editDialog,
         selectedOrder: getSelectedOrder(state),
         offeredLectures: getOfferedLectures(state),
+        requiredFields: getRequiredFields(state),
     };
 }
 

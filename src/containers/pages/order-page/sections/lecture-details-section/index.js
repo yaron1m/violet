@@ -15,7 +15,7 @@ class LectureDetailsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
-            requiredFields: this.props.requiredFields,
+            requiredFields: this.props.requiredFields.order,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)

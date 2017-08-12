@@ -3,16 +3,42 @@ import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
 
-const contact = ["organizationId", "contactFirstName", "contactLastName", "contactPhone1", "contactEmail"];
-const offer = _.concat(contact, []);
-const order = _.concat(offer, []);
-const approvedOrder = _.concat(order, ["location",
-    "financialContactFirstName", "financialContactLastName", "financialContactPhone1", "financialContactEmail"]);
-const isExecuting = _.concat(approvedOrder, []);
-const executed = _.concat(isExecuting, []);
-const waitingPayment = _.concat(executed, []);
-const payed = _.concat(waitingPayment, []);
-const cancelled = [];
+function arrayMerge(objValue, srcValue) {
+    if (_.isArray(objValue)) {
+        return objValue.concat(srcValue);
+    }
+}
+
+const contact = {
+    order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
+    organization: ["organizationName"],
+    lectureTimes: [],
+};
+
+const offer = _.mergeWith(_.cloneDeep(contact), {
+    lectureTimes: ["topic"],
+}, arrayMerge);
+
+const order = _.mergeWith(_.cloneDeep(offer), {
+    lectureTimes: ["date", "startTime", "endTime"],
+}, arrayMerge);
+
+const approvedOrder = _.mergeWith(_.cloneDeep(order), {
+    order: ["location", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
+        "financialContactEmail", "amount"],
+    organization: ["companyId", "paymentConditions"],
+}, arrayMerge);
+
+
+const isExecuting = _.mergeWith(_.cloneDeep(approvedOrder), {}, arrayMerge);
+const executed = _.mergeWith(_.cloneDeep(isExecuting), {}, arrayMerge);
+const waitingPayment = _.mergeWith(_.cloneDeep(executed), {}, arrayMerge);
+const payed = _.mergeWith(_.cloneDeep(waitingPayment), {}, arrayMerge);
+const cancelled = {
+    order: ["cancellationReason"],
+    organization: [],
+    lectureTimes: [],
+};
 
 const initialState = Immutable({
     contact,
@@ -24,7 +50,7 @@ const initialState = Immutable({
     waitingPayment,
     payed,
     cancelled,
-    showRequiredFields: false,
+    showRequiredFields: true,
 });
 
 export default (state = initialState, action = {}) => {
@@ -48,9 +74,13 @@ export function getRequiredFields(state) {
     return getArrayOfRequiredFields(state, state.requiredFields.showRequiredFields);
 }
 
-function getArrayOfRequiredFields(state, showRequiredFields){
+function getArrayOfRequiredFields(state, showRequiredFields) {
     if (!showRequiredFields)
-        return [];
+        return {
+            order: [],
+            organization: [],
+            lectureTimes: [],
+        };
 
     const selectedOrder = getSelectedOrder(state);
 
@@ -60,8 +90,8 @@ function getArrayOfRequiredFields(state, showRequiredFields){
     return state.requiredFields[selectedOrder.status];
 }
 
-export function getMissingFields(state) {
-    const requiredFields = getArrayOfRequiredFields(state, true);
+export function getOrderMissingFields(state) {
+    const requiredFields = getArrayOfRequiredFields(state, true).order;
     const selectedOrder = getSelectedOrder(state);
     const nonEmptyKeys = _.filter(_.keys(selectedOrder), key => selectedOrder[key]);
     return _.difference(requiredFields, nonEmptyKeys);

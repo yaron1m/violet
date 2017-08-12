@@ -14,7 +14,7 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrganization,
-            requiredFields: this.props.requiredFields,
+            requiredFields: this.props.requiredFields.organization,
             updateAction: function (key, value) {
                     this.props.dispatch(updateSelectedOrganization(key, value));
             }.bind(this)
