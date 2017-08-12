@@ -27,7 +27,7 @@ class LectureTimeEditDialog extends React.Component {
             titles: this.props.labels.titles,
             values: this.props.selectedLectureTimeIndex === null ? null :
                 this.props.selectedOrder.lectureTimes[this.props.selectedLectureTimeIndex],
-            requiredFields: this.props.requiredFields.lectureTimes,
+            requiredFields: this.props.requiredFields,
             updateAction: this.updateLectureTime.bind(this)
         };
 
@@ -75,7 +75,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection.editDialog,
         selectedOrder: getSelectedOrder(state),
         offeredLectures: getOfferedLectures(state),
-        requiredFields: getRequiredFields(state),
+        requiredFields: getRequiredFields(state).lectureTimes,
     };
 }
 

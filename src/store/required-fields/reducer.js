@@ -1,4 +1,4 @@
-import {getSelectedOrder} from "../selected/reducer";
+import {getSelectedOrder, getSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
@@ -91,8 +91,30 @@ function getArrayOfRequiredFields(state, showRequiredFields) {
 }
 
 export function getOrderMissingFields(state) {
-    const requiredFields = getArrayOfRequiredFields(state, true).order;
+    const requiredFields = getArrayOfRequiredFields(state, true);
+
     const selectedOrder = getSelectedOrder(state);
-    const nonEmptyKeys = _.filter(_.keys(selectedOrder), key => selectedOrder[key]);
-    return _.difference(requiredFields, nonEmptyKeys);
+    const lectureTimes = selectedOrder.lectureTimes;
+    const selectedOrganization = getSelectedOrganization(state);
+
+    const orderMissingFields = getMissingFields(selectedOrder, requiredFields.order);
+    const organizationMissingFields = getMissingFields(selectedOrganization, requiredFields.organization);
+    //Remove last lecture time - add new line row
+    const lectureTimesMissingFields = getLectureTimesMissingFields(_.dropRight(lectureTimes), requiredFields.lectureTimes);
+
+    return _.concat(orderMissingFields, organizationMissingFields, lectureTimesMissingFields);
+}
+
+export function getMissingFields(object, required) {
+    const nonEmptyKeys = _.filter(_.keys(object), key => object[key]);
+    return _.difference(required, nonEmptyKeys);
+}
+
+function getLectureTimesMissingFields(lectureTimes, lectureTimesRequiredFields) {
+    let lectureTimesMissingFields = [];
+    for (let i = 0; i < _.size(lectureTimes); i++) {
+        const diff = getMissingFields(lectureTimes[i], lectureTimesRequiredFields);
+        lectureTimesMissingFields = _.concat(lectureTimesMissingFields, diff);
+    }
+    return lectureTimesMissingFields;
 }

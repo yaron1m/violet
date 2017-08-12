@@ -17,7 +17,7 @@ import {getNextOrderId} from "../../../store/orders/reducer";
 import * as _ from "lodash";
 import {openDialog, openSnackbar} from "../../../store/appearance/actions";
 import {ActionButtonsBox} from "../../../components/action-buttons-box";
-import {getMissingFields} from "../../../store/required-fields/reducer";
+import {getOrderMissingFields} from "../../../store/required-fields/reducer";
 import {hideRequiredFields, showRequiredFields} from "../../../store/required-fields/actions";
 
 class OrderActionButtons extends React.Component {
@@ -46,7 +46,7 @@ class OrderActionButtons extends React.Component {
         } else {
             await this.props.dispatch(showRequiredFields());
             let dialogContent = dialogText.missingFieldsContent;
-            for(let i = 0 ; i < missingFields.length; i++){
+            for (let i = 0; i < missingFields.length; i++) {
                 dialogContent += missingFields[i] + " ";
             }
             this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogContent));
@@ -100,7 +100,7 @@ function mapStateToProps(state) {
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
         nextOrderId: getNextOrderId(state),
-        missingFields: getMissingFields(state),
+        missingFields: getOrderMissingFields(state),
     };
 }
 

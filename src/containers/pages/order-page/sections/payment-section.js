@@ -25,7 +25,7 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
-            requiredFields: this.props.requiredFields.order,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
@@ -61,7 +61,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.paymentSection,
         selectedOrder: getSelectedOrder(state),
-        requiredFields: getRequiredFields(state),
+        requiredFields: getRequiredFields(state).order,
     };
 }
 

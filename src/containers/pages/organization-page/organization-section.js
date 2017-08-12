@@ -14,7 +14,7 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrganization,
-            requiredFields: this.props.requiredFields.organization,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                     this.props.dispatch(updateSelectedOrganization(key, value));
             }.bind(this)
@@ -38,7 +38,7 @@ function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).OrganizationPage.organizationSection,
         selectedOrganization: getSelectedOrganization(state),
-        requiredFields: getRequiredFields(state),
+        requiredFields: getRequiredFields(state).organization,
         allowEdit: ownProps.allowEdit
     };
 }

@@ -10,6 +10,7 @@ import CustomTableRow from "../../../../../components/custom-components/custom-t
 import * as _ from 'lodash';
 import {TableRow, TableRowColumn} from "material-ui/Table";
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
+import {getMissingFields, getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class LectureTimesTable extends React.Component {
 
@@ -55,6 +56,7 @@ class LectureTimesTable extends React.Component {
                                     headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
                                     element={lectureTime}
                                     onEditButton={this.editLectureTime.bind(this)}
+                                    missingFields={!_.isEmpty(getMissingFields(lectureTime, this.props.requiredFields))}
                                 />
                         ))
                     }
@@ -93,6 +95,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection,
         selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state).lectureTimes,
     };
 }
 
