@@ -62,6 +62,7 @@ export class CustomCheckbox extends React.Component {
                     labelStyle={style.labelStyle}
                     labelPosition="right"
                     checked={checked}
+                    switched={checked}
                     onCheck={(event, isInputChecked) =>
                         this.props.data.updateAction(this.props.name, isInputChecked)}
                     iconStyle={style.iconStyle}
