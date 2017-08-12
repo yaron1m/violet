@@ -18,7 +18,7 @@ class OrdersSummary extends React.Component {
             this.props.history.push('/form');
     }
 
-    selectOrder(orderId){
+    selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
         if (this.props.history.location.pathname !== '/form')
             this.props.history.push('/form');
@@ -30,18 +30,20 @@ class OrdersSummary extends React.Component {
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
 
-                    <TableRow selectable={false}>
-                        <TableRowColumn/>
-                        <TableRowColumn/>
-                        <TableRowColumn>
-                            <div style={{cursor: "pointer"}} onClick={this.addNewOrder.bind(this)}>
-                                {this.props.labels.addRow}
-                            </div>
-                        </TableRowColumn>
-                        <TableRowColumn/>
-                        <TableRowColumn/>
+                    {this.props.isSelectedOrganization ?
+                        (<TableRow selectable={false}>
+                            <TableRowColumn/>
+                            <TableRowColumn/>
+                            <TableRowColumn>
+                                <div style={{cursor: "pointer"}} onClick={this.addNewOrder.bind(this)}>
+                                    {this.props.labels.addRow}
+                                </div>
+                            </TableRowColumn>
+                            <TableRowColumn/>
+                            <TableRowColumn/>
 
-                    </TableRow>
+                        </TableRow>)
+                        : null}
 
                     {
                         _.map(this.props.ordersSummary, (order =>
