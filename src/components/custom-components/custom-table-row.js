@@ -12,7 +12,7 @@ class CustomTableRow extends React.Component {
         return (
 
             <TableRow
-                style={this.props.missingFields ? {backgroundColor: "red"} : {}}
+                style={this.props.missingFields ? {color: "red"} : {}}
                 selectable={false}
                 hoverable={true}
             >
