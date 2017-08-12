@@ -1,11 +1,12 @@
 import React from 'react';
-import CustomCard from "../../../../components/custom-components/custom-card";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../store/labels/reducer";
 import CustomText from "../../../../components/custom-components/custom-text-field";
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
+import {getRequiredFields} from "../../../../store/required-fields/reducer";
 
 
 class ContactsSection extends React.Component {
@@ -15,14 +16,14 @@ class ContactsSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrder,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
         };
 
-
         return (
-            <CustomCard title={this.props.labels.sectionName}>
+            <CustomPaper title={this.props.labels.sectionName}>
                 <CustomText data={fieldData} name="contactFirstName" size="M"/>
                 <CustomText data={fieldData} name="contactLastName" size="M"/>
                 <CustomText data={fieldData} name="contactPhone1" size="M"/>
@@ -34,7 +35,7 @@ class ContactsSection extends React.Component {
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
-                <div>איש קשר לתשלום</div>
+                <div>{this.props.labels.finnancialContactTitle}</div>
 
                 <CustomText data={fieldData} name="financialContactFirstName" size="M"/>
                 <CustomText data={fieldData} name="financialContactLastName" size="M"/>
@@ -44,7 +45,7 @@ class ContactsSection extends React.Component {
                 <CustomText data={fieldData} name="financialContactPhone2" size="M"/>
                 <CustomText data={fieldData} name="financialContactFax" size="M"/>
                 <CustomText data={fieldData} name="financialContactJob" size="M"/>
-            </CustomCard>
+            </CustomPaper>
         );
     }
 }
@@ -53,6 +54,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.contactsSection,
         selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state).order,
     };
 }
 

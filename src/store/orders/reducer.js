@@ -4,7 +4,6 @@ import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {convertStatus} from "../labels/reducer";
 
-
 export default (state = {}, action = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_ORDERS:
@@ -33,7 +32,7 @@ export function getOrdersByOrganization(state) {
 
 export function getOrdersSummary(state){
     const orders = getOrdersByOrganization(state);
-
+    
     function map(order){
         const result={ id: order.id, status: convertStatus(order.status)};
         if(!_.isEmpty(order.lectureTimes)){

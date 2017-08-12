@@ -1,7 +1,8 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
+import Checkbox from 'material-ui/Checkbox';
 
-class CustomToggle extends React.Component {
+export default class CustomToggle extends React.Component {
 
     render() {
         const style = {
@@ -10,7 +11,7 @@ class CustomToggle extends React.Component {
                 marginTop: 6,
             },
             labelStyle: {
-                marginRight: 50,
+                marginRight: 45,
                 marginLeft: 10
             },
         };
@@ -32,7 +33,45 @@ class CustomToggle extends React.Component {
     }
 }
 
-export default CustomToggle;
+export class CustomCheckbox extends React.Component {
+
+    render() {
+        const checked = this.props.data.values[this.props.name];
+
+        const style = {
+            checkbox: {
+                marginBottom: 6,
+                marginTop: 6,
+            },
+            labelStyle: {
+                marginRight: 20,
+                //marginLeft: -10,
+                color: checked ? "red" : "black",
+            },
+            iconStyle: {
+                fill: checked ? 'red' : null,
+                borderColor: "black",
+            },
+        };
+
+        return (
+            <div>
+                <Checkbox
+                    style={style.checkbox}
+                    label={this.props.data.titles[this.props.name]}
+                    labelStyle={style.labelStyle}
+                    labelPosition="right"
+                    checked={checked}
+                    switched={checked}
+                    onCheck={(event, isInputChecked) =>
+                        this.props.data.updateAction(this.props.name, isInputChecked)}
+                    iconStyle={style.iconStyle}
+                />
+            </div>
+
+        );
+    }
+}
 
 class CustomToggleBox extends React.Component {
 

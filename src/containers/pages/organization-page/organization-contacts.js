@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CustomPage from "../../../components/custom-components/custom-page";
+import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomTable from "../../../components/custom-components/custom-table";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrganization} from "../../../store/selected/reducer";
@@ -41,7 +41,7 @@ class OrganizationContacts extends React.Component {
 
 
         return (
-            <CustomPage title={this.props.labels.title}>
+            <CustomPaper title={this.props.labels.title}>
                 <CustomTable
                     headers={this.props.labels.tableHeaders}
                     data={this.props.selectedOrganization.contacts}
@@ -68,7 +68,7 @@ class OrganizationContacts extends React.Component {
                     <CustomText data={tableFieldData} name="fax"/>
                     <CustomText data={tableFieldData} name="job"/>
                 </CustomDialog>
-            </CustomPage>
+            </CustomPaper>
         );
     }
 }

@@ -1,10 +1,12 @@
 import React from 'react';
-import CustomPage from "../../../components/custom-components/custom-page";
+import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomText from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
 import {updateSelectedOrganization} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrganization} from "../../../store/selected/reducer";
+import CustomAutoComplete from "../../../components/custom-components/custom-autocomplete";
+import {getRequiredFields} from "../../../store/required-fields/reducer";
 
 class OrganizationSection extends React.Component {
 
@@ -12,33 +14,33 @@ class OrganizationSection extends React.Component {
         const fieldData = {
             titles: this.props.labels.titles,
             values: this.props.selectedOrganization,
+            requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
-                if (this.props.allowEdit)
                     this.props.dispatch(updateSelectedOrganization(key, value));
             }.bind(this)
         };
 
+        const paymentConditions = ["aa", "bb", "cc"];
+
         return (
-            <CustomPage title={this.props.labels.sectionName}>
-                <CustomText data={fieldData} name="name"/>
-                <CustomText data={fieldData} name="address"/>
+            <CustomPaper title={this.props.labels.sectionName}>
+                <CustomText data={fieldData} name="organizationName"/>
+                <CustomText data={fieldData} name="organizationAddress"/>
                 <CustomText data={fieldData} name="companyId" size="M"/>
+                <CustomAutoComplete data={fieldData} name="paymentConditions" dataSource={paymentConditions}/>
                 <CustomText data={fieldData} name="howReachedUs"/>
-            </CustomPage>
+            </CustomPaper>
         );
     }
 }
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: getLabels(state).orderPage.organizationSection,
+        labels: getLabels(state).OrganizationPage.organizationSection,
         selectedOrganization: getSelectedOrganization(state),
+        requiredFields: getRequiredFields(state).organization,
         allowEdit: ownProps.allowEdit
     };
 }
-
-OrganizationSection.defaultProps = {
-    allowEdit: true,
-};
 
 export default connect(mapStateToProps)(OrganizationSection);

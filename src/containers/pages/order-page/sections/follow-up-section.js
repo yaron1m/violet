@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomCard from "../../../../components/custom-components/custom-card";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
 import {connect} from 'react-redux';
 import CustomText from "../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../components/custom-components/custom-date-picker";
@@ -33,9 +33,9 @@ class FollowUpSection extends React.Component {
         };
 
         return (
-            <CustomCard
+            <CustomPaper
                 title={this.props.labels.sectionName}
-                isOpen = {this.props.selectedOrder.followUpRequired}
+                //isOpen = {this.props.selectedOrder.followUpRequired}
             >
                 <div style={style.flex}>
                     <CustomToggle data={fieldData} name="followUpRequired"/>
@@ -56,7 +56,7 @@ class FollowUpSection extends React.Component {
                         disabled={!this.props.selectedOrder.followUpRequired}
                     />
                 </div>
-            </CustomCard>
+            </CustomPaper>
         );
     }
 }

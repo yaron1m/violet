@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Paper from "material-ui/Paper";
 import LectureTimeEditDialog from "./lecture-time-edit-dialog";
 import CustomTable from "../../../../../components/custom-components/custom-table";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
@@ -10,6 +9,8 @@ import * as Immutable from "seamless-immutable";
 import CustomTableRow from "../../../../../components/custom-components/custom-table-row";
 import * as _ from 'lodash';
 import {TableRow, TableRowColumn} from "material-ui/Table";
+import CustomPaper from "../../../../../components/custom-components/custom-paper";
+import {getMissingFields, getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class LectureTimesTable extends React.Component {
 
@@ -34,6 +35,7 @@ class LectureTimesTable extends React.Component {
         }
         lectureTimes[newLectureTimeIndex] = {id: newLectureTimeIndex};
         this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+        this.editLectureTime.bind(this)(newLectureTimeIndex);
     }
 
     editLectureTime(index) {
@@ -45,7 +47,7 @@ class LectureTimesTable extends React.Component {
 
     render() {
         return (
-            <Paper>
+            <CustomPaper>
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
                         _.map(this.props.selectedOrder.lectureTimes, (lectureTime =>
@@ -54,6 +56,7 @@ class LectureTimesTable extends React.Component {
                                     headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
                                     element={lectureTime}
                                     onEditButton={this.editLectureTime.bind(this)}
+                                    missingFields={!_.isEmpty(getMissingFields(lectureTime, this.props.requiredFields))}
                                 />
                         ))
                     }
@@ -83,7 +86,7 @@ class LectureTimesTable extends React.Component {
                     }))}
                 />
 
-            </Paper>
+            </CustomPaper>
         );
     }
 }
@@ -92,6 +95,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection,
         selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state).lectureTimes,
     };
 }
 

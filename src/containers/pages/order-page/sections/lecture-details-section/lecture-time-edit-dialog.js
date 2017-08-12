@@ -9,6 +9,9 @@ import CustomDatePicker from "../../../../../components/custom-components/custom
 import * as Immutable from "seamless-immutable";
 import {calculateDuration} from "../../../../../util/time-util";
 import PropTypes from 'prop-types';
+import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import {getOfferedLectures} from "../../../../../store/offered-lectures/reducer";
+import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class LectureTimeEditDialog extends React.Component {
 
@@ -24,7 +27,17 @@ class LectureTimeEditDialog extends React.Component {
             titles: this.props.labels.titles,
             values: this.props.selectedLectureTimeIndex === null ? null :
                 this.props.selectedOrder.lectureTimes[this.props.selectedLectureTimeIndex],
+            requiredFields: this.props.requiredFields,
             updateAction: this.updateLectureTime.bind(this)
+        };
+
+        const style = {
+            flex: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "flex-end"
+            }
         };
 
 
@@ -42,13 +55,16 @@ class LectureTimeEditDialog extends React.Component {
                     this.props.onRequestClose();
                 }.bind(this)}
             >
-                <CustomDatePicker data={tableFieldData} name="date"/>
-                <CustomText data={tableFieldData} name="startTime"/>
-                <CustomText data={tableFieldData} name="endTime"/>
-                <CustomText data={tableFieldData} name="topic"/>
-                <CustomText data={tableFieldData} name="audienceSize"/>
-                <CustomText data={tableFieldData} name="shirtColor"/>
-                <CustomText data={tableFieldData} name="tie"/>
+                <div style={style.flex}>
+                    <CustomDatePicker data={tableFieldData} name="date"/>
+                    <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size="XL"/>
+                    <CustomText data={tableFieldData} name="startTime"/>
+                    <CustomText data={tableFieldData} name="endTime"/>
+                    <CustomText data={tableFieldData} name="audienceSize"/>
+                    <CustomText data={tableFieldData} name="shirtColor"/>
+                    <CustomText data={tableFieldData} name="tie"/>
+                </div>
+
             </CustomDialog>
         );
     }
@@ -58,6 +74,8 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection.editDialog,
         selectedOrder: getSelectedOrder(state),
+        offeredLectures: getOfferedLectures(state),
+        requiredFields: getRequiredFields(state).lectureTimes,
     };
 }
 

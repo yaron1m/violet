@@ -3,12 +3,22 @@ import {connect} from 'react-redux';
 import PageTitle from "../../../components/page-title";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, isSelectedOrder} from "../../../store/selected/reducer";
+import {getStatus} from "../../../util/order-status";
 
 class OrderPageTitle extends React.Component {
 
     render() {
-        const pageTitle = this.props.labels.title +
-            (this.props.isSelectedOrder ? this.props.labels.orderNumberTitle + this.props.selectedOrder.id : this.props.labels.newOrderTitle);
+        let pageTitle = this.props.labels.title;
+
+        if (this.props.isSelectedOrder) {
+            pageTitle += this.props.labels.orderNumberTitle + this.props.selectedOrder.id;
+        }
+
+        else {
+            pageTitle += this.props.labels.newOrderTitle;
+        }
+
+        pageTitle += this.props.labels.orderStatusTitle + this.props.status;
 
         return (
             <PageTitle title={pageTitle} maxWidthm="50%"/>
@@ -21,6 +31,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).orderPage,
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
+        status: getStatus(state),
     };
 }
 

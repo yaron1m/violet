@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CustomPage from "../../../components/custom-components/custom-page";
+import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomTable from "../../../components/custom-components/custom-table";
 import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
@@ -18,7 +18,7 @@ class OrdersSummary extends React.Component {
             this.props.history.push('/form');
     }
 
-    selectOrder(orderId){
+    selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
         if (this.props.history.location.pathname !== '/form')
             this.props.history.push('/form');
@@ -26,22 +26,24 @@ class OrdersSummary extends React.Component {
 
     render() {
         return (
-            <CustomPage title={this.props.labels.title}>
+            <CustomPaper title={this.props.labels.title}>
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
 
-                    <TableRow selectable={false}>
-                        <TableRowColumn/>
-                        <TableRowColumn/>
-                        <TableRowColumn>
-                            <div style={{cursor: "pointer"}} onClick={this.addNewOrder.bind(this)}>
-                                {this.props.labels.addRow}
-                            </div>
-                        </TableRowColumn>
-                        <TableRowColumn/>
-                        <TableRowColumn/>
+                    {this.props.isSelectedOrganization ?
+                        (<TableRow selectable={false}>
+                            <TableRowColumn/>
+                            <TableRowColumn/>
+                            <TableRowColumn>
+                                <div style={{cursor: "pointer"}} onClick={this.addNewOrder.bind(this)}>
+                                    {this.props.labels.addRow}
+                                </div>
+                            </TableRowColumn>
+                            <TableRowColumn/>
+                            <TableRowColumn/>
 
-                    </TableRow>
+                        </TableRow>)
+                        : null}
 
                     {
                         _.map(this.props.ordersSummary, (order =>
@@ -54,7 +56,7 @@ class OrdersSummary extends React.Component {
                         ))
                     }
                 </CustomTable>
-            </CustomPage>
+            </CustomPaper>
         );
     }
 }

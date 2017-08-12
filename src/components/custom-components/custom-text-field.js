@@ -1,14 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
+import * as _ from "lodash";
 
 export default class CustomText extends React.Component {
     constructor(props) {
         super(props);
+
+        const style = {
+            marginRight: 20,
+            verticalAlign: "bottom",
+            marginBottom: 10,
+        };
+
+        switch (this.props.size) {
+            case "S":
+                style.width = 50;
+                break;
+            case "M":
+                style.width = 100;
+                break;
+            case "L":
+            default:
+                if (this.props.fullWidth)
+                    break;
+                style.width = 150;
+                break;
+            case "XL":
+                style.width = 200;
+                break;
+        }
+
         this.state = {
             name: this.props.name,
             title: this.props.data.titles[this.props.name],
-            value: this.props.data.values[this.props.name]
+            value: this.props.data.values[this.props.name],
+            style,
         };
     }
 
@@ -25,38 +52,21 @@ export default class CustomText extends React.Component {
     handleChange = (event, newValue) => {
         if (this.props.data.updateAction) {
             this.props.data.updateAction(this.state.name, newValue);
-        }else{
+        } else {
             console.error("No update action to text field - " + this.state.name);
         }
     };
 
 
     render() {
-        const style = {
-            marginRight: 20,
-        };
 
-        switch (this.props.size) {
-            case "S":
-                style.width = 50;
-                break;
-            case "M":
-                style.width = 100;
-                break;
-            case "L":
-            default:
-                if(this.props.fullWidth)
-                    break;
-                style.width = 150;
-                break;
-            case "XL":
-                style.width = 200;
-                break;
-        }
+        let showError = false;
+        if (!this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.state.name))
+            showError = true;
 
         return (
             <TextField
-                style={style}
+                style={this.state.style}
                 floatingLabelText={this.state.title}
                 floatingLabelFixed={true}
                 fullWidth={this.props.fullWidth}
@@ -65,7 +75,8 @@ export default class CustomText extends React.Component {
                 onChange={this.handleChange}
                 multiLine={true}
                 rowsMax={4}
-            />
+                errorText={showError ? "שדה חובה" : ""}
+            />//TODO extract string to labels
         );
     }
 }

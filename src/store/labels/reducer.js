@@ -19,16 +19,8 @@ export default function labels() {
         orderPage: {
             title: "טופס הזמנת הרצאה",
             orderNumberTitle: " - הזמנה מספר ",
+            orderStatusTitle: " -    סטאטוס: ",
             newOrderTitle: " - הזמנה חדשה",
-            organizationSection: {
-                sectionName: "פרטי הארגון",
-                titles: {
-                    name: "שם הארגון",
-                    address: "כתובת הארגון",
-                    companyId: "ח.פ / ע.מ",
-                    howReachedUs: "איך הגיע אלינו"
-                }
-            },
             lectureDetailsSection: {
                 sectionName: "פרטי ההרצאה",
                 titles: {
@@ -42,7 +34,9 @@ export default function labels() {
                     microphone: "מיקרופון דש",
                     parking: "חניה",
                     orderApproved: "הזמנה אושרה",
-                    sameAudience: "קהל יעד זהה"
+                    sameAudience: "קהל יעד זהה",
+                    cancelled: "הזמנה בוטלה",
+                    cancellationReason: "סיבת ביטול",
                 },
                 lectureTimesSection: {
                     sectionName: "הרצאות",
@@ -66,6 +60,7 @@ export default function labels() {
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
+                finnancialContactTitle: "איש קשר לתשלום",
                 titles: {
                     contactFirstName: "שם פרטי",
                     contactLastName: "שם משפחה",
@@ -97,13 +92,15 @@ export default function labels() {
             paymentSection: {
                 sectionName: "תשלום",
                 titles: {
-                    paymentConditions: "תנאי תשלום",
-                    expectedPayDay: "תאריך לתשלום",
-                    actualPayDay: "תאריך תשלום בפועל",
+                    amount: "סכום לתשלום",
                     proformaInvoiceNumber: "מספר חשבונית עסקה",
                     proformaInvoiceDate: "תאריך חשבונית עסקה",
+                    expectedPayDay: "תאריך לתשלום",
+
                     taxInvoiceNumber: "מספר חשבונית מס",
-                    taxInvoiceDate: "תאריך חשבונית מס"
+                    taxInvoiceDate: "תאריך חשבונית מס",
+                    receiptNumber: "מספר קבלה",
+                    actualPayDay: "תאריך תשלום בפועל",
                 }
             },
             notesSection: {
@@ -122,23 +119,35 @@ export default function labels() {
                 noDataContent: "לשמירת הזמנה חדשה יש להכניס נתונים",
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
+                missingFieldsTitle: "שדות חובה חסרים",
+                missingFieldsContent: "יש למלא את כל שדות החובה לסטאטוס זה: ",
             },
             orderStatus: {
-                contact: "פניה",
-                offer: "הזמנה",
+                contact: "פנייה",
+                offer: "הצעת מחיר",
+                order: "הזמנה",
                 approvedOrder: "הזמנה מאושרת",
                 isExecuting: "בביצוע",
                 executed: "בוצע",
                 waitingPayment: "ממתין לתשלום",
                 payed: "שולם",
-
                 cancelled: "בוטל",
                 disapproved: "לא אושר",
-                followUp: ", המשך טיפול",
+                followUp: " + נדרש המשך טיפול",
             }
         },
         OrganizationPage: {
             title: "פרטי ארגונים",
+            organizationSection: {
+                sectionName: "פרטי הארגון",
+                titles: {
+                    organizationName: "שם הארגון",
+                    organizationAddress: "כתובת הארגון",
+                    companyId: "ח.פ / ע.מ",
+                    paymentConditions: "תנאי תשלום",
+                    howReachedUs: "איך הגיע אלינו"
+                }
+            },
             ordersSummary: {
                 title: "הזמנות",
                 addRow: "הוסף הזמנה חדשה",

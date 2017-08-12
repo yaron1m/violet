@@ -36,7 +36,9 @@ export default class CustomDatePicker extends React.Component {
                 marginRight: 20,
             },
             datePickerTextFieldStyle: {
-                width: 150
+                width: 150,
+                verticalAlign: "bottom",
+                marginBottom: 10,
             },
         };
 

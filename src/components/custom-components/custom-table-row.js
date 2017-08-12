@@ -12,6 +12,7 @@ class CustomTableRow extends React.Component {
         return (
 
             <TableRow
+                style={this.props.missingFields ? {backgroundColor: "red"} : {}}
                 selectable={false}
                 hoverable={true}
             >
@@ -47,10 +48,12 @@ CustomTableRow.propTypes = {
     element: PropTypes.object.isRequired,
     headerKeys: PropTypes.array.isRequired,
     onEditButton: PropTypes.func,
+    missingFields: PropTypes.bool,
 };
 
 CustomTableRow.defaultProps = {
     onEditButton: null,
+    missingFields: false,
 };
 
 export default CustomTableRow;
