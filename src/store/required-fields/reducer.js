@@ -50,7 +50,7 @@ const initialState = Immutable({
     waitingPayment,
     payed,
     cancelled,
-    showRequiredFields: true,
+    showRequiredFields: false,
 });
 
 export default (state = initialState, action = {}) => {
