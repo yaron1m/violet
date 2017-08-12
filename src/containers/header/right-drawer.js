@@ -5,17 +5,19 @@ import {white, purple900} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import Web from 'material-ui/svg-icons/av/web';
 import {changeDrawerState} from "../../store/appearance/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {isDrawerOpen} from "../../store/appearance/reducer";
 import {getDisplayName, getPhotoURL} from "../../store/firebase/reducer";
+import withRouter from "react-router-dom/es/withRouter";
 
 
 class RightDrawer extends React.Component {
 
-    closeDrawer(){
+    navigate(url) {
+        if (this.props.history.location.pathname !== url)
+            this.props.history.push(url);
         this.props.dispatch(changeDrawerState());
     }
 
@@ -64,13 +66,13 @@ class RightDrawer extends React.Component {
                 open={this.props.isDrawerOpen}
             >
 
-                <Link to="/"
-                      onClick={this.closeDrawer.bind(this)}
+                <div
+                    style={styles.logo}
+                    onClick={() => this.navigate.bind(this)('/')}
                 >
-                    <div style={styles.logo}>
-                        {this.props.labels.softwareName} {this.props.labels.version}
-                    </div>
-                </Link>
+                    {this.props.labels.softwareName} {this.props.labels.version}
+                </div>
+
 
                 <div style={styles.avatar.div}>
                     <Avatar src={this.props.photoURL}
@@ -84,17 +86,16 @@ class RightDrawer extends React.Component {
                     style={styles.menuItem}
                     primaryText={this.props.labels.orderPage.title}
                     leftIcon={<Web/>}
-                    containerElement={<Link to="/form"/>}
-                    onClick={this.closeDrawer.bind(this)}
+                    onTouchTap={() => this.navigate.bind(this)('/form')}
+
                 />
 
-                <MenuItem
+                < MenuItem
                     key={1}
                     style={styles.menuItem}
                     primaryText={this.props.labels.OrganizationPage.title}
                     leftIcon={<Web/>}
-                    containerElement={<Link to="/org"/>}
-                    onClick={this.closeDrawer.bind(this)}
+                    onTouchTap={() => this.navigate.bind(this)('/org')}
                 />
 
             </Drawer>
@@ -110,4 +111,5 @@ function mapStateToProps(state) {
         photoURL: getPhotoURL(state),
     };
 }
-export default connect(mapStateToProps)(RightDrawer);
+
+export default withRouter(connect(mapStateToProps)(RightDrawer));
