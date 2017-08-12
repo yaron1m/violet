@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
+import * as _ from "lodash";
 
 export default class CustomAutoComplete extends React.Component {
     constructor(props) {
@@ -60,6 +61,10 @@ export default class CustomAutoComplete extends React.Component {
         }
         style.textField.width = style.autoComplete.width;
 
+        let showError = false;
+        if (!this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.state.name))
+            showError = true;
+
         return (
             <AutoComplete
                 style={style.autoComplete}
@@ -74,7 +79,8 @@ export default class CustomAutoComplete extends React.Component {
                 rowsMax={4}
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
-            />
+                errorText={showError ? "שדה חובה" : ""}
+            />//TODO extract string to labels
 
 
         );
