@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
-import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
-import PrintIcon from 'material-ui/svg-icons/action/print';
+import CleanIcon from 'material-ui/svg-icons/action/autorenew';
+import SendIcon from 'material-ui/svg-icons/content/drafts';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import {
     clearSelectedOrder, sendSelectedOrderToDatabase, setIsSelectedOrder,
@@ -55,6 +55,35 @@ class OrderActionButtons extends React.Component {
 
     }
 
+    orderEmailHref() {
+        let href = "violet:";
+        href += OrderActionButtons.parameter("id", this.props.selectedOrder.id, true);
+        href += OrderActionButtons.parameter("topic", OrderActionButtons.arrayToParameterValue(["ISO-14001", "חשיבה יצירתית"])); //TODO get info
+        href += OrderActionButtons.parameter("email", this.props.selectedOrder.contactEmail);
+        href += OrderActionButtons.parameter("organizationName", this.props.selectedOrganization.organizationName);
+        href += OrderActionButtons.parameter("contactFirstName", this.props.selectedOrder.contactFirstName);
+        href += OrderActionButtons.parameter("contactLastName", this.props.selectedOrder.contactLastName);
+        href += OrderActionButtons.parameter("contactPhone1", this.props.selectedOrder.contactPhone1);
+        href += OrderActionButtons.parameter("contactPhone2", this.props.selectedOrder.contactPhone2);
+        href += OrderActionButtons.parameter("orderCreationDate", new Date().toJSON());
+        return href;
+    }
+
+    static parameter(key, value, first = false) {
+        if (value === undefined || value === null)
+            return "";
+        return (first ? "" : "&") + key + "=" + value;
+    }
+
+    static arrayToParameterValue(array) {
+        let res = "";
+        for (let index in array) {
+            res += array[index] + "#";
+        }
+
+        return res.substr(0, res.length - 1);
+    }
+
     handleDatabasePromise(promise) {
         function success() {
             const snackbarMessage = this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrder.id);
@@ -74,16 +103,23 @@ class OrderActionButtons extends React.Component {
 
 
     render() {
+
+        const emailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)() : null;
+
         return (
             <ActionButtonsBox>
                 <IconButton onClick={this.saveOrder.bind(this)}>
                     <SaveIcon/>
                 </IconButton>
 
-                <IconButton><PrintIcon/></IconButton>
+                <IconButton>
+                    <a href={emailHref}>
+                        <SendIcon/>
+                    </a>
+                </IconButton>
 
                 <IconButton onClick={() => this.props.dispatch(clearSelectedOrder())}>
-                    <RefreshIcon/>
+                    <CleanIcon/>
                 </IconButton>
             </ActionButtonsBox>
 
