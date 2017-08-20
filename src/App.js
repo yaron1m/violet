@@ -22,13 +22,15 @@ class App extends React.Component {
 
     render() {
         const styles = {
-            app:{
-                maxWidth:1200,
+            app: {
+                maxWidth: 1200,
                 marginRight: "auto",
                 marginLeft: "auto",
+                marginTop: 80,
             },
             container: {
-                margin: '80px 20px 20px 15px',
+                marginLeft: 20,
+                marginRight: 20,
             },
             footer: {
                 marginBottom: 5,
@@ -41,7 +43,7 @@ class App extends React.Component {
 
         return (
             <MuiThemeProvider muiTheme={ThemeDefault(this.props.rtl)}>
-                <div dir={this.props.rtl? "rtl" : ""}>
+                <div dir={this.props.rtl ? "rtl" : ""}>
                     <Header/>
 
                     <RightDrawer/>
