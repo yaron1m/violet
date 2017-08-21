@@ -24,18 +24,12 @@ class LectureTimesTable extends React.Component {
 
     addNewLectureTime() {
         let selectedOrder = Immutable.asMutable(this.props.selectedOrder, {deep: true});
-        let newLectureTimeIndex = 0;
-        let lectureTimes;
-        if (_.hasIn(selectedOrder, 'lectureTimes')) {
-            lectureTimes = selectedOrder.lectureTimes;
-            if (selectedOrder.lectureTimes !== null && !_.isEmpty(lectureTimes))
-                newLectureTimeIndex = _.maxBy(lectureTimes, time => time.id).id + 1;
-        } else {
-            lectureTimes = [];
-        }
-        lectureTimes[newLectureTimeIndex] = {id: newLectureTimeIndex};
+        let lectureTimes = _.hasIn(selectedOrder, 'lectureTimes') ? selectedOrder.lectureTimes : [];
+        lectureTimes.push({});
+
         this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-        this.editLectureTime.bind(this)(newLectureTimeIndex);
+        
+        this.editLectureTime.bind(this)(lectureTimes.length - 1);
     }
 
     editLectureTime(index) {
@@ -45,17 +39,28 @@ class LectureTimesTable extends React.Component {
         }));
     }
 
+    deleteLectureTime(index) {
+        let lectureTimes = Immutable.asMutable(this.props.selectedOrder.lectureTimes);
+        lectureTimes.splice(index, 1);
+
+        this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+    }
+
+
     render() {
+        let key = 0;
         return (
             <CustomPaper>
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
+
                         _.map(this.props.selectedOrder.lectureTimes, (lectureTime =>
                                 <CustomTableRow
-                                    key={lectureTime.id}
+                                    key={key++}
                                     headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
                                     element={lectureTime}
                                     onEditButton={this.editLectureTime.bind(this)}
+                                    onDeleteButton={this.deleteLectureTime.bind(this)}
                                     missingFields={!_.isEmpty(getMissingFields(lectureTime, this.props.requiredFields))}
                                 />
                         ))
