@@ -21,7 +21,7 @@ class OrderPageTitle extends React.Component {
         pageTitle += this.props.labels.orderStatusTitle + this.props.status;
 
         return (
-            <PageTitle title={pageTitle} maxWidthm="50%"/>
+            <PageTitle title={pageTitle} maxWidth="50%"/>
         );
     }
 }

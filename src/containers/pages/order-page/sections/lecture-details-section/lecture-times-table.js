@@ -28,7 +28,7 @@ class LectureTimesTable extends React.Component {
         lectureTimes.push({});
 
         this.props.dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-        
+
         this.editLectureTime.bind(this)(lectureTimes.length - 1);
     }
 

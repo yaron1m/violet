@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
-import CleanIcon from 'material-ui/svg-icons/action/autorenew';
+import CleanIcon from 'material-ui/svg-icons/av/replay';
 import SendIcon from 'material-ui/svg-icons/content/drafts';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import {
