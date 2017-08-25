@@ -17,7 +17,6 @@ export default class OrderActionButtons extends React.Component {
                 <ClearFormButton/>
 
             </ActionButtonsBox>
-
         );
     }
 }

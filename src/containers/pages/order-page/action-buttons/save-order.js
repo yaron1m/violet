@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui/svg-icons/content/save';
-import { sendSelectedOrderToDatabase, setIsSelectedOrder,
+import {
+    sendSelectedOrderToDatabase, setIsSelectedOrder,
     updateSelectedOrder
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
@@ -18,42 +19,47 @@ import {hideRequiredFields, showRequiredFields} from "../../../../store/required
 
 class SaveOrderButton extends React.Component {
 
+
     async saveOrder() {
+        if (!this.shouldSave.bind(this)())
+            return;
+
+        await this.fillMissingFields.bind(this)();
+
+        const promise = this.props.dispatch(sendSelectedOrderToDatabase());
+        this.handleDatabasePromise(promise);
+        this.props.dispatch(hideRequiredFields());
+
+    }
+
+    shouldSave() {
         const dialogText = this.props.labels.dialog;
+
         if (!this.props.isSelectedOrganization) {
             this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.noOrganizationSelectedContent));
-            return;
+            return false;
         }
-        if (!this.props.isSelectedOrder) {
-            //Check if only data in order is id and organization:
-            if (_.isEmpty(this.props.selectedOrder)) {
-                this.props.dispatch(openDialog(dialogText.noDataTitle, dialogText.noDataContent));
-                return;
-            }
-        }
-        const missingFields = this.props.missingFields;
 
-        const shouldSave = _.isEmpty(missingFields);
-
-        if (shouldSave) {
-            // Ready for saving
-            if(!this.props.selectedOrder.hasOwnProperty("id"))
-                await this.props.dispatch(updateSelectedOrder("id", this.props.nextOrderId));
-            await this.props.dispatch(updateSelectedOrder("organizationId", this.props.selectedOrganization.id));
-            const promise = this.props.dispatch(sendSelectedOrderToDatabase());
-            this.handleDatabasePromise(promise);
-            this.props.dispatch(hideRequiredFields());
-
+        if (_.isEmpty(this.props.missingFields)) {
+            return true;
         } else {
             //Not ready for saving - there are missing fields
-            await this.props.dispatch(showRequiredFields());
-            let dialogContent = dialogText.missingFieldsContent;
-            for (let i = 0; i < missingFields.length; i++) {
-                dialogContent += missingFields[i] + " ";
-            }
-            this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogContent));
-            return;
+            this.props.dispatch(showRequiredFields());
+            this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
+            return false;
         }
+    }
+
+    async fillMissingFields() {
+        let idPromise;
+        let organizationIdPromise;
+        if (!this.props.selectedOrder.hasOwnProperty("id"))
+            idPromise = this.props.dispatch(updateSelectedOrder("id", this.props.nextOrderId));
+
+        if (!this.props.selectedOrder.hasOwnProperty("organizationId"))
+            organizationIdPromise = this.props.dispatch(updateSelectedOrder("organizationId", this.props.selectedOrganization.id));
+
+        return Promise.all([idPromise, organizationIdPromise]);
     }
 
     handleDatabasePromise(promise) {
@@ -76,9 +82,9 @@ class SaveOrderButton extends React.Component {
 
     render() {
         return (
-                <IconButton onClick={this.saveOrder.bind(this)} tooltip={this.props.labels.actionButtons.save}>
-                    <SaveIcon/>
-                </IconButton>
+            <IconButton onClick={this.saveOrder.bind(this)} tooltip={this.props.labels.actionButtons.save}>
+                <SaveIcon/>
+            </IconButton>
         );
     }
 }
