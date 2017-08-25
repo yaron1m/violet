@@ -75,6 +75,7 @@ export default class CustomAutoComplete extends React.Component {
                 disabled={this.props.disabled}
                 searchText={this.state.value}
                 onUpdateInput={this.handleChange}
+                onNewRequest={this.props.onNewRequest}
                 multiLine={true}
                 rowsMax={4}
                 filter={AutoComplete.fuzzyFilter}
@@ -93,6 +94,7 @@ CustomAutoComplete.propTypes = {
     dataSource: PropTypes.array.isRequired,
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
+    onNewRequest: PropTypes.func,
 };
 
 CustomAutoComplete.defaultProps = {
