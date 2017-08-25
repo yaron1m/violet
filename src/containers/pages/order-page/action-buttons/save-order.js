@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
+import FlatButton from "material-ui/FlatButton";
+import CustomDialog from '../../../../components/custom-components/custom-dialog'
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import {
     sendSelectedOrderToDatabase, setIsSelectedOrder,
@@ -19,6 +21,13 @@ import {hideRequiredFields, showRequiredFields} from "../../../../store/required
 
 class SaveOrderButton extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            dialogOpen: false,
+        }
+    }
+
 
     async saveOrder() {
         if (!this.shouldSave.bind(this)())
@@ -36,7 +45,7 @@ class SaveOrderButton extends React.Component {
         const dialogText = this.props.labels.dialog;
 
         if (!this.props.isSelectedOrganization) {
-            this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.noOrganizationSelectedContent));
+            this.setState({dialogOpen: true});
             return false;
         }
 
@@ -81,9 +90,43 @@ class SaveOrderButton extends React.Component {
 
 
     render() {
+        const dialogText = this.props.labels.dialog;
+
+        let actions = null;
+        if(this.props.selectedOrganization.organizationName !== undefined){
+            actions = [
+                <FlatButton
+                    label={dialogText.newOrganization}
+                    primary={true}
+                    onTouchTap={this.props.onRequestClose}
+                />,
+                <FlatButton
+                    label={dialogText.existingOrganization}
+                    primary={true}
+                    onTouchTap={() => {
+                        this.setState({dialogOpen: false});
+                        this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.existingOrganizationHelp));
+                    }}
+                />,
+            ];
+        }
+
         return (
             <IconButton onClick={this.saveOrder.bind(this)} tooltip={this.props.labels.actionButtons.save}>
                 <SaveIcon/>
+
+
+                <CustomDialog
+                    open={this.state.dialogOpen}
+                    title={dialogText.noOrganizationSelectedTitle}
+                    onRequestClose={() => this.setState({dialogOpen: false})}
+                    actions={actions}
+                >
+                    {this.props.selectedOrganization.organizationName === undefined ?
+                        dialogText.noOrganizationSelectedContent :
+                        dialogText.unrecognizedOrganization.replace("{0}", this.props.selectedOrganization.organizationName)}
+
+                </CustomDialog>
             </IconButton>
         );
     }

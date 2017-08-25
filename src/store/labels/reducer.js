@@ -115,6 +115,10 @@ export default function labels() {
             dialog: {
                 noOrganizationSelectedTitle: "לא נבחר ארגון",
                 noOrganizationSelectedContent: "לשמירת הזמנה יש לבחור ארגון",
+                unrecognizedOrganization: "ארגון \"{0}\" אינו מזוהה. האם זהו ארגון חדש או קיים?",
+                newOrganization:"ארגון חדש",
+                existingOrganization:"ארגון קיים",
+                existingOrganizationHelp:"לשמירת הזמנה עבור ארגון קיים יש ראשית לבחור את הארגון",
                 noDataTitle: "לא הוכנסו נתונים",
                 noDataContent: "לשמירת הזמנה חדשה יש להכניס נתונים",
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",

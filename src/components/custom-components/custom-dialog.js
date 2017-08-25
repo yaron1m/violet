@@ -11,7 +11,6 @@ class CustomDialog extends React.Component {
             <FlatButton
                 label="אישור"
                 primary={true}
-                //keyboardFocused={true}
                 onTouchTap={this.props.onRequestClose}
             />,
         ];
@@ -19,8 +18,7 @@ class CustomDialog extends React.Component {
         return (
             <Dialog
                 title={this.props.title}
-                actions={actions}
-                //modal={false}
+                actions={this.props.actions ? this.props.actions : actions}
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
                 autoScrollBodyContent={true}
@@ -36,6 +34,7 @@ CustomDialog.propTypes = {
     open: PropTypes.bool.isRequired,
     title: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
+    actions: PropTypes.array,
 };
 
 
