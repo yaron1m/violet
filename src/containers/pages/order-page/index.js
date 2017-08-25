@@ -1,6 +1,6 @@
 import React from 'react';
 import OrderPageTitle from './order-page-title';
-import OrderActionButtons from './order-action-buttons';
+import OrderActionButtons from './action-buttons/index';
 import OrganizationSection from "../organization-page/organization-section";
 import LectureDetailsSection from "./sections/lecture-details-section/index";
 import ContactsSection from "./sections/contacts-section";

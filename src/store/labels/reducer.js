@@ -138,7 +138,7 @@ export default function labels() {
             actionButtons:{
                 save: "שמור הזמנה",
                 send: "שלח הצעת מחיר",
-                clean: "נקה טופס",
+                clear: "נקה טופס",
             }
         },
         OrganizationPage: {
