@@ -11,7 +11,8 @@ export class ActionButtonsBox extends React.Component {
                 marginLeft: "auto",
                 top: 60,
                 position: 'fixed',
-                zIndex: 10, //TODO move to left
+                zIndex: 10,
+                left: 10, //TODO move into maxWidth 1200
             }
         };
 

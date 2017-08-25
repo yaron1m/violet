@@ -60,7 +60,7 @@ export default function labels() {
             },
             contactsSection: {
                 sectionName: "אנשי קשר",
-                finnancialContactTitle: "איש קשר לתשלום",
+                financialContactTitle: "איש קשר לתשלום",
                 titles: {
                     contactFirstName: "שם פרטי",
                     contactLastName: "שם משפחה",
@@ -134,6 +134,11 @@ export default function labels() {
                 cancelled: "בוטל",
                 disapproved: "לא אושר",
                 followUp: " + נדרש המשך טיפול",
+            },
+            actionButtons:{
+                save: "שמור הזמנה",
+                send: "שלח הצעת מחיר",
+                clean: "נקה טופס",
             }
         },
         OrganizationPage: {

@@ -108,17 +108,17 @@ class OrderActionButtons extends React.Component {
 
         return (
             <ActionButtonsBox>
-                <IconButton onClick={this.saveOrder.bind(this)}>
+                <IconButton onClick={this.saveOrder.bind(this)} tooltip={this.props.labels.actionButtons.save}>
                     <SaveIcon/>
                 </IconButton>
 
-                <IconButton>
+                <IconButton tooltip={this.props.labels.actionButtons.send}>
                     <a href={emailHref}>
                         <SendIcon/>
                     </a>
                 </IconButton>
 
-                <IconButton onClick={() => this.props.dispatch(clearSelectedOrder())}>
+                <IconButton onClick={() => this.props.dispatch(clearSelectedOrder())} tooltip={this.props.labels.actionButtons.clean}>
                     <CleanIcon/>
                 </IconButton>
             </ActionButtonsBox>

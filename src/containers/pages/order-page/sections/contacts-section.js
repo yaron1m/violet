@@ -35,7 +35,7 @@ class ContactsSection extends React.Component {
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
-                <div>{this.props.labels.finnancialContactTitle}</div>
+                <div>{this.props.labels.financialContactTitle}</div>
 
                 <CustomText data={fieldData} name="financialContactFirstName" size="M"/>
                 <CustomText data={fieldData} name="financialContactLastName" size="M"/>
