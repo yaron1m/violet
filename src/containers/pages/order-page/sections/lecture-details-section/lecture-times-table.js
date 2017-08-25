@@ -54,7 +54,7 @@ class LectureTimesTable extends React.Component {
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
 
-                        _.map(this.props.selectedOrder.lectureTimes, (lectureTime =>
+                        _.map(this.props.selectedOrder.lectureTimes, (lectureTime, index) =>(
                                 <CustomTableRow
                                     key={key++}
                                     headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
@@ -62,6 +62,7 @@ class LectureTimesTable extends React.Component {
                                     onEditButton={this.editLectureTime.bind(this)}
                                     onDeleteButton={this.deleteLectureTime.bind(this)}
                                     missingFields={!_.isEmpty(getMissingFields(lectureTime, this.props.requiredFields))}
+                                    rowIndex={index}
                                 />
                         ))
                     }

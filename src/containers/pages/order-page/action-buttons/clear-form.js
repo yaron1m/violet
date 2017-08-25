@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import CleanIcon from 'material-ui/svg-icons/av/replay';
-import {clearSelectedOrder} from "../../../../store/selected/actions";
+import {clearSelected} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 
 class ClearFormButton extends React.Component {
@@ -10,7 +10,7 @@ class ClearFormButton extends React.Component {
 
         return (
             <IconButton
-                onClick={() => this.props.dispatch(clearSelectedOrder())}
+                onClick={() => this.props.dispatch(clearSelected())}
                 tooltip={this.props.labels.clear}
             >
                 <CleanIcon/>

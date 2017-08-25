@@ -11,7 +11,6 @@ class CustomTableRow extends React.Component {
 
     render() {
         return (
-
             <TableRow
                 style={this.props.missingFields ? {color: "red"} : {}}
                 selectable={false}
@@ -22,11 +21,11 @@ class CustomTableRow extends React.Component {
                         switch (headerKey) {
                             case "edit":
                                 return ( <TableRowColumn key={headerKey}>
-                                    <IconButton onClick={() => this.props.onEditButton(this.props.element.id)}>
+                                    <IconButton onClick={() => this.props.onEditButton(this.props.rowIndex)}>
                                         <EditIcon/>
                                     </IconButton>
                                     {this.props.onDeleteButton ? (
-                                        <IconButton onClick={() => this.props.onDeleteButton(this.props.element.id)}>
+                                        <IconButton onClick={() => this.props.onDeleteButton(this.props.rowIndex)}>
                                             <DeleteIcon/>
                                         </IconButton>
                                     ) : null}
@@ -51,6 +50,7 @@ class CustomTableRow extends React.Component {
 CustomTableRow.propTypes = {
     element: PropTypes.object.isRequired,
     headerKeys: PropTypes.array.isRequired,
+    rowIndex: PropTypes.number,
     onEditButton: PropTypes.func,
     onDeleteButton: PropTypes.func,
     missingFields: PropTypes.bool,
