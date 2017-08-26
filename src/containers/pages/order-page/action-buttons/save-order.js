@@ -97,6 +97,7 @@ class SaveOrderButton extends React.Component {
         async function successSave(){
             await this.props.dispatch(setIsSelectedOrganization());
             this.saveOrder.bind(this)();
+            this.setState({dialogOpen: false})
         }
 
 
