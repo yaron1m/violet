@@ -48,7 +48,7 @@ class OrdersSummary extends React.Component {
                     {
                         _.map(this.props.ordersSummary, (order =>
                                 <CustomTableRow
-                                    key={order.id}
+                                    rowIndex={order.id}
                                     headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
                                     element={order}
                                     onEditButton={this.selectOrder.bind(this)}
