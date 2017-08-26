@@ -18,7 +18,7 @@ import * as _ from "lodash";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {getOrderMissingFields} from "../../../../store/required-fields/reducer";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
-import {getNextOrganizationId} from "../../../../store/organizations/reducer";
+import {getNextOrganizationId, getOrganizations} from "../../../../store/organizations/reducer";
 
 class SaveOrderButton extends React.Component {
 
@@ -36,9 +36,27 @@ class SaveOrderButton extends React.Component {
 
         await this.fillMissingFields.bind(this)();
 
-        const promise = this.props.dispatch(sendSelectedOrderToDatabase());
-        this.handleDatabasePromise(promise);
+        function success() {
+            const snackbarMessage = this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrder.id);
+            this.props.dispatch(openSnackbar(snackbarMessage));
+            this.props.dispatch(setIsSelectedOrder());
+        }
+
+        function failure(error) {
+            const dialogText = this.props.labels.dialog;
+            this.props.dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
+            console.error(error);
+        }
+
+        this.props.dispatch(sendSelectedOrderToDatabase())
+            .then(success.bind(this), failure.bind(this));
+
         this.props.dispatch(hideRequiredFields());
+
+        //Check if there are changes in organization
+        if(!_.isEqual(this.props.selectedOrganization, this.props.organizations[this.props.selectedOrder.organizationId])){
+            this.props.dispatch(sendSelectedOrganizationToDatabase());
+        }
 
     }
 
@@ -70,23 +88,6 @@ class SaveOrderButton extends React.Component {
             organizationIdPromise = this.props.dispatch(updateSelectedOrder("organizationId", this.props.selectedOrganization.id));
 
         return Promise.all([idPromise, organizationIdPromise]);
-    }
-
-    handleDatabasePromise(promise) {
-        function success() {
-            const snackbarMessage = this.props.labels.snackBar.savedSuccessfully.replace("{0}", this.props.selectedOrder.id);
-            this.props.dispatch(openSnackbar(snackbarMessage));
-            this.props.dispatch(setIsSelectedOrder());
-        }
-
-        function failure(error) {
-            const dialogText = this.props.labels.dialog;
-            this.props.dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
-            console.error(error);
-        }
-
-        promise.then(success.bind(this), failure.bind(this));
-        return promise;
     }
 
     async saveNewOrganization() {
@@ -151,6 +152,7 @@ class SaveOrderButton extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage,
+        organizations: getOrganizations(state),
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),
         selectedOrder: getSelectedOrder(state),
