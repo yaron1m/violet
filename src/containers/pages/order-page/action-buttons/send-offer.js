@@ -6,13 +6,16 @@ import {getLabels} from "../../../../store/labels/reducer";
 import {
     getSelectedOrder, getSelectedOrganization, isSelectedOrder
 } from "../../../../store/selected/reducer";
+import * as _ from 'lodash'
 
 class SendOfferButton extends React.Component {
 
     orderEmailHref() {
+        const topicsArray = _.map(this.props.selectedOrder.lectureTimes, lectureTime => lectureTime.topic);
+
         let href = "violet:";
         href += SendOfferButton.parameter("id", this.props.selectedOrder.id, true);
-        href += SendOfferButton.parameter("topic", SendOfferButton.arrayToParameterValue(["ISO-14001", "חשיבה יצירתית"])); //TODO get info
+        href += SendOfferButton.parameter("topic", SendOfferButton.arrayToParameterValue(topicsArray));
         href += SendOfferButton.parameter("email", this.props.selectedOrder.contactEmail);
         href += SendOfferButton.parameter("organizationName", this.props.selectedOrganization.organizationName);
         href += SendOfferButton.parameter("contactFirstName", this.props.selectedOrder.contactFirstName);
@@ -43,11 +46,11 @@ class SendOfferButton extends React.Component {
         const emailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)() : null;
 
         return (
-                <IconButton tooltip={this.props.labels.send}>
-                    <a href={emailHref}>
-                        <SendIcon/>
-                    </a>
-                </IconButton>
+            <IconButton tooltip={this.props.labels.send}>
+                <a href={emailHref}>
+                    <SendIcon/>
+                </a>
+            </IconButton>
         );
     }
 }
