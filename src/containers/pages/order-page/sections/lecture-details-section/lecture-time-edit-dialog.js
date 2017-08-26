@@ -25,7 +25,8 @@ class LectureTimeEditDialog extends React.Component {
     render() {
         const tableFieldData = {
             titles: this.props.labels.titles,
-            values: this.props.selectedLectureTimeIndex === null ? null :
+            values: this.props.selectedLectureTimeIndex === null || this.props.selectedOrder.lectureTimes === undefined ?
+                null :
                 this.props.selectedOrder.lectureTimes[this.props.selectedLectureTimeIndex],
             requiredFields: this.props.requiredFields,
             updateAction: this.updateLectureTime.bind(this)
