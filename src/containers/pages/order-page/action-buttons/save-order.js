@@ -29,7 +29,6 @@ class SaveOrderButton extends React.Component {
         }
     }
 
-
     async saveOrder() {
         if (!this.shouldSave.bind(this)())
             return;
@@ -72,6 +71,7 @@ class SaveOrderButton extends React.Component {
             return true;
         } else {
             //Not ready for saving - there are missing fields
+            console.log(this.props.missingFields); //TODO remove later
             this.props.dispatch(showRequiredFields());
             this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
             return false;
