@@ -5,8 +5,8 @@ import FlatButton from "material-ui/FlatButton";
 import CustomDialog from '../../../../components/custom-components/custom-dialog'
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import {
-    sendSelectedOrderToDatabase, setIsSelectedOrder,
-    updateSelectedOrder
+    sendSelectedOrderToDatabase, sendSelectedOrganizationToDatabase, setIsSelectedOrder, setIsSelectedOrganization,
+    updateSelectedOrder, updateSelectedOrganization
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {
@@ -18,6 +18,7 @@ import * as _ from "lodash";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {getOrderMissingFields} from "../../../../store/required-fields/reducer";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
+import {getNextOrganizationId} from "../../../../store/organizations/reducer";
 
 class SaveOrderButton extends React.Component {
 
@@ -88,6 +89,21 @@ class SaveOrderButton extends React.Component {
         return promise;
     }
 
+    async saveNewOrganization() {
+        const newOrganizationId = this.props.nextOrganizationId;
+        await this.props.dispatch(updateSelectedOrganization("id", newOrganizationId));
+
+        async function successSave(){
+            await this.props.dispatch(setIsSelectedOrganization());
+            this.saveOrder.bind(this)();
+        }
+
+
+        this.props.dispatch(sendSelectedOrganizationToDatabase())
+            .then(successSave.bind(this))
+            .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
+    }
+
 
     render() {
         const dialogText = this.props.labels.dialog;
@@ -98,14 +114,13 @@ class SaveOrderButton extends React.Component {
                 <FlatButton
                     label={dialogText.newOrganization}
                     primary={true}
-                    onTouchTap={this.props.onRequestClose}
+                    onTouchTap={this.saveNewOrganization.bind(this)}
                 />,
                 <FlatButton
                     label={dialogText.existingOrganization}
                     primary={true}
                     onTouchTap={() => {
                         this.setState({dialogOpen: false});
-                        this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.existingOrganizationHelp));
                     }}
                 />,
             ];
@@ -141,6 +156,7 @@ function mapStateToProps(state) {
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
         nextOrderId: getNextOrderId(state),
+        nextOrganizationId: getNextOrganizationId(state),
         missingFields: getOrderMissingFields(state),
     };
 }
