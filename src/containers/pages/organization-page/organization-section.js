@@ -22,8 +22,6 @@ class OrganizationSection extends React.Component {
             }.bind(this)
         };
 
-        const paymentConditions = ["aa", "bb", "cc"];
-
         const organizationNamesObjects = _.values(this.props.organizations).map(
             (org) => ({text: org.organizationName, value: org.id}));
 
@@ -38,7 +36,7 @@ class OrganizationSection extends React.Component {
                 />
                 <CustomText data={fieldData} name="organizationAddress"/>
                 <CustomText data={fieldData} name="companyId" size="M"/>
-                <CustomAutoComplete data={fieldData} name="paymentConditions" dataSource={paymentConditions}/>
+                <CustomAutoComplete data={fieldData} name="paymentConditions" dataSource={this.props.labels.paymentConditions}/>
                 <CustomText data={fieldData} name="howReachedUs"/>
             </CustomPaper>
         );

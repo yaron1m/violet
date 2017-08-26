@@ -123,7 +123,7 @@ export default function labels() {
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
                 sendingToDatabaseFailedContent: "חלה שגיאה בשמירת ההזמנה בשרת",
                 missingFieldsTitle: "שדות חובה חסרים",
-                missingFieldsContent: "יש למלא את כל שדות החובה לסטאטוס זה: ",
+                missingFieldsContent: "יש למלא את כל שדות החובה המסומנים",
             },
             orderStatus: {
                 contact: "פנייה",
@@ -154,7 +154,16 @@ export default function labels() {
                     companyId: "ח.פ / ע.מ",
                     paymentConditions: "תנאי תשלום",
                     howReachedUs: "איך הגיע אלינו"
-                }
+                },
+                paymentConditions:[
+                    "תשלום מיידי",
+                    "שוטף + 0",
+                    "שוטף + 30",
+                    "שוטף + 45",
+                    "שוטף + 60",
+                    "שוטף + 30 + 7 לחודש",
+                    "שוטף + 30 + 22 לחודש",
+                ],
             },
             ordersSummary: {
                 title: "הזמנות",
