@@ -25,8 +25,7 @@ const order = _.mergeWith(_.cloneDeep(offer), {
 
 const approvedOrder = _.mergeWith(_.cloneDeep(order), {
     order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "amount"],
-    organization: ["companyId", "paymentConditions"],
+        "financialContactEmail", "amount", "parking", "projector", "soundSystem", "microphone"]
 }, arrayMerge);
 
 
@@ -106,7 +105,7 @@ export function getOrderMissingFields(state) {
 }
 
 export function getMissingFields(object, required) {
-    const nonEmptyKeys = _.filter(_.keys(object), key => object[key]);
+    const nonEmptyKeys = _.filter(_.keys(object), key => object.hasOwnProperty(key));
     return _.difference(required, nonEmptyKeys);
 }
 

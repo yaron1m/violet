@@ -1,10 +1,27 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import Checkbox from 'material-ui/Checkbox';
+import * as _ from "lodash";
 
 export default class CustomToggle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: this.props.data.values[this.props.name] !== undefined
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState ({
+            selected: nextProps.data.values[nextProps.name] !== undefined
+        });
+    }
 
     render() {
+        let showError = false;
+        if (!this.state.selected && _.includes(this.props.data.requiredFields, this.props.name))
+            showError = true;
+
         const style = {
             toggle: {
                 marginBottom: 6,
@@ -12,7 +29,8 @@ export default class CustomToggle extends React.Component {
             },
             labelStyle: {
                 marginRight: 45,
-                marginLeft: 10
+                marginLeft: 10,
+                color: showError ? 'red' : "black",
             },
         };
 
@@ -24,8 +42,10 @@ export default class CustomToggle extends React.Component {
                     labelStyle={style.labelStyle}
                     labelPosition="right"
                     toggled={this.props.data.values[this.props.name]}
-                    onToggle={(event, isInputChecked) =>
-                        this.props.data.updateAction(this.props.name, isInputChecked)}
+                    onToggle={(event, isInputChecked) => {
+                        this.props.data.updateAction(this.props.name, isInputChecked);
+                        this.setState({selected: true})
+                    }}
                 />
             </div>
 
