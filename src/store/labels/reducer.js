@@ -24,7 +24,10 @@ export default function labels() {
             lectureDetailsSection: {
                 sectionName: "פרטי ההרצאה",
                 titles: {
-                    location: "מיקום ההרצאה",
+                    street: "רחוב",
+                    streetNumber: "מספר",
+                    city: "עיר",
+                    location: "מיקום",
                     floor: "קומה",
                     room: "חדר",
                     audienceType: "קהל היעד",

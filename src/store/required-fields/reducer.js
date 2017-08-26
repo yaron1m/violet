@@ -24,7 +24,7 @@ const order = _.mergeWith(_.cloneDeep(offer), {
 }, arrayMerge);
 
 const approvedOrder = _.mergeWith(_.cloneDeep(order), {
-    order: ["location", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
+    order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
         "financialContactEmail", "amount"],
     organization: ["companyId", "paymentConditions"],
 }, arrayMerge);
