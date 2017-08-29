@@ -11,7 +11,12 @@ import * as _ from 'lodash'
 class SendOfferButton extends React.Component {
 
     orderEmailHref() {
-        const topicsArray = _.map(this.props.selectedOrder.lectureTimes, lectureTime => lectureTime.topic);
+        let topicsArray = _.map(this.props.selectedOrder.lectureTimes, lectureTime => lectureTime.topic);
+
+        // Remove duplicates
+        topicsArray = topicsArray.filter(function (elem, index, self) {
+            return elem !== undefined && index === self.indexOf(elem);
+        });
 
         let href = "violet:";
         href += SendOfferButton.parameter("id", this.props.selectedOrder.id, true);
