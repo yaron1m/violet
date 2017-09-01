@@ -154,6 +154,8 @@ export default function labels() {
                 titles: {
                     organizationName: "שם הארגון",
                     organizationAddress: "כתובת הארגון",
+                    organizationCity: "עיר",
+                    organizationPostalCode:"מיקוד",
                     companyId: "ח.פ / ע.מ",
                     paymentConditions: "תנאי תשלום",
                     howReachedUs: "איך הגיע אלינו"
