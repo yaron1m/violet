@@ -4,13 +4,17 @@ import IconButton from "material-ui/IconButton";
 import CleanIcon from 'material-ui/svg-icons/av/replay';
 import {clearSelected} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
+import {hideRequiredFields} from "../../../../store/required-fields/actions";
 
 class ClearFormButton extends React.Component {
     render() {
 
         return (
             <IconButton
-                onClick={() => this.props.dispatch(clearSelected())}
+                onClick={() =>{
+                    this.props.dispatch(clearSelected())
+                    this.props.dispatch(hideRequiredFields())
+                }}
                 tooltip={this.props.labels.clear}
             >
                 <CleanIcon/>

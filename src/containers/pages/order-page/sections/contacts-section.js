@@ -8,10 +8,7 @@ import {getSelectedOrder} from "../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
 import {getRequiredFields} from "../../../../store/required-fields/reducer";
 
-
 class ContactsSection extends React.Component {
-
-
     render() {
         const fieldData = {
             titles: this.props.labels.titles,
