@@ -6,6 +6,8 @@ import CustomText from "../../../../components/custom-components/custom-text-fie
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
+import IconButton from "material-ui/IconButton";
+import PersonIcon from 'material-ui/svg-icons/social/person';
 import {getRequiredFields} from "../../../../store/required-fields/reducer";
 
 class ContactsSection extends React.Component {
@@ -21,6 +23,17 @@ class ContactsSection extends React.Component {
 
         return (
             <CustomPaper title={this.props.labels.sectionName}>
+                <IconButton
+                    onClick={() => {
+                        // this.props.dispatch(clearSelected())
+                        // this.props.dispatch(hideRequiredFields())
+                    }}
+                    tooltip={this.props.labels.titles.importButton}
+                    style={{marginBottom: 10, marginRight: 10}}
+                >
+                    <PersonIcon/>
+                </IconButton>
+
                 <CustomText data={fieldData} name="contactFirstName" size="M"/>
                 <CustomText data={fieldData} name="contactLastName" size="M"/>
                 <CustomText data={fieldData} name="contactPhone1" size="M"/>
@@ -34,6 +47,17 @@ class ContactsSection extends React.Component {
 
                 <div>{this.props.labels.financialContactTitle}</div>
 
+                <IconButton
+                    onClick={() => {
+                        // this.props.dispatch(clearSelected())
+                        // this.props.dispatch(hideRequiredFields())
+                    }}
+                    tooltip={this.props.labels.titles.importButton}
+                    style={{marginBottom: 10, marginRight: 10}}
+                >
+                    <PersonIcon/>
+                </IconButton>
+
                 <CustomText data={fieldData} name="financialContactFirstName" size="M"/>
                 <CustomText data={fieldData} name="financialContactLastName" size="M"/>
                 <CustomText data={fieldData} name="financialContactPhone1" size="M"/>
@@ -42,6 +66,7 @@ class ContactsSection extends React.Component {
                 <CustomText data={fieldData} name="financialContactPhoneExtension" size="M"/>
                 <CustomText data={fieldData} name="financialContactFax" size="M"/>
                 <CustomText data={fieldData} name="financialContactJob" size="M"/>
+
             </CustomPaper>
         );
     }

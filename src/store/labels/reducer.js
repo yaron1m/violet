@@ -65,6 +65,7 @@ export default function labels() {
                 sectionName: "אנשי קשר",
                 financialContactTitle: "איש קשר לתשלום",
                 titles: {
+                    importButton: "יבא איש קשר",
                     contactFirstName: "שם פרטי",
                     contactLastName: "שם משפחה",
                     contactPhone1: "טלפון",
