@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
-import {getSelectedOrder} from "../../../../../store/selected/reducer";
+import {getSelectedOrder, isSelectedOrganization} from "../../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
 import IconButton from "material-ui/IconButton";
 import PersonIcon from 'material-ui/svg-icons/social/person';
@@ -18,6 +18,19 @@ class ContactsSection extends React.Component {
         this.state = {
             dialogOpen: false,
         }
+    }
+
+    openContactImportDialog(isFinancialContact) {
+        if (!this.props.isSelectedOrganization) {
+            const dialogText = this.props.labels.importContactsDialog;
+            this.props.dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogText.noOrganizationSelectedContent));
+            return;
+        }
+
+        this.setState({
+            dialogOpen:true,
+            isFinancialContacts: isFinancialContact,
+        });
     }
 
     render() {
@@ -39,10 +52,7 @@ class ContactsSection extends React.Component {
                 />
 
                 <IconButton
-                    onClick={() => this.setState({
-                        dialogOpen: true,
-                        isFinancialContacts: false,
-                    })}
+                    onClick={() => this.openContactImportDialog.bind(this)(true)}
                     tooltip={this.props.labels.importContactsDialog.buttonTooltip}
                     style={{marginBottom: 10, marginRight: 10}}
                 >
@@ -63,10 +73,7 @@ class ContactsSection extends React.Component {
                 <div>{this.props.labels.financialContactTitle}</div>
 
                 <IconButton
-                    onClick={() => this.setState({
-                        dialogOpen: true,
-                        isFinancialContacts: true,
-                    })}
+                    onClick={() => this.openContactImportDialog.bind(this)(true)}
                     tooltip={this.props.labels.importContactsDialog.buttonTooltip}
                     style={{marginBottom: 10, marginRight: 10}}
                 >
@@ -91,6 +98,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.contactsSection,
         selectedOrder: getSelectedOrder(state),
+        isSelectedOrganization: isSelectedOrganization(state),
         requiredFields: getRequiredFields(state).order,
     };
 }

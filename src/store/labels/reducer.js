@@ -87,14 +87,13 @@ export default function labels() {
                     buttonTooltip: "יבא איש קשר",
                     dialogTitle: "יבא איש קשר",
                     financialSuffix: " לתשלום",
+                    noOrganizationSelectedTitle: "לא נבחר ארגון",
+                    noOrganizationSelectedContent: "כדי לייבא אנשי קשר יש לבחור ארגון",
                     tableHeaders: [
                         {contactFirstName: "שם פרטי"},
                         {contactLastName: "שם משפחה"},
                         {contactPhone1: "טלפון"},
-                        {contactPhone2: "טלפון נוסף"},
-                        {contactPhoneExtension: "שלוחה"},
                         {contactEmail: "דואר אלקטרוני"},
-                        {contactFax: "פקס"},
                         {contactJob: "תפקיד"}
                     ],
                 }
