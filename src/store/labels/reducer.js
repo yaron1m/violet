@@ -90,6 +90,7 @@ export default function labels() {
                     noOrganizationSelectedTitle: "לא נבחר ארגון",
                     noOrganizationSelectedContent: "כדי לייבא אנשי קשר יש לבחור ארגון",
                     tableHeaders: [
+                        {pick: "בחר"},
                         {contactFirstName: "שם פרטי"},
                         {contactLastName: "שם משפחה"},
                         {contactPhone1: "טלפון"},

@@ -52,7 +52,7 @@ class ContactsSection extends React.Component {
                 />
 
                 <IconButton
-                    onClick={() => this.openContactImportDialog.bind(this)(true)}
+                    onClick={() => this.openContactImportDialog.bind(this)(false)}
                     tooltip={this.props.labels.importContactsDialog.buttonTooltip}
                     style={{marginBottom: 10, marginRight: 10}}
                 >
