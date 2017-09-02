@@ -1,14 +1,14 @@
 import React from 'react';
-import CustomPaper from "../../../../components/custom-components/custom-paper";
+import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../store/labels/reducer";
-import CustomText from "../../../../components/custom-components/custom-text-field";
-import {updateSelectedOrder} from "../../../../store/selected/actions";
-import {getSelectedOrder} from "../../../../store/selected/reducer";
+import {getLabels} from "../../../../../store/labels/reducer";
+import CustomText from "../../../../../components/custom-components/custom-text-field";
+import {updateSelectedOrder} from "../../../../../store/selected/actions";
+import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
 import IconButton from "material-ui/IconButton";
 import PersonIcon from 'material-ui/svg-icons/social/person';
-import {getRequiredFields} from "../../../../store/required-fields/reducer";
+import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class ContactsSection extends React.Component {
     render() {
