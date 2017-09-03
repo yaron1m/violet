@@ -1,6 +1,6 @@
 {
   "name": "violet",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Customer Relationship Manager for C-Point LTD",
   "private": true,
   "dependencies": {
