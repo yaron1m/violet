@@ -9,28 +9,77 @@ import CustomTable from "../../../../../components/custom-components/custom-tabl
 import * as _ from 'lodash';
 import CustomTableRow from "../../../../../components/custom-components/custom-table-row";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
+import {getOrdersByOrganization} from "../../../../../store/orders/reducer";
+import {getValueOrEmptyString} from "../../../../../util/string-util";
 
 class ImportContactsDialog extends React.Component {
 
-    hasContacts() {
-        const field = this.props.selectedOrganization.contacts;
-        return field !== undefined &&
-            field !== null &&
-            !_.isEmpty(field);
+    constructor(props) {
+        super(props);
+        this.state = {
+            contacts: this.getContacts(),
+            isFinancialContacts: this.props.isFinancialContacts,
+        };
     }
 
+    async componentWillReceiveProps(props) {
+        if (props.dialogOpen) {
+            await this.setState({
+                isFinancialContacts: props.isFinancialContacts,
+                contacts: this.state.contacts,
+            });
+            const contacts = this.getContacts();
+
+            this.setState({
+                isFinancialContacts: props.isFinancialContacts,
+                contacts: contacts,
+            });
+        }
+    }
+
+    getContacts() {
+        const allContacts = {};
+        const orders = this.props.OrderOfSelectedOrganization;
+
+        for (let index = 0; index < orders.length; index++) {
+            const thisContact = this.getContactsFromOrder(orders[index]);
+            const thisContactKey = thisContact.contactFirstName + thisContact.contactLastName;
+            if (thisContactKey === "" || allContacts.hasOwnProperty(thisContactKey))
+                continue;
+
+            allContacts[thisContactKey] = thisContact;
+        }
+        return _.map(allContacts, x => x);
+    }
+
+    getContactsFromOrder(order) {
+        return {
+            contactFirstName: getValueOrEmptyString(order, this.getKey("contactFirstName")),
+            contactLastName: getValueOrEmptyString(order, this.getKey("contactLastName")),
+            contactPhone1: getValueOrEmptyString(order, this.getKey("contactPhone1")),
+            contactPhone2: getValueOrEmptyString(order, this.getKey("contactPhone2")),
+            contactPhoneExtension: getValueOrEmptyString(order, this.getKey("contactPhoneExtension")),
+            contactEmail: getValueOrEmptyString(order, this.getKey("contactEmail")),
+            contactFax: getValueOrEmptyString(order, this.getKey("contactFax")),
+            contactJob: getValueOrEmptyString(order, this.getKey("contactJob")),
+        }
+    }
+
+    getKey = (key) => this.state.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key;
+
     importContact(index) {
-        const contact = this.props.selectedOrganization.contacts[index];
+        const contact = this.state.contacts[index];
 
         for (let contactKey in contact) {
             if (!contact.hasOwnProperty(contactKey)) continue;
-            const key = this.props.isFinancialContacts ? "financial" + contactKey.charAt(0).toUpperCase() + contactKey.slice(1) : contactKey;
+            const key = this.getKey(contactKey);
             this.props.dispatch(updateSelectedOrder(key, contact[contactKey]));
         }
         this.props.onRequestClose();
     }
 
     render() {
+
         let key = 0;
         return (
             <CustomDialog
@@ -39,8 +88,8 @@ class ImportContactsDialog extends React.Component {
                 onRequestClose={this.props.onRequestClose}
             >
                 <CustomTable headers={this.props.labels.tableHeaders}>
-                    {this.hasContacts.bind(this)() ?
-                        _.map(this.props.selectedOrganization.contacts, (contactDetails, index) => (
+                    {_.isEmpty(this.state.contacts) ? null :
+                        _.map(this.state.contacts, (contactDetails, index) => (
                             <CustomTableRow
                                 key={key++}
                                 rowIndex={index}
@@ -48,7 +97,7 @@ class ImportContactsDialog extends React.Component {
                                 element={contactDetails}
                                 onPickButton={this.importContact.bind(this)}
                             />
-                        )) : null
+                        ))
                     }
 
                 </CustomTable>
@@ -62,6 +111,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.contactsSection.importContactsDialog,
         selectedOrganization: getSelectedOrganization(state),
+        OrderOfSelectedOrganization: getOrdersByOrganization(state),
         requiredFields: getRequiredFields(state).order,
     };
 }
@@ -73,5 +123,3 @@ ImportContactsDialog.propTypes = {
 };
 
 export default connect(mapStateToProps)(ImportContactsDialog);
-
-

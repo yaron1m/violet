@@ -8,7 +8,6 @@ import {
 } from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../store/organizations/reducer";
-import {getOrdersByOrganization} from "../../../store/orders/reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../store/selected/reducer";
 import {openDialog, openSnackbar} from "../../../store/appearance/actions";
 import {ActionButtonsBox} from "../../../components/action-buttons-box";
@@ -64,7 +63,6 @@ function mapStateToProps(state) {
         labels: getLabels(state).OrganizationPage,
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),
-        OrderOfSelectedOrganization: getOrdersByOrganization(state),
         nextOrganizationId: getNextOrganizationId(state),
     };
 }
