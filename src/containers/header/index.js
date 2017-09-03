@@ -41,7 +41,10 @@ class Header extends React.Component {
             },
         };
 
-        const notificationCount = _.filter(this.props.orders, order => order.followUpRequired).length
+        const now = new Date();
+        const notificationCount = _.filter(this.props.orders,
+            order => order.followUpRequired && new Date(order.followUpDate) < now)
+            .length;
 
         return (
             <AppBar
