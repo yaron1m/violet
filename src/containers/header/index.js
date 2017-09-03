@@ -1,6 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
+import Badge from 'material-ui/Badge';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
@@ -10,9 +11,13 @@ import {changeDrawerState} from "../../store/appearance/actions";
 import {connect} from "react-redux";
 import {isDrawerOpen} from "../../store/appearance/reducer";
 import IconMenu from "material-ui/IconMenu";
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MenuItem from "material-ui/MenuItem";
 import {signOutRequest} from "../../store/firebase/actions";
 import {getLabels} from "../../store/labels/reducer";
+import {getOrders} from "../../store/orders/reducer";
+import * as _ from 'lodash';
+
 
 class Header extends React.Component {
 
@@ -36,6 +41,8 @@ class Header extends React.Component {
             },
         };
 
+        const notificationCount = _.filter(this.props.orders, order => order.followUpRequired).length
+
         return (
             <AppBar
                 style={style.appBar}
@@ -49,6 +56,18 @@ class Header extends React.Component {
                 }
                 iconElementRight={
                     <div style={style.iconsRightContainer}>
+                        <Badge
+                            badgeContent={notificationCount === 0 ? "" : notificationCount}
+                            style={{padding: 0}}
+                            badgeStyle={{
+                                backgroundColor: notificationCount === 0 ? null : "red",
+                                color: "white"
+                            }}
+                        >
+                            <IconButton>
+                                <NotificationsIcon color={white}/>
+                            </IconButton>
+                        </Badge>
                         <IconMenu
                             iconButtonElement={<IconButton><MoreIcon color={white}/></IconButton>}
                             anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
@@ -71,6 +90,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).header,
         isDrawerOpen: isDrawerOpen(state),
+        orders: getOrders(state),
     };
 }
 
