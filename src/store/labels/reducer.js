@@ -2,7 +2,7 @@ export function getLabels(state) {
     return state.labels
 }
 
-export function convertStatus(status){
+export function convertStatus(status) {
     return labels().orderPage.orderStatus[status];
 }
 
@@ -82,7 +82,23 @@ export default function labels() {
                     financialContactEmail: "דואר אלקטרוני",
                     financialContactFax: "פקס",
                     financialContactJob: "תפקיד",
+                },
+                importContactsDialog: {
+                    buttonTooltip: "יבא איש קשר",
+                    dialogTitle: "יבא איש קשר",
+                    financialSuffix: " לתשלום",
+                    noOrganizationSelectedTitle: "לא נבחר ארגון",
+                    noOrganizationSelectedContent: "כדי לייבא אנשי קשר יש לבחור ארגון",
+                    tableHeaders: [
+                        {pick: "בחר"},
+                        {contactFirstName: "שם פרטי"},
+                        {contactLastName: "שם משפחה"},
+                        {contactPhone1: "טלפון"},
+                        {contactEmail: "דואר אלקטרוני"},
+                        {contactJob: "תפקיד"}
+                    ],
                 }
+
             },
             followUpSection: {
                 sectionName: "המשך טיפול",
@@ -119,8 +135,8 @@ export default function labels() {
                 noOrganizationSelectedTitle: "לא נבחר ארגון",
                 noOrganizationSelectedContent: "לשמירת הזמנה יש לבחור ארגון",
                 unrecognizedOrganization: "ארגון \"{0}\" אינו מזוהה. האם זהו ארגון חדש או קיים?",
-                newOrganization:"ארגון חדש",
-                existingOrganization:"ארגון קיים",
+                newOrganization: "ארגון חדש",
+                existingOrganization: "ארגון קיים",
                 noDataTitle: "לא הוכנסו נתונים",
                 noDataContent: "לשמירת הזמנה חדשה יש להכניס נתונים",
                 sendingToDatabaseFailedTitle: "שגיאה בשמירת הזמנה",
@@ -141,7 +157,7 @@ export default function labels() {
                 disapproved: "לא אושר",
                 followUp: " + נדרש המשך טיפול",
             },
-            actionButtons:{
+            actionButtons: {
                 save: "שמור הזמנה",
                 send: "שלח הצעת מחיר",
                 clear: "נקה טופס",
@@ -155,12 +171,12 @@ export default function labels() {
                     organizationName: "שם הארגון",
                     organizationAddress: "כתובת הארגון",
                     organizationCity: "עיר",
-                    organizationPostalCode:"מיקוד",
+                    organizationPostalCode: "מיקוד",
                     companyId: "ח.פ / ע.מ",
                     paymentConditions: "תנאי תשלום",
                     howReachedUs: "איך הגיע אלינו"
                 },
-                paymentConditions:[
+                paymentConditions: [
                     "תשלום מיידי",
                     "שוטף + 0",
                     "שוטף + 30",
