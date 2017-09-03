@@ -17,8 +17,8 @@ class ImportContactsDialog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            contacts: this.getContacts(),
-            isFinancialContacts: this.props.isFinancialContacts,
+            contacts: [],
+            isFinancialContacts: props.isFinancialContacts,
         };
     }
 
