@@ -78,7 +78,6 @@ export default class CustomAutoComplete extends React.Component {
                 onNewRequest={this.props.onNewRequest}
                 multiLine={true}
                 rowsMax={4}
-                filter={AutoComplete.fuzzyFilter}
                 dataSource={this.props.dataSource}
                 errorText={showError ? "שדה חובה" : ""}
             />//TODO extract string to labels
