@@ -1,6 +1,10 @@
 export function getValueOrEmptyString(obj, key){
-    if(!obj.hasOwnProperty(key) || obj[key] === null || obj[key] === undefined)
+    if(isEmptyValue(obj, key))
         return "";
 
     return obj[key];
+}
+
+export function isEmptyValue(obj, key){
+    return !obj.hasOwnProperty(key) || obj[key] === null || obj[key] === undefined || obj[key]==="";
 }

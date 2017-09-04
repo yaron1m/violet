@@ -6,11 +6,57 @@ import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import Divider from 'material-ui/Divider';
-import {getSelectedOrder} from "../../../../store/selected/reducer";
+import {getSelectedOrder, getSelectedOrganization} from "../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../store/required-fields/reducer";
+import {isEmptyValue} from "../../../../util/string-util";
 
 
 class OrganizationSection extends React.Component {
+
+    calculatePayDate(proformaInvoiceValue) {
+        if (isEmptyValue(this.props.selectedOrganization, "paymentConditions"))
+            return;
+
+        const proformaInvoiceDate = new Date(proformaInvoiceValue);
+        const paymentConditions = this.props.selectedOrganization.paymentConditions;
+
+        let paymentDate;
+        switch (paymentConditions) {
+            case this.props.paymentConditions["immediate"]:
+                paymentDate = proformaInvoiceDate;
+                break;
+
+            case this.props.paymentConditions["EOM"]:
+                paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 1, 1);
+                break;
+
+            case this.props.paymentConditions["EOM+30"]:
+                paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 1);
+                break;
+
+            case this.props.paymentConditions["EOM+45"]:
+                paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 15);
+                break;
+
+            case this.props.paymentConditions["EOM+60"]:
+                paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 3, 1);
+                break;
+
+            case this.props.paymentConditions["EOM+30+7"]:
+                paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 7);
+                break;
+
+            case this.props.paymentConditions["EOM+30+22"]:
+                paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 22);
+                break;
+
+            default:
+                console.error("Could not parse payment conditions - " + paymentConditions);
+                return;
+        }
+
+        this.props.dispatch(updateSelectedOrder("expectedPayDay", paymentDate.toJSON()));
+    }
 
     render() {
         const style = {
@@ -27,6 +73,8 @@ class OrganizationSection extends React.Component {
             values: this.props.selectedOrder,
             requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
+                if (key === "proformaInvoiceDate")
+                    this.calculatePayDate.bind(this)(value);
                 this.props.dispatch(updateSelectedOrder(key, value));
             }.bind(this)
         };
@@ -40,7 +88,7 @@ class OrganizationSection extends React.Component {
                     <CustomText data={fieldData} name="amount"/>
                     <CustomText data={fieldData} name="proformaInvoiceNumber"/>
                     <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size="L"/>
-                    <CustomText data={fieldData} name="expectedPayDay"/>
+                    <CustomDatePicker data={fieldData} name="expectedPayDay"/>
                 </div>
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
@@ -60,7 +108,9 @@ class OrganizationSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).orderPage.paymentSection,
+        paymentConditions: getLabels(state).OrganizationPage.organizationSection.paymentConditions,
         selectedOrder: getSelectedOrder(state),
+        selectedOrganization: getSelectedOrganization(state),
         requiredFields: getRequiredFields(state).order,
     };
 }

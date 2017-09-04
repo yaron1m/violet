@@ -38,7 +38,8 @@ class OrganizationSection extends React.Component {
                 <CustomText data={fieldData} name="organizationCity" size="M"/>
                 <CustomText data={fieldData} name="organizationPostalCode" size="M"/>
                 <CustomText data={fieldData} name="companyId" size="M"/>
-                <CustomAutoComplete data={fieldData} name="paymentConditions" dataSource={this.props.labels.paymentConditions}/>
+                <CustomAutoComplete data={fieldData} name="paymentConditions"
+                                    dataSource={_.values(this.props.labels.paymentConditions)}/>
                 <CustomText data={fieldData} name="howReachedUs"/>
             </CustomPaper>
         );
