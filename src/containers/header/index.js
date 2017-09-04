@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import Menu from 'material-ui/svg-icons/navigation/menu';
-import {white} from 'material-ui/styles/colors';
+import {white, red800} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
 import MoreIcon from 'material-ui/svg-icons/navigation/more-vert';
 import muiThemeable from 'material-ui/styles/muiThemeable';
@@ -63,12 +63,12 @@ class Header extends React.Component {
                             badgeContent={notificationCount === 0 ? "" : notificationCount}
                             style={{padding: 0}}
                             badgeStyle={{
-                                backgroundColor: notificationCount === 0 ? null : "red",
+                                backgroundColor: notificationCount === 0 ? null : red800,
                                 color: "white"
                             }}
                         >
                             <IconButton>
-                                <NotificationsIcon color={white}/>
+                                <NotificationsIcon color={process.env.NODE_ENV === "production" ? white : red800}/>
                             </IconButton>
                         </Badge>
                         <IconMenu
