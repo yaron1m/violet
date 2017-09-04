@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 
 import {combineReducers} from 'redux';
 import appearance from './appearance/reducer';
@@ -26,7 +26,7 @@ const combinedReducers = combineReducers({
 
 const store = createStore(
     combinedReducers,
-    composeWithDevTools( //TODO add dev tools only in development environment
+    composeWithDevTools(
         applyMiddleware(
             thunkMiddleware,
         )

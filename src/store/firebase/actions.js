@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import * as reducer from './reducer';
 import {getLabels} from "../labels/reducer";
 
-const firebaseConfig = {
+const firebaseProductionConfig = {
     apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
     authDomain: "violet-36bed.firebaseapp.com",
     databaseURL: "https://violet-36bed.firebaseio.com",
@@ -14,6 +14,17 @@ const firebaseConfig = {
     storageBucket: "violet-36bed.appspot.com",
     messagingSenderId: "259015014878"
 };
+
+const firebaseDevelopmentConfig = {
+    apiKey: "AIzaSyA7_wDCij8hBMy8LxQDRoweaCfyeaZB0Ow",
+    authDomain: "violet-dev.firebaseapp.com",
+    databaseURL: "https://violet-dev.firebaseio.com",
+    projectId: "violet-dev",
+    storageBucket: "violet-dev.appspot.com",
+    messagingSenderId: "97871190058"
+};
+
+const firebaseConfig = process.env.NODE_ENV === "production" ? firebaseProductionConfig : firebaseDevelopmentConfig;
 
 export function initFirebase() {
     return async function signInRequest(dispatch) {
