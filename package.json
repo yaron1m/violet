@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build & firebase deploy"
+    "prod": "npm run build & firebase deploy -P default",
+    "dev": "npm run build & firebase deploy -P development"
   },
   "author": {
     "name": "Yaron Malin",
