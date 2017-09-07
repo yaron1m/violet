@@ -52,7 +52,6 @@ function mapStateToProps(state, ownProps) {
         organizations: getOrganizations(state),
         selectedOrganization: getSelectedOrganization(state),
         requiredFields: getRequiredFields(state).organization,
-        allowEdit: ownProps.allowEdit
     };
 }
 

@@ -17,11 +17,11 @@ export default class OrderForm extends React.Component {
                 <OrderPageTitle/>
                 <OrderActionButtons/>
 
-                <OrganizationSection allowEdit={false}/>
-
-                <LectureDetailsSection/>
+                <OrganizationSection/>
 
                 <ContactsSection/>
+
+                <LectureDetailsSection/>
 
                 <FollowUpSection/>
 
