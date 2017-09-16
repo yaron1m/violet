@@ -22,6 +22,12 @@ class CustomTableRow extends React.Component {
                     _.map(this.props.headerKeys, (headerKey) => {
                         const key = headerKey + this.props.rowIndex;
 
+                        if(headerKey.toLowerCase().includes("date"))
+                            return (
+                                <TableRowColumn key={key}>
+                                    {this.props.element[headerKey] === undefined ? "" : new Date(this.props.element[headerKey]).toLocaleDateString()}
+                                </TableRowColumn>);
+
                         switch (headerKey) {
                             case "edit":
                                 return ( <TableRowColumn key={key}>

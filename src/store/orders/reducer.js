@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {convertStatus} from "../labels/reducer";
+import {getOrganizationById} from "../organizations/reducer";
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
@@ -38,6 +39,26 @@ export function getOrdersSummary(state){
         if(!_.isEmpty(order.lectureTimes)){
             result.date = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
+        }
+
+        return result;
+    }
+
+    return _.map(orders, map)
+}
+
+export function getFollowUpOrdersSummary(state){
+    const orders = _.filter(getOrders(state), order => order.followUpRequired);
+
+    function map(order){
+        const result={ id: order.id, status: convertStatus(order.status)};
+        if(!_.isEmpty(order.lectureTimes)){
+            result.date = order.lectureTimes[0].date;
+            result.topic = order.lectureTimes[0].topic;
+            result.followUpDate = order.followUpDate;
+            result.followUpDetails = order.followUpDetails;
+            result.followUpDate = order.followUpDate;
+            result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
         }
 
         return result;

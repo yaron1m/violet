@@ -5,6 +5,7 @@ import {createHashHistory} from 'history';
 import App from './App'
 import LectureForm from './containers/pages/order-page/';
 import OrganizationPage from './containers/pages/organization-page/';
+import FollowUpPageTitle from './containers/pages/follow-up-page/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
@@ -20,6 +21,7 @@ class Root extends React.Component {
                 <App isLoggedIn={this.props.isLoggedIn} rtl={this.props.rtl}>
                     <Route path="/form" component={LectureForm}/>
                     <Route path="/org" component={OrganizationPage}/>
+                    <Route path="/followup" component={FollowUpPageTitle}/>
                 </App>
             </Router>
         )

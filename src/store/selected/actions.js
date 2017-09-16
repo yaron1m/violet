@@ -46,12 +46,14 @@ export function sendSelectedOrganizationToDatabase() {
 // Orders:
 
 export function selectOrder(orderId) {
-    return async function selectOrganization(dispatch, getState) {
+    return async function selectOrder(dispatch, getState) {
         const order = getOrderById(getState(), orderId);
+        dispatch(selectOrganization(order.organizationId));
         dispatch({
             type: actionTypes.SELECT_ORDER,
             payload: order
-        })
+        });
+
     };
 }
 
@@ -61,7 +63,6 @@ export function updateSelectedOrder(key, value) {
             [key]: value
         });
         const updatedOrder = calculateOrderStatus(selectedOrder);
-
         dispatch({
             type: actionTypes.UPDATE_SELECTED_ORDER,
             payload: updatedOrder,

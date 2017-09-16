@@ -234,6 +234,21 @@ export default function labels() {
                 userDisabled: "המשתמש אינו תקין",
                 userNotFound: "משתמש אינו קיים",
             }
-        }
+        },
+        followUpPage: {
+            title: "המשך טיפול - טבלת מעקב",
+            followUpTable: {
+                title: "הזמנות בהן נדרש המשך טיםול",
+                tableHeaders: [
+                    {id: "מספר הזמנה"},
+                    {organizationName: "שם הארגון"},
+                    {date: "תאריך הרצאה"},
+                    {topic: "נושא"},
+                    {status: "סטאטוס הזמנה"},
+                    {followUpDate: "תאריך המשך טיפול"},
+                    {followUpDetails: "פרטי המשך טיפול"},
+                    {edit: "עריכה"}]
+            },
+        },
     };
 }
