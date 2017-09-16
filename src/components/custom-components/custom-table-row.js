@@ -6,9 +6,58 @@ import CheckIcon from 'material-ui/svg-icons/content/add-circle-outline';
 import IconButton from "material-ui/IconButton";
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
+import {isEmptyValue} from "../../util/string-util";
 
 
 class CustomTableRow extends React.Component {
+
+    getCell(headerKey) {
+        const key = headerKey + this.props.rowIndex;
+
+        function clickAction(onEditButton, rowIndex) {
+            if (headerKey === "edit" || headerKey === "pick")
+                return;
+
+            onEditButton(rowIndex);
+        }
+
+        return (
+            <TableRowColumn key={key}>
+                <div style={{cursor: "pointer"}}
+                     onClick={() => clickAction(this.props.onEditButton, this.props.rowIndex)}>
+                    {this.getCellContent.bind(this)(headerKey)}
+                </div>
+            </TableRowColumn>);
+    }
+
+    getCellContent(headerKey) {
+        if (headerKey.toLowerCase().includes("date"))
+            return isEmptyValue(this.props.element, headerKey) ? "" :
+                new Date(this.props.element[headerKey]).toLocaleDateString();
+
+        switch (headerKey) {
+            case "edit":
+                return ( <div>
+                    <IconButton onClick={() => this.props.onEditButton(this.props.rowIndex)}>
+                        <EditIcon/>
+                    </IconButton>
+                    {this.props.onDeleteButton ? (
+                        <IconButton onClick={() => this.props.onDeleteButton(this.props.rowIndex)}>
+                            <DeleteIcon/>
+                        </IconButton>
+                    ) : null}
+                </div>);
+
+            case "pick":
+                return (
+                    <IconButton onClick={() => this.props.onPickButton(this.props.rowIndex)}>
+                        <CheckIcon/>
+                    </IconButton>);
+            default:
+                return this.props.element[headerKey];
+        }
+    }
+
 
     render() {
         return (
@@ -18,47 +67,7 @@ class CustomTableRow extends React.Component {
                 hoverable={true}
                 key={this.props.rowIndex}
             >
-                {
-                    _.map(this.props.headerKeys, (headerKey) => {
-                        const key = headerKey + this.props.rowIndex;
-
-                        if(headerKey.toLowerCase().includes("date"))
-                            return (
-                                <TableRowColumn key={key}>
-                                    {this.props.element[headerKey] === undefined ? "" : new Date(this.props.element[headerKey]).toLocaleDateString()}
-                                </TableRowColumn>);
-
-                        switch (headerKey) {
-                            case "edit":
-                                return ( <TableRowColumn key={key}>
-                                    <IconButton onClick={() => this.props.onEditButton(this.props.rowIndex)}>
-                                        <EditIcon/>
-                                    </IconButton>
-                                    {this.props.onDeleteButton ? (
-                                        <IconButton onClick={() => this.props.onDeleteButton(this.props.rowIndex)}>
-                                            <DeleteIcon/>
-                                        </IconButton>
-                                    ) : null}
-                                </TableRowColumn>);
-
-                            case "pick":
-                                return (
-                                    <TableRowColumn key={key}>
-                                        <IconButton onClick={() => this.props.onPickButton(this.props.rowIndex)}>
-                                            <CheckIcon/>
-                                        </IconButton>
-                                    </TableRowColumn>);
-                            case "date":
-                                return (
-                                    <TableRowColumn key={key}>
-                                        {this.props.element[headerKey] === undefined ? "" : new Date(this.props.element[headerKey]).toLocaleDateString()}
-                                    </TableRowColumn>);
-
-                            default:
-                                return (
-                                    <TableRowColumn key={key}>{this.props.element[headerKey]}</TableRowColumn>);
-                        }
-                    })}
+                {_.map(this.props.headerKeys, this.getCell.bind(this))}
             </TableRow>
         );
     }
