@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PageTitle from "../../../components/page-title";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, isSelectedOrder} from "../../../store/selected/reducer";
-import {getStatus} from "../../../util/order-status";
+import {getSelectedOrderStatus} from "../../../util/order-status";
 
 class OrderPageTitle extends React.Component {
 
@@ -31,7 +31,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).orderPage,
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
-        status: getStatus(state),
+        status: getSelectedOrderStatus(state),
     };
 }
 

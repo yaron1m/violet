@@ -83,14 +83,19 @@ export function existsAndNotEmpty(order, key) {
     return _.has(order, key) && order[key];
 }
 
-export function getStatus(state) {
-    const labels = getLabels(state);
+export function getSelectedOrderStatus(state) {
     const selectedOrder = getSelectedOrder(state);
-    if (_.isEmpty(selectedOrder))
+    return getOrderStatus(state, selectedOrder);
+
+}
+
+export function getOrderStatus(state, order){
+    const labels = getLabels(state);
+    if (_.isEmpty(order))
         return labels.orderPage.orderStatus[Status.contact];
 
-    let status = labels.orderPage.orderStatus[selectedOrder.status];
-    if(selectedOrder.followUpRequired)
+    let status = labels.orderPage.orderStatus[order.status];
+    if(order.followUpRequired)
         status += labels.orderPage.orderStatus.followUp;
     return status;
 }

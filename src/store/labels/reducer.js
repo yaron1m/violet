@@ -2,10 +2,6 @@ export function getLabels(state) {
     return state.labels
 }
 
-export function convertStatus(status) {
-    return labels().orderPage.orderStatus[status];
-}
-
 export default function labels() {
     return {
         softwareName: "Violet",
