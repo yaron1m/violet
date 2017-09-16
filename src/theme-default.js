@@ -18,7 +18,7 @@ export default function getTheme(isRtl) {
             color: grey900
         },
         textField: {
-            floatingLabelColor: black,
+           // floatingLabelColor: black,
         },
 
     };
