@@ -67,7 +67,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).OrganizationPage.ordersSummary,
         isSelectedOrganization: isSelectedOrganization(state),
-        ordersSummary: getOrdersSummary(state),
+        ordersSummary: _.sortBy(getOrdersSummary(state), x => x.date),
     };
 }
 
