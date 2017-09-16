@@ -2,8 +2,8 @@ import * as actionTypes from './action-types';
 import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
-import {convertStatus} from "../labels/reducer";
 import {getOrganizationById} from "../organizations/reducer";
+import {getOrderStatus} from "../../util/order-status";
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
@@ -31,12 +31,15 @@ export function getOrdersByOrganization(state) {
     return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId);
 }
 
-export function getOrdersSummary(state){
+export function getOrdersSummary(state) {
     const orders = getOrdersByOrganization(state);
-    
-    function map(order){
-        const result={ id: order.id, status: convertStatus(order.status)};
-        if(!_.isEmpty(order.lectureTimes)){
+
+    function map(order) {
+        const result = {
+            id: order.id,
+            status: getOrderStatus(state, order),
+        };
+        if (!_.isEmpty(order.lectureTimes)) {
             result.date = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
         }
@@ -47,13 +50,16 @@ export function getOrdersSummary(state){
     return _.map(orders, map)
 }
 
-export function getFollowUpOrdersSummary(state){
+export function getFollowUpOrdersSummary(state) {
     const orders = _.filter(getOrders(state), order => order.followUpRequired);
 
-    function map(order){
-        const result={ id: order.id, status: convertStatus(order.status)};
-        if(!_.isEmpty(order.lectureTimes)){
-            result.date = order.lectureTimes[0].date;
+    function map(order) {
+        const result = {
+            id: order.id,
+            status: getOrderStatus(state, order),
+        };
+        if (!_.isEmpty(order.lectureTimes)) {
+            result.lectureDate = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
             result.followUpDate = order.followUpDate;
             result.followUpDetails = order.followUpDetails;
