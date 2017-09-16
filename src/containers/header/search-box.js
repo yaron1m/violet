@@ -85,7 +85,7 @@ class SearchBox extends React.Component {
 
         const orderNumbersObjects = _.values(this.props.orders).map(
             (order) => ({
-                text: order.id.toString() + " - " + this.props.organizations[order.organizationId],
+                text: order.id.toString() + " - " + this.props.organizations[order.organizationId].organizationName,
                 value: {
                     type: this.sourceTypes.order,
                     id: order.id,
