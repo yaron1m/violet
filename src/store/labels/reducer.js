@@ -15,7 +15,7 @@ export default function labels() {
         orderPage: {
             title: "טופס הזמנת הרצאה",
             orderNumberTitle: " - הזמנה מספר ",
-            orderStatusTitle: " -    סטאטוס: ",
+            orderStatusTitle: "סטאטוס: ",
             newOrderTitle: " - הזמנה חדשה",
             lectureDetailsSection: {
                 sectionName: "פרטי ההרצאה",
