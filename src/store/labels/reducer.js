@@ -238,11 +238,11 @@ export default function labels() {
         followUpPage: {
             title: "המשך טיפול - טבלת מעקב",
             followUpTable: {
-                title: "הזמנות בהן נדרש המשך טיםול",
+                title: "הזמנות בהן נדרש המשך טיפול",
                 tableHeaders: [
                     {id: "מספר הזמנה"},
                     {organizationName: "שם הארגון"},
-                    {date: "תאריך הרצאה"},
+                    {lectureDate: "תאריך הרצאה"},
                     {topic: "נושא"},
                     {status: "סטאטוס הזמנה"},
                     {followUpDate: "תאריך המשך טיפול"},

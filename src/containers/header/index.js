@@ -17,7 +17,7 @@ import {signOutRequest} from "../../store/firebase/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getOrders} from "../../store/orders/reducer";
 import * as _ from 'lodash';
-
+import {withRouter} from "react-router";
 
 class Header extends React.Component {
 
@@ -67,7 +67,10 @@ class Header extends React.Component {
                                 color: "white"
                             }}
                         >
-                            <IconButton>
+                            <IconButton
+                                onClick={() => this.props.history.location.pathname !== '/followup' ?
+                                    this.props.history.push('/followup') : null}
+                            >
                                 <NotificationsIcon color={process.env.NODE_ENV === "production" ? white : red800}/>
                             </IconButton>
                         </Badge>
@@ -97,4 +100,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(muiThemeable()(Header));
+export default withRouter(connect(mapStateToProps)(muiThemeable()(Header)));
