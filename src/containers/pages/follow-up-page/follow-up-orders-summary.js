@@ -17,12 +17,14 @@ class OrdersSummary extends React.Component {
     }
 
     render() {
+        const followUpOrdersSummary = _.sortBy(this.props.followUpOrdersSummary, x => x.followUpDate);
+
         return (
             <CustomPaper title={this.props.labels.title}>
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
-                        _.map(this.props.followUpOrdersSummary, (order =>
+                        _.map(followUpOrdersSummary, (order =>
                                 <CustomTableRow
                                     key={order.id}
                                     rowIndex={order.id}
