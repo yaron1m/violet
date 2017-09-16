@@ -51,7 +51,6 @@ class SearchBox extends React.Component {
         }
     }
 
-
     render() {
         const styles = {
             iconButton: {
@@ -76,11 +75,18 @@ class SearchBox extends React.Component {
         };
 
         const organizationNamesObjects = _.values(this.props.organizations).map(
-            (org) => ({text: org.organizationName, value: {type: this.sourceTypes.organization, id: org.id}}));
+            (org) => ({
+                text: org.organizationName,
+                value: {
+                    type: this.sourceTypes.organization,
+                    id: org.id
+                }
+            }));
 
         const orderNumbersObjects = _.values(this.props.orders).map(
             (order) => ({
-                text: order.id.toString(), value: {
+                text: order.id.toString() + " - " + this.props.organizations[order.organizationId],
+                value: {
                     type: this.sourceTypes.order,
                     id: order.id,
                     organizationId: order.organizationId,
