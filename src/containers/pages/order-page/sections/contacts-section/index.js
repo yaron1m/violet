@@ -7,7 +7,7 @@ import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getSelectedOrder, isSelectedOrganization} from "../../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
 import IconButton from "material-ui/IconButton";
-import PersonIcon from 'material-ui/svg-icons/social/person';
+import PersonAddIcon from 'material-ui/svg-icons/social/person-add';
 import ImportContactsDialog from './import-contacts-dialog';
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {openDialog} from "../../../../../store/appearance/actions";
@@ -57,7 +57,7 @@ class ContactsSection extends React.Component {
                     tooltip={this.props.labels.importContactsDialog.buttonTooltip}
                     style={{marginBottom: 10, marginRight: 10}}
                 >
-                    <PersonIcon/>
+                    <PersonAddIcon/>
                 </IconButton>
 
                 <CustomText data={fieldData} name="contactFirstName" size="M"/>
@@ -78,7 +78,7 @@ class ContactsSection extends React.Component {
                     tooltip={this.props.labels.importContactsDialog.buttonTooltip}
                     style={{marginBottom: 10, marginRight: 10}}
                 >
-                    <PersonIcon/>
+                    <PersonAddIcon/>
                 </IconButton>
 
                 <CustomText data={fieldData} name="financialContactFirstName" size="M"/>
