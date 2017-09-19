@@ -34,6 +34,7 @@ class App extends React.Component {
             },
             footer: {
                 marginBottom: 5,
+                marginTop: 10,
                 textAlign: "center",
                 fontSize: 10,
                 color: "gray"
