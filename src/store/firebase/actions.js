@@ -98,9 +98,8 @@ export function afterSignedIn(user) {
             displayName: user.displayName,
             photoURL: user.photoURL,
         });
-
-        dispatch(fetchData('orders', receiveOrders));
         dispatch(fetchData('organizations', receiveOrganizations));
+        dispatch(fetchData('orders', receiveOrders));
         dispatch(fetchData('offered-lectures', receiveOfferedLectures));
     }
 }

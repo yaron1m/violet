@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomTable from "../../../components/custom-components/custom-table";
-import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
+import {selectOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getFollowUpOrdersSummary} from "../../../store/orders/reducer";
 import {withRouter} from "react-router";
