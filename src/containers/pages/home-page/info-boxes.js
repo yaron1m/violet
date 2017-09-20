@@ -14,28 +14,48 @@ import {
     getOrdersByStatus
 } from "../../../store/orders/reducer";
 import * as _ from 'lodash';
+import {isFetching} from "../../../store/firebase/reducer";
 
 class InfoBoxes extends React.Component {
 
     calculateFutureLectures(){
+        if(this.props.isFetching)
+            return;
+
         const now = new Date();
         const futureLectureTimes = _.filter(this.props.allLectureTimes,
             lectureTime => new Date(lectureTime.date) > now);
         return futureLectureTimes.length.toString();
     }
 
+    calculateFollowUpSummary(){
+        if(this.props.isFetching)
+            return;
+
+        return this.props.followUpOrdersSummary.length.toString();
+    }
+
+    calculateWaitingPaymentCount(){
+        if(this.props.isFetching)
+            return;
+
+        return this.props.waitingPaymentOrders.length.toString();
+    }
+
     calculateWaitingPaymentSum(){
+        if(this.props.isFetching)
+            return;
+
         let sum = 0;
         _.forEach(this.props.waitingPaymentOrders, function(order){
             sum += parseInt(order.amount, 10);
         });
 
-        return sum;
+        return sum + " " + this.props.labels.currencyIcon;
     }
 
 
     render() {
-
         const style = {
             box: {
                 width: "25%",
@@ -64,7 +84,7 @@ class InfoBoxes extends React.Component {
                         Icon={NotificationsIcon}
                         color={pink600}
                         title={this.props.labels.followUp}
-                        value={this.props.followUpOrdersSummary.length.toString()}
+                        value={this.calculateFollowUpSummary.bind(this)()}
                     />
                 </div>
 
@@ -74,7 +94,7 @@ class InfoBoxes extends React.Component {
                         Icon={Waiting}
                         color={brown500}
                         title={this.props.labels.waitingPayment}
-                        value={this.props.waitingPaymentOrders.length.toString()}
+                        value={this.calculateWaitingPaymentCount.bind(this)()}
                     />
                 </div>
 
@@ -84,7 +104,7 @@ class InfoBoxes extends React.Component {
                         Icon={Payment}
                         color={green500}
                         title={this.props.labels.expectedIncome}
-                        value={this.calculateWaitingPaymentSum.bind(this)() + " " + this.props.labels.currencyIcon}
+                        value={this.calculateWaitingPaymentSum.bind(this)()}
                     />
                 </div>
             </div>
@@ -100,6 +120,7 @@ function mapStateToProps(state) {
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
         allLectureTimes: getAllLectureTimes(state),
         waitingPaymentOrders: getOrdersByStatus(state, "waitingPayment"),
+        isFetching: isFetching(state),
     };
 }
 
