@@ -12,6 +12,15 @@ export default function labels() {
             orderPrefix: "הזמנה: ",
             logOut: "יציאה",
         },
+        homePage:{
+            infoBoxes:{
+                futureLectures:"הרצאות עתידיות",
+                followUp:"ממתינות לטיפול",
+                waitingPayment:"ממתינות לתשלום",
+                expectedIncome: "הכנסות צפויות",
+                currencyIcon: "₪",
+            }
+        },
         orderPage: {
             title: "טופס הזמנת הרצאה",
             orderNumberTitle: " - הזמנה מספר ",
