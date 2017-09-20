@@ -18,6 +18,7 @@ import {getLabels} from "../../store/labels/reducer";
 import {getOrders} from "../../store/orders/reducer";
 import * as _ from 'lodash';
 import {withRouter} from "react-router";
+import {redirect} from "../../util/history-util";
 
 class Header extends React.Component {
 
@@ -68,8 +69,7 @@ class Header extends React.Component {
                             }}
                         >
                             <IconButton
-                                onClick={() => this.props.history.location.pathname !== '/followup' ?
-                                    this.props.history.push('/followup') : null}
+                                onClick={() => redirect(this.props.history, '/followup')}
                             >
                                 <NotificationsIcon color={process.env.NODE_ENV === "production" ? white : red800}/>
                             </IconButton>

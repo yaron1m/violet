@@ -11,13 +11,13 @@ import {getLabels} from "../../store/labels/reducer";
 import {isDrawerOpen} from "../../store/appearance/reducer";
 import {getDisplayName, getPhotoURL} from "../../store/firebase/reducer";
 import withRouter from "react-router-dom/es/withRouter";
+import {redirect} from "../../util/history-util";
 
 
 class RightDrawer extends React.Component {
 
     navigate(url) {
-        if (this.props.history.location.pathname !== url)
-            this.props.history.push(url);
+        redirect(this.props.history, url);
         this.props.dispatch(changeDrawerState());
     }
 
