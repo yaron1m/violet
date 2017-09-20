@@ -67,7 +67,7 @@ class InfoBoxes extends React.Component {
 
         return (
             <div style={{display: "flex"}}>
-                <div style={style.box}>
+                <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
                     <InfoBox
                         style={style.box}
                         Icon={CheckBox}

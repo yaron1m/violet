@@ -268,5 +268,17 @@ export default function labels() {
                     {edit: "עריכה"}]
             },
         },
+        futureLectures: {
+            title: "הרצאות עתידיות",
+            table: {
+                title: "הרצאות עתידיות",
+                tableHeaders: [
+                    {orderId: "מספר הזמנה"},
+                    {organizationName: "שם הארגון"},
+                    {date: "תאריך הרצאה"},
+                    {topic: "נושא"},
+                    {edit: "עריכה"}]
+            },
+        },
     };
 }

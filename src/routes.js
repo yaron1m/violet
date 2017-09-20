@@ -11,6 +11,7 @@ import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
 import HomePage from "./containers/pages/home-page/index";
 import PaymentPage from "./containers/pages/payment-page/index";
+import FutureLecturesPage from "./containers/pages/future-lectures-page/index";
 
 const history = createHashHistory();
 
@@ -25,6 +26,7 @@ class Root extends React.Component {
                     <Route path="/org" component={OrganizationPage}/>
                     <Route path="/followup" component={FollowUpPageTitle}/>
                     <Route path="/payment" component={PaymentPage}/>
+                    <Route path="/futureLectures" component={FutureLecturesPage}/>
                 </App>
             </Router>
         )
