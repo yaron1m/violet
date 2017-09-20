@@ -9,8 +9,31 @@ import {connect} from "react-redux";
 import {getLabels} from "../../../store/labels/reducer";
 import {redirect} from "../../../util/history-util";
 import {withRouter} from "react-router";
+import {
+    getAllLectureTimes, getFollowUpOrdersSummary, getOrders,
+    getOrdersByStatus
+} from "../../../store/orders/reducer";
+import * as _ from 'lodash';
 
 class InfoBoxes extends React.Component {
+
+    calculateFutureLectures(){
+        const now = new Date();
+        const futureLectureTimes = _.filter(this.props.allLectureTimes,
+            lectureTime => new Date(lectureTime.date) > now);
+        return futureLectureTimes.length.toString();
+    }
+
+    calculateWaitingPaymentSum(){
+        let sum = 0;
+        _.forEach(this.props.waitingPaymentOrders, function(order){
+            sum += parseInt(order.amount, 10);
+        });
+
+        return sum;
+    }
+
+
     render() {
 
         const style = {
@@ -30,7 +53,7 @@ class InfoBoxes extends React.Component {
                         Icon={CheckBox}
                         color={cyan600}
                         title={this.props.labels.futureLectures}
-                        value="15"
+                        value={this.calculateFutureLectures.bind(this)()}
                     />
                 </div>
 
@@ -41,7 +64,7 @@ class InfoBoxes extends React.Component {
                         Icon={NotificationsIcon}
                         color={pink600}
                         title={this.props.labels.followUp}
-                        value="4231"
+                        value={this.props.followUpOrdersSummary.length.toString()}
                     />
                 </div>
 
@@ -51,7 +74,7 @@ class InfoBoxes extends React.Component {
                         Icon={Waiting}
                         color={brown500}
                         title={this.props.labels.waitingPayment}
-                        value="460"
+                        value={this.props.waitingPaymentOrders.length.toString()}
                     />
                 </div>
 
@@ -61,7 +84,7 @@ class InfoBoxes extends React.Component {
                         Icon={Payment}
                         color={green500}
                         title={this.props.labels.expectedIncome}
-                        value={"248" + this.props.labels.currencyIcon}
+                        value={this.calculateWaitingPaymentSum.bind(this)() + " " + this.props.labels.currencyIcon}
                     />
                 </div>
             </div>
@@ -73,6 +96,10 @@ class InfoBoxes extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).homePage.infoBoxes,
+        orders: getOrders(state),
+        followUpOrdersSummary: getFollowUpOrdersSummary(state),
+        allLectureTimes: getAllLectureTimes(state),
+        waitingPaymentOrders: getOrdersByStatus(state, "waitingPayment"),
     };
 }
 

@@ -15,7 +15,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MenuItem from "material-ui/MenuItem";
 import {signOutRequest} from "../../store/firebase/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {getOrders} from "../../store/orders/reducer";
+import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
 import * as _ from 'lodash';
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
@@ -43,8 +43,8 @@ class Header extends React.Component {
         };
 
         const now = new Date();
-        const notificationCount = _.filter(this.props.orders,
-            order => order.followUpRequired && new Date(order.followUpDate) < now)
+        const notificationCount = _.filter(this.props.followUpOrdersSummary,
+            summary => new Date(summary.followUpDate) < now)
             .length;
 
         return (
@@ -96,7 +96,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).header,
         isDrawerOpen: isDrawerOpen(state),
-        orders: getOrders(state),
+        followUpOrdersSummary: getFollowUpOrdersSummary(state),
     };
 }
 
