@@ -24,7 +24,7 @@ class InfoBoxes extends React.Component {
 
         const now = new Date();
         const futureLectureTimes = _.filter(this.props.allLectureTimes,
-            lectureTime => new Date(lectureTime.date) > now);
+            lectureTime => lectureTime.status === "approvedOrder" && new Date(lectureTime.date) > now);
         return futureLectureTimes.length.toString();
     }
 

@@ -86,6 +86,7 @@ export function getAllLectureTimes(state){
     function getMappedLectureTimes(order){
         return _.map(order.lectureTimes, function(time){
             time.orderId = order.id;
+            time.status = order.status;
             time.organizationName = getOrganizationById(state, order.organizationId).organizationName;
             return time;
             });
