@@ -10,6 +10,7 @@ import {getOrganizations} from "../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../store/selected/actions";
 import {getOrders} from "../../store/orders/reducer";
 import * as _ from "lodash";
+import {redirect} from "../../util/history-util";
 
 class SearchBox extends React.Component {
 
@@ -34,16 +35,14 @@ class SearchBox extends React.Component {
         switch (chosenRequest.value.type) {
             case this.sourceTypes.organization:
                 this.props.dispatch(selectOrganization(chosenRequest.value.id));
-                if (this.props.history.location.pathname !== '/org')
-                    this.props.history.push('/org');
+                redirect(this.props.history, '/org');
                 return;
 
             case this.sourceTypes.order:
                 this.props.dispatch(selectOrder(chosenRequest.value.id));
                 this.props.dispatch(selectOrganization(chosenRequest.value.organizationId));
 
-                if (this.props.history.location.pathname !== '/form')
-                    this.props.history.push('/form');
+                redirect(this.props.history, '/form');
                 return;
 
             default:

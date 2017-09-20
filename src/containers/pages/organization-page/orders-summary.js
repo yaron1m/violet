@@ -10,18 +10,17 @@ import {withRouter} from "react-router";
 import * as _ from "lodash";
 import CustomTableRow from "../../../components/custom-components/custom-table-row";
 import {TableRow, TableRowColumn} from "material-ui";
+import {redirect} from "../../../util/history-util";
 
 class OrdersSummary extends React.Component {
     addNewOrder() {
         this.props.dispatch(clearSelectedOrder());
-        if (this.props.history.location.pathname !== '/form')
-            this.props.history.push('/form');
+        redirect(this.props.history, '/form');
     }
 
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
-        if (this.props.history.location.pathname !== '/form')
-            this.props.history.push('/form');
+        redirect(this.props.history, '/form');
     }
 
     render() {

@@ -8,12 +8,12 @@ import {getFollowUpOrdersSummary} from "../../../store/orders/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
 import CustomTableRow from "../../../components/custom-components/custom-table-row";
+import {redirect} from "../../../util/history-util";
 
 class OrdersSummary extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
-        if (this.props.history.location.pathname !== '/form')
-            this.props.history.push('/form');
+        redirect(this.props.history, '/form');
     }
 
     render() {

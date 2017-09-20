@@ -80,3 +80,19 @@ export function getNextOrderId(state) {
         return null;
     return _.max(_.map(_.keys(orders), _.parseInt)) + 1;
 }
+
+export function getAllLectureTimes(state){
+
+    function getMappedLectureTimes(order){
+        return _.map(order.lectureTimes, function(time){
+            time.orderId = order.id;
+            time.organizationName = getOrganizationById(state, order.organizationId).organizationName;
+            return time;
+            });
+    }
+    return _.flatMap(getOrders(state),getMappedLectureTimes);
+}
+
+export function getOrdersByStatus(state, status){
+    return _.filter(getOrders(state), order => order.status === status);
+}

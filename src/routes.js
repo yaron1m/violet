@@ -9,7 +9,7 @@ import FollowUpPageTitle from './containers/pages/follow-up-page/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
-
+import HomePage from "./containers/pages/home-page/index";
 
 const history = createHashHistory();
 
@@ -19,6 +19,7 @@ class Root extends React.Component {
         return (
             <Router history={history}>
                 <App isLoggedIn={this.props.isLoggedIn} rtl={this.props.rtl}>
+                    <Route exact path="/" component={HomePage}/>
                     <Route path="/form" component={LectureForm}/>
                     <Route path="/org" component={OrganizationPage}/>
                     <Route path="/followup" component={FollowUpPageTitle}/>
