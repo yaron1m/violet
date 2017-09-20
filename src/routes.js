@@ -10,6 +10,7 @@ import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
 import HomePage from "./containers/pages/home-page/index";
+import PaymentPage from "./containers/pages/payment-page/index";
 
 const history = createHashHistory();
 
@@ -23,6 +24,7 @@ class Root extends React.Component {
                     <Route path="/form" component={LectureForm}/>
                     <Route path="/org" component={OrganizationPage}/>
                     <Route path="/followup" component={FollowUpPageTitle}/>
+                    <Route path="/payment" component={PaymentPage}/>
                 </App>
             </Router>
         )

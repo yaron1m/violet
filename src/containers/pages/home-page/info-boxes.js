@@ -88,7 +88,7 @@ class InfoBoxes extends React.Component {
                     />
                 </div>
 
-                <div style={style.box}>
+                <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
                     <InfoBox
                         style={style.box}
                         Icon={Waiting}
@@ -98,7 +98,7 @@ class InfoBoxes extends React.Component {
                     />
                 </div>
 
-                <div style={style.box}>
+                <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
                     <InfoBox
                         style={style.box}
                         Icon={Payment}

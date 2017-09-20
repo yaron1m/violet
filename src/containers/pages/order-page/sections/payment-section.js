@@ -55,7 +55,7 @@ class OrganizationSection extends React.Component {
                 return;
         }
 
-        this.props.dispatch(updateSelectedOrder("expectedPayDay", paymentDate.toJSON()));
+        this.props.dispatch(updateSelectedOrder("expectedPayDate", paymentDate.toJSON()));
     }
 
     render() {
@@ -88,7 +88,7 @@ class OrganizationSection extends React.Component {
                     <CustomText data={fieldData} name="amount"/>
                     <CustomText data={fieldData} name="proformaInvoiceNumber"/>
                     <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size="L"/>
-                    <CustomDatePicker data={fieldData} name="expectedPayDay"/>
+                    <CustomDatePicker data={fieldData} name="expectedPayDate"/>
                 </div>
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>

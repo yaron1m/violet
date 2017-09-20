@@ -12,11 +12,11 @@ export default function labels() {
             orderPrefix: "הזמנה: ",
             logOut: "יציאה",
         },
-        homePage:{
-            infoBoxes:{
-                futureLectures:"הרצאות עתידיות",
-                followUp:"ממתינות לטיפול",
-                waitingPayment:"ממתינות לתשלום",
+        homePage: {
+            infoBoxes: {
+                futureLectures: "הרצאות עתידיות",
+                followUp: "ממתינות לטיפול",
+                waitingPayment: "ממתינות לתשלום",
                 expectedIncome: "הכנסות צפויות",
                 currencyIcon: "₪",
             }
@@ -119,8 +119,7 @@ export default function labels() {
                     amount: "סכום לתשלום",
                     proformaInvoiceNumber: "מספר חשבונית עסקה",
                     proformaInvoiceDate: "תאריך חשבונית עסקה",
-                    expectedPayDay: "תאריך לתשלום",
-
+                    expectedPayDate: "תאריך לתשלום",
                     taxInvoiceNumber: "מספר חשבונית מס",
                     taxInvoiceDate: "תאריך חשבונית מס",
                     receiptNumber: "מספר קבלה",
@@ -242,7 +241,7 @@ export default function labels() {
         },
         followUpPage: {
             title: "המשך טיפול - טבלת מעקב",
-            followUpTable: {
+            table: {
                 title: "הזמנות בהן נדרש המשך טיפול",
                 tableHeaders: [
                     {id: "מספר הזמנה"},
@@ -252,6 +251,20 @@ export default function labels() {
                     {status: "סטאטוס הזמנה"},
                     {followUpDate: "תאריך המשך טיפול"},
                     {followUpDetails: "פרטי המשך טיפול"},
+                    {edit: "עריכה"}]
+            },
+        },
+        paymentPage: {
+            title: "מעקב תשלומים",
+            table: {
+                title: "הזמנות ממתינות לתשלום",
+                tableHeaders: [
+                    {id: "מספר הזמנה"},
+                    {organizationName: "שם הארגון"},
+                    {lectureDate: "תאריך הרצאה"},
+                    {topic: "נושא"},
+                    {expectedPayDate: "תאריך תשלום"},
+                    {amount: "סכום לתשלום"},
                     {edit: "עריכה"}]
             },
         },

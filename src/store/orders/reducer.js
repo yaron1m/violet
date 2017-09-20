@@ -96,3 +96,25 @@ export function getAllLectureTimes(state){
 export function getOrdersByStatus(state, status){
     return _.filter(getOrders(state), order => order.status === status);
 }
+
+export function getWaitingPaymentOrders(state){
+    const orders = getOrdersByStatus(state,"waitingPayment");
+
+    function map(order) {
+        const result = {
+            id: order.id,
+            status: getOrderStatus(state, order),
+        };
+        if (!_.isEmpty(order.lectureTimes)) {
+            result.lectureDate = order.lectureTimes[0].date;
+            result.topic = order.lectureTimes[0].topic;
+            result.expectedPayDate = order.expectedPayDate;
+            result.amount = order.amount;
+            result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
+        }
+
+        return result;
+    }
+
+    return _.sortBy(_.map(orders, map), x => x.expectedPayDate)
+}
