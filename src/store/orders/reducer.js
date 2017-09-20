@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatus} from "../../util/order-status";
+import {getOrderStatus, Status} from "../../util/order-status";
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
@@ -18,12 +18,24 @@ export default (state = {}, action = {}) => {
     }
 }
 
-export function getOrders(state) {
-    return state.orders;
+export function getOrders(state, status = null) {
+    const orders = state.orders;
+
+    if (status === null)
+        return orders;
+    return _.filter(orders, order => order.status === status);
 }
 
 export function getOrderById(state, id) {
-    return state.orders[id];
+    return getOrders(state)[id];
+}
+
+export function getNextOrderId(state) {
+    const orders = getOrders(state);
+    const keys = _.keys(orders);
+    if (!orders || keys.length === 0)
+        return null;
+    return _.max(_.map(_.keys(orders), _.parseInt)) + 1;
 }
 
 export function getOrdersByOrganization(state) {
@@ -73,33 +85,24 @@ export function getFollowUpOrdersSummary(state) {
     return _.map(orders, map)
 }
 
-export function getNextOrderId(state) {
-    const orders = getOrders(state);
-    const keys = _.keys(orders);
-    if (!orders || keys.length === 0)
-        return null;
-    return _.max(_.map(_.keys(orders), _.parseInt)) + 1;
-}
+export function getAllLectureTimes(state, status = null) {
 
-export function getAllLectureTimes(state){
+    function getMappedLectureTimes(order) {
 
-    function getMappedLectureTimes(order){
-        return _.map(order.lectureTimes, function(time){
+        return _.map(order.lectureTimes, function (time) {
             time.orderId = order.id;
             time.status = order.status;
             time.organizationName = getOrganizationById(state, order.organizationId).organizationName;
             return time;
-            });
+        });
     }
-    return _.flatMap(getOrders(state),getMappedLectureTimes);
+
+    const orders = getOrders(state, status);
+    return _.flatMap(orders, getMappedLectureTimes);
 }
 
-export function getOrdersByStatus(state, status){
-    return _.filter(getOrders(state), order => order.status === status);
-}
-
-export function getWaitingPaymentOrders(state){
-    const orders = getOrdersByStatus(state,"waitingPayment");
+export function getWaitingPaymentOrders(state) {
+    const orders = getOrders(state, Status.waitingPayment);
 
     function map(order) {
         const result = {

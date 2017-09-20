@@ -11,10 +11,10 @@ import {redirect} from "../../../util/history-util";
 import {withRouter} from "react-router";
 import {
     getAllLectureTimes, getFollowUpOrdersSummary, getOrders,
-    getOrdersByStatus
 } from "../../../store/orders/reducer";
 import * as _ from 'lodash';
 import {isFetching} from "../../../store/firebase/reducer";
+import {Status} from "../../../util/order-status";
 
 class InfoBoxes extends React.Component {
 
@@ -23,8 +23,8 @@ class InfoBoxes extends React.Component {
             return;
 
         const now = new Date();
-        const futureLectureTimes = _.filter(this.props.allLectureTimes,
-            lectureTime => lectureTime.status === "approvedOrder" && new Date(lectureTime.date) > now);
+        const futureLectureTimes = _.filter(this.props.approvedLectureTimes,
+            lectureTime => new Date(lectureTime.date) > now);
         return futureLectureTimes.length.toString();
     }
 
@@ -118,8 +118,8 @@ function mapStateToProps(state) {
         labels: getLabels(state).homePage.infoBoxes,
         orders: getOrders(state),
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
-        allLectureTimes: getAllLectureTimes(state),
-        waitingPaymentOrders: getOrdersByStatus(state, "waitingPayment"),
+        approvedLectureTimes: getAllLectureTimes(state, Status.approvedOrder),
+        waitingPaymentOrders: getOrders(state, Status.waitingPayment),
         isFetching: isFetching(state),
     };
 }
