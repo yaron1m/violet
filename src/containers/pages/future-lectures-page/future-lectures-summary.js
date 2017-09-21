@@ -19,24 +19,23 @@ class FutureLecturesSummary extends React.Component {
 
     render() {
         const now = new Date();
-        const futureLectureTimes = _.filter(this.props.approvedLectureTimes,
-            lectureTime => new Date(lectureTime.date) > now);
-
-        console.log(futureLectureTimes);
-
+        const futureLectureTimes = _.sortBy(
+            _.filter(this.props.futureLectureTimes, lectureTime => new Date(lectureTime.date) > now),
+                x => x.date);
+        
         return (
             <CustomPaper title={this.props.labels.title}>
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
-                        futureLectureTimes.map((lectureTime , index)=>
-                                <CustomTableRow
-                                    key={index}
-                                    rowIndex={lectureTime.orderId}
-                                    headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
-                                    element={lectureTime}
-                                    onEditButton={this.selectOrder.bind(this)}
-                                />
+                        futureLectureTimes.map((lectureTime, index) =>
+                            <CustomTableRow
+                                key={index}
+                                rowIndex={lectureTime.orderId}
+                                headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
+                                element={lectureTime}
+                                onEditButton={this.selectOrder.bind(this)}
+                            />
                         )
                     }
                 </CustomTable>
@@ -50,7 +49,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).futureLectures.table,
         waitingPaymentOrders: getWaitingPaymentOrders(state),
-        approvedLectureTimes: getAllLectureTimes(state, Status.approvedOrder),
+        futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),
     };
 }
 

@@ -23,7 +23,7 @@ class InfoBoxes extends React.Component {
             return;
 
         const now = new Date();
-        const futureLectureTimes = _.filter(this.props.approvedLectureTimes,
+        const futureLectureTimes = _.filter(this.props.futureLectureTimes,
             lectureTime => new Date(lectureTime.date) > now);
         return futureLectureTimes.length.toString();
     }
@@ -118,7 +118,7 @@ function mapStateToProps(state) {
         labels: getLabels(state).homePage.infoBoxes,
         orders: getOrders(state),
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
-        approvedLectureTimes: getAllLectureTimes(state, Status.approvedOrder),
+        futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),
         waitingPaymentOrders: getOrders(state, Status.waitingPayment),
         isFetching: isFetching(state),
     };
