@@ -18,8 +18,8 @@ import {Status} from "../../../util/order-status";
 
 class InfoBoxes extends React.Component {
 
-    calculateFutureLectures(){
-        if(this.props.isFetching)
+    calculateFutureLectures() {
+        if (this.props.isFetching)
             return;
 
         const now = new Date();
@@ -28,26 +28,26 @@ class InfoBoxes extends React.Component {
         return futureLectureTimes.length.toString();
     }
 
-    calculateFollowUpSummary(){
-        if(this.props.isFetching)
+    calculateFollowUpSummary() {
+        if (this.props.isFetching)
             return;
 
         return this.props.followUpOrdersSummary.length.toString();
     }
 
-    calculateWaitingPaymentCount(){
-        if(this.props.isFetching)
+    calculateWaitingPaymentCount() {
+        if (this.props.isFetching)
             return;
 
         return this.props.waitingPaymentOrders.length.toString();
     }
 
-    calculateWaitingPaymentSum(){
-        if(this.props.isFetching)
+    calculateWaitingPaymentSum() {
+        if (this.props.isFetching)
             return;
 
         let sum = 0;
-        _.forEach(this.props.waitingPaymentOrders, function(order){
+        _.forEach(this.props.waitingPaymentOrders, function (order) {
             sum += _.parseInt(order.amount);
         });
 
@@ -59,7 +59,11 @@ class InfoBoxes extends React.Component {
         const style = {
             box: {
                 width: "100%",
-                margin: 10,
+                marginLeft: 20,
+                cursor: "pointer",
+            },
+            lastBox: {
+                width: "100%",
                 cursor: "pointer",
             }
         };
@@ -95,7 +99,7 @@ class InfoBoxes extends React.Component {
                     />
                 </div>
 
-                <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
+                <div style={style.lastBox} onClick={() => redirect(this.props.history, '/payment')}>
                     <InfoBox
                         Icon={Payment}
                         color={green500}

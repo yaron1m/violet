@@ -274,9 +274,9 @@ export default function labels() {
                 title: "הרצאות עתידיות",
                 tableHeaders: [
                     {orderId: "מספר הזמנה"},
-                    {organizationName: "שם הארגון"},
                     {date: "תאריך הרצאה"},
                     {topic: "נושא"},
+                    {organizationName: "שם הארגון"},
                     {edit: "עריכה"}]
             },
         },

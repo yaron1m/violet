@@ -26,7 +26,7 @@ class OrdersSummary extends React.Component {
                                 <CustomTableRow
                                     key={order.id}
                                     rowIndex={order.id}
-                                    headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
+                                    headers={this.props.labels.tableHeaders}
                                     element={order}
                                     onEditButton={this.selectOrder.bind(this)}
                                 />

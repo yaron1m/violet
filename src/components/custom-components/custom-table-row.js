@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
 
-
 class CustomTableRow extends React.Component {
 
     getCell(headerKey) {
@@ -60,6 +59,12 @@ class CustomTableRow extends React.Component {
 
 
     render() {
+        let headerKeys = this.props.headers.map((header) => (Object.keys(header)[0]));
+
+        if (this.props.hideEdit) {
+            headerKeys = _.dropRight(headerKeys);
+        }
+
         return (
             <TableRow
                 style={this.props.missingFields ? {color: "red"} : {}}
@@ -67,7 +72,7 @@ class CustomTableRow extends React.Component {
                 hoverable={true}
                 key={this.props.rowIndex}
             >
-                {_.map(this.props.headerKeys, this.getCell.bind(this))}
+                {_.map(headerKeys, this.getCell.bind(this))}
             </TableRow>
         );
     }
@@ -76,18 +81,20 @@ class CustomTableRow extends React.Component {
 
 CustomTableRow.propTypes = {
     element: PropTypes.object.isRequired,
-    headerKeys: PropTypes.array.isRequired,
+    headers: PropTypes.array.isRequired,
     rowIndex: PropTypes.number,
     onEditButton: PropTypes.func,
     onPickButton: PropTypes.func,
     onDeleteButton: PropTypes.func,
     missingFields: PropTypes.bool,
+    hideEdit: PropTypes.bool,
 };
 
 CustomTableRow.defaultProps = {
     onEditButton: null,
     onPickButton: null,
     missingFields: false,
+    hideEdit: false,
 };
 
 export default CustomTableRow;

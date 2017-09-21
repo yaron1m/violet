@@ -93,7 +93,7 @@ class ImportContactsDialog extends React.Component {
                             <CustomTableRow
                                 key={key++}
                                 rowIndex={index}
-                                headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
+                                headers={this.props.labels.tableHeaders}
                                 element={contactDetails}
                                 onPickButton={this.importContact.bind(this)}
                             />

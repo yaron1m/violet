@@ -14,6 +14,10 @@ class CustomTable extends React.Component {
     render() {
         let headerValues = this.props.headers.map((header) => (Object.values(header)[0]));
 
+        if(this.props.hideEdit){
+            headerValues = _.dropRight(headerValues);
+        }
+
         return (
             <Table
                 style={{tableLayout: 'auto'}}
@@ -48,6 +52,11 @@ class CustomTable extends React.Component {
 
 CustomTable.propTypes = {
     headers: PropTypes.array.isRequired,
+    hideEdit: PropTypes.bool,
+};
+
+CustomTable.defaultProps = {
+    hideEdit: false,
 };
 
 

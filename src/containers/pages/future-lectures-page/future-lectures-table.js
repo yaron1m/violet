@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomTable from "../../../components/custom-components/custom-table";
@@ -11,7 +12,7 @@ import CustomTableRow from "../../../components/custom-components/custom-table-r
 import {redirect} from "../../../util/history-util";
 import {Status} from "../../../util/order-status";
 
-class FutureLecturesSummary extends React.Component {
+class FutureLecturesTable extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
         redirect(this.props.history, '/form');
@@ -19,22 +20,27 @@ class FutureLecturesSummary extends React.Component {
 
     render() {
         const now = new Date();
-        const futureLectureTimes = _.sortBy(
+        let futureLectureTimes = _.sortBy(
             _.filter(this.props.futureLectureTimes, lectureTime => new Date(lectureTime.date) > now),
             x => x.date);
+
+        if(this.props.limit !== -1){
+            futureLectureTimes = _.slice(futureLectureTimes, 0, this.props.limit);
+        }
 
         return (
             <CustomPaper title={this.props.labels.title}>
 
-                <CustomTable headers={this.props.labels.tableHeaders}>
+                <CustomTable headers={this.props.labels.tableHeaders} hideEdit={this.props.hideEdit}>
                     {
                         futureLectureTimes.map((lectureTime, index) =>
                             <CustomTableRow
                                 key={index}
                                 rowIndex={lectureTime.orderId}
-                                headerKeys={this.props.labels.tableHeaders.map((header) => (Object.keys(header)[0]))}
+                                headers={this.props.labels.tableHeaders}
                                 element={lectureTime}
                                 onEditButton={this.selectOrder.bind(this)}
+                                hideEdit={this.props.hideEdit}
                             />
                         )
                     }
@@ -45,12 +51,23 @@ class FutureLecturesSummary extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).futureLectures.table,
         waitingPaymentOrders: getWaitingPaymentOrders(state),
         futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),
+        ...ownProps,
     };
 }
 
-export default withRouter(connect(mapStateToProps)(FutureLecturesSummary));
+FutureLecturesTable.propTypes = {
+    hideEdit: PropTypes.bool,
+    limit: PropTypes.number,
+};
+
+FutureLecturesTable.defaultProps = {
+    hideEdit: false,
+    limit: -1,
+};
+
+export default withRouter(connect(mapStateToProps)(FutureLecturesTable));
