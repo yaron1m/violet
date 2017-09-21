@@ -23,6 +23,10 @@ export function getOrders(state, status = null) {
 
     if (status === null)
         return orders;
+
+    if (_.isArray(status))
+        return _.filter(orders, order => _.includes(status, order.status));
+
     return _.filter(orders, order => order.status === status);
 }
 
@@ -35,7 +39,8 @@ export function getNextOrderId(state) {
     const keys = _.keys(orders);
     if (!orders || keys.length === 0)
         return null;
-    return _.max(_.map(_.keys(orders), _.parseInt)) + 1;
+
+    return _.chain(orders).keys().map(_.parseInt).max() + 1;
 }
 
 export function getOrdersByOrganization(state) {
@@ -120,5 +125,5 @@ export function getWaitingPaymentOrders(state) {
         return result;
     }
 
-    return _.sortBy(_.map(orders, map), x => x.expectedPayDate)
+    return _.sortBy(_.map(orders, map), x => x.expectedPayDate);
 }
