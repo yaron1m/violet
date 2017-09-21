@@ -58,7 +58,7 @@ class InfoBoxes extends React.Component {
     render() {
         const style = {
             box: {
-                width: "25%",
+                width: "100%",
                 margin: 10,
                 cursor: "pointer",
             }
@@ -69,7 +69,6 @@ class InfoBoxes extends React.Component {
             <div style={{display: "flex"}}>
                 <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
                     <InfoBox
-                        style={style.box}
                         Icon={CheckBox}
                         color={cyan600}
                         title={this.props.labels.futureLectures}
@@ -80,7 +79,6 @@ class InfoBoxes extends React.Component {
 
                 <div style={style.box} onClick={() => redirect(this.props.history, '/followup')}>
                     <InfoBox
-                        style={style.box}
                         Icon={NotificationsIcon}
                         color={pink600}
                         title={this.props.labels.followUp}
@@ -90,7 +88,6 @@ class InfoBoxes extends React.Component {
 
                 <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
                     <InfoBox
-                        style={style.box}
                         Icon={Waiting}
                         color={brown500}
                         title={this.props.labels.waitingPayment}
@@ -100,7 +97,6 @@ class InfoBoxes extends React.Component {
 
                 <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
                     <InfoBox
-                        style={style.box}
                         Icon={Payment}
                         color={green500}
                         title={this.props.labels.expectedIncome}

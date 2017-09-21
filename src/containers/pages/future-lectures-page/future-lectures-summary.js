@@ -21,8 +21,8 @@ class FutureLecturesSummary extends React.Component {
         const now = new Date();
         const futureLectureTimes = _.sortBy(
             _.filter(this.props.futureLectureTimes, lectureTime => new Date(lectureTime.date) > now),
-                x => x.date);
-        
+            x => x.date);
+
         return (
             <CustomPaper title={this.props.labels.title}>
 

@@ -61,5 +61,6 @@ InfoBox.propTypes = {
     Icon: PropTypes.any,
     color: PropTypes.string,
     title: PropTypes.string,
+    value: PropTypes.string,
     style: PropTypes.object,
 };
