@@ -1,9 +1,5 @@
 import React from 'react';
 import {cyan600, pink600, purple800, green500} from 'material-ui/styles/colors';
-import CheckBox from 'material-ui/svg-icons/action/check-circle';
-import Payment from 'material-ui/svg-icons/editor/attach-money';
-import AddIcon from 'material-ui/svg-icons/content/add-box';
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import InfoBox from "../../../components/dashboard/info-box";
 import {connect} from "react-redux";
 import {getLabels} from "../../../store/labels/reducer";
@@ -15,6 +11,10 @@ import {
 import * as _ from 'lodash';
 import {isFetching} from "../../../store/firebase/reducer";
 import {Status} from "../../../util/order-status";
+import CheckBoxIcon from 'material-ui-icons/CheckCircle';
+import PaymentIcon from 'material-ui-icons/AttachMoney';
+import AddIcon from 'material-ui-icons/AddBox';
+import NotificationsIcon from 'material-ui-icons/Notifications';
 
 class InfoBoxes extends React.Component {
 
@@ -82,7 +82,7 @@ class InfoBoxes extends React.Component {
 
                 <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
                     <InfoBox
-                        Icon={CheckBox}
+                        Icon={CheckBoxIcon}
                         color={cyan600}
                         title={this.props.labels.futureLectures}
                         value={this.calculateFutureLectures.bind(this)()}
@@ -101,7 +101,7 @@ class InfoBoxes extends React.Component {
 
                 <div style={style.lastBox} onClick={() => redirect(this.props.history, '/payment')}>
                     <InfoBox
-                        Icon={Payment}
+                        Icon={PaymentIcon}
                         color={green500}
                         title={this.props.labels.expectedIncome}
                         value={this.calculateWaitingPaymentSum.bind(this)()}

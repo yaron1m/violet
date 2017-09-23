@@ -1,8 +1,8 @@
 import React from 'react';
 import {TableRow, TableRowColumn} from 'material-ui/Table';
-import EditIcon from 'material-ui/svg-icons/image/edit';
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
-import CheckIcon from 'material-ui/svg-icons/content/add-circle-outline';
+import EditIcon from 'material-ui-icons/Edit';
+import DeleteIcon from 'material-ui-icons/Delete';
+import CheckIcon from 'material-ui-icons/AddCircleOutline';
 import IconButton from "material-ui/IconButton";
 import PropTypes from 'prop-types';
 import * as _ from "lodash";

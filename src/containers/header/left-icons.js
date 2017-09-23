@@ -2,10 +2,8 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import {white, red800} from 'material-ui/styles/colors';
-import MoreIcon from 'material-ui/svg-icons/navigation/more-vert';
 import {connect} from "react-redux";
 import IconMenu from "material-ui/IconMenu";
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import MenuItem from "material-ui/MenuItem";
 import {signOutRequest} from "../../store/firebase/actions";
 import {getLabels} from "../../store/labels/reducer";
@@ -13,6 +11,8 @@ import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
 import * as _ from 'lodash';
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
+import MoreIcon from 'material-ui-icons/MoreVert';
+import NotificationsIcon from 'material-ui-icons/Notifications';
 
 class LeftIcons extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {white, purple600} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
-import Search from 'material-ui/svg-icons/action/search';
+import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
@@ -102,7 +102,7 @@ class SearchBox extends React.Component {
         return (
             <div style={styles.container}>
                 <IconButton style={styles.iconButton}>
-                    <Search color={white}/>
+                    <SearchIcon color={white}/>
                 </IconButton>
 
                 <AutoComplete

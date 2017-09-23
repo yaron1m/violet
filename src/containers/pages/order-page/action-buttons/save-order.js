@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import FlatButton from "material-ui/FlatButton";
 import CustomDialog from '../../../../components/custom-components/custom-dialog'
-import SaveIcon from 'material-ui/svg-icons/content/save';
+import SaveIcon from 'material-ui-icons/Save';
 import {
     sendSelectedOrderToDatabase, sendSelectedOrganizationToDatabase, setIsSelectedOrder, setIsSelectedOrganization,
     updateSelectedOrder, updateSelectedOrganization

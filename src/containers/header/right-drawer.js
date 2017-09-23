@@ -5,7 +5,7 @@ import {white, purple900} from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
-import Web from 'material-ui/svg-icons/av/web';
+import WebIcon from 'material-ui-icons/Web';
 import {changeDrawerState} from "../../store/appearance/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {isDrawerOpen} from "../../store/appearance/reducer";
@@ -85,7 +85,7 @@ class RightDrawer extends React.Component {
                     key={0}
                     style={styles.menuItem}
                     primaryText={this.props.labels.orderPage.title}
-                    leftIcon={<Web/>}
+                    leftIcon={<WebIcon/>}
                     onTouchTap={() => this.navigate.bind(this)('/form')}
 
                 />
@@ -94,7 +94,7 @@ class RightDrawer extends React.Component {
                     key={1}
                     style={styles.menuItem}
                     primaryText={this.props.labels.OrganizationPage.title}
-                    leftIcon={<Web/>}
+                    leftIcon={<WebIcon/>}
                     onTouchTap={() => this.navigate.bind(this)('/org')}
                 />
 

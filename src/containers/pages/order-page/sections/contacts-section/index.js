@@ -7,7 +7,7 @@ import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getSelectedOrder, isSelectedOrganization} from "../../../../../store/selected/reducer";
 import Divider from "material-ui/Divider";
 import IconButton from "material-ui/IconButton";
-import PersonAddIcon from 'material-ui/svg-icons/social/person-add';
+import PersonAddIcon from 'material-ui-icons/PersonAdd';
 import ImportContactsDialog from './import-contacts-dialog';
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {openDialog} from "../../../../../store/appearance/actions";

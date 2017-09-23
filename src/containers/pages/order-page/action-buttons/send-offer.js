@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
-import SendIcon from 'material-ui/svg-icons/content/mail';
+import SendIcon from 'material-ui-icons/Mail';
 import {getLabels} from "../../../../store/labels/reducer";
 import {
     getSelectedOrder, getSelectedOrganization, isSelectedOrder

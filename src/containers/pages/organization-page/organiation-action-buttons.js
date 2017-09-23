@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
-import SaveIcon from 'material-ui/svg-icons/content/save';
-import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
+import SaveIcon from 'material-ui-icons/Save';
+import RefreshIcon from 'material-ui-icons/Refresh';
 import {
     clearSelected, sendSelectedOrganizationToDatabase, setIsSelectedOrganization
 } from "../../../store/selected/actions";
