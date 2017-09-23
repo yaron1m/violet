@@ -54,21 +54,26 @@ class SearchBox extends React.Component {
         const styles = {
             iconButton: {
                 float: 'left',
-                marginTop: 9,
+                margin: "-5px -5px 0 -10px",
+                display: this.state.searchText === "" ? "inline-block" : "none",
             },
-            textField: {
+            autoComplete: {
+                top: -14,
+                marginLeft: 5,
+            },
+            container: {
                 backgroundColor: purple600,
                 borderRadius: 2,
                 height: 35,
                 paddingLeft: 10,
-                color: white,
+                marginRight: 10,
+                marginTop: 15,
             },
-            white: {
+            input: {
                 WebkitTextFillColor: "inherit",
                 color: white,
             },
             hintStyle: {
-                height: 16,
                 color: white,
             },
         };
@@ -95,7 +100,7 @@ class SearchBox extends React.Component {
         const dataSource = _.concat(organizationNamesObjects, orderNumbersObjects);
 
         return (
-            <div>
+            <div style={styles.container}>
                 <IconButton style={styles.iconButton}>
                     <Search color={white}/>
                 </IconButton>
@@ -103,16 +108,20 @@ class SearchBox extends React.Component {
                 <AutoComplete
                     dataSource={dataSource}
                     hintText={this.props.labels.searchLineHint}
+                    searchText={this.state.searchText}
+
+                    onNewRequest={this.handleRequest.bind(this)}
+                    onUpdateInput={(searchText) => this.setState({searchText: searchText})}
+
+                    maxSearchResults={10}
                     underlineShow={false}
                     fullWidth={true}
-                    inputStyle={styles.white}
-                    textFieldStyle={styles.textField}
+
+                    inputStyle={styles.input}
+                    style={styles.autoComplete}
                     hintStyle={styles.hintStyle}
-                    onNewRequest={this.handleRequest.bind(this)}
-                    searchText={this.state.searchText}
-                    onUpdateInput={(searchText) => this.setState({searchText: searchText})}
-                    maxSearchResults={10}
                 />
+
             </div>
         );
     }
