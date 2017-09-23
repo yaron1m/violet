@@ -1,8 +1,8 @@
 import React from 'react';
-import {cyan600, pink600, brown500, green500} from 'material-ui/styles/colors';
+import {cyan600, pink600, purple800, green500} from 'material-ui/styles/colors';
 import CheckBox from 'material-ui/svg-icons/action/check-circle';
 import Payment from 'material-ui/svg-icons/editor/attach-money';
-import Waiting from 'material-ui/svg-icons/action/watch-later';
+import AddIcon from 'material-ui/svg-icons/content/add-box';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import InfoBox from "../../../components/dashboard/info-box";
 import {connect} from "react-redux";
@@ -71,6 +71,15 @@ class InfoBoxes extends React.Component {
 
         return (
             <div style={{display: "flex"}}>
+                <div style={style.box} onClick={() => redirect(this.props.history, '/form')}>
+                    <InfoBox
+                        Icon={AddIcon}
+                        color={purple800}
+                        value={this.props.labels.newOrder}
+                    />
+                </div>
+
+
                 <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
                     <InfoBox
                         Icon={CheckBox}
@@ -87,15 +96,6 @@ class InfoBoxes extends React.Component {
                         color={pink600}
                         title={this.props.labels.followUp}
                         value={this.calculateFollowUpSummary.bind(this)()}
-                    />
-                </div>
-
-                <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
-                    <InfoBox
-                        Icon={Waiting}
-                        color={brown500}
-                        title={this.props.labels.waitingPayment}
-                        value={this.calculateWaitingPaymentCount.bind(this)()}
                     />
                 </div>
 
