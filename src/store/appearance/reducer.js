@@ -2,7 +2,7 @@ import * as actionTypes from './action-types';
 import * as Immutable from "seamless-immutable";
 
 const initialState = Immutable({
-    isOpen: false,
+    isDrawerOpen: false,
     rtl: true,
     language: "he",
     dialog: {
@@ -20,7 +20,7 @@ export default function (state = initialState, action = {}) {
     switch (action.type) {
         case actionTypes.CHANGE_DRAWER_STATE:
             return Immutable.merge(state, {
-                isOpen: !state.isOpen,
+                isDrawerOpen: !state.isDrawerOpen,
             });
 
         case actionTypes.CHANGE_LANGUAGE:
@@ -69,7 +69,7 @@ export default function (state = initialState, action = {}) {
 }
 
 export function isDrawerOpen(state) {
-    return state.appearance.isOpen;
+    return state.appearance.isDrawerOpen;
 }
 
 export function isRTL(state) {
