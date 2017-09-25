@@ -14,9 +14,9 @@ export default function labels() {
         },
         homePage: {
             infoBoxes: {
-                newOrder: "צור הזמנה חדשה",
                 futureLectures: "הרצאות עתידיות",
                 followUp: "ממתינות לטיפול",
+                waitingPayment: "ממתינות לתשלום",
                 expectedIncome: "הכנסות צפויות",
                 currencyIcon: "₪",
             }

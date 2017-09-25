@@ -1,5 +1,5 @@
 import React from 'react';
-import {cyan600, pink600, purple800, green500} from 'material-ui/styles/colors';
+import {cyan600, pink600, brown500, green500} from 'material-ui/styles/colors';
 import InfoBox from "../../../components/dashboard/info-box";
 import {connect} from "react-redux";
 import {getLabels} from "../../../store/labels/reducer";
@@ -13,8 +13,8 @@ import {isFetching} from "../../../store/firebase/reducer";
 import {Status} from "../../../util/order-status";
 import CheckBoxIcon from 'material-ui-icons/CheckCircle';
 import PaymentIcon from 'material-ui-icons/AttachMoney';
-import AddIcon from 'material-ui-icons/AddBox';
 import NotificationsIcon from 'material-ui-icons/Notifications';
+import Waiting from 'material-ui-icons/WatchLater';
 
 class InfoBoxes extends React.Component {
 
@@ -71,15 +71,6 @@ class InfoBoxes extends React.Component {
 
         return (
             <div style={{display: "flex"}}>
-                <div style={style.box} onClick={() => redirect(this.props.history, '/form')}>
-                    <InfoBox
-                        Icon={AddIcon}
-                        color={purple800}
-                        value={this.props.labels.newOrder}
-                    />
-                </div>
-
-
                 <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
                     <InfoBox
                         Icon={CheckBoxIcon}
@@ -96,6 +87,15 @@ class InfoBoxes extends React.Component {
                         color={pink600}
                         title={this.props.labels.followUp}
                         value={this.calculateFollowUpSummary.bind(this)()}
+                    />
+                </div>
+
+                <div style={style.box} onClick={() => redirect(this.props.history, '/payment')}>
+                    <InfoBox
+                        Icon={Waiting}
+                        color={brown500}
+                        title={this.props.labels.waitingPayment}
+                        value={this.calculateWaitingPaymentCount.bind(this)()}
                     />
                 </div>
 
