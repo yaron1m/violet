@@ -41,11 +41,14 @@ class LeftIcons extends React.Component {
                     <IconButton
                         onClick={() => redirect(this.props.history, '/followup')}
                     >
-                        <NotificationsIcon color={process.env.NODE_ENV === "production" ? white : red800}/>
+                        <NotificationsIcon  color={white}/>
                     </IconButton>
                 </Badge>
                 <IconMenu
-                    iconButtonElement={<IconButton><MoreIcon color={white}/></IconButton>}
+                    iconButtonElement={
+                        <IconButton>
+                            <MoreIcon color={process.env.NODE_ENV === "production" ? white : red800}/>
+                        </IconButton>}
                     anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'left', vertical: 'top'}}
                 >
