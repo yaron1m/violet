@@ -13,6 +13,9 @@ export default function labels() {
             logOut: "יציאה",
         },
         homePage: {
+            navigationButtons:{
+              newOrder: "הזמנה חדשה",
+            },
             infoBoxes: {
                 futureLectures: "הרצאות עתידיות",
                 followUp: "ממתינות לטיפול",

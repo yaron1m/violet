@@ -8,7 +8,9 @@ class CustomPaper extends React.Component {
         const style = {
             paper: {
                 padding: 10,
-                marginTop: 20,
+                marginBottom: 20,
+
+                ...this.props.style,
             },
             title: {
                 fontSize: 24,
@@ -16,7 +18,7 @@ class CustomPaper extends React.Component {
         };
 
         return (
-            <Paper style={style.paper}>
+            <Paper style={style.paper} onClick={this.props.onClick}>
                 {this.props.title ? (<span style={style.title}>{this.props.title}</span>) : null}
                 <div>
                     {this.props.children}
