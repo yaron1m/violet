@@ -5,7 +5,6 @@ import HomeIcon from 'material-ui-icons/Home';
 import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
 import {connect} from "react-redux";
-import {isDrawerOpen} from "../../store/appearance/reducer";
 import {getLabels} from "../../store/labels/reducer";
 import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
 import {withRouter} from "react-router";
@@ -22,7 +21,7 @@ class Header extends React.Component {
                 overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
-                paddingLeft: 20 + (this.props.isDrawerOpen ? this.props.muiTheme.drawer.width : 0),
+                paddingLeft: 20,
                 paddingRight: 20,
             },
             homeIcon: {
@@ -54,7 +53,6 @@ class Header extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).header,
-        isDrawerOpen: isDrawerOpen(state),
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
     };
 }

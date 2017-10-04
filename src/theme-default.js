@@ -13,10 +13,6 @@ export default function getTheme(isRtl) {
             height: 57,
             color: purple800
         },
-        drawer: {
-            width: 230,
-            color: grey900
-        },
         textField: {
            // floatingLabelColor: black,
         },
