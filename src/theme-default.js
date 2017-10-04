@@ -1,6 +1,5 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {grey900, purple800} from 'material-ui/styles/colors';
-
+import {purple800} from 'material-ui/styles/colors';
 
 export default function getTheme(isRtl) {
     const muiTheme = {
