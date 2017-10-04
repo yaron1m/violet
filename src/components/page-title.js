@@ -6,12 +6,15 @@ export default class PageTitle extends React.Component {
         const style = {
             pageTitle: {
                 fontSize: 24,
-                maxWidth: this.props.maxWidth
+                maxWidth: this.props.maxWidth,
+                marginBottom: 10,
             },
         };
 
         return (
-            <span style={style.pageTitle}>{this.props.title}</span>
+            <div style={style.pageTitle}>
+                {this.props.title}
+            </div>
         )
     }
 
