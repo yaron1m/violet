@@ -80,14 +80,17 @@ class SaveOrderButton extends React.Component {
 
     async fillMissingFields() {
         let idPromise;
+        let createdPromise;
         let organizationIdPromise;
-        if (!this.props.selectedOrder.hasOwnProperty("id"))
+        if (!this.props.selectedOrder.hasOwnProperty("id")){
             idPromise = this.props.dispatch(updateSelectedOrder("id", this.props.nextOrderId));
+            createdPromise = this.props.dispatch(updateSelectedOrder("createdTime", new Date().toJSON()));
+        }
 
         if (!this.props.selectedOrder.hasOwnProperty("organizationId"))
             organizationIdPromise = this.props.dispatch(updateSelectedOrder("organizationId", this.props.selectedOrganization.id));
 
-        return Promise.all([idPromise, organizationIdPromise]);
+        return Promise.all([idPromise, organizationIdPromise, createdPromise]);
     }
 
     async saveNewOrganization() {
