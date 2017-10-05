@@ -84,7 +84,7 @@ class SaveOrderButton extends React.Component {
         let organizationIdPromise;
         if (!this.props.selectedOrder.hasOwnProperty("id")){
             idPromise = this.props.dispatch(updateSelectedOrder("id", this.props.nextOrderId));
-            createdPromise = this.props.dispatch(updateSelectedOrder("createdTime", new Date().toJSON()));
+            createdPromise = this.props.dispatch(updateSelectedOrder("createdDate", new Date().toJSON()));
         }
 
         if (!this.props.selectedOrder.hasOwnProperty("organizationId"))

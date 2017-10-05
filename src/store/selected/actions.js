@@ -97,7 +97,7 @@ export function clearSelectedOrder() {
 
 // Helpers
 function addLastChange(obj){
-    return changeImmutable(obj, "changedTime", new Date().toJSON());
+    return changeImmutable(obj, "changedDate", new Date().toJSON());
 }
 
 function changeImmutable(obj, key, value){
