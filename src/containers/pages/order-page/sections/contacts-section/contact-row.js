@@ -10,6 +10,7 @@ import PersonAddIcon from 'material-ui-icons/PersonAdd';
 import ImportContactsDialog from './import-contacts-dialog';
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {openDialog} from "../../../../../store/appearance/actions";
+import _ from 'lodash';
 
 class ContactRow extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class ContactRow extends React.Component {
         });
     }
 
-    getKey = (key) => this.props.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key;
+    getKey = (key) => this.props.isFinancialContacts ? "financial" + _.upperFirst(key) : key;
 
     render() {
         const fieldData = {
