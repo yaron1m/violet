@@ -9,6 +9,7 @@ import Divider from 'material-ui/Divider';
 import {getSelectedOrder, getSelectedOrganization} from "../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../store/required-fields/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
+import ContactRow from './contacts-section/contact-row'
 
 
 class OrganizationSection extends React.Component {
@@ -83,6 +84,10 @@ class OrganizationSection extends React.Component {
             <CustomPaper
                 title={this.props.labels.sectionName}
             >
+                <div>{this.props.labels.financialContactTitle}</div>
+                <ContactRow isFinancialContacts={true}/>
+                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+
 
                 <div style={style.flex}>
                     <CustomText data={fieldData} name="amount"/>

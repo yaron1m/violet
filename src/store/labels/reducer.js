@@ -70,8 +70,7 @@ export default function labels() {
                 }
             },
             contactsSection: {
-                sectionName: "אנשי קשר",
-                financialContactTitle: "איש קשר לתשלום",
+                sectionName: "איש קשר",
                 titles: {
                     contactFirstName: "שם פרטי",
                     contactLastName: "שם משפחה",
@@ -101,9 +100,9 @@ export default function labels() {
                         {pick: "בחר"},
                         {contactFirstName: "שם פרטי"},
                         {contactLastName: "שם משפחה"},
+                        {contactJob: "תפקיד"},
                         {contactPhone1: "טלפון"},
                         {contactEmail: "דואר אלקטרוני"},
-                        {contactJob: "תפקיד"}
                     ],
                 }
 
@@ -118,6 +117,7 @@ export default function labels() {
             },
             paymentSection: {
                 sectionName: "תשלום",
+                financialContactTitle: "איש קשר לתשלום",
                 titles: {
                     amount: "סכום לתשלום",
                     proformaInvoiceNumber: "מספר חשבונית עסקה",
