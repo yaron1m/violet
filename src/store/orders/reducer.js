@@ -4,6 +4,7 @@ import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatus, Status} from "../../util/order-status";
+import {cutIfLong} from "../../util/string-util";
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
@@ -79,7 +80,7 @@ export function getFollowUpOrdersSummary(state) {
             result.lectureDate = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
             result.followUpDate = order.followUpDate;
-            result.followUpDetails = order.followUpDetails;
+            result.followUpDetails = cutIfLong(order.followUpDetails, 30);
             result.followUpDate = order.followUpDate;
             result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
         }
