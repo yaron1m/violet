@@ -15,6 +15,7 @@ export default function labels() {
         homePage: {
             navigationButtons:{
               newOrder: "הזמנה חדשה",
+              allOrders: "כל ההזמנות",
             },
             infoBoxes: {
                 futureLectures: "הרצאות עתידיות",
@@ -280,6 +281,18 @@ export default function labels() {
                     {date: "תאריך הרצאה"},
                     {topic: "נושא"},
                     {organizationName: "שם הארגון"},
+                    {edit: "עריכה"}]
+            },
+        },
+        allOrdersPage: {
+            table: {
+                title: "כל ההזמנות",
+                tableHeaders: [
+                    {id: "מספר הזמנה"},
+                    {organizationName: "שם הארגון"},
+                    {date: "תאריך הרצאה"},
+                    {topic: "נושא"},
+                    {status: "סטאטוס"},
                     {edit: "עריכה"}]
             },
         },

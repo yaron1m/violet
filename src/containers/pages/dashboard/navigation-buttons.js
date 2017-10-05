@@ -11,22 +11,32 @@ class NavigationButtons extends React.Component {
         const style = {
             container: {
                 display: "flex",
-                marginLeft: 20,
             },
             paper: {
                 width: "50%",
                 cursor: "pointer",
-                textAlign:"center",
+                textAlign: "center",
                 fontSize: 18,
                 fontWeight: "bold",
+                marginRight: 20,
             },
+            lastPaper: {
+                width: "50%",
+                cursor: "pointer",
+                textAlign: "center",
+                fontSize: 18,
+                fontWeight: "bold",
+            }
         };
 
 
         return (
             <div style={style.container}>
-                <CustomPaper style={style.paper} onClick={()=>redirect(this.props.history, "/form")}>
+                <CustomPaper style={style.paper} onClick={() => redirect(this.props.history, "/form")}>
                     {this.props.labels.newOrder}
+                </CustomPaper>
+                <CustomPaper style={style.lastPaper} onClick={() => redirect(this.props.history, "/allOrders")}>
+                    {this.props.labels.allOrders}
                 </CustomPaper>
             </div>
         );

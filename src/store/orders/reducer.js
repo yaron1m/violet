@@ -49,25 +49,6 @@ export function getOrdersByOrganization(state) {
     return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId);
 }
 
-export function getOrdersSummary(state) {
-    const orders = getOrdersByOrganization(state);
-
-    function map(order) {
-        const result = {
-            id: order.id,
-            status: getOrderStatus(state, order),
-        };
-        if (!_.isEmpty(order.lectureTimes)) {
-            result.date = order.lectureTimes[0].date;
-            result.topic = order.lectureTimes[0].topic;
-        }
-
-        return result;
-    }
-
-    return _.map(orders, map)
-}
-
 export function getFollowUpOrdersSummary(state) {
     const orders = _.filter(getOrders(state), order => order.followUpRequired);
 
@@ -127,4 +108,24 @@ export function getWaitingPaymentOrders(state) {
     }
 
     return _.sortBy(_.map(orders, map), x => x.expectedPayDate);
+}
+
+export function getOrdersSummary(state, getOrdersFunction) {
+    const orders = getOrdersFunction(state);
+
+    function map(order) {
+        const result = {
+            id: order.id,
+            status: getOrderStatus(state, order),
+            organizationName: getOrganizationById(state, order.organizationId).organizationName
+        };
+        if (!_.isEmpty(order.lectureTimes)) {
+            result.date = order.lectureTimes[0].date;
+            result.topic = order.lectureTimes[0].topic;
+        }
+
+        return result;
+    }
+
+    return _.map(orders, map)
 }

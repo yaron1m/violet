@@ -4,7 +4,7 @@ import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomTable from "../../../components/custom-components/custom-table";
 import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
-import {getOrdersSummary} from "../../../store/orders/reducer";
+import {getOrdersByOrganization, getOrdersSummary} from "../../../store/orders/reducer";
 import {isSelectedOrganization} from "../../../store/selected/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
@@ -66,7 +66,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).OrganizationPage.ordersSummary,
         isSelectedOrganization: isSelectedOrganization(state),
-        ordersSummary: _.sortBy(getOrdersSummary(state), x => x.date),
+        ordersSummary: _.sortBy(getOrdersSummary(state, getOrdersByOrganization), x => x.date),
     };
 }
 
