@@ -53,7 +53,7 @@ class FutureLecturesTable extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: getLabels(state).futureLectures.table,
+        labels: getLabels(state).futureLecturesPage.table,
         waitingPaymentOrders: getWaitingPaymentOrders(state),
         futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),
         ...ownProps,

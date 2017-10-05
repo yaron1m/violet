@@ -271,7 +271,7 @@ export default function labels() {
                     {edit: "עריכה"}]
             },
         },
-        futureLectures: {
+        futureLecturesPage: {
             title: "הרצאות עתידיות",
             table: {
                 title: "הרצאות עתידיות",
