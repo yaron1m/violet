@@ -57,6 +57,10 @@ class InfoBoxes extends React.Component {
 
     render() {
         const style = {
+            div:{
+                display: "flex",
+                marginBottom: 20,
+            },
             box: {
                 width: "100%",
                 marginLeft: 20,
@@ -70,7 +74,7 @@ class InfoBoxes extends React.Component {
 
 
         return (
-            <div style={{display: "flex"}}>
+            <div style={style.div}>
                 <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
                     <InfoBox
                         Icon={CheckBoxIcon}
