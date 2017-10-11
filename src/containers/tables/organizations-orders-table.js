@@ -1,18 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CustomPaper from "../../../components/custom-components/custom-paper";
-import CustomTable from "../../../components/custom-components/custom-table";
-import {clearSelectedOrder, selectOrder} from "../../../store/selected/actions";
-import {getLabels} from "../../../store/labels/reducer";
-import {getOrdersByOrganization, getOrdersSummary} from "../../../store/orders/reducer";
-import {isSelectedOrganization} from "../../../store/selected/reducer";
+import CustomPaper from "../../components/custom-components/custom-paper";
+import CustomTable from "../../components/tables/custom-table";
+import {clearSelectedOrder, selectOrder} from "../../store/selected/actions";
+import {getLabels} from "../../store/labels/reducer";
+import {getOrdersByOrganization, getOrdersSummary} from "../../store/orders/reducer";
+import {isSelectedOrganization} from "../../store/selected/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
-import CustomTableRow from "../../../components/custom-components/custom-table-row";
+import CustomTableRow from "../../components/tables/custom-table-row";
 import {TableRow, TableRowColumn} from "material-ui";
-import {redirect} from "../../../util/history-util";
+import {redirect} from "../../util/history-util";
 
-class OrdersSummary extends React.Component {
+class OrganizationsOrdersTable extends React.Component {
     addNewOrder() {
         this.props.dispatch(clearSelectedOrder());
         redirect(this.props.history, '/form');
@@ -70,4 +70,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(OrdersSummary));
+export default withRouter(connect(mapStateToProps)(OrganizationsOrdersTable));

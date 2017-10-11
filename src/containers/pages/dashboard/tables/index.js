@@ -1,5 +1,5 @@
 import React from 'react';
-import FutureLecturesSummary from '../../future-lectures-page/future-lectures-table'
+import FutureLecturesSummary from '../../../tables/future-lectures-table'
 
 export default class DashboardGraphs extends React.Component {
     render() {

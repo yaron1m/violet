@@ -1,6 +1,6 @@
 import React from 'react';
 import FollowUpPageTitle from './follow-up-page-title';
-import FollowUpOrdersSummary from './follow-up-orders-summary';
+import FollowUpOrdersTable from '../../tables/follow-up-orders-table';
 
 export default class OrganizationPage extends React.Component {
     render() {
@@ -8,7 +8,7 @@ export default class OrganizationPage extends React.Component {
             <div>
                 <FollowUpPageTitle/>
 
-                <FollowUpOrdersSummary/>
+                <FollowUpOrdersTable/>
             </div>
         );
     }

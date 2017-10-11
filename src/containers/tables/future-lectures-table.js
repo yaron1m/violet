@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import CustomPaper from "../../../components/custom-components/custom-paper";
-import CustomTable from "../../../components/custom-components/custom-table";
-import {selectOrder} from "../../../store/selected/actions";
-import {getLabels} from "../../../store/labels/reducer";
-import {getAllLectureTimes, getWaitingPaymentOrders} from "../../../store/orders/reducer";
+import CustomPaper from "../../components/custom-components/custom-paper";
+import CustomTable from "../../components/tables/custom-table";
+import {selectOrder} from "../../store/selected/actions";
+import {getLabels} from "../../store/labels/reducer";
+import {getAllLectureTimes, getWaitingPaymentOrders} from "../../store/orders/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
-import CustomTableRow from "../../../components/custom-components/custom-table-row";
-import {redirect} from "../../../util/history-util";
-import {Status} from "../../../util/order-status";
+import CustomTableRow from "../../components/tables/custom-table-row";
+import {redirect} from "../../util/history-util";
+import {Status} from "../../util/order-status";
 
 class FutureLecturesTable extends React.Component {
     selectOrder(orderId) {

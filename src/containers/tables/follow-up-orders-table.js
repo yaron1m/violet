@@ -1,16 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CustomPaper from "../../../components/custom-components/custom-paper";
-import CustomTable from "../../../components/custom-components/custom-table";
-import {selectOrder} from "../../../store/selected/actions";
-import {getLabels} from "../../../store/labels/reducer";
-import {getWaitingPaymentOrders} from "../../../store/orders/reducer";
+import CustomPaper from "../../components/custom-components/custom-paper";
+import CustomTable from "../../components/tables/custom-table";
+import {selectOrder} from "../../store/selected/actions";
+import {getLabels} from "../../store/labels/reducer";
+import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
-import CustomTableRow from "../../../components/custom-components/custom-table-row";
-import {redirect} from "../../../util/history-util";
+import CustomTableRow from "../../components/tables/custom-table-row";
+import {redirect} from "../../util/history-util";
 
-class PaymentSummary extends React.Component {
+class OrdersSummary extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
         redirect(this.props.history, '/form');
@@ -22,7 +22,7 @@ class PaymentSummary extends React.Component {
 
                 <CustomTable headers={this.props.labels.tableHeaders}>
                     {
-                        _.map(this.props.waitingPaymentOrders, (order =>
+                        _.map(this.props.followUpOrdersSummary, (order =>
                                 <CustomTableRow
                                     key={order.id}
                                     rowIndex={order.id}
@@ -41,9 +41,9 @@ class PaymentSummary extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).paymentPage.table,
-        waitingPaymentOrders: getWaitingPaymentOrders(state),
+        labels: getLabels(state).followUpPage.table,
+        followUpOrdersSummary: _.sortBy(getFollowUpOrdersSummary(state), x => x.followUpDate),
     };
 }
 
-export default withRouter(connect(mapStateToProps)(PaymentSummary));
+export default withRouter(connect(mapStateToProps)(OrdersSummary));
