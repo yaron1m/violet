@@ -4,6 +4,7 @@ import * as _ from "lodash";
 import CustomPaper from "../../components/custom-components/custom-paper";
 import CustomTable from "../../components/tables/custom-table";
 import CustomTableRow from "../../components/tables/custom-table-row";
+import {CustomSingleCellRow} from "./custon-single-cell-row";
 
 class CustomPaperTable extends React.Component {
 
@@ -18,6 +19,13 @@ class CustomPaperTable extends React.Component {
             <CustomPaper title={this.props.title}>
 
                 <CustomTable headers={this.props.tableHeaders} hideEdit={this.props.hideEdit}>
+                    <CustomSingleCellRow
+                        enabled={this.props.singleCellRow}
+                        headers={this.props.tableHeaders}
+                        onClick={this.props.singleCellRowOnClick}
+                        text={this.props.singleCellRowText}
+                    />
+
                     {
                         elements.map((element, index) =>
                             <CustomTableRow
@@ -44,11 +52,16 @@ CustomPaperTable.propTypes = {
     rowIndexKey: PropTypes.string.isRequired,
     tableHeaders: PropTypes.array.isRequired,
     onEditButton: PropTypes.func.isRequired,
+
+    singleCellRow: PropTypes.bool,
+    singleCellRowText: PropTypes.string,
+    singleCellRowOnClick: PropTypes.func,
 };
 
 CustomPaperTable.defaultProps = {
     hideEdit: false,
     limit: -1,
+    singleCellRow: false,
 };
 
 export default CustomPaperTable;
