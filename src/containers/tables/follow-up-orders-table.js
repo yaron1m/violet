@@ -1,16 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CustomPaper from "../../components/custom-components/custom-paper";
-import CustomTable from "../../components/tables/custom-table";
 import {selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
-import CustomTableRow from "../../components/tables/custom-table-row";
 import {redirect} from "../../util/history-util";
+import CustomPaperTable from "../../components/tables/custom-paper-table";
 
-class OrdersSummary extends React.Component {
+class FollowUpOrdersTable extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
         redirect(this.props.history, '/form');
@@ -18,22 +16,15 @@ class OrdersSummary extends React.Component {
 
     render() {
         return (
-            <CustomPaper title={this.props.labels.title}>
-
-                <CustomTable headers={this.props.labels.tableHeaders}>
-                    {
-                        _.map(this.props.followUpOrdersSummary, (order =>
-                                <CustomTableRow
-                                    key={order.id}
-                                    rowIndex={order.id}
-                                    headers={this.props.labels.tableHeaders}
-                                    element={order}
-                                    onEditButton={this.selectOrder.bind(this)}
-                                />
-                        ))
-                    }
-                </CustomTable>
-            </CustomPaper>
+            <CustomPaperTable
+                title={this.props.labels.title}
+                tableHeaders={this.props.labels.tableHeaders}
+                elements={this.props.followUpOrdersSummary}
+                rowIndexKey="id"
+                onEditButton={this.selectOrder.bind(this)}
+                hideEdit={this.props.hideEdit}
+                limit={this.props.limit}
+            />
         );
     }
 }
@@ -46,4 +37,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(OrdersSummary));
+export default withRouter(connect(mapStateToProps)(FollowUpOrdersTable));

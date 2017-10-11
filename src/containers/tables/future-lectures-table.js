@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import CustomPaper from "../../components/custom-components/custom-paper";
-import CustomTable from "../../components/tables/custom-table";
 import {selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getAllLectureTimes, getWaitingPaymentOrders} from "../../store/orders/reducer";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
-import CustomTableRow from "../../components/tables/custom-table-row";
 import {redirect} from "../../util/history-util";
 import {Status} from "../../util/order-status";
+import CustomPaperTable from "../../components/tables/custom-paper-table";
 
 class FutureLecturesTable extends React.Component {
     selectOrder(orderId) {
@@ -24,28 +22,16 @@ class FutureLecturesTable extends React.Component {
             _.filter(this.props.futureLectureTimes, lectureTime => new Date(lectureTime.date) > now),
             x => x.date);
 
-        if(this.props.limit !== -1){
-            futureLectureTimes = _.slice(futureLectureTimes, 0, this.props.limit);
-        }
-
         return (
-            <CustomPaper title={this.props.labels.title}>
-
-                <CustomTable headers={this.props.labels.tableHeaders} hideEdit={this.props.hideEdit}>
-                    {
-                        futureLectureTimes.map((lectureTime, index) =>
-                            <CustomTableRow
-                                key={index}
-                                rowIndex={lectureTime.orderId}
-                                headers={this.props.labels.tableHeaders}
-                                element={lectureTime}
-                                onEditButton={this.selectOrder.bind(this)}
-                                hideEdit={this.props.hideEdit}
-                            />
-                        )
-                    }
-                </CustomTable>
-            </CustomPaper>
+            <CustomPaperTable
+                title={this.props.labels.title}
+                tableHeaders={this.props.labels.tableHeaders}
+                elements={futureLectureTimes}
+                rowIndexKey="orderId"
+                onEditButton={this.selectOrder.bind(this)}
+                hideEdit={this.props.hideEdit}
+                limit={this.props.limit}
+            />
         );
     }
 }
