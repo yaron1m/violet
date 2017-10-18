@@ -23,7 +23,8 @@ export default (state = initialState, action = {}) => {
 }
 
 export function getOfferedLectures(state) {
-    return _.keys(state.lists.offeredLectures).filter((lecture) => state.offeredLectures[lecture]);
+    const offeredLectures = state.lists.offeredLectures;
+    return _.keys(offeredLectures).filter((lecture) => offeredLectures[lecture]);
 }
 
 export function getRejectionReasons(state){
