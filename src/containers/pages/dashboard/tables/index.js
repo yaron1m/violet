@@ -23,28 +23,12 @@ export default class DashboardGraphs extends React.Component {
                             limit={3}
                         />
                     </div>
-                    <div style={styles.divLeft}>
-                        <FutureLecturesSummary
-                            hideEdit={true}
+                    {/*<div style={styles.divLeft}>*/}
+                        {/*<FutureLecturesSummary*/}
+                            {/*hideEdit={true}*/}
 
-                        />
-                    </div>
-                </div>
-                <div style={{display: "flex"}}>
-
-
-                    <div style={styles.divRight}>
-                        <FutureLecturesSummary
-                            hideEdit={true}
-                            limit={3}
-                        />
-                    </div>
-                    <div style={styles.divLeft}>
-                        <FutureLecturesSummary
-                            hideEdit={true}
-
-                        />
-                    </div>
+                        {/*/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
 
