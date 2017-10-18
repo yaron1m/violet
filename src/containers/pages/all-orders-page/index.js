@@ -1,5 +1,5 @@
 import React from 'react';
-import AllOrdersTable from './all-orders-table'
+import AllOrdersTable from '../../tables/all-orders-table'
 
 export default class AllOrdersPage extends React.Component {
     render() {

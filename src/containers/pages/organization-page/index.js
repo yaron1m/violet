@@ -2,7 +2,7 @@ import React from 'react';
 import OrganizationSection from "./organization-section";
 import OrganizationPageTitle from './organiation-page-title';
 import OrganizationActionButtons from './organiation-action-buttons';
-import OrdersSummary from './orders-summary';
+import OrganizationsOrdersTable from '../../tables/organizations-orders-table';
 
 export default class OrganizationPage extends React.Component {
     render() {
@@ -13,7 +13,7 @@ export default class OrganizationPage extends React.Component {
 
                 <OrganizationSection/>
 
-                <OrdersSummary/>
+                <OrganizationsOrdersTable/>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import FutureLecturesTable from './future-lectures-table'
+import FutureLecturesTable from '../../tables/future-lectures-table'
 
 export default class FutureLecturesPage extends React.Component {
     render() {

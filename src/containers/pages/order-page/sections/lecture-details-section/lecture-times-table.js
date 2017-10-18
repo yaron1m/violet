@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import LectureTimeEditDialog from "./lecture-time-edit-dialog";
-import CustomTable from "../../../../../components/custom-components/custom-table";
+import CustomTable from "../../../../../components/tables/custom-table";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import * as Immutable from "seamless-immutable";
-import CustomTableRow from "../../../../../components/custom-components/custom-table-row";
+import CustomTableRow from "../../../../../components/tables/custom-table-row";
 import * as _ from 'lodash';
 import {TableRow, TableRowColumn} from "material-ui/Table";
 import CustomPaper from "../../../../../components/custom-components/custom-paper";

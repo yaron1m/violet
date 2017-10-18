@@ -1,6 +1,6 @@
 import React from 'react';
 import PaymentPageTitle from './payment-page-title';
-import PaymentSummary from './payment-summary';
+import WaitingPaymentTable from '../../tables/waiting-payment-table';
 
 export default class PaymentPage extends React.Component {
     render() {
@@ -8,7 +8,7 @@ export default class PaymentPage extends React.Component {
             <div>
                 <PaymentPageTitle/>
 
-                <PaymentSummary/>
+                <WaitingPaymentTable/>
             </div>
         );
     }
