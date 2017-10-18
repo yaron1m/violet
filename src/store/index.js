@@ -6,7 +6,7 @@ import {combineReducers} from 'redux';
 import appearance from './appearance/reducer';
 import firebase from './firebase/reducer';
 import labels from './labels/reducer';
-import offeredLectures from './offered-lectures/reducer';
+import lists from './lists/reducer';
 import orders from './orders/reducer'
 import organizations from './organizations/reducer'
 import selected from './selected/reducer'
@@ -17,7 +17,7 @@ const combinedReducers = combineReducers({
     appearance,
     firebase,
     labels,
-    offeredLectures,
+    lists,
     orders,
     organizations,
     selected,

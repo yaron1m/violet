@@ -1,7 +1,7 @@
 import * as actionTypes from './action-types';
 import {receiveOrganizations} from '../organizations/actions'
 import {receiveOrders} from '../orders/actions'
-import {receiveOfferedLectures} from "../offered-lectures/actions";
+import {receiveLists} from "../lists/actions";
 import * as firebase from 'firebase';
 import * as reducer from './reducer';
 import {getLabels} from "../labels/reducer";
@@ -100,7 +100,7 @@ export function afterSignedIn(user) {
         });
         dispatch(fetchData('organizations', receiveOrganizations));
         dispatch(fetchData('orders', receiveOrders));
-        dispatch(fetchData('offered-lectures', receiveOfferedLectures));
+        dispatch(fetchData('lists', receiveLists));
     }
 }
 
