@@ -11,7 +11,7 @@ export default class OrganizationPage extends React.Component {
                 <OrganizationPageTitle/>
                 <OrganizationActionButtons/>
 
-                <OrganizationSection/>
+                <OrganizationSection fullDetails={true}/>
 
                 <OrganizationsOrdersTable/>
             </div>

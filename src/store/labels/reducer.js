@@ -182,7 +182,8 @@ export default function labels() {
                     organizationPostalCode: "מיקוד",
                     companyId: "ח.פ / ע.מ",
                     paymentConditions: "תנאי תשלום",
-                    howReachedUs: "איך הגיע אלינו"
+                    howReachedUs: "איך הגיע אלינו",
+                    internalOrderIdRequired: "נדרשת הזמנת רכש",
                 },
                 paymentConditions: {
                     "immediate": "תשלום מיידי",
