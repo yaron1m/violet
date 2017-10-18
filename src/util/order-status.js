@@ -3,7 +3,12 @@ import * as _ from "lodash";
 import {getLabels} from "../store/labels/reducer";
 import {getSelectedOrder} from "../store/selected/reducer";
 
-export const Status = {
+export const terminatingStatuses = {
+    cancelled: "cancelled",
+    rejected: "rejected",
+};
+
+export const progressiveStatuses = {
     contact: "contact",
     offer: "offer",
     order: "order",
@@ -12,15 +17,13 @@ export const Status = {
     executed: "executed",
     waitingPayment: "waitingPayment",
     payed: "payed",
-    cancelled: "cancelled",
-    rejected: "rejected",
 };
 
 export default function calculateOrderStatus(order) {
 
     let status;
 
-    const possibleStatuses = _.values(Status);
+    let possibleStatuses = _.values(progressiveStatuses);
 
     for (let i = 0; i < possibleStatuses.length; i++) {
         if (meetsRequirements(order, possibleStatuses[i])) {
@@ -30,8 +33,13 @@ export default function calculateOrderStatus(order) {
         }
     }
 
-    if (meetsRequirements(order, Status.cancelled))
-        status = Status.cancelled;
+    possibleStatuses = _.values(terminatingStatuses);
+    for (let i = 0; i < possibleStatuses.length; i++) {
+        if (meetsRequirements(order, possibleStatuses[i])) {
+            status = possibleStatuses[i];
+            break;
+        }
+    }
 
     return Immutable.merge(order, {
         status: status
@@ -44,38 +52,38 @@ function meetsRequirements(order, requirement) {
     let now;
 
     switch (requirement) {
-        case Status.contact:
+        case progressiveStatuses.contact:
             return true;
 
-        case Status.offer:
+        case progressiveStatuses.offer:
             return existsAndNotEmpty(order, "lectureTimes") && _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
 
-        case Status.order:
+        case progressiveStatuses.order:
             return Boolean(order.lectureTimes[0].date);
 
-        case Status.approvedOrder:
+        case progressiveStatuses.approvedOrder:
             return existsAndNotEmpty(order, "orderApproved");
 
-        case Status.isExecuting:
+        case progressiveStatuses.isExecuting:
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             now = new Date();
             return _.some(lectureTimesDates, date => new Date(date) < now);
 
-        case Status.executed:
+        case progressiveStatuses.executed:
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             now = new Date();
             return _.every(lectureTimesDates, date => new Date(date) <= now);
 
-        case Status.waitingPayment:
+        case progressiveStatuses.waitingPayment:
             return existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber");
 
-        case Status.payed:
+        case progressiveStatuses.payed:
             return existsAndNotEmpty(order, "receiptNumber");
 
-        case Status.cancelled:
+        case terminatingStatuses.cancelled:
             return order.cancelled;
 
-        case Status.rejected:
+        case terminatingStatuses.rejected:
             return order.rejected;
 
         default:
@@ -96,7 +104,7 @@ export function getSelectedOrderStatus(state) {
 export function getOrderStatus(state, order) {
     const labels = getLabels(state);
     if (_.isEmpty(order))
-        return labels.orderPage.orderStatus[Status.contact];
+        return labels.orderPage.orderStatus[progressiveStatuses.contact];
 
     let status = labels.orderPage.orderStatus[order.status];
     if (order.followUpRequired)

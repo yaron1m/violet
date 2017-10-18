@@ -43,8 +43,12 @@ class LectureDetailsSection extends React.Component {
                     <CustomToggle data={fieldData} name="parking"/>
                     <CustomToggle data={fieldData} name="orderApproved"/>
                     <CustomToggle data={fieldData} name="sameAudience"/>
+                    <CustomCheckbox data={fieldData} name="rejected"/>
                     <CustomCheckbox data={fieldData} name="cancelled"/>
                 </CustomToggleBox>
+
+                {this.props.selectedOrder.rejected ? (
+                    <CustomText data={fieldData} name="rejectionReason" fullWidth={true}/> ) : null}
 
                 {this.props.selectedOrder.cancelled ? (
                     <CustomText data={fieldData} name="cancellationReason" fullWidth={true}/> ) : null}

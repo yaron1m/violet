@@ -49,6 +49,8 @@ export default function labels() {
                     sameAudience: "קהל יעד זהה",
                     cancelled: "הזמנה בוטלה",
                     cancellationReason: "סיבת ביטול",
+                    rejected: "הזמנה לא אושרה",
+                    rejectionReason: "סיבת דחיה",
                 },
                 lectureTimesSection: {
                     sectionName: "הרצאות",
