@@ -38,6 +38,11 @@ const cancelled = {
     organization: [],
     lectureTimes: [],
 };
+const rejected = {
+    order: ["rejectionReason"],
+    organization: [],
+    lectureTimes: [],
+};
 
 const initialState = Immutable({
     contact,
@@ -49,6 +54,7 @@ const initialState = Immutable({
     waitingPayment,
     payed,
     cancelled,
+    rejected,
     showRequiredFields: false,
 });
 

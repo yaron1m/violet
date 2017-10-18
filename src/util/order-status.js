@@ -13,6 +13,7 @@ export const Status = {
     waitingPayment: "waitingPayment",
     payed: "payed",
     cancelled: "cancelled",
+    rejected: "rejected",
 };
 
 export default function calculateOrderStatus(order) {
@@ -74,6 +75,9 @@ function meetsRequirements(order, requirement) {
         case Status.cancelled:
             return order.cancelled;
 
+        case Status.rejected:
+            return order.rejected;
+
         default:
             return false;
     }
@@ -89,13 +93,13 @@ export function getSelectedOrderStatus(state) {
 
 }
 
-export function getOrderStatus(state, order){
+export function getOrderStatus(state, order) {
     const labels = getLabels(state);
     if (_.isEmpty(order))
         return labels.orderPage.orderStatus[Status.contact];
 
     let status = labels.orderPage.orderStatus[order.status];
-    if(order.followUpRequired)
+    if (order.followUpRequired)
         status += labels.orderPage.orderStatus.followUp;
     return status;
 }
