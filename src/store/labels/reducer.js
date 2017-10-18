@@ -49,6 +49,10 @@ export default function labels() {
                     sameAudience: "קהל יעד זהה",
                     cancelled: "הזמנה בוטלה",
                     cancellationReason: "סיבת ביטול",
+                    cancellationDetails: "פרטי הביטול",
+                    rejected: "הזמנה לא אושרה",
+                    rejectionReason: "סיבת דחיה",
+                    rejectionDetails: "פרטי הדחיה",
                 },
                 lectureTimesSection: {
                     sectionName: "הרצאות",
@@ -164,6 +168,7 @@ export default function labels() {
                 cancelled: "בוטל",
                 disapproved: "לא אושר",
                 followUp: " + נדרש המשך טיפול",
+                rejected: "לא אושר",
             },
             actionButtons: {
                 save: "שמור הזמנה",
