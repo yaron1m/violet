@@ -8,6 +8,9 @@ import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
+import {getCancellationReasons, getRejectionReasons} from "../../../../../store/lists/reducer";
+import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import {terminatingStatuses} from "../../../../../util/order-status";
 
 class LectureDetailsSection extends React.Component {
 
@@ -18,6 +21,13 @@ class LectureDetailsSection extends React.Component {
             requiredFields: this.props.requiredFields,
             updateAction: function (key, value) {
                 this.props.dispatch(updateSelectedOrder(key, value));
+
+                // Allow only one terminating status
+                if(value === true && key === terminatingStatuses.rejected)
+                    this.props.dispatch(updateSelectedOrder(terminatingStatuses.cancelled, false));
+                if(value === true && key === terminatingStatuses.cancelled)
+                    this.props.dispatch(updateSelectedOrder(terminatingStatuses.rejected, false));
+
             }.bind(this)
         };
 
@@ -48,10 +58,28 @@ class LectureDetailsSection extends React.Component {
                 </CustomToggleBox>
 
                 {this.props.selectedOrder.rejected ? (
-                    <CustomText data={fieldData} name="rejectionReason" fullWidth={true}/> ) : null}
+                    <div style={{display: "flex"}}>
+                        <CustomAutoComplete
+                            data={fieldData}
+                            name="rejectionReason"
+                            dataSource={this.props.rejectionReasons}
+                            size="XL"
+                        />
+                        <CustomText data={fieldData} name="rejectionDetails" fullWidth={true}/>
+                    </div> ) : null
+                }
 
                 {this.props.selectedOrder.cancelled ? (
-                    <CustomText data={fieldData} name="cancellationReason" fullWidth={true}/> ) : null}
+                    <div style={{display: "flex"}}>
+                        <CustomAutoComplete
+                            data={fieldData}
+                            name="cancellationReason"
+                            dataSource={this.props.cancellationReasons}
+                            size="XL"
+                        />
+                        <CustomText data={fieldData} name="cancellationDetails" fullWidth={true}/>
+
+                    </div>) : null}
 
                 <LectureTimesTable/>
 
@@ -65,6 +93,8 @@ function mapStateToProps(state) {
         labels: getLabels(state).orderPage.lectureDetailsSection,
         selectedOrder: getSelectedOrder(state),
         requiredFields: getRequiredFields(state).order,
+        rejectionReasons: getRejectionReasons(state),
+        cancellationReasons: getCancellationReasons(state),
     };
 }
 

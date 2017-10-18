@@ -25,3 +25,10 @@ export default (state = initialState, action = {}) => {
 export function getOfferedLectures(state) {
     return _.keys(state.lists.offeredLectures).filter((lecture) => state.offeredLectures[lecture]);
 }
+
+export function getRejectionReasons(state){
+    return _.values(state.lists.rejectionReasons)
+}
+export function getCancellationReasons(state){
+    return _.values(state.lists.cancellationReasons)
+}

@@ -65,7 +65,6 @@ export class CustomCheckbox extends React.Component {
             },
             labelStyle: {
                 marginRight: 20,
-                //marginLeft: -10,
                 color: checked ? "red" : "black",
             },
             iconStyle: {
