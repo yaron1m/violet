@@ -259,8 +259,7 @@ export default function labels() {
                     {topic: "נושא"},
                     {status: "סטאטוס הזמנה"},
                     {followUpDate: "תאריך המשך טיפול"},
-                    {followUpDetails: "פרטי המשך טיפול"},
-                    {edit: "עריכה"}]
+                    {followUpDetails: "פרטי המשך טיפול"}]
             },
         },
         paymentPage: {
