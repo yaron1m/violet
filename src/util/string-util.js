@@ -10,6 +10,9 @@ export function isEmptyValue(obj, key){
 }
 
 export function cutIfLong(str, maxLength){
+    if(str === undefined)
+        return undefined;
+
     if(str.length <= maxLength)
         return str;
 
