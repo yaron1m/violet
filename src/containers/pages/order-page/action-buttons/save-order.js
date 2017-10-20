@@ -67,11 +67,11 @@ class SaveOrderButton extends React.Component {
             return false;
         }
 
-        if (_.isEmpty(this.props.missingFields)) {
+        if (_.isEmpty(this.props.orderMissingFields)) {
             return true;
         } else {
             //Not ready for saving - there are missing fields
-            console.log(this.props.missingFields); //TODO remove later
+            console.log(this.props.orderMissingFields); //TODO remove later
             this.props.dispatch(showRequiredFields());
             this.props.dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
             return false;
@@ -163,7 +163,7 @@ function mapStateToProps(state) {
         isSelectedOrder: isSelectedOrder(state),
         nextOrderId: getNextOrderId(state),
         nextOrganizationId: getNextOrganizationId(state),
-        missingFields: getOrderMissingFields(state),
+        orderMissingFields: getOrderMissingFields(state),
     };
 }
 
