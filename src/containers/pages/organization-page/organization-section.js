@@ -9,6 +9,9 @@ import CustomAutoComplete from "../../../components/custom-components/custom-aut
 import {getRequiredFields} from "../../../store/required-fields/reducer";
 import * as _ from "lodash";
 import {getOrganizations} from "../../../store/organizations/reducer";
+import CustomToggle from "../../../components/custom-components/custom-toggle";
+import PropTypes from 'prop-types';
+
 
 class OrganizationSection extends React.Component {
 
@@ -41,6 +44,10 @@ class OrganizationSection extends React.Component {
                 <CustomAutoComplete data={fieldData} name="paymentConditions"
                                     dataSource={_.values(this.props.labels.paymentConditions)}/>
                 <CustomText data={fieldData} name="howReachedUs"/>
+                {this.props.fullDetails ?
+                    <CustomToggle data={fieldData} name="internalOrderIdRequired"/>
+                    : null
+                }
             </CustomPaper>
         );
     }
@@ -52,7 +59,17 @@ function mapStateToProps(state, ownProps) {
         organizations: getOrganizations(state),
         selectedOrganization: getSelectedOrganization(state),
         requiredFields: getRequiredFields(state).organization,
+        fullDetails: ownProps.fullDetails,
     };
 }
+
+OrganizationSection.propTypes = {
+    fullDetails: PropTypes.bool,
+};
+
+OrganizationSection.defaultProps = {
+    fullDetails: false,
+};
+
 
 export default connect(mapStateToProps)(OrganizationSection);

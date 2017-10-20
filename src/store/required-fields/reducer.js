@@ -2,63 +2,11 @@ import {getSelectedOrder, getSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
-
-function arrayMerge(objValue, srcValue) {
-    if (_.isArray(objValue)) {
-        return objValue.concat(srcValue);
-    }
-}
-
-const contact = {
-    order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
-    organization: ["organizationName"],
-    lectureTimes: [],
-};
-
-const offer = _.mergeWith(_.cloneDeep(contact), {
-    lectureTimes: ["topic"],
-}, arrayMerge);
-
-const order = _.mergeWith(_.cloneDeep(offer), {
-    lectureTimes: ["date", "startTime", "endTime"],
-}, arrayMerge);
-
-const approvedOrder = _.mergeWith(_.cloneDeep(order), {
-    order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "amount", "parking", "projector", "soundSystem", "microphone"]
-}, arrayMerge);
-
-
-const isExecuting = _.mergeWith(_.cloneDeep(approvedOrder), {}, arrayMerge);
-const executed = _.mergeWith(_.cloneDeep(isExecuting), {}, arrayMerge);
-const waitingPayment = _.mergeWith(_.cloneDeep(executed), {}, arrayMerge);
-const payed = _.mergeWith(_.cloneDeep(waitingPayment), {}, arrayMerge);
-const cancelled = {
-    order: ["cancellationReason"],
-    organization: [],
-    lectureTimes: [],
-};
-const rejected = {
-    order: ["rejectionReason"],
-    organization: [],
-    lectureTimes: [],
-};
-
-const initialState = Immutable({
-    contact,
-    offer,
-    order,
-    approvedOrder,
-    isExecuting,
-    executed,
-    waitingPayment,
-    payed,
-    cancelled,
-    rejected,
-    showRequiredFields: false,
-});
+import initialState from "./initial-state";
+import {isEmptyValue} from "../../util/string-util";
 
 export default (state = initialState, action = {}) => {
+
     switch (action.type) {
         case actionTypes.SHOW_REQUIRED_FIELDS:
             return Immutable.merge(state, {
@@ -102,16 +50,21 @@ export function getOrderMissingFields(state) {
     const lectureTimes = selectedOrder.lectureTimes;
     const selectedOrganization = getSelectedOrganization(state);
 
-    const orderMissingFields = getMissingFields(selectedOrder, requiredFields.order);
+    let orderMissingFields = getMissingFields(selectedOrder, requiredFields.order);
+    //Remove "internalOrderNumber" if not required by organization
+    if(!selectedOrganization.internalOrderIdRequired)
+        orderMissingFields = _.without(orderMissingFields, "internalOrderNumber");
+
     const organizationMissingFields = getMissingFields(selectedOrganization, requiredFields.organization);
-    //Remove last lecture time - add new line row
+
+    //Remove last lecture time - the "add new" row
     const lectureTimesMissingFields = getLectureTimesMissingFields(_.dropRight(lectureTimes), requiredFields.lectureTimes);
 
     return _.concat(orderMissingFields, organizationMissingFields, lectureTimesMissingFields);
 }
 
 export function getMissingFields(object, required) {
-    const nonEmptyKeys = _.filter(_.keys(object), key => object.hasOwnProperty(key));
+    const nonEmptyKeys = _.filter(_.keys(object), key => !isEmptyValue(object, key));
     return _.difference(required, nonEmptyKeys);
 }
 

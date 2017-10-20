@@ -132,6 +132,7 @@ export default function labels() {
                     taxInvoiceDate: "תאריך חשבונית מס",
                     receiptNumber: "מספר קבלה",
                     actualPayDay: "תאריך תשלום בפועל",
+                    internalOrderNumber: "מספר הזמנת רכש",
                 }
             },
             notesSection: {
@@ -193,7 +194,8 @@ export default function labels() {
                     organizationPostalCode: "מיקוד",
                     companyId: "ח.פ / ע.מ",
                     paymentConditions: "תנאי תשלום",
-                    howReachedUs: "איך הגיע אלינו"
+                    howReachedUs: "איך הגיע אלינו",
+                    internalOrderIdRequired: "נדרשת הזמנת רכש",
                 },
                 paymentConditions: {
                     "immediate": "תשלום מיידי",
