@@ -10,7 +10,7 @@ import * as Immutable from "seamless-immutable";
 import {calculateDuration} from "../../../../../util/time-util";
 import PropTypes from 'prop-types';
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
-import {getOfferedLectures} from "../../../../../store/offered-lectures/reducer";
+import {getOfferedLectures} from "../../../../../store/lists/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 
 class LectureTimeEditDialog extends React.Component {
