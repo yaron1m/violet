@@ -5,7 +5,6 @@ import {getLabels} from "../../store/labels/reducer";
 import {getOrdersByOrganization, getOrdersSummary} from "../../store/orders/reducer";
 import {isSelectedOrganization} from "../../store/selected/reducer";
 import {withRouter} from "react-router";
-import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
 import CustomPaperTable from "../../components/tables/custom-paper-table";
 
@@ -21,6 +20,7 @@ class OrganizationsOrdersTable extends React.Component {
     }
 
     render() {
+        console.log(this.props.ordersSummary);
 
         return (
             <CustomPaperTable
@@ -45,7 +45,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).OrganizationPage.ordersSummary,
         isSelectedOrganization: isSelectedOrganization(state),
-        ordersSummary: _.sortBy(getOrdersSummary(state, getOrdersByOrganization), x => x.date),
+        ordersSummary: getOrdersSummary(state, getOrdersByOrganization).reverse(),
     };
 }
 
