@@ -24,10 +24,25 @@ export default function getActionRequiredOrdersArray(state) {
                         addOrderToResult(state, result, order, issues.notPaidOnTime);
                     return;
 
-                case progressiveStatuses.contact:
-                case progressiveStatuses.offer:
+                case progressiveStatuses.order:
+                    const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
+                    if (new Date(firstLectureTimeDate) < addTwoWeeks(now.toJSON())) {
+                        addOrderToResult(state, result, order, issues.noOrderApproval);
+                        return;
+                    }
+
                     if (addTwoWeeks(order.createdDate) < now)
                         addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
+                    return;
+
+                case progressiveStatuses.offer:
+                case progressiveStatuses.contact:
+                    if (addTwoWeeks(order.createdDate) < now)
+                        addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
+                    return;
+
+                case progressiveStatuses.executed:
+                    addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                     return;
 
                 default:
@@ -36,7 +51,6 @@ export default function getActionRequiredOrdersArray(state) {
         }
     );
 
-    console.log(result);
     return result;
 }
 

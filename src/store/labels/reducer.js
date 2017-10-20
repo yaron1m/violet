@@ -282,6 +282,8 @@ export default function labels() {
                 followUpRequired: "נדרש המשך טיפול",
                 notPaidOnTime: "תאריך לתשלום עבר",
                 twoWeeksPassedFromCreation: "חלפו שבועיים מיצירת ההזמנה ללא התקדמות",
+                executedAndNoInvoice: "לא הונפקה חשבונית",
+                noOrderApproval: "הזמנה לא אושרה, הרצאה עוד שבועיים",
             },
         },
         paymentPage: {
