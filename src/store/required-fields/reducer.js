@@ -52,7 +52,7 @@ export function getOrderMissingFields(state) {
 
     let orderMissingFields = getMissingFields(selectedOrder, requiredFields.order);
     //Remove "internalOrderNumber" if not required by organization
-    if(!selectedOrganization.internalOrderIdRequired)
+    if (!selectedOrganization.internalOrderIdRequired)
         orderMissingFields = _.without(orderMissingFields, "internalOrderNumber");
 
     const organizationMissingFields = getMissingFields(selectedOrganization, requiredFields.organization);
