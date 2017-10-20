@@ -50,9 +50,14 @@ export function getOrderMissingFields(state) {
     const lectureTimes = selectedOrder.lectureTimes;
     const selectedOrganization = getSelectedOrganization(state);
 
-    const orderMissingFields = getMissingFields(selectedOrder, requiredFields.order);
+    let orderMissingFields = getMissingFields(selectedOrder, requiredFields.order);
+    //Remove "internalOrderNumber" if not required by organization
+    if(!selectedOrganization.internalOrderIdRequired)
+        orderMissingFields = _.without(orderMissingFields, "internalOrderNumber");
+
     const organizationMissingFields = getMissingFields(selectedOrganization, requiredFields.organization);
-    //Remove last lecture time - add new line row
+
+    //Remove last lecture time - the "add new" row
     const lectureTimesMissingFields = getLectureTimesMissingFields(_.dropRight(lectureTimes), requiredFields.lectureTimes);
 
     return _.concat(orderMissingFields, organizationMissingFields, lectureTimesMissingFields);

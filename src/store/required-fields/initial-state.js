@@ -17,7 +17,7 @@ const order = mergerRequiredFields(offer, {
 
 const approvedOrder = mergerRequiredFields(order, {
     order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "amount", "parking", "projector", "soundSystem", "microphone"]
+        "financialContactEmail", "amount", "parking", "projector", "soundSystem", "microphone", "internalOrderNumber"]
 });
 
 const isExecuting = mergerRequiredFields(approvedOrder);
