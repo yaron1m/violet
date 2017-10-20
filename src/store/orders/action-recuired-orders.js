@@ -21,9 +21,11 @@ export default function getActionRequiredOrdersArray(state) {
             }
 
             switch (order.status) {
-                case progressiveStatuses.waitingPayment:
-                    if (new Date(order.expectedPayDate) < now)
-                        addOrderToResult(state, result, order, issues.notPaidOnTime);
+
+                case progressiveStatuses.contact:
+                case progressiveStatuses.offer:
+                    if (addTwoWeeks(order.createdDate) < now)
+                        addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
                     return;
 
                 case progressiveStatuses.order:
@@ -37,18 +39,17 @@ export default function getActionRequiredOrdersArray(state) {
                         addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
                     return;
 
-                case progressiveStatuses.offer:
-                case progressiveStatuses.contact:
-                    if (addTwoWeeks(order.createdDate) < now)
-                        addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
-                    return;
-
                 case progressiveStatuses.executed:
                     addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                     return;
 
+                case progressiveStatuses.waitingPayment:
+                    if (new Date(order.expectedPayDate) < now)
+                        addOrderToResult(state, result, order, issues.notPaidOnTime);
+                    return;
+                
                 default:
-                    break;
+                    return;
             }
         }
     );
