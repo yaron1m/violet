@@ -273,6 +273,7 @@ export default function labels() {
             title: "הזמנות דורשות טיפול",
             tableHeaders: [
                 {id: "מספר הזמנה"},
+                {createdDate: "תאריך יצירת הזמנה"},
                 {organizationName: "שם הארגון"},
                 {status: "סטאטוס הזמנה"},
                 {issue: "בעיה"},

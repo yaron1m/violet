@@ -14,7 +14,9 @@ export default function getActionRequiredOrdersArray(state) {
 
     _.forEach(orders, function checkActionRequired(order) {
             if (order.followUpRequired) {
-                addOrderToResult(state, result, order, issues.followUpRequired);
+                if (new Date(order.followUpDate) < now)
+                    addOrderToResult(state, result, order, issues.followUpRequired
+                        + " - " + new Date(order.followUpDate).toLocaleDateString());
                 return;
             }
 
