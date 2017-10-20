@@ -3,8 +3,10 @@ import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
 import initialState from "./initial-state";
+import {isEmptyValue} from "../../util/string-util";
 
 export default (state = initialState, action = {}) => {
+
     switch (action.type) {
         case actionTypes.SHOW_REQUIRED_FIELDS:
             return Immutable.merge(state, {
@@ -57,7 +59,7 @@ export function getOrderMissingFields(state) {
 }
 
 export function getMissingFields(object, required) {
-    const nonEmptyKeys = _.filter(_.keys(object), key => object.hasOwnProperty(key));
+    const nonEmptyKeys = _.filter(_.keys(object), key => !isEmptyValue(object, key));
     return _.difference(required, nonEmptyKeys);
 }
 
