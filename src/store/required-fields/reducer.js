@@ -2,61 +2,7 @@ import {getSelectedOrder, getSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
-
-function arrayMerge(objValue, srcValue) {
-    if (_.isArray(objValue)) {
-        return objValue.concat(srcValue);
-    }
-}
-
-const contact = {
-    order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
-    organization: ["organizationName"],
-    lectureTimes: [],
-};
-
-const offer = _.mergeWith(_.cloneDeep(contact), {
-    lectureTimes: ["topic"],
-}, arrayMerge);
-
-const order = _.mergeWith(_.cloneDeep(offer), {
-    lectureTimes: ["date", "startTime", "endTime"],
-}, arrayMerge);
-
-const approvedOrder = _.mergeWith(_.cloneDeep(order), {
-    order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "amount", "parking", "projector", "soundSystem", "microphone"]
-}, arrayMerge);
-
-
-const isExecuting = _.mergeWith(_.cloneDeep(approvedOrder), {}, arrayMerge);
-const executed = _.mergeWith(_.cloneDeep(isExecuting), {}, arrayMerge);
-const waitingPayment = _.mergeWith(_.cloneDeep(executed), {}, arrayMerge);
-const payed = _.mergeWith(_.cloneDeep(waitingPayment), {}, arrayMerge);
-const cancelled = {
-    order: ["cancellationReason"],
-    organization: [],
-    lectureTimes: [],
-};
-const rejected = {
-    order: ["rejectionReason"],
-    organization: [],
-    lectureTimes: [],
-};
-
-const initialState = Immutable({
-    contact,
-    offer,
-    order,
-    approvedOrder,
-    isExecuting,
-    executed,
-    waitingPayment,
-    payed,
-    cancelled,
-    rejected,
-    showRequiredFields: false,
-});
+import initialState from "./initial-state";
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {
