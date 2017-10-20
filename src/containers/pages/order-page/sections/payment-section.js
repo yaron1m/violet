@@ -94,6 +94,10 @@ class OrganizationSection extends React.Component {
                     <CustomText data={fieldData} name="proformaInvoiceNumber"/>
                     <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size="L"/>
                     <CustomDatePicker data={fieldData} name="expectedPayDate"/>
+
+                    {this.props.selectedOrganization.internalOrderIdRequired ?
+                        <CustomText data={fieldData} name="internalOrderNumber"/>
+                        : null}
                 </div>
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>

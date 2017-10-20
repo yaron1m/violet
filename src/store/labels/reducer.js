@@ -132,6 +132,7 @@ export default function labels() {
                     taxInvoiceDate: "תאריך חשבונית מס",
                     receiptNumber: "מספר קבלה",
                     actualPayDay: "תאריך תשלום בפועל",
+                    internalOrderNumber: "מספר הזמנת רכש",
                 }
             },
             notesSection: {
