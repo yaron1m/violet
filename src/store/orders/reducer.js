@@ -5,6 +5,7 @@ import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatus, progressiveStatuses} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
+import getActionRequiredOrdersArray from './action-recuired-orders'
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
@@ -128,4 +129,8 @@ export function getOrdersSummary(state, getOrdersFunction) {
     }
 
     return _.map(orders, map)
+}
+
+export function getActionRequiredOrders(state){
+    return getActionRequiredOrdersArray(state);
 }

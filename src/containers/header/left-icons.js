@@ -7,8 +7,7 @@ import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import {signOutRequest} from "../../store/firebase/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
-import * as _ from 'lodash';
+import {getActionRequiredOrders, getFollowUpOrdersSummary} from "../../store/orders/reducer";
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import MoreIcon from 'material-ui-icons/MoreVert';
@@ -23,10 +22,7 @@ class LeftIcons extends React.Component {
             },
         };
 
-        const now = new Date();
-        const notificationCount = _.filter(this.props.followUpOrdersSummary,
-            summary => new Date(summary.followUpDate) < now)
-            .length;
+        const notificationCount = this.props.actionRequiredOrders.length;
 
         return (
             <div style={style.container}>
@@ -39,9 +35,9 @@ class LeftIcons extends React.Component {
                     }}
                 >
                     <IconButton
-                        onClick={() => redirect(this.props.history, '/followup')}
+                        onClick={() => redirect(this.props.history, '/actionRequired')}
                     >
-                        <NotificationsIcon  color={white}/>
+                        <NotificationsIcon color={white}/>
                     </IconButton>
                 </Badge>
                 <IconMenu
@@ -66,6 +62,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).header,
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
+        actionRequiredOrders: getActionRequiredOrders(state),
     };
 }
 

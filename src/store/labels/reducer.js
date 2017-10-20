@@ -13,9 +13,9 @@ export default function labels() {
             logOut: "יציאה",
         },
         homePage: {
-            navigationButtons:{
-              newOrder: "הזמנה חדשה",
-              allOrders: "כל ההזמנות",
+            navigationButtons: {
+                newOrder: "הזמנה חדשה",
+                allOrders: "כל ההזמנות",
             },
             infoBoxes: {
                 futureLectures: "הרצאות עתידיות",
@@ -175,9 +175,9 @@ export default function labels() {
                 save: "שמור הזמנה",
                 send: "שלח הצעת מחיר",
                 clear: "נקה טופס",
-                clearDialog:{
+                clearDialog: {
                     title: "ניקוי טופס הזמנה",
-                    content:"האם אתה בטוח שברצונך לנקות את כל השדות בטופס?",
+                    content: "האם אתה בטוח שברצונך לנקות את כל השדות בטופס?",
                     clear: "נקה טופס",
                     cancel: "בטל",
                 }
@@ -258,16 +258,33 @@ export default function labels() {
         },
         followUpPage: {
             title: "המשך טיפול - טבלת מעקב",
-            table: {
-                title: "הזמנות בהן נדרש המשך טיפול",
-                tableHeaders: [
-                    {id: "מספר הזמנה"},
-                    {organizationName: "שם הארגון"},
-                    {lectureDate: "תאריך הרצאה"},
-                    {topic: "נושא"},
-                    {status: "סטאטוס הזמנה"},
-                    {followUpDate: "תאריך המשך טיפול"},
-                    {followUpDetails: "פרטי המשך טיפול"}]
+            tableTitle: "הזמנות בהן נדרש המשך טיפול",
+            tableHeaders: [
+                {id: "מספר הזמנה"},
+                {organizationName: "שם הארגון"},
+                {lectureDate: "תאריך הרצאה"},
+                {topic: "נושא"},
+                {status: "סטאטוס הזמנה"},
+                {followUpDate: "תאריך המשך טיפול"},
+                {followUpDetails: "פרטי המשך טיפול"}
+            ]
+        },
+        actionRequiredPage: {
+            title: "הזמנות דורשות טיפול",
+            tableHeaders: [
+                {id: "מספר הזמנה"},
+                {createdDate: "תאריך יצירת הזמנה"},
+                {organizationName: "שם הארגון"},
+                {status: "סטאטוס הזמנה"},
+                {issue: "בעיה"},
+                {edit: "עריכה"}
+            ],
+            issues: {
+                followUpRequired: "נדרש המשך טיפול",
+                notPaidOnTime: "תאריך לתשלום עבר",
+                twoWeeksPassedFromCreation: "חלפו שבועיים מיצירת ההזמנה ללא התקדמות",
+                executedAndNoInvoice: "לא הונפקה חשבונית",
+                noOrderApproval: "הזמנה לא אושרה, הרצאה עוד שבועיים",
             },
         },
         paymentPage: {
