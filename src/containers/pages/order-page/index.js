@@ -7,6 +7,7 @@ import ContactsSection from "./sections/contacts-section/index";
 import FollowUpSection from "./sections/follow-up-section";
 import PaymentSection from "./sections/payment-section";
 import NotesSection from "./sections/notes-section";
+import OrderPageFooter from './order-page-footer'
 
 export default class OrderForm extends React.Component {
 
@@ -28,6 +29,8 @@ export default class OrderForm extends React.Component {
                 <PaymentSection/>
 
                 <NotesSection/>
+
+                <OrderPageFooter/>
             </div>
         );
     }

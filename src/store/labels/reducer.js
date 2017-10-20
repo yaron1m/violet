@@ -29,6 +29,10 @@ export default function labels() {
             orderNumberTitle: " - הזמנה מספר ",
             orderStatusTitle: "סטאטוס: ",
             newOrderTitle: " - הזמנה חדשה",
+            footer:{
+                createdDate: "תאריך יצירה - ",
+                changedDate: "תאריך שינוי - ",
+            },
             lectureDetailsSection: {
                 sectionName: "פרטי ההרצאה",
                 titles: {
