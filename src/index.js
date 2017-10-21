@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from "react-tap-event-plugin";
-import './index.css';
 import Routes from "./routes";
 import Store from './store'
 import {Provider} from 'react-redux';
