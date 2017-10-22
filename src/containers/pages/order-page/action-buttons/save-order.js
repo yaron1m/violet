@@ -155,7 +155,7 @@ class SaveOrderButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage,
+        labels: getLabels(state).pages.orderPage,
         organizations: getOrganizations(state),
         selectedOrganization: getSelectedOrganization(state),
         isSelectedOrganization: isSelectedOrganization(state),

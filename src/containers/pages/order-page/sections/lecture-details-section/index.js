@@ -90,7 +90,7 @@ class LectureDetailsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.lectureDetailsSection,
+        labels: getLabels(state).pages.orderPage.sections.lectureDetails,
         selectedOrder: getSelectedOrder(state),
         requiredFields: getRequiredFields(state).order,
         rejectionReasons: getRejectionReasons(state),

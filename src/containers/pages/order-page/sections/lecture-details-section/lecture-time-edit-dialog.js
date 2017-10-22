@@ -73,7 +73,7 @@ class LectureTimeEditDialog extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection.editDialog,
+        labels: getLabels(state).pages.orderPage.sections.lectureTimes.editDialog,
         selectedOrder: getSelectedOrder(state),
         offeredLectures: getOfferedLectures(state),
         requiredFields: getRequiredFields(state).lectureTimes,

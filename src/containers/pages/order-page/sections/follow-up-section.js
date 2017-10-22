@@ -63,7 +63,7 @@ class FollowUpSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.followUpSection,
+        labels: getLabels(state).pages.orderPage.sections.followUp,
         selectedOrder: getSelectedOrder(state)
     };
 }

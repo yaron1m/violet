@@ -99,7 +99,7 @@ class LectureTimesTable extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.lectureDetailsSection.lectureTimesSection,
+        labels: getLabels(state).pages.orderPage.sections.lectureTimes,
         selectedOrder: getSelectedOrder(state),
         requiredFields: getRequiredFields(state).lectureTimes,
     };

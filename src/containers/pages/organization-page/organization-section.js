@@ -55,7 +55,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: getLabels(state).OrganizationPage.organizationSection,
+        labels: getLabels(state).pages.orderPage.sections.organization,
         organizations: getOrganizations(state),
         selectedOrganization: getSelectedOrganization(state),
         requiredFields: getRequiredFields(state).organization,

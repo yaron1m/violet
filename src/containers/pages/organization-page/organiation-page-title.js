@@ -15,7 +15,7 @@ class OrganizationPageTitle extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).OrganizationPage,
+        labels: getLabels(state).pages.organizationPage,
     };
 }
 

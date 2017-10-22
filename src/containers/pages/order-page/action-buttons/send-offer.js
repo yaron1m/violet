@@ -62,7 +62,7 @@ class SendOfferButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.actionButtons,
+        labels: getLabels(state).pages.orderPage.actionButtons,
         selectedOrganization: getSelectedOrganization(state),
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),

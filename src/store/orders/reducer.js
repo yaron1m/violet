@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatus, progressiveStatuses} from "../../util/order-status";
+import {getOrderStatusLabel, progressiveStatuses} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
 import getActionRequiredOrdersArray from './action-recuired-orders'
 
@@ -56,7 +56,7 @@ export function getFollowUpOrdersSummary(state) {
     function map(order) {
         const result = {
             id: order.id,
-            status: getOrderStatus(state, order),
+            status: getOrderStatusLabel(state, order),
         };
         if (!_.isEmpty(order.lectureTimes)) {
             result.lectureDate = order.lectureTimes[0].date;
@@ -95,7 +95,7 @@ export function getWaitingPaymentOrders(state) {
     function map(order) {
         const result = {
             id: order.id,
-            status: getOrderStatus(state, order),
+            status: getOrderStatusLabel(state, order),
         };
         if (!_.isEmpty(order.lectureTimes)) {
             result.lectureDate = order.lectureTimes[0].date;
@@ -117,7 +117,7 @@ export function getOrdersSummary(state, getOrdersFunction) {
     function map(order) {
         const result = {
             id: order.id,
-            status: getOrderStatus(state, order),
+            status: getOrderStatusLabel(state, order),
             organizationName: getOrganizationById(state, order.organizationId).organizationName
         };
         if (!_.isEmpty(order.lectureTimes)) {

@@ -45,7 +45,7 @@ class NavigationButtons extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).homePage.navigationButtons,
+        labels: getLabels(state).pages.dashboard.navigationButtons,
     };
 }
 

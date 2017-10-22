@@ -1,6 +1,6 @@
 import {getOrders} from "./reducer";
 import _ from 'lodash';
-import {getOrderStatus, progressiveStatuses} from "../../util/order-status";
+import {getOrderStatusLabel, progressiveStatuses} from "../../util/order-status";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
 
@@ -62,7 +62,7 @@ function addOrderToResult(state, result, order, issue) {
         ...order,
         issue,
         organizationName: getOrganizationById(state, order.organizationId).organizationName,
-        status: getOrderStatus(state, order),
+        status: getOrderStatusLabel(state, order),
     });
 }
 
