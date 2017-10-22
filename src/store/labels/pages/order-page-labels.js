@@ -32,6 +32,15 @@ const contactsSectionLabels = {
         contactEmail: "דואר אלקטרוני",
         contactFax: "פקס",
         contactJob: "תפקיד",
+
+        financialContactFirstName: "שם פרטי",
+        financialContactLastName: "שם משפחה",
+        financialContactPhone1: "טלפון",
+        financialContactPhone2: "טלפון נוסף",
+        financialContactPhoneExtension: "שלוחה",
+        financialContactEmail: "דואר אלקטרוני",
+        financialContactFax: "פקס",
+        financialContactJob: "תפקיד",
     },
     importContactsDialog: {
         buttonTooltip: "יבא איש קשר",
@@ -118,14 +127,6 @@ const paymentSectionLabels = {
         receiptNumber: "מספר קבלה",
         actualPayDay: "תאריך תשלום בפועל",
         internalOrderNumber: "מספר הזמנת רכש",
-        financialContactFirstName: "שם פרטי",
-        financialContactLastName: "שם משפחה",
-        financialContactPhone1: "טלפון",
-        financialContactPhone2: "טלפון נוסף",
-        financialContactPhoneExtension: "שלוחה",
-        financialContactEmail: "דואר אלקטרוני",
-        financialContactFax: "פקס",
-        financialContactJob: "תפקיד",
     }
 };
 
