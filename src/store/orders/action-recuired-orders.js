@@ -6,7 +6,7 @@ import {getLabels} from "../labels/reducer";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
-    const issues = getLabels(state).actionRequiredPage.issues;
+    const issues = getLabels(state).pages.actionRequiredPage.issues;
 
     const now = new Date();
 

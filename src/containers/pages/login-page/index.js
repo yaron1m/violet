@@ -138,7 +138,7 @@ class LoginPage extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).loginPage,
+        labels: getLabels(state).pages.loginPage,
     };
 }
 
