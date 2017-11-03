@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import * as _ from "lodash";
+import Sizes from "../../util/consts/sizes";
 
 export default class CustomText extends React.Component {
     constructor(props) {
@@ -14,19 +15,19 @@ export default class CustomText extends React.Component {
         };
 
         switch (this.props.size) {
-            case "S":
+            case Sizes.S:
                 style.width = 50;
                 break;
-            case "M":
+            case Sizes.M:
                 style.width = 100;
                 break;
-            case "L":
+            case Sizes.L:
             default:
                 if (this.props.fullWidth)
                     break;
                 style.width = 150;
                 break;
-            case "XL":
+            case Sizes.XL:
                 style.width = 200;
                 break;
         }

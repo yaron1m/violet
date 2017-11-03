@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
+import Sizes from "../../util/consts/sizes";
 
 export default class CustomDatePicker extends React.Component {
     constructor(props) {
@@ -43,10 +44,10 @@ export default class CustomDatePicker extends React.Component {
         };
 
         switch (this.props.size) {
-            case "S":
+            case Sizes.S:
                 style.width = 50;
                 break;
-            case "M":
+            case Sizes.M:
                 style.width = 100;
                 break;
 

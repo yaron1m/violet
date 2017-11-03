@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import * as _ from "lodash";
+import Sizes from "../../util/consts/sizes";
 
 export default class CustomAutoComplete extends React.Component {
     constructor(props) {
@@ -43,19 +44,19 @@ export default class CustomAutoComplete extends React.Component {
         };
 
         switch (this.props.size) {
-            case "S":
+            case Sizes.S:
                 style.autoComplete.width = 50;
                 break;
-            case "M":
+            case Sizes.M:
                 style.autoComplete.width = 100;
                 break;
-            case "L":
+            case Sizes.L:
             default:
                 if (this.props.fullWidth)
                     break;
                 style.autoComplete.width = 150;
                 break;
-            case "XL":
+            case Sizes.XL:
                 style.autoComplete.width = 250;
                 break;
         }
