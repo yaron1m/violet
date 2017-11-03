@@ -1,7 +1,7 @@
 import {orderPageLabels} from "./order-page-labels";
 import {organizationPageLabels} from "./organiztion-page-labels";
 
-const dashboard = {
+const dashboardLabels = {
     navigationButtons: {
         newOrder: "הזמנה חדשה",
         allOrders: "כל ההזמנות",
@@ -15,7 +15,7 @@ const dashboard = {
     }
 };
 
-const loginPage = {
+const loginPageLabels = {
     title: "כניסת משתמשים",
     email: "דואר אלקטרוני:",
     password: "סיסמה:",
@@ -28,13 +28,13 @@ const loginPage = {
     }
 };
 
-const followUpPage = {
+const followUpPageLabels = {
     title: "המשך טיפול - טבלת מעקב",
     tableTitle: "הזמנות בהן נדרש המשך טיפול",
     tableHeaders: [
         {id: "מספר הזמנה"},
         {organizationName: "שם הארגון"},
-        {lectureDate: "תאריך הרצאה"},
+        {createdDate: "תאריך יצירה"},
         {topic: "נושא"},
         {status: "סטאטוס הזמנה"},
         {followUpDate: "תאריך המשך טיפול"},
@@ -42,7 +42,7 @@ const followUpPage = {
     ]
 };
 
-const actionRequiredPage = {
+const actionRequiredPageLabels = {
     title: "הזמנות דורשות טיפול",
     tableHeaders: [
         {id: "מספר הזמנה"},
@@ -61,7 +61,7 @@ const actionRequiredPage = {
     },
 };
 
-const paymentPage = {
+const paymentPageLabels = {
     title: "מעקב תשלומים",
     table: {
         title: "הזמנות ממתינות לתשלום",
@@ -76,7 +76,7 @@ const paymentPage = {
     },
 };
 
-const futureLecturesPage = {
+const futureLecturesPageLabels = {
     title: "הרצאות עתידיות",
     table: {
         title: "הרצאות עתידיות",
@@ -89,7 +89,7 @@ const futureLecturesPage = {
     },
 };
 
-const allOrdersPage = {
+const allOrdersPageLabels = {
     table: {
         title: "כל ההזמנות",
         tableHeaders: [
@@ -103,13 +103,13 @@ const allOrdersPage = {
 };
 
 export const pages = {
-    dashboard,
-    loginPage,
-    followUpPage,
-    actionRequiredPage,
-    paymentPage,
-    futureLecturesPage,
-    allOrdersPage,
+    dashboard: dashboardLabels,
+    loginPage: loginPageLabels,
+    followUpPage: followUpPageLabels,
+    actionRequiredPage: actionRequiredPageLabels,
+    paymentPage: paymentPageLabels,
+    futureLecturesPage: futureLecturesPageLabels,
+    allOrdersPage: allOrdersPageLabels,
     orderPage: orderPageLabels,
     organizationPage: organizationPageLabels,
 };

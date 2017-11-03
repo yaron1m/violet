@@ -196,7 +196,7 @@ export const orderPageLabels = {
         payed: "שולם",
         cancelled: "בוטל",
         disapproved: "לא אושר",
-        followUp: " + נדרש המשך טיפול",
+        followUp: " + המשך טיפול",
         rejected: "לא אושר",
     },
     footer: {
