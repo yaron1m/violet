@@ -23,9 +23,10 @@
     "seamless-immutable": "^7.1.2"
   },
   "devDependencies": {
+    "firebase-server": "^0.11.0",
     "jest": "^20.0.4",
-    "redux-testkit": "^1.0.6",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-testkit": "^1.0.6"
   },
   "scripts": {
     "start": "react-scripts start",
