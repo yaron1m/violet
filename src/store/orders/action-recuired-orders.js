@@ -1,6 +1,6 @@
 import {getOrders} from "./reducer";
 import _ from 'lodash';
-import {getOrderStatusLabel, progressiveStatuses} from "../../util/order-status";
+import {getOrderStatusLabel, Status} from "../../util/order-status";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
 
@@ -22,13 +22,13 @@ export default function getActionRequiredOrdersArray(state) {
 
             switch (order.status) {
 
-                case progressiveStatuses.contact:
-                case progressiveStatuses.offer:
+                case Status.contact:
+                case Status.offer:
                     if (addTwoWeeks(order.createdDate) < now)
                         addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
                     return;
 
-                case progressiveStatuses.order:
+                case Status.order:
                     const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
                     if (new Date(firstLectureTimeDate) < addTwoWeeks(now.toJSON())) {
                         addOrderToResult(state, result, order, issues.noOrderApproval);
@@ -39,11 +39,11 @@ export default function getActionRequiredOrdersArray(state) {
                         addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
                     return;
 
-                case progressiveStatuses.executed:
+                case Status.executed:
                     addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                     return;
 
-                case progressiveStatuses.waitingPayment:
+                case Status.waitingPayment:
                     if (new Date(order.expectedPayDate) < now)
                         addOrderToResult(state, result, order, issues.notPaidOnTime);
                     return;

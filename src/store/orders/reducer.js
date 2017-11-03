@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatusLabel, progressiveStatuses} from "../../util/order-status";
+import {getOrderStatusLabel, Status} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
 import getActionRequiredOrdersArray from './action-recuired-orders'
 
@@ -59,12 +59,12 @@ export function getFollowUpOrdersSummary(state) {
             status: getOrderStatusLabel(state, order),
         };
         if (!_.isEmpty(order.lectureTimes)) {
-            result.lectureDate = order.lectureTimes[0].date;
-            result.topic = order.lectureTimes[0].topic;
+            result.createdDate = order.createdDate;
+            result.topic = cutIfLong(order.lectureTimes[0].topic, 15);
             result.followUpDate = order.followUpDate;
             result.followUpDetails = cutIfLong(order.followUpDetails, 30);
             result.followUpDate = order.followUpDate;
-            result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
+            result.organizationName = cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 20);
         }
 
         return result;
@@ -90,7 +90,7 @@ export function getAllLectureTimes(state, status = null) {
 }
 
 export function getWaitingPaymentOrders(state) {
-    const orders = getOrders(state, progressiveStatuses.waitingPayment);
+    const orders = getOrders(state, Status.waitingPayment);
 
     function map(order) {
         const result = {
@@ -131,6 +131,6 @@ export function getOrdersSummary(state, getOrdersFunction) {
     return _.map(orders, map)
 }
 
-export function getActionRequiredOrders(state){
+export function getActionRequiredOrders(state) {
     return getActionRequiredOrdersArray(state);
 }
