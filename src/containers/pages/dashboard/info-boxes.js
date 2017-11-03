@@ -119,7 +119,7 @@ class InfoBoxes extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).homePage.infoBoxes,
+        labels: getLabels(state).pages.dashboard.infoBoxes,
         orders: getOrders(state),
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
         futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),

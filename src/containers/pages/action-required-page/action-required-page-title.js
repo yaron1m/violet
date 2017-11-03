@@ -12,10 +12,9 @@ class ActionRequiredPageTitle extends React.Component {
     }
 }
 
-
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).actionRequiredPage,
+        labels: getLabels(state).pages.actionRequiredPage,
     };
 }
 

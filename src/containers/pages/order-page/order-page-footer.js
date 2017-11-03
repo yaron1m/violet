@@ -16,10 +16,10 @@ class OrderPageFooter extends React.Component {
 
         return (
             <div style={style}>
-                {this.props.labels.footer.createdDate +
+                {this.props.labels.createdDate +
                 new Date(this.props.selectedOrder.createdDate).toLocaleDateString()
                 + "  ;  " +
-                this.props.labels.footer.changedDate +
+                this.props.labels.changedDate +
                 new Date(this.props.selectedOrder.changedDate).toLocaleDateString()}
             </div>
         );
@@ -28,7 +28,7 @@ class OrderPageFooter extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage,
+        labels: getLabels(state).pages.orderPage.footer,
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
     };

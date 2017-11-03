@@ -19,7 +19,7 @@ class ContactsSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.contactsSection,
+        labels: getLabels(state).pages.orderPage.sections.contacts,
         selectedOrder: getSelectedOrder(state),
         isSelectedOrganization: isSelectedOrganization(state),
         requiredFields: getRequiredFields(state).order,

@@ -14,8 +14,7 @@ class ClearFormButton extends React.Component {
         this.state = {
             dialogOpen: false,
         }
-    }
-
+    };
 
     render() {
         const dialogText = this.props.labels.clearDialog;
@@ -64,7 +63,7 @@ class ClearFormButton extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.actionButtons,
+        labels: getLabels(state).pages.orderPage.actionButtons,
     };
 }
 

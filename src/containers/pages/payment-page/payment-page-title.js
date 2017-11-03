@@ -15,7 +15,7 @@ class PaymentPageTitle extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).paymentPage,
+        labels: getLabels(state).pages.paymentPage,
     };
 }
 

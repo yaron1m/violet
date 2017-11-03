@@ -109,7 +109,7 @@ class ImportContactsDialog extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.contactsSection.importContactsDialog,
+        labels: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog,
         selectedOrganization: getSelectedOrganization(state),
         OrderOfSelectedOrganization: getOrdersByOrganization(state),
         requiredFields: getRequiredFields(state).order,

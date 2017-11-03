@@ -8,7 +8,7 @@ import {getSelectedOrderStatus} from "../../../util/order-status";
 class OrderPageTitle extends React.Component {
 
     render() {
-        let pageTitle = this.props.labels.title;
+        let pageTitle = this.props.labels.formName;
 
         if (this.props.isSelectedOrder) {
             pageTitle += this.props.labels.orderNumberTitle + this.props.selectedOrder.id;
@@ -35,7 +35,7 @@ class OrderPageTitle extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage,
+        labels: getLabels(state).pages.orderPage.title,
         selectedOrder: getSelectedOrder(state),
         isSelectedOrder: isSelectedOrder(state),
         status: getSelectedOrderStatus(state),

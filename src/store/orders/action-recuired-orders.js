@@ -1,12 +1,12 @@
 import {getOrders} from "./reducer";
 import _ from 'lodash';
-import {getOrderStatus, Status} from "../../util/order-status";
+import {getOrderStatusLabel, Status} from "../../util/order-status";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
-    const issues = getLabels(state).actionRequiredPage.issues;
+    const issues = getLabels(state).pages.actionRequiredPage.issues;
 
     const now = new Date();
 
@@ -47,7 +47,7 @@ export default function getActionRequiredOrdersArray(state) {
                     if (new Date(order.expectedPayDate) < now)
                         addOrderToResult(state, result, order, issues.notPaidOnTime);
                     return;
-                
+
                 default:
                     return;
             }
@@ -62,7 +62,7 @@ function addOrderToResult(state, result, order, issue) {
         ...order,
         issue,
         organizationName: getOrganizationById(state, order.organizationId).organizationName,
-        status: getOrderStatus(state, order),
+        status: getOrderStatusLabel(state, order),
     });
 }
 

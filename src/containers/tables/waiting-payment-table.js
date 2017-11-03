@@ -32,7 +32,7 @@ class WaitingPaymentTable extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).paymentPage.table,
+        labels: getLabels(state).pages.paymentPage.table,
         waitingPaymentOrders: getWaitingPaymentOrders(state),
     };
 }

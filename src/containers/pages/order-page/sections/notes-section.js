@@ -27,7 +27,7 @@ class NotesSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).orderPage.notesSection,
+        labels: getLabels(state).pages.orderPage.sections.notes,
         selected: state.selected,
     };
 }
