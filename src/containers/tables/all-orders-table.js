@@ -33,7 +33,7 @@ class AllOrdersTable extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        labels: getLabels(state).allOrdersPage.table,
+        labels: getLabels(state).pages.allOrdersPage.table,
         orders: _.reverse(getOrdersSummary(state, getOrders)),
         ...ownProps,
     };

@@ -47,7 +47,7 @@ export default function getActionRequiredOrdersArray(state) {
                     if (new Date(order.expectedPayDate) < now)
                         addOrderToResult(state, result, order, issues.notPaidOnTime);
                     return;
-                
+
                 default:
                     return;
             }

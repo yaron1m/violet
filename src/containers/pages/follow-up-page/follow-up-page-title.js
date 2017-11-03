@@ -15,7 +15,7 @@ class FollowUpPageTitle extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).followUpPage,
+        labels: getLabels(state).pages.followUpPage,
     };
 }
 

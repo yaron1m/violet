@@ -20,8 +20,6 @@ class OrganizationsOrdersTable extends React.Component {
     }
 
     render() {
-        console.log(this.props.ordersSummary);
-
         return (
             <CustomPaperTable
                 title={this.props.labels.title}
@@ -43,7 +41,7 @@ class OrganizationsOrdersTable extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).OrganizationPage.ordersSummary,
+        labels: getLabels(state).pages.organizationPage.ordersSummarySection,
         isSelectedOrganization: isSelectedOrganization(state),
         ordersSummary: getOrdersSummary(state, getOrdersByOrganization).reverse(),
     };

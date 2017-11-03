@@ -32,7 +32,7 @@ class FollowUpOrdersTable extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).followUpPage,
+        labels: getLabels(state).pages.followUpPage,
         followUpOrdersSummary: _.sortBy(getFollowUpOrdersSummary(state), x => x.followUpDate),
     };
 }

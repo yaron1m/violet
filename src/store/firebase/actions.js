@@ -67,19 +67,19 @@ export function signInRequest(email, password, errorCallback) {
         function signInFailure(error) {
             switch (error.code) {
                 case 'auth/invalid-email':
-                    errorCallback(getLabels(getState()).loginPage.errors.invalidEmail);
+                    errorCallback(getLabels(getState()).pages.loginPage.errors.invalidEmail);
                     return;
 
                 case 'auth/wrong-password':
-                    errorCallback(getLabels(getState()).loginPage.errors.wrongPassword);
+                    errorCallback(getLabels(getState()).pages.loginPage.errors.wrongPassword);
                     return;
 
                 case 'auth/user-disabled':
-                    errorCallback(getLabels(getState()).loginPage.errors.userDisabled);
+                    errorCallback(getLabels(getState()).pages.loginPage.errors.userDisabled);
                     return;
 
                 case 'auth/user-not-found':
-                    errorCallback(getLabels(getState()).loginPage.errors.userNotFound);
+                    errorCallback(getLabels(getState()).pages.loginPage.errors.userNotFound);
                     return;
 
                 default:
