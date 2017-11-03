@@ -79,7 +79,7 @@ const lectureDetailsSectionLabels = {
         cancelled: "הזמנה בוטלה",
         cancellationReason: "סיבת ביטול",
         cancellationDetails: "פרטי הביטול",
-        rejected: "הזמנה לא אושרה",
+        rejected: "הזמנה לא יצאה לפועל",
         rejectionReason: "סיבת דחיה",
         rejectionDetails: "פרטי הדחיה",
     }
