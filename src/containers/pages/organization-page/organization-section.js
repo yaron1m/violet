@@ -11,6 +11,7 @@ import * as _ from "lodash";
 import {getOrganizations} from "../../../store/organizations/reducer";
 import CustomToggle from "../../../components/custom-components/custom-toggle";
 import PropTypes from 'prop-types';
+import Sizes from "../../../util/consts/sizes";
 
 
 class OrganizationSection extends React.Component {
@@ -35,12 +36,12 @@ class OrganizationSection extends React.Component {
                     name="organizationName"
                     dataSource={organizationNamesObjects}
                     onNewRequest={chosenRequest => this.props.dispatch(selectOrganization(chosenRequest.value))}
-                    size="XL"
+                    size={Sizes.XL}
                 />
                 <CustomText data={fieldData} name="organizationAddress"/>
-                <CustomText data={fieldData} name="organizationCity" size="M"/>
-                <CustomText data={fieldData} name="organizationPostalCode" size="M"/>
-                <CustomText data={fieldData} name="companyId" size="M"/>
+                <CustomText data={fieldData} name="organizationCity" size={Sizes.M}/>
+                <CustomText data={fieldData} name="organizationPostalCode" size={Sizes.M}/>
+                <CustomText data={fieldData} name="companyId" size={Sizes.M}/>
                 <CustomAutoComplete data={fieldData} name="paymentConditions"
                                     dataSource={_.values(this.props.labels.paymentConditions)}/>
                 <CustomText data={fieldData} name="howReachedUs"/>

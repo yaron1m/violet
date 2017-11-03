@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import * as _ from "lodash";
+import Sizes from "../../util/consts/sizes";
 
 export default class CustomAutoComplete extends React.Component {
     constructor(props) {
+        validateProps(props);
+
         super(props);
         this.state = {
             name: this.props.name,
@@ -43,19 +46,19 @@ export default class CustomAutoComplete extends React.Component {
         };
 
         switch (this.props.size) {
-            case "S":
+            case Sizes.S:
                 style.autoComplete.width = 50;
                 break;
-            case "M":
+            case Sizes.M:
                 style.autoComplete.width = 100;
                 break;
-            case "L":
+            case Sizes.L:
             default:
                 if (this.props.fullWidth)
                     break;
                 style.autoComplete.width = 150;
                 break;
-            case "XL":
+            case Sizes.XL:
                 style.autoComplete.width = 250;
                 break;
         }
@@ -90,6 +93,7 @@ export default class CustomAutoComplete extends React.Component {
 CustomAutoComplete.propTypes = {
     name: PropTypes.string.isRequired,
     data: PropTypes.object.isRequired,
+    values: PropTypes.object,
     dataSource: PropTypes.array.isRequired,
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -100,3 +104,11 @@ CustomAutoComplete.defaultProps = {
     disabled: false,
     fullWidth: false,
 };
+
+function validateProps(props) {
+    if (!_.has(props.data.titles, props.name))
+        throw Error(`AutoComplete field "${props.name}" doesn't have a matching title in data.titles`);
+
+    if (!_.isFunction(props.data.updateAction))
+        throw Error(`AutoComplete field "${props.name}" - data.updateAction must be a function`);
+}

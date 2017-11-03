@@ -7,7 +7,7 @@ import {getAllLectureTimes, getWaitingPaymentOrders} from "../../store/orders/re
 import {withRouter} from "react-router";
 import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
-import {Status} from "../../util/order-status";
+import Status from "../../util/consts/status";
 import CustomPaperTable from "../../components/tables/custom-paper-table";
 
 class FutureLecturesTable extends React.Component {

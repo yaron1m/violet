@@ -2,9 +2,11 @@ import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import Checkbox from 'material-ui/Checkbox';
 import * as _ from "lodash";
+import PropTypes from 'prop-types';
 
 export default class CustomToggle extends React.Component {
     constructor(props) {
+        validateProps(props);
         super(props);
         this.state = {
             selected: this.props.data.values[this.props.name] !== undefined
@@ -52,6 +54,21 @@ export default class CustomToggle extends React.Component {
         );
     }
 }
+
+CustomToggle.propTypes = {
+    name: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired,
+};
+
+function validateProps(props) {
+    if (!_.has(props.data.titles, props.name))
+        throw Error(`Toggle field "${props.name}" doesn't have a matching title in data.titles`);
+
+    if (!_.isFunction(props.data.updateAction))
+        throw Error(`Toggle field "${props.name}" - data.updateAction must be a function`);
+}
+
+
 
 export class CustomCheckbox extends React.Component {
 

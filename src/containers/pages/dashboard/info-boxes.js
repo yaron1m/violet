@@ -10,7 +10,7 @@ import {
 } from "../../../store/orders/reducer";
 import * as _ from 'lodash';
 import {isFetching} from "../../../store/firebase/reducer";
-import {Status} from "../../../util/order-status";
+import Status from "../../../util/consts/status";
 import CheckBoxIcon from 'material-ui-icons/CheckCircle';
 import PaymentIcon from 'material-ui-icons/AttachMoney';
 import NotificationsIcon from 'material-ui-icons/Notifications';
