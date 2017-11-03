@@ -10,7 +10,7 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {getCancellationReasons, getRejectionReasons} from "../../../../../store/lists/reducer";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
-import {terminatingStatuses} from "../../../../../util/order-status";
+import {Status} from "../../../../../util/order-status";
 
 class LectureDetailsSection extends React.Component {
 
@@ -23,10 +23,10 @@ class LectureDetailsSection extends React.Component {
                 this.props.dispatch(updateSelectedOrder(key, value));
 
                 // Allow only one terminating status
-                if(value === true && key === terminatingStatuses.rejected)
-                    this.props.dispatch(updateSelectedOrder(terminatingStatuses.cancelled, false));
-                if(value === true && key === terminatingStatuses.cancelled)
-                    this.props.dispatch(updateSelectedOrder(terminatingStatuses.rejected, false));
+                if (value === true && key === Status.rejected)
+                    this.props.dispatch(updateSelectedOrder(Status.cancelled, false));
+                if (value === true && key === Status.cancelled)
+                    this.props.dispatch(updateSelectedOrder(Status.rejected, false));
 
             }.bind(this)
         };
@@ -54,7 +54,8 @@ class LectureDetailsSection extends React.Component {
                     <CustomToggle data={fieldData} name="orderApproved"/>
                     <CustomToggle data={fieldData} name="sameAudience"/>
                     <CustomCheckbox data={fieldData} name="rejected"/>
-                    <CustomCheckbox data={fieldData} name="cancelled"/>
+                    {this.props.selectedOrder.status === Status.approvedOrder || this.props.selectedOrder.status === Status.isExecuting?
+                        <CustomCheckbox data={fieldData} name="cancelled"/> : null}
                 </CustomToggleBox>
 
                 {this.props.selectedOrder.rejected ? (

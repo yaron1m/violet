@@ -10,7 +10,7 @@ import {
 } from "../../../store/orders/reducer";
 import * as _ from 'lodash';
 import {isFetching} from "../../../store/firebase/reducer";
-import {progressiveStatuses} from "../../../util/order-status";
+import {Status} from "../../../util/order-status";
 import CheckBoxIcon from 'material-ui-icons/CheckCircle';
 import PaymentIcon from 'material-ui-icons/AttachMoney';
 import NotificationsIcon from 'material-ui-icons/Notifications';
@@ -122,8 +122,8 @@ function mapStateToProps(state) {
         labels: getLabels(state).homePage.infoBoxes,
         orders: getOrders(state),
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
-        futureLectureTimes: getAllLectureTimes(state, [progressiveStatuses.approvedOrder, progressiveStatuses.isExecuting]),
-        waitingPaymentOrders: getOrders(state, progressiveStatuses.waitingPayment),
+        futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),
+        waitingPaymentOrders: getOrders(state, Status.waitingPayment),
         isFetching: isFetching(state),
     };
 }

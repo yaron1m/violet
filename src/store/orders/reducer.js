@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatus, progressiveStatuses} from "../../util/order-status";
+import {getOrderStatus, Status} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
 import getActionRequiredOrdersArray from './action-recuired-orders'
 
@@ -90,7 +90,7 @@ export function getAllLectureTimes(state, status = null) {
 }
 
 export function getWaitingPaymentOrders(state) {
-    const orders = getOrders(state, progressiveStatuses.waitingPayment);
+    const orders = getOrders(state, Status.waitingPayment);
 
     function map(order) {
         const result = {

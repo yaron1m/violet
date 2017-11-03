@@ -3,12 +3,12 @@ import * as _ from "lodash";
 import {getLabels} from "../store/labels/reducer";
 import {getSelectedOrder} from "../store/selected/reducer";
 
-export const terminatingStatuses = {
+const terminatingStatuses = {
     cancelled: "cancelled",
     rejected: "rejected",
 };
 
-export const progressiveStatuses = {
+const progressiveStatuses = {
     contact: "contact",
     offer: "offer",
     order: "order",
@@ -17,6 +17,11 @@ export const progressiveStatuses = {
     executed: "executed",
     waitingPayment: "waitingPayment",
     payed: "payed",
+};
+
+export const Status = {
+    ...progressiveStatuses,
+    ...terminatingStatuses
 };
 
 export default function calculateOrderStatus(order) {
