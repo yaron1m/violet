@@ -29,7 +29,7 @@ export default function labels() {
             orderNumberTitle: " - הזמנה מספר ",
             orderStatusTitle: "סטאטוס: ",
             newOrderTitle: " - הזמנה חדשה",
-            footer:{
+            footer: {
                 createdDate: "תאריך יצירה - ",
                 changedDate: "תאריך שינוי - ",
             },
@@ -171,7 +171,7 @@ export default function labels() {
                 payed: "שולם",
                 cancelled: "בוטל",
                 disapproved: "לא אושר",
-                followUp: " + נדרש המשך טיפול",
+                followUp: " + המשך טיפול",
                 rejected: "לא אושר",
             },
             actionButtons: {
@@ -265,7 +265,7 @@ export default function labels() {
             tableHeaders: [
                 {id: "מספר הזמנה"},
                 {organizationName: "שם הארגון"},
-                {lectureDate: "תאריך הרצאה"},
+                {createdDate: "תאריך יצירה"},
                 {topic: "נושא"},
                 {status: "סטאטוס הזמנה"},
                 {followUpDate: "תאריך המשך טיפול"},
