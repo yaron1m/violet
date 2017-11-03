@@ -5,7 +5,7 @@ import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatusLabel} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
-import getActionRequiredOrdersArray from './action-recuired-orders'
+import getActionRequiredOrdersArray from './action-required-orders'
 import Status from "../../util/consts/status";
 
 export default (state = {}, action = {}) => {
