@@ -67,7 +67,7 @@ class ContactRow extends React.Component {
                 <CustomText data={fieldData} name={this.getKey("contactLastName", financial)} size={Sizes.M}/>
                 <CustomText data={fieldData} name={this.getKey("contactJob", financial)} size={Sizes.M}/>
                 <CustomText data={fieldData} name={this.getKey("contactPhone1", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactEmail", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactEmail", financial)} size={Sizes.XL}/>
                 <CustomText data={fieldData} name={this.getKey("contactPhone2", financial)} size={Sizes.M}/>
                 <CustomText data={fieldData} name={this.getKey("contactPhoneExtension", financial)} size={Sizes.M}/>
                 <CustomText data={fieldData} name={this.getKey("contactFax", financial)} size={Sizes.M}/>
