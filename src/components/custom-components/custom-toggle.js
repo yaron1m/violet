@@ -14,7 +14,7 @@ export default class CustomToggle extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState ({
+        this.setState({
             selected: nextProps.data.values[nextProps.name] !== undefined
         });
     }
@@ -67,7 +67,6 @@ function validateProps(props) {
     if (!_.isFunction(props.data.updateAction))
         throw Error(`Toggle field "${props.name}" - data.updateAction must be a function`);
 }
-
 
 
 export class CustomCheckbox extends React.Component {
