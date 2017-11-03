@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import Sizes from "../../util/consts/sizes";
+import * as _ from "lodash";
 
 export default class CustomDatePicker extends React.Component {
     constructor(props) {
+        validateProps(props);
         super(props);
         this.state = {
             name: this.props.name,
@@ -87,3 +89,11 @@ CustomDatePicker.defaultProps = {
     disabled: false,
     fullWidth: false,
 };
+
+function validateProps(props) {
+    if (!_.has(props.data.titles, props.name))
+        throw Error(`DatePicker field "${props.name}" doesn't have a matching title in data.titles`);
+
+    if (!_.isFunction(props.data.updateAction))
+        throw Error(`DatePicker field "${props.name}" - data.updateAction must be a function`);
+}

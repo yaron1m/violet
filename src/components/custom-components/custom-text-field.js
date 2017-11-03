@@ -6,6 +6,8 @@ import Sizes from "../../util/consts/sizes";
 
 export default class CustomText extends React.Component {
     constructor(props) {
+        validateProps(props);
+
         super(props);
 
         const style = {
@@ -85,6 +87,7 @@ export default class CustomText extends React.Component {
 CustomText.propTypes = {
     name: PropTypes.string.isRequired,
     data: PropTypes.object.isRequired,
+    values: PropTypes.object,
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
 };
@@ -93,3 +96,11 @@ CustomText.defaultProps = {
     disabled: false,
     fullWidth: false,
 };
+
+function validateProps(props) {
+    if (!_.has(props.data.titles, props.name))
+        throw Error(`TextField field "${props.name}" doesn't have a matching title in data.titles`);
+
+    if (!_.isFunction(props.data.updateAction))
+        throw Error(`TextField field "${props.name}" - data.updateAction must be a function`);
+}
