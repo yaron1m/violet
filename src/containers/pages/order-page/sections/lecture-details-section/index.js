@@ -10,7 +10,7 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {getCancellationReasons, getRejectionReasons} from "../../../../../store/lists/reducer";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
-import {Status} from "../../../../../util/order-status";
+import Status from "../../../../../util/consts/status";
 import Sizes from "../../../../../util/consts/sizes";
 
 class LectureDetailsSection extends React.Component {

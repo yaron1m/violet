@@ -2,27 +2,7 @@ import * as Immutable from "seamless-immutable";
 import * as _ from "lodash";
 import {getLabels} from "../store/labels/reducer";
 import {getSelectedOrder} from "../store/selected/reducer";
-
-const terminatingStatuses = {
-    cancelled: "cancelled",
-    rejected: "rejected",
-};
-
-const progressiveStatuses = {
-    contact: "contact",
-    offer: "offer",
-    order: "order",
-    approvedOrder: "approvedOrder",
-    isExecuting: "isExecuting",
-    executed: "executed",
-    waitingPayment: "waitingPayment",
-    payed: "payed",
-};
-
-export const Status = {
-    ...progressiveStatuses,
-    ...terminatingStatuses
-};
+import {progressiveStatuses, terminatingStatuses} from "./consts/status";
 
 export default function calculateOrderStatus(order) {
 
