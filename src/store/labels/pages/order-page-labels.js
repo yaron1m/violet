@@ -1,4 +1,4 @@
-const organizationSectionLabels= {
+const organizationSectionLabels = {
     sectionName: "פרטי הארגון",
     titles: {
         organizationName: "שם הארגון",
@@ -79,7 +79,7 @@ const lectureDetailsSectionLabels = {
         cancelled: "הזמנה בוטלה",
         cancellationReason: "סיבת ביטול",
         cancellationDetails: "פרטי הביטול",
-        rejected: "הזמנה לא אושרה",
+        rejected: "הזמנה לא יצאה לפועל",
         rejectionReason: "סיבת דחיה",
         rejectionDetails: "פרטי הדחיה",
     }
@@ -196,7 +196,7 @@ export const orderPageLabels = {
         payed: "שולם",
         cancelled: "בוטל",
         disapproved: "לא אושר",
-        followUp: " + נדרש המשך טיפול",
+        followUp: " + המשך טיפול",
         rejected: "לא אושר",
     },
     footer: {

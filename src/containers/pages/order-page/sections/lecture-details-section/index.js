@@ -10,7 +10,8 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {getCancellationReasons, getRejectionReasons} from "../../../../../store/lists/reducer";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
-import {Status} from "../../../../../util/order-status";
+import Status from "../../../../../util/consts/status";
+import Sizes from "../../../../../util/consts/sizes";
 
 class LectureDetailsSection extends React.Component {
 
@@ -39,9 +40,9 @@ class LectureDetailsSection extends React.Component {
 
                 <div>
                     <CustomText data={fieldData} name="street"/>
-                    <CustomText data={fieldData} name="streetNumber" size="S"/>
+                    <CustomText data={fieldData} name="streetNumber" size={Sizes.S}/>
                     <CustomText data={fieldData} name="city"/>
-                    <CustomText data={fieldData} name="location" size="XL"/>
+                    <CustomText data={fieldData} name="location" size={Sizes.XL}/>
                     <CustomText data={fieldData} name="audienceType"/>
                     <CustomText data={fieldData} name="daySchedule"/>
                 </div>
@@ -64,7 +65,7 @@ class LectureDetailsSection extends React.Component {
                             data={fieldData}
                             name="rejectionReason"
                             dataSource={this.props.rejectionReasons}
-                            size="XL"
+                            size={Sizes.XL}
                         />
                         <CustomText data={fieldData} name="rejectionDetails" fullWidth={true}/>
                     </div> ) : null
@@ -76,7 +77,7 @@ class LectureDetailsSection extends React.Component {
                             data={fieldData}
                             name="cancellationReason"
                             dataSource={this.props.cancellationReasons}
-                            size="XL"
+                            size={Sizes.XL}
                         />
                         <CustomText data={fieldData} name="cancellationDetails" fullWidth={true}/>
 

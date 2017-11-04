@@ -10,6 +10,7 @@ import {getSelectedOrder, getSelectedOrganization} from "../../../../store/selec
 import {getRequiredFields} from "../../../../store/required-fields/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
 import ContactRow from './contacts-section/contact-row'
+import Sizes from "../../../../util/consts/sizes";
 
 
 class OrganizationSection extends React.Component {
@@ -92,7 +93,7 @@ class OrganizationSection extends React.Component {
                 <div style={style.flex}>
                     <CustomText data={fieldData} name="amount"/>
                     <CustomText data={fieldData} name="proformaInvoiceNumber"/>
-                    <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size="L"/>
+                    <CustomDatePicker data={fieldData} name="proformaInvoiceDate" size={Sizes.L}/>
                     <CustomDatePicker data={fieldData} name="expectedPayDate"/>
                      <CustomText data={fieldData} name="internalOrderNumber"/>
                 </div>
@@ -101,7 +102,7 @@ class OrganizationSection extends React.Component {
 
                 <div style={style.flex}>
                     <CustomText data={fieldData} name="taxInvoiceNumber"/>
-                    <CustomDatePicker data={fieldData} name="taxInvoiceDate" size="L"/>
+                    <CustomDatePicker data={fieldData} name="taxInvoiceDate" size={Sizes.L}/>
                     <CustomText data={fieldData} name="receiptNumber"/>
                     <CustomDatePicker data={fieldData} name="actualPayDay"/>
                 </div>

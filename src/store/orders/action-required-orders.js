@@ -1,8 +1,9 @@
 import {getOrders} from "./reducer";
 import _ from 'lodash';
-import {getOrderStatusLabel, Status} from "../../util/order-status";
+import {getOrderStatusLabel} from "../../util/order-status";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
+import Status from "../../util/consts/status";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);

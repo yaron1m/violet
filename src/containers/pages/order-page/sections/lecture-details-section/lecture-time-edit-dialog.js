@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import {getOfferedLectures} from "../../../../../store/lists/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
+import Sizes from "../../../../../util/consts/sizes";
 
 class LectureTimeEditDialog extends React.Component {
 
@@ -58,7 +59,7 @@ class LectureTimeEditDialog extends React.Component {
             >
                 <div style={style.flex}>
                     <CustomDatePicker data={tableFieldData} name="date"/>
-                    <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size="XL"/>
+                    <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XL}/>
                     <CustomText data={tableFieldData} name="startTime"/>
                     <CustomText data={tableFieldData} name="endTime"/>
                     <CustomText data={tableFieldData} name="audienceSize"/>

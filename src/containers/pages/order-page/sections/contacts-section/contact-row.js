@@ -11,6 +11,7 @@ import ImportContactsDialog from './import-contacts-dialog';
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {openDialog} from "../../../../../store/appearance/actions";
 import _ from 'lodash';
+import Sizes from "../../../../../util/consts/sizes";
 
 class ContactRow extends React.Component {
     constructor(props) {
@@ -62,14 +63,14 @@ class ContactRow extends React.Component {
                     <PersonAddIcon/>
                 </IconButton>
 
-                <CustomText data={fieldData} name={this.getKey("contactFirstName", financial)} size="M"/>
-                <CustomText data={fieldData} name={this.getKey("contactLastName", financial)} size="M"/>
-                <CustomText data={fieldData} name={this.getKey("contactJob", financial)} size="M"/>
-                <CustomText data={fieldData} name={this.getKey("contactPhone1", financial)} size="M"/>
-                <CustomText data={fieldData} name={this.getKey("contactEmail", financial)} size="XL"/>
-                <CustomText data={fieldData} name={this.getKey("contactPhone2", financial)} size="M"/>
-                <CustomText data={fieldData} name={this.getKey("contactPhoneExtension", financial)} size="M"/>
-                <CustomText data={fieldData} name={this.getKey("contactFax", financial)} size="M"/>
+                <CustomText data={fieldData} name={this.getKey("contactFirstName", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactLastName", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactJob", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactPhone1", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactEmail", financial)} size={Sizes.XL}/>
+                <CustomText data={fieldData} name={this.getKey("contactPhone2", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactPhoneExtension", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={this.getKey("contactFax", financial)} size={Sizes.M}/>
             </div>
         );
     }

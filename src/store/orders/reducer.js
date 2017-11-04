@@ -3,9 +3,10 @@ import * as _ from "lodash";
 import {LOGGED_OUT} from "../firebase/action-types";
 import {getSelectedOrganization} from "../selected/reducer";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatusLabel, Status} from "../../util/order-status";
+import {getOrderStatusLabel} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
-import getActionRequiredOrdersArray from './action-recuired-orders'
+import getActionRequiredOrdersArray from './action-required-orders'
+import Status from "../../util/consts/status";
 
 export default (state = {}, action = {}) => {
     switch (action.type) {
