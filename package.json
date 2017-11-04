@@ -23,16 +23,19 @@
     "seamless-immutable": "^7.1.2"
   },
   "devDependencies": {
-    "firebase-server": "^0.11.0",
-    "jest": "^20.0.4",
-    "redux-devtools-extension": "^2.13.2",
-    "redux-testkit": "^1.0.6"
+    "babel-jest": "^21.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.0.0",
+    "redux-devtools-extension": "^2.13.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "author": {
     "name": "Yaron Malin",
