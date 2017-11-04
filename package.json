@@ -35,7 +35,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "watch": "npm test -- --watch"
   },
   "author": {
     "name": "Yaron Malin",
