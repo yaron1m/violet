@@ -13,7 +13,7 @@ import {
     getSelectedOrder, getSelectedOrganization, isSelectedOrder,
     isSelectedOrganization
 } from "../../../../store/selected/reducer";
-import {getNextOrderId} from "../../../../store/orders/reducer";
+import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {getOrderMissingFields} from "../../../../store/required-fields/reducer";

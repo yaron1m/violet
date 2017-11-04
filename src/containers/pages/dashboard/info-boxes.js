@@ -6,8 +6,7 @@ import {getLabels} from "../../../store/labels/reducer";
 import {redirect} from "../../../util/history-util";
 import {withRouter} from "react-router";
 import {
-    getAllLectureTimes, getFollowUpOrdersSummary, getOrders,
-} from "../../../store/orders/reducer";
+    getAllLectureTimes, } from "../../../store/orders/selectors";
 import * as _ from 'lodash';
 import {isFetching} from "../../../store/firebase/reducer";
 import Status from "../../../util/consts/status";
@@ -15,6 +14,7 @@ import CheckBoxIcon from 'material-ui-icons/CheckCircle';
 import PaymentIcon from 'material-ui-icons/AttachMoney';
 import NotificationsIcon from 'material-ui-icons/Notifications';
 import Waiting from 'material-ui-icons/WatchLater';
+import {getFollowUpOrdersSummary, getOrders} from "../../../store/orders/selectors";
 
 class InfoBoxes extends React.Component {
 

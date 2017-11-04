@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {getActionRequiredOrders} from "../../store/orders/reducer";
+import {getActionRequiredOrders} from "../../store/orders/selectors";
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import CustomPaperTable from "../../components/tables/custom-paper-table";

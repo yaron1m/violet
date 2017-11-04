@@ -9,7 +9,7 @@ import CustomTable from "../../../../../components/tables/custom-table";
 import * as _ from 'lodash';
 import CustomTableRow from "../../../../../components/tables/custom-table-row";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
-import {getOrdersByOrganization} from "../../../../../store/orders/reducer";
+import {getOrdersByOrganization} from "../../../../../store/orders/selectors";
 import {getValueOrEmptyString} from "../../../../../util/string-util";
 
 class ImportContactsDialog extends React.Component {
