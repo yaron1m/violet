@@ -12,6 +12,7 @@ import {getCancellationReasons, getRejectionReasons} from "../../../../../store/
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import Status from "../../../../../util/consts/status";
 import Sizes from "../../../../../util/consts/sizes";
+import CustomDropDownMenu from "../../../../../components/custom-components/custom-dropdown-menu";
 
 class LectureDetailsSection extends React.Component {
 
@@ -61,11 +62,10 @@ class LectureDetailsSection extends React.Component {
 
                 {this.props.selectedOrder.rejected ? (
                     <div style={{display: "flex"}}>
-                        <CustomAutoComplete
+                        <CustomDropDownMenu
                             data={fieldData}
                             name="rejectionReason"
-                            dataSource={this.props.rejectionReasons}
-                            size={Sizes.XL}
+                            options={this.props.rejectionReasons}
                         />
                         <CustomText data={fieldData} name="rejectionDetails" fullWidth={true}/>
                     </div> ) : null
