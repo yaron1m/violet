@@ -1,4 +1,4 @@
-import {getSelectedOrganization} from "../selected/reducer";
+import {getSelectedOrganization, isSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatusLabel} from "../../util/order-status";
@@ -32,6 +32,9 @@ export function getNextOrderId(state) {
 }
 
 export function getOrdersByOrganization(state) {
+    if (!isSelectedOrganization(state))
+        return null;
+
     const organizationId = getSelectedOrganization(state).id;
     return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId);
 }
@@ -43,16 +46,14 @@ export function getFollowUpOrdersSummary(state) {
         const result = {
             id: order.id,
             status: getOrderStatusLabel(state, order),
+            createdDate: order.createdDate,
+            followUpDate: order.followUpDate,
+            followUpDetails: cutIfLong(order.followUpDetails, 30),
+            organizationName: cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 20),
         };
         if (!_.isEmpty(order.lectureTimes)) {
-            result.createdDate = order.createdDate;
             result.topic = cutIfLong(order.lectureTimes[0].topic, 15);
-            result.followUpDate = order.followUpDate;
-            result.followUpDetails = cutIfLong(order.followUpDetails, 30);
-            result.followUpDate = order.followUpDate;
-            result.organizationName = cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 20);
         }
-
         return result;
     }
 
@@ -60,9 +61,7 @@ export function getFollowUpOrdersSummary(state) {
 }
 
 export function getAllLectureTimes(state, status = null) {
-
     function getMappedLectureTimes(order) {
-
         return _.map(order.lectureTimes, function (time) {
             time.orderId = order.id;
             time.status = order.status;
@@ -71,8 +70,7 @@ export function getAllLectureTimes(state, status = null) {
         });
     }
 
-    const orders = getOrders(state, status);
-    return _.flatMap(orders, getMappedLectureTimes);
+    return _.flatMap(getOrders(state, status), getMappedLectureTimes);
 }
 
 export function getWaitingPaymentOrders(state) {

@@ -6,34 +6,52 @@ const state = {
         "1000": {
             "id": 1000,
             "organizationId": 100,
-            "lectureTimes": [{}],
+            "lectureTimes": [{
+                topic: "lecture"
+            }],
             "status": Status.contact,
+            followUpRequired: false,
         },
         "1001": {
             "id": 1001,
             "organizationId": 101,
-            "lectureTimes": [{}],
+            "lectureTimes": [],
             "status": Status.order,
+            followUpRequired: false,
         },
         "1002": {
             "id": 1002,
             "organizationId": 100,
-            "lectureTimes": [{}],
+            "lectureTimes": [{
+                topic: "topic",
+            }],
             "status": Status.order,
+            followUpRequired: true,
+            followUpDate: 111,
+            followUpDetails: "bla",
+            createdDate: 123,
         },
         "1003": {
             "id": 1003,
             "organizationId": 101,
-            "lectureTimes": [{}],
             "status": Status.approvedOrder,
+            followUpRequired: true,
+            followUpDate: 222,
+            followUpDetails: "bla bla",
+            createdDate: 456,
         },
     },
     "selected": {
+        isSelectedOrganization: true,
         organization: {
             id: 100,
         }
     }
 };
+
+const organizationReducer = require("../../organizations/reducer");
+const orgDetails = {organizationName: "orgName"};
+organizationReducer.getOrganizationById = jest.fn((state, id) => orgDetails);
 
 describe('store/orders/selectors', () => {
 
@@ -81,21 +99,71 @@ describe('store/orders/selectors', () => {
             .toEqual([state.orders[1000], state.orders[1002]]);
     });
 
-    // it('should get order by id', () => {
-    //     Selector(uut.getOrderById).expect(sampleState, 0).toReturn(sampleState.orders[0]);
-    // });
-    //
-    // it('should get orders of organization 1', () => {
-    //     const result = [sampleState.orders[1], sampleState.orders[3]];
-    //     const organizationId = 1;
-    //
-    //     Selector(uut.getOrdersByOrganization).expect(sampleState, organizationId).toReturn(result);
-    // });
-    //
-    // it('should get empty array', () => {
-    //     const result = [];
-    //     const organizationId = 999;
-    //
-    //     Selector(uut.getOrdersByOrganization).expect(sampleState, organizationId).toReturn(result);
-    // });
+    it('getOrdersByOrganization - no organization selected - null', () => {
+        expect(Selectors.getOrdersByOrganization({selected: {isSelectedOrganization: false}}))
+            .toBeNull();
+    });
+
+    it('getFollowUpOrdersSummary - valid', () => {
+        const statuses = require("../../../util/order-status");
+        statuses.getOrderStatusLabel = jest.fn((state, order) => order.status);
+
+        const organizationReducer = require("../../organizations/reducer");
+        const orgDetails = {organizationName: "orgName"};
+        organizationReducer.getOrganizationById = jest.fn((state, id) => orgDetails);
+
+        expect(Selectors.getFollowUpOrdersSummary(state))
+            .toEqual([
+                {
+                    id: 1002,
+                    organizationName: "orgName",
+                    topic: "topic",
+                    status: Status.order,
+                    followUpDate: 111,
+                    followUpDetails: "bla",
+                    createdDate: 123,
+                }, {
+                    id: 1003,
+                    organizationName: "orgName",
+                    status: Status.approvedOrder,
+                    followUpDate: 222,
+                    followUpDetails: "bla bla",
+                    createdDate: 456,
+                }
+            ]);
+    });
+
+    it('getFollowUpOrdersSummary - no orders - empty array', () => {
+        expect(Selectors.getFollowUpOrdersSummary({orders: {}}))
+            .toEqual([]);
+    });
+
+    it('getAllLectureTimes - valid', () => {
+        expect(Selectors.getAllLectureTimes(state))
+            .toEqual([
+                {
+                    orderId: 1000,
+                    topic: "lecture",
+                    organizationName: "orgName",
+                    status: Status.contact,
+                }, {
+                    orderId: 1002,
+                    topic: "topic",
+                    organizationName: "orgName",
+                    status: Status.order,
+                }
+            ]);
+    });
+
+    it('getAllLectureTimes - filtered by status', () => {
+        expect(Selectors.getAllLectureTimes(state, Status.contact))
+            .toEqual([
+                {
+                    orderId: 1000,
+                    topic: "lecture",
+                    organizationName: "orgName",
+                    status: Status.contact,
+                }
+            ]);
+    });
 });
