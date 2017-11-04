@@ -1,96 +1,169 @@
-import Immutable from 'seamless-immutable';
-import {Selector} from 'redux-testkit';
-import * as uut from '../reducer';
+import * as Selectors from '../selectors';
+import {Status} from "../../../util/consts/status";
 
-const sampleState = Immutable({
-    orders: {
-        0: {
-            "actualPayDay": "Sat Jul 22 2017",
-            "audienceType": "מהנדסים וטכנאים",
-            "daySchedule": "יום כיף לעובדים",
-            "expectedPayDay": "11.1.2017",
-            "floor": "קרקע",
-            "followUpDate": "Tue Jul 18 2017",
-            "followUpDetails": "לבדוק אפשרות לצורך בהמשך טיפול",
-            "followUpRequired": true,
-            "id": 0,
+const state = {
+    "orders": {
+        "1000": {
+            "id": 1000,
+            "organizationId": 100,
             "lectureTimes": [{
-                "audienceSize": 25,
-                "date": "01/01/01",
-                "duration": "02:00",
-                "endTime": "13:00",
-                "id": 0,
-                "shirtColor": "כחול",
-                "startTime": "11:00",
-                "tie": "כבשים",
-                "topic": "חשיבה יצירתית"
-            }, {
-                "audienceSize": 40,
-                "date": "02/02/02",
-                "duration": "05:20",
-                "endTime": "15:30",
-                "id": 1,
-                "shirtColor": "אדום",
-                "startTime": "10:10",
-                "tie": "עכבר",
-                "topic": "מודעות לאיכות"
+                topic: "lecture"
             }],
-            "location": "בניין ראשי",
-            "microphone": false,
-            "notes": "צריך לרשום כמה הערות",
-            "orderApproved": false,
-            "organizationId": 0,
-            "parking": true,
-            "paymentConditions": "שוטף + 50",
-            "proformaInvoiceDate": "Tue Jul 25 2017",
-            "proformaInvoiceNumber": "123",
-            "projector": true,
-            "room": "חדר 001",
-            "sameAudience": false,
-            "soundSystem": false,
-            "status": "הצעת מחיר",
-            "taxInvoiceDate": "Sat Jul 29 2017",
-            "taxInvoiceNumber": "456"
+            "status": Status.contact,
+            followUpRequired: false,
         },
-        1: {
-            "id": 1,
-            "location": "חדר האוכל",
-            "organizationId": 1
+        "1001": {
+            "id": 1001,
+            "organizationId": 101,
+            "lectureTimes": [],
+            "status": Status.order,
+            followUpRequired: false,
         },
-        2: {
-            "id": 2,
-            "location": "אולם כנסים",
-            "organizationId": 0
+        "1002": {
+            "id": 1002,
+            "organizationId": 100,
+            "lectureTimes": [{
+                topic: "topic",
+            }],
+            "status": Status.order,
+            followUpRequired: true,
+            followUpDate: 111,
+            followUpDetails: "bla",
+            createdDate: 123,
         },
-        3: {
-            "id": 3,
-            "location": "כניסה ראשית",
-            "organizationId": 1
+        "1003": {
+            "id": 1003,
+            "organizationId": 101,
+            "status": Status.approvedOrder,
+            followUpRequired: true,
+            followUpDate: 222,
+            followUpDetails: "bla bla",
+            createdDate: 456,
+        },
+    },
+    "selected": {
+        isSelectedOrganization: true,
+        organization: {
+            id: 100,
         }
     }
-});
+};
+
+const organizationReducer = require("../../organizations/reducer");
+const orgDetails = {organizationName: "orgName"};
+organizationReducer.getOrganizationById = jest.fn((state, id) => orgDetails);
 
 describe('store/orders/selectors', () => {
 
-    it('should get orders', () => {
-        Selector(uut.getOrders).expect(sampleState).toReturn(sampleState.orders);
+    it('getOrders - get all orders', () => {
+        expect(Selectors.getOrders(state)).toBe(state.orders);
     });
 
-    it('should get order by id', () => {
-        Selector(uut.getOrderById).expect(sampleState, 0).toReturn(sampleState.orders[0]);
+    it('getOrders - filtered by status', () => {
+        expect(Selectors.getOrders(state, [Status.order]))
+            .toEqual([state.orders[1001], state.orders[1002]]);
     });
 
-    it('should get orders of organization 1', () => {
-        const result = [sampleState.orders[1], sampleState.orders[3]];
-        const organizationId = 1;
-
-        Selector(uut.getOrdersByOrganization).expect(sampleState, organizationId).toReturn(result);
+    it('getOrders - filtered by status', () => {
+        expect(Selectors.getOrders(state, [Status.contact, Status.approvedOrder]))
+            .toEqual([state.orders[1000], state.orders[1003]]);
     });
 
-    it('should get empty array', () => {
-        const result = [];
-        const organizationId = 999;
+    it('getOrders - no order with such status exists - empty array', () => {
+        expect(Selectors.getOrders(state, [Status.cancelled]))
+            .toEqual([]);
+    });
 
-        Selector(uut.getOrdersByOrganization).expect(sampleState, organizationId).toReturn(result);
+    it('getOrderById - valid - order returned', () => {
+        expect(Selectors.getOrderById(state, 1001))
+            .toEqual(state.orders[1001]);
+    });
+
+    it('getOrderById - no such id - undefined', () => {
+        expect(Selectors.getOrderById(state, 9999))
+            .toBeUndefined();
+    });
+
+    it('getNextOrderId - valid state', () => {
+        expect(Selectors.getNextOrderId(state))
+            .toBe(1004);
+    });
+
+    it('getNextOrderId - no orders', () => {
+        expect(Selectors.getNextOrderId({orders: {}}))
+            .toBe(5000);
+    });
+
+    it('getOrdersByOrganization - valid', () => {
+        expect(Selectors.getOrdersByOrganization(state))
+            .toEqual([state.orders[1000], state.orders[1002]]);
+    });
+
+    it('getOrdersByOrganization - no organization selected - null', () => {
+        expect(Selectors.getOrdersByOrganization({selected: {isSelectedOrganization: false}}))
+            .toBeNull();
+    });
+
+    it('getFollowUpOrdersSummary - valid', () => {
+        const statuses = require("../../../util/order-status");
+        statuses.getOrderStatusLabel = jest.fn((state, order) => order.status);
+
+        const organizationReducer = require("../../organizations/reducer");
+        const orgDetails = {organizationName: "orgName"};
+        organizationReducer.getOrganizationById = jest.fn((state, id) => orgDetails);
+
+        expect(Selectors.getFollowUpOrdersSummary(state))
+            .toEqual([
+                {
+                    id: 1002,
+                    organizationName: "orgName",
+                    topic: "topic",
+                    status: Status.order,
+                    followUpDate: 111,
+                    followUpDetails: "bla",
+                    createdDate: 123,
+                }, {
+                    id: 1003,
+                    organizationName: "orgName",
+                    status: Status.approvedOrder,
+                    followUpDate: 222,
+                    followUpDetails: "bla bla",
+                    createdDate: 456,
+                }
+            ]);
+    });
+
+    it('getFollowUpOrdersSummary - no orders - empty array', () => {
+        expect(Selectors.getFollowUpOrdersSummary({orders: {}}))
+            .toEqual([]);
+    });
+
+    it('getAllLectureTimes - valid', () => {
+        expect(Selectors.getAllLectureTimes(state))
+            .toEqual([
+                {
+                    orderId: 1000,
+                    topic: "lecture",
+                    organizationName: "orgName",
+                    status: Status.contact,
+                }, {
+                    orderId: 1002,
+                    topic: "topic",
+                    organizationName: "orgName",
+                    status: Status.order,
+                }
+            ]);
+    });
+
+    it('getAllLectureTimes - filtered by status', () => {
+        expect(Selectors.getAllLectureTimes(state, Status.contact))
+            .toEqual([
+                {
+                    orderId: 1000,
+                    topic: "lecture",
+                    organizationName: "orgName",
+                    status: Status.contact,
+                }
+            ]);
     });
 });
