@@ -1,10 +1,11 @@
 import * as actionTypes from './action-types';
 
-export function openDialog(title, content) {
+export function openDialog(title, content, actions = null) {
     return {
         type: actionTypes.OPEN_DIALOG,
         title,
         content,
+        actions,
     }
 }
 

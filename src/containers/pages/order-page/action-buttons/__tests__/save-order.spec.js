@@ -14,6 +14,7 @@ function setup(props) {
         // nextOrderId: 5,
         // nextOrganizationId: 10,
         // orderMissingFields: [],
+        dispatch: jest.fn,
         ...props
     };
 
