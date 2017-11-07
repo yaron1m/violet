@@ -20,7 +20,7 @@ import {getOrderMissingFields} from "../../../../store/required-fields/reducer";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
 import {getNextOrganizationId, getOrganizations} from "../../../../store/organizations/reducer";
 
-class SaveOrderButton extends React.Component {
+export class SaveOrderButton extends React.Component {
 
     constructor(props) {
         super(props);
@@ -108,7 +108,6 @@ class SaveOrderButton extends React.Component {
             .then(successSave.bind(this))
             .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
     }
-
 
     render() {
         const dialogText = this.props.labels.dialog;
