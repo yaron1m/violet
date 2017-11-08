@@ -1,5 +1,4 @@
 import React from 'react';
-//import jest from 'jest';
 import {shallow} from 'enzyme'
 import {SaveOrderButton} from '../save-order';
 import {orderPageLabels} from "../../../../../store/labels/pages/order-page-labels";
