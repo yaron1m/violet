@@ -1,7 +1,7 @@
 import {getSelectedOrganization, isSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatusLabel} from "../../util/order-status";
+import {getOrderStatusLabel, isMatchingStatus} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
 import getActionRequiredOrdersArray from "./action-required-orders";
 import Status from "../../util/consts/status";
@@ -12,10 +12,7 @@ export function getOrders(state, status = null) {
     if (status === null)
         return orders;
 
-    if (_.isArray(status))
-        return _.filter(orders, order => _.includes(status, order.status));
-
-    return _.filter(orders, order => order.status === status);
+    return _.filter(orders, order => isMatchingStatus(order, status));
 }
 
 export function getOrderById(state, id) {

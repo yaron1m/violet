@@ -96,3 +96,10 @@ export function getOrderStatusLabel(state, order) {
         status += labels.followUp;
     return status;
 }
+
+export function isMatchingStatus(order, status){
+    if (_.isArray(status))
+        return _.includes(status, order.status);
+
+    return order.status === status;
+}

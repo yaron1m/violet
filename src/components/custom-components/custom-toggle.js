@@ -108,6 +108,11 @@ export class CustomCheckbox extends React.Component {
     }
 }
 
+CustomCheckbox.propTypes = {
+    name: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired,
+};
+
 class CustomToggleBox extends React.Component {
 
     render() {
