@@ -39,7 +39,7 @@ export default class AbstractField extends React.Component {
             console.error("No update action to text field - " + this.name);
         }
     }
-    
+
     getErrorText() {
         const showError = !this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.name);
         return showError ? "שדה חובה" : ""; //TODO extract string to labels
