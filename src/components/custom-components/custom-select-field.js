@@ -5,7 +5,7 @@ import Sizes from "../../util/consts/sizes";
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-export default class CustomDropDownMenu extends React.Component {
+export default class CustomSelectField extends React.Component {
     constructor(props) {
         validateProps(props);
 
@@ -40,7 +40,6 @@ export default class CustomDropDownMenu extends React.Component {
             component: {
                 marginRight: 20,
                 marginBottom: 20,
-
             },
         };
 
@@ -75,10 +74,10 @@ export default class CustomDropDownMenu extends React.Component {
                 floatingLabelFixed={true}
                 errorText={showError ? "שדה חובה" : ""}
             >
-                <MenuItem
+                {this.props.allowEmpty ? <MenuItem
                     label={this.state.title}
                     value={null}
-                />
+                /> : null}
 
                 {_.map(this.props.options, option =>
                     <MenuItem
@@ -92,11 +91,16 @@ export default class CustomDropDownMenu extends React.Component {
     }
 }
 
-CustomDropDownMenu.propTypes = {
+CustomSelectField.propTypes = {
     name: PropTypes.string.isRequired,
     data: PropTypes.object.isRequired,
     values: PropTypes.object,
     options: PropTypes.array.isRequired,
+    allowEmpty: PropTypes.bool
+};
+
+CustomSelectField.defaultProps = {
+    allowEmpty: true,
 };
 
 
