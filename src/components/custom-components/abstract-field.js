@@ -41,11 +41,11 @@ export default class AbstractField extends React.Component {
     }
 
     showError() {
-        return !this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.name);
     }
 
     getErrorText() {
-        return this.showError() ? "שדה חובה" : ""; //TODO extract string to labels
+        const showError = !this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.name);
+        return showError ? "שדה חובה" : ""; //TODO extract string to labels
     }
 }
 
