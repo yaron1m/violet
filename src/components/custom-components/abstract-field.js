@@ -33,11 +33,7 @@ export default class AbstractField extends React.Component {
     }
 
     handleChange(newValue) {
-        if (this.props.data.updateAction) {
-            this.props.data.updateAction(this.name, newValue);
-        } else {
-            console.error("No update action to text field - " + this.name);
-        }
+        this.props.data.updateAction(this.name, newValue);
     }
 
     getErrorText() {

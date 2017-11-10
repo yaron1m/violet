@@ -16,7 +16,7 @@ function setup(outerProps, innerProps) {
             values: {
                 organizationName: "Google",
             },
-            requiredFields: [],
+            requiredFields: ["someField"],
             updateAction: jest.fn(),
             ...innerProps,
         },
@@ -98,7 +98,6 @@ describe('Abstract Field Class', () => {
         expect(target.setState.mock.calls[0][0].value).toBe("Amazon");
     });
 
-
     it('componentWillReceiveProps - value changed to undefined - state changed to empty string', () => {
         const target = setup();
         target.setState = jest.fn();
@@ -113,5 +112,16 @@ describe('Abstract Field Class', () => {
 
         expect(target.setState.mock.calls.length).toBe(1);
         expect(target.setState.mock.calls[0][0].value).toBe("");
+    });
+
+
+    it('handleChange - new value - called with the name', () => {
+        const updateAction = jest.fn();
+        const target = setup({} ,{updateAction});
+
+        target.handleChange("Amazon");
+
+        expect(updateAction.mock.calls.length).toBe(1);
+        expect(updateAction.mock.calls[0]).toEqual(["organizationName", "Amazon"]);
     });
 });
