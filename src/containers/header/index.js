@@ -6,7 +6,7 @@ import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
 import {connect} from "react-redux";
 import {getLabels} from "../../store/labels/reducer";
-import {getFollowUpOrdersSummary} from "../../store/orders/reducer";
+import {getFollowUpOrdersSummary} from "../../store/orders/selectors";
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import LeftIcons from './left-icons';

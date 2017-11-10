@@ -7,7 +7,7 @@ import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import {signOutRequest} from "../../store/firebase/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {getActionRequiredOrders, getFollowUpOrdersSummary} from "../../store/orders/reducer";
+import {getActionRequiredOrders, getFollowUpOrdersSummary} from "../../store/orders/selectors";
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import MoreIcon from 'material-ui-icons/MoreVert';

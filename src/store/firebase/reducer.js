@@ -46,18 +46,6 @@ export function isLoggedIn(state) {
     return state.firebase.loggedIn;
 }
 
-export function getUserId(state){
-    return isLoggedIn(state) ? state.firebase.userId : undefined;
-}
-
-export function getDisplayName(state){
-    return state.firebase.displayName;
-}
-
-export function getPhotoURL(state){
-    return state.firebase.photoURL;
-}
-
 export function isFetching(state){
     return state.firebase.fetchingCount !== 0;
 }

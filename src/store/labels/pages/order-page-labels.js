@@ -1,4 +1,4 @@
-const organizationSectionLabels= {
+const organizationSectionLabels = {
     sectionName: "פרטי הארגון",
     titles: {
         organizationName: "שם הארגון",

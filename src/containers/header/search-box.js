@@ -8,7 +8,7 @@ import {withRouter} from 'react-router'
 import {getLabels} from "../../store/labels/reducer";
 import {getOrganizations} from "../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../store/selected/actions";
-import {getOrders} from "../../store/orders/reducer";
+import {getOrders} from "../../store/orders/selectors";
 import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
 

@@ -1,8 +1,6 @@
-import Immutable from 'seamless-immutable';
-import {Selector} from 'redux-testkit';
-import * as uut from '../reducer';
+import {getLabels} from "../reducer";
 
-const sampleState = Immutable({
+const sampleState = {
     labels: {
         softwareName: "Violet",
         version: "0.0.0",
@@ -12,11 +10,12 @@ const sampleState = Immutable({
             orderPrefix: "הזמנה: ",
         },
     }
-});
+};
 
 describe('store/labels/selectors', () => {
 
-    it('should get labels', () => {
-        Selector(uut.getLabels).expect(sampleState).toReturn(sampleState.labels);
-    });
+    it('getLabels - valid', () => {
+        expect(getLabels(sampleState))
+            .toEqual(sampleState.labels);
+    })
 });

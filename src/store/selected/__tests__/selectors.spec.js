@@ -1,6 +1,5 @@
 import Immutable from 'seamless-immutable';
-import {Selector} from 'redux-testkit';
-import * as uut from '../reducer';
+import {getSelectedOrder, getSelectedOrganization, isSelectedOrder, isSelectedOrganization} from "../reducer";
 
 const sampleState = Immutable({
     selected: {
@@ -76,6 +75,7 @@ const sampleState = Immutable({
             "taxInvoiceNumber": "456"
         },
         isSelectedOrganization: true,
+        isSelectedOrder: true
     }
 });
 
@@ -84,29 +84,50 @@ const emptyState = Immutable({
         organization: {},
         order: {},
         isSelectedOrganization: false,
+        isSelectedOrder: false,
     }
 });
 
 describe('store/selected/selectors', () => {
 
-    it('should get selected organization', () => {
-        Selector(uut.getSelectedOrganization).expect(sampleState).toReturn(sampleState.selected.organization);
+    it('getSelectedOrganization - valid', () => {
+        expect(getSelectedOrganization(sampleState))
+            .toEqual(sampleState.selected.organization);
     });
 
-    it('should get empty object', () => {
-        Selector(uut.getSelectedOrganization).expect(emptyState).toReturn({});
+    it('getSelectedOrganization - empty state - empty object', () => {
+        expect(getSelectedOrganization(emptyState))
+            .toEqual({});
     });
 
-    it('should get selected order', () => {
-        Selector(uut.getSelectedOrder).expect(sampleState).toReturn(sampleState.selected.order);
+    it('isSelectedOrganization - selected - true', () => {
+        expect(isSelectedOrganization(sampleState))
+            .toBeTruthy();
     });
 
-    it('should get empty object', () => {
-        Selector(uut.getSelectedOrder).expect(emptyState).toReturn({});
+    it('isSelectedOrganization - empty state - false', () => {
+        expect(isSelectedOrganization(emptyState))
+            .toBeFalsy();
     });
 
-    it('should get isSelectedOrganization', () => {
-        Selector(uut.isSelectedOrganization).expect(sampleState).toReturn(true);
-        Selector(uut.isSelectedOrganization).expect(emptyState).toReturn(false);
+    it('getSelectedOrganization - valid', () => {
+        expect(getSelectedOrder(sampleState))
+            .toEqual(sampleState.selected.order);
+    });
+
+    it('getSelectedOrganization - empty state - empty object', () => {
+        expect(getSelectedOrder(emptyState))
+            .toEqual({});
+    });
+
+
+    it('isSelectedOrder - selected - true', () => {
+        expect(isSelectedOrder(sampleState))
+            .toBeTruthy();
+    });
+
+    it('isSelectedOrder - empty state - false', () => {
+        expect(isSelectedOrder(emptyState))
+            .toBeFalsy();
     });
 });

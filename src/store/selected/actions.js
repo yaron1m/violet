@@ -1,6 +1,6 @@
 import * as actionTypes from './action-types';
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderById} from "../orders/reducer";
+import {getOrderById} from "../orders/selectors";
 import {getSelectedOrder, getSelectedOrganization} from "./reducer";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";

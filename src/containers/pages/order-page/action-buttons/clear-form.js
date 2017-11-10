@@ -5,16 +5,10 @@ import CleanIcon from 'material-ui-icons/Replay';
 import {clearSelected} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {hideRequiredFields} from "../../../../store/required-fields/actions";
-import CustomDialog from "../../../../components/custom-components/custom-dialog";
 import {FlatButton} from "material-ui";
+import {closeDialog, openDialog} from "../../../../store/appearance/actions";
 
 class ClearFormButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dialogOpen: false,
-        }
-    };
 
     render() {
         const dialogText = this.props.labels.clearDialog;
@@ -26,36 +20,25 @@ class ClearFormButton extends React.Component {
                 onTouchTap={() => {
                     this.props.dispatch(clearSelected());
                     this.props.dispatch(hideRequiredFields());
-                    this.setState({
-                        dialogOpen: false,
-                    })
+                    this.props.dispatch(closeDialog());
                 }}
             />,
             <FlatButton
                 label={dialogText.cancel}
                 primary={true}
                 onTouchTap={() => {
-                    this.setState({dialogOpen: false});
+                    this.props.dispatch(closeDialog());
                 }}
             />];
 
         return (
             <IconButton
                 tooltip={this.props.labels.clear}
-                onClick={() => this.setState({
-                    dialogOpen: true,
-                })}
+                onClick={() => this.props.dispatch(
+                    openDialog(dialogText.title,dialogText.content, actions )
+                )}
             >
                 <CleanIcon/>
-
-                <CustomDialog
-                    open={this.state.dialogOpen}
-                    title={dialogText.title}
-                    onRequestClose={() => this.setState({dialogOpen: false})}
-                    actions={actions}
-                >
-                    {dialogText.content}
-                </CustomDialog>
             </IconButton>
         );
     }

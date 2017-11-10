@@ -8,6 +8,7 @@ const initialState = Immutable({
         isOpen: false,
         title: "",
         content: "",
+        actions: null,
     },
     snackbar:{
         isOpen: false,
@@ -29,6 +30,7 @@ export default function (state = initialState, action = {}) {
                     isOpen: true,
                     title: action.title,
                     content: action.content,
+                    actions: action.actions,
                 }
             });
 
@@ -38,6 +40,7 @@ export default function (state = initialState, action = {}) {
                     isOpen: false,
                     title: "",
                     content: "",
+                    actions: null,
                 }
             });
 
@@ -76,6 +79,10 @@ export function getDialogTitle(state) {
 
 export function getDialogContent(state) {
     return state.appearance.dialog.content;
+}
+
+export function getDialogActions(state) {
+    return state.appearance.dialog.actions;
 }
 
 export function isSnackbarOpen(state) {

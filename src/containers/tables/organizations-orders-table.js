@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearSelectedOrder, selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {getOrdersByOrganization, getOrdersSummary} from "../../store/orders/reducer";
+import {getOrdersSummary, getOrdersByOrganization} from "../../store/orders/selectors";
 import {isSelectedOrganization} from "../../store/selected/reducer";
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
