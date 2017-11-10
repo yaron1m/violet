@@ -36,7 +36,7 @@ class OrganizationSection extends React.Component {
                     name="organizationName"
                     dataSource={organizationNamesObjects}
                     onNewRequest={chosenRequest => this.props.dispatch(selectOrganization(chosenRequest.value))}
-                    size={Sizes.XL}
+                    size={Sizes.XXL}
                 />
                 <CustomText data={fieldData} name="organizationAddress"/>
                 <CustomText data={fieldData} name="organizationCity" size={Sizes.M}/>
