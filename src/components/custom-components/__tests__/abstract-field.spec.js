@@ -114,7 +114,6 @@ describe('Abstract Field Class', () => {
         expect(target.setState.mock.calls[0][0].value).toBe("");
     });
 
-
     it('handleChange - new value - called with the name', () => {
         const updateAction = jest.fn();
         const target = setup({} ,{updateAction});
@@ -123,5 +122,20 @@ describe('Abstract Field Class', () => {
 
         expect(updateAction.mock.calls.length).toBe(1);
         expect(updateAction.mock.calls[0]).toEqual(["organizationName", "Amazon"]);
+    });
+
+    it('getErrorText - field is not required - empty string', () => {
+        expect(setup().getErrorText()).toEqual("");
+    });
+
+    it('getErrorText - required but has value - empty string', () => {
+        expect(setup({},{requiredFields: ["organizationName"]}).getErrorText()).toEqual("");
+    });
+
+    it('getErrorText - required with no value - get required string', () => {
+        expect(setup({},{
+            requiredFields: ["organizationName"],
+            values:{}
+        }).getErrorText()).toEqual("שדה חובה");
     });
 });
