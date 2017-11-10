@@ -12,7 +12,7 @@ import {getCancellationReasons, getRejectionReasons} from "../../../../../store/
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import Status from "../../../../../util/consts/status";
 import Sizes from "../../../../../util/consts/sizes";
-import CustomDropDownMenu from "../../../../../components/custom-components/custom-dropdown-menu";
+import CustomDropDownMenu from "../../../../../components/custom-components/custom-select-field";
 
 class LectureDetailsSection extends React.Component {
 
