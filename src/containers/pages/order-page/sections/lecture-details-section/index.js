@@ -9,10 +9,10 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {getCancellationReasons, getRejectionReasons} from "../../../../../store/lists/reducer";
-import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import Status from "../../../../../util/consts/status";
 import Sizes from "../../../../../util/consts/sizes";
-import CustomDropDownMenu from "../../../../../components/custom-components/custom-select-field";
+import CustomSelectField from "../../../../../components/custom-components/custom-select-field";
+import {isMatchingStatus} from "../../../../../util/order-status";
 
 class LectureDetailsSection extends React.Component {
 
@@ -56,16 +56,17 @@ class LectureDetailsSection extends React.Component {
                     <CustomToggle data={fieldData} name="orderApproved"/>
                     <CustomToggle data={fieldData} name="sameAudience"/>
                     <CustomCheckbox data={fieldData} name="rejected"/>
-                    {this.props.selectedOrder.status === Status.approvedOrder || this.props.selectedOrder.status === Status.isExecuting?
+                    {isMatchingStatus(this.props.selectedOrder, [Status.approvedOrder, Status.isExecuting, Status.cancelled])?
                         <CustomCheckbox data={fieldData} name="cancelled"/> : null}
                 </CustomToggleBox>
 
                 {this.props.selectedOrder.rejected ? (
                     <div style={{display: "flex"}}>
-                        <CustomDropDownMenu
+                        <CustomSelectField
                             data={fieldData}
                             name="rejectionReason"
                             options={this.props.rejectionReasons}
+                            size={Sizes.XL}
                         />
                         <CustomText data={fieldData} name="rejectionDetails" fullWidth={true}/>
                     </div> ) : null
@@ -73,10 +74,10 @@ class LectureDetailsSection extends React.Component {
 
                 {this.props.selectedOrder.cancelled ? (
                     <div style={{display: "flex"}}>
-                        <CustomAutoComplete
+                        <CustomSelectField
                             data={fieldData}
                             name="cancellationReason"
-                            dataSource={this.props.cancellationReasons}
+                            options={this.props.cancellationReasons}
                             size={Sizes.XL}
                         />
                         <CustomText data={fieldData} name="cancellationDetails" fullWidth={true}/>
