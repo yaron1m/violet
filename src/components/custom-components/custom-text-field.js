@@ -19,7 +19,7 @@ export default class CustomText extends AbstractField {
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
                 value={this.state.value}
-                onChange={(event, newValue) =>  super.handleChange(newValue)}
+                onChange={(event, newValue) => this.handleChange(newValue)}
                 multiLine={true}
                 rowsMax={4}
                 errorText={super.getErrorText()}
