@@ -1,4 +1,3 @@
-import React from 'react';
 import {isEmptyValue} from "../../../util/string-util";
 import PrintField from "./print-field";
 
