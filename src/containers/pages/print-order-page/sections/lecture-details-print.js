@@ -6,13 +6,20 @@ import PrintField from "../../../../components/custom-components/order-print/pri
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
 import PrintBoolean from "../../../../components/custom-components/order-print/print-boolean";
 import Divider from 'material-ui/Divider';
+import {getSelectedOrderStatus} from "../../../../util/order-status";
 
 class LectureDetailsPrintSection extends React.Component {
 
     render() {
         const fieldData = {
-            titles: this.props.labels.titles,
-            values: this.props.selectedOrder,
+            titles: {
+                ...this.props.labels.titles,
+                status: "סטאטוס", //TODO replace label with call
+            },
+            values: {
+                ...this.props.selectedOrder,
+                status: this.props.status,
+            }
         };
 
         return (
@@ -23,6 +30,7 @@ class LectureDetailsPrintSection extends React.Component {
                 <PrintField data={fieldData} name="location"/>
                 <PrintField data={fieldData} name="audienceType"/>
                 <PrintField data={fieldData} name="daySchedule"/>
+                <PrintField data={fieldData} name="status"/>
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
@@ -41,6 +49,7 @@ function mapStateToProps(state) {
     return {
         labels: getLabels(state).pages.orderPage.sections.lectureDetails,
         selectedOrder: getSelectedOrder(state),
+        status: getSelectedOrderStatus(state),
     };
 }
 
