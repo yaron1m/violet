@@ -6,7 +6,9 @@ export default class PrintSection extends React.Component {
     render() {
         const style = {
             section: {
-                border: "2px solid gray"
+                border: "2px solid gray",
+                padding: 10,
+                marginBottom: 10,
             },
             sectionTitle: {
                 fontSize: 25,
