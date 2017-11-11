@@ -14,6 +14,7 @@ import PaymentPage from "./containers/pages/payment-page/index";
 import FutureLecturesPage from "./containers/pages/future-lectures-page";
 import AllOrdersPage from "./containers/pages/all-orders-page";
 import ActionRequiredPage from "./containers/pages/action-required-page/index";
+import PrintOrderPage from "./containers/pages/print-order-page/index";
 
 const history = createHashHistory();
 
@@ -31,6 +32,7 @@ class Root extends React.Component {
                     <Route path="/payment" component={PaymentPage}/>
                     <Route path="/futureLectures" component={FutureLecturesPage}/>
                     <Route path="/allOrders" component={AllOrdersPage}/>
+                    <Route path="/print" component={PrintOrderPage}/>
                 </App>
             </Router>
         )
