@@ -35,7 +35,7 @@ export default function (state = initialState, action = {}) {
 }
 
 export function isLoggedIn(state) {
-    return state.firebase.loggedIn === true;
+    return state.firebase.loggedIn;
 }
 
 export function isFetching(state){

@@ -24,9 +24,9 @@ function setup(extraProps,orders,organizations) {
 
 describe('Firebase selectors', () => {
 
-    it('isLoggedIn - initial state - false', () => {
-        const target = setup({});
-        expect(isLoggedIn(target)).toBeFalsy();
+    it('isLoggedIn - initial state - undefined', () => {
+        const target = setup();
+        expect(isLoggedIn(target)).toBeUndefined();
     });
 
     it('isLoggedIn - not logged in - false', () => {
