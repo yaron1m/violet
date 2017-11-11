@@ -2,6 +2,7 @@ import React from 'react';
 import SendOfferButton from './send-offer';
 import SaveOrderButton from './save-order';
 import ClearFormButton from './clear-form';
+import PrintOrderButton from './print-order';
 import {ActionButtonsBox} from "../../../../components/action-buttons-box";
 
 export default class OrderActionButtons extends React.Component {
@@ -13,6 +14,8 @@ export default class OrderActionButtons extends React.Component {
                 <SaveOrderButton/>
 
                 <SendOfferButton/>
+
+                <PrintOrderButton/>
 
                 <ClearFormButton/>
 
