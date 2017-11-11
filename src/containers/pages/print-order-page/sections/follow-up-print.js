@@ -5,6 +5,7 @@ import {getSelectedOrder} from "../../../../store/selected/reducer";
 import PrintField from "../../../../components/custom-components/order-print/print-field";
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
 import PrintBoolean from "../../../../components/custom-components/order-print/print-boolean";
+import PrintDate from "../../../../components/custom-components/order-print/print-date";
 
 class FollowUpPrintSection extends React.Component {
 
@@ -20,7 +21,7 @@ class FollowUpPrintSection extends React.Component {
         return (
             <PrintSection title={this.props.labels.sectionName}>
                 <PrintBoolean data={fieldData} name="followUpRequired"/>
-                <PrintField data={fieldData} name="followUpDate"/>
+                <PrintDate data={fieldData} name="followUpDate"/>
                 <PrintField data={fieldData} name="followUpDetails"/>
             </PrintSection>
         );
