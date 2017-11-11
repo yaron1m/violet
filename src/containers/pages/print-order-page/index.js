@@ -7,6 +7,7 @@ import LectureDetailsPrintSection from "./sections/lecture-details-print";
 import ContactsPrintSection from "./sections/contacts-print";
 import NotesPrintSection from "./sections/notes-print";
 import OrganizationPrintSection from "./sections/organization-print";
+import FollowUpPrintSection from "./sections/follow-up-print";
 
 class PrintOrderPage extends React.Component {
 
@@ -14,10 +15,10 @@ class PrintOrderPage extends React.Component {
         if (!this.props.isSelectedOrder)
             return <PrintPageTitle title={this.props.labels.printNoOrderSelected}/>;
 
-        let title = this.props.labels.printOrderNumberLabel;
-        title += this.props.selectedOrder.id;
-        title += this.props.labels.printOrganizationNameLabel;
-        title += this.props.selectedOrganization.organizationName;
+        const title = this.props.labels.printOrderNumberLabel
+            + this.props.selectedOrder.id
+            + this.props.labels.printOrganizationNameLabel
+            + this.props.selectedOrganization.organizationName;
 
         return (
             <div>
@@ -32,6 +33,8 @@ class PrintOrderPage extends React.Component {
                 <NotesPrintSection/>
 
                 <ContactsPrintSection isFinancial={true}/>
+
+                <FollowUpPrintSection/>
 
             </div>
         );
