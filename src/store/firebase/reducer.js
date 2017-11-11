@@ -2,7 +2,10 @@ import * as actionTypes from './action-types';
 import * as organizationsActionTypes from '../organizations/action-types';
 import * as ordersActionTypes from '../orders/action-types';
 import * as offeredLecturesActionTypes from '../lists/action-types';
+import _ from 'lodash';
 import Immutable from 'seamless-immutable';
+import {getOrders} from "../orders/selectors";
+import {getOrganizations} from "../organizations/reducer";
 
 const initialState = Immutable({
     loggedIn: undefined,
@@ -47,5 +50,8 @@ export function isLoggedIn(state) {
 }
 
 export function isFetching(state){
-    return state.firebase.fetchingCount !== 0;
+    const fetchedOrders = _.isEmpty(getOrders(state));
+    const fetchedOrganizations = _.isEmpty(getOrganizations(state));
+    
+    return fetchedOrders || fetchedOrganizations;
 }
