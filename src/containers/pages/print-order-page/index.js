@@ -2,9 +2,11 @@ import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, getSelectedOrganization, isSelectedOrder} from "../../../store/selected/reducer";
+import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
 import LectureDetailsPrintSection from "./sections/lecture-details-print";
 import ContactsPrintSection from "./sections/contacts-print";
-import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
+import NotesPrintSection from "./sections/notes-print";
+import OrganizationPrintSection from "./sections/organization-print";
 
 class PrintOrderPage extends React.Component {
 
@@ -20,9 +22,17 @@ class PrintOrderPage extends React.Component {
         return (
             <div>
                 <PrintPageTitle title={title}/>
+
                 <LectureDetailsPrintSection/>
+
                 <ContactsPrintSection isFinancial={false}/>
+
+                <OrganizationPrintSection/>
+
+                <NotesPrintSection/>
+
                 <ContactsPrintSection isFinancial={true}/>
+
             </div>
         );
     }
