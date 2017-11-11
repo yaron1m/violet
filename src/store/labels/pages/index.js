@@ -102,6 +102,12 @@ const allOrdersPageLabels = {
     },
 };
 
+const printPageLabels = {
+    printOrderNumberLabel: "הזמנה מספר - ",
+    printOrganizationNameLabel: " ארגון - ",
+    printNoOrderSelected : "לא נבחרה הזמנה"
+};
+
 export const pages = {
     dashboard: dashboardLabels,
     loginPage: loginPageLabels,
@@ -112,4 +118,5 @@ export const pages = {
     allOrdersPage: allOrdersPageLabels,
     orderPage: orderPageLabels,
     organizationPage: organizationPageLabels,
+    printPage: printPageLabels,
 };
