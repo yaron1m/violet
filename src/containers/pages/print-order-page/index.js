@@ -21,7 +21,8 @@ class PrintOrderPage extends React.Component {
             <div>
                 <PrintPageTitle title={title}/>
                 <LectureDetailsPrintSection/>
-                <ContactsPrintSection/>
+                <ContactsPrintSection isFinancial={false}/>
+                <ContactsPrintSection isFinancial={true}/>
             </div>
         );
     }
