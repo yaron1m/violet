@@ -1,29 +1,15 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
-import Checkbox from 'material-ui/Checkbox';
 import * as _ from "lodash";
-import PropTypes from 'prop-types';
+import AbstractField from "./abstract-field";
 
-export default class CustomToggle extends React.Component {
-    constructor(props) {
-        validateProps(props);
-        super(props);
-        this.state = {
-            selected: this.props.data.values[this.props.name] !== undefined
-        };
-    }
+export default class CustomToggle extends AbstractField {
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            selected: nextProps.data.values[nextProps.name] !== undefined
-        });
+    showError() {
+        return this.state.value === undefined && _.includes(this.props.data.requiredFields, this.props.name);
     }
 
     render() {
-        let showError = false;
-        if (!this.state.selected && _.includes(this.props.data.requiredFields, this.props.name))
-            showError = true;
-
         const style = {
             toggle: {
                 marginBottom: 6,
@@ -32,7 +18,7 @@ export default class CustomToggle extends React.Component {
             labelStyle: {
                 marginRight: 45,
                 marginLeft: 10,
-                color: showError ? 'red' : "black",
+                color: this.showError() ? 'red' : "black",
             },
         };
 
@@ -40,14 +26,11 @@ export default class CustomToggle extends React.Component {
             <div>
                 <Toggle
                     style={style.toggle}
-                    label={this.props.data.titles[this.props.name]}
+                    label={this.title}
                     labelStyle={style.labelStyle}
                     labelPosition="right"
-                    toggled={this.props.data.values[this.props.name]}
-                    onToggle={(event, isInputChecked) => {
-                        this.props.data.updateAction(this.props.name, isInputChecked);
-                        this.setState({selected: true})
-                    }}
+                    toggled={this.state.value === true}
+                    onToggle={(event, isInputChecked) => this.handleChange(isInputChecked)}
                 />
             </div>
 
@@ -56,61 +39,7 @@ export default class CustomToggle extends React.Component {
 }
 
 CustomToggle.propTypes = {
-    name: PropTypes.string.isRequired,
-    data: PropTypes.object.isRequired,
-};
-
-function validateProps(props) {
-    if (!_.has(props.data.titles, props.name))
-        throw Error(`Toggle field "${props.name}" doesn't have a matching title in data.titles`);
-
-    if (!_.isFunction(props.data.updateAction))
-        throw Error(`Toggle field "${props.name}" - data.updateAction must be a function`);
-}
-
-
-export class CustomCheckbox extends React.Component {
-
-    render() {
-        const checked = this.props.data.values[this.props.name];
-
-        const style = {
-            checkbox: {
-                marginBottom: 6,
-                marginTop: 6,
-            },
-            labelStyle: {
-                marginRight: 20,
-                color: checked ? "red" : "black",
-            },
-            iconStyle: {
-                fill: checked ? 'red' : null,
-                borderColor: "black",
-            },
-        };
-
-        return (
-            <div>
-                <Checkbox
-                    style={style.checkbox}
-                    label={this.props.data.titles[this.props.name]}
-                    labelStyle={style.labelStyle}
-                    labelPosition="right"
-                    checked={checked}
-                    switched={checked}
-                    onCheck={(event, isInputChecked) =>
-                        this.props.data.updateAction(this.props.name, isInputChecked)}
-                    iconStyle={style.iconStyle}
-                />
-            </div>
-
-        );
-    }
-}
-
-CustomCheckbox.propTypes = {
-    name: PropTypes.string.isRequired,
-    data: PropTypes.object.isRequired,
+    ...AbstractField.propTypes,
 };
 
 class CustomToggleBox extends React.Component {
@@ -135,4 +64,3 @@ class CustomToggleBox extends React.Component {
 }
 
 export {CustomToggleBox};
-

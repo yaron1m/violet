@@ -2,7 +2,7 @@ import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import LectureTimesTable from './lecture-times-table';
-import CustomToggle, {CustomCheckbox, CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
+import CustomToggle, {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
@@ -13,6 +13,7 @@ import Status from "../../../../../util/consts/status";
 import Sizes from "../../../../../util/consts/sizes";
 import CustomSelectField from "../../../../../components/custom-components/custom-select-field";
 import {isMatchingStatus} from "../../../../../util/order-status";
+import {CustomCheckbox} from "../../../../../components/custom-components/custom-checkbox";
 
 class LectureDetailsSection extends React.Component {
 
