@@ -3,6 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, getSelectedOrganization, isSelectedOrder} from "../../../store/selected/reducer";
 import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
+import LectureTimesPrintSection from "./sections/lecture-times-print";
 import LectureDetailsPrintSection from "./sections/lecture-details-print";
 import ContactsPrintSection from "./sections/contacts-print";
 import NotesPrintSection from "./sections/notes-print";
@@ -18,26 +19,28 @@ class PrintOrderPage extends React.Component {
 
         const title = this.props.labels.printOrderNumberLabel
             + this.props.selectedOrder.id
-            + this.props.labels.printOrganizationNameLabel
+            + ": "
             + this.props.selectedOrganization.organizationName;
 
         return (
             <div>
                 <PrintPageTitle title={title}/>
 
+                <LectureTimesPrintSection/>
+
                 <LectureDetailsPrintSection/>
 
                 <ContactsPrintSection isFinancial={false}/>
 
+                <NotesPrintSection/>
+
                 <OrganizationPrintSection/>
 
-                <NotesPrintSection/>
+                <PaymentPrintSection/>
 
                 <ContactsPrintSection isFinancial={true}/>
 
                 <FollowUpPrintSection/>
-
-                <PaymentPrintSection/>
             </div>
         );
     }

@@ -103,8 +103,7 @@ const allOrdersPageLabels = {
 };
 
 const printPageLabels = {
-    printOrderNumberLabel: "הזמנה מספר - ",
-    printOrganizationNameLabel: " ; ארגון - ",
+    printOrderNumberLabel: "הזמנה מספר ",
     printNoOrderSelected : "לא נבחרה הזמנה"
 };
 
