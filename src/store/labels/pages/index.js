@@ -104,7 +104,7 @@ const allOrdersPageLabels = {
 
 const printPageLabels = {
     printOrderNumberLabel: "הזמנה מספר - ",
-    printOrganizationNameLabel: " ארגון - ",
+    printOrganizationNameLabel: " ; ארגון - ",
     printNoOrderSelected : "לא נבחרה הזמנה"
 };
 
