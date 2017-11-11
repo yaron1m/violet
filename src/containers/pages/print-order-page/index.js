@@ -8,6 +8,7 @@ import ContactsPrintSection from "./sections/contacts-print";
 import NotesPrintSection from "./sections/notes-print";
 import OrganizationPrintSection from "./sections/organization-print";
 import FollowUpPrintSection from "./sections/follow-up-print";
+import PaymentPrintSection from "./sections/payment-print";
 
 class PrintOrderPage extends React.Component {
 
@@ -36,6 +37,7 @@ class PrintOrderPage extends React.Component {
 
                 <FollowUpPrintSection/>
 
+                <PaymentPrintSection/>
             </div>
         );
     }
