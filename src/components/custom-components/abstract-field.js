@@ -6,7 +6,7 @@ import Sizes from "../../util/consts/sizes";
 export default class AbstractField extends React.Component {
     constructor(props) {
         super(props);
-        validateProps(props);
+        this.validateProps(props);
 
         this.name = props.name;
         this.title = props.data.titles[props.name];
@@ -22,6 +22,15 @@ export default class AbstractField extends React.Component {
             verticalAlign: "bottom",
         }
     }
+
+    validateProps(props) {
+        if (!_.has(props.data.titles, props.name))
+            throw Error(`Field "${props.name}" doesn't have a matching title in data.titles`);
+
+        if (!_.isFunction(props.data.updateAction))
+            throw Error(`Field "${props.name}" - data.updateAction must be a function`);
+    }
+
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.data.values[this.name] === this.state.value)
@@ -47,14 +56,6 @@ AbstractField.propTypes = {
     data: PropTypes.object.isRequired,
     fullWidth: PropTypes.bool,
 };
-
-function validateProps(props) {
-    if (!_.has(props.data.titles, props.name))
-        throw Error(`Field "${props.name}" doesn't have a matching title in data.titles`);
-
-    if (!_.isFunction(props.data.updateAction))
-        throw Error(`Field "${props.name}" - data.updateAction must be a function`);
-}
 
 function getWidth(props) {
     if (props.fullWidth)
