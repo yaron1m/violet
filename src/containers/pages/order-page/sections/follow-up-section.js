@@ -35,7 +35,6 @@ class FollowUpSection extends React.Component {
         return (
             <CustomPaper
                 title={this.props.labels.sectionName}
-                //isOpen = {this.props.selectedOrder.followUpRequired}
             >
                 <div style={style.flex}>
                     <CustomToggle data={fieldData} name="followUpRequired"/>

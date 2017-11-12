@@ -155,6 +155,7 @@ const orderPageActionButtonsLabels = {
     save: "שמור הזמנה",
     send: "שלח הצעת מחיר",
     clear: "נקה טופס",
+    print: "הדפס הזמנה",
     clearDialog: {
         title: "ניקוי טופס הזמנה",
         content: "האם אתה בטוח שברצונך לנקות את כל השדות בטופס?",

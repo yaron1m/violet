@@ -33,8 +33,6 @@ class ContactRow extends React.Component {
         });
     }
 
-    getKey = (key) => this.props.isFinancialContacts ? "financial" + _.upperFirst(key) : key;
-
     render() {
         const fieldData = {
             titles: this.props.labels.titles,
@@ -63,18 +61,23 @@ class ContactRow extends React.Component {
                     <PersonAddIcon/>
                 </IconButton>
 
-                <CustomText data={fieldData} name={this.getKey("contactFirstName", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactLastName", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactJob", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactPhone1", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactEmail", financial)} size={Sizes.XL}/>
-                <CustomText data={fieldData} name={this.getKey("contactPhone2", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactPhoneExtension", financial)} size={Sizes.M}/>
-                <CustomText data={fieldData} name={this.getKey("contactFax", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactFirstName", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactLastName", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactJob", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactPhone1", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactEmail", financial)} size={Sizes.XL}/>
+                <CustomText data={fieldData} name={getKey("contactPhone2", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactPhoneExtension", financial)} size={Sizes.M}/>
+                <CustomText data={fieldData} name={getKey("contactFax", financial)} size={Sizes.M}/>
             </div>
         );
     }
 }
+
+export function getKey(key, isFinancial) {
+    return isFinancial ? "financial" + _.upperFirst(key) : key;
+}
+
 
 ContactRow.propTypes = {
     isFinancialContacts: PropTypes.bool,
