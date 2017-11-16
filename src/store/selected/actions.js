@@ -35,7 +35,8 @@ export function setIsSelectedOrganization() {
 
 export function sendSelectedOrganizationToDatabase() {
     return async function sendSelectedOrganizationToDatabase(dispatch, getState) {
-        const selectedOrganization = addLastChange(getSelectedOrganization(getState()));
+        await dispatch(updateSelectedOrganization("changedDate", new Date().toJSON()));
+        const selectedOrganization = getSelectedOrganization(getState());
 
         return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);
     }
@@ -57,7 +58,7 @@ export function selectOrder(orderId) {
 
 export function updateSelectedOrder(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
-        const selectedOrder = changeImmutable(getSelectedOrder(getState()),key, value);
+        const selectedOrder = changeImmutable(getSelectedOrder(getState()), key, value);
         const updatedOrder = calculateOrderStatus(selectedOrder);
         dispatch({
             type: actionTypes.UPDATE_SELECTED_ORDER,
@@ -74,7 +75,8 @@ export function setIsSelectedOrder() {
 
 export function sendSelectedOrderToDatabase() {
     return async function sendSelectedOrderToDatabase(dispatch, getState) {
-        const selectedOrder = addLastChange(getSelectedOrder(getState()));
+        await dispatch(updateSelectedOrder("changedDate", new Date().toJSON()));
+        const selectedOrder = getSelectedOrder(getState());
 
         return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
     }
@@ -96,11 +98,7 @@ export function clearSelectedOrder() {
 
 
 // Helpers
-function addLastChange(obj){
-    return changeImmutable(obj, "changedDate", new Date().toJSON());
-}
-
-function changeImmutable(obj, key, value){
+function changeImmutable(obj, key, value) {
     return Immutable.merge(obj, {
         [key]: value
     });
