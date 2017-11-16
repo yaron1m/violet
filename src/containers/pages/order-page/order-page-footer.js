@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, isSelectedOrder} from "../../../store/selected/reducer";
 
-class OrderPageFooter extends React.Component {
+class OrderTimes extends React.Component {
 
     render() {
         if (!this.props.isSelectedOrder)
             return null;
 
         const style = {
-            fontSize: 12,
-            marginRight: 5,
+            fontSize: 16,
+            marginBottom: 10,
         };
 
         return (
@@ -34,4 +34,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(OrderPageFooter);
+export default connect(mapStateToProps)(OrderTimes);
