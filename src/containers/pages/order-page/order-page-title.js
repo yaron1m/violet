@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PageTitle from "../../../components/page-title";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, isSelectedOrder} from "../../../store/selected/reducer";
 import {getSelectedOrderStatus} from "../../../util/order-status";
@@ -8,26 +7,29 @@ import {getSelectedOrderStatus} from "../../../util/order-status";
 class OrderPageTitle extends React.Component {
 
     render() {
-        let pageTitle = this.props.labels.formName;
 
-        if (this.props.isSelectedOrder) {
-            pageTitle += this.props.labels.orderNumberTitle + this.props.selectedOrder.id;
-        }
+        const pageTitle = this.props.isSelectedOrder ?
+            this.props.labels.orderNumberTitle + this.props.selectedOrder.id
+            : this.props.labels.newOrderTitle;
 
-        else {
-            pageTitle += this.props.labels.newOrderTitle;
-        }
 
-        const status = this.props.labels.orderStatusTitle + this.props.status;
+        const status = " - " + this.props.status;
+
+        const style = {
+            div: {
+                fontSize: 24,
+                marginBottom: 10,
+                textAlign: "center",
+            },
+            title: {
+                fontWeight: "bold",
+            }
+        };
 
         return (
-            <div>
-                <div>
-                    <PageTitle title={pageTitle}/>
-                </div>
-                <div>
-                    <PageTitle title={status}/>
-                </div>
+            <div style={style.div}>
+                <span style={style.title}>{pageTitle}</span>
+                <span>{status}</span>
             </div>
         );
     }

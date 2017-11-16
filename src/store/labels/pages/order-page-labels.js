@@ -166,10 +166,8 @@ const orderPageActionButtonsLabels = {
 
 export const orderPageLabels = {
     title: {
-        formName: "טופס הזמנת הרצאה",
-        orderNumberTitle: " - הזמנה מספר ",
-        orderStatusTitle: "סטאטוס: ",
-        newOrderTitle: " - הזמנה חדשה",
+        orderNumberTitle: "הזמנה מספר ",
+        newOrderTitle: "הזמנה חדשה",
     },
 
     sections: {
