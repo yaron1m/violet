@@ -34,7 +34,8 @@ class LectureTimesPrintSection extends React.Component {
                         )}
                     </tr>
 
-                    {this.props.selectedOrder.lectureTimes.map((lectureTime, index) =>
+                    {this.props.selectedOrder.lectureTimes ?
+                        this.props.selectedOrder.lectureTimes.map((lectureTime, index) =>
                         <tr key={index}>
                             {tableHeaders.map((header, index2) => {
                                     header = _.keys(header)[0];
@@ -51,7 +52,7 @@ class LectureTimesPrintSection extends React.Component {
                                 }
                             )}
                         </tr>
-                    )}
+                    ) : null}
                     </tbody>
                 </table>
             </PrintSection>

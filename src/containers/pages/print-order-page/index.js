@@ -13,6 +13,11 @@ import PaymentPrintSection from "./sections/payment-print";
 
 class PrintOrderPage extends React.Component {
 
+    componentDidMount() {
+        if (this.props.isSelectedOrder)
+            window.print();
+    }
+
     render() {
         if (!this.props.isSelectedOrder)
             return <PrintPageTitle title={this.props.labels.printNoOrderSelected}/>;
