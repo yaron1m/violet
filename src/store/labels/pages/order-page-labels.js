@@ -124,10 +124,12 @@ const paymentSectionLabels = {
         extraCosts :"עלויות נוספות",
         VAT: "מע\"מ",
         totalSum: "סה\"כ לתשלום",
+    }
+};
 
-
-
-        amount: "סכום לתשלום",
+const invoiceSectionLabels = {
+    sectionName: "חשבוניות",
+    titles: {
         proformaInvoiceNumber: "מספר חשבונית עסקה",
         proformaInvoiceDate: "תאריך חשבונית עסקה",
         expectedPayDate: "תאריך לתשלום",
@@ -138,7 +140,6 @@ const paymentSectionLabels = {
         internalOrderNumber: "מספר הזמנת רכש",
     }
 };
-
 const notesSectionLabels = {
     sectionName: "הערות",
     titles: {
@@ -186,6 +187,7 @@ export const orderPageLabels = {
         lectureTimes: lectureTimesSectionLabels,
         followUp: followUpSectionLabels,
         payment: paymentSectionLabels,
+        invoice: invoiceSectionLabels,
         notes: notesSectionLabels,
     },
     dialog: orderPageDialogLabels,

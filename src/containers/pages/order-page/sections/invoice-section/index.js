@@ -1,5 +1,4 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import {connect} from 'react-redux';
@@ -9,11 +8,11 @@ import Divider from 'material-ui/Divider';
 import {getSelectedOrder, getSelectedOrganization} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import ProformaInvoiceDate from "./proforma-invoice-date";
-import ContactRow from '../contacts-section/contact-row'
 import Sizes from "../../../../../util/consts/sizes";
+import CustomPaper from "../../../../../components/custom-components/custom-paper";
 
 
-class OrganizationSection extends React.Component {
+class InvoiceData extends React.Component {
     render() {
         const style = {
             flex: {
@@ -37,21 +36,6 @@ class OrganizationSection extends React.Component {
             <CustomPaper
                 title={this.props.labels.sectionName}
             >
-                <div>{this.props.labels.financialContactTitle}</div>
-                <ContactRow isFinancialContacts={true}/>
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
-
-                <div style={style.flex}>
-                    <CustomText data={fieldData} name="cost"/>
-                    <CustomText data={fieldData} name="oneWayDistance"/>
-                    <CustomText data={fieldData} name="travelExpenses"/>
-                    <CustomText data={fieldData} name="extraCosts"/>
-                    <CustomText data={fieldData} name="VAT"/>
-                    <CustomText data={fieldData} name="totalSum"/>
-                </div>
-
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
-
                 <div style={style.flex}>
                     <CustomText data={fieldData} name="proformaInvoiceNumber"/>
                     <ProformaInvoiceDate/>
@@ -75,7 +59,7 @@ class OrganizationSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).pages.orderPage.sections.payment,
+        labels: getLabels(state).pages.orderPage.sections.invoice,
         paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
         selectedOrder: getSelectedOrder(state),
         selectedOrganization: getSelectedOrganization(state),
@@ -83,4 +67,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(OrganizationSection);
+export default connect(mapStateToProps)(InvoiceData);
