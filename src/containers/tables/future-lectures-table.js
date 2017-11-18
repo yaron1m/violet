@@ -17,9 +17,11 @@ class FutureLecturesTable extends React.Component {
     }
 
     render() {
-        const now = new Date();
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        yesterday.setHours(0,0,0,0);
         let futureLectureTimes = _.sortBy(
-            _.filter(this.props.futureLectureTimes, lectureTime => new Date(lectureTime.date) > now),
+            _.filter(this.props.futureLectureTimes, lectureTime => new Date(lectureTime.date) > yesterday),
             x => x.date);
 
         return (

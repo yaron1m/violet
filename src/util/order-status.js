@@ -34,7 +34,6 @@ export default function calculateOrderStatus(order) {
 function meetsRequirements(order, requirement) {
 
     let lectureTimesDates;
-    let now;
 
     switch (requirement) {
         case progressiveStatuses.contact:
@@ -51,13 +50,16 @@ function meetsRequirements(order, requirement) {
 
         case progressiveStatuses.isExecuting:
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-            now = new Date();
-            return _.some(lectureTimesDates, date => new Date(date) < now);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            return _.some(lectureTimesDates, date => new Date(date) <= today);
 
         case progressiveStatuses.executed:
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-            now = new Date();
-            return _.every(lectureTimesDates, date => new Date(date) <= now);
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            yesterday.setHours(0,0,0,0);
+            return _.every(lectureTimesDates, date => new Date(date) <= yesterday);
 
         case progressiveStatuses.waitingPayment:
             return existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber");
