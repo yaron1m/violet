@@ -118,7 +118,20 @@ const paymentSectionLabels = {
     sectionName: "תשלום",
     financialContactTitle: "איש קשר לתשלום",
     titles: {
-        amount: "סכום לתשלום",
+        cost: "מחיר הרצאות",
+        oneWayDistance:"מרחק כיוון אחד",
+        travelExpenses: "עלות נסיעות",
+        extraCosts :"עלויות נוספות",
+        sum :"סכום לפני מע\"מ",
+        vat: "מע\"מ",
+        totalSum: "סה\"כ לתשלום",
+    },
+    buttonTooltip: "חשב מחירים",
+};
+
+const invoiceSectionLabels = {
+    sectionName: "חשבוניות",
+    titles: {
         proformaInvoiceNumber: "מספר חשבונית עסקה",
         proformaInvoiceDate: "תאריך חשבונית עסקה",
         expectedPayDate: "תאריך לתשלום",
@@ -129,7 +142,6 @@ const paymentSectionLabels = {
         internalOrderNumber: "מספר הזמנת רכש",
     }
 };
-
 const notesSectionLabels = {
     sectionName: "הערות",
     titles: {
@@ -177,6 +189,7 @@ export const orderPageLabels = {
         lectureTimes: lectureTimesSectionLabels,
         followUp: followUpSectionLabels,
         payment: paymentSectionLabels,
+        invoice: invoiceSectionLabels,
         notes: notesSectionLabels,
     },
     dialog: orderPageDialogLabels,

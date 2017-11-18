@@ -9,7 +9,7 @@ import ContactsPrintSection from "./sections/contacts-print";
 import NotesPrintSection from "./sections/notes-print";
 import OrganizationPrintSection from "./sections/organization-print";
 import FollowUpPrintSection from "./sections/follow-up-print";
-import PaymentPrintSection from "./sections/payment-print";
+import InvoicePrintSection from "./sections/invoice-print";
 
 class PrintOrderPage extends React.Component {
 
@@ -41,7 +41,7 @@ class PrintOrderPage extends React.Component {
 
                 <OrganizationPrintSection/>
 
-                <PaymentPrintSection/>
+                <InvoicePrintSection/>
 
                 <ContactsPrintSection isFinancial={true}/>
 

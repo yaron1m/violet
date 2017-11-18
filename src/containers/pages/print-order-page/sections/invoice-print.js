@@ -7,7 +7,7 @@ import PrintSection from "../../../../components/custom-components/order-print/p
 import PrintDate from "../../../../components/custom-components/order-print/print-date";
 import Divider from 'material-ui/Divider';
 
-class PaymentPrintSection extends React.Component {
+class InvoicePrintSection extends React.Component {
 
     render() {
         const fieldData = {
@@ -15,9 +15,10 @@ class PaymentPrintSection extends React.Component {
             values: this.props.selectedOrder,
         };
 
+        //TODO print new payment section
         return (
             <PrintSection title={this.props.labels.sectionName}>
-                <PrintField data={fieldData} name="amount"/>
+                {/*<PrintField data={fieldData} name="totalSum"/>*/}
                 <PrintField data={fieldData} name="proformaInvoiceNumber"/>
                 <PrintDate data={fieldData} name="proformaInvoiceDate"/>
                 <PrintDate data={fieldData} name="expectedPayDate"/>
@@ -36,9 +37,9 @@ class PaymentPrintSection extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).pages.orderPage.sections.payment,
+        labels: getLabels(state).pages.orderPage.sections.invoice,
         selectedOrder: getSelectedOrder(state),
     };
 }
 
-export default connect(mapStateToProps)(PaymentPrintSection);
+export default connect(mapStateToProps)(InvoicePrintSection);
