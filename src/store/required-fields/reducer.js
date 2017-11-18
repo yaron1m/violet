@@ -24,7 +24,15 @@ export default (state = initialState, action = {}) => {
 }
 
 export function getRequiredFields(state) {
-    return getArrayOfRequiredFields(state, state.requiredFields.showRequiredFields);
+    const requiredFields = getArrayOfRequiredFields(state, state.requiredFields.showRequiredFields);
+    if (getSelectedOrganization(state).internalOrderIdRequired)
+        return requiredFields;
+
+    return {
+        organization: requiredFields.organization,
+        lectureTimes: requiredFields.lectureTimes,
+        order: _.without(requiredFields.order, "internalOrderNumber")
+    };
 }
 
 function getArrayOfRequiredFields(state, showRequiredFields) {
