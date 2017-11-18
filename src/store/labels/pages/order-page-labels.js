@@ -122,9 +122,11 @@ const paymentSectionLabels = {
         oneWayDistance:"מרחק כיוון אחד",
         travelExpenses: "עלות נסיעות",
         extraCosts :"עלויות נוספות",
+        sum :"סכום לפני מע\"מ",
         VAT: "מע\"מ",
         totalSum: "סה\"כ לתשלום",
-    }
+    },
+    buttonTooltip: "חשב מחירים",
 };
 
 const invoiceSectionLabels = {
