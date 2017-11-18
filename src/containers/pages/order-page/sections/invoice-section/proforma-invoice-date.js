@@ -75,7 +75,7 @@ class ProformaInvoiceDate extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).pages.orderPage.sections.payment,
+        labels: getLabels(state).pages.orderPage.sections.invoice,
         paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
         selectedOrder: getSelectedOrder(state),
         selectedOrganization: getSelectedOrganization(state),
