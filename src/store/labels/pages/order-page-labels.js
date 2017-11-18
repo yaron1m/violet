@@ -123,7 +123,7 @@ const paymentSectionLabels = {
         travelExpenses: "עלות נסיעות",
         extraCosts :"עלויות נוספות",
         sum :"סכום לפני מע\"מ",
-        VAT: "מע\"מ",
+        vat: "מע\"מ",
         totalSum: "סה\"כ לתשלום",
     },
     buttonTooltip: "חשב מחירים",

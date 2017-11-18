@@ -9,8 +9,9 @@ import ContactRow from '../contacts-section/contact-row'
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import IconButton from "material-ui/IconButton";
-import CaluculateIcon from 'material-ui-icons/LocalAtm';
+import CalculateIcon from 'material-ui-icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
+import calculateSum from './calculate-sum';
 
 class PaymentSection extends React.Component {
     render() {
@@ -43,11 +44,11 @@ class PaymentSection extends React.Component {
 
                 <div style={style.flex}>
                     <IconButton
-                        // onClick={this.openContactImportDialog.bind(this)}
+                        onClick={calculateSum.bind(this)}
                         tooltip={this.props.labels.buttonTooltip}
                         style={{marginBottom: 10, marginRight: 10}}
                     >
-                        <CaluculateIcon/>
+                        <CalculateIcon/>
                     </IconButton>
 
                     <CustomText data={fieldData} name="cost" />
@@ -55,7 +56,7 @@ class PaymentSection extends React.Component {
                     <CustomText data={fieldData} name="travelExpenses" size={Sizes.M}/>
                     <CustomText data={fieldData} name="extraCosts" size={Sizes.M}/>
                     <CustomText data={fieldData} name="sum"/>
-                    <CustomText data={fieldData} name="VAT" size={Sizes.M}/>
+                    <CustomText data={fieldData} name="vat" size={Sizes.M}/>
                     <CustomText data={fieldData} name="totalSum"/>
                 </div>
             </CustomPaper>
