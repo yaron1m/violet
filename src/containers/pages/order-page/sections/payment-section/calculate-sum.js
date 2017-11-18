@@ -10,20 +10,26 @@ export default async function calculateSum() {
     if (isEmptyValue(order, "cost"))
         return;
 
-    order.travelExpenses = travelKmCost * getValue(order,"oneWayDistance");
-    if(order.travelExpenses !== 0 )
-        this.props.dispatch(updateSelectedOrder("travelExpenses", order.travelExpenses.toString() ));
+    updateValue.bind(this)(order, "travelExpenses",
+        _.round(travelKmCost * getValue(order, "oneWayDistance"), 2));
 
-    order.sum = _.round(
-        getValue(order, "cost") + getValue(order, "travelExpenses") + getValue(order, "extraCosts"),2);
-    this.props.dispatch(updateSelectedOrder("sum", order.sum.toString()));
+    updateValue.bind(this)(order, "sum",
+        _.round(getValue(order, "cost") + getValue(order, "travelExpenses") + getValue(order, "extraCosts"), 2));
 
-    order.vat = _.round(vatRate * order.sum, 2);
-    this.props.dispatch(updateSelectedOrder("vat", order.vat.toString()));
+    updateValue.bind(this)(order, "vat",
+        _.round(vatRate * order.sum, 2));
 
-    order.totalSum = _.round(order.sum + order.vat,);
-    this.props.dispatch(updateSelectedOrder("totalSum", order.totalSum.toString()));
+    updateValue.bind(this)(order, "totalSum",
+        _.round(order.sum + order.vat));
 }
+
+function updateValue(order, key, value) {
+    if(value === 0)
+        value = "";
+    order[key] = value;
+    this.props.dispatch(updateSelectedOrder(key, value.toString()));
+}
+
 
 function getValue(order, key) {
     return isEmptyValue(order, key) ? 0 : parseFloat(order[key]); //TODO add numerical check
