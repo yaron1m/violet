@@ -24,7 +24,9 @@ const isExecuting = mergerRequiredFields(approvedOrder);
 
 const executed = mergerRequiredFields(isExecuting);
 
-const waitingPayment = mergerRequiredFields(executed);
+const waitingPayment = mergerRequiredFields(executed, {
+    order: ["totalSum"]
+});
 
 const payed = mergerRequiredFields(waitingPayment);
 
