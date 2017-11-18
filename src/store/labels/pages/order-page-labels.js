@@ -118,6 +118,15 @@ const paymentSectionLabels = {
     sectionName: "תשלום",
     financialContactTitle: "איש קשר לתשלום",
     titles: {
+        cost: "מחיר הרצאות",
+        oneWayDistance:"מרחק כיוון אחד",
+        travelExpenses: "עלות נסיעות",
+        extraCosts :"עלויות נוספות",
+        VAT: "מע\"מ",
+        totalSum: "סה\"כ לתשלום",
+
+
+
         amount: "סכום לתשלום",
         proformaInvoiceNumber: "מספר חשבונית עסקה",
         proformaInvoiceDate: "תאריך חשבונית עסקה",
