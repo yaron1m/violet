@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import SendIcon from 'material-ui-icons/Mail';
+import EditFileIcon from 'material-ui-icons/InsertDriveFile';
 import {getLabels} from "../../../../store/labels/reducer";
 import {
     getSelectedOrder, getSelectedOrganization, isSelectedOrder
@@ -10,7 +11,7 @@ import * as _ from 'lodash'
 
 class SendOfferButton extends React.Component {
 
-    orderEmailHref() {
+    orderEmailHref(edit = false) {
         let topicsArray = _.map(this.props.selectedOrder.lectureTimes, lectureTime => lectureTime.topic);
 
         // Remove duplicates
@@ -19,6 +20,9 @@ class SendOfferButton extends React.Component {
         });
 
         let href = "violet:";
+        if (edit)
+            href += "open-file:";
+
         href += SendOfferButton.parameter("id", this.props.selectedOrder.id, true);
         href += SendOfferButton.parameter("topic", SendOfferButton.arrayToParameterValue(topicsArray));
         href += SendOfferButton.parameter("email", this.props.selectedOrder.contactEmail);
@@ -49,13 +53,21 @@ class SendOfferButton extends React.Component {
     render() {
 
         const emailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)() : null;
-
+        const editEmailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)(true) : null;
         return (
-            <IconButton tooltip={this.props.labels.send}>
-                <a href={emailHref}>
-                    <SendIcon/>
-                </a>
-            </IconButton>
+            <span>
+                <IconButton tooltip={this.props.labels.send}>
+                    <a href={emailHref}>
+                        <SendIcon/>
+                    </a>
+                </IconButton>
+
+                <IconButton tooltip={this.props.labels.edit}>
+                    <a href={editEmailHref}>
+                        <EditFileIcon/>
+                    </a>
+                </IconButton>
+            </span>
         );
     }
 }

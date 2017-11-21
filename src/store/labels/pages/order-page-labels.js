@@ -166,6 +166,7 @@ const orderPageDialogLabels = {
 const orderPageActionButtonsLabels = {
     save: "שמור הזמנה",
     send: "שלח הצעת מחיר",
+    edit: "ערוך הצעת מחיר",
     clear: "נקה טופס",
     print: "הדפס הזמנה",
     clearDialog: {
