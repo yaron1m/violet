@@ -7,6 +7,7 @@ export function getLabels(state) {
 export default function labels() {
     return {
         softwareName: "Violet",
+        currencyIcon: "₪",
         header: {
             searchLineHint: "חיפוש...",
             organizationPrefix: "ארגון: ",

@@ -51,7 +51,7 @@ class InfoBoxes extends React.Component {
             sum += _.parseInt(order.totalSum);
         });
 
-        return sum + " " + this.props.labels.currencyIcon;
+        return sum + " " + this.props.currencyIcon;
     }
 
 
@@ -120,6 +120,7 @@ class InfoBoxes extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).pages.dashboard.infoBoxes,
+        currencyIcon: getLabels(state).currencyIcon,
         orders: getOrders(state),
         followUpOrdersSummary: getFollowUpOrdersSummary(state),
         futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),

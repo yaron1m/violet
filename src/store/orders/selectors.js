@@ -5,6 +5,7 @@ import {getOrderStatusLabel, isMatchingStatus} from "../../util/order-status";
 import {cutIfLong} from "../../util/string-util";
 import getActionRequiredOrdersArray from "./action-required-orders";
 import Status from "../../util/consts/status";
+import {getLabels} from "../labels/reducer";
 
 export function getOrders(state, status = null) {
     const orders = state.orders;
@@ -82,7 +83,7 @@ export function getWaitingPaymentOrders(state) {
             result.lectureDate = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
             result.expectedPayDate = order.expectedPayDate;
-            result.totalSum = order.totalSum;
+            result.totalSum = order.totalSum + " " + getLabels(state).currencyIcon;
             result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
         }
 

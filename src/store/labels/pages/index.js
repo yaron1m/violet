@@ -11,7 +11,6 @@ const dashboardLabels = {
         followUp: "ממתינות לטיפול",
         waitingPayment: "ממתינות לתשלום",
         expectedIncome: "הכנסות צפויות",
-        currencyIcon: "₪",
     }
 };
 
