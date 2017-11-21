@@ -77,4 +77,25 @@ describe('payment section - calculate sum', () => {
         expect(actions[2].payload.vat).toBe("260.78");
         expect(actions[3].payload.totalSum).toBe("1795");
     });
+
+    it('calculateSum - results are rounded', async function () {
+        const initialState = {
+            selected: {
+                order: {
+                    cost: "1000",
+                    oneWayDistance: "0.1"
+                }
+            }
+        };
+        const store = mockStore(initialState);
+
+        await calculateSum(initialState.selected.order, store.dispatch);
+
+        const actions = store.getActions();
+        expect(actions.length).toBe(4);
+        expect(actions[0].payload.travelExpenses).toBe("1.07");
+        expect(actions[1].payload.sum).toBe("1001.07");
+        expect(actions[2].payload.vat).toBe("170.18");
+        expect(actions[3].payload.totalSum).toBe("1171");
+    });
 });
