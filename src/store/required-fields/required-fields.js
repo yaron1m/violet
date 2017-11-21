@@ -16,6 +16,7 @@ const order = mergerRequiredFields(offer, {
 });
 
 const approvedOrder = mergerRequiredFields(order, {
+    organization: ["companyId", "paymentConditions"],
     order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
         "financialContactEmail", "cost", "parking", "projector", "soundSystem", "microphone", "internalOrderNumber"]
 });
@@ -25,10 +26,12 @@ const isExecuting = mergerRequiredFields(approvedOrder);
 const executed = mergerRequiredFields(isExecuting);
 
 const waitingPayment = mergerRequiredFields(executed, {
-    order: ["totalSum"]
+    order: ["totalSum", "expectedPayDate"]
 });
 
-const payed = mergerRequiredFields(waitingPayment);
+const payed = mergerRequiredFields(waitingPayment, {
+    order: ["actualPayDay"]
+});
 
 const cancelled = {
     order: ["cancellationReason"],

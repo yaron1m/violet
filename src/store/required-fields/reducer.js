@@ -2,10 +2,10 @@ import {getSelectedOrder, getSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
-import initialState from "./initial-state";
+import requiredFields from "./required-fields";
 import {isEmptyValue} from "../../util/string-util";
 
-export default (state = initialState, action = {}) => {
+export default (state = requiredFields, action = {}) => {
 
     switch (action.type) {
         case actionTypes.SHOW_REQUIRED_FIELDS:
