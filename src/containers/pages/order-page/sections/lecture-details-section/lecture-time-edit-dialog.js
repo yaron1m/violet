@@ -59,12 +59,12 @@ class LectureTimeEditDialog extends React.Component {
             >
                 <div style={style.flex}>
                     <CustomDatePicker data={tableFieldData} name="date"/>
-                    <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XL}/>
-                    <CustomText data={tableFieldData} name="startTime"/>
-                    <CustomText data={tableFieldData} name="endTime"/>
-                    <CustomText data={tableFieldData} name="audienceSize"/>
-                    <CustomText data={tableFieldData} name="shirtColor"/>
-                    <CustomText data={tableFieldData} name="tie"/>
+                    <CustomAutoComplete data={tableFieldData} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
+                    <CustomText data={tableFieldData} name="startTime" size={Sizes.M}/>
+                    <CustomText data={tableFieldData} name="endTime" size={Sizes.M}/>
+                    <CustomText data={tableFieldData} name="audienceSize" size={Sizes.M}/>
+                    <CustomText data={tableFieldData} name="shirtColor" size={Sizes.M}/>
+                    <CustomText data={tableFieldData} name="tie" size={Sizes.M}/>
                 </div>
 
             </CustomDialog>
