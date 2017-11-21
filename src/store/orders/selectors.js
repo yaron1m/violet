@@ -82,7 +82,7 @@ export function getWaitingPaymentOrders(state) {
             result.lectureDate = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
             result.expectedPayDate = order.expectedPayDate;
-            result.amount = order.amount;
+            result.totalSum = order.totalSum;
             result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
         }
 

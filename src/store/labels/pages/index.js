@@ -71,8 +71,8 @@ const paymentPageLabels = {
             {lectureDate: "תאריך הרצאה"},
             {topic: "נושא"},
             {expectedPayDate: "תאריך תשלום"},
-            {amount: "סכום לתשלום"},
-            {edit: "עריכה"}]
+            {totalSum: "סכום לתשלום"},
+            {edit: "עריכה"}],
     },
 };
 
@@ -104,7 +104,7 @@ const allOrdersPageLabels = {
 
 const printPageLabels = {
     printOrderNumberLabel: "הזמנה מספר ",
-    printNoOrderSelected : "לא נבחרה הזמנה"
+    printNoOrderSelected: "לא נבחרה הזמנה"
 };
 
 export const pages = {
