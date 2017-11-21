@@ -11,7 +11,7 @@ export default async function calculateSum() {
         return;
 
     updateValue.bind(this)(order, "travelExpenses",
-        _.round(travelKmCost * getValue(order, "oneWayDistance"), 2));
+        _.round(travelKmCost * 2 * getValue(order, "oneWayDistance"), 2));
 
     updateValue.bind(this)(order, "sum",
         _.round(getValue(order, "cost") + getValue(order, "travelExpenses") + getValue(order, "extraCosts"), 2));

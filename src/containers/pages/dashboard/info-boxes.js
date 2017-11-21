@@ -48,7 +48,7 @@ class InfoBoxes extends React.Component {
 
         let sum = 0;
         _.forEach(this.props.waitingPaymentOrders, function (order) {
-            sum += _.parseInt(order.amount);
+            sum += _.parseInt(order.totalSum);
         });
 
         return sum + " " + this.props.labels.currencyIcon;
