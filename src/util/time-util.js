@@ -13,11 +13,15 @@ function isValidTimeFormat(time) {
 }
 
 function getDuration(startTime, endTime) {
-    if (!startTime || !endTime || startTime > endTime)
-        return;
-    const s = startTime.split(':');
-    const e = endTime.split(':');
-    const sh = s[0], sm = s[1], eh = e[0], em = e[1];
+    if (!startTime || !endTime)
+        return null;
+    const start = startTime.split(':');
+    const end = endTime.split(':');
+
+    const sh = start[0], sm = start[1], eh = end[0], em = end[1];
+    if (sh > eh)
+        return null;
+
     if (em - sm < 0)
         return pad(eh - sh - 1) + ':' + pad(em - sm + 60);
     return pad(eh - sh) + ':' + pad(em - sm);
