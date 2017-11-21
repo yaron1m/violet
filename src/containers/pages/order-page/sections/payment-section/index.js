@@ -44,7 +44,7 @@ class PaymentSection extends React.Component {
 
                 <div style={style.flex}>
                     <IconButton
-                        onClick={calculateSum.bind(this)}
+                        onClick={() => calculateSum(this.props.selectedOrder, this.props.dispatch)}
                         tooltip={this.props.labels.buttonTooltip}
                         style={{marginBottom: 10, marginRight: 10}}
                     >
