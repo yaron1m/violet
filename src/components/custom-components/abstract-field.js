@@ -5,7 +5,7 @@ import Sizes from "../../util/consts/sizes";
 
 export default class AbstractField extends React.Component {
     constructor(props) {
-        super(props);
+        super();
         this.validateProps(props);
 
         this.name = props.name;
