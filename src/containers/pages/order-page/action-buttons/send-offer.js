@@ -62,11 +62,12 @@ class SendOfferButton extends React.Component {
                     </a>
                 </IconButton>
 
-                <IconButton tooltip={this.props.labels.edit}>
-                    <a href={editEmailHref}>
-                        <EditFileIcon/>
-                    </a>
-                </IconButton>
+                {/*//TODO fix permissions problem*/}
+                {/*<IconButton tooltip={this.props.labels.edit}>*/}
+                    {/*<a href={editEmailHref}>*/}
+                        {/*<EditFileIcon/>*/}
+                    {/*</a>*/}
+                {/*</IconButton>*/}
             </span>
         );
     }
