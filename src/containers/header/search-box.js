@@ -1,5 +1,8 @@
 import React from 'react';
-import {white, purple600} from 'material-ui/styles/colors';
+import {white,
+    purple600 as containerColor,
+    indigo600 as organizationIconColor,
+    orange500 as orderIconColor} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
@@ -11,6 +14,10 @@ import {selectOrder, selectOrganization} from "../../store/selected/actions";
 import {getOrders} from "../../store/orders/selectors";
 import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
+import {MenuItem} from "material-ui";
+import EventIcon from 'material-ui-icons/EventNote';
+import BusinessIcon from 'material-ui-icons/Business';
+
 
 class SearchBox extends React.Component {
 
@@ -32,14 +39,14 @@ class SearchBox extends React.Component {
         }
         this.setState({searchText: ""});
 
-        switch (chosenRequest.value.type) {
+        switch (chosenRequest.info.type) {
             case this.sourceTypes.organization:
-                this.props.dispatch(selectOrganization(chosenRequest.value.id));
+                this.props.dispatch(selectOrganization(chosenRequest.info.organizationId));
                 redirect(this.props.history, '/org');
                 return;
 
             case this.sourceTypes.order:
-                this.props.dispatch(selectOrder(chosenRequest.value.id));
+                this.props.dispatch(selectOrder(chosenRequest.value.orderId));
                 this.props.dispatch(selectOrganization(chosenRequest.value.organizationId));
 
                 redirect(this.props.history, '/form');
@@ -62,7 +69,7 @@ class SearchBox extends React.Component {
                 marginLeft: 5,
             },
             container: {
-                backgroundColor: purple600,
+                backgroundColor: containerColor,
                 borderRadius: 2,
                 height: 35,
                 paddingLeft: 10,
@@ -81,20 +88,28 @@ class SearchBox extends React.Component {
         const organizationNamesObjects = _.values(this.props.organizations).map(
             (org) => ({
                 text: org.organizationName,
-                value: {
+                info: {
                     type: this.sourceTypes.organization,
-                    id: org.id
-                }
+                    organizationId: org.id
+                },
+                value: (<MenuItem
+                    primaryText={org.organizationName}
+                    leftIcon={<BusinessIcon color={organizationIconColor}/>}
+                />)
             }));
 
         const orderNumbersObjects = _.values(this.props.orders).map(
             (order) => ({
                 text: order.id.toString() + " - " + this.props.organizations[order.organizationId].organizationName,
-                value: {
+                info: {
                     type: this.sourceTypes.order,
-                    id: order.id,
+                    orderId: order.id,
                     organizationId: order.organizationId,
-                }
+                },
+                value: (<MenuItem
+                    primaryText={order.id.toString() + " - " + this.props.organizations[order.organizationId].organizationName}
+                    leftIcon={<EventIcon color={orderIconColor}/>}
+                />)
             }));
 
         const dataSource = _.concat(organizationNamesObjects, orderNumbersObjects);
