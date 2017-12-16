@@ -18,6 +18,7 @@ class AllOrdersTable extends React.Component {
     render() {
         return (
             <CustomPaperTable
+                beforeTable={this.props.beforeTable}
                 title={this.props.labels.title}
                 tableHeaders={this.props.labels.tableHeaders}
                 elements={this.props.orders}
@@ -42,6 +43,7 @@ function mapStateToProps(state, ownProps) {
 AllOrdersTable.propTypes = {
     hideEdit: PropTypes.bool,
     limit: PropTypes.number,
+    beforeTable: PropTypes.node,
 };
 
 AllOrdersTable.defaultProps = {

@@ -7,7 +7,7 @@ import AbstractField from "./abstract-field";
 
 export default class CustomSelectField extends AbstractField {
 
-        render() {
+    render() {
         const style = this.basicStyle;
 
         return (
@@ -25,11 +25,17 @@ export default class CustomSelectField extends AbstractField {
                 /> : null}
 
                 {_.map(this.props.options, option =>
-                    <MenuItem
-                        key={option}
-                        value={option}
-                        primaryText={option}
-                    />
+                    _.isObject(option) ?
+                        <MenuItem
+                            key={option.key}
+                            value={option.key}
+                            primaryText={option.label}
+                        /> :
+                        <MenuItem
+                            key={option}
+                            value={option}
+                            primaryText={option}
+                        />
                 )}
             </SelectField>
         );

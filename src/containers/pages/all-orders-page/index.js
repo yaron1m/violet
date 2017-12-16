@@ -19,9 +19,12 @@ export default class AllOrdersPage extends React.Component {
     render() {
         return (
             <div>
-                <FilterStatusChoose updateStatus={this.updateStatus.bind(this)}/>
 
-                <AllOrdersTable limit={30} filterStatus={this.state.filterStatus}/>
+                <AllOrdersTable
+                    limit={30}
+                    filterStatus={this.state.filterStatus}
+                    beforeTable={<FilterStatusChoose updateStatus={this.updateStatus.bind(this)}/>}
+                />
             </div>
         );
     }

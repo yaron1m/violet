@@ -2,7 +2,6 @@ import React from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
-import {Status} from "../../../util/consts/status";
 import Sizes from "../../../util/consts/sizes";
 import CustomSelectField from "../../../components/custom-components/custom-select-field";
 
@@ -26,10 +25,14 @@ class FilterStatusChoose extends React.Component {
             }.bind(this)
         };
 
-        const statuses = _.toArray(Status);
+        const statuses = _.dropRight(_.map(this.props.statuses, (label, status) => {
+            return {
+                key: status,
+                label
+            }
+        }));
 
         return (
-
             <CustomSelectField
                 data={fieldData}
                 name="filterByStatus"
@@ -44,6 +47,7 @@ function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).pages.allOrdersPage,
         updateStatus: ownProps.updateStatus,
+        statuses: getLabels(state).pages.orderPage.orderStatus
     };
 }
 

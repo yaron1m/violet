@@ -17,6 +17,7 @@ class CustomPaperTable extends React.Component {
 
         return (
             <CustomPaper title={this.props.title}>
+                {this.props.beforeTable}
 
                 <CustomTable headers={this.props.tableHeaders} hideEdit={this.props.hideEdit}>
                     <CustomSingleCellRow
@@ -52,6 +53,7 @@ CustomPaperTable.propTypes = {
     rowIndexKey: PropTypes.string.isRequired,
     tableHeaders: PropTypes.array.isRequired,
     onEditButton: PropTypes.func.isRequired,
+    beforeTable: PropTypes.node,
 
     singleCellRow: PropTypes.bool,
     singleCellRowText: PropTypes.string,
