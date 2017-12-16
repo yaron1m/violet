@@ -35,12 +35,12 @@ export default class AbstractField extends React.Component {
 
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.data.values[this.name] === this.state.value)
-            return;
+        if (nextProps.data.values[this.name] !== this.state.value)
+            this.setState(Object.assign({}, this.state, {
+                value: nextProps.data.values[this.name] ? nextProps.data.values[this.name] : ""
+            }));
 
-        this.setState(Object.assign({}, this.state, {
-            value: nextProps.data.values[this.name] ? nextProps.data.values[this.name] : ""
-        }));
+        this.requiredFields = nextProps.data.requiredFields;
     }
 
     handleChange(newValue) {
