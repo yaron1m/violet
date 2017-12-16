@@ -59,7 +59,11 @@ export function selectOrder(orderId) {
 export function updateSelectedOrder(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
         const selectedOrder = changeImmutable(getSelectedOrder(getState()), key, value);
-        const updatedOrder = calculateOrderStatus(selectedOrder);
+        const status = calculateOrderStatus(selectedOrder);
+        const updatedOrder =  Immutable.merge(selectedOrder, {
+            status: status
+        });
+
         dispatch({
             type: actionTypes.UPDATE_SELECTED_ORDER,
             payload: updatedOrder,

@@ -26,9 +26,7 @@ export default function calculateOrderStatus(order) {
         }
     }
 
-    return Immutable.merge(order, {
-        status: status
-    });
+    return status;
 }
 
 function meetsRequirements(order, requirement) {
