@@ -1,5 +1,5 @@
 export function calculateDuration(lectureTime) {
-    if (!lectureTime)
+    if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
         return null;
 
     if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.endTime))
@@ -19,12 +19,14 @@ function getDuration(startTime, endTime) {
     const end = endTime.split(':');
 
     const sh = start[0], sm = start[1], eh = end[0], em = end[1];
-    if (sh > eh)
-        return null;
+
+    let hours = eh - sh;
+    if (hours < 0)
+        hours = 24 + hours;
 
     if (em - sm < 0)
-        return pad(eh - sh - 1) + ':' + pad(em - sm + 60);
-    return pad(eh - sh) + ':' + pad(em - sm);
+        return pad(hours - 1) + ':' + pad(em - sm + 60);
+    return pad(hours) + ':' + pad(em - sm);
 }
 
 function pad(number) {
