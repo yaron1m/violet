@@ -10,6 +10,8 @@ export default class AbstractField extends React.Component {
 
         this.name = props.name;
         this.title = props.data.titles[props.name];
+        this.updateAction = props.data.updateAction;
+        this.requiredFields = props.data.requiredFields;
 
         this.width = getWidth(props);
         this.state = {
@@ -42,11 +44,11 @@ export default class AbstractField extends React.Component {
     }
 
     handleChange(newValue) {
-        this.props.data.updateAction(this.name, newValue);
+        this.updateAction(this.name, newValue);
     }
 
     getErrorText() {
-        const showError = !this.state.value && !_.isEmpty(this.props.data.requiredFields) && _.includes(this.props.data.requiredFields, this.name);
+        const showError = !this.state.value && !_.isEmpty(this.requiredFields) && _.includes(this.requiredFields, this.name);
         return showError ? "שדה חובה" : ""; //TODO extract string to labels
     }
 }
