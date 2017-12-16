@@ -7,6 +7,7 @@ import {updateSelectedOrder} from "../../../../store/selected/actions";
 import CustomToggle from "../../../../components/custom-components/custom-toggle";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
+import {getRequiredFields} from "../../../../store/required-fields/reducer";
 
 class FollowUpSection extends React.Component {
 
@@ -29,7 +30,8 @@ class FollowUpSection extends React.Component {
             values: this.props.selectedOrder,
             updateAction : function(key, value){
                 this.props.dispatch(updateSelectedOrder(key,value));
-            }.bind(this)
+            }.bind(this),
+            requiredFields: this.props.requiredFields,
         };
 
         return (
@@ -63,7 +65,8 @@ class FollowUpSection extends React.Component {
 function mapStateToProps(state) {
     return {
         labels: getLabels(state).pages.orderPage.sections.followUp,
-        selectedOrder: getSelectedOrder(state)
+        selectedOrder: getSelectedOrder(state),
+        requiredFields: getRequiredFields(state).order,
     };
 }
 export default connect(mapStateToProps)(FollowUpSection);

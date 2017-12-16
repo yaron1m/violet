@@ -45,6 +45,12 @@ const rejected = {
     lectureTimes: [],
 };
 
+const followUpRequired = {
+    order: ["followUpDate", "followUpDetails"],
+    organization: [],
+    lectureTimes: [],
+};
+
 export default Immutable({
     contact,
     offer,
@@ -56,5 +62,6 @@ export default Immutable({
     payed,
     cancelled,
     rejected,
+    followUpRequired,
     showRequiredFields: false,
 });

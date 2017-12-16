@@ -4,6 +4,7 @@ import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
 import requiredFields from "./required-fields";
 import {isEmptyValue} from "../../util/string-util";
+import {mergerRequiredFields} from "./util";
 
 export default (state = requiredFields, action = {}) => {
 
@@ -48,7 +49,12 @@ function getArrayOfRequiredFields(state, showRequiredFields) {
     if (!selectedOrder.status)
         return state.requiredFields.contact;
 
-    return state.requiredFields[selectedOrder.status];
+    const statusRequiredFields = state.requiredFields[selectedOrder.status];
+
+    if(selectedOrder.followUpRequired)
+        return mergerRequiredFields(statusRequiredFields, state.requiredFields.followUpRequired);
+
+    return statusRequiredFields;
 }
 
 export function getOrderMissingFields(state) {

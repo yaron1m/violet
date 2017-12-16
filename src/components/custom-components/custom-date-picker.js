@@ -26,6 +26,7 @@ export default class CustomDatePicker extends AbstractField {
                 disabled={this.props.disabled}
                 value={this.state.value ? new Date(this.state.value) : null}
                 onChange={(nothing, date) => this.handleChange(date.toJSON())}
+                errorText={super.getErrorText()}
 
                 textFieldStyle={style.datePickerTextFieldStyle}
                 DateTimeFormat={window.Intl.DateTimeFormat}
