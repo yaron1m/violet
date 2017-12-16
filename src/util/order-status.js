@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import {getLabels} from "../store/labels/reducer";
+import {getStatusLabels} from "../store/labels/reducer";
 import {getSelectedOrder} from "../store/selected/reducer";
 import {progressiveStatuses, terminatingStatuses} from "./consts/status";
 
@@ -92,7 +92,7 @@ export function getSelectedOrderStatus(state) {
 }
 
 export function getOrderStatusLabel(state, order) {
-    const labels = getLabels(state).pages.orderPage.orderStatus;
+    const labels = getStatusLabels(state);
     if (_.isEmpty(order))
         return labels[progressiveStatuses.contact];
 

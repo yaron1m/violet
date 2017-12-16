@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../store/labels/reducer";
+import {getLabels, getStatusLabels} from "../../../store/labels/reducer";
 import Sizes from "../../../util/consts/sizes";
 import CustomSelectField from "../../../components/custom-components/custom-select-field";
 
@@ -47,7 +47,7 @@ function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).pages.allOrdersPage,
         updateStatus: ownProps.updateStatus,
-        statuses: getLabels(state).pages.orderPage.orderStatus
+        statuses: getStatusLabels(state)
     };
 }
 
