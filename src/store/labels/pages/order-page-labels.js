@@ -208,9 +208,8 @@ export const orderPageLabels = {
         waitingPayment: "ממתין לתשלום",
         payed: "שולם",
         cancelled: "בוטל",
-        disapproved: "לא אושר",
-        followUp: " + המשך טיפול",
         rejected: "לא אושר",
+        followUp: " + המשך טיפול",
     },
     footer: {
         createdDate: "תאריך יצירה - ",
