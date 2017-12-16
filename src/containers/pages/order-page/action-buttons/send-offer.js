@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import SendIcon from 'material-ui-icons/Mail';
-import EditFileIcon from 'material-ui-icons/InsertDriveFile';
+// import EditFileIcon from 'material-ui-icons/InsertDriveFile';
 import {getLabels} from "../../../../store/labels/reducer";
 import {
     getSelectedOrder, getSelectedOrganization, isSelectedOrder
@@ -53,7 +53,7 @@ class SendOfferButton extends React.Component {
     render() {
 
         const emailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)() : null;
-        const editEmailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)(true) : null;
+        // const editEmailHref = this.props.isSelectedOrder ? this.orderEmailHref.bind(this)(true) : null;
         return (
             <span>
                 <IconButton tooltip={this.props.labels.send}>
