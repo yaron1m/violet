@@ -89,6 +89,7 @@ const futureLecturesPageLabels = {
 };
 
 const allOrdersPageLabels = {
+    filterByStatus: "סנן לפי סטאטוס",
     table: {
         title: "כל ההזמנות",
         tableHeaders: [
