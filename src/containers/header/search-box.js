@@ -46,8 +46,8 @@ class SearchBox extends React.Component {
                 return;
 
             case this.sourceTypes.order:
-                this.props.dispatch(selectOrder(chosenRequest.value.orderId));
-                this.props.dispatch(selectOrganization(chosenRequest.value.organizationId));
+                this.props.dispatch(selectOrder(chosenRequest.info.orderId));
+                this.props.dispatch(selectOrganization(chosenRequest.info.organizationId));
 
                 redirect(this.props.history, '/form');
                 return;
