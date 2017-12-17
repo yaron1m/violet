@@ -19,7 +19,7 @@ import EventIcon from 'material-ui-icons/EventNote';
 import BusinessIcon from 'material-ui-icons/Business';
 
 
-class SearchBox extends React.Component {
+export class SearchBox extends React.Component {
 
     constructor(props) {
         super(props);
