@@ -7,14 +7,7 @@ import {SHOW_REQUIRED_FIELDS} from "../../../../../store/required-fields/action-
 function setup(extraProps) {
     const props = {
         labels: orderPageLabels,
-        // organizations:{},
         selectedOrganization: {},
-        // isSelectedOrganization: false,
-        // selectedOrder: {},
-        // isSelectedOrder: false,
-        // nextOrderId: 5,
-        // nextOrganizationId: 10,
-        // orderMissingFields: [],
         dispatch: jest.fn(),
         ...extraProps
     };
