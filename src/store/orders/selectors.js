@@ -2,7 +2,7 @@ import {getSelectedOrganization, isSelectedOrganization} from "../selected/reduc
 import * as _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatusLabel, isMatchingStatus} from "../../util/order-status";
-import {cutIfLong} from "../../util/string-util";
+import {cutIfLong, moneyFormat} from "../../util/string-util";
 import getActionRequiredOrdersArray from "./action-required-orders";
 import Status from "../../util/consts/status";
 import {getLabels} from "../labels/reducer";
@@ -83,7 +83,7 @@ export function getWaitingPaymentOrders(state) {
             result.lectureDate = order.lectureTimes[0].date;
             result.topic = order.lectureTimes[0].topic;
             result.expectedPayDate = order.expectedPayDate;
-            result.totalSum = order.totalSum + " " + getLabels(state).currencyIcon;
+            result.totalSum = moneyFormat(order.totalSum, getLabels(state).currencyIcon);
             result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
         }
 

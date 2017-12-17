@@ -15,6 +15,7 @@ import PaymentIcon from 'material-ui-icons/AttachMoney';
 import NotificationsIcon from 'material-ui-icons/Notifications';
 import Waiting from 'material-ui-icons/WatchLater';
 import {getFollowUpOrdersSummary, getOrders} from "../../../store/orders/selectors";
+import {moneyFormat} from "../../../util/string-util";
 
 class InfoBoxes extends React.Component {
 
@@ -58,7 +59,7 @@ class InfoBoxes extends React.Component {
             sum += _.parseInt(order.totalSum);
         });
 
-        return sum + " " + this.props.currencyIcon;
+        return moneyFormat(sum, this.props.currencyIcon);
     }
 
 

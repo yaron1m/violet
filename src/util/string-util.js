@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export function getValueOrEmptyString(obj, key) {
     if (isEmptyValue(obj, key))
         return "";
@@ -21,4 +23,11 @@ export function cutIfLong(str, maxLength) {
         return str;
 
     return str.substr(0, maxLength) + "...";
+}
+
+export function moneyFormat(str, currencyIcon){
+    if(isEmpty(str))
+        return str;
+
+    return _.parseInt(str).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + " " + currencyIcon
 }
