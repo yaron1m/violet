@@ -51,7 +51,7 @@ class App extends React.Component {
                         </div>
                     </div>
 
-                    <div style={styles.footer}>Copyright v1.1.3 © 2017 C-Point LTD - All Rights Reserved</div>
+                    <div style={styles.footer}>Copyright v1.1.4 © 2017 C-Point LTD - All Rights Reserved</div>
 
                     <AppDialog/>
                     <AppSnackbar/>
