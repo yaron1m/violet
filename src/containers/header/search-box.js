@@ -21,8 +21,8 @@ import BusinessIcon from 'material-ui-icons/Business';
 
 export class SearchBox extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             searchText: "",
         };

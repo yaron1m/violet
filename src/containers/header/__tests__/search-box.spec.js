@@ -33,33 +33,6 @@ describe('search box', () => {
         enzymeWrapper = shallow(<SearchBox {...props} />);
     });
 
-    // it('handleRequest - organization not selected - false', () => {
-    //     const {enzymeWrapper, props} = setup({
-    //         isSelectedOrganization: false,
-    //
-    //     });
-    //
-    //     expect(enzymeWrapper.instance().shouldSave())
-    //         .toBeFalsy();
-    //
-    //     expect(props.dispatch.mock.calls.length).toBe(1);
-    //     expect(props.dispatch.mock.calls[0][0].title).toBe(props.labels.dialog.noOrganizationSelectedTitle);
-    // });
-    //
-    // it('shouldSave - there are missing fields - false', () => {
-    //     const {enzymeWrapper, props} = setup({
-    //         isSelectedOrganization: true,
-    //         orderMissingFields: ["field"]
-    //     });
-    //
-    //     expect(enzymeWrapper.instance().shouldSave())
-    //         .toBeFalsy();
-    //
-    //     expect(props.dispatch.mock.calls.length).toBe(2);
-    //     expect(props.dispatch.mock.calls[0][0].type).toBe(SHOW_REQUIRED_FIELDS);
-    //     expect(props.dispatch.mock.calls[1][0].title).toBe(props.labels.dialog.missingFieldsTitle);
-    // });
-    //
     it('handleRequest - enter press - nothing happens', () => {
         enzymeWrapper.instance().handleRequest({}, -1);
 
