@@ -1,5 +1,5 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {purple800} from 'material-ui/styles/colors';
+import Colors from "./util/consts/colors";
 
 export default function getTheme(isRtl) {
     const muiTheme = {
@@ -10,7 +10,7 @@ export default function getTheme(isRtl) {
 
         appBar: {
             height: 57,
-            color: purple800
+            color: Colors.purple
         },
         textField: {
            // floatingLabelColor: black,

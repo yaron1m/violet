@@ -1,7 +1,6 @@
 import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
-import {white, red800} from 'material-ui/styles/colors';
 import {connect} from "react-redux";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
@@ -12,6 +11,7 @@ import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import MoreIcon from 'material-ui-icons/MoreVert';
 import NotificationsIcon from 'material-ui-icons/Notifications';
+import Colors from "../../util/consts/colors";
 
 class LeftIcons extends React.Component {
 
@@ -30,20 +30,20 @@ class LeftIcons extends React.Component {
                     badgeContent={notificationCount === 0 ? "" : notificationCount}
                     style={{padding: 0}}
                     badgeStyle={{
-                        backgroundColor: notificationCount === 0 ? null : red800,
-                        color: white
+                        backgroundColor: notificationCount === 0 ? null : Colors.red,
+                        color: Colors.white
                     }}
                 >
                     <IconButton
                         onClick={() => redirect(this.props.history, '/actionRequired')}
                     >
-                        <NotificationsIcon color={white}/>
+                        <NotificationsIcon color={Colors.white}/>
                     </IconButton>
                 </Badge>
                 <IconMenu
                     iconButtonElement={
                         <IconButton>
-                            <MoreIcon color={process.env.NODE_ENV === "production" ? white : red800}/>
+                            <MoreIcon color={process.env.NODE_ENV === "production" ? Colors.white : Colors.red}/>
                         </IconButton>}
                     anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'left', vertical: 'top'}}

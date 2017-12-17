@@ -2,7 +2,6 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import HomeIcon from 'material-ui-icons/Home';
-import {white} from 'material-ui/styles/colors';
 import SearchBox from './search-box';
 import {connect} from "react-redux";
 import {getLabels} from "../../store/labels/reducer";
@@ -10,6 +9,7 @@ import {getFollowUpOrdersSummary} from "../../store/orders/selectors";
 import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import LeftIcons from './left-icons';
+import Colors from "../../util/consts/colors";
 
 class Header extends React.Component {
 
@@ -39,7 +39,7 @@ class Header extends React.Component {
                         style={style.homeIcon}
                         onClick={() => redirect(this.props.history, '/')}
                     >
-                        <HomeIcon color={white}/>
+                        <HomeIcon color={Colors.white}/>
                     </IconButton>
                 }
                 iconElementRight={

@@ -1,7 +1,8 @@
-import {white, grey800} from 'material-ui/styles/colors';
+import {white, grey800, purple800} from 'material-ui/styles/colors';
 
 export default {
     red: "red",
     white,
     textGray: grey800,
+    purple: purple800,
 }
