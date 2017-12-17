@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
-import {white, grey800} from 'material-ui/styles/colors';
+import Colors from '../../util/consts/colors'
 
 export default class InfoBox extends React.Component {
 
@@ -15,13 +15,13 @@ export default class InfoBox extends React.Component {
             number: {
                 display: 'block',
                 fontSize: 22,
-                color: grey800,
+                color: this.props.error ? Colors.red : Colors.textGray,
                 fontWeight: "bold",
                 paddingTop: 10
             },
             text: {
                 fontSize: 18,
-                color: grey800,
+                color: this.props.error ? Colors.red : Colors.textGray,
             },
             iconSpan: {
                 float: 'right',
@@ -35,7 +35,6 @@ export default class InfoBox extends React.Component {
                 width: 48,
                 marginTop: 20,
                 maxWidth: '100%'
-
             }
         };
 
@@ -43,7 +42,7 @@ export default class InfoBox extends React.Component {
             <Paper>
                 <span style={styles.iconSpan}>
                   <this.props.Icon
-                      color={white}
+                      color={Colors.white}
                       style={styles.icon}
                   />
                 </span>
@@ -63,4 +62,5 @@ InfoBox.propTypes = {
     title: PropTypes.string,
     value: PropTypes.string,
     style: PropTypes.object,
+    error: PropTypes.bool
 };

@@ -42,6 +42,13 @@ class InfoBoxes extends React.Component {
         return this.props.waitingPaymentOrders.length.toString();
     }
 
+    areThereLatePaymentOrders(){
+        if (this.props.isFetching)
+            return;
+        const now = new Date();
+        return _.some(this.props.waitingPaymentOrders, order => new Date(order.expectedPayDate) < now);
+    }
+
     calculateWaitingPaymentSum() {
         if (this.props.isFetching)
             return;
@@ -100,6 +107,7 @@ class InfoBoxes extends React.Component {
                         color={brown500}
                         title={this.props.labels.waitingPayment}
                         value={this.calculateWaitingPaymentCount.bind(this)()}
+                        error={this.areThereLatePaymentOrders.bind(this)()}
                     />
                 </div>
 
