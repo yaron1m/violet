@@ -1,7 +1,6 @@
 import React from 'react';
 import * as actions from "../actions";
 import * as actionTypes from "../action-types";
-import * as firebaseActions from "../../firebase/actions";
 
 const id = 123456;
 const value = "value";
