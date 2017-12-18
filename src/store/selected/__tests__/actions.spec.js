@@ -87,4 +87,23 @@ describe('selected actions - organization', () => {
         expect(actions.setIsSelectedOrganization().type).toBe(actionTypes.SET_IS_SELECTED_ORGANIZATION);
     });
 
+    it('sendSelectedOrganizationToDatabase - valid - action', () => {
+        //TODO test is not full
+        const thunkFunction = actions.sendSelectedOrganizationToDatabase();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selected: {
+                    organization: {
+                        id,
+                        [key]: value
+                    }
+                }
+            }
+        };
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch.mock.calls.length).toBe(1);
+    });
 });
