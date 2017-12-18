@@ -22,6 +22,7 @@ export default class CustomSelectField extends AbstractField {
 
                 {this.props.allowEmpty ? <MenuItem
                     value={null}
+                    primaryText="(-)"
                 /> : null}
 
                 {_.map(this.props.options, option =>
