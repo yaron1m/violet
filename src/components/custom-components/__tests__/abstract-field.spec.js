@@ -44,8 +44,6 @@ describe('Abstract Field Class', () => {
     });
 
     it('GetWidth - correct', () => {
-        const target = setup({});
-
         expect(setup().width).toEqual(200);
         expect(setup({size: Sizes.S}).width).toEqual(50);
     });

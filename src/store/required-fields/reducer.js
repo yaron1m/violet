@@ -78,7 +78,7 @@ export function getOrderMissingFields(state) {
 }
 
 export function getMissingFields(object, required) {
-    const nonEmptyKeys = _.filter(_.keys(object), key => !isEmptyValue(object, key));
+    const nonEmptyKeys = _.filter(_.keys(object), key => object[key] !== "");
     return _.difference(required, nonEmptyKeys);
 }
 
