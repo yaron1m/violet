@@ -17,7 +17,7 @@ export default class PrintField extends AbstractField {
         const style = {
             span: {
                 marginLeft: 20,
-                whiteSpace: "nowrap",
+                //whiteSpace: "nowrap",
                 marginBottom: 5,
             },
             value: {

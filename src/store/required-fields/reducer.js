@@ -3,7 +3,6 @@ import * as _ from "lodash";
 import * as actionTypes from "./action-types";
 import Immutable from "seamless-immutable";
 import requiredFields from "./required-fields";
-import {isEmptyValue} from "../../util/string-util";
 import {mergerRequiredFields} from "./util";
 
 export default (state = requiredFields, action = {}) => {
