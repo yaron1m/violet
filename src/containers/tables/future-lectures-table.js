@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
-import {getWaitingPaymentOrders, getAllLectureTimes} from "../../store/orders/selectors";
+import {getAllLectureTimes} from "../../store/orders/selectors";
 import {withRouter} from "react-router";
 import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
@@ -42,7 +42,6 @@ class FutureLecturesTable extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         labels: getLabels(state).pages.futureLecturesPage.table,
-        waitingPaymentOrders: getWaitingPaymentOrders(state),
         futureLectureTimes: getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]),
         ...ownProps,
     };

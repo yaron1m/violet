@@ -9,8 +9,8 @@ const dashboardLabels = {
     infoBoxes: {
         futureLectures: "הרצאות עתידיות",
         followUp: "ממתינות לטיפול",
-        waitingPayment: "ממתינות לתשלום",
-        expectedIncome: "הכנסות צפויות",
+        expectedIncome: "צבר הזמנות",
+        waitingPayment: "ממתין לתשלום",
     }
 };
 
@@ -75,6 +75,23 @@ const paymentPageLabels = {
     },
 };
 
+const expectedIncomePageLabels = {
+    title: "צבר הזמנות",
+    table: {
+        title: "הזמנות מאושרות",
+        tableHeaders: [
+            {id: "מספר הזמנה"},
+            {organizationName: "שם הארגון"},
+            {lectureDate: "תאריך הרצאה"},
+            {topic: "נושא"},
+            {status: "סטאטוס"},
+            {expectedPayDate: "תאריך תשלום"},
+            {totalSum: "סכום לתשלום"}
+        ]
+    }
+};
+
+
 const futureLecturesPageLabels = {
     title: "הרצאות עתידיות",
     table: {
@@ -113,6 +130,7 @@ export const pages = {
     followUpPage: followUpPageLabels,
     actionRequiredPage: actionRequiredPageLabels,
     paymentPage: paymentPageLabels,
+    expectedIncome: expectedIncomePageLabels,
     futureLecturesPage: futureLecturesPageLabels,
     allOrdersPage: allOrdersPageLabels,
     orderPage: orderPageLabels,

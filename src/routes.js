@@ -11,6 +11,7 @@ import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
 import HomePage from "./containers/pages/dashboard/index";
 import PaymentPage from "./containers/pages/payment-page/index";
+import ExpectedIncomePage from "./containers/pages/expected-income-page/index";
 import FutureLecturesPage from "./containers/pages/future-lectures-page";
 import AllOrdersPage from "./containers/pages/all-orders-page";
 import ActionRequiredPage from "./containers/pages/action-required-page/index";
@@ -30,6 +31,7 @@ class Root extends React.Component {
                     <Route path="/followup" component={FollowUpPageTitle}/>
                     <Route path="/actionRequired" component={ActionRequiredPage}/>
                     <Route path="/payment" component={PaymentPage}/>
+                    <Route path="/expectedIncome" component={ExpectedIncomePage}/>
                     <Route path="/futureLectures" component={FutureLecturesPage}/>
                     <Route path="/allOrders" component={AllOrdersPage}/>
                     <Route path="/print" component={PrintOrderPage}/>

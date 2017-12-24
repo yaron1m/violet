@@ -4,7 +4,6 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatusLabel, isMatchingStatus} from "../../util/order-status";
 import {cutIfLong, moneyFormat} from "../../util/string-util";
 import getActionRequiredOrdersArray from "./action-required-orders";
-import Status from "../../util/consts/status";
 import {getLabels} from "../labels/reducer";
 
 export function getOrders(state, status = null) {
@@ -71,20 +70,20 @@ export function getAllLectureTimes(state, status = null) {
     return _.flatMap(getOrders(state, status), getMappedLectureTimes);
 }
 
-export function getWaitingPaymentOrders(state) {
-    const orders = getOrders(state, Status.waitingPayment);
+export function getExpectedIncomeOrders(state, status) {
+    const orders = getOrders(state, status);
 
     function map(order) {
         const result = {
             id: order.id,
-            status: getOrderStatusLabel(state, order),
+            status: cutIfLong(getOrderStatusLabel(state, order), 20),
         };
         if (!_.isEmpty(order.lectureTimes)) {
             result.lectureDate = order.lectureTimes[0].date;
-            result.topic = order.lectureTimes[0].topic;
+            result.topic = cutIfLong(order.lectureTimes[0].topic, 25);
             result.expectedPayDate = order.expectedPayDate;
             result.totalSum = moneyFormat(order.totalSum, getLabels(state).currencyIcon);
-            result.organizationName = getOrganizationById(state, order.organizationId).organizationName;
+            result.organizationName = cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 25);
         }
 
         return result;

@@ -8,7 +8,7 @@ import {redirect} from "../../util/history-util";
 import CustomPaperTable from "../../components/tables/custom-paper-table";
 import {progressiveStatuses as Status} from "../../util/consts/status";
 
-class WaitingPaymentTable extends React.Component {
+class ExpectedIncomeTable extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
         redirect(this.props.history, '/form');
@@ -20,7 +20,7 @@ class WaitingPaymentTable extends React.Component {
             <CustomPaperTable
                 title={this.props.labels.title}
                 tableHeaders={this.props.labels.tableHeaders}
-                elements={this.props.waitingPaymentOrders}
+                elements={this.props.expectedIncomeOrders}
                 rowIndexKey="id"
                 onEditButton={this.selectOrder.bind(this)}
                 hideEdit={this.props.hideEdit}
@@ -33,9 +33,9 @@ class WaitingPaymentTable extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        labels: getLabels(state).pages.paymentPage.table,
-        waitingPaymentOrders: getExpectedIncomeOrders(state, Status.waitingPayment),
+        labels: getLabels(state).pages.expectedIncome.table,
+        expectedIncomeOrders: getExpectedIncomeOrders(state, [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder]),
     };
 }
 
-export default withRouter(connect(mapStateToProps)(WaitingPaymentTable));
+export default withRouter(connect(mapStateToProps)(ExpectedIncomeTable));
