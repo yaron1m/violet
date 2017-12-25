@@ -2,7 +2,7 @@ import React from 'react';
 import CustomPaper from "../../../components/custom-components/custom-paper";
 import CustomText from "../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
-import {selectOrganization, updateSelectedOrganization} from "../../../store/selected/actions";
+import {selectOrganization, updateSelectedOrder, updateSelectedOrganization} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrganization} from "../../../store/selected/reducer";
 import CustomAutoComplete from "../../../components/custom-components/custom-autocomplete";
@@ -35,7 +35,10 @@ class OrganizationSection extends React.Component {
                     data={fieldData}
                     name="organizationName"
                     dataSource={organizationNamesObjects}
-                    onNewRequest={chosenRequest => this.props.dispatch(selectOrganization(chosenRequest.value))}
+                    onNewRequest={chosenRequest => {
+                        this.props.dispatch(selectOrganization(chosenRequest.value));
+                        this.props.dispatch(updateSelectedOrder("organizationId", chosenRequest.value));
+                    }}
                     size={Sizes.XXL}
                 />
                 <CustomText data={fieldData} name="organizationAddress"/>

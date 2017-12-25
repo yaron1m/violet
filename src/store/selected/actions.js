@@ -19,7 +19,8 @@ export function selectOrganization(organizationId) {
 
 export function updateSelectedOrganization(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
-        const selectedOrganization = changeImmutable(getSelectedOrganization(getState()), key, value);
+        const currentOrganization = getSelectedOrganization(getState());
+        const selectedOrganization = changeImmutable(currentOrganization, key, value);
         dispatch({
             type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
             payload: selectedOrganization,
