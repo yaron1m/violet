@@ -77,6 +77,7 @@ export function getExpectedIncomeOrders(state, status) {
         const result = {
             id: order.id,
             status: cutIfLong(getOrderStatusLabel(state, order), 20),
+            proformaInvoiceNumber: order.proformaInvoiceNumber,
         };
         if (!_.isEmpty(order.lectureTimes)) {
             result.lectureDate = order.lectureTimes[0].date;

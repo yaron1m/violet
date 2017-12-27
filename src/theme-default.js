@@ -13,7 +13,7 @@ export default function getTheme(isRtl) {
             color: Colors.purple
         },
         textField: {
-           // floatingLabelColor: black,
+            floatingLabelColor: Colors.textGray,
         },
 
     };

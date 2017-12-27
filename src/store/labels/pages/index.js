@@ -68,7 +68,7 @@ const paymentPageLabels = {
             {id: "מספר הזמנה"},
             {organizationName: "שם הארגון"},
             {lectureDate: "תאריך הרצאה"},
-            {topic: "נושא"},
+            {proformaInvoiceNumber: "חשבונית עסקה"},
             {expectedPayDate: "תאריך תשלום"},
             {totalSum: "סכום לתשלום"},
             {edit: "עריכה"}],
