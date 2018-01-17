@@ -33,13 +33,3 @@ export function moneyFormat(str, currencyIcon) {
 
     return _.toNumber(str).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + " " + currencyIcon
 }
-
-export function getRegexMatches(string, regex, index) {
-    index || (index = 1); // default to the first capturing group
-    var matches = [];
-    var match;
-    while (match = regex.exec(string)) {
-        matches.push(match[index]);
-    }
-    return matches;
-}
