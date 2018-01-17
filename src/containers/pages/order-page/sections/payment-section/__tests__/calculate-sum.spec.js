@@ -78,6 +78,44 @@ describe('payment section - calculate sum', () => {
         expect(actions[3].payload.totalSum).toBe("1795");
     });
 
+    it('calculateSum - cost has multiple sign - calculate totalSum', async function () {
+        const initialState = {
+            selected: {
+                order: {
+                    cost: "1000*3",
+                    oneWayDistance: "50"
+                }
+            }
+        };
+        const store = mockStore(initialState);
+
+        await calculateSum(initialState.selected.order, store.dispatch);
+
+        const actions = store.getActions();
+        expect(actions.length).toBe(4);
+        expect(actions[0].payload.travelExpenses).toBe("534");
+        expect(actions[1].payload.sum).toBe("3534");
+        expect(actions[2].payload.vat).toBe("600.78");
+        expect(actions[3].payload.totalSum).toBe("4135");
+    });
+
+    it('calculateSum - cost has invalid multiple sign - do nothing', async function () {
+        const initialState = {
+            selected: {
+                order: {
+                    cost: "1000*3*5",
+                    oneWayDistance: "50"
+                }
+            }
+        };
+        const store = mockStore(initialState);
+
+        await calculateSum(initialState.selected.order, store.dispatch);
+
+        const actions = store.getActions();
+        expect(actions.length).toBe(0);
+    });
+
     it('calculateSum - results are rounded', async function () {
         const initialState = {
             selected: {
