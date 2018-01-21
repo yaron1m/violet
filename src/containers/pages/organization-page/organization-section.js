@@ -77,3 +77,5 @@ OrganizationSection.defaultProps = {
 
 
 export default connect(mapStateToProps)(OrganizationSection);
+//TODO split connected component and ui component
+// TODO Pass dispatch functions to ui component using mapDispatchToProps

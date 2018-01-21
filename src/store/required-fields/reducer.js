@@ -48,7 +48,7 @@ function getArrayOfRequiredFields(state, showRequiredFields) {
     if (!selectedOrder.status)
         return state.requiredFields.contact;
 
-    const statusRequiredFields = state.requiredFields[selectedOrder.status];
+    const statusRequiredFields = state.requiredFields[selectedOrder.status]; //TODO Remove the long list from state and store it statically
 
     if(selectedOrder.followUpRequired)
         return mergerRequiredFields(statusRequiredFields, state.requiredFields.followUpRequired);
