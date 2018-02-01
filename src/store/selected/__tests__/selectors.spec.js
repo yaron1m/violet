@@ -42,7 +42,6 @@ const sampleState = Immutable({
                 "duration": "02:00",
                 "endTime": "13:00",
                 "id": 0,
-                "shirtColor": "כחול",
                 "startTime": "11:00",
                 "tie": "כבשים",
                 "topic": "חשיבה יצירתית"
@@ -52,7 +51,6 @@ const sampleState = Immutable({
                 "duration": "05:20",
                 "endTime": "15:30",
                 "id": 1,
-                "shirtColor": "אדום",
                 "startTime": "10:10",
                 "tie": "עכבר",
                 "topic": "מודעות לאיכות"

@@ -39,7 +39,6 @@ function updateValue(dispatch, order, key, value) {
     dispatch(updateSelectedOrder(key, value.toString()));
 }
 
-
 function getValue(order, key) {
     return isEmptyValue(order, key) || isNaN(order[key]) ? 0 : parseFloat(order[key]); //TODO add numerical check
 }

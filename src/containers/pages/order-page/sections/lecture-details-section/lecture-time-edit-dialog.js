@@ -63,7 +63,6 @@ class LectureTimeEditDialog extends React.Component {
                     <CustomText data={tableFieldData} name="startTime" size={Sizes.M}/>
                     <CustomText data={tableFieldData} name="endTime" size={Sizes.M}/>
                     <CustomText data={tableFieldData} name="audienceSize" size={Sizes.M}/>
-                    <CustomText data={tableFieldData} name="shirtColor" size={Sizes.M}/>
                     <CustomText data={tableFieldData} name="tie" size={Sizes.M}/>
                 </div>
 

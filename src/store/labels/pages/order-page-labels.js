@@ -88,7 +88,7 @@ const lectureDetailsSectionLabels = {
 const lectureTimesSectionLabels = {
     sectionName: "הרצאות",
     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
-        {audienceSize: "מס' משתתפים"}, {shirtColor: "צבע חולצה"}, {tie: "עניבה"}, {edit: "עריכה"}],
+        {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
     addRow: "הוסף תאריך חדש",
     editDialog: {
         dialogTitle: "ערוך פרטי הרצאה",
@@ -99,7 +99,6 @@ const lectureTimesSectionLabels = {
             length: "משך",
             topic: "נושא",
             audienceSize: "מס' משתתפים",
-            shirtColor: "צבע חולצה",
             tie: "עניבה"
         },
     }
