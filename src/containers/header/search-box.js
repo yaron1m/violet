@@ -124,6 +124,7 @@ export class SearchBox extends React.Component {
                     dataSource={dataSource}
                     hintText={this.props.labels.searchLineHint}
                     searchText={this.state.searchText}
+                    filter={AutoComplete.caseInsensitiveFilter}
 
                     onNewRequest={this.handleRequest.bind(this)}
                     onUpdateInput={(searchText) => this.setState({searchText: searchText})}
