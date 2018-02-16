@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import SearchBoxContainer from './SearchBox/SearchBoxContainer';
-import LeftIcons from './LeftIcons/left-icons';
+import LeftIconsContainer from './LeftIcons/LeftIconsContainer';
 import HomeButton from './HomeButton'
 
 export default class Header extends React.Component {
@@ -24,7 +24,7 @@ export default class Header extends React.Component {
                 style={style.appBar}
                 iconElementLeft={<HomeButton/>}
                 title={<SearchBoxContainer/>}
-                iconElementRight={<LeftIcons/>}
+                iconElementRight={<LeftIconsContainer/>}
             />
         );
     }
