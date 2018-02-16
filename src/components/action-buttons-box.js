@@ -1,11 +1,12 @@
 import React from 'react';
+import Colors from "../util/consts/colors";
 
 export class ActionButtonsBox extends React.Component {
 
     render() {
         const styles = {
             buttonsBox: {
-                backgroundColor: "#888888",
+                backgroundColor: Colors.orderButtons,
                 borderBottomLeftRadius: 15,
                 borderBottomRightRadius: 15,
                 marginLeft: "auto",

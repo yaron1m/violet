@@ -5,4 +5,5 @@ export default {
     white,
     textGray: grey800,
     purple: purple800,
+    orderButtons: "#888888",
 }
