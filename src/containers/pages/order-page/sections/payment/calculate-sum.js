@@ -12,7 +12,6 @@ export default async function calculateSum(selectedOrder, dispatch) {
     if (isEmptyValue(order, "cost") || isNaN(order.cost)) {
         // Allow 1500 * 3:
         const groups = /^([0-9]*)\*([0-9]*)$/g.exec(order.cost);
-        console.log(groups);
         if(groups === null)
             return;
 

@@ -1,4 +1,4 @@
-import {history} from "../routes";
+import history from "./History"
 
 export function redirect(path){
     if(history.location.pathname !== path)

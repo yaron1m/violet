@@ -1,7 +1,5 @@
 import React from 'react';
 import {Router, Route} from 'react-router';
-import {createHashHistory} from 'history';
-
 import App from './App'
 import LectureForm from './containers/pages/order-page/';
 import OrganizationPage from './containers/pages/organization-page/';
@@ -16,8 +14,7 @@ import FutureLecturesPage from "./containers/pages/future-lectures-page";
 import AllOrdersPage from "./containers/pages/all-orders-page";
 import ActionRequiredPage from "./containers/pages/action-required-page/index";
 import PrintOrderPage from "./containers/pages/print-order-page/index";
-
-export const history = createHashHistory();
+import history from './util/History'
 
 class Root extends React.Component {
 

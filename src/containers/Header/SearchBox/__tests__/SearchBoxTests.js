@@ -53,7 +53,7 @@ describe('search box', () => {
         expect(props.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
 
         expect(HistoryUtil.redirect.mock.calls.length).toBe(1);
-        expect(HistoryUtil.redirect.mock.calls[0][1]).toBe("/org");
+        expect(HistoryUtil.redirect.mock.calls[0][0]).toBe("/org");
     });
 
     it('handleRequest - choose order - load order action', () => {
@@ -76,7 +76,7 @@ describe('search box', () => {
         expect(props.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
 
         expect(HistoryUtil.redirect.mock.calls.length).toBe(1);
-        expect(HistoryUtil.redirect.mock.calls[0][1]).toBe("/form");
+        expect(HistoryUtil.redirect.mock.calls[0][0]).toBe("/form");
     });
 
     it('handleRequest - choose organization - search text is set to empty', () => {
