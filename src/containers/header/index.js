@@ -1,17 +1,10 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import HomeIcon from 'material-ui-icons/Home';
-import SearchBox from './SearchBox/SearchBoxContainer';
-import {connect} from "react-redux";
-import {getLabels} from "../../store/labels/reducer";
-import {getFollowUpOrdersSummary} from "../../store/orders/selectors";
-import {withRouter} from "react-router";
-import {redirect} from "../../util/history-util";
-import LeftIcons from './left-icons';
-import Colors from "../../util/consts/colors";
+import SearchBoxContainer from './SearchBox/SearchBoxContainer';
+import LeftIcons from './LeftIcons/left-icons';
+import HomeButton from './HomeButton'
 
-class Header extends React.Component {
+export default class Header extends React.Component {
 
     render() {
         const style = {
@@ -24,37 +17,15 @@ class Header extends React.Component {
                 paddingLeft: 20,
                 paddingRight: 20,
             },
-            homeIcon: {
-                marginRight: -20,
-                marginTop: 3
-            },
         };
 
         return (
             <AppBar
                 style={style.appBar}
-                title={<SearchBox/>}
-                iconElementLeft={
-                    <IconButton
-                        style={style.homeIcon}
-                        onClick={() => redirect(this.props.history, '/')}
-                    >
-                        <HomeIcon color={Colors.white}/>
-                    </IconButton>
-                }
-                iconElementRight={
-                    <LeftIcons/>
-                }
+                iconElementLeft={<HomeButton/>}
+                title={<SearchBoxContainer/>}
+                iconElementRight={<LeftIcons/>}
             />
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        labels: getLabels(state).header,
-        followUpOrdersSummary: getFollowUpOrdersSummary(state),
-    };
-}
-
-export default withRouter(connect(mapStateToProps)(Header));

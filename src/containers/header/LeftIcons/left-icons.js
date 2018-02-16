@@ -4,14 +4,14 @@ import Badge from 'material-ui/Badge';
 import {connect} from "react-redux";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
-import {signOutRequest} from "../../store/firebase/actions";
-import {getLabels} from "../../store/labels/reducer";
-import {getActionRequiredOrders, getFollowUpOrdersSummary} from "../../store/orders/selectors";
+import {signOutRequest} from "../../../store/firebase/actions";
+import {getLabels} from "../../../store/labels/reducer";
+import {getActionRequiredOrders, getFollowUpOrdersSummary} from "../../../store/orders/selectors";
 import {withRouter} from "react-router";
-import {redirect} from "../../util/history-util";
+import {redirect} from "../../../util/history-util";
 import MoreIcon from 'material-ui-icons/MoreVert';
 import NotificationsIcon from 'material-ui-icons/Notifications';
-import Colors from "../../util/consts/colors";
+import Colors from "../../../util/consts/colors";
 
 class LeftIcons extends React.Component {
 
