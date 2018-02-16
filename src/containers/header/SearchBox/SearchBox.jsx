@@ -1,25 +1,16 @@
 import React from 'react';
-import {white,
-    purple600 as containerColor,
-    indigo600 as organizationIconColor,
-    orange500 as orderIconColor} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router'
-import {getLabels} from "../../store/labels/reducer";
-import {getOrganizations} from "../../store/organizations/reducer";
-import {selectOrder, selectOrganization} from "../../store/selected/actions";
-import {getOrders} from "../../store/orders/selectors";
 import * as _ from "lodash";
-import {redirect} from "../../util/history-util";
 import {MenuItem} from "material-ui";
 import EventIcon from 'material-ui-icons/EventNote';
 import BusinessIcon from 'material-ui-icons/Business';
+import {redirect} from "../../../util/history-util";
+import Colors from "../../../util/consts/colors";
 
 
-export class SearchBox extends React.Component {
+export default class SearchBox extends React.Component {
 
     constructor() {
         super();
@@ -41,13 +32,13 @@ export class SearchBox extends React.Component {
 
         switch (chosenRequest.info.type) {
             case this.sourceTypes.organization:
-                this.props.dispatch(selectOrganization(chosenRequest.info.organizationId));
+                this.props.selectOrganization(chosenRequest.info.organizationId);
                 redirect(this.props.history, '/org');
                 return;
 
             case this.sourceTypes.order:
-                this.props.dispatch(selectOrder(chosenRequest.info.orderId));
-                this.props.dispatch(selectOrganization(chosenRequest.info.organizationId));
+                this.props.selectOrder(chosenRequest.info.orderId);
+                this.props.selectOrganization(chosenRequest.info.organizationId);
 
                 redirect(this.props.history, '/form');
                 return;
@@ -69,7 +60,7 @@ export class SearchBox extends React.Component {
                 marginLeft: 5,
             },
             container: {
-                backgroundColor: containerColor,
+                backgroundColor: Colors.lightPurple,
                 borderRadius: 2,
                 height: 35,
                 paddingLeft: 10,
@@ -78,10 +69,10 @@ export class SearchBox extends React.Component {
             },
             input: {
                 WebkitTextFillColor: "inherit",
-                color: white,
+                color: Colors.white,
             },
             hintStyle: {
-                color: white,
+                color: Colors.white,
             },
         };
 
@@ -94,7 +85,7 @@ export class SearchBox extends React.Component {
                 },
                 value: (<MenuItem
                     primaryText={org.organizationName}
-                    leftIcon={<BusinessIcon color={organizationIconColor}/>}
+                    leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
                 />)
             }));
 
@@ -108,7 +99,7 @@ export class SearchBox extends React.Component {
                 },
                 value: (<MenuItem
                     primaryText={order.id.toString() + " - " + this.props.organizations[order.organizationId].organizationName}
-                    leftIcon={<EventIcon color={orderIconColor}/>}
+                    leftIcon={<EventIcon color={Colors.orderIconColor}/>}
                 />)
             }));
 
@@ -117,12 +108,12 @@ export class SearchBox extends React.Component {
         return (
             <div style={styles.container}>
                 <IconButton style={styles.iconButton}>
-                    <SearchIcon color={white}/>
+                    <SearchIcon color={Colors.white}/>
                 </IconButton>
 
                 <AutoComplete
                     dataSource={dataSource}
-                    hintText={this.props.labels.searchLineHint}
+                    hintText={this.props.hintText}
                     searchText={this.state.searchText}
                     filter={AutoComplete.caseInsensitiveFilter}
 
@@ -142,13 +133,3 @@ export class SearchBox extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        labels: getLabels(state).header,
-        organizations: getOrganizations(state),
-        orders: getOrders(state),
-    };
-}
-
-export default withRouter(connect(mapStateToProps)(SearchBox));

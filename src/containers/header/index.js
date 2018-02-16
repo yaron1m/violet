@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import HomeIcon from 'material-ui-icons/Home';
-import SearchBox from './search-box';
+import SearchBox from './SearchBox/SearchBoxContainer';
 import {connect} from "react-redux";
 import {getLabels} from "../../store/labels/reducer";
 import {getFollowUpOrdersSummary} from "../../store/orders/selectors";
