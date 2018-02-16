@@ -7,6 +7,7 @@ import IconButton from "material-ui/IconButton";
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
+import Colors from "../../util/consts/colors";
 
 class CustomTableRow extends React.Component {
 
@@ -70,7 +71,7 @@ class CustomTableRow extends React.Component {
 
         return (
             <TableRow
-                style={this.props.missingFields ? {color: "red"} : {}}
+                style={this.props.missingFields ? {color: Colors.red} : {}}
                 selectable={false}
                 hoverable={true}
                 key={this.props.rowIndex}

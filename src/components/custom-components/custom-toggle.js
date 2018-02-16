@@ -2,6 +2,7 @@ import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import * as _ from "lodash";
 import AbstractField from "./abstract-field";
+import Colors from "../../util/consts/colors";
 
 export default class CustomToggle extends AbstractField {
 
@@ -18,7 +19,7 @@ export default class CustomToggle extends AbstractField {
             labelStyle: {
                 marginRight: 45,
                 marginLeft: 10,
-                color: this.showError() ? 'red' : "black",
+                color: this.showError() ? Colors.red : Colors.black,
             },
         };
 

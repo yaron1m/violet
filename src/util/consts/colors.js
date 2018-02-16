@@ -1,9 +1,16 @@
-import {white, grey800, purple800} from 'material-ui/styles/colors';
+import {
+    white, grey800, purple600, purple800, indigo600, orange500, grey600, red500, black
+} from 'material-ui/styles/colors';
 
 export default {
-    red: "red",
+    red: red500,
     white,
+    black,
     textGray: grey800,
     purple: purple800,
-    orderButtons: "#888888",
+    lightPurple: purple600,
+    orderButtons: grey600,
+
+    organizationIconColor: indigo600,
+    orderIconColor: orange500,
 }

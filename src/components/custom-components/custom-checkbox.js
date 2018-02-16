@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import AbstractField from "./abstract-field";
+import Colors from "../../util/consts/colors";
 
 export class CustomCheckbox extends AbstractField {
 
@@ -14,11 +15,11 @@ export class CustomCheckbox extends AbstractField {
             },
             labelStyle: {
                 marginRight: 20,
-                color: checked ? "red" : "black",
+                color: checked ? Colors.red : Colors.black,
             },
             iconStyle: {
-                fill: checked ? 'red' : null,
-                borderColor: "black",
+                fill: checked ? Colors.red : null,
+                borderColor: Colors.black,
             },
         };
 

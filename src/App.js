@@ -5,6 +5,7 @@ import LoginPage from './containers/pages/login-page';
 import AppDialog from './containers/messages/app-dialog';
 import AppSnackbar from './containers/messages/app-snackbar';
 import ThemeDefault from './theme-default';
+import Colors from "./util/consts/colors";
 
 class App extends React.Component {
 
@@ -35,7 +36,7 @@ class App extends React.Component {
                 marginTop: 10,
                 textAlign: "center",
                 fontSize: 10,
-                color: "gray"
+                color: Colors.textGray,
             }
         };
 
