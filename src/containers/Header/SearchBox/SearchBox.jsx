@@ -2,13 +2,7 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
-import * as _ from "lodash";
-import {MenuItem} from "material-ui";
-import EventIcon from 'material-ui-icons/EventNote';
-import BusinessIcon from 'material-ui-icons/Business';
-import {redirect} from "../../../util/history-util";
 import Colors from "../../../util/consts/colors";
-
 
 export default class SearchBox extends React.Component {
 
@@ -19,33 +13,13 @@ export default class SearchBox extends React.Component {
         };
     }
 
-    sourceTypes = {
-        organization: 0,
-        order: 1,
-    };
-
     handleRequest(chosenRequest, index) {
         if (index === -1) {
             return; //TODO handle enter press
         }
         this.setState({searchText: ""});
 
-        switch (chosenRequest.info.type) {
-            case this.sourceTypes.organization:
-                this.props.selectOrganization(chosenRequest.info.organizationId);
-                redirect('/org');
-                return;
-
-            case this.sourceTypes.order:
-                this.props.selectOrder(chosenRequest.info.orderId);
-                this.props.selectOrganization(chosenRequest.info.organizationId);
-
-                redirect('/form');
-                return;
-
-            default:
-                return;
-        }
+        this.props.handleRequest(chosenRequest);
     }
 
     render() {
@@ -76,35 +50,6 @@ export default class SearchBox extends React.Component {
             },
         };
 
-        const organizationNamesObjects = _.values(this.props.organizations).map(
-            (org) => ({
-                text: org.organizationName,
-                info: {
-                    type: this.sourceTypes.organization,
-                    organizationId: org.id
-                },
-                value: (<MenuItem
-                    primaryText={org.organizationName}
-                    leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
-                />)
-            }));
-
-        const orderNumbersObjects = _.values(this.props.orders).map(
-            (order) => ({
-                text: order.id.toString() + " - " + this.props.organizations[order.organizationId].organizationName,
-                info: {
-                    type: this.sourceTypes.order,
-                    orderId: order.id,
-                    organizationId: order.organizationId,
-                },
-                value: (<MenuItem
-                    primaryText={order.id.toString() + " - " + this.props.organizations[order.organizationId].organizationName}
-                    leftIcon={<EventIcon color={Colors.orderIconColor}/>}
-                />)
-            }));
-
-        const dataSource = _.concat(organizationNamesObjects, orderNumbersObjects);
-
         return (
             <div style={styles.container}>
                 <IconButton style={styles.iconButton}>
@@ -112,7 +57,7 @@ export default class SearchBox extends React.Component {
                 </IconButton>
 
                 <AutoComplete
-                    dataSource={dataSource}
+                    dataSource={this.props.dataSource}
                     hintText={this.props.hintText}
                     searchText={this.state.searchText}
                     filter={AutoComplete.caseInsensitiveFilter}
@@ -128,7 +73,6 @@ export default class SearchBox extends React.Component {
                     style={styles.autoComplete}
                     hintStyle={styles.hintStyle}
                 />
-
             </div>
         );
     }
