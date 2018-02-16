@@ -4,7 +4,6 @@ import InfoBox from "../../../components/dashboard/info-box";
 import {connect} from "react-redux";
 import {getLabels} from "../../../store/labels/reducer";
 import {redirect} from "../../../util/history-util";
-import {withRouter} from "react-router";
 import {
     getAllLectureTimes,
 } from "../../../store/orders/selectors";
@@ -90,7 +89,7 @@ class InfoBoxes extends React.Component {
 
         return (
             <div style={style.div}>
-                <div style={style.box} onClick={() => redirect(this.props.history, '/futureLectures')}>
+                <div style={style.box} onClick={() => redirect('/futureLectures')}>
                     <InfoBox
                         Icon={CheckBoxIcon}
                         color={orange600}
@@ -100,7 +99,7 @@ class InfoBoxes extends React.Component {
                 </div>
 
 
-                <div style={style.box} onClick={() => redirect(this.props.history, '/followup')}>
+                <div style={style.box} onClick={() => redirect('/followup')}>
                     <InfoBox
                         Icon={NotificationsIcon}
                         color={pink600}
@@ -109,7 +108,7 @@ class InfoBoxes extends React.Component {
                     />
                 </div>
 
-                <div style={style.box} onClick={() => redirect(this.props.history, '/expectedIncome')}>
+                <div style={style.box} onClick={() => redirect('/expectedIncome')}>
                     <InfoBox
                         Icon={CreditCardIcon}
                         color={lightBlue700}
@@ -118,7 +117,7 @@ class InfoBoxes extends React.Component {
                     />
                 </div>
 
-                <div style={style.lastBox} onClick={() => redirect(this.props.history, '/payment')}>
+                <div style={style.lastBox} onClick={() => redirect('/payment')}>
                     <InfoBox
                         Icon={PaymentIcon}
                         color={green500}
@@ -146,4 +145,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(InfoBoxes));
+export default connect(mapStateToProps)(InfoBoxes);

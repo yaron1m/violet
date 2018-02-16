@@ -17,7 +17,7 @@ import AllOrdersPage from "./containers/pages/all-orders-page";
 import ActionRequiredPage from "./containers/pages/action-required-page/index";
 import PrintOrderPage from "./containers/pages/print-order-page/index";
 
-const history = createHashHistory();
+export const history = createHashHistory();
 
 class Root extends React.Component {
 

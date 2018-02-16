@@ -4,19 +4,18 @@ import {clearSelectedOrder, selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getOrdersSummary, getOrdersByOrganization} from "../../store/orders/selectors";
 import {isSelectedOrganization} from "../../store/selected/reducer";
-import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import CustomPaperTable from "../../components/tables/custom-paper-table";
 
 class OrganizationsOrdersTable extends React.Component {
     addNewOrder() {
         this.props.dispatch(clearSelectedOrder());
-        redirect(this.props.history, '/form');
+        redirect('/form');
     }
 
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
-        redirect(this.props.history, '/form');
+        redirect('/form');
     }
 
     render() {
@@ -47,4 +46,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(OrganizationsOrdersTable));
+export default connect(mapStateToProps)(OrganizationsOrdersTable);

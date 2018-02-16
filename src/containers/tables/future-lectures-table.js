@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getAllLectureTimes} from "../../store/orders/selectors";
-import {withRouter} from "react-router";
 import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
 import Status from "../../util/consts/status";
@@ -13,7 +12,7 @@ import CustomPaperTable from "../../components/tables/custom-paper-table";
 class FutureLecturesTable extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
-        redirect(this.props.history, '/form');
+        redirect('/form');
     }
 
     render() {
@@ -57,4 +56,4 @@ FutureLecturesTable.defaultProps = {
     limit: -1,
 };
 
-export default withRouter(connect(mapStateToProps)(FutureLecturesTable));
+export default connect(mapStateToProps)(FutureLecturesTable);

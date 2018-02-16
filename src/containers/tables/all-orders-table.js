@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {selectOrder} from "../../store/selected/actions";
 import {getLabels} from "../../store/labels/reducer";
 import {getOrdersSummary, getOrders} from "../../store/orders/selectors";
-import {withRouter} from "react-router";
 import * as _ from "lodash";
 import {redirect} from "../../util/history-util";
 import CustomPaperTable from "../../components/tables/custom-paper-table";
@@ -12,7 +11,7 @@ import CustomPaperTable from "../../components/tables/custom-paper-table";
 class AllOrdersTable extends React.Component {
     selectOrder(orderId) {
         this.props.dispatch(selectOrder(orderId));
-        redirect(this.props.history, '/form');
+        redirect('/form');
     }
 
     render() {
@@ -51,4 +50,4 @@ AllOrdersTable.defaultProps = {
     limit: -1,
 };
 
-export default withRouter(connect(mapStateToProps)(AllOrdersTable));
+export default connect(mapStateToProps)(AllOrdersTable);

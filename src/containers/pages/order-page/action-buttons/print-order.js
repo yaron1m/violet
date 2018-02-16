@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import IconButton from "material-ui/IconButton";
 import PrintIcon from 'material-ui/svg-icons/action/print';
 import {getLabels} from "../../../../store/labels/reducer";
-import withRouter from "react-router-dom/es/withRouter";
 import {isSelectedOrder} from "../../../../store/selected/reducer";
 import {openDialog} from "../../../../store/appearance/actions";
 
@@ -37,4 +36,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(PrintOrderButton));
+export default connect(mapStateToProps)(PrintOrderButton);

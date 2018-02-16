@@ -1,6 +1,5 @@
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router'
 import {getLabels} from "../../../store/labels/reducer";
 import {getOrganizations} from "../../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../../store/selected/actions";
@@ -21,4 +20,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBox));
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);

@@ -33,14 +33,14 @@ export default class SearchBox extends React.Component {
         switch (chosenRequest.info.type) {
             case this.sourceTypes.organization:
                 this.props.selectOrganization(chosenRequest.info.organizationId);
-                redirect(this.props.history, '/org');
+                redirect('/org');
                 return;
 
             case this.sourceTypes.order:
                 this.props.selectOrder(chosenRequest.info.orderId);
                 this.props.selectOrganization(chosenRequest.info.organizationId);
 
-                redirect(this.props.history, '/form');
+                redirect('/form');
                 return;
 
             default:

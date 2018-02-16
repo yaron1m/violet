@@ -1,7 +1,6 @@
 import React from 'react';
 import CustomPaper from "../../../components/custom-components/custom-paper";
 import {connect} from "react-redux";
-import {withRouter} from "react-router";
 import {getLabels} from "../../../store/labels/reducer";
 import {redirect} from "../../../util/history-util";
 import {clearSelected} from "../../../store/selected/actions";
@@ -34,12 +33,12 @@ class NavigationButtons extends React.Component {
         return (
             <div style={style.container}>
                 <CustomPaper style={style.paper} onClick={() => {
-                    redirect(this.props.history, "/form");
+                    redirect("/form");
                     this.props.dispatch(clearSelected());
                 }}>
                     {this.props.labels.newOrder}
                 </CustomPaper>
-                <CustomPaper style={style.lastPaper} onClick={() => redirect(this.props.history, "/allOrders")}>
+                <CustomPaper style={style.lastPaper} onClick={() => redirect("/allOrders")}>
                     {this.props.labels.allOrders}
                 </CustomPaper>
             </div>
@@ -54,4 +53,4 @@ function mapStateToProps(state) {
 }
 
 
-export default withRouter(connect(mapStateToProps)(NavigationButtons));
+export default connect(mapStateToProps)(NavigationButtons);

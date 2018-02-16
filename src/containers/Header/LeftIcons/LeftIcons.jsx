@@ -3,7 +3,6 @@ import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
-import {withRouter} from "react-router";
 import {redirect} from "../../../util/history-util";
 import MoreIcon from 'material-ui-icons/MoreVert';
 import NotificationsIcon from 'material-ui-icons/Notifications';
@@ -29,7 +28,7 @@ class LeftIcons extends React.Component {
                     }}
                 >
                     <IconButton
-                        onClick={() => redirect(this.props.history, '/actionRequired')}
+                        onClick={() => redirect('/actionRequired')}
                     >
                         <NotificationsIcon color={Colors.white}/>
                     </IconButton>
@@ -53,4 +52,4 @@ class LeftIcons extends React.Component {
     }
 }
 
-export default withRouter(LeftIcons);
+export default LeftIcons;

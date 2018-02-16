@@ -1,7 +1,6 @@
 import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import HomeIcon from 'material-ui-icons/Home';
-import {withRouter} from "react-router";
 import {redirect} from "../../util/history-util";
 import Colors from "../../util/consts/colors";
 
@@ -18,7 +17,7 @@ class HomeButton extends React.Component {
         return (
             <IconButton
                 style={style.homeIcon}
-                onClick={() => redirect(this.props.history, '/')}
+                onClick={() => redirect('/')}
             >
                 <HomeIcon color={Colors.white}/>
             </IconButton>
@@ -26,4 +25,4 @@ class HomeButton extends React.Component {
     }
 }
 
-export default withRouter(HomeButton);
+export default HomeButton;
