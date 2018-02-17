@@ -17,7 +17,7 @@ const sourceTypes = {
     order: 1,
 };
 
-function handleRequest(chosenRequest, dispatch) {
+export function handleRequest(chosenRequest, dispatch) {
     switch (chosenRequest.info.type) {
         case sourceTypes.organization:
             dispatch(selectOrganization(chosenRequest.info.organizationId));
