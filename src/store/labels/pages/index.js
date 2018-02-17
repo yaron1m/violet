@@ -107,16 +107,14 @@ const futureLecturesPageLabels = {
 
 const allOrdersPageLabels = {
     filterByStatus: "סנן לפי סטאטוס",
-    table: {
-        title: "כל ההזמנות",
-        tableHeaders: [
-            {id: "מספר הזמנה"},
-            {organizationName: "שם הארגון"},
-            {date: "תאריך הרצאה"},
-            {topic: "נושא"},
-            {status: "סטאטוס"},
-            {edit: "עריכה"}]
-    },
+    title: "כל ההזמנות",
+    tableHeaders: [
+        {id: "מספר הזמנה"},
+        {organizationName: "שם הארגון"},
+        {date: "תאריך הרצאה"},
+        {topic: "נושא"},
+        {status: "סטאטוס"},
+        {edit: "עריכה"}]
 };
 
 const printPageLabels = {

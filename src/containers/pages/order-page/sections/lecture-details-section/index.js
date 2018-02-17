@@ -68,6 +68,7 @@ class LectureDetailsSection extends React.Component {
                             name="rejectionReason"
                             options={this.props.rejectionReasons}
                             size={Sizes.XL}
+                            onChange={(value) => fieldData.updateAction("rejectionReason", value)} //TODO change to new api
                         />
                         <CustomText data={fieldData} name="rejectionDetails" fullWidth={true}/>
                     </div> ) : null
@@ -80,6 +81,7 @@ class LectureDetailsSection extends React.Component {
                             name="cancellationReason"
                             options={this.props.cancellationReasons}
                             size={Sizes.XL}
+                            onChange={(value) => fieldData.updateAction("cancellationReason", value)} //TODO change to new api
                         />
                         <CustomText data={fieldData} name="cancellationDetails" fullWidth={true}/>
 

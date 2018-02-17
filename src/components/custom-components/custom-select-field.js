@@ -14,7 +14,7 @@ export default class CustomSelectField extends AbstractField {
             <SelectField
                 style={style}
                 value={this.state.value}
-                onChange={(event, key, value) => this.handleChange(value)}
+                onChange={(event, key, value) => this.props.onChange(value)}
                 floatingLabelText={this.title}
                 floatingLabelFixed={true}
                 errorText={this.getErrorText()}
@@ -46,7 +46,8 @@ export default class CustomSelectField extends AbstractField {
 CustomSelectField.propTypes = {
     ...AbstractField.propTypes,
     options: PropTypes.array.isRequired,
-    allowEmpty: PropTypes.bool
+    allowEmpty: PropTypes.bool,
+    onChange: PropTypes.func
 };
 
 CustomSelectField.defaultProps = {

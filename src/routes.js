@@ -11,7 +11,7 @@ import HomePage from "./containers/pages/dashboard/index";
 import PaymentPage from "./containers/pages/payment-page/index";
 import ExpectedIncomePage from "./containers/pages/expected-income-page/index";
 import FutureLecturesPage from "./containers/pages/future-lectures-page";
-import AllOrdersPage from "./containers/pages/all-orders-page";
+import AllOrdersPage from "./containers/pages/AllOrdersPage";
 import ActionRequiredPage from "./containers/pages/ActionRequiredPage";
 import PrintOrderPage from "./containers/pages/print-order-page/index";
 import history from './util/History'
