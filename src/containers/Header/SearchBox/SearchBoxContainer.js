@@ -36,8 +36,11 @@ export function handleRequest(chosenRequest, dispatch) {
     }
 }
 
-function getDataSource(state) {
+export function getDataSource(state) {
     const organizations = getOrganizations(state);
+    if(!organizations)
+        return [];
+
     const orders = getOrders(state);
 
     const organizationNamesObjects = _.values(organizations).map(
