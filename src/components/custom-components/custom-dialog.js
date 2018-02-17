@@ -3,7 +3,6 @@ import FlatButton from "material-ui/FlatButton";
 import React from "react";
 import PropTypes from 'prop-types';
 
-
 class CustomDialog extends React.Component {
 
     render() {

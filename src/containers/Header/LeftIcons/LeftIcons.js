@@ -7,6 +7,7 @@ import {redirect} from "../../../util/history-util";
 import MoreIcon from 'material-ui-icons/MoreVert';
 import NotificationsIcon from 'material-ui-icons/Notifications';
 import Colors from "../../../util/consts/colors";
+import PropTypes from "prop-types";
 
 class LeftIcons extends React.Component {
 
@@ -51,5 +52,12 @@ class LeftIcons extends React.Component {
         );
     }
 }
+
+LeftIcons.propTypes = {
+    notificationCount: PropTypes.number,
+    logOutLabel: PropTypes.string,
+    isProduction: PropTypes.bool,
+    signOut: PropTypes.func,
+};
 
 export default LeftIcons;

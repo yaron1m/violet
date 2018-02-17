@@ -3,6 +3,7 @@ import IconButton from 'material-ui/IconButton';
 import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
 import Colors from "../../../util/consts/colors";
+import PropTypes from 'prop-types';
 
 export default class SearchBox extends React.Component {
 
@@ -76,4 +77,10 @@ export default class SearchBox extends React.Component {
             </div>
         );
     }
+}
+
+SearchBox.propTypes = {
+    hintText: PropTypes.string.isRequired,
+    dataSource: PropTypes.array,
+    handleRequest: PropTypes.func,
 }

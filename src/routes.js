@@ -7,13 +7,13 @@ import FollowUpPageTitle from './containers/pages/follow-up-page/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
-import HomePage from "./containers/pages/dashboard/index";
-import PaymentPage from "./containers/pages/payment-page/index";
-import ExpectedIncomePage from "./containers/pages/expected-income-page/index";
+import HomePage from "./containers/pages/dashboard";
+import PaymentPage from "./containers/pages/payment-page";
+import ExpectedIncomePage from "./containers/pages/expected-income-page";
 import FutureLecturesPage from "./containers/pages/future-lectures-page";
 import AllOrdersPage from "./containers/pages/AllOrdersPage";
 import ActionRequiredPage from "./containers/pages/ActionRequiredPage";
-import PrintOrderPage from "./containers/pages/print-order-page/index";
+import PrintOrderPage from "./containers/pages/print-order-page";
 import history from './util/History'
 
 class Root extends React.Component {
