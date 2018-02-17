@@ -42,7 +42,7 @@ const followUpPageLabels = {
 };
 
 const actionRequiredPageLabels = {
-    title: "הזמנות דורשות טיפול",
+    title: "הזמנות שדורשות פעולה",
     tableHeaders: [
         {id: "מספר הזמנה"},
         {createdDate: "תאריך יצירת הזמנה"},

@@ -1,4 +1,3 @@
-import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {getSnackbarMessage, isSnackbarOpen} from "../../store/appearance/reducer";
 import {closeSnackbar} from "../../store/appearance/actions";
