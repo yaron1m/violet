@@ -9,7 +9,7 @@ import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
 import HomePage from "./containers/Pages/Dashboard";
 import PaymentPage from "./containers/Pages/payment-page";
-import ExpectedIncomePage from "./containers/Pages/expected-income-page";
+import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./containers/Pages/future-lectures-page";
 import AllOrdersPage from "./containers/Pages/AllOrdersPage";
 import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
