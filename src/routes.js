@@ -2,7 +2,7 @@ import React from 'react';
 import {Router, Route} from 'react-router';
 import App from './App'
 import LectureForm from './containers/Pages/order-page/';
-import OrganizationPage from './containers/Pages/organization-page/';
+import OrganizationPage from './containers/Pages/OrganizationPage/';
 import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
