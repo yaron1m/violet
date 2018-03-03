@@ -1,8 +1,8 @@
 import React from 'react';
-import OrganizationSection from "./organization-section";
+import OrganizationSection from "../order-page/sections/organization-section";
 import OrganizationPageTitle from './organiation-page-title';
 import OrganizationActionButtons from './organiation-action-buttons';
-import OrganizationsOrdersTable from '../../tables/organizations-orders-table';
+import OrganizationsOrdersTable from './OrganizationsOrdersTable';
 
 export default class OrganizationPage extends React.Component {
     render() {

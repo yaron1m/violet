@@ -1,17 +1,17 @@
 import React from 'react';
-import CustomPaper from "../../../components/custom-components/custom-paper";
-import CustomText from "../../../components/custom-components/custom-text-field";
+import CustomPaper from "../../../../components/custom-components/custom-paper";
+import CustomText from "../../../../components/custom-components/custom-text-field";
 import {connect} from 'react-redux';
-import {selectOrganization, updateSelectedOrder, updateSelectedOrganization} from "../../../store/selected/actions";
-import {getLabels} from "../../../store/labels/reducer";
-import {getSelectedOrganization} from "../../../store/selected/reducer";
-import CustomAutoComplete from "../../../components/custom-components/custom-autocomplete";
-import {getRequiredFields} from "../../../store/required-fields/reducer";
+import {selectOrganization, updateSelectedOrder, updateSelectedOrganization} from "../../../../store/selected/actions";
+import {getLabels} from "../../../../store/labels/reducer";
+import {getSelectedOrganization} from "../../../../store/selected/reducer";
+import CustomAutoComplete from "../../../../components/custom-components/custom-autocomplete";
+import {getRequiredFields} from "../../../../store/required-fields/reducer";
 import * as _ from "lodash";
-import {getOrganizations} from "../../../store/organizations/reducer";
-import CustomToggle from "../../../components/custom-components/custom-toggle";
+import {getOrganizations} from "../../../../store/organizations/reducer";
+import CustomToggle from "../../../../components/custom-components/custom-toggle";
 import PropTypes from 'prop-types';
-import Sizes from "../../../util/consts/sizes";
+import Sizes from "../../../../util/consts/sizes";
 
 
 class OrganizationSection extends React.Component {
@@ -77,5 +77,3 @@ OrganizationSection.defaultProps = {
 
 
 export default connect(mapStateToProps)(OrganizationSection);
-//TODO split connected component and ui component
-// TODO Pass dispatch functions to ui component using mapDispatchToProps
