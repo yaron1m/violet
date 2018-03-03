@@ -1,19 +1,19 @@
 import React from 'react';
 import {Router, Route} from 'react-router';
 import App from './App'
-import LectureForm from './containers/pages/order-page/';
-import OrganizationPage from './containers/pages/organization-page/';
-import FollowUpPageTitle from './containers/pages/follow-up-page/';
+import LectureForm from './containers/Pages/order-page/';
+import OrganizationPage from './containers/Pages/organization-page/';
+import FollowUpPageTitle from './containers/Pages/follow-up-page/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
-import HomePage from "./containers/pages/dashboard";
-import PaymentPage from "./containers/pages/payment-page";
-import ExpectedIncomePage from "./containers/pages/expected-income-page";
-import FutureLecturesPage from "./containers/pages/future-lectures-page";
-import AllOrdersPage from "./containers/pages/AllOrdersPage";
-import ActionRequiredPage from "./containers/pages/ActionRequiredPage";
-import PrintOrderPage from "./containers/pages/print-order-page";
+import HomePage from "./containers/Pages/dashboard";
+import PaymentPage from "./containers/Pages/payment-page";
+import ExpectedIncomePage from "./containers/Pages/expected-income-page";
+import FutureLecturesPage from "./containers/Pages/future-lectures-page";
+import AllOrdersPage from "./containers/Pages/AllOrdersPage";
+import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
+import PrintOrderPage from "./containers/Pages/print-order-page";
 import history from './util/History'
 
 class Root extends React.Component {
