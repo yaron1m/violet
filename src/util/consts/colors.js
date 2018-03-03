@@ -1,5 +1,17 @@
 import {
-    white, grey800, purple600, purple800, indigo600, orange500, grey600, red500, black
+    white,
+    grey800,
+    purple600,
+    purple800,
+    indigo600,
+    orange500,
+    grey600,
+    red500,
+    black,
+    orange600,
+    pink600,
+    lightBlue700,
+    green500
 } from 'material-ui/styles/colors';
 
 export default {
@@ -13,4 +25,11 @@ export default {
 
     organizationIconColor: indigo600,
     orderIconColor: orange500,
+
+    infoBoxes: {
+        orange: orange600,
+        pink: pink600,
+        lightBlue: lightBlue700,
+        green: green500,
+    }
 }

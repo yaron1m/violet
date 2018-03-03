@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
-import Colors from '../../util/consts/colors'
+import Colors from '../../../../util/consts/colors'
 
 export default class InfoBox extends React.Component {
 
     render() {
         const styles = {
+            paper: {
+                width: "100%",
+                marginRight: 20,
+                cursor: "pointer",
+                marginBottom: 20,
+            },
             content: {
                 padding: '5px 10px',
                 marginRight: 90,
@@ -39,7 +45,7 @@ export default class InfoBox extends React.Component {
         };
 
         return (
-            <Paper>
+            <Paper style={styles.paper} onClick={this.props.onClick}>
                 <span style={styles.iconSpan}>
                   <this.props.Icon
                       color={Colors.white}
@@ -62,5 +68,6 @@ InfoBox.propTypes = {
     title: PropTypes.string,
     value: PropTypes.string,
     style: PropTypes.object,
-    error: PropTypes.bool
+    error: PropTypes.bool,
+    onClick: PropTypes.func,
 };

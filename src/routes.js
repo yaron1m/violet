@@ -7,7 +7,7 @@ import FollowUpPageTitle from './containers/Pages/follow-up-page/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
-import HomePage from "./containers/Pages/dashboard";
+import HomePage from "./containers/Pages/Dashboard";
 import PaymentPage from "./containers/Pages/payment-page";
 import ExpectedIncomePage from "./containers/Pages/expected-income-page";
 import FutureLecturesPage from "./containers/Pages/future-lectures-page";
