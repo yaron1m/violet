@@ -29,7 +29,6 @@ const loginPageLabels = {
 
 const followUpPageLabels = {
     title: "המשך טיפול - טבלת מעקב",
-    tableTitle: "הזמנות בהן נדרש המשך טיפול",
     tableHeaders: [
         {id: "מספר הזמנה"},
         {organizationName: "שם הארגון"},

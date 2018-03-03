@@ -64,6 +64,7 @@ CustomPaperTable.defaultProps = {
     hideEdit: false,
     limit: -1,
     singleCellRow: false,
+    rowIndexKey: "id",
 };
 
 export default CustomPaperTable;

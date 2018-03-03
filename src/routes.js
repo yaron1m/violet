@@ -3,7 +3,7 @@ import {Router, Route} from 'react-router';
 import App from './App'
 import LectureForm from './containers/Pages/order-page/';
 import OrganizationPage from './containers/Pages/organization-page/';
-import FollowUpPageTitle from './containers/Pages/follow-up-page/';
+import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
 import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
