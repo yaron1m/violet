@@ -1,5 +1,5 @@
 import React from 'react';
-import AllOrdersTable from './AllOrdersTableContainer';
+import AllOrdersTableContainer from './AllOrdersTableContainer';
 import FilterStatusSelectField from './FilterStatusSelectField';
 
 export default class extends React.Component {
@@ -17,13 +17,16 @@ export default class extends React.Component {
     }
 
     render() {
-        return (
-            <AllOrdersTable
+        const filterStatusSelectField =
+            <FilterStatusSelectField
+                updateStatus={this.updateStatus.bind(this)}
                 filterStatus={this.state.filterStatus}
-                beforeTable={<FilterStatusSelectField
-                    updateStatus={this.updateStatus.bind(this)}
-                    filterStatus={this.state.filterStatus}
-                />}
+            />;
+
+        return (
+            <AllOrdersTableContainer
+                filterStatus={this.state.filterStatus}
+                beforeTable={filterStatusSelectField}
             />
         );
     }

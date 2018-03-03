@@ -43,7 +43,7 @@ const Container = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField
 
 Container.propTypes = {
     updateStatus: PropTypes.func.isRequired,
-    filterStatus: PropTypes.string.isRequired,
+    filterStatus: PropTypes.string,
 };
 
 export default Container;
