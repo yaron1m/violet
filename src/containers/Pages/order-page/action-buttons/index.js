@@ -3,7 +3,7 @@ import SendOfferButton from './send-offer';
 import SaveOrderButton from './save-order';
 import ClearFormButton from './clear-form';
 import PrintOrderButton from './print-order';
-import {ActionButtonsBox} from "../../../../components/action-buttons-box";
+import {ActionButtonsBox} from "../../../../components/ActionButtonsBox";
 
 export default class OrderActionButtons extends React.Component {
     render() {
