@@ -13,7 +13,6 @@ function mapStateToProps(state) {
         title: getLabels(state).pages.expectedIncome.table.title,
         tableHeaders: getLabels(state).pages.expectedIncome.table.tableHeaders,
         elements: getExpectedIncomeOrders(state, acceptedStatuses),
-        rowIndexKey: "id",
     };
 }
 

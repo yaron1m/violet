@@ -10,7 +10,6 @@ function mapStateToProps(state) {
         title: getLabels(state).pages.actionRequiredPage.title,
         tableHeaders: getLabels(state).pages.actionRequiredPage.tableHeaders,
         elements: getActionRequiredOrders(state),
-        rowIndexKey: "id",
     };
 }
 
