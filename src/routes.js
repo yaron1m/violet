@@ -8,7 +8,7 @@ import {isLoggedIn} from "./store/firebase/reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/appearance/reducer";
 import HomePage from "./containers/Pages/Dashboard";
-import PaymentPage from "./containers/Pages/payment-page";
+import PaymentPage from "./containers/Pages/WaitingPaymentPage";
 import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./containers/Pages/FutureLecturesPage";
 import AllOrdersPage from "./containers/Pages/AllOrdersPage";
