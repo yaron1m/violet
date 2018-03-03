@@ -15,8 +15,8 @@ class CustomTableRow extends React.Component {
         const key = headerKey + this.props.rowIndex;
 
         function clickAction(onEditButton, rowIndex) {
-            if(onEditButton == null)
-                return
+            if(onEditButton === null)
+                return;
 
             if (headerKey === "edit" || headerKey === "pick")
                 return;
@@ -71,7 +71,7 @@ class CustomTableRow extends React.Component {
 
         return (
             <TableRow
-                style={this.props.missingFields ? {color: Colors.red} : {}}
+                style={this.props.error ? {color: Colors.red} : {}}
                 selectable={false}
                 hoverable={true}
                 key={this.props.rowIndex}
@@ -90,14 +90,14 @@ CustomTableRow.propTypes = {
     onEditButton: PropTypes.func,
     onPickButton: PropTypes.func,
     onDeleteButton: PropTypes.func,
-    missingFields: PropTypes.bool,
+    error: PropTypes.bool,
     hideEdit: PropTypes.bool,
 };
 
 CustomTableRow.defaultProps = {
     onEditButton: null,
     onPickButton: null,
-    missingFields: false,
+    error: false,
     hideEdit: false,
 };
 

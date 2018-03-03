@@ -61,7 +61,7 @@ class LectureTimesTable extends React.Component {
                                     element={lectureTime}
                                     onEditButton={this.editLectureTime.bind(this)}
                                     onDeleteButton={this.deleteLectureTime.bind(this)}
-                                    missingFields={!_.isEmpty(getMissingFields(lectureTime, this.props.requiredFields))}
+                                    error={!_.isEmpty(getMissingFields(lectureTime, this.props.requiredFields))}
                                     rowIndex={index}
                                 />
                         ))
