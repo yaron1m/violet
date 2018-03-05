@@ -53,8 +53,8 @@ export default class InvoiceSection extends React.Component {
 
 InvoiceSection.propTypes = {
     sectionName: PropTypes.string,
-    titles: PropTypes.array,
-    values: PropTypes.array,
+    titles: PropTypes.object,
+    values: PropTypes.object,
     requiredFields: PropTypes.array,
     updateAction: PropTypes.func,
 };

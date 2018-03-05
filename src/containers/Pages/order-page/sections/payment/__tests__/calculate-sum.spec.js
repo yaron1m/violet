@@ -1,23 +1,22 @@
 import calculateSum from "../calculate-sum";
-import configureStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
 
-const middleware = [thunk];
-const mockStore = configureStore(middleware);
+let updateAction;
 
 describe('payment section - calculate sum', () => {
+    beforeEach(() => {
+        updateAction = jest.fn();
+    });
+
     it('calculateSum - no cost - do nothing', async function () {
         const initialState = {
             selected: {
                 order: {}
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(0);
+        expect(updateAction.mock.calls.length).toBe(0);
     });
 
     it('calculateSum - no cost with other fields - do nothing', async function () {
@@ -29,12 +28,10 @@ describe('payment section - calculate sum', () => {
                 }
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(0);
+        expect(updateAction.mock.calls.length).toBe(0);
     });
 
     it('calculateSum - only cost - calculate cost with vat', async function () {
@@ -45,16 +42,15 @@ describe('payment section - calculate sum', () => {
                 }
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(4);
-        expect(actions[0].payload.travelExpenses).toBe("");
-        expect(actions[1].payload.sum).toBe("1000");
-        expect(actions[2].payload.vat).toBe("170");
-        expect(actions[3].payload.totalSum).toBe("1170");
+        expect(updateAction.mock.calls.length).toBe(4);
+
+        expect(updateAction.mock.calls[0]).toEqual(["travelExpenses",""]);
+        expect(updateAction.mock.calls[1]).toEqual(["sum","1000"]);
+        expect(updateAction.mock.calls[2]).toEqual(["vat","170"]);
+        expect(updateAction.mock.calls[3]).toEqual(["totalSum","1170"]);
     });
 
     it('calculateSum - cost and oneWayDistance - calculate totalSum', async function () {
@@ -66,16 +62,15 @@ describe('payment section - calculate sum', () => {
                 }
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(4);
-        expect(actions[0].payload.travelExpenses).toBe("534");
-        expect(actions[1].payload.sum).toBe("1534");
-        expect(actions[2].payload.vat).toBe("260.78");
-        expect(actions[3].payload.totalSum).toBe("1795");
+        expect(updateAction.mock.calls.length).toBe(4);
+
+        expect(updateAction.mock.calls[0]).toEqual(["travelExpenses","534"]);
+        expect(updateAction.mock.calls[1]).toEqual(["sum","1534"]);
+        expect(updateAction.mock.calls[2]).toEqual(["vat","260.78"]);
+        expect(updateAction.mock.calls[3]).toEqual(["totalSum","1795"]);
     });
 
     it('calculateSum - cost has multiple sign - calculate totalSum', async function () {
@@ -87,16 +82,15 @@ describe('payment section - calculate sum', () => {
                 }
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(4);
-        expect(actions[0].payload.travelExpenses).toBe("534");
-        expect(actions[1].payload.sum).toBe("3534");
-        expect(actions[2].payload.vat).toBe("600.78");
-        expect(actions[3].payload.totalSum).toBe("4135");
+        expect(updateAction.mock.calls.length).toBe(4);
+
+        expect(updateAction.mock.calls[0]).toEqual(["travelExpenses","534"]);
+        expect(updateAction.mock.calls[1]).toEqual(["sum","3534"]);
+        expect(updateAction.mock.calls[2]).toEqual(["vat","600.78"]);
+        expect(updateAction.mock.calls[3]).toEqual(["totalSum","4135"]);
     });
 
     it('calculateSum - cost has invalid multiple sign - do nothing', async function () {
@@ -108,12 +102,10 @@ describe('payment section - calculate sum', () => {
                 }
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(0);
+        expect(updateAction.mock.calls.length).toBe(0);
     });
 
     it('calculateSum - results are rounded', async function () {
@@ -125,15 +117,14 @@ describe('payment section - calculate sum', () => {
                 }
             }
         };
-        const store = mockStore(initialState);
 
-        await calculateSum(initialState.selected.order, store.dispatch);
+        calculateSum(initialState.selected.order, updateAction);
 
-        const actions = store.getActions();
-        expect(actions.length).toBe(4);
-        expect(actions[0].payload.travelExpenses).toBe("1.07");
-        expect(actions[1].payload.sum).toBe("1001.07");
-        expect(actions[2].payload.vat).toBe("170.18");
-        expect(actions[3].payload.totalSum).toBe("1171");
+        expect(updateAction.mock.calls.length).toBe(4);
+
+        expect(updateAction.mock.calls[0]).toEqual(["travelExpenses","1.07"]);
+        expect(updateAction.mock.calls[1]).toEqual(["sum","1001.07"]);
+        expect(updateAction.mock.calls[2]).toEqual(["vat","170.18"]);
+        expect(updateAction.mock.calls[3]).toEqual(["totalSum","1171"]);
     });
 });
