@@ -1,6 +1,7 @@
 import React from 'react';
 import Sizes from "../../../../../util/consts/sizes";
 import OrderCustomDatePicker from "../ConnectedCustomComponents/OrderCustomDatePicker";
+import PropTypes from "prop-types";
 
 export default class ProformaInvoiceDate extends React.Component {
 
@@ -10,3 +11,7 @@ export default class ProformaInvoiceDate extends React.Component {
         );
     }
 }
+
+ProformaInvoiceDate.propTypes = {
+    updateAction: PropTypes.func.isRequired,
+};

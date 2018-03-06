@@ -1,8 +1,7 @@
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
-import {getSelectedOrder, getSelectedOrganization} from "../../../../../store/selected/reducer";
-import {getRequiredFields} from "../../../../../store/required-fields/reducer";
+import {getSelectedOrganization} from "../../../../../store/selected/reducer";
 import {isEmptyValue} from "../../../../../util/string-util";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
 
@@ -54,11 +53,8 @@ function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentCon
 
 function mapStateToProps(state) {
     return {
-        titles: getLabels(state).pages.orderPage.sections.invoice.titles,
-        values: getSelectedOrder(state),
         paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
         selectedOrganization: getSelectedOrganization(state),
-        requiredFields: getRequiredFields(state).order,
     };
 }
 
@@ -70,7 +66,6 @@ function mapDispatchToProps(dispatch) {
 
 function mergeProps(stateProps, dispatchProps) {
     return {
-        ...stateProps,
         updateAction: (key, value) => {
             dispatchProps.updateSelectedOrder(key, value);
             calculatePayDate(value, stateProps.selectedOrganization, stateProps.paymentConditions, dispatchProps.updateSelectedOrder);
