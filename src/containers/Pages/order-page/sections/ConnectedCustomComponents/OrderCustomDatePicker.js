@@ -3,7 +3,7 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
-import CustomText from "../../../../../components/custom-components/custom-text-field";
+import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 
 function mapStateToProps(state) {
     return {
@@ -26,11 +26,12 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
             values: stateProps.values,
             requiredFields: stateProps.requiredFields,
             updateAction: dispatchProps.updateAction,
+            ...ownProps,
         },
         ...ownProps,
     };
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDatePicker);
 
