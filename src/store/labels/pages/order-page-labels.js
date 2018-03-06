@@ -191,6 +191,16 @@ export const orderPageLabels = {
         payment: paymentSectionLabels,
         invoice: invoiceSectionLabels,
         notes: notesSectionLabels,
+        titles:{
+            ...organizationSectionLabels.titles,
+            ...contactsSectionLabels.titles,
+            ...lectureDetailsSectionLabels.titles,
+            ...lectureTimesSectionLabels.titles,
+            ...followUpSectionLabels.titles,
+            ...paymentSectionLabels.titles,
+            ...invoiceSectionLabels.titles,
+            ...notesSectionLabels.titles,
+        }
     },
     dialog: orderPageDialogLabels,
     actionButtons: orderPageActionButtonsLabels,

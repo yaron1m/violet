@@ -5,7 +5,7 @@ import OrganizationSection from "./sections/organization-section";
 import LectureDetailsSection from "./sections/lecture-details-section/index";
 import ContactsSection from "./sections/contacts-section/index";
 import FollowUpSection from "./sections/follow-up-section";
-import PaymentSection from "./sections/payment/payment-section-container";
+import PaymentSection from "./sections/Payment/PaymentSectionContainer";
 import InvoiceSection from "./sections/InvoiceSection/InvoiceSectionContainer";
 import NotesSection from "./sections/notes-section";
 import OrderTimes from './order-page-footer'

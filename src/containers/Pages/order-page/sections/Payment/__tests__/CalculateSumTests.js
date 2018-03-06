@@ -1,4 +1,4 @@
-import calculateSum from "../calculate-sum";
+import calculateSum from "../CalculateSum";
 
 let updateAction;
 

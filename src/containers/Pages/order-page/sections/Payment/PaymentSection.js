@@ -2,13 +2,13 @@ import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import Divider from 'material-ui/Divider';
 import ContactRow from '../contacts-section/contact-row'
-import CustomText from "../../../../../components/custom-components/custom-text-field";
 import IconButton from "material-ui/IconButton";
 import CalculateIcon from 'material-ui-icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
-import AbstractOrderPageSection from "../AbstractOrderPageSection";
+import PropTypes from "prop-types";
+import OrderCustomText from "../ConnectedCustomComponents/OrderCustomText";
 
-export default class PaymentSection extends AbstractOrderPageSection {
+export default class PaymentSection extends React.Component {
 
     render() {
         return (
@@ -21,7 +21,7 @@ export default class PaymentSection extends AbstractOrderPageSection {
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
-                <div style={this.flexStyle}>
+                <div>
                     <IconButton
                         onClick={this.props.calculateSum}
                         tooltip={this.props.buttonTooltip}
@@ -30,15 +30,22 @@ export default class PaymentSection extends AbstractOrderPageSection {
                         <CalculateIcon/>
                     </IconButton>
 
-                    <CustomText data={this.fieldData} name="cost" />
-                    <CustomText data={this.fieldData} name="oneWayDistance" size={Sizes.M}/>
-                    <CustomText data={this.fieldData} name="travelExpenses" size={Sizes.M}/>
-                    <CustomText data={this.fieldData} name="extraCosts" size={Sizes.M}/>
-                    <CustomText data={this.fieldData} name="sum"/>
-                    <CustomText data={this.fieldData} name="vat" size={Sizes.M}/>
-                    <CustomText data={this.fieldData} name="totalSum"/>
+                    <OrderCustomText name="cost"/>
+                    <OrderCustomText name="oneWayDistance" size={Sizes.M}/>
+                    <OrderCustomText name="travelExpenses" size={Sizes.M}/>
+                    <OrderCustomText name="extraCosts" size={Sizes.M}/>
+                    <OrderCustomText name="sum"/>
+                    <OrderCustomText name="vat" size={Sizes.M}/>
+                    <OrderCustomText name="totalSum"/>
                 </div>
             </CustomPaper>
         );
     }
 }
+
+PaymentSection.propTypes = {
+    sectionName: PropTypes.string.isRequired,
+    calculateSum: PropTypes.func.isRequired,
+    financialContactTitle: PropTypes.string,
+    buttonTooltip: PropTypes.string,
+};
