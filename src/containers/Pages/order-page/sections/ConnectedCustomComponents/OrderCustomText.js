@@ -26,6 +26,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
             values: stateProps.values,
             requiredFields: stateProps.requiredFields,
             updateAction: dispatchProps.updateAction,
+            ...ownProps,
         },
         ...ownProps,
     };
