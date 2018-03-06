@@ -4,7 +4,7 @@ import OrderActionButtons from './action-buttons/index';
 import OrganizationSection from "./sections/organization-section";
 import LectureDetailsSection from "./sections/lecture-details-section/index";
 import ContactsSection from "./sections/contacts-section/index";
-import FollowUpSection from "./sections/follow-up-section";
+import FollowUpSection from "./sections/FollowUp/FollowUpSectionContainer";
 import PaymentSection from "./sections/Payment/PaymentSectionContainer";
 import InvoiceSection from "./sections/InvoiceSection/InvoiceSectionContainer";
 import NotesSection from "./sections/notes-section";
