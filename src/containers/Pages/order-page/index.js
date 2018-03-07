@@ -3,7 +3,7 @@ import OrderPageTitle from './order-page-title';
 import OrderActionButtons from './action-buttons/index';
 import OrganizationSection from "./sections/organization-section";
 import LectureDetailsSection from "./sections/lecture-details-section/index";
-import ContactsSection from "./sections/contacts-section/index";
+import ContactsSection from "./sections/contacts-section/ContactSectionContainer";
 import FollowUpSection from "./sections/FollowUp/FollowUpSectionContainer";
 import PaymentSection from "./sections/Payment/PaymentSectionContainer";
 import InvoiceSection from "./sections/InvoiceSection/InvoiceSectionContainer";
