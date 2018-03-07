@@ -7,7 +7,7 @@ import ContactsSection from "./sections/ContactSection/ContactSectionContainer";
 import FollowUpSection from "./sections/FollowUp/FollowUpSectionContainer";
 import PaymentSection from "./sections/Payment/PaymentSectionContainer";
 import InvoiceSection from "./sections/InvoiceSection/InvoiceSectionContainer";
-import NotesSection from "./sections/notes-section";
+import NotesSection from "./sections/Notes/NotesSectionContainer";
 import OrderTimes from './order-page-footer'
 
 export default class OrderForm extends React.Component {
