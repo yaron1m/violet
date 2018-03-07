@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import Divider from 'material-ui/Divider';
-import ContactRow from '../contacts-section/contact-row'
+import ContactRowContainer from '../contacts-section/ContactRowContainer'
 import IconButton from "material-ui/IconButton";
 import CalculateIcon from 'material-ui-icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
@@ -17,7 +17,7 @@ export default class PaymentSection extends React.Component {
             >
                 <div>{this.props.financialContactTitle}</div>
 
-                <ContactRow isFinancialContacts={true}/>
+                <ContactRowContainer isFinancialContacts={true}/>
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
 
