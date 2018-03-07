@@ -4,7 +4,7 @@ import connect from "react-redux/es/connect/connect";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../store/selected/reducer";
 import PrintField from "../../../../components/custom-components/order-print/print-field";
-import {getKey} from "../../order-page/sections/contacts-section/ContactRow";
+import {getKey} from "../../order-page/sections/ContactSection/ContactRow";
 
 class ContactsPrintRow extends React.Component {
     render() {

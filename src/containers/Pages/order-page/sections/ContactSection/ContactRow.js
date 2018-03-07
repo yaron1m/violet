@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from "material-ui/IconButton";
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
-import ImportContactsDialog from './ImportContactDialogContainer';
+import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
 import Sizes from "../../../../../util/consts/sizes";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
@@ -31,7 +31,7 @@ export default class ContactRow extends React.Component {
 
         return (
             <div>
-                <ImportContactsDialog
+                <ImportContactsDialogContainer
                     dialogOpen={this.state.dialogOpen}
                     isFinancialContacts={isFinancial}
                     onRequestClose={() => this.setState({dialogOpen: false})}
