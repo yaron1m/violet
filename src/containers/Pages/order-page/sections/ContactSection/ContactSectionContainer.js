@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/labels/reducer";
 import ContactsSection from "./ContactSection";
@@ -10,5 +9,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(ContactsSection);
-
-
