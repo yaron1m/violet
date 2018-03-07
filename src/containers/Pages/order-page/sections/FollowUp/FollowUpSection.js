@@ -1,9 +1,10 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import PropTypes from "prop-types";
-import OrderCustomText from "../ConnectedCustomComponents/OrderCustomText";
-import OrderCustomDatePicker from "../ConnectedCustomComponents/OrderCustomDatePicker";
-import OrderCustomToggle from "../ConnectedCustomComponents/OrderCustomToggle";
+import {
+    OrderCustomDatePicker, OrderCustomText,
+    OrderCustomToggle
+} from "../ConnectedCustomComponents/OrderCustomFields";
 
 export default class FollowUpSection extends React.Component {
 

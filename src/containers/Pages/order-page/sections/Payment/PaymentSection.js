@@ -6,7 +6,7 @@ import IconButton from "material-ui/IconButton";
 import CalculateIcon from 'material-ui-icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
 import PropTypes from "prop-types";
-import OrderCustomText from "../ConnectedCustomComponents/OrderCustomText";
+import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 
 export default class PaymentSection extends React.Component {
 
