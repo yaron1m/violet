@@ -14,7 +14,7 @@ export default class CustomSelectField extends AbstractField {
             <SelectField
                 style={style}
                 value={this.state.value}
-                onChange={(event, key, value) => this.props.onChange(value)}
+                onChange={(event, key, value) => this.handleChange(value)}
                 floatingLabelText={this.title}
                 floatingLabelFixed={true}
                 errorText={this.getErrorText()}

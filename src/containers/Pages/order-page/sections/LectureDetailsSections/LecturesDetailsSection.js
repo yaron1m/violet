@@ -1,91 +1,46 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
-import CustomText from "../../../../../components/custom-components/custom-text-field";
 import LectureTimesTable from './lecture-times-table';
-import CustomToggle, {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
-import {connect} from 'react-redux';
-import {updateSelectedOrder} from "../../../../../store/selected/actions";
-import {getLabels} from "../../../../../store/labels/reducer";
-import {getSelectedOrder} from "../../../../../store/selected/reducer";
-import {getRequiredFields} from "../../../../../store/required-fields/reducer";
-import {getCancellationReasons, getRejectionReasons} from "../../../../../store/lists/reducer";
-import Status from "../../../../../util/consts/status";
+import {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
 import Sizes from "../../../../../util/consts/sizes";
-import CustomSelectField from "../../../../../components/custom-components/custom-select-field";
-import {isMatchingStatus} from "../../../../../util/order-status";
-import {CustomCheckbox} from "../../../../../components/custom-components/custom-checkbox";
+import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
+import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
+import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 
-class LectureDetailsSection extends React.Component {
+export default class LectureDetailsSection extends React.Component {
 
     render() {
-        const fieldData = {
-            titles: this.props.labels.titles,
-            values: this.props.selectedOrder,
-            requiredFields: this.props.requiredFields,
-            updateAction: function (key, value) {
-                this.props.dispatch(updateSelectedOrder(key, value));
-
-                // Allow only one terminating status
-                if (value === true && key === Status.rejected)
-                    this.props.dispatch(updateSelectedOrder(Status.cancelled, false));
-                if (value === true && key === Status.cancelled)
-                    this.props.dispatch(updateSelectedOrder(Status.rejected, false));
-
-            }.bind(this)
-        };
-
         return (
             <CustomPaper
-                title={this.props.labels.sectionName}
-                isOpen={true}
+                title={this.props.sectionName}
             >
 
                 <div>
-                    <CustomText data={fieldData} name="street"/>
-                    <CustomText data={fieldData} name="streetNumber" size={Sizes.S}/>
-                    <CustomText data={fieldData} name="city"/>
-                    <CustomText data={fieldData} name="location" size={Sizes.XL}/>
-                    <CustomText data={fieldData} name="audienceType"/>
-                    <CustomText data={fieldData} name="daySchedule"/>
+                    <OrderCustomText name="street"/>
+                    <OrderCustomText name="streetNumber" size={Sizes.S}/>
+                    <OrderCustomText name="city"/>
+                    <OrderCustomText name="location" size={Sizes.XL}/>
+                    <OrderCustomText name="audienceType"/>
+                    <OrderCustomText name="daySchedule"/>
                 </div>
 
                 <CustomToggleBox>
-                    <CustomToggle data={fieldData} name="projector"/>
-                    <CustomToggle data={fieldData} name="soundSystem"/>
-                    <CustomToggle data={fieldData} name="microphone"/>
-                    <CustomToggle data={fieldData} name="parking"/>
-                    <CustomToggle data={fieldData} name="orderApproved"/>
-                    <CustomToggle data={fieldData} name="sameAudience"/>
-                    <CustomCheckbox data={fieldData} name="rejected"/>
-                    {isMatchingStatus(this.props.selectedOrder, [Status.approvedOrder, Status.isExecuting, Status.cancelled])?
-                        <CustomCheckbox data={fieldData} name="cancelled"/> : null}
+                    <OrderCustomToggle name="projector"/>
+                    <OrderCustomToggle name="soundSystem"/>
+                    <OrderCustomToggle name="microphone"/>
+                    <OrderCustomToggle name="parking"/>
+                    <OrderCustomToggle name="orderApproved"/>
+                    <OrderCustomToggle name="sameAudience"/>
+
+                    <OrderCustomCheckBox name="rejected"/>
+
+                    {this.props.showCancelledCheckBox ? <OrderCustomCheckBox name="cancelled"/> : null}
+
                 </CustomToggleBox>
 
-                {this.props.selectedOrder.rejected ? (
-                    <div style={{display: "flex"}}>
-                        <CustomSelectField
-                            data={fieldData}
-                            name="rejectionReason"
-                            options={this.props.rejectionReasons}
-                            size={Sizes.XL}
-                            onChange={(value) => fieldData.updateAction("rejectionReason", value)} //TODO change to new api
-                        />
-                        <CustomText data={fieldData} name="rejectionDetails" fullWidth={true}/>
-                    </div> ) : null
-                }
+                <RejectedOrderContainer/>
 
-                {this.props.selectedOrder.cancelled ? (
-                    <div style={{display: "flex"}}>
-                        <CustomSelectField
-                            data={fieldData}
-                            name="cancellationReason"
-                            options={this.props.cancellationReasons}
-                            size={Sizes.XL}
-                            onChange={(value) => fieldData.updateAction("cancellationReason", value)} //TODO change to new api
-                        />
-                        <CustomText data={fieldData} name="cancellationDetails" fullWidth={true}/>
-
-                    </div>) : null}
+                <CancelledOrderContainer/>
 
                 <LectureTimesTable/>
 
@@ -93,15 +48,3 @@ class LectureDetailsSection extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        labels: getLabels(state).pages.orderPage.sections.lectureDetails,
-        selectedOrder: getSelectedOrder(state),
-        requiredFields: getRequiredFields(state).order,
-        rejectionReasons: getRejectionReasons(state),
-        cancellationReasons: getCancellationReasons(state),
-    };
-}
-
-export default connect(mapStateToProps)(LectureDetailsSection);

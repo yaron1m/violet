@@ -6,6 +6,8 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import CustomToggle from "../../../../../components/custom-components/custom-toggle";
+import CustomCheckbox from "../../../../../components/custom-components/custom-checkbox";
+import CustomSelectField from "../../../../../components/custom-components/custom-select-field";
 
 function mapStateToProps(state) {
     return {
@@ -38,4 +40,6 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
 export const OrderCustomText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
 export const OrderCustomDatePicker = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDatePicker);
 export const OrderCustomToggle = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomToggle);
+export const OrderCustomCheckBox = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomCheckbox);
+export const OrderCustomSelectField = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomSelectField);
 

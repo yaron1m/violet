@@ -21,8 +21,7 @@ function mapStateToProps(state, ownProps) {
     const fieldData = {
         titles: getLabels(state).pages.allOrdersPage,
         values: {filterByStatus: ownProps.filterStatus},
-        updateAction: function () { //TODO remove this once validation is updated
-        },
+        updateAction: (key, value) => ownProps.updateStatus(value),
     };
 
     return {
@@ -33,13 +32,7 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
-    return {
-        onChange: (value) => ownProps.updateStatus(value),
-    }
-}
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);
+const Container = connect(mapStateToProps)(CustomSelectField);
 
 Container.propTypes = {
     updateStatus: PropTypes.func.isRequired,

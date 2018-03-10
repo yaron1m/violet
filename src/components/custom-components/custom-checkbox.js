@@ -3,7 +3,7 @@ import Checkbox from 'material-ui/Checkbox';
 import AbstractField from "./abstract-field";
 import Colors from "../../util/consts/colors";
 
-export class CustomCheckbox extends AbstractField {
+export default class CustomCheckbox extends AbstractField {
 
     render() {
         const checked = this.state.value === true;
