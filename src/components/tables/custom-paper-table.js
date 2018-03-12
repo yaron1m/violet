@@ -31,10 +31,11 @@ class CustomPaperTable extends React.Component {
                         elements.map((element, index) =>
                             <CustomTableRow
                                 key={index}
-                                rowIndex={element[this.props.rowIndexKey]}
+                                rowIndex={this.props.rowIndexKey === null ? index : element[this.props.rowIndexKey]}
                                 headers={this.props.tableHeaders}
                                 element={element}
                                 onEditButton={this.props.onEditButton}
+                                onDeleteButton={this.props.onDeleteButton}
                                 hideEdit={this.props.hideEdit}
                             />
                         )
@@ -50,9 +51,10 @@ CustomPaperTable.propTypes = {
     elements: PropTypes.array.isRequired,
     hideEdit: PropTypes.bool,
     limit: PropTypes.number,
-    rowIndexKey: PropTypes.string.isRequired,
+    rowIndexKey: PropTypes.string,
     tableHeaders: PropTypes.array.isRequired,
     onEditButton: PropTypes.func.isRequired,
+    onDeleteButton: PropTypes.func,
     beforeTable: PropTypes.node,
 
     singleCellRow: PropTypes.bool,

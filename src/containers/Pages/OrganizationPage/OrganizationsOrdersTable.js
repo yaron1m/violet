@@ -12,7 +12,7 @@ function mapStateToProps(state) {
         tableHeaders: getLabels(state).pages.organizationPage.ordersSummarySection.tableHeaders,
         elements: getOrdersSummary(state, getOrdersByOrganization).reverse(),
 
-        singleCellRow:isSelectedOrganization(state),
+        singleCellRow: isSelectedOrganization(state),
         singleCellRowText: getLabels(state).pages.organizationPage.ordersSummarySection.addRow,
     };
 }
@@ -23,7 +23,7 @@ function mapDispatchToProps(dispatch) {
             dispatch(selectOrder(orderId));
             redirect('/form');
         },
-        singleCellRowOnClick:() => {
+        singleCellRowOnClick: () => {
             dispatch(clearSelectedOrder());
             redirect('/form');
         }
