@@ -1,9 +1,9 @@
 export function calculateDuration(lectureTime) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
-        return null;
+        return "";
 
     if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.endTime))
-        return null;
+        return "";
 
     return getDuration(lectureTime.startTime, lectureTime.endTime);
 }

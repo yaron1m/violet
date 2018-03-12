@@ -1,12 +1,12 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
-import LectureTimesTable from './LectureTimesTable';
+import LectureTimesTable from './LectureTimes/LectureTimesTable';
 import {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
 import Sizes from "../../../../../util/consts/sizes";
 import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
-import LectureTimeEditDialog from "./lecture-time-edit-dialog";
+import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
 
 export default class LectureDetailsSection extends React.Component {
     constructor() {
@@ -59,7 +59,7 @@ export default class LectureDetailsSection extends React.Component {
 
                 <LectureTimeEditDialog
                     dialogOpen={this.state.dialogOpen}
-                    selectedLectureTimeIndex={this.state.selectedLectureTimeIndex}
+                    lectureTimeIndex={this.state.selectedLectureTimeIndex}
                     onRequestClose={() => this.setState(Object.assign({}, this.state, {
                         dialogOpen: false,
                     }))}
