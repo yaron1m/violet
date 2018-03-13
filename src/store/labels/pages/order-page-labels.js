@@ -168,6 +168,8 @@ const orderPageActionButtonsLabels = {
     edit: "ערוך הצעת מחיר",
     clear: "נקה טופס",
     print: "הדפס הזמנה",
+    error: "שגיאה",
+    noOrderSelected: "לא נבחרה הזמנה",
     clearDialog: {
         title: "ניקוי טופס הזמנה",
         content: "האם אתה בטוח שברצונך לנקות את כל השדות בטופס?",
