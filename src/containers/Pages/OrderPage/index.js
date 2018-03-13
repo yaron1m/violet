@@ -2,7 +2,7 @@ import React from 'react';
 import OrderPageSections from './Sections';
 import OrderPageTitle from './OrderPageTitleContainer';
 import OrderActionButtons from './action-buttons/index';
-import OrderTimes from './order-page-footer'
+import OrderEditTimes from './OrderEditTimesContainer'
 
 export default class OrderForm extends React.Component {
 
@@ -11,7 +11,7 @@ export default class OrderForm extends React.Component {
         return (
             <div>
                 <OrderPageTitle/>
-                <OrderTimes/>
+                <OrderEditTimes/>
 
                 <OrderActionButtons/>
 

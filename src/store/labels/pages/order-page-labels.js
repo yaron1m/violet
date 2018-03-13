@@ -220,7 +220,7 @@ export const orderPageLabels = {
         rejected: "לא אושר",
         followUp: " + המשך טיפול",
     },
-    footer: {
+    editTimes: {
         createdDate: "תאריך יצירה - ",
         changedDate: "תאריך שינוי - ",
     }
