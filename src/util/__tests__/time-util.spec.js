@@ -41,27 +41,27 @@ describe('time-util', () => {
         const startTime = "101:14";
         const endTime = "11:36";
         const lectureTime = {startTime, endTime};
-        expect(calculateDuration(lectureTime)).toBeNull();
+        expect(calculateDuration(lectureTime)).toEqual("");
     });
 
     it('calculateDuration - invalid StartTime - return null', () => {
         const startTime = "A:14";
         const endTime = "11:36";
         const lectureTime = {startTime, endTime};
-        expect(calculateDuration(lectureTime)).toBeNull();
+        expect(calculateDuration(lectureTime)).toEqual("");
     });
 
     it('calculateDuration - invalid StartTime - return null', () => {
         const startTime = "-7:14";
         const endTime = "11:36";
         const lectureTime = {startTime, endTime};
-        expect(calculateDuration(lectureTime)).toBeNull();
+        expect(calculateDuration(lectureTime)).toEqual("");
     });
 
     it('calculateDuration - empty StartTime - return null', () => {
         const startTime = "";
         const endTime = "11:36";
         const lectureTime = {startTime, endTime};
-        expect(calculateDuration(lectureTime)).toBeNull();
+        expect(calculateDuration(lectureTime)).toEqual("");
     });
 });
