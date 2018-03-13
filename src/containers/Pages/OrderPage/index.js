@@ -1,6 +1,6 @@
 import React from 'react';
 import OrderPageSections from './Sections';
-import OrderPageTitle from './order-page-title';
+import OrderPageTitle from './OrderPageTitleContainer';
 import OrderActionButtons from './action-buttons/index';
 import OrderTimes from './order-page-footer'
 
