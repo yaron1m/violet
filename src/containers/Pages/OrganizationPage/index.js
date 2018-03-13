@@ -1,5 +1,5 @@
 import React from 'react';
-import OrganizationSection from "../order-page/sections/OrganizationSection/OrganizationSectionContainer";
+import OrganizationSection from "../OrderPage/Sections/OrganizationSection/OrganizationSectionContainer";
 import OrganizationActionButtons from './ActionButtons/OrganizationActionButtons';
 import OrganizationsOrdersTable from './OrganizationsOrdersTable';
 

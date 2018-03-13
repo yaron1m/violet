@@ -1,7 +1,7 @@
 import React from 'react';
 import {Router, Route} from 'react-router';
 import App from './App'
-import LectureForm from './containers/Pages/order-page/';
+import LectureForm from './containers/Pages/OrderPage/';
 import OrganizationPage from './containers/Pages/OrganizationPage/';
 import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
 import {isLoggedIn} from "./store/firebase/reducer";
