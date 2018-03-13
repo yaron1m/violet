@@ -1,5 +1,5 @@
 import React from 'react';
-import SendOfferButton from './send-offer';
+import SendOfferButton from './SendOfferContainer';
 import SaveOrderButton from './save-order';
 import ClearFormButton from './ClearFormContainer';
 import PrintOrderButton from './PrintOrderContainer';
