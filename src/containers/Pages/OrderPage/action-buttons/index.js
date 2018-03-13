@@ -1,7 +1,7 @@
 import React from 'react';
 import SendOfferButton from './send-offer';
 import SaveOrderButton from './save-order';
-import ClearFormButton from './clear-form';
+import ClearFormButton from './ClearFormContainer';
 import PrintOrderButton from './print-order';
 import {ActionButtonsBox} from "../../../../components/ActionButtonsBox";
 
