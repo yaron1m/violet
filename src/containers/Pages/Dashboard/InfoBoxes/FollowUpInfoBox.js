@@ -25,7 +25,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps() {
     return {
-        onClick: (orderId) => redirect('/followup'),
+        onClick: () => redirect('/followup'),
     };
 }
 

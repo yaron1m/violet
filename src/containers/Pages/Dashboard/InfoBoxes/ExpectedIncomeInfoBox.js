@@ -37,7 +37,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps() {
     return {
-        onClick: (orderId) => redirect('/expectedIncome'),
+        onClick: () => redirect('/expectedIncome'),
     };
 }
 
