@@ -24,10 +24,26 @@ function deleteLectureTime(index, selectedOrder, updateSelectedOrder) {
     updateSelectedOrder("lectureTimes", lectureTimes);
 }
 
+function getElements(lectureTimes){
+    if(!lectureTimes)
+        return [];
+
+
+    // Add index to every lecture time - for opening the right dialog
+    lectureTimes= _.map(lectureTimes, (lectureTime, index) => {
+        return {
+            ...lectureTime,
+            index : index
+        }
+    });
+
+    return _.sortBy(lectureTimes, x => x.date);
+}
+
 function mapStateToProps(state) {
     return {
         tableHeaders: getLabels(state).pages.orderPage.sections.lectureTimes.tableHeaders,
-        elements: getSelectedOrder(state).lectureTimes ? getSelectedOrder(state).lectureTimes : [],
+        elements: getElements(getSelectedOrder(state).lectureTimes),
 
         singleCellRowText: getLabels(state).pages.orderPage.sections.lectureTimes.addRow,
         selectedOrder: getSelectedOrder(state),
@@ -45,7 +61,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         title: null,
         elements: stateProps.elements,
         tableHeaders: stateProps.tableHeaders,
-        rowIndexKey: null,
+        rowIndexKey: "index",
         singleCellRow: true,
         singleCellRowText: stateProps.singleCellRowText,
         onEditButton: ownProps.onEditButton,
