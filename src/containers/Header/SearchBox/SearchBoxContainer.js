@@ -38,23 +38,27 @@ export function handleRequest(chosenRequest, dispatch) {
 
 export function getDataSource(state) {
     const organizations = getOrganizations(state);
-    if(!organizations)
+    if (!organizations)
         return [];
 
     const orders = getOrders(state);
 
     const organizationNamesObjects = _.values(organizations).map(
-        (org) => ({
-            text: org.organizationName,
-            info: {
-                type: sourceTypes.organization,
-                organizationId: org.id
-            },
-            value: (<MenuItem
-                primaryText={org.organizationName}
-                leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
-            />)
-        }));
+        (org) => {
+            const text = org.organizationName + (org.companyId ? " (" + org.companyId + ")" : "");
+
+            return {
+                text: text,
+                info: {
+                    type: sourceTypes.organization,
+                    organizationId: org.id
+                },
+                value: (<MenuItem
+                    primaryText={text}
+                    leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
+                />)
+            }
+        });
 
     const orderNumbersObjects = _.values(orders).map(
         (order) => ({
