@@ -89,7 +89,7 @@ const lectureTimesSectionLabels = {
     sectionName: "הרצאות",
     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
         {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
-    addRow: "הוסף תאריך חדש",
+    addRow: "הוסף הרצאה חדשה",
     editDialog: {
         dialogTitle: "ערוך פרטי הרצאה",
         titles: {
