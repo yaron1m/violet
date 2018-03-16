@@ -7,21 +7,26 @@ import {getOrdersByOrganization} from "../../../../../store/orders/selectors";
 import {getValueOrEmptyString} from "../../../../../util/string-util";
 import ImportContactDialog from "./ImportContactDialog";
 
-function getContacts(state, ownProps) {
+function getContacts(state) {
     const allContacts = {};
     const orders = getOrdersByOrganization(state);
-    if(!orders)
+    if (!orders)
         return [];
 
     for (let index = 0; index < orders.length; index++) {
-        const thisContact = getContactsFromOrder(orders[index], ownProps.isFinancialContacts);
-        const thisContactKey = thisContact.contactFirstName + thisContact.contactLastName;
-        if (thisContactKey === "" || allContacts.hasOwnProperty(thisContactKey))
-            continue;
-
-        allContacts[thisContactKey] = thisContact;
+        addSingleContact(orders[index], allContacts, true);
+        addSingleContact(orders[index], allContacts, false);
     }
     return _.map(allContacts, x => x);
+}
+
+function addSingleContact(order, allContacts, isFinancialContacts) {
+    const thisContact = getContactsFromOrder(order, isFinancialContacts);
+    const thisContactKey = thisContact.contactFirstName.trim() + thisContact.contactLastName.trim();
+    if (thisContactKey === "" || allContacts.hasOwnProperty(thisContactKey))
+        return;
+
+    allContacts[thisContactKey] = thisContact;
 }
 
 function getContactsFromOrder(order, isFinancialContacts) {
@@ -29,7 +34,7 @@ function getContactsFromOrder(order, isFinancialContacts) {
 
     return {
         contactFirstName: getValueOrEmptyString(order, getKey("contactFirstName")),
-        contactLastName: getValueOrEmptyString(order,getKey("contactLastName")),
+        contactLastName: getValueOrEmptyString(order, getKey("contactLastName")),
         contactPhone1: getValueOrEmptyString(order, getKey("contactPhone1")),
         contactPhone2: getValueOrEmptyString(order, getKey("contactPhone2")),
         contactPhoneExtension: getValueOrEmptyString(order, getKey("contactPhoneExtension")),
@@ -57,7 +62,7 @@ function mapStateToProps(state, ownProps) {
         dialogTitle: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.dialogTitle,
         onRequestClose: ownProps.onRequestClose,
 
-        contacts: getContacts(state,ownProps),
+        contacts: getContacts(state),
         tableHeaders: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.tableHeaders,
     };
 }
@@ -65,7 +70,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
-        getKey: (key)=> ownProps.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key,
+        getKey: (key) => ownProps.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key,
     }
 }
 
