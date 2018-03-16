@@ -9,15 +9,6 @@ import {
 export default class FollowUpSection extends React.Component {
 
     render() {
-        const style = {
-            flex: {
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                alignItems: "flex-end"
-            },
-        };
-
         return (
             <CustomPaper title={this.props.sectionName}>
                 <div style={flexStyle}>

@@ -4,9 +4,11 @@ export const publicCourseLabels = {
         courseDetailsSectionName: "פרטי הקורס",
     },
     fieldTitles: {
+        // Course Details
         courseName: "שם הקורס",
         courseLocation: "מיקום הקורס",
-        orderNumberTitle: "הזמנה מספר ",
-        newOrderTitle: "הזמנה חדשה",
+        mealCost: "עלות ארוחה",
+        distance: "מרחק",
+        roomsApproved: "חדרים אושרו",
     },
 };

@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/labels/reducer";
 import CourseDetailsSection from "./CourseDetailsSection";
+import {selectPublicCourse} from "../../../../../store/selected/actions";
 
 function mapStateToProps(state) {
     return {
@@ -8,5 +9,12 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(CourseDetailsSection);
+function mapDispatchToProps(dispatch) {
+    return {
+        selectCourse: () => dispatch(selectPublicCourse(100))
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseDetailsSection);
 
