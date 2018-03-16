@@ -2,7 +2,7 @@ import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {getLabels} from "../../../../store/labels/reducer";
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
-import ContactsPrintRow from './contacts-row'
+import ContactsPrintRow from './ContactPrintRowContainer'
 
 class ContactsPrintSection extends React.Component {
     render() {
@@ -10,9 +10,7 @@ class ContactsPrintSection extends React.Component {
             <PrintSection
                 title={this.props.labels.sectionName}
             >
-                <ContactsPrintRow
-                    isFinancial={false}
-                />
+                <ContactsPrintRow isFinancial={false}/>
             </PrintSection>
         );
     }
