@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, getSelectedOrganization, isSelectedOrder} from "../../../store/selected/reducer";
 import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
-import LectureTimesPrintSection from "./sections/lecture-times-print";
+import LectureTimesPrintSection from "./sections/LectureTimesPrintContainer";
 import LectureDetailsPrintSection from "./sections/LectureDetailsContainer";
 import ContactsPrintSection from "./sections/ContactPrintContainer";
 import NotesPrintSection from "./sections/NotesPrintContainer";
