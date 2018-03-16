@@ -1,5 +1,6 @@
 import {orderPageLabels} from "./order-page-labels";
 import {organizationPageLabels} from "./organiztion-page-labels";
+import {publicCourseLabels} from "./PublicCourseLabels";
 
 const dashboardLabels = {
     navigationButtons: {
@@ -121,10 +122,6 @@ const printPageLabels = {
     printNoOrderSelected: "לא נבחרה הזמנה"
 };
 
-const publicCoursePageLabels = {
-    title: "קורס ציבורי",
-};
-
 export const pages = {
     dashboard: dashboardLabels,
     loginPage: loginPageLabels,
@@ -137,5 +134,5 @@ export const pages = {
     orderPage: orderPageLabels,
     organizationPage: organizationPageLabels,
     printPage: printPageLabels,
-    publicCoursePage: publicCoursePageLabels,
+    publicCoursePage: publicCourseLabels,
 };
