@@ -25,13 +25,10 @@ function mapDispatchToProps(dispatch) {
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
     return {
-        data:{
-            titles: stateProps.titles,
-            values: stateProps.values,
-            requiredFields: stateProps.requiredFields,
-            updateAction: dispatchProps.updateAction,
-            ...ownProps,
-        },
+        titles: stateProps.titles,
+        values: stateProps.values,
+        requiredFields: stateProps.requiredFields,
+        updateAction: dispatchProps.updateAction,
         ...ownProps,
     };
 

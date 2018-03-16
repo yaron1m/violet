@@ -1,13 +1,9 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../../store/labels/reducer";
-import {getSelectedOrder} from "../../../../store/selected/reducer";
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
-import {getSelectedOrderStatus} from "../../../../util/order-status";
 import _ from 'lodash';
 import {isEmptyValue} from "../../../../util/string-util";
 
-class LectureTimesPrintSection extends React.Component {
+export default class LectureTimesPrintSection extends React.Component {
 
     render() {
         const style = {
@@ -23,9 +19,9 @@ class LectureTimesPrintSection extends React.Component {
             }
         };
 
-        const tableHeaders = _.dropRight(this.props.labels.tableHeaders);
+        const tableHeaders = _.dropRight(this.props.tableHeaders);
         return (
-            <PrintSection title={this.props.labels.sectionName}>
+            <PrintSection title={this.props.sectionName}>
                 <table style={style.table}>
                     <tbody>
                     <tr>
@@ -34,8 +30,8 @@ class LectureTimesPrintSection extends React.Component {
                         )}
                     </tr>
 
-                    {this.props.selectedOrder.lectureTimes ?
-                        this.props.selectedOrder.lectureTimes.map((lectureTime, index) =>
+                    {this.props.lectureTimes ?
+                        this.props.lectureTimes.map((lectureTime, index) =>
                         <tr key={index}>
                             {tableHeaders.map((header, index2) => {
                                     header = _.keys(header)[0];
@@ -59,13 +55,3 @@ class LectureTimesPrintSection extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        labels: getLabels(state).pages.orderPage.sections.lectureTimes,
-        selectedOrder: getSelectedOrder(state),
-        status: getSelectedOrderStatus(state),
-    };
-}
-
-export default connect(mapStateToProps)(LectureTimesPrintSection);

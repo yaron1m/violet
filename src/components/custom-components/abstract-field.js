@@ -9,13 +9,13 @@ export default class AbstractField extends React.Component {
         this.validateProps(props);
 
         this.name = props.name;
-        this.title = props.data.titles[props.name];
-        this.updateAction = props.data.updateAction;
-        this.requiredFields = props.data.requiredFields;
+        this.title = props.titles[props.name];
+        this.updateAction = props.updateAction;
+        this.requiredFields = props.requiredFields;
 
         this.width = getWidth(props);
         this.state = {
-            value: props.data.values[props.name]
+            value: props.values[props.name]
         };
 
         this.basicStyle = {
@@ -26,21 +26,21 @@ export default class AbstractField extends React.Component {
     }
 
     validateProps(props) {
-        if (!_.has(props.data.titles, props.name))
-            throw Error(`Field "${props.name}" doesn't have a matching title in data.titles`);
+        if (!_.has(props.titles, props.name))
+            throw Error(`Field "${props.name}" doesn't have a matching title in titles`);
 
-        if (!_.isFunction(props.data.updateAction))
-            throw Error(`Field "${props.name}" - data.updateAction must be a function`);
+        if (!_.isFunction(props.updateAction))
+            throw Error(`Field "${props.name}" - updateAction must be a function`);
     }
 
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.data.values[this.name] !== this.state.value)
+        if (nextProps.values[this.name] !== this.state.value)
             this.setState(Object.assign({}, this.state, {
-                value: nextProps.data.values[this.name] ? nextProps.data.values[this.name] : ""
+                value: nextProps.values[this.name] ? nextProps.values[this.name] : ""
             }));
 
-        this.requiredFields = nextProps.data.requiredFields;
+        this.requiredFields = nextProps.requiredFields;
     }
 
     handleChange(newValue) {
@@ -55,7 +55,10 @@ export default class AbstractField extends React.Component {
 
 AbstractField.propTypes = {
     name: PropTypes.string.isRequired,
-    data: PropTypes.object.isRequired,
+    titles: PropTypes.object.isRequired,
+    values: PropTypes.object.isRequired,
+    updateAction: PropTypes.func.isRequired,
+    requiredFields: PropTypes.array,
     fullWidth: PropTypes.bool,
 };
 
