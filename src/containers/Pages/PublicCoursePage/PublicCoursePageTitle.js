@@ -18,7 +18,6 @@ export default class PublicCoursePageTitle extends React.Component {
         return (
             <div style={style.div}>
                 <span style={style.title}>{this.props.title}</span>
-                {/*<span>{ " - " + this.props.status}</span>*/}
             </div>
         );
     }
@@ -26,6 +25,5 @@ export default class PublicCoursePageTitle extends React.Component {
 
 PublicCoursePageTitle.propTypes = {
     title: PropTypes.string,
-    //status: PropTypes.string,
 };
 
