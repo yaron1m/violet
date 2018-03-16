@@ -1,10 +1,11 @@
 import * as actionTypes from './action-types';
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderById} from "../orders/selectors";
-import {getSelectedOrder, getSelectedOrganization} from "./reducer";
+import {getSelectedOrder, getSelectedOrganization, getSelectedPublicCourse} from "./reducer";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";
 import calculateOrderStatus from '../../util/order-status'
+import {getPublicCourseById} from "../PublicCourses/reducer";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -86,6 +87,44 @@ export function sendSelectedOrderToDatabase() {
         return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
     }
 }
+
+// Public Courses:
+export function selectPublicCourse(organizationId) {
+    return function selectPublicCourse(dispatch, getState) {
+        const publicCourse = getPublicCourseById(getState(), organizationId);
+        dispatch({
+            type: actionTypes.SELECT_PUBLIC_COURSE,
+            payload: publicCourse
+        })
+    };
+}
+
+export function updateSelectedPublicCourse(key, value) {
+    return function updateSelectedPublicCourse(dispatch, getState) {
+        const currentPublicCourse = getSelectedPublicCourse(getState());
+        const selectedPublicCourse = changeImmutable(currentPublicCourse, key, value);
+        dispatch({
+            type: actionTypes.UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: selectedPublicCourse,
+        });
+    }
+}
+
+export function setIsSelectedPublicCourse() {
+    return {
+        type: actionTypes.SET_IS_SELECTED_PUBLIC_COURSE,
+    }
+}
+
+export function sendSelectedPublicCourseToDatabase() {
+    return async function sendSelectedPublicCourseToDatabase(dispatch, getState) {
+        await dispatch(updateSelectedPublicCourse("changedDate", new Date().toJSON()));
+        const selectedPublicCourse = getSelectedPublicCourse(getState());
+
+        return sendDataToDatabase('/publicCourses/' + selectedPublicCourse.id, selectedPublicCourse);
+    }
+}
+
 
 // Clear
 
