@@ -9,7 +9,7 @@ import ContactsPrintSection from "./sections/contacts-print";
 import NotesPrintSection from "./sections/NotesPrintContainer";
 import OrganizationPrintSection from "./sections/organization-print";
 import FollowUpPrintSection from "./sections/FollowUpPrintContainer";
-import PaymentSection from "./sections/payment-print";
+import PaymentSection from "./sections/PaymentPrintContainer";
 
 class PrintOrderPage extends React.Component {
 
