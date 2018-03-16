@@ -1,11 +1,18 @@
 import React from 'react';
 import _ from 'lodash';
 import AbstractField from "../abstract-field";
+import PropTypes from "prop-types";
 
 export default class PrintField extends AbstractField {
+    constructor(props){
+        super({
+            ...props,
+            updateAction: function(){},
+        })
+    }
 
     validateProps(props) {
-        if (!_.has(props.data.titles, props.name))
+        if (!_.has(props.titles, props.name))
             throw Error(`Field "${props.name}" doesn't have a matching title in data.titles`);
     }
 
@@ -39,5 +46,7 @@ export default class PrintField extends AbstractField {
 }
 
 PrintField.propTypes = {
-    ...AbstractField.propTypes
+    name: PropTypes.string.isRequired,
+    titles: PropTypes.object.isRequired,
+    values: PropTypes.object.isRequired,
 };
