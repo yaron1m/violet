@@ -121,6 +121,10 @@ const printPageLabels = {
     printNoOrderSelected: "לא נבחרה הזמנה"
 };
 
+const publicCoursePageLabels = {
+    title: "קורס ציבורי",
+};
+
 export const pages = {
     dashboard: dashboardLabels,
     loginPage: loginPageLabels,
@@ -133,4 +137,5 @@ export const pages = {
     orderPage: orderPageLabels,
     organizationPage: organizationPageLabels,
     printPage: printPageLabels,
+    publicCoursePage: publicCoursePageLabels,
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import {Router, Route} from 'react-router';
 import App from './App'
 import LectureForm from './containers/Pages/OrderPage/';
+import PublicCourse from './containers/Pages/PublicCoursePage/';
 import OrganizationPage from './containers/Pages/OrganizationPage/';
 import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
 import {isLoggedIn} from "./store/firebase/reducer";
@@ -24,6 +25,7 @@ class Root extends React.Component {
                 <App isLoggedIn={this.props.isLoggedIn} rtl={this.props.rtl}>
                     <Route exact path="/" component={HomePage}/>
                     <Route path="/form" component={LectureForm}/>
+                    <Route path="/publicCourse" component={PublicCourse}/>
                     <Route path="/org" component={OrganizationPage}/>
                     <Route path="/followup" component={FollowUpPageTitle}/>
                     <Route path="/actionRequired" component={ActionRequiredPage}/>
