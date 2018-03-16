@@ -4,11 +4,11 @@ import {getLabels} from "../../../store/labels/reducer";
 import {getSelectedOrder, getSelectedOrganization, isSelectedOrder} from "../../../store/selected/reducer";
 import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
 import LectureTimesPrintSection from "./sections/lecture-times-print";
-import LectureDetailsPrintSection from "./sections/lecture-details-print";
+import LectureDetailsPrintSection from "./sections/LectureDetailsContainer";
 import ContactsPrintSection from "./sections/contacts-print";
-import NotesPrintSection from "./sections/notes-print";
+import NotesPrintSection from "./sections/NotesPrintContainer";
 import OrganizationPrintSection from "./sections/organization-print";
-import FollowUpPrintSection from "./sections/follow-up-print";
+import FollowUpPrintSection from "./sections/FollowUpPrintContainer";
 import PaymentSection from "./sections/payment-print";
 
 class PrintOrderPage extends React.Component {
@@ -39,7 +39,7 @@ class PrintOrderPage extends React.Component {
 
                 <NotesPrintSection/>
 
-                <OrganizationPrintSection/>
+                {/*<OrganizationPrintSection/>*/}
 
                 {/*<InvoicePrintSection/>*/}
 

@@ -82,6 +82,7 @@ const lectureDetailsSectionLabels = {
         rejected: "הזמנה לא יצאה לפועל",
         rejectionReason: "סיבת דחיה",
         rejectionDetails: "פרטי הדחיה",
+        status: "סטאטוס",
     }
 };
 
