@@ -7,7 +7,7 @@ import LectureTimesPrintSection from "./sections/lecture-times-print";
 import LectureDetailsPrintSection from "./sections/LectureDetailsContainer";
 import ContactsPrintSection from "./sections/contacts-print";
 import NotesPrintSection from "./sections/NotesPrintContainer";
-import OrganizationPrintSection from "./sections/organization-print";
+import OrganizationPrintSection from "./sections/OrganizationPrintContainer";
 import FollowUpPrintSection from "./sections/FollowUpPrintContainer";
 import PaymentSection from "./sections/PaymentPrintContainer";
 
@@ -39,7 +39,7 @@ class PrintOrderPage extends React.Component {
 
                 <NotesPrintSection/>
 
-                {/*<OrganizationPrintSection/>*/}
+                <OrganizationPrintSection/>
 
                 {/*<InvoicePrintSection/>*/}
 
