@@ -41,8 +41,6 @@ class PrintOrderPage extends React.Component {
 
                 <OrganizationPrintSection/>
 
-                {/*<InvoicePrintSection/>*/}
-
                 <PaymentSection/>
 
                 <FollowUpPrintSection/>
