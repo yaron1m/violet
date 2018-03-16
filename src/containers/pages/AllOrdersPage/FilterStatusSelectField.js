@@ -18,15 +18,11 @@ function getStatuses(state) {
 }
 
 function mapStateToProps(state, ownProps) {
-    const fieldData = {
+    return {
+        name: "filterByStatus",
         titles: getLabels(state).pages.allOrdersPage,
         values: {filterByStatus: ownProps.filterStatus},
         updateAction: (key, value) => ownProps.updateStatus(value),
-    };
-
-    return {
-        data: fieldData,
-        name: "filterByStatus",
         options: getStatuses(state),
         size: Sizes.XL,
     };

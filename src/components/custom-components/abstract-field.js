@@ -57,8 +57,8 @@ AbstractField.propTypes = {
     name: PropTypes.string.isRequired,
     titles: PropTypes.object.isRequired,
     values: PropTypes.object.isRequired,
-    requiredFields: PropTypes.array.isRequired,
     updateAction: PropTypes.func.isRequired,
+    requiredFields: PropTypes.array,
     fullWidth: PropTypes.bool,
 };
 
