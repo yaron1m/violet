@@ -34,3 +34,10 @@ CustomPaper.propTypes = {
 
 
 export default CustomPaper;
+
+export const flexStyle = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-end"
+};
