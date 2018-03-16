@@ -5,6 +5,7 @@ import {receiveLists} from "../lists/actions";
 import * as firebase from 'firebase';
 import * as reducer from './reducer';
 import {getLabels} from "../labels/reducer";
+import {receivePublicCourses} from "../PublicCourses/actions";
 
 const firebaseProductionConfig = {
     apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
@@ -100,6 +101,7 @@ export function afterSignedIn(user) {
         });
         dispatch(fetchData('organizations', receiveOrganizations));
         dispatch(fetchData('orders', receiveOrders));
+        dispatch(fetchData('publicCourses', receivePublicCourses));
         dispatch(fetchData('lists', receiveLists));
     }
 }
