@@ -1,7 +1,8 @@
-import {shouldSave} from '../SaveOrderContainer';
+import {saveOrder, shouldSave} from '../SaveOrderContainer';
 import {orderPageLabels} from "../../../../../store/labels/pages/order-page-labels";
 import {SHOW_REQUIRED_FIELDS} from "../../../../../store/required-fields/action-types";
 import * as RequiredFieldsReducer from "../../../../../store/required-fields/reducer"
+import * as SelectedActions from "../../../../../store/selected/actions"
 
 function getState() {
     return {
@@ -11,8 +12,11 @@ function getState() {
             }
         },
         selected: {
-            isSelectedOrganization: false,
+            isSelectedOrganization: true,
             isSelectedOrder: false,
+            order: {
+                organizationId: "3",
+            }
         }
     };
 }
@@ -21,7 +25,7 @@ let dispatch;
 
 // TODO need MANY more tests here, testing other save order functions
 
-describe('save order button - shouldSave', () => {
+describe('save order button', () => {
 
     beforeEach(() => {
         dispatch = jest.fn();
@@ -30,6 +34,7 @@ describe('save order button - shouldSave', () => {
     it('shouldSave - organization not selected - false', () => {
         const state = getState();
         state.selected.isSelectedOrganization = false;
+        RequiredFieldsReducer.getOrderMissingFields = jest.fn(() => []);
 
         expect(shouldSave(state, dispatch)).toBeFalsy();
 
@@ -53,7 +58,7 @@ describe('save order button - shouldSave', () => {
     it('shouldSave - all valid - true', () => {
         const state = getState();
         state.selected.isSelectedOrganization = true;
-        RequiredFieldsReducer.getOrderMissingFields = jest.fn((state) => []);
+        RequiredFieldsReducer.getOrderMissingFields = jest.fn(() => []);
 
         expect(shouldSave(state, dispatch)).toBeTruthy();
     });
