@@ -9,6 +9,7 @@ import labels from './labels/reducer';
 import lists from './lists/reducer';
 import orders from './orders/reducer'
 import organizations from './organizations/reducer'
+import publicCourses from './PublicCourses/reducer'
 import selected from './selected/reducer'
 import requiredFields from './required-fields/reducer'
 import {initFirebase} from "./firebase/actions";
@@ -20,6 +21,7 @@ const combinedReducers = combineReducers({
     lists,
     orders,
     organizations,
+    publicCourses,
     selected,
     requiredFields,
 });
