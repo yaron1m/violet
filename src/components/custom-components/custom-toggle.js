@@ -7,7 +7,7 @@ import Colors from "../../util/consts/colors";
 export default class CustomToggle extends AbstractField {
 
     showError() {
-        return this.state.value === undefined && _.includes(this.props.data.requiredFields, this.props.name);
+        return this.state.value === undefined && _.includes(this.requiredFields, this.name);
     }
 
     render() {
