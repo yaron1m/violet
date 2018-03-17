@@ -7,7 +7,6 @@ export default class OrderPageTitle extends React.Component {
         const style = {
             div: {
                 fontSize: 24,
-                marginBottom: 10,
                 textAlign: "center",
             },
             title: {

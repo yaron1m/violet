@@ -2,7 +2,7 @@ import React from 'react';
 import AbstractField from "../abstract-field";
 import Sizes from "../../../util/consts/sizes";
 
-function setup(outerProps, innerProps) {
+function setup(otherProps) {
     const labels = {
         titles: {
             organizationName: "שם הארגון",
@@ -11,17 +11,14 @@ function setup(outerProps, innerProps) {
 
     const props = {
         name: "organizationName",
-        data: {
-            titles: labels.titles,
-            values: {
-                organizationName: "Google",
-            },
-            requiredFields: ["someField"],
-            updateAction: jest.fn(),
-            ...innerProps,
+        titles: labels.titles,
+        values: {
+            organizationName: "Google",
         },
+        requiredFields: ["someField"],
+        updateAction: jest.fn(),
         size: Sizes.XL,
-        ...outerProps,
+        ...otherProps,
     };
 
     return new AbstractField(props);
@@ -59,7 +56,7 @@ describe('Abstract Field Class', () => {
     });
 
     it('validateProps - missing updateAction - throws exception', () => {
-        expect(() => setup({}, {updateAction: null})).toThrow();
+        expect(() => setup({updateAction: null})).toThrow();
     });
 
     it('componentWillReceiveProps - value not changed - state not changed', () => {
@@ -67,10 +64,8 @@ describe('Abstract Field Class', () => {
         target.setState = jest.fn();
 
         const newProps = {
-            data: {
-                values: {
-                    organizationName: "Google",
-                },
+            values: {
+                organizationName: "Google",
             },
         };
         target.componentWillReceiveProps(newProps);
@@ -84,10 +79,8 @@ describe('Abstract Field Class', () => {
         target.setState = jest.fn();
 
         const newProps = {
-            data: {
-                values: {
-                    organizationName: "Amazon",
-                },
+            values: {
+                organizationName: "Amazon",
             },
         };
         target.componentWillReceiveProps(newProps);
@@ -101,10 +94,7 @@ describe('Abstract Field Class', () => {
         target.setState = jest.fn();
 
         const newProps = {
-            data: {
-                values: {
-                },
-            },
+            values: {},
         };
         target.componentWillReceiveProps(newProps);
 
@@ -114,7 +104,7 @@ describe('Abstract Field Class', () => {
 
     it('handleChange - new value - called with the name', () => {
         const updateAction = jest.fn();
-        const target = setup({} ,{updateAction});
+        const target = setup({updateAction});
 
         target.handleChange("Amazon");
 
@@ -127,13 +117,13 @@ describe('Abstract Field Class', () => {
     });
 
     it('getErrorText - required but has value - empty string', () => {
-        expect(setup({},{requiredFields: ["organizationName"]}).getErrorText()).toEqual("");
+        expect(setup({requiredFields: ["organizationName"]}).getErrorText()).toEqual("");
     });
 
     it('getErrorText - required with no value - get required string', () => {
-        expect(setup({},{
+        expect(setup({
             requiredFields: ["organizationName"],
-            values:{}
+            values: {}
         }).getErrorText()).toEqual("שדה חובה");
     });
 });
