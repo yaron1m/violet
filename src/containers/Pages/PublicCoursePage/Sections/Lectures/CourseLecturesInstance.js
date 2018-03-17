@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper, {flexStyle} from "../../../../../components/custom-components/custom-paper";
+import {flexStyle} from "../../../../../components/custom-components/custom-paper";
 import PropTypes from "prop-types";
 import {
     PublicCourseLectureConnectedAutoComplete,
@@ -13,7 +13,6 @@ export default class CourseLecturesInstance extends React.Component {
     render() {
         const index = this.props.lectureId;
         return (
-            <CustomPaper>
                 <div style={flexStyle}>
                     <PublicCourseLectureConnectedDatePicker lectureId={index} name="date"/>
                     <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
@@ -23,7 +22,6 @@ export default class CourseLecturesInstance extends React.Component {
                     <PublicCourseLectureConnectedText lectureId={index} name="price" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="tie" size={Sizes.M}/>
                 </div>
-            </CustomPaper>
         );
     }
 }
