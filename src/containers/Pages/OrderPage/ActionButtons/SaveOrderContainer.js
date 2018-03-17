@@ -145,9 +145,7 @@ function mapDispatchToProps(dispatch) {
 function mergeProps(stateProps, dispatchProps) {
     return {
         tooltip: stateProps.tooltip,
-        onClick: () => {
-            saveOrder(stateProps.state, dispatchProps.dispatch);
-        }
+        onClick: () => saveOrder(stateProps.state, dispatchProps.dispatch),
     }
 }
 

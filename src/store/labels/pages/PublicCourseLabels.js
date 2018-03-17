@@ -3,6 +3,12 @@ export const publicCourseLabels = {
     sections: {
         courseDetailsSectionName: "פרטי הקורס",
     },
+    actionButtons: {
+        save: "שמור קורס",
+        savedSuccessfully: 'קורס ציבורי {0} נשמר בהצלחה',
+        sendingToDatabaseFailedTitle: "שגיאה בשמירת קורס ציבוי",
+        sendingToDatabaseFailedContent: "חלה שגיאה בשמירת הקורס הציבוי בשרת",
+    },
     fieldTitles: {
         // Course Details
         courseName: "שם הקורס",
