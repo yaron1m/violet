@@ -1,0 +1,31 @@
+import {connect} from 'react-redux';
+import {getSelectedPublicCourse, getSelectedPublicCourseLecture} from "../../../../../store/selected/reducer";
+import {getRequiredFields} from "../../../../../store/required-fields/reducer";
+import {updatePublicCourseLecture, updateSelectedPublicCourse} from "../../../../../store/selected/actions";
+import {getLabels} from "../../../../../store/labels/reducer";
+import CustomText from "../../../../../components/custom-components/custom-text-field";
+import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
+import CustomToggle from "../../../../../components/custom-components/custom-toggle";
+import CustomCheckbox from "../../../../../components/custom-components/custom-checkbox";
+import CustomSelectField from "../../../../../components/custom-components/custom-select-field";
+
+function mapStateToProps(state, ownProps) {
+    return {
+        titles: getLabels(state).pages.publicCoursePage.fieldTitles,
+        values: getSelectedPublicCourseLecture(state, ownProps.lectureId),
+        //requiredFields: getRequiredFields(state).order,
+    };
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        updateAction: (key, value) => dispatch(updatePublicCourseLecture(key, value, ownProps.lectureId)),
+    };
+}
+
+export const PublicCourseLectureConnectedText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
+export const PublicCourseLectureConnectedDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
+export const PublicCourseLectureConnectedToggle = connect(mapStateToProps, mapDispatchToProps)(CustomToggle);
+export const PublicCourseLectureConnectedCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
+export const PublicCourseLectureConnectedSelectField = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);
+

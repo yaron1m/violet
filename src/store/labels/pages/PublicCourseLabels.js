@@ -2,6 +2,7 @@ export const publicCourseLabels = {
     pageTitle: "קורס ציבורי",
     sections: {
         courseDetailsSectionName: "פרטי הקורס",
+        courseLecturesSectionName: "הרצאות",
     },
     actionButtons: {
         save: "שמור קורס",
@@ -16,5 +17,6 @@ export const publicCourseLabels = {
         mealCost: "עלות ארוחה",
         distance: "מרחק",
         roomsApproved: "חדרים אושרו",
+        topic: "נושא",
     },
 };
