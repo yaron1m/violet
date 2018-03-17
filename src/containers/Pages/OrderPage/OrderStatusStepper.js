@@ -9,7 +9,7 @@ export default class OrderStatusStepper extends React.Component {
     render() {
 
         return (
-            <Stepper linear={false}>
+            <Stepper linear={false} style={{height: 50}}>
                 {_.map(progressiveStatuses, status =>
                     <Step
                         key={status}
