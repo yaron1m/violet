@@ -1,6 +1,4 @@
-import React from 'react';
 import {connect} from 'react-redux';
-import IconButton from "material-ui/IconButton";
 import {
     sendSelectedOrganizationToDatabase, setIsSelectedOrganization
 } from "../../../../store/selected/actions";
@@ -8,7 +6,7 @@ import {getLabels} from "../../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../../store/organizations/reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../../store/selected/reducer";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
-import SaveIcon from 'material-ui-icons/Save';
+import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 
 function saveExistingOrganization(stateProps, dispatchProps) {
     if (!stateProps.isSelectedOrganization) {
@@ -42,6 +40,7 @@ function  handleDatabasePromise(promise, stateProps, dispatchProps) {
 
 function mapStateToProps(state) {
     return {
+        tooltip: getLabels(state).pages.organizationPage.actionButtons.save,
         dialogText: getLabels(state).pages.organizationPage.dialog,
         snackBarText: getLabels(state).pages.organizationPage.snackBar,
         selectedOrganizationName: getSelectedOrganization(state).organizationName,
@@ -61,9 +60,9 @@ function mapDispatchToProps(dispatch) {
 
 function mergeProps(stateProps, dispatchProps) {
     return {
+        tooltip: stateProps.tooltip,
         onClick: () => saveExistingOrganization(stateProps, dispatchProps),
-        children: <SaveIcon/>,
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(IconButton);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SaveActionButton);

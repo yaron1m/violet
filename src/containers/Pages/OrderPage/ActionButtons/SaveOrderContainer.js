@@ -17,8 +17,7 @@ import {getOrderMissingFields} from "../../../../store/required-fields/reducer";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
 import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
-import {SaveOrderButton} from "./SaveOrder";
-
+import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))
@@ -150,4 +149,4 @@ function mergeProps(stateProps, dispatchProps) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SaveOrderButton);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SaveActionButton);

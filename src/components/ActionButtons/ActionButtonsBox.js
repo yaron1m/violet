@@ -1,5 +1,5 @@
 import React from 'react';
-import Colors from "../util/consts/colors";
+import Colors from "../../util/consts/colors";
 
 export class ActionButtonsBox extends React.Component {
 

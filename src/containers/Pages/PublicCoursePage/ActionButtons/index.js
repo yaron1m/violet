@@ -3,7 +3,7 @@ import React from 'react';
 import SavePublicCourseButton from './SavePublicCourseContainer';
 // import ClearFormButton from './ClearFormContainer';
 // import PrintOrderButton from './PrintOrderContainer';
-import {ActionButtonsBox} from "../../../../components/ActionButtonsBox";
+import {ActionButtonsBox} from "../../../../components/ActionButtons/ActionButtonsBox";
 
 export default class PublicCourseActionButtons extends React.Component {
     render() {
