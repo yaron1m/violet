@@ -3,6 +3,7 @@ import OrderPageSections from './Sections';
 import OrderPageTitle from './OrderPageTitleContainer';
 import OrderActionButtons from './ActionButtons';
 import OrderEditTimes from './OrderEditTimesContainer'
+import OrderStatusStepper from "./OrderStatusStepperContainer";
 
 export default class OrderForm extends React.Component {
 
@@ -11,6 +12,7 @@ export default class OrderForm extends React.Component {
         return (
             <div>
                 <OrderPageTitle/>
+                <OrderStatusStepper/>
                 <OrderEditTimes/>
 
                 <OrderActionButtons/>
