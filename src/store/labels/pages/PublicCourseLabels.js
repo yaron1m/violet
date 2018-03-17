@@ -17,6 +17,15 @@ export const publicCourseLabels = {
         mealCost: "עלות ארוחה",
         distance: "מרחק",
         roomsApproved: "חדרים אושרו",
+
+        // Lectures
+        date: "תאריך",
+        startTime: "שעת התחלה",
+        endTime: "שעת סיום",
+        duration: "משך",
         topic: "נושא",
+        price: "מחיר ללקוח",
+        tie: "עניבה",
+        edit: "עריכה"
     },
 };

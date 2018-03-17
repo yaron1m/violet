@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
+import CustomPaper, {flexStyle} from "../../../../../components/custom-components/custom-paper";
 import PropTypes from "prop-types";
 import {
     PublicCourseConnectedText,
@@ -12,11 +12,14 @@ export default class CourseDetailsSection extends React.Component {
 
         return (
             <CustomPaper title={this.props.sectionName}>
-                <PublicCourseConnectedText name="courseName"/>
-                <PublicCourseConnectedText name="courseLocation"/>
-                <PublicCourseConnectedText name="mealCost"/>
-                <PublicCourseConnectedText name="distance"/>
-                <PublicCourseConnectedToggle name="roomsApproved"/>
+                <div style={flexStyle}>
+                    <PublicCourseConnectedText name="courseName"/>
+                    <PublicCourseConnectedText name="courseLocation"/>
+                    <PublicCourseConnectedText name="mealCost"/>
+                    <PublicCourseConnectedText name="distance"/>
+                    <PublicCourseConnectedToggle name="roomsApproved"/>
+                </div>
+
 
 
                 <button onClick={this.props.selectCourse}>

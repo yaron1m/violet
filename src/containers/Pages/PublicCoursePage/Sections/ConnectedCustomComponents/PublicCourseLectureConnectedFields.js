@@ -8,6 +8,7 @@ import CustomDatePicker from "../../../../../components/custom-components/custom
 import CustomToggle from "../../../../../components/custom-components/custom-toggle";
 import CustomCheckbox from "../../../../../components/custom-components/custom-checkbox";
 import CustomSelectField from "../../../../../components/custom-components/custom-select-field";
+import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -28,4 +29,5 @@ export const PublicCourseLectureConnectedDatePicker = connect(mapStateToProps, m
 export const PublicCourseLectureConnectedToggle = connect(mapStateToProps, mapDispatchToProps)(CustomToggle);
 export const PublicCourseLectureConnectedCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
 export const PublicCourseLectureConnectedSelectField = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);
+export const PublicCourseLectureConnectedAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
 
