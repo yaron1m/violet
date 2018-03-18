@@ -5,6 +5,7 @@ import {getSelectedOrder, getSelectedOrganization} from "./reducer";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";
 import calculateOrderStatus from '../../util/order-status'
+import {calculateDuration} from "../../util/time-util";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -69,6 +70,15 @@ export function updateSelectedOrder(key, value) {
             type: actionTypes.UPDATE_SELECTED_ORDER,
             payload: updatedOrder,
         });
+    }
+}
+
+export function updateLectureTime(key, value, lectureTimeIndex) {
+    return function updateLectureTime(dispatch, getState) {
+        let lectureTimes = Immutable.asMutable(getSelectedOrder(getState()).lectureTimes, {deep: true});
+        lectureTimes[lectureTimeIndex][key] = value;
+        lectureTimes[lectureTimeIndex].duration = calculateDuration(lectureTimes[lectureTimeIndex]);
+        dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
     }
 }
 
