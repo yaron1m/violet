@@ -6,6 +6,8 @@ const dashboardLabels = {
     navigationButtons: {
         newOrder: "הזמנה חדשה",
         allOrders: "כל ההזמנות",
+        newPublicCourse: "קורס ציבורי חדש",
+        allPublicCourses: "כל הקורסים הציבוריים",
     },
     infoBoxes: {
         futureLectures: "הרצאות עתידיות",

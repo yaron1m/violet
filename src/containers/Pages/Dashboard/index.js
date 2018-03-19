@@ -5,6 +5,8 @@ import FutureLecturesInfoBox from "./InfoBoxes/FutureLecturesInfoBox";
 import FollowUpInfoBox from "./InfoBoxes/FollowUpInfoBox";
 import ExpectedIncomeInfoBox from "./InfoBoxes/ExpectedIncomeInfoBox";
 import WaitingPaymentInfoBox from "./InfoBoxes/WaitingPaymentInfoBox";
+import NewPublicCourseNavigationButton from "./NavigationButtons/NewPublicCourseNavigationButton";
+import AllPublicCoursesNavigationButton from "./NavigationButtons/AllPublicCoursesNavigationButton";
 
 export default class HomePage extends React.Component {
     render() {
@@ -13,6 +15,8 @@ export default class HomePage extends React.Component {
                 <div style={{display: "flex"}}>
                     <NewOrderNavigationButton/>
                     <AllOrdersNavigationButton/>
+                    <NewPublicCourseNavigationButton/>
+                    <AllPublicCoursesNavigationButton/>
                 </div>
 
                 <div style={{display: "flex"}}>
