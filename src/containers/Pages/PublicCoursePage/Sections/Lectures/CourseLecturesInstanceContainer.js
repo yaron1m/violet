@@ -14,7 +14,7 @@ const Container= connect(mapStateToProps)(CourseLecturesInstance);
 
 
 Container.propTypes = {
-    lectureId: PropTypes.string.isRequired,
+    lectureId: PropTypes.number.isRequired,
 };
 
 export default Container;
