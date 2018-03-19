@@ -17,8 +17,10 @@ export const publicCourseLabels = {
         courseName: "שם הקורס",
         courseLocation: "מיקום הקורס",
         mealCost: "עלות ארוחה",
-        distance: "מרחק",
+        distanceCost: "עלות נסיעות",
         roomsApproved: "חדרים אושרו",
+        printedMaterials: "חוברות הודפסו",
+        printedCertificates: "תעודות הודפסו",
 
         // Lectures
         date: "תאריך",

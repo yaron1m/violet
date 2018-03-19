@@ -17,8 +17,12 @@ export default class CourseDetailsSection extends React.Component {
                     <PublicCourseConnectedText name="courseName" size={Sizes.XL}/>
                     <PublicCourseConnectedText name="courseLocation"/>
                     <PublicCourseConnectedText name="mealCost"/>
-                    <PublicCourseConnectedText name="distance"/>
+                    <PublicCourseConnectedText name="distanceCost"/>
+                </div>
+                <div style={flexStyle}>
                     <PublicCourseConnectedToggle name="roomsApproved"/>
+                    <PublicCourseConnectedToggle name="printedMaterials"/>
+                    <PublicCourseConnectedToggle name="printedCertificates"/>
                 </div>
             </CustomPaper>
         );

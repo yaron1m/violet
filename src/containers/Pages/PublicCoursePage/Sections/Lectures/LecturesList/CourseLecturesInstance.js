@@ -40,7 +40,7 @@ export default class CourseLecturesInstance extends React.Component {
                 <div style={flexStyle}>
                     <IconButton
                         onClick={this.props.onDelete}
-                        style={{marginRight: 10}}
+                        style={{marginRight: 10, marginBottom: 7}}
                         tooltip={this.props.deleteTooltip}
                     >
                         <DeleteIcon/>
