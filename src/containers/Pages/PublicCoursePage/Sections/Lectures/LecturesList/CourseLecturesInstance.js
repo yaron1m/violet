@@ -41,6 +41,7 @@ export default class CourseLecturesInstance extends React.Component {
                     <IconButton
                         onClick={this.props.onDelete}
                         style={{marginRight: 10}}
+                        tooltip={this.props.deleteTooltip}
                     >
                         <DeleteIcon/>
                     </IconButton>
@@ -60,6 +61,7 @@ export default class CourseLecturesInstance extends React.Component {
 
 CourseLecturesInstance.propTypes = {
     lectureId: PropTypes.string.isRequired,
+    deleteTooltip: PropTypes.string,
     offeredLectures: PropTypes.array,
     onDelete: PropTypes.func.isRequired,
 };
