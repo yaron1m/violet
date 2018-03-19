@@ -3,12 +3,15 @@ import CustomPaper from "../../../../../components/custom-components/custom-pape
 import PropTypes from "prop-types";
 import _ from 'lodash';
 import CourseLecturesInstanceContainer from "./CourseLecturesInstanceContainer";
+import AddCourseLectureButtonContainer from "./AddCourseLectureButtonContainer";
 
 export default class CourseLecturesSection extends React.Component {
 
     render() {
         return (
             <CustomPaper title={this.props.sectionName}>
+                <AddCourseLectureButtonContainer/>
+
                 {_.map(this.props.lecturesIds, lectureId =>
                     <CourseLecturesInstanceContainer
                         key={lectureId}

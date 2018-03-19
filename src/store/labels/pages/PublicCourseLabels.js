@@ -9,6 +9,7 @@ export const publicCourseLabels = {
         savedSuccessfully: 'קורס ציבורי {0} נשמר בהצלחה',
         sendingToDatabaseFailedTitle: "שגיאה בשמירת קורס ציבוי",
         sendingToDatabaseFailedContent: "חלה שגיאה בשמירת הקורס הציבוי בשרת",
+        addLecture: "הוסף הרצאה",
     },
     fieldTitles: {
         // Course Details

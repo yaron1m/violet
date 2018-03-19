@@ -7,6 +7,7 @@ import * as Immutable from "seamless-immutable";
 import calculateOrderStatus from '../../util/order-status'
 import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
+import * as _ from "lodash";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -102,6 +103,7 @@ export function sendSelectedOrderToDatabase() {
 export function selectPublicCourse(courseId) {
     return function selectPublicCourse(dispatch, getState) {
         const publicCourse = getPublicCourseById(getState(), courseId);
+        dispatch(setIsSelectedPublicCourse());
         dispatch({
             type: actionTypes.SELECT_PUBLIC_COURSE,
             payload: publicCourse
@@ -125,6 +127,18 @@ export function updatePublicCourseLecture(key, value, lectureId) {
         let lectures = Immutable.asMutable(getSelectedPublicCourse(getState()).lectures, {deep: true});
         lectures[lectureId][key] = value;
         lectures[lectureId].duration = calculateDuration(lectures[lectureId]);
+        dispatch(updateSelectedPublicCourse("lectures", lectures));
+    }
+}
+
+export function addLectureToSelectedPublicCourse() {
+    return function addLectureToSelectedPublicCourse(dispatch, getState) {
+        let selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
+        let lectures = _.hasIn(selectedPublicCourse, 'lectures') ? selectedPublicCourse.lectures : [];
+        lectures.push({
+            id: lectures.length
+        });
+
         dispatch(updateSelectedPublicCourse("lectures", lectures));
     }
 }
