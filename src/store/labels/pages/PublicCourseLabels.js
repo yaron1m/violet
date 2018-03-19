@@ -25,8 +25,17 @@ export const publicCourseLabels = {
         endTime: "שעת סיום",
         duration: "משך",
         topic: "נושא",
-        price: "מחיר ללקוח",
         tie: "עניבה",
+        price: "מחיר ללקוח",
+        roomCost: "עלות החדר",
+        pages: "עמודים בחוברת",
+        active: "מתקיים",
+        guestLecturer: "מרצה אורח",
+        guestLecturerName: "שם מרצה אורח",
+        guestLecturerCost: "עלות מרצה אורח",
+
+
+
         edit: "עריכה"
     },
 };

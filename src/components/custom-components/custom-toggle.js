@@ -15,6 +15,7 @@ export default class CustomToggle extends AbstractField {
             toggle: {
                 marginBottom: 6,
                 marginTop: 6,
+                paddingBottom: 9,
             },
             labelStyle: {
                 marginRight: 45,

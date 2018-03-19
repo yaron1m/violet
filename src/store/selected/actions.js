@@ -136,7 +136,8 @@ export function addLectureToSelectedPublicCourse() {
         let selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
         let lectures = _.hasIn(selectedPublicCourse, 'lectures') ? selectedPublicCourse.lectures : [];
         lectures.push({
-            id: lectures.length
+            id: lectures.length,
+            active: true,
         });
 
         dispatch(updateSelectedPublicCourse("lectures", lectures));

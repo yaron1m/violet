@@ -12,6 +12,7 @@ export default class CustomCheckbox extends AbstractField {
             checkbox: {
                 marginBottom: 6,
                 marginTop: 6,
+                paddingBottom: 9,
             },
             labelStyle: {
                 marginRight: 20,
