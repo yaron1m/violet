@@ -17,7 +17,7 @@ export default class CourseLecturesInstance extends React.Component {
         const index = this.props.lectureId;
         return (
             <div>
-                <div style={flexStyle}>
+               <div style={flexStyle}>
                     <PublicCourseLectureConnectedDatePicker lectureId={index} name="date"/>
                     <PublicCourseLectureConnectedText lectureId={index} name="startTime" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="endTime" size={Sizes.M}/>
@@ -25,6 +25,8 @@ export default class CourseLecturesInstance extends React.Component {
                     <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic"
                                                               dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="tie" size={Sizes.M}/>
+               </div>
+                <div style={flexStyle}>
                     <PublicCourseLectureConnectedText lectureId={index} name="price" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="roomCost" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="pages" size={Sizes.M}/>
