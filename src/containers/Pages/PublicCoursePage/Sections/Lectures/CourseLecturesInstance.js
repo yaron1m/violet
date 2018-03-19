@@ -15,10 +15,10 @@ export default class CourseLecturesInstance extends React.Component {
         return (
                 <div style={flexStyle}>
                     <PublicCourseLectureConnectedDatePicker lectureId={index} name="date"/>
-                    <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="startTime" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="endTime" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="duration" size={Sizes.M}/>
+                    <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="price" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="tie" size={Sizes.M}/>
                 </div>
