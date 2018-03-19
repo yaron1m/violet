@@ -1,9 +1,9 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
+import CustomPaper from "../../../../../../components/custom-components/custom-paper";
 import PropTypes from "prop-types";
 import _ from 'lodash';
 import CourseLecturesInstanceContainer from "./CourseLecturesInstanceContainer";
-import AddCourseLectureButtonContainer from "./AddCourseLectureButtonContainer";
+import AddCourseLectureButtonContainer from "../AddLectureButton/AddCourseLectureButtonContainer";
 
 export default class CourseLecturesSection extends React.Component {
 

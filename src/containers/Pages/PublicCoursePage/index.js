@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderPageTitle from './PublicCoursePageTitleContainer';
+import PublicCoursePageTitle from './PublicCoursePageTitleContainer';
 import PublicCoursePageSections from './Sections';
 import PublicCourseActionButtons from "./ActionButtons";
 // import OrderPageSections from './Sections';
@@ -12,7 +12,7 @@ export default class OrderForm extends React.Component {
 
         return (
             <div>
-                <OrderPageTitle/>
+                <PublicCoursePageTitle/>
                 {/*<OrderEditTimes/>*/}
 
                 <PublicCourseActionButtons/>

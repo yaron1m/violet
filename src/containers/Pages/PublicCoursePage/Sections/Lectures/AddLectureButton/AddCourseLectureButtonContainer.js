@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
-import {addLectureToSelectedPublicCourse} from "../../../../../store/selected/actions";
+import {getLabels} from "../../../../../../store/labels/reducer";
+import {addLectureToSelectedPublicCourse} from "../../../../../../store/selected/actions";
 import {RaisedButton} from "material-ui";
 
 function mapStateToProps(state) {
