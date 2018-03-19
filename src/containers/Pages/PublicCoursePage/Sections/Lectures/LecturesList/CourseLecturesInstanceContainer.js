@@ -6,6 +6,7 @@ import {deleteLectureFromSelectedPublicCourse} from "../../../../../../store/sel
 
 function mapStateToProps(state, ownProps) {
     return {
+        index: ownProps.index,
         lectureId: ownProps.lectureId,
         offeredLectures: getOfferedLectures(state),
     };

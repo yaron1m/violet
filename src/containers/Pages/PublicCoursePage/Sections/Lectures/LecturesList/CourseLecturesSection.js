@@ -12,9 +12,10 @@ export default class CourseLecturesSection extends React.Component {
             <CustomPaper title={this.props.sectionName}>
                 <AddCourseLectureButtonContainer/>
 
-                {_.map(this.props.lecturesIds, lectureId =>
+                {_.map(this.props.lecturesIds, (lectureId, index) =>
                     <CourseLecturesInstanceContainer
-                        key={lectureId}
+                        key={index}
+                        index={index + 1}
                         lectureId={lectureId}
                     />
                 )}

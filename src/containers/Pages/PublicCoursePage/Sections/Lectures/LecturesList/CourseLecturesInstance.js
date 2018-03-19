@@ -7,7 +7,7 @@ import {
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import Sizes from "../../../../../../util/consts/sizes";
-import {Divider, IconButton} from "material-ui";
+import {Avatar, Divider, IconButton} from "material-ui";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
 import DeleteIcon from 'material-ui-icons/Delete';
 
@@ -17,27 +17,40 @@ export default class CourseLecturesInstance extends React.Component {
         const index = this.props.lectureId;
         return (
             <div>
-               <div style={flexStyle}>
-                    <PublicCourseLectureConnectedDatePicker lectureId={index} name="date"/>
+                <div style={flexStyle}>
+                    <Avatar
+                        disabled={false}
+                        style={{
+                            marginBottom: 15,
+                            marginRight: 15,
+                        }}
+                    >
+                        {this.props.index}
+                    </Avatar>
+
+
+                    <PublicCourseLectureConnectedDatePicker lectureId={index} name="date" size={Sizes.M}/>
+                    <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic"
+                                                              dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="startTime" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="endTime" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="duration" size={Sizes.S}/>
-                    <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic"
-                                                              dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="tie" size={Sizes.M}/>
-               </div>
+                </div>
                 <div style={flexStyle}>
+                    <IconButton
+                        onClick={this.props.onDelete}
+                        style={{marginRight: 10}}
+                    >
+                        <DeleteIcon/>
+                    </IconButton>
+
                     <PublicCourseLectureConnectedText lectureId={index} name="price" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="roomCost" size={Sizes.M}/>
                     <PublicCourseLectureConnectedText lectureId={index} name="pages" size={Sizes.M}/>
                     <PublicCourseLectureConnectedCheckBox lectureId={index} name="active"/>
 
                     <GuestLecturerFieldsContainer lectureId={index}/>
-
-                    <IconButton onClick={this.props.onDelete}>
-                        <DeleteIcon/>
-                    </IconButton>
-
                 </div>
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
             </div>

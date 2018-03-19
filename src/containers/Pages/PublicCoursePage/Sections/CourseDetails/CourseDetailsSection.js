@@ -5,6 +5,7 @@ import {
     PublicCourseConnectedText,
     PublicCourseConnectedToggle
 } from "../ConnectedCustomComponents/PublicCourseCustomFields";
+import Sizes from "../../../../../util/consts/sizes";
 
 export default class CourseDetailsSection extends React.Component {
 
@@ -13,18 +14,12 @@ export default class CourseDetailsSection extends React.Component {
         return (
             <CustomPaper title={this.props.sectionName}>
                 <div style={flexStyle}>
-                    <PublicCourseConnectedText name="courseName"/>
+                    <PublicCourseConnectedText name="courseName" size={Sizes.XL}/>
                     <PublicCourseConnectedText name="courseLocation"/>
                     <PublicCourseConnectedText name="mealCost"/>
                     <PublicCourseConnectedText name="distance"/>
                     <PublicCourseConnectedToggle name="roomsApproved"/>
                 </div>
-
-
-
-                <button onClick={this.props.selectCourse}>
-                    Select
-                </button>
             </CustomPaper>
         );
     }
