@@ -14,7 +14,7 @@ const Container = connect(mapStateToProps)(GuestLecturerFields);
 
 
 Container.propTypes = {
-    lectureId: PropTypes.number.isRequired,
+    lectureId: PropTypes.string.isRequired,
 };
 
 export default Container;

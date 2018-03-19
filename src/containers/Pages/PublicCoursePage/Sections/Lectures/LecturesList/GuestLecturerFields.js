@@ -26,6 +26,6 @@ export default class CourseLecturesInstance extends React.Component {
 }
 
 CourseLecturesInstance.propTypes = {
-    lectureId: PropTypes.number.isRequired,
+    lectureId: PropTypes.string.isRequired,
     showGuestLecturerDetails: PropTypes.bool,
 };

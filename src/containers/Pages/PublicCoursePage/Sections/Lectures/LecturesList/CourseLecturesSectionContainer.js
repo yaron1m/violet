@@ -4,10 +4,16 @@ import CourseLecturesSection from "./CourseLecturesSection";
 import {getSelectedPublicCourse} from "../../../../../../store/selected/reducer";
 import _ from 'lodash';
 
-function getLecturesIdsOrderedByDate(selectedPublicCourse){
+function getLecturesIdsOrderedByDate(selectedPublicCourse) {
     const lectures = selectedPublicCourse.lectures;
-    const orderedLectures = _.sortBy(lectures, x=> x.date);
-    return _.map(orderedLectures, x=> x.id);
+    const datesAndIds = _.map(_.keys(lectures), key => {
+        return {
+            key,
+            date: lectures[key].date
+        };
+    });
+    const orderedDatesAndIds = _.sortBy(datesAndIds, x => x.date);
+    return _.map(orderedDatesAndIds, x => x.key);
 }
 
 function mapStateToProps(state) {

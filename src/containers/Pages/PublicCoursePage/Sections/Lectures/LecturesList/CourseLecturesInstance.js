@@ -7,8 +7,9 @@ import {
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import Sizes from "../../../../../../util/consts/sizes";
-import {Divider} from "material-ui";
+import {Divider, IconButton} from "material-ui";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
+import DeleteIcon from 'material-ui-icons/Delete';
 
 export default class CourseLecturesInstance extends React.Component {
 
@@ -31,6 +32,10 @@ export default class CourseLecturesInstance extends React.Component {
 
                     <GuestLecturerFieldsContainer lectureId={index}/>
 
+                    <IconButton onClick={this.props.onDelete}>
+                        <DeleteIcon/>
+                    </IconButton>
+
                 </div>
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
             </div>
@@ -39,6 +44,7 @@ export default class CourseLecturesInstance extends React.Component {
 }
 
 CourseLecturesInstance.propTypes = {
-    lectureId: PropTypes.number.isRequired,
+    lectureId: PropTypes.string.isRequired,
     offeredLectures: PropTypes.array,
+    onDelete: PropTypes.func.isRequired,
 };
