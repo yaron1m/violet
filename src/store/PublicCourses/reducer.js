@@ -31,3 +31,22 @@ export function getNextPublicCourseId(state) {
 export function getPublicCourseById(state, id) {
     return getPublicCourses(state)[id];
 }
+
+export function getPublicCoursesSummary(state) {
+    const courses = getPublicCourses(state);
+
+    function map(course) {
+        const result = {
+            id: course.id,
+            courseName:course.courseName,
+            courseLocation: course.courseLocation,
+        };
+        if (!_.isEmpty(course.lectures)) {
+            result.date = course.lectures[0].date;
+        }
+
+        return result;
+    }
+
+    return _.map(courses, map)
+}

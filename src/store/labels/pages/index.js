@@ -119,6 +119,15 @@ const allOrdersPageLabels = {
         {edit: "עריכה"}]
 };
 
+const allPublicCoursesPageLabels = {
+    title: "כל הקורסים הציבוריים",
+    tableHeaders: [
+        {courseName: "שם הקורס"},
+        {courseLocation: "מיקום הקורס"},
+        {date: "תאריך הרצאה"},
+        {edit: "עריכה"}]
+};
+
 const printPageLabels = {
     printOrderNumberLabel: "הזמנה מספר ",
     printNoOrderSelected: "לא נבחרה הזמנה"
@@ -133,6 +142,7 @@ export const pages = {
     expectedIncome: expectedIncomePageLabels,
     futureLecturesPage: futureLecturesPageLabels,
     allOrdersPage: allOrdersPageLabels,
+    allPublicCoursesPage: allPublicCoursesPageLabels,
     orderPage: orderPageLabels,
     organizationPage: organizationPageLabels,
     printPage: printPageLabels,

@@ -13,6 +13,7 @@ import PaymentPage from "./containers/Pages/WaitingPaymentPage";
 import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./containers/Pages/FutureLecturesPage";
 import AllOrdersPage from "./containers/Pages/AllOrdersPage";
+import AllPublicCoursesPage from "./containers/Pages/AllPublicCoursesPage";
 import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
 import PrintOrderPage from "./containers/Pages/print-order-page";
 import history from './util/History'
@@ -33,6 +34,7 @@ class Root extends React.Component {
                     <Route path="/expectedIncome" component={ExpectedIncomePage}/>
                     <Route path="/futureLectures" component={FutureLecturesPage}/>
                     <Route path="/allOrders" component={AllOrdersPage}/>
+                    <Route path="/allPublicCourses" component={AllPublicCoursesPage}/>
                     <Route path="/print" component={PrintOrderPage}/>
                 </App>
             </Router>

@@ -99,9 +99,9 @@ export function sendSelectedOrderToDatabase() {
 }
 
 // Public Courses:
-export function selectPublicCourse(organizationId) {
+export function selectPublicCourse(courseId) {
     return function selectPublicCourse(dispatch, getState) {
-        const publicCourse = getPublicCourseById(getState(), organizationId);
+        const publicCourse = getPublicCourseById(getState(), courseId);
         dispatch({
             type: actionTypes.SELECT_PUBLIC_COURSE,
             payload: publicCourse
