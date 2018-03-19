@@ -61,6 +61,10 @@ const contactsSectionLabels = {
 
 const lectureDetailsSectionLabels = {
     sectionName: "פרטי ההרצאה",
+    tabs:{
+        internalLabel:"קורס פנים ארגוני",
+        publicCourseLabel:"קורס ציבורי",
+    },
     titles: {
         street: "רחוב",
         streetNumber: "מספר",

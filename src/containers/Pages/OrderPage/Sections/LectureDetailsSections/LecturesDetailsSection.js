@@ -1,72 +1,48 @@
 import React from 'react';
+import InternalLectureDetails from "./InternalLectureDetailsContainer";
+import {Tab, Tabs} from "material-ui";
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
-import LectureTimesTable from './LectureTimes/LectureTimesTable';
-import {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
-import Sizes from "../../../../../util/consts/sizes";
-import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
-import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
-import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
-import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
 import Colors from "../../../../../util/consts/colors";
+
+const internalTab = "internalTab";
+const publicCourseTab = "publicCourseTab";
 
 export default class LectureDetailsSection extends React.Component {
     constructor() {
         super();
         this.state = {
-            dialogOpen: false,
-            selectedLectureTimeIndex: null,
+            tab: internalTab,
         };
     }
 
+    handleChange = (value) => {
+        this.setState({
+            tab: value,
+        });
+    };
+
     render() {
         return (
-            <CustomPaper
-                title={this.props.sectionName}
+            <Tabs
+                value={this.state.tab}
+                onChange={this.handleChange}
+                inkBarStyle={{
+                    backgroundColor: Colors.white,
+                }}
+                tabItemContainerStyle={{
+                    backgroundColor: Colors.veryLightPurple,
+                }}
             >
+                <Tab label={this.props.internalLabel} value={internalTab}>
+                    <InternalLectureDetails/>
+                </Tab>
 
-                <div>
-                    <OrderCustomText name="street"/>
-                    <OrderCustomText name="streetNumber" size={Sizes.S}/>
-                    <OrderCustomText name="city"/>
-                    <OrderCustomText name="location" size={Sizes.XL}/>
-                    <OrderCustomText name="audienceType"/>
-                    <OrderCustomText name="daySchedule"/>
-                </div>
-
-                <CustomToggleBox>
-                    <OrderCustomToggle name="projector"/>
-                    <OrderCustomToggle name="soundSystem"/>
-                    <OrderCustomToggle name="microphone"/>
-                    <OrderCustomToggle name="parking"/>
-                    <OrderCustomToggle name="orderApproved"/>
-                    <OrderCustomToggle name="sameAudience"/>
-
-                    <OrderCustomCheckBox name="rejected" checkedColor={Colors.red}/>
-
-                    {this.props.showCancelledCheckBox ? <OrderCustomCheckBox name="cancelled" checkedColor={Colors.red}/> : null}
-
-                </CustomToggleBox>
-
-                <RejectedOrderContainer/>
-
-                <CancelledOrderContainer/>
-
-                <LectureTimesTable
-                    onEditButton={(index) => this.setState(Object.assign({}, this.state, {
-                        dialogOpen: true,
-                        selectedLectureTimeIndex: index
-                    }))}
-                />
-
-                <LectureTimeEditDialog
-                    dialogOpen={this.state.dialogOpen}
-                    lectureTimeIndex={this.state.selectedLectureTimeIndex}
-                    onRequestClose={() => this.setState(Object.assign({}, this.state, {
-                        dialogOpen: false,
-                    }))}
-                />
-
-            </CustomPaper>
+                <Tab label={this.props.publicCourseLabel} value={publicCourseTab}>
+                    <CustomPaper title="קורס ציבורי">
+                        משהו עבור קורס ציבורי
+                    </CustomPaper>
+                </Tab>
+            </Tabs>
         );
     }
 }
