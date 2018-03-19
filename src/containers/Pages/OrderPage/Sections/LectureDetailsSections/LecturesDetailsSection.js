@@ -7,6 +7,7 @@ import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../Connec
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
+import Colors from "../../../../../util/consts/colors";
 
 export default class LectureDetailsSection extends React.Component {
     constructor() {
@@ -40,9 +41,9 @@ export default class LectureDetailsSection extends React.Component {
                     <OrderCustomToggle name="orderApproved"/>
                     <OrderCustomToggle name="sameAudience"/>
 
-                    <OrderCustomCheckBox name="rejected"/>
+                    <OrderCustomCheckBox name="rejected" checkedColor={Colors.red}/>
 
-                    {this.props.showCancelledCheckBox ? <OrderCustomCheckBox name="cancelled"/> : null}
+                    {this.props.showCancelledCheckBox ? <OrderCustomCheckBox name="cancelled" checkedColor={Colors.red}/> : null}
 
                 </CustomToggleBox>
 
