@@ -1,12 +1,12 @@
 import React from 'react';
 import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
-import LectureTimesPrintSection from "./sections/LectureTimesPrintContainer";
-import LectureDetailsPrintSection from "./sections/LectureDetailsContainer";
-import ContactsPrintSection from "./sections/ContactPrintContainer";
-import NotesPrintSection from "./sections/NotesPrintContainer";
-import OrganizationPrintSection from "./sections/OrganizationPrintContainer";
-import FollowUpPrintSection from "./sections/FollowUpPrintContainer";
-import PaymentSection from "./sections/PaymentPrintContainer";
+import LectureTimesPrintSection from "./Sections/LectureTimesPrintContainer";
+import LectureDetailsPrintSection from "./Sections/LectureDetailsContainer";
+import ContactsPrintSection from "./Sections/ContactPrintContainer";
+import NotesPrintSection from "./Sections/NotesPrintContainer";
+import OrganizationPrintSection from "./Sections/OrganizationPrintContainer";
+import FollowUpPrintSection from "./Sections/FollowUpPrintContainer";
+import PaymentSection from "./Sections/PaymentPrintContainer";
 
 export default class PrintOrderPage extends React.Component {
 
