@@ -1,7 +1,4 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../store/labels/reducer";
-import {getSelectedOrder, getSelectedOrganization, isSelectedOrder} from "../../../store/selected/reducer";
 import {PrintPageTitle} from "../../../components/custom-components/order-print/print-page-title";
 import LectureTimesPrintSection from "./sections/LectureTimesPrintContainer";
 import LectureDetailsPrintSection from "./sections/LectureDetailsContainer";
@@ -11,25 +8,19 @@ import OrganizationPrintSection from "./sections/OrganizationPrintContainer";
 import FollowUpPrintSection from "./sections/FollowUpPrintContainer";
 import PaymentSection from "./sections/PaymentPrintContainer";
 
-class PrintOrderPage extends React.Component {
+export default class PrintOrderPage extends React.Component {
 
     componentDidMount() {
-        if (this.props.isSelectedOrder)
-            window.print();
+        this.props.onLoad();
     }
 
     render() {
         if (!this.props.isSelectedOrder)
-            return <PrintPageTitle title={this.props.labels.printNoOrderSelected}/>;
-
-        const title = this.props.labels.printOrderNumberLabel
-            + this.props.selectedOrder.id
-            + ": "
-            + this.props.selectedOrganization.organizationName;
+            return <PrintPageTitle title={this.props.title}/>;
 
         return (
             <div>
-                <PrintPageTitle title={title}/>
+                <PrintPageTitle title={this.props.title}/>
 
                 <LectureTimesPrintSection/>
 
@@ -48,14 +39,3 @@ class PrintOrderPage extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        labels: getLabels(state).pages.printPage,
-        selectedOrder: getSelectedOrder(state),
-        selectedOrganization: getSelectedOrganization(state),
-        isSelectedOrder: isSelectedOrder(state),
-    };
-}
-
-export default connect(mapStateToProps)(PrintOrderPage);
