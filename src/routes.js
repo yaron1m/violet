@@ -13,7 +13,7 @@ import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./containers/Pages/FutureLecturesPage";
 import AllOrdersPage from "./containers/Pages/AllOrdersPage";
 import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
-import PrintOrderPage from "./containers/Pages/print-order-page/PrintOrderPageContainer";
+import PrintOrderPage from "./containers/Pages/PrintOrderPage/PrintOrderPageContainer";
 import history from './util/History'
 
 class Root extends React.Component {
