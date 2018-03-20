@@ -3,13 +3,13 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import Status from "../../../../../util/consts/status";
 import {isMatchingStatus} from "../../../../../util/order-status";
-import InternalLectureDetails from "./InternalLectureDetails";
+import PublicCourseLectureDetails from "./PublicCourseLectureDetails";
 
 function mapStateToProps(state) {
     return {
-        sectionName: getLabels(state).pages.orderPage.sections.lectureDetails.internalLabelSectionName,
+        sectionName: getLabels(state).pages.orderPage.sections.lectureDetails.publicCourseSectionName,
         showCancelledCheckBox: isMatchingStatus(getSelectedOrder(state), [Status.approvedOrder, Status.isExecuting, Status.cancelled]),
     };
 }
 
-export default connect(mapStateToProps)(InternalLectureDetails);
+export default connect(mapStateToProps)(PublicCourseLectureDetails);

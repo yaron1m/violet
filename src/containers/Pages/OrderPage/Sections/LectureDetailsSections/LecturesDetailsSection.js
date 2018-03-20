@@ -1,7 +1,7 @@
 import React from 'react';
 import InternalLectureDetails from "./InternalLectureDetailsContainer";
+import PublicCourseLectureDetails from "./PublicCourseLectureDetailsContainer";
 import {Tab, Tabs} from "material-ui";
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import Colors from "../../../../../util/consts/colors";
 
 const internalTab = "internalTab";
@@ -33,14 +33,12 @@ export default class LectureDetailsSection extends React.Component {
                     backgroundColor: Colors.veryLightPurple,
                 }}
             >
-                <Tab label={this.props.internalLabel} value={internalTab}>
+                <Tab label={this.props.internalLabel} value={internalTab} style={{fontWeight: "bold"}}>
                     <InternalLectureDetails/>
                 </Tab>
 
-                <Tab label={this.props.publicCourseLabel} value={publicCourseTab}>
-                    <CustomPaper title="קורס ציבורי">
-                        משהו עבור קורס ציבורי
-                    </CustomPaper>
+                <Tab label={this.props.publicCourseLabel} value={publicCourseTab} style={{fontWeight: "bold"}}>
+                    <PublicCourseLectureDetails/>
                 </Tab>
             </Tabs>
         );

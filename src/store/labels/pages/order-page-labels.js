@@ -60,7 +60,8 @@ const contactsSectionLabels = {
 };
 
 const lectureDetailsSectionLabels = {
-    sectionName: "פרטי ההרצאה",
+    internalLabelSectionName: "פרטי ההרצאה",
+    publicCourseSectionName: "הרשמה לקורס ציבורי",
     tabs:{
         internalLabel:"קורס פנים ארגוני",
         publicCourseLabel:"קורס ציבורי",
