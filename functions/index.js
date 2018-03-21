@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const orderStatusCalculator = require("./order-status");
 
 admin.initializeApp(functions.config().firebase);
 
@@ -14,9 +15,8 @@ exports.updateStatus = functions.https.onRequest((request, response) => {
 
         snapshot.forEach(order =>{
             const thisOrder=order.val();
-            console.log("thisOrder:" + thisOrder);
-            thisOrder.nextId= parseInt(thisOrder.id) + 1;
-            console.log("thisOrder After:" + JSON.stringify(thisOrder));
+            thisOrder.status= orderStatusCalculator.calculateOrderStatus(thisOrder);
+            console.log("new Status:" + thisOrder.status);
             updatedOrders[order.key] = thisOrder;
         });
 
