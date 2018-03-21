@@ -9,6 +9,14 @@ const ref = admin.database().ref("orders");
 
 exports.updateStatus = functions.https.onRequest((request, response) => {
 
+    const rightKey = functions.config().updatestatus.key;
+    const requestKey = request.headers.authorization;
+
+    if(rightKey !== requestKey){
+        response.status(403).send('Unauthorized');
+        return;
+    }
+
 
     ref.once('value').then(snapshot => {
         const updatedOrders = {};
@@ -43,11 +51,11 @@ exports.updateStatus = functions.https.onRequest((request, response) => {
             response.send("Done, changelog: " + JSON.stringify(changelog));
         }).catch(error => {
             console.error(error);
-            response.send(error);
+            response.status(400).send(error);
         });
     }).catch(error => {
         console.error(error);
-        response.send(error);
+        response.status(400).send(error);
     })
 
 
