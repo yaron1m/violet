@@ -4,7 +4,7 @@ import * as _ from "lodash";
 import CustomPaper from "../../components/custom-components/custom-paper";
 import CustomTable from "../../components/tables/custom-table";
 import CustomTableRow from "../../components/tables/custom-table-row";
-import {CustomSingleCellRow} from "./custon-single-cell-row";
+import {CustomSingleCellRow} from "./CustomSingleCellRow";
 
 class CustomPaperTable extends React.Component {
 

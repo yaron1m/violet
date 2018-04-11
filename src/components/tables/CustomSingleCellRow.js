@@ -27,7 +27,8 @@ export class CustomSingleCellRow extends React.Component {
                                 {this.props.text}
                             </div>
                         </TableRowColumn>
-                        : <TableRowColumn key={index}/>
+                        :
+                        <TableRowColumn key={index}/>
                 )}
             </TableRow>
         );
