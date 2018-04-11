@@ -4,7 +4,7 @@ import {getLabels} from "../../../store/labels/reducer";
 import {getOrdersSummary, getOrders} from "../../../store/orders/selectors";
 import * as _ from "lodash";
 import {redirect} from "../../../util/history-util";
-import CustomPaperTable from "../../../components/tables/custom-paper-table";
+import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import PropTypes from "prop-types";
 
 function mapStateToProps(state, ownProps) {

@@ -3,7 +3,7 @@ import {selectOrder} from "../../../store/selected/actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getExpectedIncomeOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
-import CustomPaperTable from "../../../components/tables/custom-paper-table";
+import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import Status from "../../../util/consts/status";
 
 function mapStateToProps(state) {
