@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CustomDialog from "../../../../../components/custom-components/custom-dialog";
-import CustomTable from "../../../../../components/tables/custom-table";
+import CustomTable from "../../../../../components/tables/CustomTable";
 import * as _ from 'lodash';
-import CustomTableRow from "../../../../../components/tables/custom-table-row";
+import CustomTableRow from "../../../../../components/tables/CustomTableRow";
 
 export default class ImportContactsDialog extends React.Component {
 

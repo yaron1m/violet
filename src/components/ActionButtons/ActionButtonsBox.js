@@ -13,7 +13,7 @@ export class ActionButtonsBox extends React.Component {
                 top: 60,
                 position: 'fixed',
                 zIndex: 10,
-                left: 10, //TODO move into maxWidth 1200
+                left: 10,
             }
         };
 
@@ -21,7 +21,6 @@ export class ActionButtonsBox extends React.Component {
             <div style={styles.buttonsBox}>
                 {this.props.children}
             </div>
-
         );
     }
 }

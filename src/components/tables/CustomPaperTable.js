@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import CustomPaper from "../../components/custom-components/custom-paper";
-import CustomTable from "../../components/tables/custom-table";
-import CustomTableRow from "../../components/tables/custom-table-row";
-import {CustomSingleCellRow} from "./custon-single-cell-row";
+import CustomTable from "./CustomTable";
+import CustomTableRow from "./CustomTableRow";
+import {CustomSingleCellRow} from "./CustomSingleCellRow";
 
 class CustomPaperTable extends React.Component {
 
