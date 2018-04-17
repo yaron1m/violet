@@ -14,7 +14,7 @@ export default class CourseLecturesSection extends React.Component {
 
                 {_.map(this.props.lecturesIds, (lectureId, index) =>
                     <CourseLecturesInstanceContainer
-                        key={index}
+                        key={lectureId}
                         index={index + 1}
                         lectureId={lectureId}
                     />
