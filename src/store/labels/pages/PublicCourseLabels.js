@@ -10,7 +10,6 @@ export const publicCourseLabels = {
         sendingToDatabaseFailedTitle: "שגיאה בשמירת קורס ציבוי",
         sendingToDatabaseFailedContent: "חלה שגיאה בשמירת הקורס הציבוי בשרת",
         addLecture: "הוסף הרצאה",
-        deleteLecture: "מחק הרצאה",
     },
     fieldTitles: {
         // Course Details

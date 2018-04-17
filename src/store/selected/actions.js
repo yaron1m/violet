@@ -144,15 +144,6 @@ export function addLectureToSelectedPublicCourse() {
     }
 }
 
-export function deleteLectureFromSelectedPublicCourse(lectureIndex) {
-    return function addLectureToSelectedPublicCourse(dispatch, getState) {
-        let lectures = Immutable.asMutable(getSelectedPublicCourse(getState()).lectures);
-        lectures.splice(lectureIndex, 1);
-
-        dispatch(updateSelectedPublicCourse("lectures", lectures));
-    }
-}
-
 export function setIsSelectedPublicCourse() {
     return {
         type: actionTypes.SET_IS_SELECTED_PUBLIC_COURSE,
