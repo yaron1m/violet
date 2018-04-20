@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
-import {getRequiredFields} from "../../../../../store/required-fields/reducer";
-import {updateLectureTime} from "../../../../../store/selected/actions";
+import {updatePublicCourseParticipant} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
@@ -19,7 +18,6 @@ function mapStateToProps(state, ownProps) {
         titles: getLabels(state).pages.orderPage.sections.publicCourse.titles,
         values: getValues(state, ownProps),
         //requiredFields: getRequiredFields(state).lectureTimes,
-        //SelectedOrder: getSelectedOrder(state),
         ...ownProps,
     };
 }
