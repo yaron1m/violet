@@ -5,6 +5,7 @@ import {
     PublicCourseParticipantsCustomText
 } from "../../ConnectedCustomComponents/PublicCourseParticipantsCustomFields";
 import Sizes from "../../../../../../util/consts/sizes";
+import _ from 'lodash';
 
 export default class LectureDetailsSection extends React.Component {
 
@@ -29,6 +30,20 @@ export default class LectureDetailsSection extends React.Component {
                                                         size={Sizes.XL}/>
                     <PublicCourseParticipantsCustomCheckBox participantIndex={this.props.participantId}
                                                             name="isqMember"/>
+                </div>
+                <div style={flexStyle}>
+                    {_.map(_.orderBy(this.props.selectedPublicCourseLectures, x => x.date),
+                        lecture => {
+                        const key = "attendingLecture" + lecture.id;
+                        return (
+                            <PublicCourseParticipantsCustomCheckBox
+                                key={key}
+                                participantIndex={this.props.participantId}
+                                name={"attendingLecture" + lecture.id}
+                                titles={{[key]:  new Date(lecture.date).toLocaleDateString() + " - " + lecture.topic}}
+                            />
+                        )
+                    })}
                 </div>
             </CustomPaper>
         );
