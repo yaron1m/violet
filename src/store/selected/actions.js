@@ -8,6 +8,7 @@ import calculateOrderStatus from '../../util/order-status'
 import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
 import * as _ from "lodash";
+import {isEmptyValue} from "../../util/string-util";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -49,9 +50,12 @@ export function sendSelectedOrganizationToDatabase() {
 // Orders:
 
 export function selectOrder(orderId) {
-    return async function selectOrder(dispatch, getState) {
+    return function selectOrder(dispatch, getState) {
         const order = getOrderById(getState(), orderId);
         dispatch(selectOrganization(order.organizationId));
+        if(!isEmptyValue(order, "publicCourseId"))
+            dispatch(selectPublicCourse(order.publicCourseId));
+
         dispatch({
             type: actionTypes.SELECT_ORDER,
             payload: order
