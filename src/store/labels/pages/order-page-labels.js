@@ -112,7 +112,6 @@ const lectureTimesSectionLabels = {
 const publicCourseSectionLabels = {
     addParticipant: "הוסף משתתף",
     titles: {
-        publicCourseName: "שם הקורס",
         participantFirstName: "שם פרטי",
         participantLastName: "שם משפחה",
         participantEnglishFirstName: "שם פרטי באנגלית",
