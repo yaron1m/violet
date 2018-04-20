@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
-import {getSelectedOrder} from "../../../../../store/selected/reducer";
-import Status from "../../../../../util/consts/status";
-import {isMatchingStatus} from "../../../../../util/order-status";
+import {getLabels} from "../../../../../../store/labels/reducer";
+import {getSelectedOrder} from "../../../../../../store/selected/reducer";
+import Status from "../../../../../../util/consts/status";
+import {isMatchingStatus} from "../../../../../../util/order-status";
 import PublicCourseLectureDetails from "./PublicCourseLectureDetails";
 
 function mapStateToProps(state) {

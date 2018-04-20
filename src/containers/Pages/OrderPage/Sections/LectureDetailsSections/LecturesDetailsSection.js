@@ -1,6 +1,6 @@
 import React from 'react';
-import InternalLectureDetails from "./InternalLectureDetailsContainer";
-import PublicCourseLectureDetails from "./PublicCourseLectureDetailsContainer";
+import InternalLectureDetails from "./InternalCourse/InternalLectureDetailsContainer";
+import PublicCourseLectureDetails from "./PublicCourse/PublicCourseLectureDetailsContainer";
 import {Tab, Tabs} from "material-ui";
 import Colors from "../../../../../util/consts/colors";
 

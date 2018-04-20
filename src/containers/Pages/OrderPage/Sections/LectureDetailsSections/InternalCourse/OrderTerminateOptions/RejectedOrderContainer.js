@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {updateSelectedOrder} from "../../../../../../store/selected/actions";
-import {getSelectedOrder} from "../../../../../../store/selected/reducer";
-import {getRejectionReasons} from "../../../../../../store/lists/reducer";
-import Status from "../../../../../../util/consts/status";
+import {updateSelectedOrder} from "../../../../../../../store/selected/actions";
+import {getSelectedOrder} from "../../../../../../../store/selected/reducer";
+import {getRejectionReasons} from "../../../../../../../store/lists/reducer";
+import Status from "../../../../../../../util/consts/status";
 import OrderTerminateOption from "./OrderTerminateOption";
 
 function mapStateToProps(state) {

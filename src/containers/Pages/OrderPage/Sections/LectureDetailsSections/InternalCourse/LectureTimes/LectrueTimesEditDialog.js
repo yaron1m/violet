@@ -1,12 +1,12 @@
 import React from 'react';
-import CustomDialog from "../../../../../../components/custom-components/custom-dialog";
+import CustomDialog from "../../../../../../../components/custom-components/custom-dialog";
 import PropTypes from 'prop-types';
-import Sizes from "../../../../../../util/consts/sizes";
+import Sizes from "../../../../../../../util/consts/sizes";
 import {
     LectureTimesCustomAutoComplete,
     LectureTimesCustomDatePicker,
     LectureTimesCustomText
-} from "../../ConnectedCustomComponents/LectureTimesCustomFields";
+} from "../../../ConnectedCustomComponents/LectureTimesCustomFields";
 
 export default class LectureTimeEditDialog extends React.Component {
     render() {

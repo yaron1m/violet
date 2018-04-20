@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {updateSelectedOrder} from "../../../../../../store/selected/actions";
-import {getLabels} from "../../../../../../store/labels/reducer";
-import CustomPaperTable from "../../../../../../components/tables/CustomPaperTable";
-import {getSelectedOrder} from "../../../../../../store/selected/reducer";
+import {updateSelectedOrder} from "../../../../../../../store/selected/actions";
+import {getLabels} from "../../../../../../../store/labels/reducer";
+import CustomPaperTable from "../../../../../../../components/tables/CustomPaperTable";
+import {getSelectedOrder} from "../../../../../../../store/selected/reducer";
 import * as _ from "lodash";
 import * as Immutable from "seamless-immutable";
 import PropTypes from "prop-types";

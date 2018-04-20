@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../../../store/labels/reducer";
 import PropTypes from 'prop-types';
-import {getOfferedLectures} from "../../../../../../store/lists/reducer";
+import {getOfferedLectures} from "../../../../../../../store/lists/reducer";
 import LectureTimeEditDialog from "./LectrueTimesEditDialog";
 
 function mapStateToProps(state, ownProps) {

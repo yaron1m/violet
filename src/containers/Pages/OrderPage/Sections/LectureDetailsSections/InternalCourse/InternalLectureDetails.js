@@ -1,13 +1,13 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
+import CustomPaper from "../../../../../../components/custom-components/custom-paper";
 import LectureTimesTable from './LectureTimes/LectureTimesTable';
-import {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
-import Sizes from "../../../../../util/consts/sizes";
-import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
+import {CustomToggleBox} from "../../../../../../components/custom-components/custom-toggle";
+import Sizes from "../../../../../../util/consts/sizes";
+import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
-import Colors from "../../../../../util/consts/colors";
+import Colors from "../../../../../../util/consts/colors";
 
 export default class LectureDetailsSection extends React.Component {
     constructor() {
