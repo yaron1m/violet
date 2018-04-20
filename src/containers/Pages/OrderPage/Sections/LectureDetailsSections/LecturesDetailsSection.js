@@ -3,29 +3,23 @@ import InternalLectureDetails from "./InternalCourse/InternalLectureDetailsConta
 import PublicCourseLectureDetails from "./PublicCourse/PublicCourseLectureDetailsContainer";
 import {Tab, Tabs} from "material-ui";
 import Colors from "../../../../../util/consts/colors";
-
-const internalTab = "internalTab";
-const publicCourseTab = "publicCourseTab";
+import PropTypes from 'prop-types';
 
 export default class LectureDetailsSection extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            tab: internalTab,
-        };
-    }
 
-    handleChange = (value) => {
-        this.setState({
-            tab: value,
-        });
+    handleChange = (newKey) => {
+        this.props.onTabClick(newKey);
     };
 
     render() {
+        const tabStyle = {
+            fontWeight: "bold"
+        };
+
         return (
             <Tabs
-                value={this.state.tab}
-                onChange={this.handleChange}
+                value={this.props.selectedTabKey}
+                onChange={this.handleChange.bind(this)}
                 inkBarStyle={{
                     backgroundColor: Colors.white,
                 }}
@@ -33,14 +27,24 @@ export default class LectureDetailsSection extends React.Component {
                     backgroundColor: Colors.veryLightPurple,
                 }}
             >
-                <Tab label={this.props.internalLabel} value={internalTab} style={{fontWeight: "bold"}}>
+                <Tab label={this.props.internalLabel} value={this.props.internalTabKey} style={tabStyle}>
                     <InternalLectureDetails/>
                 </Tab>
 
-                <Tab label={this.props.publicCourseLabel} value={publicCourseTab} style={{fontWeight: "bold"}}>
+                <Tab label={this.props.publicCourseLabel} value={this.props.publicCourseTabKey} style={tabStyle}>
                     <PublicCourseLectureDetails/>
                 </Tab>
             </Tabs>
         );
     }
 }
+
+LectureDetailsSection.propTypes = {
+    selectedTabKey: PropTypes.string.isRequired,
+    internalTabKey: PropTypes.string.isRequired,
+    publicCourseTabKey: PropTypes.string.isRequired,
+    internalLabel: PropTypes.string,
+    publicCourseLabel: PropTypes.string,
+    onTabClick: PropTypes.func.isRequired,
+};
+
