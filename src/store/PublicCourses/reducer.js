@@ -42,7 +42,8 @@ export function getPublicCoursesSummary(state) {
             courseLocation: course.courseLocation,
         };
         if (!_.isEmpty(course.lectures)) {
-            result.date = course.lectures[0].date;
+            const dates = _.map(course.lectures, x => x.date);
+            result.date = dates.sort()[0];
         }
 
         return result;
