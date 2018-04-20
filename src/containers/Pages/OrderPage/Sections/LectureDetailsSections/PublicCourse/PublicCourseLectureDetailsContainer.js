@@ -9,6 +9,7 @@ function mapStateToProps(state) {
     return {
         sectionName: getLabels(state).pages.orderPage.sections.lectureDetails.publicCourseSectionName,
         showCancelledCheckBox: isMatchingStatus(getSelectedOrder(state), [Status.approvedOrder, Status.isExecuting, Status.cancelled]),
+        numberOfParticipants: getSelectedOrder(state).publicCourseParticipants ? getSelectedOrder(state).publicCourseParticipants.length : 0,
     };
 }
 
