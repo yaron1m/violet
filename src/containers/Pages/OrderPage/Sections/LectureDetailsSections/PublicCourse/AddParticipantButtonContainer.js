@@ -18,6 +18,7 @@ function mapStateToProps(state) {
     return {
         label: getLabels(state).pages.orderPage.sections.publicCourse.addParticipant,
         selectedOrder: getSelectedOrder(state),
+        disabled: !getSelectedOrder(state).publicCourseId,
     };
 }
 
@@ -30,6 +31,7 @@ function mapDispatchToProps(dispatch) {
 function mergeProps(stateProps, dispatchProps) {
     return {
         label: stateProps.label,
+        disabled: stateProps.disabled,
         style: {
             marginTop: 10,
             marginBottom: 15,
