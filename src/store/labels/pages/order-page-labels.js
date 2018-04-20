@@ -62,9 +62,9 @@ const contactsSectionLabels = {
 const lectureDetailsSectionLabels = {
     internalLabelSectionName: "פרטי ההרצאה",
     publicCourseSectionName: "הרשמה לקורס ציבורי",
-    tabs:{
-        internalLabel:"קורס פנים ארגוני",
-        publicCourseLabel:"קורס ציבורי",
+    tabs: {
+        internalLabel: "קורס פנים ארגוני",
+        publicCourseLabel: "קורס ציבורי",
     },
     titles: {
         street: "רחוב",
@@ -92,7 +92,6 @@ const lectureDetailsSectionLabels = {
 };
 
 const lectureTimesSectionLabels = {
-    sectionName: "הרצאות",
     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
         {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
     addRow: "הוסף הרצאה חדשה",
@@ -110,6 +109,25 @@ const lectureTimesSectionLabels = {
     }
 };
 
+const publicCourseSectionLabels = {
+    titles: {},
+    // tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
+    //     {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
+    // addRow: "הוסף הרצאה חדשה",
+    // editDialog: {
+    //     dialogTitle: "ערוך פרטי הרצאה",
+    //     titles: {
+    //         date: "תאריך",
+    //         startTime: "שעת התחלה",
+    //         endTime: "שעת סיום",
+    //         length: "משך",
+    //         topic: "נושא",
+    //         audienceSize: "מס' משתתפים",
+    //         tie: "עניבה"
+    //     },
+    // }
+};
+
 const followUpSectionLabels = {
     sectionName: "המשך טיפול",
     titles: {
@@ -124,10 +142,10 @@ const paymentSectionLabels = {
     financialContactTitle: "איש קשר לתשלום",
     titles: {
         cost: "מחיר הרצאות",
-        oneWayDistance:"מרחק כיוון אחד",
+        oneWayDistance: "מרחק כיוון אחד",
         travelExpenses: "עלות נסיעות",
-        extraCosts :"עלויות נוספות",
-        sum :"סכום לפני מע\"מ",
+        extraCosts: "עלויות נוספות",
+        sum: "סכום לפני מע\"מ",
         vat: "מע\"מ",
         totalSum: "סה\"כ לתשלום",
     },
@@ -195,11 +213,12 @@ export const orderPageLabels = {
         contacts: contactsSectionLabels,
         lectureDetails: lectureDetailsSectionLabels,
         lectureTimes: lectureTimesSectionLabels,
+        publicCourse: publicCourseSectionLabels,
         followUp: followUpSectionLabels,
         payment: paymentSectionLabels,
         invoice: invoiceSectionLabels,
         notes: notesSectionLabels,
-        titles:{
+        titles: {
             ...organizationSectionLabels.titles,
             ...contactsSectionLabels.titles,
             ...lectureDetailsSectionLabels.titles,

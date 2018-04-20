@@ -84,6 +84,14 @@ export function updateLectureTime(key, value, lectureTimeIndex) {
     }
 }
 
+export function updatePublicCourseParticipant(key, value, participantIndex) {
+    return function updatePublicCourseParticipant(dispatch, getState) {
+        let publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
+        publicCourseParticipants[participantIndex][key] = value;
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
+    }
+}
+
 export function setIsSelectedOrder() {
     return {
         type: actionTypes.SET_IS_SELECTED_ORDER,
