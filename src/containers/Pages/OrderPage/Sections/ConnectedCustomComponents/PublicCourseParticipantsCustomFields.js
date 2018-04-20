@@ -5,6 +5,7 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import CustomCheckbox from "../../../../../components/custom-components/custom-checkbox";
 
 function getValues(state, ownProps) {
     if (ownProps.participantIndex === null || getSelectedOrder(state).publicCourseParticipants === undefined)
@@ -31,4 +32,5 @@ function mapDispatchToProps(dispatch, ownProps) {
 export const PublicCourseParticipantsCustomText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
 export const PublicCourseParticipantsCustomDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
 export const PublicCourseParticipantsCustomAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
+export const PublicCourseParticipantsCustomCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
 

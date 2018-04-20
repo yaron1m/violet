@@ -112,23 +112,16 @@ const lectureTimesSectionLabels = {
 const publicCourseSectionLabels = {
     addParticipant: "הוסף משתתף",
     titles: {
-        participantName: "שם משתתף",
+        participantFirstName: "שם פרטי",
+        participantLastName: "שם משפחה",
+        participantEnglishFirstName: "שם פרטי באנגלית",
+        participantEnglishLastName: "שם משפחה באנגלית",
+        idNumber: "תעודת זהות",
+        phone: "טלפון",
+        email: "מייל",
+        job: "תפקיד",
+        isqMember: "חבר איגוד",
     },
-    // tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
-    //     {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
-    // addRow: "הוסף הרצאה חדשה",
-    // editDialog: {
-    //     dialogTitle: "ערוך פרטי הרצאה",
-    //     titles: {
-    //         date: "תאריך",
-    //         startTime: "שעת התחלה",
-    //         endTime: "שעת סיום",
-    //         length: "משך",
-    //         topic: "נושא",
-    //         audienceSize: "מס' משתתפים",
-    //         tie: "עניבה"
-    //     },
-    // }
 };
 
 const followUpSectionLabels = {
