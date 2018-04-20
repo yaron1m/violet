@@ -17,9 +17,6 @@ function addNewParticipant(selectedOrder, updateSelectedOrder) {
 function mapStateToProps(state) {
     return {
         label: getLabels(state).pages.orderPage.sections.publicCourse.addParticipant,
-        style: {
-            marginTop: 10
-        },
         selectedOrder: getSelectedOrder(state),
     };
 }
@@ -33,7 +30,10 @@ function mapDispatchToProps(dispatch) {
 function mergeProps(stateProps, dispatchProps) {
     return {
         label: stateProps.label,
-        style: {marginTop: 10},
+        style: {
+            marginTop: 10,
+            marginBottom: 15,
+        },
         onClick: () => addNewParticipant(stateProps.selectedOrder, dispatchProps.updateSelectedOrder)
     }
 }
