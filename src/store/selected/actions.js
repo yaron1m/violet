@@ -53,7 +53,7 @@ export function selectOrder(orderId) {
     return function selectOrder(dispatch, getState) {
         const order = getOrderById(getState(), orderId);
         dispatch(selectOrganization(order.organizationId));
-        if(!isEmptyValue(order, "publicCourseId"))
+        if (!isEmptyValue(order, "publicCourseId"))
             dispatch(selectPublicCourse(order.publicCourseId));
 
         dispatch({
@@ -92,6 +92,16 @@ export function updatePublicCourseParticipant(key, value, participantIndex) {
     return function updatePublicCourseParticipant(dispatch, getState) {
         let publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
         publicCourseParticipants[participantIndex][key] = value;
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
+    }
+}
+
+export function removeParticipantsFromAllLectures() {
+    return function removeParticipantsFromAllLectures(dispatch, getState) {
+        let publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
+        for (let lectureKey in publicCourseParticipants) {
+            publicCourseParticipants[lectureKey] = _.omitBy(publicCourseParticipants[lectureKey], (value, key) => _.startsWith(key, "attendingLecture"));
+        }
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     }
 }

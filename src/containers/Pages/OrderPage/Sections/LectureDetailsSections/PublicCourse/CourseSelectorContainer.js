@@ -3,7 +3,11 @@ import Sizes from "../../../../../../util/consts/sizes";
 import {getPublicCourses} from "../../../../../../store/PublicCourses/reducer";
 import _ from 'lodash';
 import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";
-import {selectPublicCourse, updateSelectedOrder} from "../../../../../../store/selected/actions";
+import {
+    removeParticipantsFromAllLectures,
+    selectPublicCourse,
+    updateSelectedOrder
+} from "../../../../../../store/selected/actions";
 import {getSelectedOrder} from "../../../../../../store/selected/reducer";
 import {isEmptyValue} from "../../../../../../util/string-util";
 
@@ -37,6 +41,7 @@ function mapDispatchToProps(dispatch) {
         updateAction: (key, value) => {
             dispatch(selectPublicCourse(value));
             dispatch(updateSelectedOrder("publicCourseId", value));
+            dispatch(removeParticipantsFromAllLectures());
         }
     }
 }
