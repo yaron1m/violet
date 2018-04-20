@@ -110,7 +110,10 @@ const lectureTimesSectionLabels = {
 };
 
 const publicCourseSectionLabels = {
-    titles: {},
+    addParticipant: "הוסף משתתף",
+    titles: {
+        participantName: "שם משתתף",
+    },
     // tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
     //     {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
     // addRow: "הוסף הרצאה חדשה",
