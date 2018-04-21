@@ -13,7 +13,7 @@ import {
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {closeDialog, openDialog, openSnackbar} from "../../../../store/appearance/actions";
-import {getOrderMissingFields} from "../../../../store/required-fields/reducer";
+import {isOrderMissingFields} from "../../../../store/required-fields/Selectors";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
 import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
@@ -58,14 +58,14 @@ export function shouldSave(state, dispatch) {
         return false;
     }
 
-    if (_.isEmpty(getOrderMissingFields(state))) {
-        return true;
+    if (isOrderMissingFields(state)) {
+        //Not ready for saving - there are missing fields
+        dispatch(showRequiredFields());
+        dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
+        return false;
     }
 
-    //Not ready for saving - there are missing fields
-    dispatch(showRequiredFields());
-    dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
-    return false;
+    return true;
 }
 
 function getOrganizationDialogActions(state, dispatch) {
@@ -130,7 +130,6 @@ function mapStateToProps(state) {
         isSelectedOrder: isSelectedOrder(state),
         nextOrderId: getNextOrderId(state),
         nextOrganizationId: getNextOrganizationId(state),
-        orderMissingFields: getOrderMissingFields(state),
     };
 }
 

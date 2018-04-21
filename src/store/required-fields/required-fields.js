@@ -5,6 +5,7 @@ const contact = {
     order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
     organization: ["organizationName"],
     lectureTimes: [],
+    publicCourse: [],
 };
 
 const offer = mergerRequiredFields(contact, {
@@ -13,12 +14,14 @@ const offer = mergerRequiredFields(contact, {
 
 const order = mergerRequiredFields(offer, {
     lectureTimes: ["date", "startTime", "endTime"],
+    publicCourse: ["participantFirstName", "participantLastName"],
 });
 
 const approvedOrder = mergerRequiredFields(order, {
     organization: ["companyId", "paymentConditions"],
     order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "cost", "totalSum", "parking", "projector", "soundSystem", "microphone", "internalOrderNumber"]
+        "financialContactEmail", "cost", "totalSum", "parking", "projector", "soundSystem", "microphone", "internalOrderNumber"],
+    publicCourse: ["idNumber", "phone", "job", "email"],
 });
 
 const isExecuting = mergerRequiredFields(approvedOrder);

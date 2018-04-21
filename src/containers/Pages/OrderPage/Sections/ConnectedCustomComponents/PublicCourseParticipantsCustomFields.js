@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps) {
     return {
         titles: getLabels(state).pages.orderPage.sections.publicCourse.titles,
         values: getValues(state, ownProps),
-        //requiredFields: getRequiredFields(state).lectureTimes,
+        //requiredFields: getRequiredFieldsObject(state).lectureTimes,
         ...ownProps,
     };
 }

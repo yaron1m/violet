@@ -13,7 +13,7 @@ function mapStateToProps(state, ownProps) {
     return {
         titles: getLabels(state).pages.publicCoursePage.fieldTitles,
         values: getSelectedPublicCourseLecture(state, ownProps.lectureId),
-        //requiredFields: getRequiredFields(state).order,
+        //requiredFields: getRequiredFieldsObject(state).order,
     };
 }
 

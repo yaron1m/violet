@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import {getSelectedPublicCourse} from "../../../../../store/selected/reducer";
-import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {updateSelectedPublicCourse} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
@@ -13,7 +12,7 @@ function mapStateToProps(state) {
     return {
         titles: getLabels(state).pages.publicCoursePage.fieldTitles,
         values: getSelectedPublicCourse(state),
-        requiredFields: getRequiredFields(state).order,
+        //requiredFields: getRequiredFieldsObject(state).order,
     };
 }
 

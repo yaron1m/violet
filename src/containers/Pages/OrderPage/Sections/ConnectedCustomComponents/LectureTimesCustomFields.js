@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
-import {getRequiredFields} from "../../../../../store/required-fields/reducer";
 import {updateLectureTime} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import {getRequiredFieldsObject} from "../../../../../store/required-fields/Selectors";
 
 function getValues(state, ownProps) {
     if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)
@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps) {
     return {
         titles: getLabels(state).pages.orderPage.sections.lectureTimes.editDialog.titles,
         values: getValues(state, ownProps),
-        requiredFields: getRequiredFields(state).lectureTimes,
+        requiredFields: getRequiredFieldsObject(state).lectureTimes,
         SelectedOrder: getSelectedOrder(state),
         ...ownProps,
     };
