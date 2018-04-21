@@ -76,6 +76,7 @@ function getRequiredFieldsByEntity(selectedOrder, showRequiredFields) {
 }
 
 function isElementInArrayMissingFields(array, lectureTimesRequiredFields) {
+
     for (let i = 0; i < _.size(array); i++) {
         if (hasMissingFields(array[i], lectureTimesRequiredFields))
             return true;

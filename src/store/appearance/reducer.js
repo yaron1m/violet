@@ -1,7 +1,7 @@
 import * as actionTypes from './action-types';
 import * as Immutable from "seamless-immutable";
 
-const initialState = Immutable({
+const initialState = {
     rtl: true,
     language: "he",
     dialog: {
@@ -10,12 +10,12 @@ const initialState = Immutable({
         content: "",
         actions: null,
     },
-    snackbar:{
+    snackbar: {
         isOpen: false,
         message: "",
     },
     showRequiredFields: false,
-});
+};
 
 export default function (state = initialState, action = {}) {
     switch (action.type) {
@@ -108,6 +108,6 @@ export function getLanguage(state) {
     return state.appearance.language;
 }
 
-export function shouldShowRequiredFields(state){
+export function shouldShowRequiredFields(state) {
     return state.appearance.showRequiredFields;
 }

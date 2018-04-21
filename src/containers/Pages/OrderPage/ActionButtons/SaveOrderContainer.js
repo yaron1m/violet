@@ -109,7 +109,7 @@ async function saveNewOrganization(state, dispatch) {
 
     async function successSave() {
         await dispatch(setIsSelectedOrganization());
-        saveOrder(state, dispatch);
+        await saveOrder(state, dispatch);
         dispatch(closeDialog());
     }
 
@@ -118,18 +118,11 @@ async function saveNewOrganization(state, dispatch) {
         .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
 }
 
+
 function mapStateToProps(state) {
     return {
         tooltip: getLabels(state).pages.orderPage.actionButtons.save,
         state,
-        labels: getLabels(state).pages.orderPage,
-        organizations: getOrganizations(state),
-        selectedOrganization: getSelectedOrganization(state),
-        isSelectedOrganization: isSelectedOrganization(state),
-        selectedOrder: getSelectedOrder(state),
-        isSelectedOrder: isSelectedOrder(state),
-        nextOrderId: getNextOrderId(state),
-        nextOrganizationId: getNextOrganizationId(state),
     };
 }
 

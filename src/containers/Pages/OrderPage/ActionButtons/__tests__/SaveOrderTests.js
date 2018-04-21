@@ -1,10 +1,12 @@
 import {shouldSave} from '../SaveOrderContainer';
 import {orderPageLabels} from "../../../../../store/labels/pages/order-page-labels";
 import {SHOW_REQUIRED_FIELDS} from "../../../../../store/appearance/action-types";
-import * as RequiredFieldsReducer from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors"
 
 function getState() {
     return {
+        appearance: {
+            showRequiredFields: false,
+        },
         labels: {
             pages: {
                 orderPage: orderPageLabels
@@ -15,16 +17,13 @@ function getState() {
             isSelectedOrder: false,
             order: {
                 organizationId: "3",
+                contactFirstName: "first",
+                contactLastName: "last",
+                contactEmail: "email",
             },
-            organization: {},
-        },
-        requiredFields: {
-            contact: {
-                order: [],
-                organization: [],
-                lectureTimes: [],
-                publicCourse: [],
-            }
+            organization: {
+                organizationName: "Name",
+            },
         },
     };
 }
@@ -42,7 +41,6 @@ describe('save order button', () => {
     it('shouldSave - organization not selected - false', () => {
         const state = getState();
         state.selected.isSelectedOrganization = false;
-        RequiredFieldsReducer.getOrderMissingFields = jest.fn(() => []);
 
         expect(shouldSave(state, dispatch)).toBeFalsy();
 
@@ -53,7 +51,6 @@ describe('save order button', () => {
     it('shouldSave - there are missing fields - false', () => {
         const state = getState();
         state.selected.isSelectedOrganization = true;
-        state.requiredFields.contact.order = ["contactFirstName"];
 
         expect(shouldSave(state, dispatch)).toBeFalsy();
 
@@ -65,6 +62,7 @@ describe('save order button', () => {
     it('shouldSave - all valid - true', () => {
         const state = getState();
         state.selected.isSelectedOrganization = true;
+        state.selected.order.contactPhone1 = "Phone";
 
         expect(shouldSave(state, dispatch)).toBeTruthy();
     });
