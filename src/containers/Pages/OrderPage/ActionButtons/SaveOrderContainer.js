@@ -6,16 +6,13 @@ import {
     updateSelectedOrder, updateSelectedOrganization
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
-import {
-    getSelectedOrder, getSelectedOrganization, isSelectedOrder,
-    isSelectedOrganization
-} from "../../../../store/selected/reducer";
+import {getSelectedOrder, getSelectedOrganization, isSelectedOrganization} from "../../../../store/selected/reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {closeDialog, openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
-import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../../../../store/organizations/reducer";
+import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 
