@@ -6,6 +6,8 @@ import CustomText from "../../../../../components/custom-components/custom-text-
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
+import {internalTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
+import {isRightTabKey} from "../../../../../store/appearance/RequiredFields/Util";
 
 function getValues(state, ownProps) {
     if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)
@@ -15,10 +17,11 @@ function getValues(state, ownProps) {
 }
 
 function mapStateToProps(state, ownProps) {
+    console.log(isRightTabKey(getSelectedOrder(state), internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [])
     return {
         titles: getLabels(state).pages.orderPage.sections.lectureTimes.editDialog.titles,
         values: getValues(state, ownProps),
-        requiredFields: getRequiredFieldsObject(state).lectureTimes,
+        requiredFields: isRightTabKey(getSelectedOrder(state), internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
         SelectedOrder: getSelectedOrder(state),
         ...ownProps,
     };

@@ -5,8 +5,8 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {isEmptyValue} from "../../../../../util/string-util";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 
-const internalTabKey = "internalTab";
-const publicCourseTabKey = "publicCourseTab";
+export const internalTabKey = "internalTab";
+export const publicCourseTabKey = "publicCourseTab";
 
 function getSelectedTabKey(order){
     if(isEmptyValue(order, "lectureDetailsTabKey"))
