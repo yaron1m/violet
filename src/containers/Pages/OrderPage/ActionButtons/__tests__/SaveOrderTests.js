@@ -1,8 +1,7 @@
-import {saveOrder, shouldSave} from '../SaveOrderContainer';
+import {shouldSave} from '../SaveOrderContainer';
 import {orderPageLabels} from "../../../../../store/labels/pages/order-page-labels";
 import {SHOW_REQUIRED_FIELDS} from "../../../../../store/required-fields/action-types";
 import * as RequiredFieldsReducer from "../../../../../store/required-fields/Selectors"
-import * as SelectedActions from "../../../../../store/selected/actions"
 
 function getState() {
     return {
@@ -16,8 +15,17 @@ function getState() {
             isSelectedOrder: false,
             order: {
                 organizationId: "3",
+            },
+            organization: {},
+        },
+        requiredFields: {
+            contact: {
+                order: [],
+                organization: [],
+                lectureTimes: [],
+                publicCourse: [],
             }
-        }
+        },
     };
 }
 
@@ -45,10 +53,9 @@ describe('save order button', () => {
     it('shouldSave - there are missing fields - false', () => {
         const state = getState();
         state.selected.isSelectedOrganization = true;
-        RequiredFieldsReducer.getOrderMissingFields = jest.fn((state) => ["field"]);
+        state.requiredFields.contact.order = ["contactFirstName"];
 
         expect(shouldSave(state, dispatch)).toBeFalsy();
-
 
         expect(dispatch.mock.calls.length).toBe(2);
         expect(dispatch.mock.calls[0][0].type).toBe(SHOW_REQUIRED_FIELDS);
@@ -58,7 +65,6 @@ describe('save order button', () => {
     it('shouldSave - all valid - true', () => {
         const state = getState();
         state.selected.isSelectedOrganization = true;
-        RequiredFieldsReducer.getOrderMissingFields = jest.fn(() => []);
 
         expect(shouldSave(state, dispatch)).toBeTruthy();
     });

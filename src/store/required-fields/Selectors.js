@@ -5,10 +5,10 @@ import requiredFields from "./required-fields";
 import {hasMissingFields, mergerRequiredFields} from "./util";
 
 export function getRequiredFieldsObject(state) {
-    return getRequiredFieldsByObject(state, getRequiredFieldsFromState(state).showRequiredFields)
+    return getRequiredFieldsStateObject(state, getRequiredFieldsFromState(state).showRequiredFields)
 }
 
-function getRequiredFieldsByObject(state, showRequiredFields) {
+function getRequiredFieldsStateObject(state, showRequiredFields) {
     const requireFields = getRequiredFieldsFromState(state);
     const selectedOrder = getSelectedOrder(state);
     const requiredFieldsByEntity = getRequiredFieldsByEntity(requireFields, selectedOrder, showRequiredFields);
@@ -17,7 +17,7 @@ function getRequiredFieldsByObject(state, showRequiredFields) {
 }
 
 export function isOrderMissingFields(state) {
-    const requiredFieldsObject = getRequiredFieldsByObject(state, true);
+    const requiredFieldsObject = getRequiredFieldsStateObject(state, true);
 
     if (hasMissingFields(getSelectedOrder(state), requiredFieldsObject.order))
         return true;
