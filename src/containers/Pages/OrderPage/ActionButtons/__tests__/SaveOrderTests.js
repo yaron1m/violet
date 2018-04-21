@@ -1,7 +1,7 @@
 import {shouldSave} from '../SaveOrderContainer';
 import {orderPageLabels} from "../../../../../store/labels/pages/order-page-labels";
 import {SHOW_REQUIRED_FIELDS} from "../../../../../store/appearance/action-types";
-import * as RequiredFieldsReducer from "../../../../../store/required-fields/Selectors"
+import * as RequiredFieldsReducer from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors"
 
 function getState() {
     return {

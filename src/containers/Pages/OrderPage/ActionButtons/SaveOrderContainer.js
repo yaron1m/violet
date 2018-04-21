@@ -13,7 +13,7 @@ import {
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {closeDialog, openDialog, openSnackbar} from "../../../../store/appearance/actions";
-import {isOrderMissingFields} from "../../../../store/required-fields/Selectors";
+import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
 import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";

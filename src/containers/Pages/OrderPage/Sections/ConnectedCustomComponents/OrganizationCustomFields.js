@@ -5,7 +5,7 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomToggle from "../../../../../components/custom-components/custom-toggle";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
-import {getRequiredFieldsObject} from "../../../../../store/required-fields/Selectors";
+import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 
 function mapStateToProps(state) {
     return {

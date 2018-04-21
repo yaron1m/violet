@@ -5,7 +5,7 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/custom-text-field";
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
-import {getRequiredFieldsObject} from "../../../../../store/required-fields/Selectors";
+import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 
 function getValues(state, ownProps) {
     if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)

@@ -1,4 +1,4 @@
-import {mergerRequiredFields} from "./util";
+import {mergerRequiredFields} from "./Util";
 
 const contact = {
     order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],

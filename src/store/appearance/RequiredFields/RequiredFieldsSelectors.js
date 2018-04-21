@@ -1,8 +1,8 @@
-import {getSelectedOrder, getSelectedOrganization} from "../selected/reducer";
+import {getSelectedOrder, getSelectedOrganization} from "../../selected/reducer";
 import * as _ from "lodash";
-import requiredFields from "./required-fields";
-import {hasMissingFields, mergerRequiredFields} from "./util";
-import {shouldShowRequiredFields} from "../appearance/reducer";
+import requiredFields from "./RequiredFieldsByStatus";
+import {hasMissingFields, mergerRequiredFields} from "./Util";
+import {shouldShowRequiredFields} from "../reducer";
 
 export function getRequiredFieldsObject(state) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))
