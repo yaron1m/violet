@@ -14,7 +14,7 @@ import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {closeDialog, openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {isOrderMissingFields} from "../../../../store/required-fields/Selectors";
-import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
+import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
 import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";

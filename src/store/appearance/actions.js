@@ -35,3 +35,15 @@ export function changeLanguage(langCode, isRTL) {
         rtl: isRTL,
     };
 }
+
+export function showRequiredFields() {
+    return {
+        type: actionTypes.SHOW_REQUIRED_FIELDS,
+    };
+}
+
+export function hideRequiredFields() {
+    return {
+        type: actionTypes.HIDE_REQUIRED_FIELDS,
+    };
+}

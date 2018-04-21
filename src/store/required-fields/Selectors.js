@@ -1,17 +1,16 @@
 import {getSelectedOrder, getSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
-import {getRequiredFieldsFromState} from "./reducer";
 import requiredFields from "./required-fields";
 import {hasMissingFields, mergerRequiredFields} from "./util";
+import {shouldShowRequiredFields} from "../appearance/reducer";
 
 export function getRequiredFieldsObject(state) {
-    return getRequiredFieldsStateObject(state, getRequiredFieldsFromState(state).showRequiredFields)
+    return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))
 }
 
 function getRequiredFieldsStateObject(state, showRequiredFields) {
-    const requireFields = getRequiredFieldsFromState(state);
     const selectedOrder = getSelectedOrder(state);
-    const requiredFieldsByEntity = getRequiredFieldsByEntity(requireFields, selectedOrder, showRequiredFields);
+    const requiredFieldsByEntity = getRequiredFieldsByEntity(selectedOrder, showRequiredFields);
 
     return removeInternalOrderNumber(requiredFieldsByEntity, getSelectedOrganization(state));
 }
@@ -47,7 +46,7 @@ function removeInternalOrderNumber(requiredFieldsByEntity, selectedOrganization)
     };
 }
 
-function getRequiredFieldsByEntity(requireFields, selectedOrder, showRequiredFields) {
+function getRequiredFieldsByEntity(selectedOrder, showRequiredFields) {
     if (!showRequiredFields)
         return {
             order: [],
@@ -57,9 +56,9 @@ function getRequiredFieldsByEntity(requireFields, selectedOrder, showRequiredFie
         };
 
     if (!selectedOrder.status)
-        return requireFields.contact;
+        return requiredFields.contact;
 
-    const statusRequiredFields = requireFields[selectedOrder.status]; //TODO Remove the long list from state and store it statically
+    const statusRequiredFields = requiredFields[selectedOrder.status]; //TODO Remove the long list from state and store it statically
 
     if (selectedOrder.followUpRequired)
         return mergerRequiredFields(statusRequiredFields, requiredFields.followUpRequired);

@@ -1,4 +1,3 @@
-import Immutable from "seamless-immutable";
 import {mergerRequiredFields} from "./util";
 
 const contact = {
@@ -54,7 +53,7 @@ const followUpRequired = {
     lectureTimes: [],
 };
 
-export default Immutable({
+export default {
     contact,
     offer,
     order,
@@ -66,5 +65,4 @@ export default Immutable({
     cancelled,
     rejected,
     followUpRequired,
-    showRequiredFields: false,
-});
+};
