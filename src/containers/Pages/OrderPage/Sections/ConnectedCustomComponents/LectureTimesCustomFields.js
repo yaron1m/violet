@@ -17,7 +17,6 @@ function getValues(state, ownProps) {
 }
 
 function mapStateToProps(state, ownProps) {
-    console.log(isRightTabKey(getSelectedOrder(state), internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [])
     return {
         titles: getLabels(state).pages.orderPage.sections.lectureTimes.editDialog.titles,
         values: getValues(state, ownProps),

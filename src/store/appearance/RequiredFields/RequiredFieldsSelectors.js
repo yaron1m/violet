@@ -3,7 +3,10 @@ import * as _ from "lodash";
 import requiredFields from "./RequiredFieldsByStatus";
 import {hasMissingFields, isRightTabKey, mergerRequiredFields} from "./Util";
 import {shouldShowRequiredFields} from "../reducer";
-import {internalTabKey} from "../../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+import {
+    internalTabKey,
+    publicCourseTabKey
+} from "../../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
 
 export function getRequiredFieldsObject(state) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))
@@ -26,10 +29,12 @@ export function isOrderMissingFields(state) {
         return true;
 
     if (isRightTabKey(getSelectedOrder(state), internalTabKey, true))
-        if (isLectureTimesMissingFields(getSelectedOrder(state).lectureTimes, requiredFieldsObject.lectureTimes))
+        if (isElementInArrayMissingFields(getSelectedOrder(state).lectureTimes, requiredFieldsObject.lectureTimes))
             return true;
 
-    
+    if (isRightTabKey(getSelectedOrder(state), publicCourseTabKey))
+        if (isElementInArrayMissingFields(getSelectedOrder(state).publicCourseParticipants, requiredFieldsObject.publicCourse))
+            return true;
 
     return false;
 }
@@ -70,9 +75,9 @@ function getRequiredFieldsByEntity(selectedOrder, showRequiredFields) {
     return statusRequiredFields;
 }
 
-function isLectureTimesMissingFields(lectureTimes, lectureTimesRequiredFields) {
-    for (let i = 0; i < _.size(lectureTimes); i++) {
-        if (hasMissingFields(lectureTimes[i], lectureTimesRequiredFields))
+function isElementInArrayMissingFields(array, lectureTimesRequiredFields) {
+    for (let i = 0; i < _.size(array); i++) {
+        if (hasMissingFields(array[i], lectureTimesRequiredFields))
             return true;
     }
     return false;

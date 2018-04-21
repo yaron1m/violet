@@ -6,6 +6,9 @@ import CustomText from "../../../../../components/custom-components/custom-text-
 import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import CustomCheckbox from "../../../../../components/custom-components/custom-checkbox";
+import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
+import {isRightTabKey} from "../../../../../store/appearance/RequiredFields/Util";
+import {publicCourseTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
 
 function getValues(state, ownProps) {
     if (ownProps.participantIndex === null || getSelectedOrder(state).publicCourseParticipants === undefined)
@@ -18,7 +21,7 @@ function mapStateToProps(state, ownProps) {
     return {
         titles: getLabels(state).pages.orderPage.sections.publicCourse.titles,
         values: getValues(state, ownProps),
-        //requiredFields: getRequiredFieldsObject(state).lectureTimes,
+        requiredFields: isRightTabKey(getSelectedOrder(state), publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
         ...ownProps,
     };
 }
