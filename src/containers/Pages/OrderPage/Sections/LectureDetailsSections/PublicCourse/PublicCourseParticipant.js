@@ -30,8 +30,9 @@ export default class LectureDetailsSection extends React.Component {
                                                         size={Sizes.XL}/>
                     <PublicCourseParticipantsCustomCheckBox participantIndex={this.props.participantId}
                                                             name="isqMember"/>
+                    <PublicCourseParticipantsCustomText participantIndex={this.props.participantId} name="participantCost"/>
                 </div>
-                <div style={flexStyle}>
+                <div>
                     {_.map(_.orderBy(this.props.selectedPublicCourseLectures, x => x.date),
                         lecture => {
                         const key = "attendingLecture" + lecture.id;

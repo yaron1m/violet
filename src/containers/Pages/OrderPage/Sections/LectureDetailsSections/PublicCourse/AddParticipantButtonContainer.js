@@ -35,6 +35,7 @@ function mergeProps(stateProps, dispatchProps) {
         style: {
             marginTop: 10,
             marginBottom: 15,
+            marginRight: 20,
         },
         onClick: () => addNewParticipant(stateProps.selectedOrder, dispatchProps.updateSelectedOrder)
     }

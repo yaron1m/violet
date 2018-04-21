@@ -98,6 +98,9 @@ export function updatePublicCourseParticipant(key, value, participantIndex) {
 
 export function removeParticipantsFromAllLectures() {
     return function removeParticipantsFromAllLectures(dispatch, getState) {
+        if(isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
+            return;
+
         let publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
         for (let lectureKey in publicCourseParticipants) {
             publicCourseParticipants[lectureKey] = _.omitBy(publicCourseParticipants[lectureKey], (value, key) => _.startsWith(key, "attendingLecture"));

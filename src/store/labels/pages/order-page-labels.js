@@ -121,6 +121,7 @@ const publicCourseSectionLabels = {
         email: "מייל",
         job: "תפקיד",
         isqMember: "חבר איגוד",
+        participantCost: "מחיר השתתפות",
     },
 };
 
