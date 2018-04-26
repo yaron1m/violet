@@ -2,7 +2,7 @@ import React from 'react';
 import AllOrdersTableContainer from './AllOrdersTableContainer';
 import FilterStatusSelectField from './FilterStatusSelectField';
 
-export default class extends React.Component {
+export default class AllOrdersPage extends React.Component {
     constructor() {
         super();
         this.state = {

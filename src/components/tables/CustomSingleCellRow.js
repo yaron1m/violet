@@ -38,6 +38,7 @@ export class CustomSingleCellRow extends React.Component {
 
 CustomSingleCellRow.propTypes = {
     enabled: PropTypes.bool.isRequired,
+    hideEdit: PropTypes.bool,
     headers: PropTypes.array.isRequired,
     onClick: PropTypes.func,
     text: PropTypes.string,

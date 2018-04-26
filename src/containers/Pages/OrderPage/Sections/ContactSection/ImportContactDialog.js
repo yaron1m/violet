@@ -36,6 +36,9 @@ export default class ImportContactsDialog extends React.Component {
 
 ImportContactsDialog.propTypes = {
     dialogOpen: PropTypes.bool.isRequired,
+    dialogTitle: PropTypes.string,
     contacts: PropTypes.array,
+    tableHeaders: PropTypes.array,
     importContact: PropTypes.func,
+    onRequestClose: PropTypes.func,
 };

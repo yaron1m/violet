@@ -44,6 +44,7 @@ export default class LectureTimeEditDialog extends React.Component {
 LectureTimeEditDialog.propTypes = {
     dialogOpen: PropTypes.bool.isRequired,
     dialogTitle: PropTypes.string,
+    offeredLectures: PropTypes.array,
     lectureTimeIndex: PropTypes.number,
     onRequestClose: PropTypes.func.isRequired,
 };

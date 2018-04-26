@@ -10,6 +10,7 @@ import CustomDialog from "../../../../components/custom-components/custom-dialog
 function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {
     return [
         <FlatButton
+            key={dialogText.clear}
             label={dialogText.clear}
             primary={true}
             onTouchTap={() => {
@@ -19,6 +20,7 @@ function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) 
             }}
         />,
         <FlatButton
+            key={dialogText.cancel}
             label={dialogText.cancel}
             primary={true}
             onTouchTap={() => {
