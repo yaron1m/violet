@@ -3,13 +3,18 @@ import CustomPaper from "../../../../../../components/custom-components/custom-p
 import LectureTimesTable from './LectureTimes/LectureTimesTable';
 import {CustomToggleBox} from "../../../../../../components/custom-components/custom-toggle";
 import Sizes from "../../../../../../util/consts/sizes";
-import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
+import {
+    OrderCustomCheckBox,
+    OrderCustomText,
+    OrderCustomToggle
+} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
 import Colors from "../../../../../../util/consts/colors";
+import PropTypes from "prop-types";
 
-export default class LectureDetailsSection extends React.Component {
+export default class InternalLectureDetails extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -43,7 +48,8 @@ export default class LectureDetailsSection extends React.Component {
 
                     <OrderCustomCheckBox name="rejected" checkedColor={Colors.red}/>
 
-                    {this.props.showCancelledCheckBox ? <OrderCustomCheckBox name="cancelled" checkedColor={Colors.red}/> : null}
+                    {this.props.showCancelledCheckBox ?
+                        <OrderCustomCheckBox name="cancelled" checkedColor={Colors.red}/> : null}
 
                 </CustomToggleBox>
 
@@ -70,3 +76,8 @@ export default class LectureDetailsSection extends React.Component {
         );
     }
 }
+
+InternalLectureDetails.propTypes = {
+    sectionName: PropTypes.string.isRequired,
+    showCancelledCheckBox: PropTypes.bool.isRequired,
+};

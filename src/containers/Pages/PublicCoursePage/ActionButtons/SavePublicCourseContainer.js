@@ -19,9 +19,8 @@ async function savePublicCourse(selectedPublicCourse, actionButtonsLabels, nextP
         dispatch(setIsSelectedOrder());
     }
 
-    function failure(error) {
+    function failure() {
         dispatch(openDialog(selectedPublicCourse.sendingToDatabaseFailedTitle, selectedPublicCourse.sendingToDatabaseFailedContent));
-        console.error(error);
     }
 
     dispatch(sendSelectedPublicCourseToDatabase()).then(success, failure);
