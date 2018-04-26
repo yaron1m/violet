@@ -6,8 +6,9 @@ import AppDialog from './containers/Messages/AppDialogContainer';
 import AppSnackbar from './containers/Messages/AppSnackBarContainer';
 import ThemeDefault from './theme-default';
 import Colors from "./util/consts/colors";
+import PropTypes from 'prop-types';
 
-class App extends React.Component {
+export default class App extends React.Component {
 
     appBody() {
         if (this.props.isLoggedIn)
@@ -62,4 +63,8 @@ class App extends React.Component {
     }
 }
 
-export default App;
+App.propTypes = {
+    isLoggedIn: PropTypes.bool,
+    rtl: PropTypes.bool,
+    children: PropTypes.element,
+};
