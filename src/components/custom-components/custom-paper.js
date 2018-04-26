@@ -29,7 +29,10 @@ class CustomPaper extends React.Component {
 }
 
 CustomPaper.propTypes = {
+    style: PropTypes.obj,
+    onClick: PropTypes.func,
     title: PropTypes.string,
+    children: PropTypes.element,
 };
 
 

@@ -52,4 +52,7 @@ OrganizationSection.propTypes = {
     sectionName:  PropTypes.string,
     paymentConditions:  PropTypes.object,
     organizations: PropTypes.object,
+
+    selectOrganization: PropTypes.func,
+    updateSelectedOrder: PropTypes.func,
 };

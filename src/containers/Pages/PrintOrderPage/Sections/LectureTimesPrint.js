@@ -2,6 +2,7 @@ import React from 'react';
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
 import _ from 'lodash';
 import {isEmptyValue} from "../../../../util/string-util";
+import PropTypes from "prop-types";
 
 export default class LectureTimesPrintSection extends React.Component {
 
@@ -55,3 +56,9 @@ export default class LectureTimesPrintSection extends React.Component {
         );
     }
 }
+
+LectureTimesPrintSection.propTypes = {
+    sectionName: PropTypes.string,
+    tableHeaders: PropTypes.array,
+    lectureTimes: PropTypes.array,
+};

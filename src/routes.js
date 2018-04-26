@@ -17,6 +17,7 @@ import AllPublicCoursesPage from "./containers/Pages/AllPublicCoursesPage";
 import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
 import PrintOrderPage from "./containers/Pages/PrintOrderPage/PrintOrderPageContainer";
 import history from './util/History'
+import PropTypes from "prop-types";
 
 class Root extends React.Component {
 
@@ -48,5 +49,10 @@ function mapStateToProps(state) {
         rtl: isRTL(state),
     };
 }
+
+Root.propTypes = {
+    isLoggedIn: PropTypes.bool,
+    rtl: PropTypes.bool,
+};
 
 export default connect(mapStateToProps)(Root);

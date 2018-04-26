@@ -5,6 +5,7 @@ import {
     PrintOrderConnectedBoolean,
     PrintOrderConnectedText
 } from "./ConnectedCustomComponents/PrintOrderConnectedFields";
+import PropTypes from "prop-types";
 
 export default class LectureDetailsPrintSection extends React.Component {
 
@@ -20,9 +21,7 @@ export default class LectureDetailsPrintSection extends React.Component {
 
                 <PrintOrderConnectedText
                     name="status"
-                    values={{
-                        status: this.props.status,
-                    }}
+                    values={{status: this.props.status}}
                 />
 
                 <Divider style={{marginTop: 10, marginBottom: 10}}/>
@@ -37,3 +36,8 @@ export default class LectureDetailsPrintSection extends React.Component {
         );
     }
 }
+
+LectureDetailsPrintSection.propTypes = {
+    sectionName: PropTypes.string,
+    status: PropTypes.string,
+};

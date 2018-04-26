@@ -29,7 +29,7 @@ export default function getActionRequiredOrdersArray(state) {
                         addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
                     return;
 
-                case Status.order:
+                case Status.order: {
                     const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
                     if (new Date(firstLectureTimeDate) < addTwoWeeks(now.toJSON())) {
                         addOrderToResult(state, result, order, issues.noOrderApproval);
@@ -39,16 +39,18 @@ export default function getActionRequiredOrdersArray(state) {
                     if (addTwoWeeks(order.createdDate) < now)
                         addOrderToResult(state, result, order, issues.twoWeeksPassedFromCreation);
                     return;
+                }
 
                 case Status.approvedOrder:
                 case Status.isExecuting:
-                case Status.executed:
+                case Status.executed: {
                     const lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -time.date)[0].date;
                     if (new Date(lastLectureTimeDate) < now) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                         return;
                     }
                     return;
+                }
 
                 case Status.waitingPayment:
                     if (new Date(order.expectedPayDate) < now)

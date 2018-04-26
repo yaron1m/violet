@@ -42,14 +42,16 @@ function meetsRequirements(order, requirement) {
         case progressiveStatuses.approvedOrder:
             return existsAndNotEmpty(order, "orderApproved");
 
-        case progressiveStatuses.isExecuting:
+        case progressiveStatuses.isExecuting: {
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             const tomorrowMorning = new Date();
             tomorrowMorning.setDate(tomorrowMorning.getDate() + 1);
             tomorrowMorning.setHours(0, 0, 0, 0);
             return _.some(lectureTimesDates, date => new Date(date) <= tomorrowMorning);
+        }
 
-        case progressiveStatuses.executed:
+        case progressiveStatuses.executed: {
+
             if (existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber")) {
                 lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
                 const tomorrowMorning = new Date();
@@ -63,6 +65,7 @@ function meetsRequirements(order, requirement) {
             //yesterday.setDate(yesterday.getDate() - 1);
             thisMorning.setHours(0, 0, 0, 0);
             return _.every(lectureTimesDates, date => new Date(date) <= thisMorning);
+        }
 
         case progressiveStatuses.waitingPayment:
             return existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber");

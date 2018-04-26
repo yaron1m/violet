@@ -27,7 +27,7 @@ export default class CustomAutoComplete extends AbstractField {
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
                 searchText={this.state.value}
-                onUpdateInput={(searchText, dataSource, params) => super.handleChange(searchText)}
+                onUpdateInput={(searchText) => super.handleChange(searchText)}
                 onNewRequest={this.props.onNewRequest}
                 multiLine={true}
                 rowsMax={4}

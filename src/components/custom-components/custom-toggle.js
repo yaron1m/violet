@@ -3,6 +3,7 @@ import Toggle from 'material-ui/Toggle';
 import * as _ from "lodash";
 import AbstractField from "./abstract-field";
 import Colors from "../../util/consts/colors";
+import PropTypes from "prop-types";
 
 export default class CustomToggle extends AbstractField {
 
@@ -44,7 +45,7 @@ CustomToggle.propTypes = {
     ...AbstractField.propTypes,
 };
 
-class CustomToggleBox extends React.Component {
+export class CustomToggleBox extends React.Component {
 
     render() {
         const style = {
@@ -65,4 +66,6 @@ class CustomToggleBox extends React.Component {
     }
 }
 
-export {CustomToggleBox};
+CustomToggleBox.propTypes = {
+    children: PropTypes.element,
+};

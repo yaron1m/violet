@@ -2,6 +2,7 @@ import React from 'react';
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
 import Divider from 'material-ui/Divider';
 import {PrintOrderConnectedDate, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
+import PropTypes from "prop-types";
 
 export default class InvoicePrintSection extends React.Component {
 
@@ -23,3 +24,7 @@ export default class InvoicePrintSection extends React.Component {
         );
     }
 }
+
+InvoicePrintSection.propTypes = {
+    sectionName: PropTypes.string,
+};

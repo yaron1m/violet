@@ -68,4 +68,5 @@ ContactRow.propTypes = {
     isSelectedOrganization: PropTypes.bool.isRequired,
     buttonTooltip: PropTypes.string.isRequired,
     openContactImportDialog: PropTypes.func,
+    openDialog: PropTypes.func,
 };

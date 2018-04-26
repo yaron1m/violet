@@ -1,3 +1,5 @@
+/*eslint no-console: ["error", { allow: ["error"] }] */
+
 import React from 'react';
 import {connect} from 'react-redux';
 import FlatButton from "material-ui/FlatButton";
@@ -14,7 +16,7 @@ import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/
 import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
 import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
-import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
+import {SaveOrderButton} from "./SaveOrder";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))
@@ -73,11 +75,13 @@ function getOrganizationDialogActions(state, dispatch) {
 
     return [
         <FlatButton
+            key={dialogLabels.newOrganization}
             label={dialogLabels.newOrganization}
             primary={true}
             onTouchTap={() => saveNewOrganization(state, dispatch)}
         />,
         <FlatButton
+            key={dialogLabels.existingOrganization}
             label={dialogLabels.existingOrganization}
             primary={true}
             onTouchTap={() => dispatch(closeDialog())}
@@ -133,7 +137,7 @@ function mapDispatchToProps(dispatch) {
 function mergeProps(stateProps, dispatchProps) {
     return {
         tooltip: stateProps.tooltip,
-        onClick: () => saveOrder(stateProps.state, dispatchProps.dispatch),
+        onClick: () => saveOrder(stateProps.state, dispatchProps.dispatch)
     }
 }
 

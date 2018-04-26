@@ -1,7 +1,6 @@
 import React from 'react';
 import IconButton from "material-ui/IconButton";
 import SendIcon from 'material-ui-icons/Mail';
-import PrintOrderButton from "./PrintOrder";
 import PropTypes from "prop-types";
 
 export default class SendOfferButton extends React.Component {
@@ -18,7 +17,7 @@ export default class SendOfferButton extends React.Component {
     }
 }
 
-PrintOrderButton.propTypes = {
+SendOfferButton.propTypes = {
     sendLabel: PropTypes.string,
     orderEmailLink: PropTypes.string,
 };

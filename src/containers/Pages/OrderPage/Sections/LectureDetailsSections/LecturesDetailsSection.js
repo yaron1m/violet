@@ -48,3 +48,8 @@ LectureDetailsSection.propTypes = {
     onTabClick: PropTypes.func.isRequired,
 };
 
+
+LectureDetailsSection.propTypes = {
+    sectionName:  PropTypes.string,
+    showCancelledCheckBox:  PropTypes.bool,
+};
