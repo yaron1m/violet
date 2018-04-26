@@ -3,6 +3,7 @@ import PrintSection from "../../../../components/custom-components/order-print/p
 import ContactsPrintRow from './ContactPrintRowContainer'
 import Divider from 'material-ui/Divider';
 import {PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
+import PropTypes from "prop-types";
 
 export default class ContactsPrintSection extends React.Component {
     render() {
@@ -25,3 +26,7 @@ export default class ContactsPrintSection extends React.Component {
         );
     }
 }
+
+ContactsPrintSection.propTypes = {
+    sectionName: PropTypes.string,
+};

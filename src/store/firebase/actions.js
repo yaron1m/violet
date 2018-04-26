@@ -1,3 +1,5 @@
+/*eslint no-console: ["error", { allow: ["error"] }] */
+
 import * as actionTypes from './action-types';
 import {receiveOrganizations} from '../organizations/actions'
 import {receiveOrders} from '../orders/actions'
