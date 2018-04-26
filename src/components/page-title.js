@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class PageTitle extends React.Component {
 
@@ -17,5 +18,9 @@ export default class PageTitle extends React.Component {
             </div>
         )
     }
-
 }
+
+PageTitle.propTypes = {
+    title: PropTypes.string.isRequired,
+    maxWidth: PropTypes.number,
+};

@@ -4,6 +4,7 @@ import {
     PrintOrderConnectedBoolean, PrintOrderConnectedDate,
     PrintOrderConnectedText
 } from "./ConnectedCustomComponents/PrintOrderConnectedFields";
+import PropTypes from "prop-types";
 
 export default class FollowUpPrintSection extends React.Component {
 
@@ -20,3 +21,8 @@ export default class FollowUpPrintSection extends React.Component {
         );
     }
 }
+
+FollowUpPrintSection.propTypes = {
+    display: PropTypes.bool,
+    sectionName: PropTypes.string,
+};

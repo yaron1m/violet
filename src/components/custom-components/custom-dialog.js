@@ -8,6 +8,7 @@ class CustomDialog extends React.Component {
     render() {
         const actions = [
             <FlatButton
+                key="ok"
                 label="אישור"
                 primary={true}
                 onTouchTap={this.props.onRequestClose}
@@ -34,6 +35,7 @@ CustomDialog.propTypes = {
     title: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     actions: PropTypes.array,
+    children: PropTypes.element,
 };
 
 

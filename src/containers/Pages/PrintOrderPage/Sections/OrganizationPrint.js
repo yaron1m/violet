@@ -1,6 +1,7 @@
 import React from 'react';
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
 import {PrintOrganizationConnectedText} from "./ConnectedCustomComponents/PrintOrganizationConnectedFields";
+import PropTypes from "prop-types";
 
 export default class OrganizationPrintSection extends React.Component {
 
@@ -18,3 +19,7 @@ export default class OrganizationPrintSection extends React.Component {
         );
     }
 }
+
+OrganizationPrintSection.propTypes = {
+    sectionName: PropTypes.string,
+};

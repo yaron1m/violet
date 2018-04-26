@@ -49,15 +49,14 @@ class CustomTable extends React.Component {
     }
 }
 
-
 CustomTable.propTypes = {
     headers: PropTypes.array.isRequired,
     hideEdit: PropTypes.bool,
+    children: PropTypes.element,
 };
 
 CustomTable.defaultProps = {
     hideEdit: false,
 };
-
 
 export default CustomTable;

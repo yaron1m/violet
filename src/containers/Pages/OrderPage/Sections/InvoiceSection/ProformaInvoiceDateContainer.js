@@ -44,7 +44,6 @@ function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentCon
             break;
 
         default:
-            console.error("Could not parse payment conditions - " + paymentConditions);
             return;
     }
 

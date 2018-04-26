@@ -11,4 +11,4 @@ export function shallowWithStore(component, store){
         store,
     };
     return shallow(component, { context });
-};
+}
