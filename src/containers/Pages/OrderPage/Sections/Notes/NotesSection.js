@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/custom-components/custom-paper";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
+import PropTypes from "prop-types";
 
 export default class NotesSection extends React.Component {
 
@@ -12,3 +13,7 @@ export default class NotesSection extends React.Component {
         );
     }
 }
+
+NotesSection.propTypes = {
+    sectionName:  PropTypes.string,
+};

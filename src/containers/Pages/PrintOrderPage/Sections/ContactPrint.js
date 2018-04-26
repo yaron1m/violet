@@ -1,6 +1,7 @@
 import React from 'react';
 import PrintSection from "../../../../components/custom-components/order-print/print-section";
 import ContactsPrintRow from './ContactPrintRowContainer'
+import PropTypes from "prop-types";
 
 export default class ContactsPrintSection extends React.Component {
     render() {
@@ -13,3 +14,7 @@ export default class ContactsPrintSection extends React.Component {
         );
     }
 }
+
+ContactsPrintSection.propTypes = {
+    sectionName: PropTypes.string,
+};

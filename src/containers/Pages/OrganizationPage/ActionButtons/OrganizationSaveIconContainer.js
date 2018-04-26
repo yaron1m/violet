@@ -28,11 +28,10 @@ function  handleDatabasePromise(promise, stateProps, dispatchProps) {
         dispatchProps.setIsSelectedOrganization();
     }
 
-    function failure(error) {
+    function failure() {
         dispatchProps.openDialog(
             stateProps.dialogText.sendingToDatabaseFailedTitle,
             stateProps.dialogText.sendingToDatabaseFailedContent);
-        console.error(error);
     }
 
     promise.then(success, failure);

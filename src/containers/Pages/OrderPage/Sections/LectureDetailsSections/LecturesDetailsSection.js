@@ -7,6 +7,7 @@ import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../Connec
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
+import PropTypes from "prop-types";
 
 export default class LectureDetailsSection extends React.Component {
     constructor() {
@@ -69,3 +70,9 @@ export default class LectureDetailsSection extends React.Component {
         );
     }
 }
+
+
+LectureDetailsSection.propTypes = {
+    sectionName:  PropTypes.string,
+    showCancelledCheckBox:  PropTypes.bool,
+};

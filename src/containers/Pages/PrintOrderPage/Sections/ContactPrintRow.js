@@ -27,5 +27,6 @@ export default class ContactsPrintRow extends React.Component {
 }
 
 ContactsPrintRow.propTypes = {
-    isFinancial: PropTypes.bool
+    isFinancial: PropTypes.bool,
+    financialContactTitle: PropTypes.string,
 };
