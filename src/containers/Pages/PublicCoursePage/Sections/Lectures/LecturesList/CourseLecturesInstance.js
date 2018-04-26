@@ -52,4 +52,5 @@ export default class CourseLecturesInstance extends React.Component {
 CourseLecturesInstance.propTypes = {
     lectureId: PropTypes.string.isRequired,
     offeredLectures: PropTypes.array,
+    index: PropTypes.number.isRequired,
 };

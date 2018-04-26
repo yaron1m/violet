@@ -6,8 +6,9 @@ import {
 } from "../../ConnectedCustomComponents/PublicCourseParticipantsCustomFields";
 import Sizes from "../../../../../../util/consts/sizes";
 import _ from 'lodash';
+import PropTypes from "prop-types";
 
-export default class LectureDetailsSection extends React.Component {
+export default class PublicCourseParticipant extends React.Component {
 
     render() {
         return (
@@ -50,3 +51,9 @@ export default class LectureDetailsSection extends React.Component {
         );
     }
 }
+
+PublicCourseParticipant.propTypes = {
+    sectionName: PropTypes.string.isRequired,
+    participantId: PropTypes.number.isRequired,
+    selectedPublicCourseLectures: PropTypes.array.isRequired,
+};

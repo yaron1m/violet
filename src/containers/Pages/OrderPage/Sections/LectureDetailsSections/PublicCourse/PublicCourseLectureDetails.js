@@ -5,8 +5,9 @@ import AddParticipantButtonContainer from "./AddParticipantButtonContainer";
 import PublicCourseParticipantContainer from "./PublicCourseParticipantContainer";
 import CourseSelectorContainer from "./CourseSelectorContainer";
 import {OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
+import PropTypes from "prop-types";
 
-export default class LectureDetailsSection extends React.Component {
+export default class PublicCourseLectureDetails extends React.Component {
 
     render() {
         return (
@@ -27,3 +28,8 @@ export default class LectureDetailsSection extends React.Component {
         );
     }
 }
+
+PublicCourseLectureDetails.propTypes = {
+    sectionName: PropTypes.string.isRequired,
+    numberOfParticipants: PropTypes.number,
+};

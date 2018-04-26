@@ -16,7 +16,7 @@ import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/
 import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
 import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
-import {SaveOrderButton} from "./SaveOrder";
+import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))
