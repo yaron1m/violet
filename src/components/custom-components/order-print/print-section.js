@@ -27,4 +27,5 @@ export default class PrintSection extends React.Component {
 
 PrintSection.propTypes = {
     title: PropTypes.string,
+    children: PropTypes.element,
 };
