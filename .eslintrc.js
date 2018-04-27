@@ -30,6 +30,19 @@ module.exports = {
         "no-self-compare": 2,
         "no-useless-concat": 2,
         "no-var": 2,
-        "prefer-const": 2
+        "prefer-const": 2,
+        "no-magic-numbers": [
+            2,
+            {
+                "ignore": [
+                    -1,
+                    0,
+                    1,
+                    2
+                ],
+                "enforceConst": true,
+                "ignoreArrayIndexes": true
+            }
+        ]
     }
 };
