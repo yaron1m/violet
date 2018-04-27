@@ -8,8 +8,8 @@ import * as Immutable from "seamless-immutable";
 import PropTypes from "prop-types";
 
 function addNewLectureTime(selectedOrder, updateSelectedOrder, onEditButton) {
-    let thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
-    let lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? thisSelectedOrder.lectureTimes : [];
+    const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
+    const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? thisSelectedOrder.lectureTimes : [];
     lectureTimes.push({});
 
     updateSelectedOrder("lectureTimes", lectureTimes);
@@ -18,7 +18,7 @@ function addNewLectureTime(selectedOrder, updateSelectedOrder, onEditButton) {
 }
 
 function deleteLectureTime(index, selectedOrder, updateSelectedOrder) {
-    let lectureTimes = Immutable.asMutable(selectedOrder.lectureTimes);
+    const lectureTimes = Immutable.asMutable(selectedOrder.lectureTimes);
     lectureTimes.splice(index, 1);
 
     updateSelectedOrder("lectureTimes", lectureTimes);

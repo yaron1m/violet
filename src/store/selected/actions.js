@@ -62,7 +62,7 @@ export function updateSelectedOrder(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
         const selectedOrder = changeImmutable(getSelectedOrder(getState()), key, value);
         const status = calculateOrderStatus(selectedOrder);
-        const updatedOrder =  Immutable.merge(selectedOrder, {
+        const updatedOrder = Immutable.merge(selectedOrder, {
             status: status
         });
 
@@ -75,7 +75,7 @@ export function updateSelectedOrder(key, value) {
 
 export function updateLectureTime(key, value, lectureTimeIndex) {
     return function updateLectureTime(dispatch, getState) {
-        let lectureTimes = Immutable.asMutable(getSelectedOrder(getState()).lectureTimes, {deep: true});
+        const lectureTimes = Immutable.asMutable(getSelectedOrder(getState()).lectureTimes, {deep: true});
         lectureTimes[lectureTimeIndex][key] = value;
         lectureTimes[lectureTimeIndex].duration = calculateDuration(lectureTimes[lectureTimeIndex]);
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));

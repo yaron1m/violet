@@ -14,7 +14,7 @@ export default function calculateSum(selectedOrder, updateSelectedOrder) {
         if(groups === null)
             return;
 
-        cost = parseFloat(groups[1]) *  parseFloat(groups[2]);
+        cost = parseFloat(groups[1]) * parseFloat(groups[2]);
     }
 
     updateValue(updateSelectedOrder, order, "travelExpenses",

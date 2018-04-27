@@ -11,7 +11,7 @@ export default function getActionRequiredOrdersArray(state) {
 
     const now = new Date();
 
-    let result = [];
+    const result = [];
 
     _.forEach(orders, function checkActionRequired(order) {
             if (order.followUpRequired) {

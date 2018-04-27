@@ -48,7 +48,7 @@ function getContactsFromOrder(order, isFinancialContacts) {
 function importContact(contacts, index, updateSelectedOrder, onRequestClose, getKey) {
     const contact = contacts[index];
 
-    for (let contactKey in contact) {
+    for (const contactKey in contact) {
         if (!contact.hasOwnProperty(contactKey)) continue;
         const key = getKey(contactKey);
         updateSelectedOrder(key, contact[contactKey]);
