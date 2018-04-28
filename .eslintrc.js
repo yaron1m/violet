@@ -57,6 +57,7 @@ module.exports = {
         "comma-spacing": 2,
         "key-spacing": 2,
         "keyword-spacing": 2,
+        "max-depth": 2,
         "brace-style": [
             2,
             "stroustrup",
