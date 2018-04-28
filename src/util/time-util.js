@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 export function calculateDuration(lectureTime) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
         return "";

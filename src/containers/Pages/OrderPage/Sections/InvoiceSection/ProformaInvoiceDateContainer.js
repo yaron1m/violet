@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";

@@ -34,7 +34,7 @@ function parameter(key, value, first = false) {
 
 function arrayToParameterValue(array) {
     let res = "";
-    for (let index in array) {
+    for (const index in array) {
         res += array[index] + "#";
     }
 

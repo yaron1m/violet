@@ -19,7 +19,7 @@ function saveExistingOrganization(stateProps, dispatchProps) {
     handleDatabasePromise(promise, stateProps, dispatchProps);
 }
 
-function  handleDatabasePromise(promise, stateProps, dispatchProps) {
+function handleDatabasePromise(promise, stateProps, dispatchProps) {
     function success() {
         const snackbarMessage = stateProps.snackBarText.savedSuccessfully.replace("{0}", stateProps.selectedOrganizationName);
         dispatchProps.openSnackbar(snackbarMessage);

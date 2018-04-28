@@ -62,6 +62,7 @@ AbstractField.propTypes = {
     fullWidth: PropTypes.bool,
 };
 
+/* eslint-disable no-magic-numbers */
 function getWidth(props) {
     if (props.fullWidth)
         return "100%";

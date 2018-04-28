@@ -11,7 +11,7 @@ export default function getActionRequiredOrdersArray(state) {
 
     const now = new Date();
 
-    let result = [];
+    const result = [];
 
     _.forEach(orders, function checkActionRequired(order) {
             if (order.followUpRequired) {
@@ -77,5 +77,5 @@ function addOrderToResult(state, result, order, issue) {
 
 function addTwoWeeks(dateString) {
     const twoWeeks = 12096e5;
-    return new Date(+new Date(dateString) + twoWeeks);
+    return new Date(new Date(dateString) + twoWeeks);
 }

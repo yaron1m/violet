@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 import {getSelectedOrganization, isSelectedOrganization} from "../selected/reducer";
 import * as _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
