@@ -119,10 +119,10 @@ const paymentSectionLabels = {
     financialContactTitle: "איש קשר לתשלום",
     titles: {
         cost: "מחיר הרצאות",
-        oneWayDistance:"מרחק כיוון אחד",
+        oneWayDistance: "מרחק כיוון אחד",
         travelExpenses: "עלות נסיעות",
-        extraCosts :"עלויות נוספות",
-        sum :"סכום לפני מע\"מ",
+        extraCosts: "עלויות נוספות",
+        sum: "סכום לפני מע\"מ",
         vat: "מע\"מ",
         totalSum: "סה\"כ לתשלום",
     },
@@ -194,7 +194,7 @@ export const orderPageLabels = {
         payment: paymentSectionLabels,
         invoice: invoiceSectionLabels,
         notes: notesSectionLabels,
-        titles:{
+        titles: {
             ...organizationSectionLabels.titles,
             ...contactsSectionLabels.titles,
             ...lectureDetailsSectionLabels.titles,

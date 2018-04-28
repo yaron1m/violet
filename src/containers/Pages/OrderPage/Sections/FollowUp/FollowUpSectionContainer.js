@@ -6,7 +6,7 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 function mapStateToProps(state) {
     return {
         sectionName: getLabels(state).pages.orderPage.sections.followUp.sectionName,
-        followUpRequired:getSelectedOrder(state).followUpRequired,
+        followUpRequired: getSelectedOrder(state).followUpRequired,
     };
 }
 

@@ -10,7 +10,7 @@ function mapStateToProps(state) {
     return {
         title: getLabels(state).pages.followUpPage.title,
         tableHeaders: getLabels(state).pages.followUpPage.tableHeaders,
-        elements:  _.sortBy(getFollowUpOrdersSummary(state), x => x.followUpDate),
+        elements: _.sortBy(getFollowUpOrdersSummary(state), x => x.followUpDate),
     };
 }
 

@@ -15,7 +15,7 @@ class CustomTableRow extends React.Component {
         const key = headerKey + this.props.rowIndex;
 
         function clickAction(onEditButton, rowIndex) {
-            if(onEditButton === null)
+            if (onEditButton === null)
                 return;
 
             if (headerKey === "edit" || headerKey === "pick")

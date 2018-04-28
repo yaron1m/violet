@@ -10,7 +10,7 @@ const initialState = Immutable({
         content: "",
         actions: null,
     },
-    snackbar:{
+    snackbar: {
         isOpen: false,
         message: "",
     }

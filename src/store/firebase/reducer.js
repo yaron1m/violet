@@ -14,7 +14,7 @@ const initialState = Immutable({
 export default function (state = initialState, action = {}) {
     switch (action.type) {
         case actionTypes.LOGGED_IN:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 loggedIn: true,
                 userId: action.userId,
                 displayName: action.displayName,
@@ -22,7 +22,7 @@ export default function (state = initialState, action = {}) {
             });
 
         case actionTypes.LOGGED_OUT:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 loggedIn: false,
                 userId: undefined,
                 displayName: "",

@@ -73,6 +73,6 @@ export default class LectureDetailsSection extends React.Component {
 
 
 LectureDetailsSection.propTypes = {
-    sectionName:  PropTypes.string,
-    showCancelledCheckBox:  PropTypes.bool,
+    sectionName: PropTypes.string,
+    showCancelledCheckBox: PropTypes.bool,
 };
