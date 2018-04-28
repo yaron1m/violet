@@ -7,8 +7,8 @@ import * as Immutable from "seamless-immutable";
 import {getSelectedOrder} from "../../../../../../store/selected/reducer";
 
 function addNewParticipant(selectedOrder, updateSelectedOrder) {
-    let thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
-    let publicCourseParticipants = _.hasIn(thisSelectedOrder, 'publicCourseParticipants') ? thisSelectedOrder.publicCourseParticipants : [];
+    const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
+    const publicCourseParticipants = _.hasIn(thisSelectedOrder, 'publicCourseParticipants') ? thisSelectedOrder.publicCourseParticipants : [];
     publicCourseParticipants.push({});
 
     updateSelectedOrder("publicCourseParticipants", publicCourseParticipants);
