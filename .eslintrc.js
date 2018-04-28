@@ -43,6 +43,23 @@ module.exports = {
                 "enforceConst": true,
                 "ignoreArrayIndexes": true
             }
+        ],
+        "block-spacing": [
+            2,
+            "always"
+        ],
+        "camelcase": [
+            2,
+            {
+                "properties": "always"
+            }
+        ],
+        "brace-style": [
+            2,
+            "stroustrup",
+            {
+                "allowSingleLine": true
+            }
         ]
     }
 };
