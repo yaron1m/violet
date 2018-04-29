@@ -27,5 +27,5 @@ export class ActionButtonsBox extends React.Component {
 }
 
 ActionButtonsBox.propTypes = {
-    children : PropTypes.element
+    children: PropTypes.element
 };

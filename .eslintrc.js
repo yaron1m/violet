@@ -43,6 +43,27 @@ module.exports = {
                 "enforceConst": true,
                 "ignoreArrayIndexes": true
             }
+        ],
+        "block-spacing": [
+            2,
+            "always"
+        ],
+        "camelcase": [
+            2,
+            {
+                "properties": "always"
+            }
+        ],
+        "comma-spacing": 2,
+        "key-spacing": 2,
+        "keyword-spacing": 2,
+        "max-depth": 2,
+        "brace-style": [
+            2,
+            "stroustrup",
+            {
+                "allowSingleLine": true
+            }
         ]
     }
 };

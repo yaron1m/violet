@@ -12,7 +12,7 @@ function getPageTitle(state){
 
 function mapStateToProps(state) {
     return {
-        title:getPageTitle(state),
+        title: getPageTitle(state),
         status: getSelectedOrderStatus(state),
     };
 }

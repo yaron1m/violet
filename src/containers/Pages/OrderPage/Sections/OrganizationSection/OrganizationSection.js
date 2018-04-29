@@ -49,8 +49,8 @@ export default class OrganizationSection extends React.Component {
 
 OrganizationSection.propTypes = {
     fullDetails: PropTypes.bool,
-    sectionName:  PropTypes.string,
-    paymentConditions:  PropTypes.object,
+    sectionName: PropTypes.string,
+    paymentConditions: PropTypes.object,
     organizations: PropTypes.object,
 
     selectOrganization: PropTypes.func,

@@ -14,7 +14,7 @@ class CustomTable extends React.Component {
     render() {
         let headerValues = this.props.headers.map((header) => (Object.values(header)[0]));
 
-        if(this.props.hideEdit){
+        if (this.props.hideEdit){
             headerValues = _.dropRight(headerValues);
         }
 

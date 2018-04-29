@@ -24,16 +24,16 @@ function deleteLectureTime(index, selectedOrder, updateSelectedOrder) {
     updateSelectedOrder("lectureTimes", lectureTimes);
 }
 
-function getElements(lectureTimes){
-    if(!lectureTimes)
+function getElements(lectureTimes) {
+    if (!lectureTimes)
         return [];
 
 
     // Add index to every lecture time - for opening the right dialog
-    lectureTimes= _.map(lectureTimes, (lectureTime, index) => {
+    lectureTimes = _.map(lectureTimes, (lectureTime, index) => {
         return {
             ...lectureTime,
-            index : index
+            index: index
         }
     });
 

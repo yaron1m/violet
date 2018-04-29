@@ -37,7 +37,8 @@ export function initFirebase() {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 dispatch(afterSignedIn(user));
-            } else {
+            }
+            else {
                 dispatch({type: actionTypes.LOGGED_OUT});
             }
         });

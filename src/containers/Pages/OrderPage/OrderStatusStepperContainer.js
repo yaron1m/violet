@@ -11,7 +11,7 @@ function getStatus(status){
 function mapStateToProps(state) {
     return {
         status: getStatus(getSelectedOrder(state).status),
-        statusLabels : getStatusLabels(state),
+        statusLabels: getStatusLabels(state),
     };
 }
 

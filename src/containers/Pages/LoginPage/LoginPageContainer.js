@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {signInRequest,} from "../../../store/firebase/actions";
+import {signInRequest} from "../../../store/firebase/actions";
 import LoginPage from "./LoginPage";
 import {getLabels} from "../../../store/labels/reducer";
 

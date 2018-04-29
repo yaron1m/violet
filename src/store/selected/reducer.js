@@ -14,34 +14,34 @@ const initialState = Immutable({
 export default (state = initialState, action = {}) => {
     switch (action.type) {
         case actionTypes.SELECT_ORGANIZATION:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 organization: action.payload,
                 isSelectedOrganization: true,
             });
 
         case actionTypes.UPDATE_SELECTED_ORGANIZATION:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 organization: action.payload,
             });
 
         case actionTypes.SET_IS_SELECTED_ORGANIZATION:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 isSelectedOrganization: true,
             });
 
         case actionTypes.SELECT_ORDER:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 order: action.payload,
                 isSelectedOrder: true,
             });
 
         case actionTypes.UPDATE_SELECTED_ORDER:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 order: action.payload,
             });
 
         case actionTypes.SET_IS_SELECTED_ORDER:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 isSelectedOrder: true,
             });
 
@@ -66,7 +66,7 @@ export default (state = initialState, action = {}) => {
             return initialState;
 
         case actionTypes.CLEAR_SELECTED_ORDER:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 order: {},
                 isSelectedOrder: false,
             });
@@ -77,19 +77,19 @@ export default (state = initialState, action = {}) => {
 }
 
 // Selectors:
-export function getSelectedOrganization(state){
+export function getSelectedOrganization(state) {
     return state.selected.organization;
 }
 
-export function isSelectedOrganization(state){
+export function isSelectedOrganization(state) {
     return state.selected.isSelectedOrganization;
 }
 
-export function getSelectedOrder(state){
+export function getSelectedOrder(state) {
     return state.selected.order;
 }
 
-export function isSelectedOrder(state){
+export function isSelectedOrder(state) {
     return state.selected.isSelectedOrder;
 }
 

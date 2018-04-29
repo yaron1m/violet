@@ -11,7 +11,7 @@ export default function calculateSum(selectedOrder, updateSelectedOrder) {
     if (isEmptyValue(order, "cost") || isNaN(order.cost)) {
         // Allow 1500 * 3:
         const groups = /^([0-9]*)\*([0-9]*)$/g.exec(order.cost);
-        if(groups === null)
+        if (groups === null)
             return;
 
         cost = parseFloat(groups[1]) * parseFloat(groups[2]);

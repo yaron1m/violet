@@ -17,7 +17,8 @@ export default function calculateOrderStatus(order) {
     for (let i = 0; i < possibleStatuses.length; i++) {
         if (meetsRequirements(order, possibleStatuses[i])) {
             status = possibleStatuses[i];
-        } else {
+        }
+        else {
             break;
         }
     }

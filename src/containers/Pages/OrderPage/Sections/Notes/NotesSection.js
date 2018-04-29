@@ -15,5 +15,5 @@ export default class NotesSection extends React.Component {
 }
 
 NotesSection.propTypes = {
-    sectionName:  PropTypes.string,
+    sectionName: PropTypes.string,
 };
