@@ -35,7 +35,7 @@ CustomDialog.propTypes = {
     title: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     actions: PropTypes.array,
-    children: PropTypes.element,
+    children: PropTypes.node,
 };
 
 

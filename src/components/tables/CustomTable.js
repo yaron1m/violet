@@ -52,7 +52,7 @@ class CustomTable extends React.Component {
 CustomTable.propTypes = {
     headers: PropTypes.array.isRequired,
     hideEdit: PropTypes.bool,
-    children: PropTypes.element,
+    children: PropTypes.node,
 };
 
 CustomTable.defaultProps = {
