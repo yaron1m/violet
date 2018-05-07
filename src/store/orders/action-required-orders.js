@@ -4,6 +4,7 @@ import {getOrderStatusLabel} from "../../util/order-status";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
 import Status from "../../util/consts/status";
+import {isEmptyValue} from "../../util/string-util";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
@@ -45,7 +46,7 @@ export default function getActionRequiredOrdersArray(state) {
                 case Status.isExecuting:
                 case Status.executed: {
                     const lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -time.date)[0].date;
-                    if (new Date(lastLectureTimeDate) < now) {
+                    if (isEmptyValue(order, "proformaInvoiceNumber") && new Date(lastLectureTimeDate) < now) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                         return;
                     }
@@ -77,5 +78,5 @@ function addOrderToResult(state, result, order, issue) {
 
 function addTwoWeeks(dateString) {
     const twoWeeks = 12096e5;
-    return new Date(new Date(dateString) + twoWeeks);
+    return new Date(new Date(dateString).valueOf() + twoWeeks);
 }
