@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTitle from '../../../components/page-title';
+import PageTitle from '../../../components/PageTitle';
 import PropTypes from "prop-types";
 import Paper from "material-ui/Paper";
 import LoginButton from "./LoginButton";
