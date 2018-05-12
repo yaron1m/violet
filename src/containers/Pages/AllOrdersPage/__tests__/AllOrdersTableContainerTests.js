@@ -1,6 +1,6 @@
 import React from "react";
 import AllOrdersTableContainer from "../AllOrdersTableContainer";
-import {shallowWithStore} from "../../../../setupTests";
+import {shallowWithStore} from "../../../../../setupTests";
 import {createMockStore} from "redux-test-utils";
 import labels from '../../../../store/labels/reducer'
 import Status from "../../../../util/consts/status";
