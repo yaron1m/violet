@@ -66,5 +66,5 @@ export class CustomToggleBox extends React.Component {
 }
 
 CustomToggleBox.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.node,
 };
