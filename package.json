@@ -53,6 +53,8 @@
     "email": "yaron1m@gmail.com"
   },
   "jest": {
-    "setupFiles": ["raf/polyfill"]
+    "setupFiles": [
+      "raf/polyfill"
+    ]
   }
 }
