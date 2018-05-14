@@ -4,14 +4,11 @@ node_js:
 cache:
   directories:
   - node_modules
+before_script:
+  - npm install -g firebase-tools
 script:
 - npm test
 - npm run lint
 - npm run build
-before_install:
-  - npm install -g firebase-tools
-deploy:
-  provider: firebase
-  token:
-    secure: vddUqJvfuq53nsAyntiz1g3sn3sdWy6K5AWN06zk6avuxHdIJfyRwVTbiU3GXDfSk1mHn9ru9Ef4iO30jiDOrBYxId5nmlZXDZrT4ghhHE25uasGcj45RCkHVs8bvk+Ul5dt2AcveDq8N93k01zIQN2jnFpj8kx0tCSN+YUyzgDdfvX/kIla3GJe+SYddK/Zx6JpBGmSNA7MktSKhuSgxblZxNnMyAPolGudHgZbKVQDd3w3WOyLH8wcAe/qzv6EldIJ/keb1gwp6OLkSLGURV6FplkZ/4jk+Qe5mGE1/ngG+mT6paibKExoD5VaS4xpqM1qs3Yj1/uSYCaT/RVhGfiIVVt0jRzvhdvcfxf2rmwacq00pcR82YLhGJ1w39iu4oXvJj/cONQ6sTqqa/GkczOigZtavf0SEse+SEvf59tuM75mNg1vtFJy3lp6v1Aav0YNk/83EEiiSqQgUorOnaB+iLd9qP/DcWLwFHsjeuQp8Jv8m313BLwRms001STxkhPvG6Z0zSjC3aTRVvaiR7SHzmFPx4ScgSMTvkzxFNKd9FTLMI0R6gOLWSpQuW1faHgodKnh5Mmsv8kear8/S44ViKFgAgptEc/j7or0jFYW/mKhoaqBS5sAOi7Ik79TjbICL9uCZRZZHN1f9n9qG3DN5m8gVW8Ga7UDrP5HF/A=
-  project: "development"
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
