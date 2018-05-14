@@ -32,7 +32,7 @@ export default class LectureTimesPrintSection extends React.Component {
                     </tr>
 
                     {this.props.lectureTimes ?
-                        this.props.lectureTimes.map((lectureTime, index) =>
+                        _.orderBy(this.props.lectureTimes, x => -x.date).map((lectureTime, index) =>
                         <tr key={index}>
                             {tableHeaders.map((header, index2) => {
                                     header = _.keys(header)[0];
