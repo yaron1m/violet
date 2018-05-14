@@ -1,4 +1,4 @@
-# Violet
+# Violet ![TravisCi](https://travis-ci.org/yaron1m/violet.svg?branch=master)
 Customer Relationship Management System (CRM) tailor made to C-Point LTD.
 
 ## Live
