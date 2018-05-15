@@ -66,5 +66,5 @@ export default class App extends React.Component {
 App.propTypes = {
     isLoggedIn: PropTypes.bool,
     rtl: PropTypes.bool,
-    children: PropTypes.element,
+    children: PropTypes.node,
 };

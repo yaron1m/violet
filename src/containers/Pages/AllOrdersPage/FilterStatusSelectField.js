@@ -28,6 +28,7 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
+
 const Container = connect(mapStateToProps)(CustomSelectField);
 
 Container.propTypes = {
