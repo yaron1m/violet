@@ -42,7 +42,7 @@ export default class PublicCourseParticipant extends React.Component {
                                 key={key}
                                 participantIndex={this.props.participantId}
                                 name={"attendingLecture" + lecture.id}
-                                titles={{[key]:  new Date(lecture.date).toLocaleDateString() + " - " + lecture.topic}}
+                                titles={{[key]: new Date(lecture.date).toLocaleDateString() + " - " + lecture.topic}}
                             />
                         )
                     })}

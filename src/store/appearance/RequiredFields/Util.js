@@ -17,7 +17,7 @@ export function hasMissingFields(object, required) {
 }
 
 export function isRightTabKey(selectedOrder, tabKey, isDefaultTab = false){
-    if(isEmptyValue(selectedOrder, "lectureDetailsTabKey"))
+    if (isEmptyValue(selectedOrder, "lectureDetailsTabKey"))
         return isDefaultTab;
 
     return selectedOrder.lectureDetailsTabKey === tabKey;

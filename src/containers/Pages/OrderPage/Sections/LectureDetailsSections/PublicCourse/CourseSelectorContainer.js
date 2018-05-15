@@ -19,7 +19,7 @@ function getOption(course){
 }
 
 function getValues(selectedOrder, publicCourses){
-    if(isEmptyValue(selectedOrder,"publicCourseId") )
+    if (isEmptyValue(selectedOrder, "publicCourseId") )
         return {};
 
     return {
@@ -32,7 +32,7 @@ function mapStateToProps(state) {
         name: "courseName",
         options: _.map(getPublicCourses(state), getOption),
         size: Sizes.XL,
-        values: getValues(getSelectedOrder(state),getPublicCourses(state)),
+        values: getValues(getSelectedOrder(state), getPublicCourses(state)),
     };
 }
 

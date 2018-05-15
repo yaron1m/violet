@@ -98,7 +98,7 @@ export function updatePublicCourseParticipant(key, value, participantIndex) {
 
 export function removeParticipantsFromAllLectures() {
     return function removeParticipantsFromAllLectures(dispatch, getState) {
-        if(isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
+        if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
             return;
 
         const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});

@@ -9,7 +9,7 @@ export const internalTabKey = "internalTab";
 export const publicCourseTabKey = "publicCourseTab";
 
 function getSelectedTabKey(order){
-    if(isEmptyValue(order, "lectureDetailsTabKey"))
+    if (isEmptyValue(order, "lectureDetailsTabKey"))
         return internalTabKey;
 
     return order.lectureDetailsTabKey;

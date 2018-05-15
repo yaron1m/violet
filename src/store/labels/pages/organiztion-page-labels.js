@@ -25,7 +25,7 @@ export const organizationPageLabels = {
     title: "פרטי ארגונים",
     ordersSummarySection: ordersSummarySectionLabels,
     dialog: organizationPageDialogLabels,
-    actionButtons:{
+    actionButtons: {
         save: "שמור ארגון",
     },
     snackBar: {

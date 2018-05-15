@@ -38,7 +38,7 @@ export function getPublicCoursesSummary(state) {
     function map(course) {
         const result = {
             id: course.id,
-            courseName:course.courseName,
+            courseName: course.courseName,
             courseLocation: course.courseLocation,
         };
         if (!_.isEmpty(course.lectures)) {

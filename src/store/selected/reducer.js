@@ -46,18 +46,18 @@ export default (state = initialState, action = {}) => {
             });
 
         case actionTypes.SELECT_PUBLIC_COURSE:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 publicCourse: action.payload,
                 isSelectedPublicCourse: true,
             });
 
         case actionTypes.UPDATE_SELECTED_PUBLIC_COURSE:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 publicCourse: action.payload,
             });
 
         case actionTypes.SET_IS_SELECTED_PUBLIC_COURSE:
-            return Immutable.merge(state,{
+            return Immutable.merge(state, {
                 isSelectedPublicCourse: true,
             });
 

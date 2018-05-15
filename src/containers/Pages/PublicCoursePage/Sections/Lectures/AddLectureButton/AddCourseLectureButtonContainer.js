@@ -6,7 +6,7 @@ import {RaisedButton} from "material-ui";
 function mapStateToProps(state) {
     return {
         label: getLabels(state).pages.publicCoursePage.actionButtons.addLecture,
-        style:{
+        style: {
             marginTop: 10
         }
     };
