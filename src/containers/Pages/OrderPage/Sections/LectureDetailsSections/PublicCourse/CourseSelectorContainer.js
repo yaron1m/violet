@@ -11,20 +11,26 @@ import {
 import {getSelectedOrder} from "../../../../../../store/selected/reducer";
 import {isEmptyValue} from "../../../../../../util/string-util";
 
-function getOption(course){
+function getOption(course) {
     return {
         key: course.id,
         label: course.courseName,
     }
 }
 
-function getValues(selectedOrder, publicCourses){
-    if (isEmptyValue(selectedOrder, "publicCourseId") )
+function getValues(selectedOrder, publicCourses) {
+    if (isEmptyValue(selectedOrder, "publicCourseId"))
         return {};
 
     return {
         courseName: publicCourses[selectedOrder.publicCourseId].id
     };
+}
+
+export function selectFieldUpdateAction(dispatch, newValue) {
+    dispatch(selectPublicCourse(newValue));
+    dispatch(updateSelectedOrder("publicCourseId", newValue));
+    dispatch(removeParticipantsFromAllLectures());
 }
 
 function mapStateToProps(state) {
@@ -38,11 +44,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateAction: (key, value) => {
-            dispatch(selectPublicCourse(value));
-            dispatch(updateSelectedOrder("publicCourseId", value));
-            dispatch(removeParticipantsFromAllLectures());
-        }
+        updateAction: (key, value) => selectFieldUpdateAction(dispatch, value)
     }
 }
 
