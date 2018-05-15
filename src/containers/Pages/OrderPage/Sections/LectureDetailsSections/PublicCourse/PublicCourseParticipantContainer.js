@@ -18,7 +18,7 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function removeParticipant(selectedOrder, updateSelectedOrder, participantId) {
+export function removeParticipant(selectedOrder, updateSelectedOrder, participantId) {
     const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
     const publicCourseParticipants = thisSelectedOrder.publicCourseParticipants;
     publicCourseParticipants.splice(participantId, 1);
