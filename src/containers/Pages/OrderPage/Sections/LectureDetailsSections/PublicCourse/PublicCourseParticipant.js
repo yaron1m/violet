@@ -16,9 +16,7 @@ export default class PublicCourseParticipant extends React.Component {
         const participantId = this.props.participantId;
 
         return (
-            <CustomPaper
-                title={this.props.sectionName}
-            >
+            <CustomPaper>
                 <div style={flexStyle}>
                     <PublicCourseParticipantsCustomText participantIndex={participantId}
                                                         name="participantFirstName"/>
@@ -60,7 +58,6 @@ export default class PublicCourseParticipant extends React.Component {
 }
 
 PublicCourseParticipant.propTypes = {
-    sectionName: PropTypes.string.isRequired,
     participantId: PropTypes.number.isRequired,
     selectedPublicCourseLectures: PropTypes.array.isRequired,
     onDelete: PropTypes.func.isRequired,
