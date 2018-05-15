@@ -6,7 +6,7 @@ import * as _ from "lodash";
 import * as Immutable from "seamless-immutable";
 import {getSelectedOrder} from "../../../../../../store/selected/reducer";
 
-function addNewParticipant(selectedOrder, updateSelectedOrder) {
+export function addNewParticipant(selectedOrder, updateSelectedOrder) {
     const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
     const publicCourseParticipants = _.hasIn(thisSelectedOrder, 'publicCourseParticipants') ? thisSelectedOrder.publicCourseParticipants : [];
     publicCourseParticipants.push({});
