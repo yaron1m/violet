@@ -10,7 +10,7 @@ export default class OrderForm extends React.Component {
     render() {
 
         return (
-            <div>
+            <React.Fragment>
                 <OrderPageTitle/>
                 <OrderStatusStepper/>
                 <OrderEditTimes/>
@@ -18,7 +18,7 @@ export default class OrderForm extends React.Component {
                 <OrderActionButtons/>
 
                 <OrderPageSections/>
-            </div>
+            </React.Fragment>
         );
     }
 }
