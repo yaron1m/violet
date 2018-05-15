@@ -102,8 +102,8 @@ export function removeParticipantsFromAllLectures() {
             return;
 
         const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
-        for (const lectureKey in publicCourseParticipants) {
-            publicCourseParticipants[lectureKey] = _.omitBy(publicCourseParticipants[lectureKey], (value, key) => _.startsWith(key, "attendingLecture"));
+        for (const participant in publicCourseParticipants) {
+            publicCourseParticipants[participant] = _.omitBy(publicCourseParticipants[participant], (value, key) => _.startsWith(key, "attendingLecture"));
         }
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     }
