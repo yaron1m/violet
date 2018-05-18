@@ -159,12 +159,21 @@ export function updatePublicCourseLecture(key, value, lectureId) {
 export function addLectureToSelectedPublicCourse() {
     return function addLectureToSelectedPublicCourse(dispatch, getState) {
         const selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
-        const lectures = _.hasIn(selectedPublicCourse, 'lectures') ? selectedPublicCourse.lectures : {};
-        const nextId = _.keys(lectures).length;
-        lectures[nextId] = {
-            id: nextId,
-            active: true,
-        };
+
+        let lectures;
+        if (!_.hasIn(selectedPublicCourse, 'lectures')) {
+            lectures = [{
+                id: 0,
+                active: true,
+            }];
+        } else {
+            lectures = selectedPublicCourse.lectures;
+            const nextId = _.keys(lectures).length;
+            lectures[nextId] = {
+                id: nextId,
+                active: true,
+            };
+        }
 
         dispatch(updateSelectedPublicCourse("lectures", lectures));
     }
