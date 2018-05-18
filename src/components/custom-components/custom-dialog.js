@@ -11,7 +11,7 @@ class CustomDialog extends React.Component {
                 key="ok"
                 label="אישור"
                 primary={true}
-                onTouchTap={this.props.onRequestClose}
+                onClick={this.props.onRequestClose}
             />,
         ];
 

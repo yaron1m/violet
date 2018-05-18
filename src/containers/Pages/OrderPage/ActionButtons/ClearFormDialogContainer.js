@@ -13,7 +13,7 @@ function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) 
             key={dialogText.clear}
             label={dialogText.clear}
             primary={true}
-            onTouchTap={() => {
+            onClick={() => {
                 clearSelected();
                 hideRequiredFields();
                 closeDialog();
@@ -23,7 +23,7 @@ function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) 
             key={dialogText.cancel}
             label={dialogText.cancel}
             primary={true}
-            onTouchTap={() => {
+            onClick={() => {
                 closeDialog();
             }}
         />]
