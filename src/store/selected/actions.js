@@ -166,7 +166,8 @@ export function addLectureToSelectedPublicCourse() {
                 id: 0,
                 active: true,
             }];
-        } else {
+        }
+        else {
             lectures = selectedPublicCourse.lectures;
             const nextId = _.keys(lectures).length;
             lectures[nextId] = {
