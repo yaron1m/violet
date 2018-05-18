@@ -4,7 +4,6 @@ import PublicCourseLectureDetails from "./PublicCourse/PublicCourseLectureDetail
 import {Tab, Tabs} from "material-ui";
 import Colors from "../../../../../util/consts/colors";
 import PropTypes from 'prop-types';
-import {allowPublicCourses} from "../../../../../App";
 
 export default class LectureDetailsSection extends React.Component {
 
@@ -31,13 +30,10 @@ export default class LectureDetailsSection extends React.Component {
                 <Tab label={this.props.internalLabel} value={this.props.internalTabKey} style={tabStyle}>
                     <InternalLectureDetails/>
                 </Tab>
-                {allowPublicCourses ?
-                    <Tab label={this.props.publicCourseLabel} value={this.props.publicCourseTabKey} style={tabStyle}>
-                        <PublicCourseLectureDetails/>
-                    </Tab>
-                    : null
-                }
 
+                <Tab label={this.props.publicCourseLabel} value={this.props.publicCourseTabKey} style={tabStyle}>
+                    <PublicCourseLectureDetails/>
+                </Tab>
             </Tabs>
         );
     }
