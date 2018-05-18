@@ -81,13 +81,13 @@ function getOrganizationDialogActions(state, dispatch) {
             key={dialogLabels.newOrganization}
             label={dialogLabels.newOrganization}
             primary={true}
-            onTouchTap={() => saveNewOrganization(state, dispatch)}
+            onClick={() => saveNewOrganization(state, dispatch)}
         />,
         <FlatButton
             key={dialogLabels.existingOrganization}
             label={dialogLabels.existingOrganization}
             primary={true}
-            onTouchTap={() => dispatch(closeDialog())}
+            onClick={() => dispatch(closeDialog())}
         />,
     ];
 }
