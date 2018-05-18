@@ -53,7 +53,7 @@ export default class App extends React.Component {
                         </div>
                     </div>
 
-                    <div style={styles.footer}>Copyright v2.0.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved</div>
+                    <div style={styles.footer}>Copyright v1.3.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved</div>
 
                     <AppDialog/>
                     <AppSnackbar/>
@@ -68,3 +68,5 @@ App.propTypes = {
     rtl: PropTypes.bool,
     children: PropTypes.node,
 };
+
+export const allowPublicCourses = false;

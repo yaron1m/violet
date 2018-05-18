@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router, Route} from 'react-router';
-import App from './App'
+import App, {allowPublicCourses} from './App'
 import LectureForm from './containers/Pages/OrderPage/';
 import PublicCourse from './containers/Pages/PublicCoursePage/';
 import OrganizationPage from './containers/Pages/OrganizationPage/';
@@ -35,7 +35,7 @@ class Root extends React.Component {
                     <Route path="/expectedIncome" component={ExpectedIncomePage}/>
                     <Route path="/futureLectures" component={FutureLecturesPage}/>
                     <Route path="/allOrders" component={AllOrdersPage}/>
-                    <Route path="/allPublicCourses" component={AllPublicCoursesPage}/>
+                    <Route path="/allPublicCourses" component={allowPublicCourses ? AllPublicCoursesPage : null}/>
                     <Route path="/print" component={PrintOrderPage}/>
                 </App>
             </Router>
