@@ -5,7 +5,7 @@ import {getLabels} from "../../../../store/labels/reducer";
 import {hideRequiredFields} from "../../../../store/appearance/actions";
 import {FlatButton} from "material-ui";
 import PropTypes from "prop-types";
-import CustomDialog from "../../../../components/custom-components/CustomDialog";
+import CustomDialog from "../../../../components/CustomComponents/CustomDialog";
 
 function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {
     return [

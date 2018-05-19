@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper, {flexStyle} from "../../../../../components/custom-components/CustomPaper";
+import CustomPaper, {flexStyle} from "../../../../../components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {
     PublicCourseConnectedText,

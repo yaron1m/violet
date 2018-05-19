@@ -2,11 +2,11 @@ import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
-import CustomText from "../../../../../components/custom-components/CustomTextField";
-import CustomDatePicker from "../../../../../components/custom-components/CustomDatePicker";
-import CustomToggle from "../../../../../components/custom-components/CustomToggle";
-import CustomCheckbox from "../../../../../components/custom-components/CustomCheckbox";
-import CustomSelectField from "../../../../../components/custom-components/CustomSelectField";
+import CustomText from "../../../../../components/CustomComponents/CustomTextField";
+import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
+import CustomToggle from "../../../../../components/CustomComponents/CustomToggle";
+import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
+import CustomSelectField from "../../../../../components/CustomComponents/CustomSelectField";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 
 function mapStateToProps(state) {

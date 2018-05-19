@@ -5,7 +5,7 @@ import LoginButton from "./LoginButton";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
 import SignInWithGoogleButtonContainer from "./SignInWithGoogleButtonContainer";
-import CustomPaper from "../../../components/custom-components/CustomPaper";
+import CustomPaper from "../../../components/CustomComponents/CustomPaper";
 
 export default class LoginPage extends React.Component {
 

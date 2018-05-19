@@ -1,5 +1,5 @@
 import React from 'react';
-import {flexStyle} from "../../../../../../components/custom-components/CustomPaper";
+import {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {
     PublicCourseLectureConnectedAutoComplete, PublicCourseLectureConnectedCheckBox,

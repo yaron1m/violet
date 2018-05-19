@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/custom-components/CustomPaper";
+import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
 import Divider from 'material-ui/Divider';
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
 import IconButton from "material-ui/IconButton";

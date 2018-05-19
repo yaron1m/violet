@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
-import CustomPaper from "../custom-components/CustomPaper";
+import CustomPaper from "../CustomComponents/CustomPaper";
 import CustomTable from "./CustomTable";
 import CustomTableRow from "./CustomTableRow";
 import {CustomSingleCellRow} from "./CustomSingleCellRow";

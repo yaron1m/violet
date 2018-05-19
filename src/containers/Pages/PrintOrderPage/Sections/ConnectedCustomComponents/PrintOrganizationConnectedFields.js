@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getSelectedOrganization} from "../../../../../store/selected/reducer";
 import {getLabels} from "../../../../../store/labels/reducer";
-import PrintField from "../../../../../components/custom-components/OrderPrint/PrintField";
+import PrintField from "../../../../../components/CustomComponents/OrderPrint/PrintField";
 
 function mapStateToProps(state, ownProps) {
     return {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {PrintPageTitle} from "../../../components/custom-components/OrderPrint/PrintPageTitle";
+import {PrintPageTitle} from "../../../components/CustomComponents/OrderPrint/PrintPageTitle";
 import LectureTimesPrintSection from "./Sections/LectureTimesPrintContainer";
 import LectureDetailsPrintSection from "./Sections/LectureDetailsContainer";
 import ContactsPrintSection from "./Sections/ContactPrintContainer";
