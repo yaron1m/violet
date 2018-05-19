@@ -3,7 +3,7 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {updateLectureTime} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/CustomTextField";
-import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
+import CustomDatePicker from "../../../../../components/custom-components/CustomDatePicker";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 import {internalTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";

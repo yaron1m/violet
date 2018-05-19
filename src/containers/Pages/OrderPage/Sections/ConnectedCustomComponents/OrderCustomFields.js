@@ -3,9 +3,9 @@ import {getSelectedOrder} from "../../../../../store/selected/reducer";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/CustomTextField";
-import CustomDatePicker from "../../../../../components/custom-components/custom-date-picker";
+import CustomDatePicker from "../../../../../components/custom-components/CustomDatePicker";
 import CustomToggle from "../../../../../components/custom-components/CustomToggle";
-import CustomCheckbox from "../../../../../components/custom-components/custom-checkbox";
+import CustomCheckbox from "../../../../../components/custom-components/CustomCheckbox";
 import CustomSelectField from "../../../../../components/custom-components/CustomSelectField";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
 
-export default class CustomText extends AbstractField {
+export default class CustomText extends AbstractCustomField {
 
     render() {
         const style = {
@@ -29,7 +29,7 @@ export default class CustomText extends AbstractField {
 }
 
 CustomText.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
 };

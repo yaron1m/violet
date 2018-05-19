@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomDialog from "../../../../../../../components/custom-components/custom-dialog";
+import CustomDialog from "../../../../../../../components/custom-components/CustomDialog";
 import PropTypes from 'prop-types';
 import Sizes from "../../../../../../../util/consts/sizes";
 import {

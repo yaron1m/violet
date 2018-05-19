@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
 
-export default class CustomSelectField extends AbstractField {
+export default class CustomSelectField extends AbstractCustomField {
 
     render() {
         const style = this.basicStyle;
@@ -44,7 +44,7 @@ export default class CustomSelectField extends AbstractField {
 }
 
 CustomSelectField.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
     options: PropTypes.array.isRequired,
     allowEmpty: PropTypes.bool,
     onChange: PropTypes.func

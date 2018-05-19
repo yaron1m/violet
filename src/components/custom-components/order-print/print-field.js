@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
-import AbstractField from "../abstract-field";
+import AbstractCustomField from "../AbstractCustomField";
 import PropTypes from "prop-types";
 
-export default class PrintField extends AbstractField {
+export default class PrintField extends AbstractCustomField {
     constructor(props){
         super({
             ...props,
