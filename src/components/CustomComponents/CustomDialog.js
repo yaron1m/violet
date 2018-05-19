@@ -1,13 +1,13 @@
 import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
 import React from "react";
 import PropTypes from 'prop-types';
+import {CustomFlatButton} from "./CustomButtons";
 
 class CustomDialog extends React.Component {
 
     render() {
         const actions = [
-            <FlatButton
+            <CustomFlatButton
                 key="ok"
                 label="אישור"
                 primary={true}

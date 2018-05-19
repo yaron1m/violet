@@ -2,21 +2,30 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import FlatButton from "material-ui/FlatButton";
 import {
-    sendSelectedOrderToDatabase, sendSelectedOrganizationToDatabase, setIsSelectedOrder, setIsSelectedOrganization,
-    updateSelectedOrder, updateSelectedOrganization
+    sendSelectedOrderToDatabase,
+    sendSelectedOrganizationToDatabase,
+    setIsSelectedOrder,
+    setIsSelectedOrganization,
+    updateSelectedOrder,
+    updateSelectedOrganization
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getSelectedOrder, getSelectedOrganization, isSelectedOrganization} from "../../../../store/selected/reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
-import {closeDialog, openDialog, openSnackbar} from "../../../../store/appearance/actions";
+import {
+    closeDialog,
+    hideRequiredFields,
+    openDialog,
+    openSnackbar,
+    showRequiredFields
+} from "../../../../store/appearance/actions";
 import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
-import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
 import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
+import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))
@@ -74,13 +83,13 @@ function getOrganizationDialogActions(state, dispatch) {
     const dialogLabels = getLabels(state).pages.orderPage.dialog;
 
     return [
-        <FlatButton
+        <CustomFlatButton
             key={dialogLabels.newOrganization}
             label={dialogLabels.newOrganization}
             primary={true}
             onClick={() => saveNewOrganization(state, dispatch)}
         />,
-        <FlatButton
+        <CustomFlatButton
             key={dialogLabels.existingOrganization}
             label={dialogLabels.existingOrganization}
             primary={true}
