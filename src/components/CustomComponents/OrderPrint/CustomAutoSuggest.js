@@ -6,10 +6,10 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 
 function renderInput(inputProps) {
-    const { classes, ref, ...other } = inputProps;
+    const {classes, ref, ...other} = inputProps;
 
     return (
         <TextField
@@ -25,7 +25,7 @@ function renderInput(inputProps) {
     );
 }
 
-function renderSuggestion(suggestion, { query, isHighlighted }) {
+function renderSuggestion(suggestion, {query, isHighlighted}) {
     const matches = match(suggestion.text, query);
     const parts = parse(suggestion.text, matches);
 
@@ -34,11 +34,11 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
             <div>
                 {parts.map((part, index) => {
                     return part.highlight ? (
-                        <span key={String(index)} style={{ fontWeight: 300 }}>
+                        <span key={String(index)} style={{fontWeight: 300}}>
               {part.text}
             </span>
                     ) : (
-                        <strong key={String(index)} style={{ fontWeight: 500 }}>
+                        <strong key={String(index)} style={{fontWeight: 500}}>
                             {part.text}
                         </strong>
                     );
@@ -49,7 +49,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
 }
 
 function renderSuggestionsContainer(options) {
-    const { containerProps, children } = options;
+    const {containerProps, children} = options;
 
     return (
         <Paper {...containerProps} square>
@@ -62,17 +62,15 @@ function getSuggestionValue(suggestion) {
     return suggestion.text;
 }
 
-function getSuggestions(value, suggestions) {
+function getSuggestions(value, suggestions, maxSearchResults) {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
     let count = 0;
-    const maxResults = 5;
 
     return inputLength === 0
         ? []
         : suggestions.filter(suggestion => {
-            const keep =
-                count < maxResults && suggestion.text.toLowerCase().slice(0, inputLength) === inputValue;
+            const keep = count < maxSearchResults && suggestion.text.toLowerCase().includes(inputValue);
 
             if (keep) {
                 count += 1;
@@ -87,6 +85,8 @@ const styles = theme => ({
         flexGrow: 1,
         position: 'relative',
         height: 35,
+        top: -14,
+
     },
     suggestionsContainerOpen: {
         position: 'absolute',
@@ -105,15 +105,15 @@ const styles = theme => ({
     },
 });
 
-class CustomAutoSuggset extends React.Component {
+class CustomAutoSuggest extends React.Component {
     state = {
         value: '',
         suggestions: [],
     };
 
-    handleSuggestionsFetchRequested = ({ value }) => {
+    handleSuggestionsFetchRequested = ({value}) => {
         this.setState({
-            suggestions: getSuggestions(value, this.props.suggestions),
+            suggestions: getSuggestions(value, this.props.suggestions, this.props.maxSearchResults),
         });
     };
 
@@ -123,15 +123,21 @@ class CustomAutoSuggset extends React.Component {
         });
     };
 
-    handleChange = (event, { newValue }) => {
+    handleChange = (event, {newValue}) => {
         this.setState({
             value: newValue,
         });
+        //console.log(newValue);
+        //this.props.handleRequest(chosenRequest);
     };
 
+    onSuggestionSelected(event, {suggestion}) {
+        this.props.handleRequest(suggestion);
+    }
+
     render() {
-        const { classes } = this.props;
-        console.log(this.props.suggestions);
+        const {classes} = this.props;
+        //console.log(this.props.suggestions[0]);
         return (
             <AutoSuggest
                 theme={{
@@ -153,15 +159,20 @@ class CustomAutoSuggset extends React.Component {
                     value: this.state.value,
                     onChange: this.handleChange,
                 }}
+
+
+                onSuggestionSelected={this.onSuggestionSelected.bind(this)}
             />
         );
     }
 }
 
-CustomAutoSuggset.propTypes = {
+CustomAutoSuggest.propTypes = {
     suggestions: PropTypes.array.isRequired,
+    handleRequest: PropTypes.func,
     hintText: PropTypes.string,
+    maxSearchResults: PropTypes.number,
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CustomAutoSuggset);
+export default withStyles(styles)(CustomAutoSuggest);
