@@ -7,7 +7,7 @@ import CustomDatePicker from "../../../../../components/custom-components/Custom
 import CustomToggle from "../../../../../components/custom-components/CustomToggle";
 import CustomCheckbox from "../../../../../components/custom-components/CustomCheckbox";
 import CustomSelectField from "../../../../../components/custom-components/CustomSelectField";
-import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import CustomAutoComplete from "../../../../../components/custom-components/CustomAutoComplete";
 
 function mapStateToProps(state, ownProps) {
     return {

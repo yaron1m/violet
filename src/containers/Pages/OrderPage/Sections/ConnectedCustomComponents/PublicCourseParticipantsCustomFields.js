@@ -4,7 +4,7 @@ import {updatePublicCourseParticipant} from "../../../../../store/selected/actio
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/CustomTextField";
 import CustomDatePicker from "../../../../../components/custom-components/CustomDatePicker";
-import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import CustomAutoComplete from "../../../../../components/custom-components/CustomAutoComplete";
 import CustomCheckbox from "../../../../../components/custom-components/CustomCheckbox";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 import {isRightTabKey} from "../../../../../store/appearance/RequiredFields/Util";

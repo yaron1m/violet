@@ -4,7 +4,7 @@ import {updateLectureTime} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/CustomTextField";
 import CustomDatePicker from "../../../../../components/custom-components/CustomDatePicker";
-import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
+import CustomAutoComplete from "../../../../../components/custom-components/CustomAutoComplete";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 import {internalTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
 import {isRightTabKey} from "../../../../../store/appearance/RequiredFields/Util";
