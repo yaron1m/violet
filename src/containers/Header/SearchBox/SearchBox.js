@@ -1,9 +1,12 @@
 import React from 'react';
-import SearchIcon from 'material-ui-icons/Search';
+// import SearchIcon from 'material-ui-icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
 import Colors from "../../../util/consts/colors";
 import PropTypes from 'prop-types';
 import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
+import CustomAutoSuggest from "../../../components/CustomComponents/OrderPrint/CustomAutoSuggest";
+import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
 
 export default class SearchBox extends React.Component {
 
@@ -35,12 +38,14 @@ export default class SearchBox extends React.Component {
                 marginLeft: 5,
             },
             container: {
+                width: "100%",
                 backgroundColor: Colors.lightPurple,
                 borderRadius: 2,
                 height: 35,
                 paddingLeft: 10,
                 marginRight: 10,
                 marginTop: 15,
+                ...flexStyle
             },
             input: {
                 WebkitTextFillColor: "inherit",
@@ -50,30 +55,42 @@ export default class SearchBox extends React.Component {
                 color: Colors.white,
             },
         };
-
+        //TODO add icon color
+        //TODO render each suggestion with the component I created in the container
         return (
-            <div style={styles.container}>
+            <div
+                style={styles.container}
+            >
                 <CustomIconButton style={styles.iconButton}>
-                    <SearchIcon color={Colors.white}/>
+                    <SearchIcon
+                        // color={Colors.white}
+                    />
                 </CustomIconButton>
 
-                <AutoComplete
-                    dataSource={this.props.dataSource}
+                <CustomAutoSuggest
+                    suggestions={this.props.dataSource}
                     hintText={this.props.hintText}
-                    searchText={this.state.searchText}
-                    filter={AutoComplete.caseInsensitiveFilter}
-
-                    onNewRequest={this.handleRequest.bind(this)}
-                    onUpdateInput={(searchText) => this.setState({searchText: searchText})}
-
+                    handleRequest={this.props.handleRequest}
                     maxSearchResults={10}
-                    underlineShow={false}
-                    fullWidth={true}
-
-                    inputStyle={styles.input}
-                    style={styles.autoComplete}
-                    hintStyle={styles.hintStyle}
                 />
+
+                {/*<AutoComplete*/}
+                    {/*dataSource={this.props.dataSource}*/}
+                    {/*hintText={this.props.hintText}*/}
+                    {/*searchText={this.state.searchText}*/}
+                    {/*filter={AutoComplete.caseInsensitiveFilter}*/}
+
+                    {/*onNewRequest={this.handleRequest.bind(this)}*/}
+                    {/*onUpdateInput={(searchText) => this.setState({searchText: searchText})}*/}
+
+                    {/*maxSearchResults={10}*/}
+                    {/*underlineShow={false}*/}
+                    {/*fullWidth={true}*/}
+
+                    {/*inputStyle={styles.input}*/}
+                    {/*style={styles.autoComplete}*/}
+                    {/*hintStyle={styles.hintStyle}*/}
+                {/*/>*/}
             </div>
         );
     }
