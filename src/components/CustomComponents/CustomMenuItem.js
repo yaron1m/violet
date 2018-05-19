@@ -6,7 +6,6 @@ export default class CustomMenuItem extends React.Component {
     render() {
         return (
             <MenuItem
-                key={this.props.key}
                 value={this.props.value}
                 primaryText={this.props.primaryText}
                 onClick={this.props.onClick}
