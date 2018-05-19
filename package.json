@@ -45,7 +45,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "lint": "eslint src",
+    "lint": "eslint src --fix",
     "test": "jest --setupTestFrameworkScriptFile ./setupTests.js",
     "watch": "npm test -- --watch"
   },
