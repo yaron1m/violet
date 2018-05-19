@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
 import Colors from "../../util/consts/colors";
-import CustomIconButton from "../CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
 class CustomTableRow extends React.Component {
 

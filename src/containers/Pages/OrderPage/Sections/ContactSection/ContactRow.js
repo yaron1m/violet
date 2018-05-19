@@ -5,7 +5,7 @@ import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
 import Sizes from "../../../../../util/consts/sizes";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
-import CustomIconButton from "../../../../../components/CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../../../../../components/CustomComponents/CustomButtons";
 
 export default class ContactRow extends React.Component {
     constructor() {

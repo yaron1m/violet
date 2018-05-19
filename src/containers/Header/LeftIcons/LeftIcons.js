@@ -7,7 +7,7 @@ import MoreIcon from 'material-ui-icons/MoreVert';
 import NotificationsIcon from 'material-ui-icons/Notifications';
 import Colors from "../../../util/consts/colors";
 import PropTypes from "prop-types";
-import CustomIconButton from "../../../components/CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
 
 class LeftIcons extends React.Component {
 

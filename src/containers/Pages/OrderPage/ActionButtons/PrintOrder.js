@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import PrintIcon from 'material-ui/svg-icons/action/print';
-import CustomIconButton from "../../../../components/CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
 
 export default class PrintOrderButton extends React.Component {
     render() {

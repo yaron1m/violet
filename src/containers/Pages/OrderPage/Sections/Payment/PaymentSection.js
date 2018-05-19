@@ -6,7 +6,7 @@ import Sizes from "../../../../../util/consts/sizes";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import CustomDivider from "../../../../../components/CustomComponents/CustomDivider";
-import CustomIconButton from "../../../../../components/CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../../../../../components/CustomComponents/CustomButtons";
 
 export default class PaymentSection extends React.Component {
 

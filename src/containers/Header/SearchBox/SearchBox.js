@@ -3,7 +3,7 @@ import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
 import Colors from "../../../util/consts/colors";
 import PropTypes from 'prop-types';
-import CustomIconButton from "../../../components/CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
 
 export default class SearchBox extends React.Component {
 

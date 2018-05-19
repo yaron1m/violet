@@ -2,7 +2,7 @@ import React from 'react';
 import HomeIcon from 'material-ui-icons/Home';
 import {redirect} from "../../util/history-util";
 import Colors from "../../util/consts/colors";
-import CustomIconButton from "../../components/CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../../components/CustomComponents/CustomButtons";
 
 class HomeButton extends React.Component {
 

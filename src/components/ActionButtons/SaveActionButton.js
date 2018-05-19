@@ -1,7 +1,7 @@
 import React from 'react';
 import SaveIcon from 'material-ui-icons/Save';
 import PropTypes from "prop-types";
-import CustomIconButton from "../CustomComponents/CustomIconButton";
+import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
 export class SaveActionButton extends React.Component {
     render() {

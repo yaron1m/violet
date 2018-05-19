@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../../store/labels/reducer";
 import {updateSelectedOrder} from "../../../../../../store/selected/actions";
-import {RaisedButton} from "material-ui";
 import * as _ from "lodash";
 import * as Immutable from "seamless-immutable";
 import {getSelectedOrder} from "../../../../../../store/selected/reducer";
+import {CustomRaisedButton} from "../../../../../../components/CustomComponents/CustomButtons";
 
 export function addNewParticipant(selectedOrder, updateSelectedOrder) {
     const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
@@ -41,5 +41,5 @@ function mergeProps(stateProps, dispatchProps) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(RaisedButton);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomRaisedButton);
 
