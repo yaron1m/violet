@@ -56,6 +56,7 @@ export default class SearchBox extends React.Component {
             },
         };
         //TODO add icon color
+        //TODO render each suggestion with the component I created in the container
         return (
             <div
                 style={styles.container}
