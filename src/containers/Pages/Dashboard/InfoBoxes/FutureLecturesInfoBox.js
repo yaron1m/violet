@@ -5,7 +5,7 @@ import {getAllLectureTimes} from "../../../../store/orders/selectors";
 import * as _ from 'lodash';
 import {isFetching} from "../../../../store/firebase/reducer";
 import Status from "../../../../util/consts/status";
-import CheckBoxIcon from 'material-ui-icons/CheckCircle';
+import CheckBoxIcon from '@material-ui/icons/CheckCircle';
 import InfoBox from "./InfoBox";
 import Colors from "../../../../util/consts/colors";
 

@@ -5,7 +5,7 @@ import {getFollowUpOrdersSummary} from "../../../../store/orders/selectors";
 import {isFetching} from "../../../../store/firebase/reducer";
 import InfoBox from "./InfoBox";
 import Colors from "../../../../util/consts/colors";
-import NotificationsIcon from 'material-ui-icons/Notifications';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function calculateFollowUpSummary(state) {
     if (isFetching(state))

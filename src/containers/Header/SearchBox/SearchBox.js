@@ -1,7 +1,5 @@
 import React from 'react';
-// import SearchIcon from 'material-ui-icons/Search';
 import SearchIcon from '@material-ui/icons/Search';
-import AutoComplete from 'material-ui/AutoComplete';
 import Colors from "../../../util/consts/colors";
 import PropTypes from 'prop-types';
 import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
@@ -73,24 +71,6 @@ export default class SearchBox extends React.Component {
                     handleRequest={this.props.handleRequest}
                     maxSearchResults={10}
                 />
-
-                {/*<AutoComplete*/}
-                    {/*dataSource={this.props.dataSource}*/}
-                    {/*hintText={this.props.hintText}*/}
-                    {/*searchText={this.state.searchText}*/}
-                    {/*filter={AutoComplete.caseInsensitiveFilter}*/}
-
-                    {/*onNewRequest={this.handleRequest.bind(this)}*/}
-                    {/*onUpdateInput={(searchText) => this.setState({searchText: searchText})}*/}
-
-                    {/*maxSearchResults={10}*/}
-                    {/*underlineShow={false}*/}
-                    {/*fullWidth={true}*/}
-
-                    {/*inputStyle={styles.input}*/}
-                    {/*style={styles.autoComplete}*/}
-                    {/*hintStyle={styles.hintStyle}*/}
-                {/*/>*/}
             </div>
         );
     }

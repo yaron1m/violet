@@ -5,7 +5,7 @@ import {getOrders} from "../../../../store/orders/selectors";
 import * as _ from 'lodash';
 import {isFetching} from "../../../../store/firebase/reducer";
 import Status from "../../../../util/consts/status";
-import CreditCardIcon from 'material-ui-icons/CreditCard';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 import InfoBox from "./InfoBox";
 import Colors from "../../../../util/consts/colors";
 import {isEmptyValue, moneyFormat} from "../../../../util/string-util";
