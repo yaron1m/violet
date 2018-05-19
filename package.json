@@ -4,8 +4,11 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
+    "@material-ui/icons": "^1.0.0",
     "firebase": "^4.6.0",
     "history": "^4.6.3",
+    "jss-rtl": "^0.2.3",
     "lodash": "^4.17.5",
     "material-ui": "^0.19.4",
     "material-ui-icons": "^1.0.0-beta.10",
