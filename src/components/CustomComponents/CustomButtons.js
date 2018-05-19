@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import Button from '@material-ui/core/Button';
 
 export class CustomIconButton extends React.Component {
     render() {
@@ -50,11 +51,11 @@ CustomRaisedButton.propTypes = {
 export class CustomFlatButton extends React.Component {
     render() {
         return (
-            <FlatButton
+            <Button
                 onClick={this.props.onClick}
-                label={this.props.label}
-                primary={this.props.primary}
-            />
+            >
+                {this.props.label}
+            </Button>
         );
     }
 }
