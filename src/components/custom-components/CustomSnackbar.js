@@ -2,7 +2,7 @@ import Snackbar from "material-ui/Snackbar";
 import React from "react";
 import PropTypes from 'prop-types';
 
-class CustomSnackBar extends React.Component {
+class CustomSnackbar extends React.Component {
     render() {
         return (
             <Snackbar
@@ -15,10 +15,10 @@ class CustomSnackBar extends React.Component {
     }
 }
 
-CustomSnackBar.propTypes = {
+CustomSnackbar.propTypes = {
     open: PropTypes.bool.isRequired,
     message: PropTypes.string,
     onRequestClose: PropTypes.func,
 };
 
-export default CustomSnackBar;
+export default CustomSnackbar;

@@ -1,7 +1,7 @@
 import connect from "react-redux/es/connect/connect";
 import {getSnackbarMessage, isSnackbarOpen} from "../../store/appearance/reducer";
 import {closeSnackbar} from "../../store/appearance/actions";
-import CustomSnackBar from "../../components/custom-components/custom-snackbar";
+import CustomSnackbar from "../../components/custom-components/CustomSnackbar";
 
 function mapStateToProps(state) {
     return {
@@ -16,4 +16,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomSnackBar);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomSnackbar);
