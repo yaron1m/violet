@@ -1,7 +1,7 @@
 import React from 'react';
-import HomeIcon from 'material-ui-icons/Home';
+import HomeIcon from '@material-ui/icons/Home';
 import {redirect} from "../../util/history-util";
-import Colors from "../../util/consts/colors";
+// import Colors from "../../util/consts/colors";
 import {CustomIconButton} from "../../components/CustomComponents/CustomButtons";
 
 class HomeButton extends React.Component {
@@ -13,13 +13,15 @@ class HomeButton extends React.Component {
                 marginTop: 3
             },
         };
-
+        // TODO add color
         return (
             <CustomIconButton
                 style={style.homeIcon}
                 onClick={() => redirect('/')}
             >
-                <HomeIcon color={Colors.white}/>
+                <HomeIcon
+                    // color={Colors.white}
+                />
             </CustomIconButton>
         );
     }
