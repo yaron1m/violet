@@ -1,7 +1,7 @@
 import React from 'react';
 import Divider from 'material-ui/Divider';
 import Sizes from "../../../../../util/consts/sizes";
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
+import CustomPaper from "../../../../../components/custom-components/CustomPaper";
 import PropTypes from "prop-types";
 import {OrderCustomText, OrderCustomDatePicker} from "../ConnectedCustomComponents/OrderCustomFields";
 import ProformaInvoiceDateContainer from "./ProformaInvoiceDateContainer";

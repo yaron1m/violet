@@ -19,10 +19,10 @@ class CustomPaper extends React.Component {
 
         return (
             <Paper style={style.paper} onClick={this.props.onClick}>
-                {this.props.title ? (<span style={style.title}>{this.props.title}</span>) : null}
-                <div>
-                    {this.props.children}
-                </div>
+                {this.props.title ? (
+                    <div style={style.title}>{this.props.title}</div>
+                ) : null}
+                {this.props.children}
             </Paper>
         );
     }

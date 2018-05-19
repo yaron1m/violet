@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
 import Colors from '../../../../util/consts/colors'
+import CustomPaper from "../../../../components/custom-components/CustomPaper";
 
 export default class InfoBox extends React.Component {
 
@@ -11,7 +11,7 @@ export default class InfoBox extends React.Component {
                 width: "100%",
                 marginRight: 20,
                 cursor: "pointer",
-                marginBottom: 20,
+                padding: 0,
             },
             content: {
                 padding: '5px 10px',
@@ -45,7 +45,7 @@ export default class InfoBox extends React.Component {
         };
 
         return (
-            <Paper style={styles.paper} onClick={this.props.onClick}>
+            <CustomPaper style={styles.paper} onClick={this.props.onClick}>
                 <span style={styles.iconSpan}>
                   <this.props.Icon
                       color={Colors.white}
@@ -57,7 +57,7 @@ export default class InfoBox extends React.Component {
                     <span style={styles.text}>{this.props.title}</span>
                     <span style={styles.number}>{this.props.value}</span>
                 </div>
-            </Paper>
+            </CustomPaper>
         );
     }
 }

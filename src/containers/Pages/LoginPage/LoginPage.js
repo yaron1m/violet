@@ -1,11 +1,11 @@
 import React from 'react';
 import PageTitle from '../../../components/PageTitle';
 import PropTypes from "prop-types";
-import Paper from "material-ui/Paper";
 import LoginButton from "./LoginButton";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
 import SignInWithGoogleButtonContainer from "./SignInWithGoogleButtonContainer";
+import CustomPaper from "../../../components/custom-components/CustomPaper";
 
 export default class LoginPage extends React.Component {
 
@@ -51,7 +51,7 @@ export default class LoginPage extends React.Component {
             <div style={style.div}>
                 <PageTitle title={this.props.title}/>
 
-                <Paper style={style.paper}>
+                <CustomPaper style={style.paper}>
                     <EmailField
                         onChange={(event) => (this.setState(Object.assign({}, this.state, {
                             email: event.target.value,
@@ -80,7 +80,7 @@ export default class LoginPage extends React.Component {
                     <SignInWithGoogleButtonContainer
                         errorCallback={this.errorCallback.bind(this)}
                     />
-                </Paper>
+                </CustomPaper>
 
             </div>
         );
