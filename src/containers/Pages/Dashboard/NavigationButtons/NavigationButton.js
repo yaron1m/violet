@@ -7,7 +7,7 @@ export default class NavigationButton extends React.Component {
 
     render() {
         const style = {
-            width: "50%",
+            width: "100%",
             cursor: "pointer",
             textAlign: "center",
             fontSize: 18,

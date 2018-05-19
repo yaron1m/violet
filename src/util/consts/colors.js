@@ -11,6 +11,7 @@ import {
     orange600,
     pink600,
     lightBlue700,
+    purple400,
     green500
 } from 'material-ui/styles/colors';
 
@@ -21,6 +22,7 @@ export default {
     textGray: grey800,
     purple: purple800,
     lightPurple: purple600,
+    veryLightPurple: purple400,
     orderButtons: grey600,
 
     organizationIconColor: indigo600,

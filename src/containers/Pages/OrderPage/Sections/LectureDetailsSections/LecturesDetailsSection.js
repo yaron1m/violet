@@ -1,78 +1,53 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/custom-components/custom-paper";
-import LectureTimesTable from './LectureTimes/LectureTimesTable';
-import {CustomToggleBox} from "../../../../../components/custom-components/custom-toggle";
-import Sizes from "../../../../../util/consts/sizes";
-import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
-import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
-import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
-import LectureTimeEditDialog from "./LectureTimes/LectrueTimesEditDialogContainer";
-import PropTypes from "prop-types";
+import InternalLectureDetails from "./InternalCourse/InternalLectureDetailsContainer";
+import PropTypes from 'prop-types';
+// import PublicCourseLectureDetails from "./PublicCourse/PublicCourseLectureDetailsContainer";
+// import {Tab, Tabs} from "material-ui";
+// import Colors from "../../../../../util/consts/colors";
 
 export default class LectureDetailsSection extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            dialogOpen: false,
-            selectedLectureTimeIndex: null,
-        };
-    }
+
+    handleChange = (newKey) => {
+        this.props.onTabClick(newKey);
+    };
 
     render() {
-        return (
-            <CustomPaper
-                title={this.props.sectionName}
-            >
 
-                <div>
-                    <OrderCustomText name="street"/>
-                    <OrderCustomText name="streetNumber" size={Sizes.S}/>
-                    <OrderCustomText name="city"/>
-                    <OrderCustomText name="location" size={Sizes.XL}/>
-                    <OrderCustomText name="audienceType"/>
-                    <OrderCustomText name="daySchedule"/>
-                </div>
+        return <InternalLectureDetails/>;
 
-                <CustomToggleBox>
-                    <OrderCustomToggle name="projector"/>
-                    <OrderCustomToggle name="soundSystem"/>
-                    <OrderCustomToggle name="microphone"/>
-                    <OrderCustomToggle name="parking"/>
-                    <OrderCustomToggle name="orderApproved"/>
-                    <OrderCustomToggle name="sameAudience"/>
-
-                    <OrderCustomCheckBox name="rejected"/>
-
-                    {this.props.showCancelledCheckBox ? <OrderCustomCheckBox name="cancelled"/> : null}
-
-                </CustomToggleBox>
-
-                <RejectedOrderContainer/>
-
-                <CancelledOrderContainer/>
-
-                <LectureTimesTable
-                    onEditButton={(index) => this.setState(Object.assign({}, this.state, {
-                        dialogOpen: true,
-                        selectedLectureTimeIndex: index
-                    }))}
-                />
-
-                <LectureTimeEditDialog
-                    dialogOpen={this.state.dialogOpen}
-                    lectureTimeIndex={this.state.selectedLectureTimeIndex}
-                    onRequestClose={() => this.setState(Object.assign({}, this.state, {
-                        dialogOpen: false,
-                    }))}
-                />
-
-            </CustomPaper>
-        );
+        // const tabStyle = {
+        //     fontWeight: "bold"
+        // };
+        //
+        //
+        // return (
+        //     <Tabs
+        //         value={this.props.selectedTabKey}
+        //         onChange={this.handleChange.bind(this)}
+        //         inkBarStyle={{
+        //             backgroundColor: Colors.white,
+        //         }}
+        //         tabItemContainerStyle={{
+        //             backgroundColor: Colors.veryLightPurple,
+        //         }}
+        //     >
+        //         <Tab label={this.props.internalLabel} value={this.props.internalTabKey} style={tabStyle}>
+        //             <InternalLectureDetails/>
+        //         </Tab>
+        //
+        //         <Tab label={this.props.publicCourseLabel} value={this.props.publicCourseTabKey} style={tabStyle}>
+        //             <PublicCourseLectureDetails/>
+        //         </Tab>
+        //     </Tabs>
+        // );
     }
 }
 
-
 LectureDetailsSection.propTypes = {
-    sectionName: PropTypes.string,
-    showCancelledCheckBox: PropTypes.bool,
+    selectedTabKey: PropTypes.string.isRequired,
+    internalTabKey: PropTypes.string.isRequired,
+    publicCourseTabKey: PropTypes.string.isRequired,
+    internalLabel: PropTypes.string,
+    publicCourseLabel: PropTypes.string,
+    onTabClick: PropTypes.func.isRequired,
 };

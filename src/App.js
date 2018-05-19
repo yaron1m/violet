@@ -68,3 +68,5 @@ App.propTypes = {
     rtl: PropTypes.bool,
     children: PropTypes.node,
 };
+
+export const allowPublicCourses = false;

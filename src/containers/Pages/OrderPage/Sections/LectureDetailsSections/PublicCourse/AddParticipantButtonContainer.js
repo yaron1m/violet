@@ -1,0 +1,45 @@
+import {connect} from 'react-redux';
+import {getLabels} from "../../../../../../store/labels/reducer";
+import {updateSelectedOrder} from "../../../../../../store/selected/actions";
+import {RaisedButton} from "material-ui";
+import * as _ from "lodash";
+import * as Immutable from "seamless-immutable";
+import {getSelectedOrder} from "../../../../../../store/selected/reducer";
+
+export function addNewParticipant(selectedOrder, updateSelectedOrder) {
+    const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
+    const publicCourseParticipants = _.hasIn(thisSelectedOrder, 'publicCourseParticipants') ? thisSelectedOrder.publicCourseParticipants : [];
+    publicCourseParticipants.push({});
+
+    updateSelectedOrder("publicCourseParticipants", publicCourseParticipants);
+}
+
+function mapStateToProps(state) {
+    return {
+        label: getLabels(state).pages.orderPage.sections.publicCourse.addParticipant,
+        selectedOrder: getSelectedOrder(state),
+        disabled: !getSelectedOrder(state).publicCourseId,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
+    };
+}
+
+function mergeProps(stateProps, dispatchProps) {
+    return {
+        label: stateProps.label,
+        disabled: stateProps.disabled,
+        style: {
+            marginTop: 10,
+            marginBottom: 15,
+            marginRight: 20,
+        },
+        onClick: () => addNewParticipant(stateProps.selectedOrder, dispatchProps.updateSelectedOrder)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(RaisedButton);
+

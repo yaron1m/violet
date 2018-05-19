@@ -1,10 +1,13 @@
 import {orderPageLabels} from "./order-page-labels";
 import {organizationPageLabels} from "./organiztion-page-labels";
+import {publicCourseLabels} from "./PublicCourseLabels";
 
 const dashboardLabels = {
     navigationButtons: {
         newOrder: "הזמנה חדשה",
         allOrders: "כל ההזמנות",
+        newPublicCourse: "קורס ציבורי חדש",
+        allPublicCourses: "כל הקורסים הציבוריים",
     },
     infoBoxes: {
         futureLectures: "הרצאות עתידיות",
@@ -116,6 +119,15 @@ const allOrdersPageLabels = {
         {edit: "עריכה"}]
 };
 
+const allPublicCoursesPageLabels = {
+    title: "כל הקורסים הציבוריים",
+    tableHeaders: [
+        {courseName: "שם הקורס"},
+        {courseLocation: "מיקום הקורס"},
+        {date: "תאריך הרצאה"},
+        {edit: "עריכה"}]
+};
+
 const printPageLabels = {
     printOrderNumberLabel: "הזמנה מספר ",
     printNoOrderSelected: "לא נבחרה הזמנה"
@@ -130,7 +142,9 @@ export const pages = {
     expectedIncome: expectedIncomePageLabels,
     futureLecturesPage: futureLecturesPageLabels,
     allOrdersPage: allOrdersPageLabels,
+    allPublicCoursesPage: allPublicCoursesPageLabels,
     orderPage: orderPageLabels,
     organizationPage: organizationPageLabels,
     printPage: printPageLabels,
+    publicCoursePage: publicCourseLabels,
 };

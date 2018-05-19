@@ -8,18 +8,15 @@ import {
     updateSelectedOrder, updateSelectedOrganization
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
-import {
-    getSelectedOrder, getSelectedOrganization, isSelectedOrder,
-    isSelectedOrganization
-} from "../../../../store/selected/reducer";
+import {getSelectedOrder, getSelectedOrganization, isSelectedOrganization} from "../../../../store/selected/reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {closeDialog, openDialog, openSnackbar} from "../../../../store/appearance/actions";
-import {getOrderMissingFields} from "../../../../store/required-fields/reducer";
-import {hideRequiredFields, showRequiredFields} from "../../../../store/required-fields/actions";
-import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../../../../store/organizations/reducer";
+import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
+import {hideRequiredFields, showRequiredFields} from "../../../../store/appearance/actions";
+import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
 import {isEmptyValue} from "../../../../util/string-util";
-import {SaveOrderButton} from "./SaveOrder";
+import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))
@@ -60,14 +57,14 @@ export function shouldSave(state, dispatch) {
         return false;
     }
 
-    if (_.isEmpty(getOrderMissingFields(state))) {
-        return true;
+    if (isOrderMissingFields(state)) {
+        //Not ready for saving - there are missing fields
+        dispatch(showRequiredFields());
+        dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
+        return false;
     }
 
-    //Not ready for saving - there are missing fields
-    dispatch(showRequiredFields());
-    dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
-    return false;
+    return true;
 }
 
 function getOrganizationDialogActions(state, dispatch) {
@@ -113,7 +110,7 @@ async function saveNewOrganization(state, dispatch) {
 
     async function successSave() {
         await dispatch(setIsSelectedOrganization());
-        saveOrder(state, dispatch);
+        await saveOrder(state, dispatch);
         dispatch(closeDialog());
     }
 
@@ -122,19 +119,11 @@ async function saveNewOrganization(state, dispatch) {
         .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
 }
 
+
 function mapStateToProps(state) {
     return {
         tooltip: getLabels(state).pages.orderPage.actionButtons.save,
-        state,
-        labels: getLabels(state).pages.orderPage,
-        organizations: getOrganizations(state),
-        selectedOrganization: getSelectedOrganization(state),
-        isSelectedOrganization: isSelectedOrganization(state),
-        selectedOrder: getSelectedOrder(state),
-        isSelectedOrder: isSelectedOrder(state),
-        nextOrderId: getNextOrderId(state),
-        nextOrganizationId: getNextOrganizationId(state),
-        orderMissingFields: getOrderMissingFields(state),
+        state, //TODO - avoid passing state
     };
 }
 
@@ -153,4 +142,4 @@ function mergeProps(stateProps, dispatchProps) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SaveOrderButton);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SaveActionButton);

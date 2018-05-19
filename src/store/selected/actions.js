@@ -1,11 +1,14 @@
 import * as actionTypes from './action-types';
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderById} from "../orders/selectors";
-import {getSelectedOrder, getSelectedOrganization} from "./reducer";
+import {getSelectedOrder, getSelectedOrganization, getSelectedPublicCourse} from "./reducer";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";
 import calculateOrderStatus from '../../util/order-status'
+import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
+import * as _ from "lodash";
+import {isEmptyValue} from "../../util/string-util";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -47,9 +50,12 @@ export function sendSelectedOrganizationToDatabase() {
 // Orders:
 
 export function selectOrder(orderId) {
-    return async function selectOrder(dispatch, getState) {
+    return function selectOrder(dispatch, getState) {
         const order = getOrderById(getState(), orderId);
         dispatch(selectOrganization(order.organizationId));
+        if (!isEmptyValue(order, "publicCourseId"))
+            dispatch(selectPublicCourse(order.publicCourseId));
+
         dispatch({
             type: actionTypes.SELECT_ORDER,
             payload: order
@@ -82,6 +88,27 @@ export function updateLectureTime(key, value, lectureTimeIndex) {
     }
 }
 
+export function updatePublicCourseParticipant(key, value, participantIndex) {
+    return function updatePublicCourseParticipant(dispatch, getState) {
+        const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
+        publicCourseParticipants[participantIndex][key] = value;
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
+    }
+}
+
+export function removeParticipantsFromAllLectures() {
+    return function removeParticipantsFromAllLectures(dispatch, getState) {
+        if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
+            return;
+
+        const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
+        for (const participant in publicCourseParticipants) {
+            publicCourseParticipants[participant] = _.omitBy(publicCourseParticipants[participant], (value, key) => _.startsWith(key, "attendingLecture"));
+        }
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
+    }
+}
+
 export function setIsSelectedOrder() {
     return {
         type: actionTypes.SET_IS_SELECTED_ORDER,
@@ -96,6 +123,78 @@ export function sendSelectedOrderToDatabase() {
         return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
     }
 }
+
+// Public Courses:
+export function selectPublicCourse(courseId) {
+    return function selectPublicCourse(dispatch, getState) {
+        const publicCourse = getPublicCourseById(getState(), courseId);
+        dispatch(setIsSelectedPublicCourse());
+        dispatch({
+            type: actionTypes.SELECT_PUBLIC_COURSE,
+            payload: publicCourse
+        })
+    };
+}
+
+export function updateSelectedPublicCourse(key, value) {
+    return function updateSelectedPublicCourse(dispatch, getState) {
+        const currentPublicCourse = getSelectedPublicCourse(getState());
+        const selectedPublicCourse = changeImmutable(currentPublicCourse, key, value);
+        dispatch({
+            type: actionTypes.UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: selectedPublicCourse,
+        });
+    }
+}
+
+export function updatePublicCourseLecture(key, value, lectureId) {
+    return function updatePublicCourseLecture(dispatch, getState) {
+        const lectures = Immutable.asMutable(getSelectedPublicCourse(getState()).lectures, {deep: true});
+        lectures[lectureId][key] = value;
+        lectures[lectureId].duration = calculateDuration(lectures[lectureId]);
+        dispatch(updateSelectedPublicCourse("lectures", lectures));
+    }
+}
+
+export function addLectureToSelectedPublicCourse() {
+    return function addLectureToSelectedPublicCourse(dispatch, getState) {
+        const selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
+
+        let lectures;
+        if (!_.hasIn(selectedPublicCourse, 'lectures')) {
+            lectures = [{
+                id: 0,
+                active: true,
+            }];
+        }
+        else {
+            lectures = selectedPublicCourse.lectures;
+            const nextId = _.keys(lectures).length;
+            lectures[nextId] = {
+                id: nextId,
+                active: true,
+            };
+        }
+
+        dispatch(updateSelectedPublicCourse("lectures", lectures));
+    }
+}
+
+export function setIsSelectedPublicCourse() {
+    return {
+        type: actionTypes.SET_IS_SELECTED_PUBLIC_COURSE,
+    }
+}
+
+export function sendSelectedPublicCourseToDatabase() {
+    return async function sendSelectedPublicCourseToDatabase(dispatch, getState) {
+        await dispatch(updateSelectedPublicCourse("changedDate", new Date().toJSON()));
+        const selectedPublicCourse = getSelectedPublicCourse(getState());
+
+        return sendDataToDatabase('/publicCourses/' + selectedPublicCourse.id, selectedPublicCourse);
+    }
+}
+
 
 // Clear
 

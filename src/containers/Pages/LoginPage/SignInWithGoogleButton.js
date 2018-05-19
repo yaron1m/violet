@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import signInWithGoogleNormal from '../../../images/google-sign-in/btn_google_signin_light_normal_web@2x.png';
-import signInWithGooglePressed from '../../../images/google-sign-in/btn_google_signin_light_pressed_web@2x.png';
-import signInWithGoogleFocused from '../../../images/google-sign-in/btn_google_signin_light_focus_web@2x.png';
+import signInWithGoogleNormal from '../../../images/google-sign-in/GoogleSigninWeb.png';
+import signInWithGooglePressed from '../../../images/google-sign-in/GoogleSigninWebPressed.png';
+import signInWithGoogleFocused from '../../../images/google-sign-in/GoogleSigninFocus.png';
 
 class SignInWithGoogleButton extends React.Component {
 

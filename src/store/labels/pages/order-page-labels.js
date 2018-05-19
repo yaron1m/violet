@@ -60,7 +60,12 @@ const contactsSectionLabels = {
 };
 
 const lectureDetailsSectionLabels = {
-    sectionName: "פרטי ההרצאה",
+    internalLabelSectionName: "פרטי ההרצאה",
+    publicCourseSectionName: "הרשמה לקורס ציבורי",
+    tabs: {
+        internalLabel: "קורס פנים ארגוני",
+        publicCourseLabel: "קורס ציבורי",
+    },
     titles: {
         street: "רחוב",
         streetNumber: "מספר",
@@ -87,7 +92,6 @@ const lectureDetailsSectionLabels = {
 };
 
 const lectureTimesSectionLabels = {
-    sectionName: "הרצאות",
     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
         {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
     addRow: "הוסף הרצאה חדשה",
@@ -103,6 +107,22 @@ const lectureTimesSectionLabels = {
             tie: "עניבה"
         },
     }
+};
+
+const publicCourseSectionLabels = {
+    addParticipant: "הוסף משתתף",
+    titles: {
+        participantFirstName: "שם פרטי",
+        participantLastName: "שם משפחה",
+        participantEnglishFirstName: "שם פרטי באנגלית",
+        participantEnglishLastName: "שם משפחה באנגלית",
+        idNumber: "תעודת זהות",
+        phone: "טלפון",
+        email: "מייל",
+        job: "תפקיד",
+        isqMember: "חבר איגוד",
+        participantCost: "מחיר השתתפות",
+    },
 };
 
 const followUpSectionLabels = {
@@ -190,6 +210,7 @@ export const orderPageLabels = {
         contacts: contactsSectionLabels,
         lectureDetails: lectureDetailsSectionLabels,
         lectureTimes: lectureTimesSectionLabels,
+        publicCourse: publicCourseSectionLabels,
         followUp: followUpSectionLabels,
         payment: paymentSectionLabels,
         invoice: invoiceSectionLabels,
@@ -199,6 +220,7 @@ export const orderPageLabels = {
             ...contactsSectionLabels.titles,
             ...lectureDetailsSectionLabels.titles,
             ...lectureTimesSectionLabels.titles,
+            ...publicCourseSectionLabels.titles,
             ...followUpSectionLabels.titles,
             ...paymentSectionLabels.titles,
             ...invoiceSectionLabels.titles,

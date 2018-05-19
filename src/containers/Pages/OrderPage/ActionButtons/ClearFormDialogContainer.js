@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearSelected} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
-import {hideRequiredFields} from "../../../../store/required-fields/actions";
+import {hideRequiredFields} from "../../../../store/appearance/actions";
 import {FlatButton} from "material-ui";
 import PropTypes from "prop-types";
 import CustomDialog from "../../../../components/custom-components/custom-dialog";
