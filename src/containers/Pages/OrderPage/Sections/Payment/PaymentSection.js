@@ -1,12 +1,12 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
-import IconButton from "material-ui/IconButton";
 import CalculateIcon from 'material-ui-icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import CustomDivider from "../../../../../components/CustomComponents/CustomDivider";
+import CustomIconButton from "../../../../../components/CustomComponents/CustomIconButton";
 
 export default class PaymentSection extends React.Component {
 
@@ -22,13 +22,13 @@ export default class PaymentSection extends React.Component {
                 <CustomDivider/>
 
                 <div>
-                    <IconButton
+                    <CustomIconButton
                         onClick={this.props.calculateSum}
                         tooltip={this.props.buttonTooltip}
                         style={{marginBottom: 10, marginRight: 10}}
                     >
                         <CalculateIcon/>
-                    </IconButton>
+                    </CustomIconButton>
 
                     <OrderCustomText name="cost"/>
                     <OrderCustomText name="oneWayDistance" size={Sizes.M}/>

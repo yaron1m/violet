@@ -1,5 +1,4 @@
 import React from 'react';
-import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
@@ -8,6 +7,7 @@ import MoreIcon from 'material-ui-icons/MoreVert';
 import NotificationsIcon from 'material-ui-icons/Notifications';
 import Colors from "../../../util/consts/colors";
 import PropTypes from "prop-types";
+import CustomIconButton from "../../../components/CustomComponents/CustomIconButton";
 
 class LeftIcons extends React.Component {
 
@@ -28,18 +28,18 @@ class LeftIcons extends React.Component {
                         color: Colors.white
                     }}
                 >
-                    <IconButton
+                    <CustomIconButton
                         onClick={() => redirect('/actionRequired')}
                     >
                         <NotificationsIcon color={Colors.white}/>
-                    </IconButton>
+                    </CustomIconButton>
                 </Badge>
 
                 <IconMenu
                     iconButtonElement={
-                        <IconButton>
+                        <CustomIconButton>
                             <MoreIcon color={this.props.isProduction ? Colors.white : Colors.red}/>
-                        </IconButton>}
+                        </CustomIconButton>}
                     anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'left', vertical: 'top'}}
                 >

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import IconButton from "material-ui/IconButton";
 import PrintIcon from 'material-ui/svg-icons/action/print';
+import CustomIconButton from "../../../../components/CustomComponents/CustomIconButton";
 
 export default class PrintOrderButton extends React.Component {
     render() {
         return (
-            <IconButton
+            <CustomIconButton
                 tooltip={this.props.printLabel}
                 onClick={this.props.onClick}
             >
                 <PrintIcon/>
-            </IconButton>
+            </CustomIconButton>
         );
     }
 }

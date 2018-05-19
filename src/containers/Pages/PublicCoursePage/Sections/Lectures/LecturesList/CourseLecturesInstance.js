@@ -7,7 +7,7 @@ import {
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import Sizes from "../../../../../../util/consts/sizes";
-import {Avatar} from "material-ui";
+import Avatar from "material-ui/Avatar";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
 import CustomDivider from "../../../../../../components/CustomComponents/CustomDivider";
 

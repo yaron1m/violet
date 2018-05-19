@@ -3,11 +3,11 @@ import {TableRow, TableRowColumn} from 'material-ui/Table';
 import EditIcon from 'material-ui-icons/Edit';
 import DeleteIcon from 'material-ui-icons/Delete';
 import CheckIcon from 'material-ui-icons/AddCircleOutline';
-import IconButton from "material-ui/IconButton";
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
 import Colors from "../../util/consts/colors";
+import CustomIconButton from "../CustomComponents/CustomIconButton";
 
 class CustomTableRow extends React.Component {
 
@@ -41,21 +41,21 @@ class CustomTableRow extends React.Component {
         switch (headerKey) {
             case "edit":
                 return ( <div>
-                    <IconButton onClick={() => this.props.onEditButton(this.props.rowIndex)}>
+                    <CustomIconButton onClick={() => this.props.onEditButton(this.props.rowIndex)}>
                         <EditIcon/>
-                    </IconButton>
+                    </CustomIconButton>
                     {this.props.onDeleteButton ? (
-                        <IconButton onClick={() => this.props.onDeleteButton(this.props.rowIndex)}>
+                        <CustomIconButton onClick={() => this.props.onDeleteButton(this.props.rowIndex)}>
                             <DeleteIcon/>
-                        </IconButton>
+                        </CustomIconButton>
                     ) : null}
                 </div>);
 
             case "pick":
                 return (
-                    <IconButton onClick={() => this.props.onPickButton(this.props.rowIndex)}>
+                    <CustomIconButton onClick={() => this.props.onPickButton(this.props.rowIndex)}>
                         <CheckIcon/>
-                    </IconButton>);
+                    </CustomIconButton>);
             default:
                 return this.props.element[headerKey];
         }
