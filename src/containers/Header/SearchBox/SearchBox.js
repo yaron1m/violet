@@ -83,4 +83,4 @@ SearchBox.propTypes = {
     hintText: PropTypes.string.isRequired,
     dataSource: PropTypes.array,
     handleRequest: PropTypes.func,
-}
+};

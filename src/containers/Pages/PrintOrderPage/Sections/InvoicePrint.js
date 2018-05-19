@@ -1,5 +1,5 @@
 import React from 'react';
-import PrintSection from "../../../../components/custom-components/order-print/print-section";
+import PrintSection from "../../../../components/custom-components/OrderPrint/PrintSection";
 import Divider from 'material-ui/Divider';
 import {PrintOrderConnectedDate, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import PropTypes from "prop-types";

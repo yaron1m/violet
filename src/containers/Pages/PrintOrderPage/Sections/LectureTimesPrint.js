@@ -1,5 +1,5 @@
 import React from 'react';
-import PrintSection from "../../../../components/custom-components/order-print/print-section";
+import PrintSection from "../../../../components/custom-components/OrderPrint/PrintSection";
 import _ from 'lodash';
 import {isEmptyValue} from "../../../../util/string-util";
 import PropTypes from "prop-types";
