@@ -49,5 +49,5 @@ export function getPublicCoursesSummary(state) {
         return result;
     }
 
-    return _.map(courses, map)
+    return _.reverse(_.map(courses, map))
 }

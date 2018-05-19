@@ -123,7 +123,7 @@ async function saveNewOrganization(state, dispatch) {
 function mapStateToProps(state) {
     return {
         tooltip: getLabels(state).pages.orderPage.actionButtons.save,
-        state,
+        state, //TODO - avoid passing state
     };
 }
 
