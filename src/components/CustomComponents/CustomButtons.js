@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/IconButton';
+import IconButton from '@material-ui/core/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import Button from '@material-ui/core/Button';
 
 export class CustomIconButton extends React.Component {
