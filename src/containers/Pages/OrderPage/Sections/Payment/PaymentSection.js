@@ -1,12 +1,12 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
-import Divider from 'material-ui/Divider';
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
 import IconButton from "material-ui/IconButton";
 import CalculateIcon from 'material-ui-icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
+import CustomDivider from "../../../../../components/CustomComponents/CustomDivider";
 
 export default class PaymentSection extends React.Component {
 
@@ -19,7 +19,7 @@ export default class PaymentSection extends React.Component {
 
                 <ContactRowContainer isFinancialContacts={true}/>
 
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <CustomDivider/>
 
                 <div>
                     <IconButton

@@ -1,11 +1,11 @@
 import React from 'react';
 import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
-import Divider from 'material-ui/Divider';
 import {
     PrintOrderConnectedBoolean,
     PrintOrderConnectedText
 } from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import PropTypes from "prop-types";
+import CustomDivider from "../../../../components/CustomComponents/CustomDivider";
 
 export default class LectureDetailsPrintSection extends React.Component {
 
@@ -24,7 +24,7 @@ export default class LectureDetailsPrintSection extends React.Component {
                     values={{status: this.props.status}}
                 />
 
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <CustomDivider/>
 
                 <PrintOrderConnectedBoolean name="projector"/>
                 <PrintOrderConnectedBoolean name="soundSystem"/>

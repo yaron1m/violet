@@ -7,8 +7,9 @@ import {
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import Sizes from "../../../../../../util/consts/sizes";
-import {Avatar, Divider} from "material-ui";
+import {Avatar} from "material-ui";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
+import CustomDivider from "../../../../../../components/CustomComponents/CustomDivider";
 
 export default class CourseLecturesInstance extends React.Component {
 
@@ -43,7 +44,7 @@ export default class CourseLecturesInstance extends React.Component {
 
                     <GuestLecturerFieldsContainer lectureId={index}/>
                 </div>
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <CustomDivider/>
             </div>
         );
     }

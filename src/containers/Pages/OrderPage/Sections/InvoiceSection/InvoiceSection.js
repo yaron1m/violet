@@ -1,10 +1,10 @@
 import React from 'react';
-import Divider from 'material-ui/Divider';
 import Sizes from "../../../../../util/consts/sizes";
 import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {OrderCustomText, OrderCustomDatePicker} from "../ConnectedCustomComponents/OrderCustomFields";
 import ProformaInvoiceDateContainer from "./ProformaInvoiceDateContainer";
+import CustomDivider from "../../../../../components/CustomComponents/CustomDivider";
 
 export default class InvoiceSection extends React.Component {
     render() {
@@ -28,7 +28,7 @@ export default class InvoiceSection extends React.Component {
                     <OrderCustomText name="internalOrderNumber"/>
                 </div>
 
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <CustomDivider/>
 
                 <div style={style.flex}>
                     <OrderCustomText name="taxInvoiceNumber"/>

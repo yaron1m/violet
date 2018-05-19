@@ -1,8 +1,8 @@
 import React from 'react';
 import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
-import Divider from 'material-ui/Divider';
 import {PrintOrderConnectedDate, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import PropTypes from "prop-types";
+import CustomDivider from "../../../../components/CustomComponents/CustomDivider";
 
 export default class InvoicePrintSection extends React.Component {
 
@@ -14,7 +14,7 @@ export default class InvoicePrintSection extends React.Component {
                 <PrintOrderConnectedDate name="expectedPayDate"/>
                 <PrintOrderConnectedText name="internalOrderNumber"/>
 
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <CustomDivider/>
 
                 <PrintOrderConnectedText name="taxInvoiceNumber"/>
                 <PrintOrderConnectedText name="taxInvoiceDate"/>
