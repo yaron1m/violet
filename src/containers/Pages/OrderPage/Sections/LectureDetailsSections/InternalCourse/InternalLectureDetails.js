@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomPaper from "../../../../../../components/custom-components/CustomPaper";
 import LectureTimesTable from './LectureTimes/LectureTimesTable';
-import {CustomToggleBox} from "../../../../../../components/custom-components/custom-toggle";
+import {CustomToggleBox} from "../../../../../../components/custom-components/CustomToggle";
 import Sizes from "../../../../../../util/consts/sizes";
 import {
     OrderCustomCheckBox,

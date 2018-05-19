@@ -3,7 +3,7 @@ import {getSelectedOrganization} from "../../../../../store/selected/reducer";
 import {updateSelectedOrganization} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/custom-components/CustomTextField";
-import CustomToggle from "../../../../../components/custom-components/custom-toggle";
+import CustomToggle from "../../../../../components/custom-components/CustomToggle";
 import CustomAutoComplete from "../../../../../components/custom-components/custom-autocomplete";
 import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
 
