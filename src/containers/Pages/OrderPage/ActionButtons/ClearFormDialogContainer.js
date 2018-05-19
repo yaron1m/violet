@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {clearSelected} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {hideRequiredFields} from "../../../../store/appearance/actions";
-import {FlatButton} from "material-ui";
 import PropTypes from "prop-types";
-import CustomDialog from "../../../../components/custom-components/custom-dialog";
+import CustomDialog from "../../../../components/CustomComponents/CustomDialog";
+import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
 
 function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {
     return [
-        <FlatButton
+        <CustomFlatButton
             key={dialogText.clear}
             label={dialogText.clear}
             primary={true}
@@ -19,7 +19,7 @@ function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) 
                 closeDialog();
             }}
         />,
-        <FlatButton
+        <CustomFlatButton
             key={dialogText.cancel}
             label={dialogText.cancel}
             primary={true}

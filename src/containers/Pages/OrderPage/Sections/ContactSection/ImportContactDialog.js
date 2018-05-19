@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CustomDialog from "../../../../../components/custom-components/custom-dialog";
+import CustomDialog from "../../../../../components/CustomComponents/CustomDialog";
 import CustomTable from "../../../../../components/tables/CustomTable";
 import * as _ from 'lodash';
 import CustomTableRow from "../../../../../components/tables/CustomTableRow";

@@ -1,9 +1,9 @@
 import React from 'react';
-import PrintSection from "../../../../components/custom-components/order-print/print-section";
+import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
 import ContactsPrintRow from './ContactPrintRowContainer'
-import Divider from 'material-ui/Divider';
 import {PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import PropTypes from "prop-types";
+import CustomDivider from "../../../../components/CustomComponents/CustomDivider";
 
 export default class ContactsPrintSection extends React.Component {
     render() {
@@ -13,7 +13,7 @@ export default class ContactsPrintSection extends React.Component {
             >
                 <ContactsPrintRow isFinancial={true}/>
 
-                <Divider style={{marginTop: 10, marginBottom: 10}}/>
+                <CustomDivider/>
 
                 <PrintOrderConnectedText name="cost"/>
                 <PrintOrderConnectedText name="oneWayDistance"/>

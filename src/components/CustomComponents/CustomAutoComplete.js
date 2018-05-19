@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
 
-export default class CustomAutoComplete extends AbstractField {
+export default class CustomAutoComplete extends AbstractCustomField {
 
     render() {
         const style = {
@@ -39,7 +39,7 @@ export default class CustomAutoComplete extends AbstractField {
 }
 
 CustomAutoComplete.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
     dataSource: PropTypes.array.isRequired,
     disabled: PropTypes.bool,
     onNewRequest: PropTypes.func,

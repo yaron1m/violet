@@ -1,11 +1,11 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import * as _ from "lodash";
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../util/consts/colors";
 import PropTypes from "prop-types";
 
-export default class CustomToggle extends AbstractField {
+export default class CustomToggle extends AbstractCustomField {
 
     showError() {
         return this.state.value === undefined && _.includes(this.requiredFields, this.name);
@@ -42,7 +42,7 @@ export default class CustomToggle extends AbstractField {
 }
 
 CustomToggle.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
 };
 
 export class CustomToggleBox extends React.Component {

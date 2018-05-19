@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper, {flexStyle} from "../../../../../../components/custom-components/custom-paper";
+import CustomPaper, {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
 import {
     PublicCourseParticipantsCustomCheckBox,
     PublicCourseParticipantsCustomText
@@ -7,8 +7,8 @@ import {
 import Sizes from "../../../../../../util/consts/sizes";
 import _ from 'lodash';
 import PropTypes from "prop-types";
-import {IconButton} from "material-ui";
 import DeleteIcon from 'material-ui-icons/Delete';
+import {CustomIconButton} from "../../../../../../components/CustomComponents/CustomButtons";
 
 export default class PublicCourseParticipant extends React.Component {
 
@@ -34,9 +34,9 @@ export default class PublicCourseParticipant extends React.Component {
                     <PublicCourseParticipantsCustomCheckBox participantIndex={participantId}
                                                             name="isqMember"/>
                     <PublicCourseParticipantsCustomText participantIndex={participantId} name="participantCost"/>
-                    <IconButton onClick={this.props.onDelete}>
+                    <CustomIconButton onClick={this.props.onDelete}>
                         <DeleteIcon/>
-                    </IconButton>
+                    </CustomIconButton>
                 </div>
                 <div>
                     {_.map(_.orderBy(this.props.selectedPublicCourseLectures, x => x.date),

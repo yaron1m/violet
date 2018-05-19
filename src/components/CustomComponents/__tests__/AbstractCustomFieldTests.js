@@ -1,5 +1,5 @@
 import React from 'react';
-import AbstractField from "../abstract-field";
+import AbstractCustomField from "../AbstractCustomField";
 import Sizes from "../../../util/consts/sizes";
 
 function setup(otherProps) {
@@ -21,7 +21,7 @@ function setup(otherProps) {
         ...otherProps,
     };
 
-    return new AbstractField(props);
+    return new AbstractCustomField(props);
 
 }
 

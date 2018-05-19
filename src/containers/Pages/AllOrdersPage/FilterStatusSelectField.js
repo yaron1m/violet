@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getLabels, getStatusLabels} from "../../../store/labels/reducer";
 import Sizes from "../../../util/consts/sizes";
-import CustomSelectField from "../../../components/custom-components/custom-select-field";
+import CustomSelectField from "../../../components/CustomComponents/CustomSelectField";
 
 function getStatuses(state) {
     const statusObjects = _.map(getStatusLabels(state),

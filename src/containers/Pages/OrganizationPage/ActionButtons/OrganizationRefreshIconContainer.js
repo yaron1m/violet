@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import IconButton from "material-ui/IconButton";
 import {clearSelected} from "../../../../store/selected/actions";
 import RefreshIcon from 'material-ui-icons/Refresh';
+import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
 
 function mapStateToProps() {
     return {
@@ -16,4 +16,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IconButton);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomIconButton);

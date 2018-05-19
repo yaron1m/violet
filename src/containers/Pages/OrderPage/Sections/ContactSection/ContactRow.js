@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from "material-ui/IconButton";
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
 import Sizes from "../../../../../util/consts/sizes";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
+import {CustomIconButton} from "../../../../../components/CustomComponents/CustomButtons";
 
 export default class ContactRow extends React.Component {
     constructor() {
@@ -37,13 +37,13 @@ export default class ContactRow extends React.Component {
                     onRequestClose={() => this.setState({dialogOpen: false})}
                 />
 
-                <IconButton
+                <CustomIconButton
                     onClick={this.openContactImportDialog}
                     tooltip={this.props.buttonTooltip}
                     style={{marginBottom: 10, marginRight: 10}}
                 >
                     <PersonAddIcon/>
-                </IconButton>
+                </CustomIconButton>
 
                 <OrderCustomText name={getKey("contactFirstName", isFinancial)} size={Sizes.M}/>
                 <OrderCustomText name={getKey("contactLastName", isFinancial)} size={Sizes.M}/>

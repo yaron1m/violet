@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
+import CustomMenuItem from "./CustomMenuItem";
 
-export default class CustomSelectField extends AbstractField {
+export default class CustomSelectField extends AbstractCustomField {
 
     render() {
         const style = this.basicStyle;
@@ -20,19 +20,19 @@ export default class CustomSelectField extends AbstractField {
                 errorText={this.getErrorText()}
             >
 
-                {this.props.allowEmpty ? <MenuItem
+                {this.props.allowEmpty ? <CustomMenuItem
                     value={null}
                     primaryText="(-)"
                 /> : null}
 
                 {_.map(this.props.options, option =>
                     _.isObject(option) ?
-                        <MenuItem
+                        <CustomMenuItem
                             key={option.key}
                             value={option.key}
                             primaryText={option.label}
                         /> :
-                        <MenuItem
+                        <CustomMenuItem
                             key={option}
                             value={option}
                             primaryText={option}
@@ -44,7 +44,7 @@ export default class CustomSelectField extends AbstractField {
 }
 
 CustomSelectField.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
     options: PropTypes.array.isRequired,
     allowEmpty: PropTypes.bool,
     onChange: PropTypes.func

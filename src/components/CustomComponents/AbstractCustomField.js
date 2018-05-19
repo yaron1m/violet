@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import Sizes from "../../util/consts/sizes";
 
-export default class AbstractField extends React.Component {
+export default class AbstractCustomField extends React.Component {
     constructor(props) {
         super();
         this.validateProps(props);
@@ -53,7 +53,7 @@ export default class AbstractField extends React.Component {
     }
 }
 
-AbstractField.propTypes = {
+AbstractCustomField.propTypes = {
     name: PropTypes.string.isRequired,
     titles: PropTypes.object.isRequired,
     values: PropTypes.object.isRequired,

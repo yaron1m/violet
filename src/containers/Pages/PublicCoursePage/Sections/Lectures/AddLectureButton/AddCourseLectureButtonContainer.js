@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../../store/labels/reducer";
 import {addLectureToSelectedPublicCourse} from "../../../../../../store/selected/actions";
-import {RaisedButton} from "material-ui";
+import {CustomRaisedButton} from "../../../../../../components/CustomComponents/CustomButtons";
 
 function mapStateToProps(state) {
     return {
@@ -18,5 +18,5 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RaisedButton);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);
 

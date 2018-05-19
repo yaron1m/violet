@@ -1,5 +1,5 @@
 import React from 'react';
-import PrintSection from "../../../../components/custom-components/order-print/print-section";
+import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
 import {
     PrintOrderConnectedBoolean, PrintOrderConnectedDate,
     PrintOrderConnectedText

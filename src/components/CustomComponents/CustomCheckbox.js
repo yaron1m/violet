@@ -1,10 +1,10 @@
 import React from 'react';
 import Checkbox from 'material-ui/Checkbox';
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../util/consts/colors";
 import PropTypes from 'prop-types';
 
-export default class CustomCheckbox extends AbstractField {
+export default class CustomCheckbox extends AbstractCustomField {
 
     render() {
         const checked = this.state.value === true;
@@ -44,7 +44,7 @@ export default class CustomCheckbox extends AbstractField {
 }
 
 CustomCheckbox.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
     checkedColor: PropTypes.string,
 };
 

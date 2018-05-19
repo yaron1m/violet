@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AbstractField from "./abstract-field";
+import AbstractCustomField from "./AbstractCustomField";
 import DatePicker from 'material-ui/DatePicker';
 
-export default class CustomDatePicker extends AbstractField {
+export default class CustomDatePicker extends AbstractCustomField {
 
     render() {
         const style = {
@@ -40,7 +40,7 @@ export default class CustomDatePicker extends AbstractField {
 }
 
 CustomDatePicker.propTypes = {
-    ...AbstractField.propTypes,
+    ...AbstractCustomField.propTypes,
     disabled: PropTypes.bool,
 };
 

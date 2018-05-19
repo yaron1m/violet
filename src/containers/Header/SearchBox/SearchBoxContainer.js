@@ -8,9 +8,9 @@ import {getOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
 import Colors from "../../../util/consts/colors";
 import * as _ from "lodash";
-import {MenuItem} from "material-ui";
 import EventIcon from 'material-ui-icons/EventNote';
 import BusinessIcon from 'material-ui-icons/Business';
+import CustomMenuItem from "../../../components/CustomComponents/CustomMenuItem";
 
 const sourceTypes = {
     organization: 0,
@@ -53,7 +53,7 @@ export function getDataSource(state) {
                     type: sourceTypes.organization,
                     organizationId: org.id
                 },
-                value: (<MenuItem
+                value: (<CustomMenuItem
                     primaryText={text}
                     leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
                 />)
@@ -68,7 +68,7 @@ export function getDataSource(state) {
                 orderId: order.id,
                 organizationId: order.organizationId,
             },
-            value: (<MenuItem
+            value: (<CustomMenuItem
                 primaryText={order.id.toString() + " - " + organizations[order.organizationId].organizationName}
                 leftIcon={<EventIcon color={Colors.orderIconColor}/>}
             />)

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import RaisedButton from "material-ui/RaisedButton";
 import {getLabels} from "../../../store/labels/reducer";
 import PropTypes from "prop-types";
+import {CustomRaisedButton} from "../../../components/CustomComponents/CustomButtons";
 
 function mapStateToProps(state) {
     return {
@@ -17,7 +17,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     }
 }
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(RaisedButton);
+const Container = connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);
 
 Container.propTypes = {
     onClick: PropTypes.func.isRequired,

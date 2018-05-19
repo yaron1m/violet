@@ -1,9 +1,9 @@
 import React from 'react';
-import IconButton from 'material-ui/IconButton';
 import SearchIcon from 'material-ui-icons/Search';
 import AutoComplete from 'material-ui/AutoComplete';
 import Colors from "../../../util/consts/colors";
 import PropTypes from 'prop-types';
+import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
 
 export default class SearchBox extends React.Component {
 
@@ -53,9 +53,9 @@ export default class SearchBox extends React.Component {
 
         return (
             <div style={styles.container}>
-                <IconButton style={styles.iconButton}>
+                <CustomIconButton style={styles.iconButton}>
                     <SearchIcon color={Colors.white}/>
-                </IconButton>
+                </CustomIconButton>
 
                 <AutoComplete
                     dataSource={this.props.dataSource}
@@ -83,4 +83,4 @@ SearchBox.propTypes = {
     hintText: PropTypes.string.isRequired,
     dataSource: PropTypes.array,
     handleRequest: PropTypes.func,
-}
+};

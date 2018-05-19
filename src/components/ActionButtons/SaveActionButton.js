@@ -1,16 +1,16 @@
 import React from 'react';
-import IconButton from "material-ui/IconButton";
 import SaveIcon from 'material-ui-icons/Save';
 import PropTypes from "prop-types";
+import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
 export class SaveActionButton extends React.Component {
     render() {
         return (
-            <IconButton
+            <CustomIconButton
                 onClick={this.props.onClick}
                 tooltip={this.props.tooltip}>
                 <SaveIcon/>
-            </IconButton>
+            </CustomIconButton>
         );
     }
 }
