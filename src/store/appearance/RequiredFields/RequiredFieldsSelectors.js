@@ -39,12 +39,6 @@ export function isOrderMissingFields(state) {
     return false;
 }
 
-
-// function getLectrueDetailsSectionFields(){
-//
-// }
-
-
 function removeInternalOrderNumber(requiredFieldsByEntity, selectedOrganization) {
     if (selectedOrganization.internalOrderIdRequired)
         return requiredFieldsByEntity;
@@ -67,7 +61,7 @@ function getRequiredFieldsByEntity(selectedOrder, showRequiredFields) {
     if (!selectedOrder.status)
         return requiredFields.contact;
 
-    const statusRequiredFields = requiredFields[selectedOrder.status]; //TODO Remove the long list from state and store it statically
+    const statusRequiredFields = requiredFields[selectedOrder.status];
 
     if (selectedOrder.followUpRequired)
         return mergerRequiredFields(statusRequiredFields, requiredFields.followUpRequired);

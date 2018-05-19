@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class PublicCoursePageTitle extends React.Component {
-
+//TODO export this to a component
     render() {
         const style = {
             div: {
