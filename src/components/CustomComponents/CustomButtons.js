@@ -51,7 +51,6 @@ export class CustomFlatButton extends React.Component {
     render() {
         return (
             <FlatButton
-                key={this.props.key}
                 onClick={this.props.onClick}
                 label={this.props.label}
                 primary={this.props.primary}
@@ -61,7 +60,6 @@ export class CustomFlatButton extends React.Component {
 }
 
 CustomFlatButton.propTypes = {
-    key: PropTypes.any,
     label: PropTypes.string,
     onClick: PropTypes.func,
     primary: PropTypes.bool,
