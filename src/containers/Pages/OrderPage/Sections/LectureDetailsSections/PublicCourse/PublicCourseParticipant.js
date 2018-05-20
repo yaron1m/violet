@@ -7,7 +7,7 @@ import {
 import Sizes from "../../../../../../util/consts/sizes";
 import _ from 'lodash';
 import PropTypes from "prop-types";
-import DeleteIcon from 'material-ui-icons/Delete';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {CustomIconButton} from "../../../../../../components/CustomComponents/CustomButtons";
 
 export default class PublicCourseParticipant extends React.Component {
