@@ -25,10 +25,12 @@ class CustomText extends AbstractCustomField {
                 value={this.state.value}
                 onChange={event => this.handleChange(event.target.value)}
                 fullWidth={this.props.fullWidth}
-                multiline
-                rowsMax={4}
                 disabled={this.props.disabled}
                 error={super.shouldShowError()}
+
+                type={this.props.type}
+                multiline={this.props.type !=="date"}
+                rowsMax={4}
 
                 inputProps={{style}}
                 className={this.props.classes.textField}
@@ -39,13 +41,14 @@ class CustomText extends AbstractCustomField {
 
 CustomText.propTypes = {
     ...AbstractCustomField.propTypes,
-    fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
+    type: PropTypes.string,
 };
 
 CustomText.defaultProps = {
     disabled: false,
     fullWidth: false,
+    type: null,
 };
 
 export default withStyles(styles)(CustomText);
