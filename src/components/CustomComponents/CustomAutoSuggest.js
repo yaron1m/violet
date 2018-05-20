@@ -135,7 +135,7 @@ class CustomAutoSuggest extends React.Component {
             value: newValue,
         });
 
-        this.props.handleChange(newValue);
+        // this.props.handleChange(newValue);
     };
 
     onSuggestionSelected(event, {suggestion}) {
@@ -176,7 +176,7 @@ class CustomAutoSuggest extends React.Component {
 
 CustomAutoSuggest.propTypes = {
     suggestions: PropTypes.array.isRequired,
-    handleChange: PropTypes.func,
+    // handleChange: PropTypes.func,
     handleRequest: PropTypes.func,
     hintText: PropTypes.string,
     maxSearchResults: PropTypes.number,
