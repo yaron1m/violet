@@ -7,6 +7,7 @@ import {theme} from './theme-default';
 import Colors from "./util/consts/colors";
 import PropTypes from 'prop-types';
 import {MuiThemeProvider} from '@material-ui/core/styles';
+import RTL from "./jss-rtl";
 
 export default class App extends React.Component {
 
@@ -44,23 +45,25 @@ export default class App extends React.Component {
 
         return (
             <MuiThemeProvider theme={theme}>
-                <div dir={this.props.rtl ? "rtl" : ""}>
+                <RTL>
+                    <div dir={this.props.rtl ? "rtl" : ""}>
 
-                    <Header/>
+                        <Header/>
 
-                    <div style={styles.app}>
-                        <div style={styles.container}>
-                            {this.appBody()}
+                        <div style={styles.app}>
+                            <div style={styles.container}>
+                                {this.appBody()}
+                            </div>
                         </div>
-                    </div>
 
-                    <div style={styles.footer}>
-                        Copyright v1.3.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
-                    </div>
+                        <div style={styles.footer}>
+                            Copyright v1.3.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
+                        </div>
 
-                    <AppDialog/>
-                    <AppSnackbar/>
-                </div>
+                        <AppDialog/>
+                        <AppSnackbar/>
+                    </div>
+                </RTL>
             </MuiThemeProvider>
         );
     }
@@ -72,4 +75,4 @@ App.propTypes = {
     children: PropTypes.node,
 };
 
-export const allowPublicCourses = false;
+export const allowPublicCourses = true;
