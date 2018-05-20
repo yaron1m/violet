@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AutoComplete from 'material-ui/AutoComplete';
 import AbstractCustomField from "./AbstractCustomField";
 import CustomAutoSuggest from "./CustomAutoSuggest";
 

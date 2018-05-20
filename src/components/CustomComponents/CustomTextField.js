@@ -2,12 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import AbstractCustomField from "./AbstractCustomField";
+import {withStyles} from '@material-ui/core/styles';
 
-export default class CustomText extends AbstractCustomField {
+const styles = () => ({
+    textField: {
+        marginRight: 20,
+        marginBottom: 10,
+        verticalAlign: "bottom",
+    },
+});
+
+
+class CustomText extends AbstractCustomField {
 
     render() {
         const style = {
-            ...this.basicStyle,
             width: this.width,
         };
 
@@ -22,6 +31,10 @@ export default class CustomText extends AbstractCustomField {
                 rowsMax={4}
                 disabled={this.props.disabled}
                 error={super.shouldShowError()}
+
+                inputProps={{style}}
+                className={this.props.classes.textField}
+
                 // style={style}
                 // floatingLabelFixed={true}
             />
@@ -39,3 +52,5 @@ CustomText.defaultProps = {
     disabled: false,
     fullWidth: false,
 };
+
+export default withStyles(styles)(CustomText);

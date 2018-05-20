@@ -1,11 +1,4 @@
 import React from 'react';
-// import {
-//     Table,
-//     TableBody,
-//     TableHeader,
-//     TableHeaderColumn,
-//     TableRow,
-// } from 'material-ui/Table';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
