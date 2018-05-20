@@ -25,7 +25,7 @@ export default class PaymentSection extends React.Component {
                     <CustomIconButton
                         onClick={this.props.calculateSum}
                         tooltip={this.props.buttonTooltip}
-                        style={{marginBottom: 10, marginRight: 10}}
+                        style={{marginBottom: 10, marginLeft: 10}}
                     >
                         <CalculateIcon/>
                     </CustomIconButton>

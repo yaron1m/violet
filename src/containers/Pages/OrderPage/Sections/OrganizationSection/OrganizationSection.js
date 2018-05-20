@@ -36,7 +36,8 @@ export default class OrganizationSection extends React.Component {
                     <OrganizationCustomText name="companyId" size={Sizes.M}/>
                     <OrganizationCustomAutoComplete name="paymentConditions"
                                                     dataSource={_.values(this.props.paymentConditions)}/>
-                    <OrganizationCustomText name="howReachedUs"/>
+
+                    <OrganizationCustomText name="howReachedUs" size={Sizes.XL}/>
 
                     {this.props.fullDetails ?
                         <OrganizationCustomToggle name="internalOrderIdRequired"/>

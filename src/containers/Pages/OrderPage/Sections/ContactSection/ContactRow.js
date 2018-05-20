@@ -40,7 +40,7 @@ export default class ContactRow extends React.Component {
                 <CustomIconButton
                     onClick={this.openContactImportDialog}
                     tooltip={this.props.buttonTooltip}
-                    style={{marginBottom: 10, marginRight: 10}}
+                    style={{marginBottom: 10, marginLeft: 10}}
                 >
                     <PersonAddIcon/>
                 </CustomIconButton>
