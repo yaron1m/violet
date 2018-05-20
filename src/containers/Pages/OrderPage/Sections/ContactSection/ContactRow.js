@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PersonAddIcon from 'material-ui-icons/PersonAdd';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
 import Sizes from "../../../../../util/consts/sizes";

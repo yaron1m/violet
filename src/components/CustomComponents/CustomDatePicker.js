@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AbstractCustomField from "./AbstractCustomField";
-import DatePicker from 'material-ui/DatePicker';
+import TextField from '@material-ui/core/TextField';
 
 export default class CustomDatePicker extends AbstractCustomField {
 
@@ -17,23 +17,18 @@ export default class CustomDatePicker extends AbstractCustomField {
             },
         };
 
+
+        //TODO parse date from old format
         return (
-            <DatePicker
-                style={style.field}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
+            <TextField
+                type="date"
+                helperText={this.title}
+                value={this.state.value}
+                onChange={event => this.handleChange(event.target.value)}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                value={this.state.value ? new Date(this.state.value) : null}
-                onChange={(nothing, date) => this.handleChange(date.toJSON())}
-                errorText={super.getErrorText()}
-
-                textFieldStyle={style.datePickerTextFieldStyle}
-                DateTimeFormat={window.Intl.DateTimeFormat}
-                okLabel="אישור"
-                cancelLabel="ביטול"
-                locale='he-IL'
-                firstDayOfWeek={0}
+                error={super.shouldShowError()}
+                // style={style.field}
             />
         );
     }
