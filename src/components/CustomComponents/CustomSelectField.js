@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
-import SelectField from 'material-ui/SelectField';
+import Select from '@material-ui/core/Select';
 import AbstractCustomField from "./AbstractCustomField";
 import CustomMenuItem from "./CustomMenuItem";
 
@@ -11,13 +11,13 @@ export default class CustomSelectField extends AbstractCustomField {
         const style = this.basicStyle;
 
         return (
-            <SelectField
+            <Select
                 style={style}
                 value={this.state.value}
-                onChange={(event, key, value) => this.handleChange(value)}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
-                errorText={this.getErrorText()}
+                onChange={(event) => this.handleChange(event.target.value)}
+                // floatingLabelText={this.title}
+                // floatingLabelFixed={true}
+                // errorText={this.getErrorText()}
             >
 
                 {this.props.allowEmpty ? <CustomMenuItem
@@ -38,7 +38,7 @@ export default class CustomSelectField extends AbstractCustomField {
                             primaryText={option}
                         />
                 )}
-            </SelectField>
+            </Select>
         );
     }
 }
