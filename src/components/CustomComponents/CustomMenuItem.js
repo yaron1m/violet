@@ -8,7 +8,7 @@ export default class CustomMenuItem extends React.Component {
             <MenuItem
                 value={this.props.value}
                 onClick={this.props.onClick}
-                leftIcon={this.props.leftIcon}
+              //  leftIcon={this.props.leftIcon}
             >
                 {this.props.primaryText}
             </MenuItem>
@@ -17,9 +17,8 @@ export default class CustomMenuItem extends React.Component {
 }
 
 CustomMenuItem.propTypes = {
-    key: PropTypes.string,
     value: PropTypes.any,
     primaryText: PropTypes.string,
     onClick: PropTypes.func,
-    leftIcon: PropTypes.node,
+    //leftIcon: PropTypes.node,
 };

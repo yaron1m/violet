@@ -38,7 +38,7 @@ export default class CustomCheckbox extends AbstractCustomField {
                     <Checkbox
                         checked={checked}
                         onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
-
+                        value={this.title}
                         // style={style.checkbox}
                         // labelStyle={style.labelStyle}
                         // labelPosition="right"

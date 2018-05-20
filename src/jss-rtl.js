@@ -17,7 +17,7 @@ const provider = function RTL(props) {
             {props.children}
         </JssProvider>
     );
-}
+};
 
 provider.propTypes = {
     children: PropTypes.node.isRequired,

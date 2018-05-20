@@ -22,14 +22,14 @@ class CustomText extends AbstractCustomField {
         return (
             <TextField
                 helperText={this.title}
-                value={this.state.value}
+                value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
                 onChange={event => this.handleChange(event.target.value)}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
                 error={super.shouldShowError()}
 
                 type={this.props.type}
-                multiline={this.props.type !=="date"}
+                multiline={this.props.type !== "date"}
                 rowsMax={4}
 
                 inputProps={{style}}
