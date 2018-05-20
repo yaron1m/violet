@@ -1,5 +1,6 @@
 import React from 'react';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckIcon from '@material-ui/icons/AddCircleOutline';
@@ -25,12 +26,12 @@ class CustomTableRow extends React.Component {
         }
 
         return (
-            <TableRowColumn key={key}>
+            <TableCell key={key}>
                 <div style={{cursor: "pointer"}}
                      onClick={() => clickAction(this.props.onEditButton, this.props.rowIndex)}>
                     {this.getCellContent.bind(this)(headerKey)}
                 </div>
-            </TableRowColumn>);
+            </TableCell>);
     }
 
     getCellContent(headerKey) {
@@ -71,10 +72,10 @@ class CustomTableRow extends React.Component {
 
         return (
             <TableRow
-                style={this.props.error ? {color: Colors.red} : {}}
-                selectable={false}
-                hoverable={true}
-                key={this.props.rowIndex}
+                // style={this.props.error ? {color: Colors.red} : {}}
+                // selectable={false}
+                // hoverable={true}
+                // key={this.props.rowIndex}
             >
                 {_.map(headerKeys, this.getCell.bind(this))}
             </TableRow>
