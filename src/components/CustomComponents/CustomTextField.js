@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import AbstractCustomField from "./AbstractCustomField";
 
 export default class CustomText extends AbstractCustomField {
@@ -11,18 +11,19 @@ export default class CustomText extends AbstractCustomField {
             width: this.width,
         };
 
+        //TODO move helper to right
         return (
             <TextField
-                style={style}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
-                fullWidth={this.props.fullWidth}
-                disabled={this.props.disabled}
+                helperText={this.title}
                 value={this.state.value}
-                onChange={(event, newValue) => this.handleChange(newValue)}
-                multiLine={true}
+                onChange={event => this.handleChange(event.target.value)}
+                fullWidth={this.props.fullWidth}
+                multiline
                 rowsMax={4}
-                errorText={super.getErrorText()}
+                disabled={this.props.disabled}
+                error={super.shouldShowError()}
+                // style={style}
+                // floatingLabelFixed={true}
             />
         );
     }
