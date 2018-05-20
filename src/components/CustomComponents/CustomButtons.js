@@ -20,7 +20,6 @@ export class CustomIconButton extends React.Component {
 
         return (
             <Tooltip title={this.props.tooltip}>
-
                 <IconButton
                     style={this.props.style}
                     onClick={this.props.onClick}

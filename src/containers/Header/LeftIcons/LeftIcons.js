@@ -1,14 +1,22 @@
 import React from 'react';
 import Badge from '@material-ui/core/Badge';
-// import IconMenu from "@material-ui/core/IconMenu";
 import {redirect} from "../../../util/history-util";
 import ExitIcon from '@material-ui/icons/ExitToApp';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-// import Colors from "../../../util/consts/colors";
+import Colors from "../../../util/consts/colors";
 import PropTypes from "prop-types";
 import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
-// import CustomMenuItem from "../../../components/CustomComponents/CustomMenuItem";
-import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = () => ({
+    icon: {
+        color: Colors.white,
+        visibility: "visible",
+    },
+    hiddenBadge: {
+        visibility: "hidden",
+    }
+});
 
 class LeftIcons extends React.Component {
 
@@ -16,37 +24,35 @@ class LeftIcons extends React.Component {
         const style = {
             container: {
                 marginTop: 3,
-                ...flexStyle
+                display: "flex",
+                marginLeft: -40,
             },
         };
 
-        //TODO add badge color
-        //TODO add icon color
         return (
+
             <div style={style.container}>
-                <Badge
-                    badgeContent={this.props.notificationCount === 0 ? "" : this.props.notificationCount}
-                    style={{padding: 0}}
-                    color="secondary"
-                    // badgeStyle={{
-                    //     backgroundColor: this.props.notificationCount === 0 ? null : Colors.red,
-                    //     color: Colors.white
-                    // }}
+
+                <CustomIconButton
+                    onClick={() => redirect('/actionRequired')}
                 >
-                    <CustomIconButton
-                        onClick={() => redirect('/actionRequired')}
+                    <Badge
+                        hidden
+                        badgeContent={this.props.notificationCount}
+                        color="secondary"
+                        className={this.props.notificationCount === 0 ? this.props.classes.hiddenBadge : null}
                     >
                         <NotificationsIcon
-                            //color={Colors.white}
+                            className={this.props.classes.icon}
                         />
-                    </CustomIconButton>
-                </Badge>
+                    </Badge>
+                </CustomIconButton>
 
                 <CustomIconButton
                     onClick={this.props.signOut}
                 >
                     <ExitIcon
-                        //color={this.props.isProduction ? Colors.white : Colors.red}
+                        className={this.props.classes.icon}
                     />
                 </CustomIconButton>
             </div>
@@ -59,6 +65,7 @@ LeftIcons.propTypes = {
     logOutLabel: PropTypes.string,
     isProduction: PropTypes.bool,
     signOut: PropTypes.func,
+    classes: PropTypes.object,
 };
 
-export default LeftIcons;
+export default withStyles(styles)(LeftIcons);
