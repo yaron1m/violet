@@ -29,7 +29,7 @@ class CustomText extends AbstractCustomField {
                 error={super.shouldShowError()}
 
                 type={this.props.type}
-                multiline={this.props.type !== "date"}
+                multiline={this.props.type !== "date" && this.props.type !== "email" && this.props.type !== "password"}
                 rowsMax={4}
 
                 inputProps={{style}}

@@ -1,11 +1,11 @@
 import React from 'react';
 import PageTitle from '../../../components/PageTitle';
 import PropTypes from "prop-types";
-import LoginButton from "./LoginButton";
-import EmailField from "./EmailField";
-import PasswordField from "./PasswordField";
+import LoginField from "./LoginField";
 import SignInWithGoogleButtonContainer from "./SignInWithGoogleButtonContainer";
 import CustomPaper from "../../../components/CustomComponents/CustomPaper";
+import LoginButton from "./LoginButton";
+import Colors from "../../../util/consts/colors";
 
 export default class LoginPage extends React.Component {
 
@@ -52,26 +52,31 @@ export default class LoginPage extends React.Component {
                 <PageTitle title={this.props.title}/>
 
                 <CustomPaper style={style.paper}>
-                    <EmailField
-                        onChange={(event) => (this.setState(Object.assign({}, this.state, {
-                            email: event.target.value,
+                    <LoginField
+                        type="email"
+                        value={this.state.email}
+                        onChange={(key, newValue) => (this.setState(Object.assign({}, this.state, {
+                            email: newValue,
                             errorMessage: "",
                         })))}
 
                         onKeyDown={this.signInRequest.bind(this)}
                     />
 
-                    <PasswordField
-                        onChange={((event) => {
-                            this.setState(Object.assign({}, this.state, {
-                                password: event.target.value,
-                                errorMessage: "",
-                            }))
-                        })}
-                        errorText={this.state.errorMessage}
+                    <LoginField
+                        type="password"
+                        value={this.state.password}
+                        onChange={(key, newValue) => (this.setState(Object.assign({}, this.state, {
+                            password: newValue,
+                            errorMessage: "",
+                        })))}
 
                         onKeyDown={this.signInRequest.bind(this)}
                     />
+
+                    <div style={{color: Colors.red}}>
+                        {this.state.errorMessage}
+                    </div>
 
                     <LoginButton
                         onClick={this.signInRequest.bind(this)}

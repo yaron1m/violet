@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import Button from '@material-ui/core/Button';
 
 export class CustomIconButton extends React.Component {
@@ -41,13 +40,15 @@ CustomIconButton.propTypes = {
 export class CustomRaisedButton extends React.Component {
     render() {
         return (
-            <RaisedButton
+            <Button
                 style={this.props.style}
                 onClick={this.props.onClick}
-                label={this.props.label}
                 disabled={this.props.disabled}
                 primary={this.props.primary}
-            />
+                color="primary"
+            >
+                {this.props.label}
+            </Button>
         );
     }
 }
