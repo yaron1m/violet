@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper, {flexStyle} from "../../../../../components/CustomComponents/CustomPaper";
 import * as _ from "lodash";
 import PropTypes from 'prop-types';
 import Sizes from "../../../../../util/consts/sizes";
@@ -20,27 +20,29 @@ export default class OrganizationSection extends React.Component {
 
         return (
             <CustomPaper title={this.props.sectionName}>
-                <OrganizationCustomAutoComplete
-                    name="organizationName"
-                    dataSource={organizationNamesObjects}
-                    onNewRequest={chosenRequest => {
-                        this.props.selectOrganization(chosenRequest.value);
-                        this.props.updateSelectedOrder("organizationId", chosenRequest.value);
-                    }}
-                    size={Sizes.XXL}
-                />
-                <OrganizationCustomText name="organizationAddress"/>
-                <OrganizationCustomText name="organizationCity" size={Sizes.M}/>
-                <OrganizationCustomText name="organizationPostalCode" size={Sizes.M}/>
-                <OrganizationCustomText name="companyId" size={Sizes.M}/>
-                <OrganizationCustomAutoComplete name="paymentConditions"
-                                                dataSource={_.values(this.props.paymentConditions)}/>
-                <OrganizationCustomText name="howReachedUs"/>
+                <div style={flexStyle}>
+                    <OrganizationCustomAutoComplete
+                        name="organizationName"
+                        dataSource={organizationNamesObjects}
+                        onNewRequest={chosenRequest => {
+                            this.props.selectOrganization(chosenRequest.value);
+                            this.props.updateSelectedOrder("organizationId", chosenRequest.value);
+                        }}
+                        size={Sizes.XXL}
+                    />
+                    <OrganizationCustomText name="organizationAddress"/>
+                    <OrganizationCustomText name="organizationCity" size={Sizes.M}/>
+                    <OrganizationCustomText name="organizationPostalCode" size={Sizes.M}/>
+                    <OrganizationCustomText name="companyId" size={Sizes.M}/>
+                    <OrganizationCustomAutoComplete name="paymentConditions"
+                                                    dataSource={_.values(this.props.paymentConditions)}/>
+                    <OrganizationCustomText name="howReachedUs"/>
 
-                {this.props.fullDetails ?
-                    <OrganizationCustomToggle name="internalOrderIdRequired"/>
-                    : null
-                }
+                    {this.props.fullDetails ?
+                        <OrganizationCustomToggle name="internalOrderIdRequired"/>
+                        : null
+                    }
+                </div>
             </CustomPaper>
         );
     }

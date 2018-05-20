@@ -22,8 +22,10 @@ export default class CustomToggle extends AbstractCustomField {
             labelStyle: {
                 marginRight: 45,
                 marginLeft: 10,
-                color: this.showError() ? Colors.red : Colors.black,
             },
+        };
+        const labelStyle = {
+            color: this.showError() ? Colors.red : Colors.black
         };
 
         return (
@@ -31,16 +33,12 @@ export default class CustomToggle extends AbstractCustomField {
                 <FormControlLabel
                     control={
                         <Switch
-                            style={style.toggle}
                             checked={this.state.value === true}
                             onChange={(event, checked) => this.handleChange(checked)}
+                            color="primary"
                         />
                     }
-                    label={this.title}
-                    // labelStyle={style.labelStyle}
-                    //labelPosition="right"
-
-
+                    label={<span style={labelStyle}>{this.title}</span>}
                 />
             </div>
 
