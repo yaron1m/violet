@@ -1,19 +1,33 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Button from '@material-ui/core/Button';
 
 export class CustomIconButton extends React.Component {
     render() {
+        if (!this.props.tooltip)
+            return (
+                <IconButton
+                    style={this.props.style}
+                    onClick={this.props.onClick}
+                >
+                    {this.props.children}
+                </IconButton>
+            );
+
+
         return (
-            <IconButton
-                style={this.props.style}
-                onClick={this.props.onClick}
-                tooltip={this.props.tooltip}
-            >
-                {this.props.children}
-            </IconButton>
+            <Tooltip title={this.props.tooltip}>
+
+                <IconButton
+                    style={this.props.style}
+                    onClick={this.props.onClick}
+                >
+                    {this.props.children}
+                </IconButton>
+            </Tooltip>
         );
     }
 }

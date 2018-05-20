@@ -1,5 +1,5 @@
 import React from 'react';
-import SaveIcon from 'material-ui-icons/Save';
+import SaveIcon from '@material-ui/icons/Save';
 import PropTypes from "prop-types";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
