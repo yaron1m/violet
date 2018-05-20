@@ -6,17 +6,17 @@ import CustomAutoSuggest from "./CustomAutoSuggest";
 export default class CustomAutoComplete extends AbstractCustomField {
 
     render() {
-        const style = {
-            autoComplete: {
-                marginRight: 20,
-                width: this.width,
-            },
-            textField: {
-                verticalAlign: "bottom",
-                marginBottom: 10,
-                width: this.width,
-            },
-        };
+        // const style = {
+        //     autoComplete: {
+        //         marginRight: 20,
+        //         width: this.width,
+        //     },
+        //     textField: {
+        //         verticalAlign: "bottom",
+        //         marginBottom: 10,
+        //         width: this.width,
+        //     },
+        // };
 
         //TODO this is not working yet, therer are problems with the functions
         return (

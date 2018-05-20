@@ -11,20 +11,24 @@ export default class CustomCheckbox extends AbstractCustomField {
     render() {
         const checked = this.state.value === true;
 
-        const style = {
-            checkbox: {
-                marginBottom: 6,
-                marginTop: 6,
-                paddingBottom: 9,
-            },
-            labelStyle: {
-                marginRight: 20,
-                color: checked ? this.props.checkedColor : Colors.black,
-            },
-            iconStyle: {
-                fill: checked ? this.props.checkedColor : null,
-                borderColor: Colors.black,
-            },
+        // const style = {
+        //     checkbox: {
+        //         marginBottom: 6,
+        //         marginTop: 6,
+        //         paddingBottom: 9,
+        //     },
+        //     labelStyle: {
+        //         marginRight: 20,
+        //         color: checked ? this.props.checkedColor : Colors.black,
+        //     },
+        //     iconStyle: {
+        //         fill: checked ? this.props.checkedColor : null,
+        //         borderColor: Colors.black,
+        //     },
+        // };
+
+        const labelStyle = {
+            color: checked ? this.props.checkedColor : Colors.black
         };
 
         return (
@@ -32,16 +36,17 @@ export default class CustomCheckbox extends AbstractCustomField {
                 <FormControlLabel
                     control={
                     <Checkbox
+                        checked={checked}
+                        onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
+
                         // style={style.checkbox}
                         // labelStyle={style.labelStyle}
                         // labelPosition="right"
-                        checked={checked}
                         // switched={checked}
-                        onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
                         // iconStyle={style.iconStyle}
                     />
                 }
-                    label={this.title}
+                    label={<span style={labelStyle}>{this.title}</span>}
                 />
             </FormGroup>
         );

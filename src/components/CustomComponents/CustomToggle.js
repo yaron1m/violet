@@ -13,17 +13,17 @@ export default class CustomToggle extends AbstractCustomField {
     }
 
     render() {
-        const style = {
-            toggle: {
-                marginBottom: 6,
-                marginTop: 6,
-                paddingBottom: 9,
-            },
-            labelStyle: {
-                marginRight: 45,
-                marginLeft: 10,
-            },
-        };
+        // const style = {
+        //     toggle: {
+        //         marginBottom: 6,
+        //         marginTop: 6,
+        //         paddingBottom: 9,
+        //     },
+        //     labelStyle: {
+        //         marginRight: 45,
+        //         marginLeft: 10,
+        //     },
+        // };
         const labelStyle = {
             color: this.showError() ? Colors.red : Colors.black
         };
