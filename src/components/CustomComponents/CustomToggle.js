@@ -1,9 +1,11 @@
 import React from 'react';
-import Toggle from 'material-ui/Toggle';
+// import Toggle from 'material-ui/Toggle';
+import Switch from '@material-ui/core/Switch';
 import * as _ from "lodash";
 import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../util/consts/colors";
 import PropTypes from "prop-types";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class CustomToggle extends AbstractCustomField {
 
@@ -27,13 +29,19 @@ export default class CustomToggle extends AbstractCustomField {
 
         return (
             <div>
-                <Toggle
-                    style={style.toggle}
+                <FormControlLabel
+                    control={
+                        <Switch
+                            style={style.toggle}
+                            checked={this.state.value === true}
+                            onChange={(event, checked) => this.handleChange(checked)}
+                        />
+                    }
                     label={this.title}
-                    labelStyle={style.labelStyle}
-                    labelPosition="right"
-                    toggled={this.state.value === true}
-                    onToggle={(event, isInputChecked) => this.handleChange(isInputChecked)}
+                    // labelStyle={style.labelStyle}
+                    //labelPosition="right"
+
+
                 />
             </div>
 

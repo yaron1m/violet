@@ -66,6 +66,7 @@ export default class SearchBox extends React.Component {
                 </CustomIconButton>
 
                 <CustomAutoSuggest
+                    fullWidth
                     suggestions={this.props.dataSource}
                     hintText={this.props.hintText}
                     handleRequest={this.props.handleRequest}

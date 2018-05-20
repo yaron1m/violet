@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import AbstractCustomField from "./AbstractCustomField";
+import CustomAutoSuggest from "./CustomAutoSuggest";
 
 export default class CustomAutoComplete extends AbstractCustomField {
 
@@ -18,23 +19,25 @@ export default class CustomAutoComplete extends AbstractCustomField {
             },
         };
 
+        //TODO this is not working yet, therer are problems with the functions
         return (
-            <AutoComplete
-                style={style.autoComplete}
-                textFieldStyle={style.textField}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
-                fullWidth={this.props.fullWidth}
-                disabled={this.props.disabled}
-                searchText={this.state.value}
-                onUpdateInput={(searchText) => super.handleChange(searchText)}
-                onNewRequest={this.props.onNewRequest}
-                multiLine={true}
+            <CustomAutoSuggest
+                title={this.title}
+                value={this.state.value}
+                suggestions={this.props.dataSource}
+                // handleChange={(searchText) => super.handleChange(searchText)}
+                // handleRequest={this.props.onNewRequest ? this.props.onNewRequest : (searchText) => super.handleChange(searchText)}
+                multiLine
                 rowsMax={4}
-                dataSource={this.props.dataSource}
-                errorText={this.getErrorText()}
+                disabled={this.props.disabled}
+                fullWidth={this.props.fullWidth}
+                error={super.shouldShowError()}
+
+                // style={style.autoComplete}
+                // textFieldStyle={style.textField}
             />
         );
+
     }
 }
 

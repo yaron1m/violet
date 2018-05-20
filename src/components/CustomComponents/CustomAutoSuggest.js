@@ -13,7 +13,10 @@ function renderInput(inputProps) {
 
     return (
         <TextField
-            fullWidth
+            helperText={this.props.title}
+            fullWidth={this.props.fullWidth}
+            error={this.props.error}
+
             InputProps={{
                 inputRef: ref,
                 classes: {
@@ -106,10 +109,14 @@ const styles = theme => ({
 });
 
 class CustomAutoSuggest extends React.Component {
-    state = {
-        value: '',
-        suggestions: [],
-    };
+    constructor(props){
+        super();
+        this.state ={
+            value: props.value ? props.value : "",
+            suggestions: [],
+        }
+
+    }
 
     handleSuggestionsFetchRequested = ({value}) => {
         this.setState({
@@ -127,8 +134,8 @@ class CustomAutoSuggest extends React.Component {
         this.setState({
             value: newValue,
         });
-        //console.log(newValue);
-        //this.props.handleRequest(chosenRequest);
+
+        this.props.handleChange(newValue);
     };
 
     onSuggestionSelected(event, {suggestion}) {
@@ -137,7 +144,7 @@ class CustomAutoSuggest extends React.Component {
 
     render() {
         const {classes} = this.props;
-        //console.log(this.props.suggestions[0]);
+
         return (
             <AutoSuggest
                 theme={{
@@ -146,7 +153,7 @@ class CustomAutoSuggest extends React.Component {
                     suggestionsList: classes.suggestionsList,
                     suggestion: classes.suggestion,
                 }}
-                renderInputComponent={renderInput}
+                renderInputComponent={renderInput.bind(this)}
                 suggestions={this.state.suggestions}
                 onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
@@ -157,7 +164,7 @@ class CustomAutoSuggest extends React.Component {
                     classes,
                     placeholder: this.props.hintText,
                     value: this.state.value,
-                    onChange: this.handleChange,
+                    onChange: this.handleChange.bind(this),
                 }}
 
 
@@ -169,10 +176,17 @@ class CustomAutoSuggest extends React.Component {
 
 CustomAutoSuggest.propTypes = {
     suggestions: PropTypes.array.isRequired,
+    handleChange: PropTypes.func,
     handleRequest: PropTypes.func,
     hintText: PropTypes.string,
     maxSearchResults: PropTypes.number,
     classes: PropTypes.object.isRequired,
+
+    title: PropTypes.string,
+    value: PropTypes.string,
+    requiredFields: PropTypes.array,
+    fullWidth: PropTypes.bool,
+    error: PropTypes.bool,
 };
 
 export default withStyles(styles)(CustomAutoSuggest);
