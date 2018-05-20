@@ -11,7 +11,10 @@ export default class OrderStatusStepper extends React.Component {
     render() {
 
         return (
-            <Stepper nonLinear style={{height: 50}}>
+            <Stepper
+                nonLinear
+                style={{backgroundColor: "inherit"}}
+            >
                 {_.map(progressiveStatuses, status =>
                     <Step
                         key={status}

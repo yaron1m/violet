@@ -12,7 +12,6 @@ const styles = () => ({
     },
 });
 
-
 class CustomText extends AbstractCustomField {
 
     render() {
@@ -20,7 +19,6 @@ class CustomText extends AbstractCustomField {
             width: this.width,
         };
 
-        //TODO move helper to right
         return (
             <TextField
                 helperText={this.title}
@@ -34,9 +32,6 @@ class CustomText extends AbstractCustomField {
 
                 inputProps={{style}}
                 className={this.props.classes.textField}
-
-                // style={style}
-                // floatingLabelFixed={true}
             />
         );
     }
