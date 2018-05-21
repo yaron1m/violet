@@ -19,8 +19,8 @@ const dashboardLabels = {
 
 const loginPageLabels = {
     title: "כניסת משתמשים",
-    email: "דואר אלקטרוני:",
-    password: "סיסמה:",
+    email: "דואר אלקטרוני",
+    password: "סיסמה",
     signIn: "כניסה",
     errors: {
         wrongPassword: "שם משתמש ו/או סיסמה אינם נכונים",

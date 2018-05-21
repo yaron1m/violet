@@ -1,11 +1,9 @@
 import React from 'react';
-// import SearchIcon from 'material-ui-icons/Search';
 import SearchIcon from '@material-ui/icons/Search';
-import AutoComplete from 'material-ui/AutoComplete';
 import Colors from "../../../util/consts/colors";
 import PropTypes from 'prop-types';
 import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
-import CustomAutoSuggest from "../../../components/CustomComponents/OrderPrint/CustomAutoSuggest";
+import CustomAutoSuggest from "../../../components/CustomComponents/CustomAutoSuggest";
 import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
 
 export default class SearchBox extends React.Component {
@@ -68,29 +66,12 @@ export default class SearchBox extends React.Component {
                 </CustomIconButton>
 
                 <CustomAutoSuggest
+                    fullWidth
                     suggestions={this.props.dataSource}
                     hintText={this.props.hintText}
                     handleRequest={this.props.handleRequest}
                     maxSearchResults={10}
                 />
-
-                {/*<AutoComplete*/}
-                    {/*dataSource={this.props.dataSource}*/}
-                    {/*hintText={this.props.hintText}*/}
-                    {/*searchText={this.state.searchText}*/}
-                    {/*filter={AutoComplete.caseInsensitiveFilter}*/}
-
-                    {/*onNewRequest={this.handleRequest.bind(this)}*/}
-                    {/*onUpdateInput={(searchText) => this.setState({searchText: searchText})}*/}
-
-                    {/*maxSearchResults={10}*/}
-                    {/*underlineShow={false}*/}
-                    {/*fullWidth={true}*/}
-
-                    {/*inputStyle={styles.input}*/}
-                    {/*style={styles.autoComplete}*/}
-                    {/*hintStyle={styles.hintStyle}*/}
-                {/*/>*/}
             </div>
         );
     }

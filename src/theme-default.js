@@ -22,5 +22,13 @@ export default function getTheme(isRtl) {
 }
 
 export const theme = createMuiTheme({
-    direction: 'rtl', // Both here and <body dir="rtl">
+    direction: 'rtl',
+    palette: {
+        primary: {
+            light: '#757ce8',
+            main: Colors.purple,
+            dark: '#002884',
+            contrastText: '#ffffff',
+        },
+    },
 });

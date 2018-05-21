@@ -8,8 +8,8 @@ import {getOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
 import Colors from "../../../util/consts/colors";
 import * as _ from "lodash";
-import EventIcon from 'material-ui-icons/EventNote';
-import BusinessIcon from 'material-ui-icons/Business';
+import EventIcon from '@material-ui/icons/EventNote';
+import BusinessIcon from '@material-ui/icons/Business';
 import CustomMenuItem from "../../../components/CustomComponents/CustomMenuItem";
 
 const sourceTypes = {

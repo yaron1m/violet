@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PersonAddIcon from 'material-ui-icons/PersonAdd';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
 import Sizes from "../../../../../util/consts/sizes";
@@ -40,7 +40,7 @@ export default class ContactRow extends React.Component {
                 <CustomIconButton
                     onClick={this.openContactImportDialog}
                     tooltip={this.props.buttonTooltip}
-                    style={{marginBottom: 10, marginRight: 10}}
+                    style={{marginBottom: 10, marginLeft: 10}}
                 >
                     <PersonAddIcon/>
                 </CustomIconButton>

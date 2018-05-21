@@ -1,53 +1,64 @@
 import React from 'react';
-import Badge from 'material-ui/Badge';
-import IconMenu from "material-ui/IconMenu";
+import Badge from '@material-ui/core/Badge';
 import {redirect} from "../../../util/history-util";
-import MoreIcon from 'material-ui-icons/MoreVert';
-import NotificationsIcon from 'material-ui-icons/Notifications';
+import ExitIcon from '@material-ui/icons/ExitToApp';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import Colors from "../../../util/consts/colors";
 import PropTypes from "prop-types";
 import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
-import CustomMenuItem from "../../../components/CustomComponents/CustomMenuItem";
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = () => ({
+    icon: {
+        color: Colors.white,
+        visibility: "visible",
+    },
+    flippedIcon: {
+        color: Colors.white,
+        "-webkit-transform": "scaleX(-1)"
+    },
+    hiddenBadge: {
+        visibility: "hidden",
+    }
+});
 
 class LeftIcons extends React.Component {
 
     render() {
         const style = {
             container: {
-                marginTop: 3
+                marginTop: 3,
+                display: "flex",
+                marginLeft: -40,
             },
         };
 
         return (
-            <div style={style.container}>
-                <Badge
-                    badgeContent={this.props.notificationCount === 0 ? "" : this.props.notificationCount}
-                    style={{padding: 0}}
-                    badgeStyle={{
-                        backgroundColor: this.props.notificationCount === 0 ? null : Colors.red,
-                        color: Colors.white
-                    }}
-                >
-                    <CustomIconButton
-                        onClick={() => redirect('/actionRequired')}
-                    >
-                        <NotificationsIcon color={Colors.white}/>
-                    </CustomIconButton>
-                </Badge>
 
-                <IconMenu
-                    iconButtonElement={
-                        <CustomIconButton>
-                            <MoreIcon color={this.props.isProduction ? Colors.white : Colors.red}/>
-                        </CustomIconButton>}
-                    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            <div style={style.container}>
+
+                <CustomIconButton
+                    onClick={() => redirect('/actionRequired')}
                 >
-                    <CustomMenuItem
-                        primaryText={this.props.logOutLabel}
-                        onClick={this.props.signOut}
+                    <Badge
+                        hidden
+                        badgeContent={this.props.notificationCount}
+                        color="secondary"
+                        className={this.props.notificationCount === 0 ? this.props.classes.hiddenBadge : null}
+                    >
+                        <NotificationsIcon
+                            className={this.props.classes.icon}
+                        />
+                    </Badge>
+                </CustomIconButton>
+
+                <CustomIconButton
+                    onClick={this.props.signOut}
+                >
+                    <ExitIcon
+                        className={this.props.classes.flippedIcon}
                     />
-                </IconMenu>
+                </CustomIconButton>
             </div>
         );
     }
@@ -58,6 +69,7 @@ LeftIcons.propTypes = {
     logOutLabel: PropTypes.string,
     isProduction: PropTypes.bool,
     signOut: PropTypes.func,
+    classes: PropTypes.object,
 };
 
-export default LeftIcons;
+export default withStyles(styles)(LeftIcons);

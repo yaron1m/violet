@@ -5,7 +5,7 @@ import {getOrders} from "../../../../store/orders/selectors";
 import * as _ from 'lodash';
 import {isFetching} from "../../../../store/firebase/reducer";
 import Status from "../../../../util/consts/status";
-import PaymentIcon from 'material-ui-icons/AttachMoney';
+import PaymentIcon from '@material-ui/icons/AttachMoney';
 import InfoBox from "./InfoBox";
 import Colors from "../../../../util/consts/colors";
 import {moneyFormat} from "../../../../util/string-util";

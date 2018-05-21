@@ -1,44 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
-import SelectField from 'material-ui/SelectField';
+import Select from '@material-ui/core/Select';
 import AbstractCustomField from "./AbstractCustomField";
-import CustomMenuItem from "./CustomMenuItem";
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import {withStyles} from '@material-ui/core/styles';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
-export default class CustomSelectField extends AbstractCustomField {
+const styles = () => ({
+    formControl: {
+        marginRight: 20,
+        marginBottom: 10,
+        verticalAlign: "bottom",
+    },
+});
+
+class CustomSelectField extends AbstractCustomField {
 
     render() {
-        const style = this.basicStyle;
+        const formStyle = {
+            minWidth: this.width,
+        };
 
         return (
-            <SelectField
-                style={style}
-                value={this.state.value}
-                onChange={(event, key, value) => this.handleChange(value)}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
-                errorText={this.getErrorText()}
+            <FormControl
+                style={formStyle}
+                className={this.props.classes.formControl}
+                error={this.shouldShowError()}
             >
+                <Select
+                    value={this.state.value ? this.state.value : ""}
+                    onChange={(event) => this.handleChange(event.target.value)}
+                >
 
-                {this.props.allowEmpty ? <CustomMenuItem
-                    value={null}
-                    primaryText="(-)"
-                /> : null}
+                    {this.props.allowEmpty ?
+                        <MenuItem value="">
+                            <em>-</em>
+                        </MenuItem>
+                        : null}
 
-                {_.map(this.props.options, option =>
-                    _.isObject(option) ?
-                        <CustomMenuItem
-                            key={option.key}
-                            value={option.key}
-                            primaryText={option.label}
-                        /> :
-                        <CustomMenuItem
-                            key={option}
-                            value={option}
-                            primaryText={option}
-                        />
-                )}
-            </SelectField>
+                    {_.map(this.props.options, option =>
+                        _.isObject(option) ?
+                            <MenuItem value={option.key} key={option.key}>{option.key}</MenuItem> :
+                            <MenuItem value={option} key={option}>{option}</MenuItem>
+                    )}
+                </Select>
+                <FormHelperText>{this.title}</FormHelperText>
+            </FormControl>
         );
     }
 }
@@ -53,3 +62,5 @@ CustomSelectField.propTypes = {
 CustomSelectField.defaultProps = {
     allowEmpty: true,
 };
+
+export default withStyles(styles)(CustomSelectField);

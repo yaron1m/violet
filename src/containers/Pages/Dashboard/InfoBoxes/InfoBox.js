@@ -44,11 +44,12 @@ export default class InfoBox extends React.Component {
             }
         };
 
+        //TODO add colors to icons
         return (
             <CustomPaper style={styles.paper} onClick={this.props.onClick}>
                 <span style={styles.iconSpan}>
                   <this.props.Icon
-                      color={Colors.white}
+                      //color={Colors.white}
                       style={styles.icon}
                   />
                 </span>

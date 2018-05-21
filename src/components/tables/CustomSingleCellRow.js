@@ -1,5 +1,6 @@
 import React from 'react';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 
@@ -19,16 +20,18 @@ export class CustomSingleCellRow extends React.Component {
         const textCellIndex = _.floor(numberOfColumns / 2);
 
         return (
-            <TableRow selectable={false}>
+            <TableRow
+                // selectable={false}
+            >
                 {headerKeys.map((header, index) =>
                     index === textCellIndex ?
-                        <TableRowColumn key={index}>
+                        <TableCell key={index}>
                             <div style={{cursor: "pointer"}} onClick={this.props.onClick}>
                                 {this.props.text}
                             </div>
-                        </TableRowColumn>
+                        </TableCell>
                         :
-                        <TableRowColumn key={index}/>
+                        <TableCell key={index}/>
                 )}
             </TableRow>
         );
