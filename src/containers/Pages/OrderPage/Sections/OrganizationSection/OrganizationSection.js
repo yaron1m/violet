@@ -23,7 +23,7 @@ export default class OrganizationSection extends React.Component {
                 <div style={flexStyle}>
                     <OrganizationCustomAutoComplete
                         name="organizationName"
-                        dataSource={organizationNamesObjects}
+                        suggestions={organizationNamesObjects}
                         onNewRequest={chosenRequest => {
                             this.props.selectOrganization(chosenRequest.value);
                             this.props.updateSelectedOrder("organizationId", chosenRequest.value);
@@ -35,7 +35,7 @@ export default class OrganizationSection extends React.Component {
                     <OrganizationCustomText name="organizationPostalCode" size={Sizes.M}/>
                     <OrganizationCustomText name="companyId" size={Sizes.M}/>
                     <OrganizationCustomAutoComplete name="paymentConditions"
-                                                    dataSource={_.values(this.props.paymentConditions)}/>
+                                                    suggestions={this.props.paymentConditions}/>
 
                     <OrganizationCustomText name="howReachedUs" size={Sizes.XL}/>
 
@@ -53,7 +53,7 @@ export default class OrganizationSection extends React.Component {
 OrganizationSection.propTypes = {
     fullDetails: PropTypes.bool,
     sectionName: PropTypes.string,
-    paymentConditions: PropTypes.object,
+    paymentConditions: PropTypes.array,
     organizations: PropTypes.object,
 
     selectOrganization: PropTypes.func,

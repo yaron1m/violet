@@ -198,3 +198,7 @@ AutoSuggest.defaultProps = {
 };
 
 export default withStyles(styles)(AutoSuggest);
+
+export function toSuggestion(label) {
+    return {label};
+}

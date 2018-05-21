@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AbstractCustomField from "./AbstractCustomField";
-import CustomAutoSuggest from "./CustomAutoSuggest";
+import AutoSuggest from "../AutoSuggest";
 
 export default class CustomAutoComplete extends AbstractCustomField {
 
@@ -18,22 +18,16 @@ export default class CustomAutoComplete extends AbstractCustomField {
         //     },
         // };
 
-        //TODO this is not working yet, therer are problems with the functions
         return (
-            <CustomAutoSuggest
-                title={this.title}
-                value={this.state.value}
-                suggestions={this.props.dataSource}
-                // handleChange={(searchText) => super.handleChange(searchText)}
-                // handleRequest={this.props.onNewRequest ? this.props.onNewRequest : (searchText) => super.handleChange(searchText)}
-                multiLine
-                rowsMax={4}
+            <AutoSuggest
+                suggestions={this.props.suggestions}
+                helperText={this.title}
+                value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
+                onInputChange={(newValue) => this.handleChange(newValue)}
+                onSuggestionSelected={this.props.onNewRequest}
                 disabled={this.props.disabled}
                 fullWidth={this.props.fullWidth}
                 error={super.shouldShowError()}
-
-                // style={style.autoComplete}
-                // textFieldStyle={style.textField}
             />
         );
 
@@ -42,7 +36,7 @@ export default class CustomAutoComplete extends AbstractCustomField {
 
 CustomAutoComplete.propTypes = {
     ...AbstractCustomField.propTypes,
-    dataSource: PropTypes.array.isRequired,
+    suggestions: PropTypes.array.isRequired,
     disabled: PropTypes.bool,
     onNewRequest: PropTypes.func,
 };
@@ -50,4 +44,5 @@ CustomAutoComplete.propTypes = {
 CustomAutoComplete.defaultProps = {
     disabled: false,
     fullWidth: false,
+    onNewRequest: function(){},
 };

@@ -1,14 +1,16 @@
 import {connect} from 'react-redux';
+import _ from 'lodash';
 import {selectOrganization, updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getOrganizations} from "../../../../../store/organizations/reducer";
 import PropTypes from 'prop-types';
 import OrganizationSection from "./OrganizationSection";
+import {toSuggestion} from "../../../../../components/AutoSuggest";
 
 function mapStateToProps(state, ownProps) {
     return {
         sectionName: getLabels(state).pages.orderPage.sections.organization.sectionName,
-        paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
+        paymentConditions: _.map(getLabels(state).pages.orderPage.sections.organization.paymentConditions, toSuggestion),
         organizations: getOrganizations(state),
         fullDetails: ownProps.fullDetails,
     };

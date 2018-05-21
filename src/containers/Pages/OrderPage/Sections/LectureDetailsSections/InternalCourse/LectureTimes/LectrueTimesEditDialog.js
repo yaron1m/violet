@@ -29,7 +29,7 @@ export default class LectureTimeEditDialog extends React.Component {
             >
                 <div style={style.flex}>
                     <LectureTimesCustomDatePicker lectureTimeIndex={index} name="date"/>
-                    <LectureTimesCustomAutoComplete lectureTimeIndex={index} name="topic" dataSource={this.props.offeredLectures} size={Sizes.XXL}/>
+                    <LectureTimesCustomAutoComplete lectureTimeIndex={index} name="topic" suggestions={this.props.offeredLectures} size={Sizes.XXL}/>
                     <LectureTimesCustomText lectureTimeIndex={index} name="startTime" size={Sizes.M}/>
                     <LectureTimesCustomText lectureTimeIndex={index} name="endTime" size={Sizes.M}/>
                     <LectureTimesCustomText lectureTimeIndex={index} name="audienceSize" size={Sizes.M}/>
