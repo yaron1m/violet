@@ -10,11 +10,12 @@ import {withStyles} from '@material-ui/core/styles';
 import CustomPaperTable from "./tables/CustomPaperTable";
 
 function renderInput(inputProps) {
-    const {classes, ref, helperText, hintText, ...other} = inputProps;
+    const {classes, ref, helperText, hintText, fullWidth,disabled, ...other} = inputProps;
 
     return (
         <TextField
-            fullWidth
+            fullWidth={fullWidth}
+            disabled={disabled}
             helperText={helperText}
             InputProps={{
                 inputRef: ref,
@@ -160,6 +161,8 @@ class AutoSuggest extends React.Component {
                     helperText: this.props.helperText,
                     hintText: this.props.hintText,
                     error: this.props.error,
+                    fullWidth: this.props.fullWidth,
+                    disabled: this.props.disabled,
                 }}
             />
         );
@@ -175,31 +178,17 @@ AutoSuggest.propTypes = {
 
     // Text field
     value: PropTypes.string,
-    helperText: PropTypes.string,
-    error: PropTypes.bool,
-    hintText: PropTypes.string,
     onInputChange: PropTypes.func.isRequired,
+    helperText: PropTypes.string,
+    hintText: PropTypes.string,
+    error: PropTypes.bool,
+    fullWidth: PropTypes.bool,
+    disabled: PropTypes.bool,
 
     maxSearchResults: PropTypes.number,
 
 
     requiredFields: PropTypes.array,
-    fullWidth: PropTypes.bool,
-
-
-//     style={style.autoComplete}
-// textFieldStyle={style.textField}
-// floatingLabelText={this.title}
-// floatingLabelFixed={true}
-// fullWidth={this.props.fullWidth}
-// disabled={this.props.disabled}
-// searchText={this.state.value}
-// onUpdateInput={(searchText) => super.handleChange(searchText)}
-// onNewRequest={this.props.onNewRequest}
-// multiLine={true}
-// rowsMax={4}
-// dataSource={this.props.dataSource}
-// errorText={this.getErrorText()}
 };
 
 AutoSuggest.defaultProps = {
@@ -210,7 +199,7 @@ AutoSuggest.defaultProps = {
  * input type:
  * {
  *    value,
- *    text,
+ *    label,
  *    info,
  * }
  */
