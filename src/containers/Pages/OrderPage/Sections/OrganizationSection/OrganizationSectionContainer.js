@@ -5,12 +5,12 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import {getOrganizations} from "../../../../../store/organizations/reducer";
 import PropTypes from 'prop-types';
 import OrganizationSection from "./OrganizationSection";
-import {toSuggestion} from "../../../../../components/AutoSuggest";
+import {toSuggestions} from "../../../../../components/AutoSuggest";
 
 function mapStateToProps(state, ownProps) {
     return {
         sectionName: getLabels(state).pages.orderPage.sections.organization.sectionName,
-        paymentConditions: _.map(getLabels(state).pages.orderPage.sections.organization.paymentConditions, toSuggestion),
+        paymentConditions: toSuggestions(_.values(getLabels(state).pages.orderPage.sections.organization.paymentConditions)),
         fullDetails: ownProps.fullDetails,
         organizationSuggestions: _.values(getOrganizations(state)).map(
             (org) => ({
