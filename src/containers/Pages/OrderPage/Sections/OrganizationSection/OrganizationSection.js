@@ -24,7 +24,7 @@ export default class OrganizationSection extends React.Component {
                     <OrganizationCustomAutoComplete
                         name="organizationName"
                         suggestions={organizationNamesObjects}
-                        onNewRequest={chosenRequest => {
+                        onSuggestionSelected={chosenRequest => {
                             this.props.selectOrganization(chosenRequest.value);
                             this.props.updateSelectedOrder("organizationId", chosenRequest.value);
                         }}

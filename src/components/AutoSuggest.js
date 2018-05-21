@@ -203,7 +203,6 @@ AutoSuggest.propTypes = {
 
 AutoSuggest.defaultProps = {
     maxSearchResults: 10,
-    width: Sizes.L,
 };
 
 export default withStyles(styles)(AutoSuggest);
