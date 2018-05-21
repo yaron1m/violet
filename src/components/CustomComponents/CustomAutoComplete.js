@@ -28,6 +28,7 @@ export default class CustomAutoComplete extends AbstractCustomField {
                 disabled={this.props.disabled}
                 fullWidth={this.props.fullWidth}
                 error={super.shouldShowError()}
+                width={this.width}
             />
         );
 

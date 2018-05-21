@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import {withStyles} from '@material-ui/core/styles';
+import Sizes from "../util/consts/sizes";
 
 function renderInput(inputProps) {
     const {classes, ref, helperText, hintText, fullWidth, disabled, ...other} = inputProps;
@@ -16,6 +17,7 @@ function renderInput(inputProps) {
             fullWidth={fullWidth}
             disabled={disabled}
             helperText={helperText}
+            className={classes.textField}
             InputProps={{
                 inputRef: ref,
                 classes: {
@@ -84,16 +86,13 @@ function getSuggestions(value, suggestions, maxSearchResults) {
     });
 }
 
-const styles = theme => ({
+const styles = () => ({
     container: {
-        flexGrow: 1,
         position: 'relative',
-        height: 250,
     },
     suggestionsContainerOpen: {
         position: 'absolute',
         zIndex: 1,
-        marginTop: theme.spacing.unit,
         left: 0,
         right: 0,
     },
@@ -104,6 +103,11 @@ const styles = theme => ({
         margin: 0,
         padding: 0,
         listStyleType: 'none',
+    },
+    textField: {
+        marginRight: 20,
+        marginBottom: 10,
+        verticalAlign: "bottom",
     },
 });
 
@@ -161,6 +165,9 @@ class AutoSuggest extends React.Component {
                     error: this.props.error,
                     fullWidth: this.props.fullWidth,
                     disabled: this.props.disabled,
+                    style: {
+                        width: this.props.width
+                    }
                 }}
             />
         );
@@ -191,10 +198,12 @@ AutoSuggest.propTypes = {
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
     maxSearchResults: PropTypes.number,
+    width: PropTypes.number,
 };
 
 AutoSuggest.defaultProps = {
     maxSearchResults: 10,
+    width: Sizes.L,
 };
 
 export default withStyles(styles)(AutoSuggest);
