@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Autosuggest from 'react-autosuggest';
+import ReactAutoSuggest from 'react-autosuggest';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import {withStyles} from '@material-ui/core/styles';
-import CustomPaperTable from "./tables/CustomPaperTable";
 
 function renderInput(inputProps) {
-    const {classes, ref, helperText, hintText, fullWidth,disabled, ...other} = inputProps;
+    const {classes, ref, helperText, hintText, fullWidth, disabled, ...other} = inputProps;
 
     return (
         <TextField
@@ -74,7 +73,7 @@ function getSuggestions(value, suggestions, maxSearchResults) {
     if (inputLength === 0)
         return [];
 
-    const result = suggestions.filter(suggestion => {
+    return suggestions.filter(suggestion => {
         const keep = count < maxSearchResults && suggestion.label.toLowerCase().includes(inputValue);
 
         if (keep) {
@@ -83,8 +82,6 @@ function getSuggestions(value, suggestions, maxSearchResults) {
 
         return keep;
     });
-
-    return result;
 }
 
 const styles = theme => ({
@@ -140,7 +137,7 @@ class AutoSuggest extends React.Component {
         const {classes} = this.props;
 
         return (
-            <Autosuggest
+            <ReactAutoSuggest
                 theme={{
                     container: classes.container,
                     suggestionsContainerOpen: classes.suggestionsContainerOpen,
@@ -154,6 +151,7 @@ class AutoSuggest extends React.Component {
                 renderSuggestionsContainer={renderSuggestionsContainer}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
+                onSuggestionSelected={(event, {suggestion}) => this.props.onSuggestionSelected(suggestion)}
                 inputProps={{
                     classes,
                     value: this.props.value,
@@ -173,35 +171,30 @@ AutoSuggest.propTypes = {
     // Style
     classes: PropTypes.object.isRequired,
 
+    /*
+     * suggestion format:
+     * {
+     *    label,
+     *    otherInfo
+     * }
+     */
     suggestions: PropTypes.array.isRequired,
 
 
     // Text field
     value: PropTypes.string,
-    onInputChange: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func.isRequired, // Returns the label (string)
+    onSuggestionSelected: PropTypes.func.isRequired, // Returns the suggestion selected (object)
     helperText: PropTypes.string,
     hintText: PropTypes.string,
     error: PropTypes.bool,
     fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
-
     maxSearchResults: PropTypes.number,
-
-
-    requiredFields: PropTypes.array,
 };
 
 AutoSuggest.defaultProps = {
     maxSearchResults: 10,
 };
-
-/*
- * input type:
- * {
- *    value,
- *    label,
- *    info,
- * }
- */
 
 export default withStyles(styles)(AutoSuggest);
