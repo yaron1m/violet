@@ -13,6 +13,10 @@ const styles = () => ({
         color: Colors.white,
         visibility: "visible",
     },
+    flippedIcon: {
+        color: Colors.white,
+        "-webkit-transform": "scaleX(-1)"
+    },
     hiddenBadge: {
         visibility: "hidden",
     }
@@ -52,7 +56,7 @@ class LeftIcons extends React.Component {
                     onClick={this.props.signOut}
                 >
                     <ExitIcon
-                        className={this.props.classes.icon}
+                        className={this.props.classes.flippedIcon}
                     />
                 </CustomIconButton>
             </div>
