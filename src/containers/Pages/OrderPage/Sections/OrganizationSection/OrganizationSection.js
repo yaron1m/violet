@@ -1,6 +1,5 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../../components/CustomComponents/CustomPaper";
-import * as _ from "lodash";
 import PropTypes from 'prop-types';
 import Sizes from "../../../../../util/consts/sizes";
 import {
@@ -12,18 +11,12 @@ import {
 export default class OrganizationSection extends React.Component {
 
     render() {
-        const organizationNamesObjects = _.values(this.props.organizations).map(
-            (org) => ({
-                text: org.organizationName,
-                value: org.id
-            }));
-
         return (
             <CustomPaper title={this.props.sectionName}>
                 <div style={flexStyle}>
                     <OrganizationCustomAutoComplete
                         name="organizationName"
-                        suggestions={organizationNamesObjects}
+                        suggestions={this.props.organizationSuggestions}
                         onSuggestionSelected={chosenRequest => {
                             this.props.selectOrganization(chosenRequest.value);
                             this.props.updateSelectedOrder("organizationId", chosenRequest.value);
@@ -54,6 +47,7 @@ OrganizationSection.propTypes = {
     fullDetails: PropTypes.bool,
     sectionName: PropTypes.string,
     paymentConditions: PropTypes.array,
+    organizationSuggestions: PropTypes.array,
     organizations: PropTypes.object,
 
     selectOrganization: PropTypes.func,

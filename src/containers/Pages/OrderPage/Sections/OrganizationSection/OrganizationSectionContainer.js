@@ -11,8 +11,12 @@ function mapStateToProps(state, ownProps) {
     return {
         sectionName: getLabels(state).pages.orderPage.sections.organization.sectionName,
         paymentConditions: _.map(getLabels(state).pages.orderPage.sections.organization.paymentConditions, toSuggestion),
-        organizations: getOrganizations(state),
         fullDetails: ownProps.fullDetails,
+        organizationSuggestions: _.values(getOrganizations(state)).map(
+            (org) => ({
+                label: org.organizationName,
+                value: org.id
+            })),
     };
 }
 
