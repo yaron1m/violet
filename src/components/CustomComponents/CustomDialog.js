@@ -4,7 +4,6 @@ import {CustomFlatButton} from "./CustomButtons";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class CustomDialog extends React.Component {
@@ -26,9 +25,7 @@ class CustomDialog extends React.Component {
             >
                 <DialogTitle>{this.props.title}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        {this.props.children}
-                    </DialogContentText>
+                    {this.props.children}
                 </DialogContent>
                 <DialogActions>
                     {this.props.actions ? this.props.actions : actions}
