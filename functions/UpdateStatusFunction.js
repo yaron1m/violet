@@ -1,16 +1,7 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
 const orderStatusCalculator = require("./order-status");
 const _ = require('lodash');
-const authorizationValidator = require('./AuthorizationValidator');
-admin.initializeApp(functions.config().firebase);
 
-const ref = admin.database().ref("orders");
-
-module.exports = functions.https.onRequest((request, response) => {
-    if (!authorizationValidator(request, response))
-        return;
-
+module.exports = function (request, response, ref){
     ref.once('value').then(snapshot => {
         const updatedOrders = {};
 
@@ -50,8 +41,6 @@ module.exports = functions.https.onRequest((request, response) => {
         console.error(error);
         response.status(400).send(error);
     })
-
-
-});
+};
 
 
