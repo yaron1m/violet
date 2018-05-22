@@ -86,6 +86,9 @@ function getSuggestions(value, suggestions, maxSearchResults) {
 }
 
 const styles = () => ({
+    fullWidth: {
+        width: "100%",
+    },
     container: {
         position: 'relative',
     },
@@ -139,10 +142,13 @@ class AutoSuggest extends React.Component {
     render() {
         const {classes} = this.props;
 
+        const containerClass = classes.container + (this.props.fullWidth ?
+            " " + classes.fullWidth : "");
+
         return (
             <ReactAutoSuggest
                 theme={{
-                    container: classes.container,
+                    container: containerClass,
                     suggestionsContainerOpen: classes.suggestionsContainerOpen,
                     suggestionsList: classes.suggestionsList,
                     suggestion: classes.suggestion,
