@@ -67,7 +67,7 @@ function getSuggestionValue(suggestion) {
 }
 
 function getSuggestions(value, suggestions, maxSearchResults) {
-    const inputValue = value.trim().toLowerCase();
+    const inputValue = value.toLowerCase();
     const inputLength = inputValue.length;
     let count = 0;
 
@@ -171,7 +171,8 @@ class AutoSuggest extends React.Component {
                     fullWidth: this.props.fullWidth,
                     disabled: this.props.disabled,
                     style: {
-                        width: this.props.width
+                        width: this.props.width,
+                        color: this.props.inputTextColor,
                     }
                 }}
             />
@@ -204,6 +205,7 @@ AutoSuggest.propTypes = {
     disabled: PropTypes.bool,
     maxSearchResults: PropTypes.number,
     width: PropTypes.number,
+    inputTextColor: PropTypes.string,
 };
 
 AutoSuggest.defaultProps = {

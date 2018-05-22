@@ -49,6 +49,7 @@ export default class SearchBox extends React.Component {
                     hintText={this.props.hintText}
                     onSuggestionSelected={this.handleRequest.bind(this)}
                     maxSearchResults={10}
+                    inputTextColor={Colors.white}
                 />
             </div>
         );
