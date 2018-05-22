@@ -47,12 +47,17 @@ function getUpdatedOrder(order) {
     updateField(order, "taxInvoiceDate");
     updateField(order, "proformaInvoiceDate");
 
+    if (_.has(order, "lectureTimes"))
+        _.map(order.lectureTimes, time => {
+            console.log(JSON.stringify(time));
+            updateField(time, "date");
+        });
     return order;
 }
 
-function updateField(order, fieldName) {
-    if (_.has(order, fieldName))
-        order[fieldName] = toSimpleDate(order[fieldName]);
+function updateField(obj, fieldName) {
+    if (_.has(obj, fieldName))
+        obj[fieldName] = toSimpleDate(obj[fieldName]);
 }
 
 function toSimpleDate(dateString) {
