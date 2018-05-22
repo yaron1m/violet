@@ -2,21 +2,14 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const orderStatusCalculator = require("./order-status");
 const _ = require('lodash');
-
+const authorizationValidator = require('./AuthorizationValidator');
 admin.initializeApp(functions.config().firebase);
 
 const ref = admin.database().ref("orders");
 
-exports.updateStatus = functions.https.onRequest((request, response) => {
-
-    const rightKey = functions.config().updatestatus.key;
-    const requestKey = request.headers.authorization;
-
-    if(rightKey !== requestKey){
-        response.status(403).send('Unauthorized');
+module.exports = functions.https.onRequest((request, response) => {
+    if (!authorizationValidator(request, response))
         return;
-    }
-
 
     ref.once('value').then(snapshot => {
         const updatedOrders = {};
