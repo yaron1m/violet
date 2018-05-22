@@ -12,7 +12,6 @@ export default class Header extends React.Component {
             appBar: {
                 position: 'fixed',
                 top: 0,
-                overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
                 paddingLeft: 20,

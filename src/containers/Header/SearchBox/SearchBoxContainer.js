@@ -36,7 +36,7 @@ export function handleRequest(chosenRequest, dispatch) {
     }
 }
 
-export function getDataSource(state) {
+export function getSuggestions(state) {
     const organizations = getOrganizations(state);
     if (!organizations)
         return [];
@@ -48,7 +48,7 @@ export function getDataSource(state) {
             const text = org.organizationName + (org.companyId ? " (" + org.companyId + ")" : "");
 
             return {
-                text: text,
+                label: text,
                 info: {
                     type: sourceTypes.organization,
                     organizationId: org.id
@@ -62,7 +62,7 @@ export function getDataSource(state) {
 
     const orderNumbersObjects = _.values(orders).map(
         (order) => ({
-            text: order.id.toString() + " - " + organizations[order.organizationId].organizationName,
+            label: order.id.toString() + " - " + organizations[order.organizationId].organizationName,
             info: {
                 type: sourceTypes.order,
                 orderId: order.id,
@@ -80,13 +80,13 @@ export function getDataSource(state) {
 function mapStateToProps(state) {
     return {
         hintText: getLabels(state).header.searchLineHint,
-        dataSource: getDataSource(state),
+        suggestions: getSuggestions(state),
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        handleRequest: (chosenRequest) => handleRequest(chosenRequest, dispatch),
+        onSuggestionSelected: (chosenRequest) => handleRequest(chosenRequest, dispatch),
     };
 }
 

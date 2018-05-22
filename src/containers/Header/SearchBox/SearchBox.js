@@ -3,7 +3,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Colors from "../../../util/consts/colors";
 import PropTypes from 'prop-types';
 import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
-import CustomAutoSuggest from "../../../components/CustomComponents/CustomAutoSuggest";
+import AutoSuggest from "../../../components/AutoSuggest";
 import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
 
 export default class SearchBox extends React.Component {
@@ -15,13 +15,10 @@ export default class SearchBox extends React.Component {
         };
     }
 
-    handleRequest(chosenRequest, index) {
-        if (index === -1) {
-            return; //TODO handle enter press
-        }
+    handleRequest(chosenRequest) {
         this.setState({searchText: ""});
 
-        this.props.handleRequest(chosenRequest);
+        this.props.onSuggestionSelected(chosenRequest);
     }
 
     render() {
@@ -31,10 +28,10 @@ export default class SearchBox extends React.Component {
                 margin: "-5px -5px 0 -10px",
                 display: this.state.searchText === "" ? "inline-block" : "none",
             },
-            autoComplete: {
-                top: -14,
-                marginLeft: 5,
-            },
+            // autoComplete: {
+            //     top: -14,
+            //     marginLeft: 5,
+            // },
             container: {
                 width: "100%",
                 backgroundColor: Colors.lightPurple,
@@ -45,13 +42,13 @@ export default class SearchBox extends React.Component {
                 marginTop: 15,
                 ...flexStyle
             },
-            input: {
-                WebkitTextFillColor: "inherit",
-                color: Colors.white,
-            },
-            hintStyle: {
-                color: Colors.white,
-            },
+            // input: {
+            //     WebkitTextFillColor: "inherit",
+            //     color: Colors.white,
+            // },
+            // hintStyle: {
+            //     color: Colors.white,
+            // },
         };
         //TODO add icon color
         //TODO render each suggestion with the component I created in the container
@@ -65,11 +62,13 @@ export default class SearchBox extends React.Component {
                     />
                 </CustomIconButton>
 
-                <CustomAutoSuggest
+                <AutoSuggest
+                    suggestions={this.props.suggestions}
+                    value={this.state.searchText}
+                    onInputChange={searchText => this.setState({searchText})}
                     fullWidth
-                    suggestions={this.props.dataSource}
                     hintText={this.props.hintText}
-                    handleRequest={this.props.handleRequest}
+                    onSuggestionSelected={this.handleRequest.bind(this)}
                     maxSearchResults={10}
                 />
             </div>
@@ -79,6 +78,6 @@ export default class SearchBox extends React.Component {
 
 SearchBox.propTypes = {
     hintText: PropTypes.string.isRequired,
-    dataSource: PropTypes.array,
-    handleRequest: PropTypes.func,
+    suggestions: PropTypes.array,
+    onSuggestionSelected: PropTypes.func,
 };
