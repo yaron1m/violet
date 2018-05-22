@@ -82,7 +82,7 @@ describe('SearchBoxContainer', () => {
 
         const orderObjects = _.filter(result, x => x.info.type === 1);
         expect(orderObjects.length).toBe(1);
-        expect(orderObjects[0].text).toEqual("1000 - orgName5");
+        expect(orderObjects[0].label).toEqual("1000 - orgName5");
         expect(orderObjects[0].info.organizationId).toEqual("orgId5");
         expect(orderObjects[0].value.props.primaryText).toEqual("1000 - orgName5");
     });
