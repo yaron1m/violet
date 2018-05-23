@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 
-export default class PageTitle extends React.Component {
+export default class IndexAvatar extends React.Component {
 
     render() {
         return (
@@ -12,7 +12,6 @@ export default class PageTitle extends React.Component {
                     marginBottom: 15,
                     marginLeft: 15,
                 }}
-
             >
                 {this.props.index}
             </Avatar>
@@ -20,6 +19,6 @@ export default class PageTitle extends React.Component {
     }
 }
 
-PageTitle.propTypes = {
+IndexAvatar.propTypes = {
     index: PropTypes.number.isRequired,
 };
