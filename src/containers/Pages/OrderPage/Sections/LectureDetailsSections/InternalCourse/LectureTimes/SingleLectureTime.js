@@ -7,20 +7,25 @@ import {
     LectureTimesCustomText
 } from "../../../ConnectedCustomComponents/LectureTimesCustomFields";
 import CustomPaper, {flexStyle} from "../../../../../../../components/CustomComponents/CustomPaper";
+import IndexAvatar from "../../../../../../../components/IndexAvatar";
 
 export default class SingleLectureTime extends React.Component {
     render() {
-        const index = this.props.lectureTimeIndex;
+        const lectureTimeIndex = this.props.lectureTimeIndex;
 
         return (
             <CustomPaper style={flexStyle}>
-                <LectureTimesCustomDatePicker lectureTimeIndex={index} name="date"/>
-                <LectureTimesCustomAutoComplete lectureTimeIndex={index} name="topic"
+                <IndexAvatar
+                    index={this.props.index + 1}
+                />
+
+                <LectureTimesCustomDatePicker lectureTimeIndex={lectureTimeIndex} name="date"/>
+                <LectureTimesCustomAutoComplete lectureTimeIndex={lectureTimeIndex} name="topic"
                                                 suggestions={this.props.offeredLectures} size={Sizes.XXL}/>
-                <LectureTimesCustomText lectureTimeIndex={index} name="startTime" size={Sizes.M}/>
-                <LectureTimesCustomText lectureTimeIndex={index} name="endTime" size={Sizes.M}/>
-                <LectureTimesCustomText lectureTimeIndex={index} name="audienceSize" size={Sizes.M}/>
-                <LectureTimesCustomText lectureTimeIndex={index} name="tie" size={Sizes.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="startTime" size={Sizes.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Sizes.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Sizes.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Sizes.M}/>
             </CustomPaper>
         );
     }
@@ -28,6 +33,6 @@ export default class SingleLectureTime extends React.Component {
 
 SingleLectureTime.propTypes = {
     lectureTimeIndex: PropTypes.number,
+    index: PropTypes.number,
     offeredLectures: PropTypes.array,
 };
-

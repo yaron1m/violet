@@ -1,14 +1,14 @@
 import React from 'react';
 import SingleLectureTime from "./SingleLectureTime";
 import PropTypes from "prop-types";
-import _ from 'lodash';
 
 export default class LectureTimesDetails extends React.Component {
     render() {
-        return _.map(this.props.lectureTimesIndexes, index =>
+        return this.props.lectureTimesIndexes.map((lectureTimeIndex, order) =>
             <SingleLectureTime
-                key={index}
-                lectureTimeIndex={index}
+                key={lectureTimeIndex}
+                index={order}
+                lectureTimeIndex={lectureTimeIndex}
                 offeredLectures={this.props.offeredLectures}
             />
         );
