@@ -49,8 +49,11 @@ function getUpdatedOrder(order) {
 
     if (_.has(order, "lectureTimes"))
         _.map(order.lectureTimes, time => {
-            console.log(JSON.stringify(time));
             updateField(time, "date");
+            delete time.organizationName;
+            delete time.status;
+            delete time.orderId;
+            delete time.shirtColor;
         });
     return order;
 }
