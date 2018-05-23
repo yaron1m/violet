@@ -6,7 +6,7 @@ import {
     LectureTimesCustomDatePicker,
     LectureTimesCustomText
 } from "../../../ConnectedCustomComponents/LectureTimesCustomFields";
-import CustomPaper, {flexStyle} from "../../../../../../../components/CustomComponents/CustomPaper";
+import {flexStyle} from "../../../../../../../components/CustomComponents/CustomPaper";
 import IndexAvatar from "../../../../../../../components/IndexAvatar";
 
 export default class SingleLectureTime extends React.Component {
@@ -14,7 +14,7 @@ export default class SingleLectureTime extends React.Component {
         const lectureTimeIndex = this.props.lectureTimeIndex;
 
         return (
-            <CustomPaper style={flexStyle}>
+            <div style={flexStyle}>
                 <IndexAvatar
                     index={this.props.index + 1}
                 />
@@ -26,7 +26,7 @@ export default class SingleLectureTime extends React.Component {
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Sizes.M}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Sizes.M}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Sizes.M}/>
-            </CustomPaper>
+            </div>
         );
     }
 }

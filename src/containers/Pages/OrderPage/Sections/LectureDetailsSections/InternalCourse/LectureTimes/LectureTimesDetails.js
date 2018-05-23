@@ -1,17 +1,30 @@
 import React from 'react';
 import SingleLectureTime from "./SingleLectureTime";
 import PropTypes from "prop-types";
+import CustomPaper from "../../../../../../../components/CustomComponents/CustomPaper";
+import CustomDivider from "../../../../../../../components/CustomComponents/CustomDivider";
 
 export default class LectureTimesDetails extends React.Component {
     render() {
-        return this.props.lectureTimesIndexes.map((lectureTimeIndex, order) =>
-            <SingleLectureTime
-                key={lectureTimeIndex}
-                index={order}
-                lectureTimeIndex={lectureTimeIndex}
-                offeredLectures={this.props.offeredLectures}
-            />
-        );
+        if (this.props.lectureTimesIndexes.length === 0)
+            return null;
+
+        return (
+            <CustomPaper>
+                {this.props.lectureTimesIndexes.map((lectureTimeIndex, order) =>
+                    <React.Fragment key={lectureTimeIndex}>
+                        <SingleLectureTime
+                            key={lectureTimeIndex}
+                            index={order}
+                            lectureTimeIndex={lectureTimeIndex}
+                            offeredLectures={this.props.offeredLectures}
+                        />
+
+                        {order < this.props.lectureTimesIndexes.length - 1 ? <CustomDivider/> : null}
+                    </React.Fragment>
+                )}
+            </CustomPaper>
+        )
     }
 }
 
