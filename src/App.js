@@ -75,4 +75,4 @@ App.propTypes = {
     children: PropTypes.node,
 };
 
-export const allowPublicCourses = true;
+export const allowPublicCourses = false;
