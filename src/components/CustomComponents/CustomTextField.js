@@ -1,28 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import AbstractCustomField from "./AbstractCustomField";
+import {withStyles} from '@material-ui/core/styles';
 
-export default class CustomText extends AbstractCustomField {
+const styles = () => ({
+    textField: {
+        marginRight: 20,
+        marginBottom: 10,
+        verticalAlign: "bottom",
+    },
+});
+
+class CustomText extends AbstractCustomField {
 
     render() {
         const style = {
-            ...this.basicStyle,
             width: this.width,
+            height: "inherit"
         };
 
         return (
             <TextField
-                style={style}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
+                helperText={this.title}
+                value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
+                onChange={event => this.handleChange(event.target.value)}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                value={this.state.value}
-                onChange={(event, newValue) => this.handleChange(newValue)}
-                multiLine={true}
+                error={super.shouldShowError()}
+
+                type={this.props.type}
+                multiline={this.props.type !== "date" && this.props.type !== "email" && this.props.type !== "password"}
                 rowsMax={4}
-                errorText={super.getErrorText()}
+
+                inputProps={{style}}
+                className={this.props.classes.textField}
             />
         );
     }
@@ -30,11 +42,14 @@ export default class CustomText extends AbstractCustomField {
 
 CustomText.propTypes = {
     ...AbstractCustomField.propTypes,
-    fullWidth: PropTypes.bool,
     disabled: PropTypes.bool,
+    type: PropTypes.string,
 };
 
 CustomText.defaultProps = {
     disabled: false,
     fullWidth: false,
+    type: null,
 };
+
+export default withStyles(styles)(CustomText);

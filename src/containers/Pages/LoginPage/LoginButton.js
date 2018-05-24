@@ -6,7 +6,6 @@ import {CustomRaisedButton} from "../../../components/CustomComponents/CustomBut
 function mapStateToProps(state) {
     return {
         label: getLabels(state).pages.loginPage.signIn,
-        primary: true,
         style: {marginTop: 10},
     };
 }

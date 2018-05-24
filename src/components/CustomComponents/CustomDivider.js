@@ -1,6 +1,6 @@
-import Divider from 'material-ui/Divider';
 import React from "react";
 import PropTypes from 'prop-types';
+import Divider from '@material-ui/core/Divider';
 
 class CustomDivider extends React.Component {
     render() {

@@ -1,20 +1,24 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
-import TextField from "material-ui/TextField";
 import PropTypes from "prop-types";
+import CustomTextField from "../../../components/CustomComponents/CustomTextField";
+import Sizes from "../../../util/consts/sizes";
+
 
 function mapStateToProps(state, ownProps) {
     return {
-        floatingLabelText: getLabels(state).pages.loginPage.password,
-        type: "password",
-        style: {marginRight: 20},
-        errorText: ownProps.errorText,
+        titles: {[ownProps.type]: getLabels(state).pages.loginPage[ownProps.type]},
+        values: {[ownProps.type]: ownProps.value},
+        requiredFields: [],
+        name: ownProps.type,
+        type: ownProps.type,
+        size: Sizes.XL,
     };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
-        onChange: ownProps.onChange,
+        updateAction: ownProps.onChange,
         onKeyDown: (event) => {
             if (event.key === "Enter")
                 ownProps.onKeyDown();
@@ -22,10 +26,10 @@ function mapDispatchToProps(dispatch, ownProps) {
     }
 }
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(TextField);
+const Container = connect(mapStateToProps, mapDispatchToProps)(CustomTextField);
 
 Container.propTypes = {
-    errorText: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onKeyDown: PropTypes.func.isRequired,
 };

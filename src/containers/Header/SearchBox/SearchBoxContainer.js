@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
@@ -6,11 +6,10 @@ import {getOrganizations} from "../../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../../store/selected/actions";
 import {getOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
-import Colors from "../../../util/consts/colors";
+// import Colors from "../../../util/consts/colors";
 import * as _ from "lodash";
-import EventIcon from 'material-ui-icons/EventNote';
-import BusinessIcon from 'material-ui-icons/Business';
-import CustomMenuItem from "../../../components/CustomComponents/CustomMenuItem";
+// import EventIcon from '@material-ui/icons/EventNote';
+// import BusinessIcon from '@material-ui/icons/Business';
 
 const sourceTypes = {
     organization: 0,
@@ -36,42 +35,43 @@ export function handleRequest(chosenRequest, dispatch) {
     }
 }
 
-export function getDataSource(state) {
+export function getSuggestions(state) {
     const organizations = getOrganizations(state);
     if (!organizations)
         return [];
 
     const orders = getOrders(state);
 
+    //TODO custom render every menu item
     const organizationNamesObjects = _.values(organizations).map(
         (org) => {
             const text = org.organizationName + (org.companyId ? " (" + org.companyId + ")" : "");
 
             return {
-                text: text,
+                label: text,
                 info: {
                     type: sourceTypes.organization,
                     organizationId: org.id
                 },
-                value: (<CustomMenuItem
-                    primaryText={text}
-                    leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
-                />)
+                // value: (<CustomMenuItem
+                //     primaryText={text}
+                //     leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
+                // />)
             }
         });
 
     const orderNumbersObjects = _.values(orders).map(
         (order) => ({
-            text: order.id.toString() + " - " + organizations[order.organizationId].organizationName,
+            label: order.id.toString() + " - " + organizations[order.organizationId].organizationName,
             info: {
                 type: sourceTypes.order,
                 orderId: order.id,
                 organizationId: order.organizationId,
             },
-            value: (<CustomMenuItem
-                primaryText={order.id.toString() + " - " + organizations[order.organizationId].organizationName}
-                leftIcon={<EventIcon color={Colors.orderIconColor}/>}
-            />)
+            // value: (<CustomMenuItem
+            //     primaryText={order.id.toString() + " - " + organizations[order.organizationId].organizationName}
+            //     leftIcon={<EventIcon color={Colors.orderIconColor}/>}
+            // />)
         }));
 
     return _.concat(organizationNamesObjects, orderNumbersObjects);
@@ -80,13 +80,13 @@ export function getDataSource(state) {
 function mapStateToProps(state) {
     return {
         hintText: getLabels(state).header.searchLineHint,
-        dataSource: getDataSource(state),
+        suggestions: getSuggestions(state),
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        handleRequest: (chosenRequest) => handleRequest(chosenRequest, dispatch),
+        onSuggestionSelected: (chosenRequest) => handleRequest(chosenRequest, dispatch),
     };
 }
 

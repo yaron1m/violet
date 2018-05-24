@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
-import CalculateIcon from 'material-ui-icons/LocalAtm';
+import CalculateIcon from '@material-ui/icons/LocalAtm';
 import Sizes from "../../../../../util/consts/sizes";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
@@ -25,7 +25,7 @@ export default class PaymentSection extends React.Component {
                     <CustomIconButton
                         onClick={this.props.calculateSum}
                         tooltip={this.props.buttonTooltip}
-                        style={{marginBottom: 10, marginRight: 10}}
+                        style={{marginBottom: 10, marginLeft: 10}}
                     >
                         <CalculateIcon/>
                     </CustomIconButton>

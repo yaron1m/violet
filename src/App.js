@@ -1,12 +1,13 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header from './containers/Header';
 import LoginPage from './containers/Pages/LoginPage/LoginPageContainer';
 import AppDialog from './containers/Messages/AppDialogContainer';
 import AppSnackbar from './containers/Messages/AppSnackBarContainer';
-import ThemeDefault from './theme-default';
+import {theme} from './theme-default';
 import Colors from "./util/consts/colors";
 import PropTypes from 'prop-types';
+import {MuiThemeProvider} from '@material-ui/core/styles';
+import RTL from "./jss-rtl";
 
 export default class App extends React.Component {
 
@@ -43,21 +44,26 @@ export default class App extends React.Component {
 
 
         return (
-            <MuiThemeProvider muiTheme={ThemeDefault(this.props.rtl)}>
-                <div dir={this.props.rtl ? "rtl" : ""}>
-                    <Header/>
+            <MuiThemeProvider theme={theme}>
+                <RTL>
+                    <div dir={this.props.rtl ? "rtl" : ""}>
 
-                    <div style={styles.app}>
-                        <div style={styles.container}>
-                            {this.appBody()}
+                        <Header/>
+
+                        <div style={styles.app}>
+                            <div style={styles.container}>
+                                {this.appBody()}
+                            </div>
                         </div>
+
+                        <div style={styles.footer}>
+                            Copyright v2.0.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
+                        </div>
+
+                        <AppDialog/>
+                        <AppSnackbar/>
                     </div>
-
-                    <div style={styles.footer}>Copyright v1.3.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved</div>
-
-                    <AppDialog/>
-                    <AppSnackbar/>
-                </div>
+                </RTL>
             </MuiThemeProvider>
         );
     }

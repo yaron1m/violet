@@ -1,8 +1,9 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
+import AppBar from '@material-ui/core/AppBar';
 import SearchBoxContainer from './SearchBox/SearchBoxContainer';
 import LeftIconsContainer from './LeftIcons/LeftIconsContainer';
 import HomeButton from './HomeButton'
+import Toolbar from '@material-ui/core/Toolbar';
 
 export default class Header extends React.Component {
 
@@ -11,7 +12,6 @@ export default class Header extends React.Component {
             appBar: {
                 position: 'fixed',
                 top: 0,
-                overflow: 'hidden',
                 maxHeight: 65,
                 paddingBottom: 7,
                 paddingLeft: 20,
@@ -22,10 +22,13 @@ export default class Header extends React.Component {
         return (
             <AppBar
                 style={style.appBar}
-                iconElementLeft={<HomeButton/>}
-                title={<SearchBoxContainer/>}
-                iconElementRight={<LeftIconsContainer/>}
-            />
+            >
+                <Toolbar>
+                    <HomeButton/>
+                    <SearchBoxContainer/>
+                    <LeftIconsContainer/>
+                </Toolbar>
+            </AppBar>
         );
     }
 }

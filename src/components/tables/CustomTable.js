@@ -1,11 +1,9 @@
 import React from 'react';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-} from 'material-ui/Table';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 
@@ -14,33 +12,24 @@ class CustomTable extends React.Component {
     render() {
         let headerValues = this.props.headers.map((header) => (Object.values(header)[0]));
 
-        if (this.props.hideEdit){
+        if (this.props.hideEdit) {
             headerValues = _.dropRight(headerValues);
         }
 
         return (
-            <Table
-                style={{tableLayout: 'auto'}}
-                fixedHeader={false}
-            >
-                <TableHeader
-                    adjustForCheckbox={false}
-                    displaySelectAll={false}
-                >
+            <Table>
+                <TableHead>
 
                     <TableRow>
                         {_.map(headerValues, ((title, index) =>
-                                <TableHeaderColumn key={index}>{title}</TableHeaderColumn>
+                                <TableCell key={index}>{title}</TableCell>
                         ))}
 
                     </TableRow>
 
-                </TableHeader>
+                </TableHead>
 
-                <TableBody
-                    displayRowCheckbox={false}
-                    showRowHover={true}
-                >
+                <TableBody>
                     {this.props.children}
                 </TableBody>
 

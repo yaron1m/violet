@@ -1,12 +1,12 @@
 import React from 'react';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
-import EditIcon from 'material-ui-icons/Edit';
-import DeleteIcon from 'material-ui-icons/Delete';
-import CheckIcon from 'material-ui-icons/AddCircleOutline';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CheckIcon from '@material-ui/icons/AddCircleOutline';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
-import Colors from "../../util/consts/colors";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
 class CustomTableRow extends React.Component {
@@ -25,12 +25,12 @@ class CustomTableRow extends React.Component {
         }
 
         return (
-            <TableRowColumn key={key}>
+            <TableCell key={key}>
                 <div style={{cursor: "pointer"}}
                      onClick={() => clickAction(this.props.onEditButton, this.props.rowIndex)}>
                     {this.getCellContent.bind(this)(headerKey)}
                 </div>
-            </TableRowColumn>);
+            </TableCell>);
     }
 
     getCellContent(headerKey) {
@@ -70,12 +70,7 @@ class CustomTableRow extends React.Component {
         }
 
         return (
-            <TableRow
-                style={this.props.error ? {color: Colors.red} : {}}
-                selectable={false}
-                hoverable={true}
-                key={this.props.rowIndex}
-            >
+            <TableRow>
                 {_.map(headerKeys, this.getCell.bind(this))}
             </TableRow>
         );

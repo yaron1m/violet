@@ -14,13 +14,8 @@ describe('search box', () => {
     beforeEach(() => {
         HistoryUtil.redirect = jest.fn();
         props.handleRequest = jest.fn();
+        props.onSuggestionSelected = jest.fn();
         enzymeWrapper = shallow(<SearchBox {...props} />);
-    });
-
-    it('handleRequest - enter press - nothing happens', () => {
-        enzymeWrapper.instance().handleRequest({}, -1);
-
-        expect(props.handleRequest.mock.calls.length).toBe(0);
     });
 
     it('handleRequest - choose organization - search text is set to empty', () => {

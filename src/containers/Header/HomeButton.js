@@ -1,15 +1,23 @@
 import React from 'react';
-import HomeIcon from 'material-ui-icons/Home';
+import HomeIcon from '@material-ui/icons/Home';
 import {redirect} from "../../util/history-util";
-import Colors from "../../util/consts/colors";
 import {CustomIconButton} from "../../components/CustomComponents/CustomButtons";
+import Colors from "../../util/consts/colors";
+import {withStyles} from "@material-ui/core/styles/index";
+import PropTypes from "prop-types";
+
+const styles = () => ({
+    icon: {
+        color: Colors.white,
+    },
+});
 
 class HomeButton extends React.Component {
 
     render() {
         const style = {
             homeIcon: {
-                marginRight: -20,
+                marginRight: -40,
                 marginTop: 3
             },
         };
@@ -19,10 +27,16 @@ class HomeButton extends React.Component {
                 style={style.homeIcon}
                 onClick={() => redirect('/')}
             >
-                <HomeIcon color={Colors.white}/>
+                <HomeIcon
+                    className={this.props.classes.icon}
+                />
             </CustomIconButton>
         );
     }
 }
 
-export default HomeButton;
+HomeButton.propTypes = {
+    classes: PropTypes.object,
+};
+
+export default withStyles(styles)(HomeButton);

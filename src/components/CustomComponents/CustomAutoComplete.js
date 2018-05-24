@@ -1,48 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AutoComplete from 'material-ui/AutoComplete';
 import AbstractCustomField from "./AbstractCustomField";
+import AutoSuggest from "../AutoSuggest";
 
 export default class CustomAutoComplete extends AbstractCustomField {
 
     render() {
-        const style = {
-            autoComplete: {
-                marginRight: 20,
-                width: this.width,
-            },
-            textField: {
-                verticalAlign: "bottom",
-                marginBottom: 10,
-                width: this.width,
-            },
-        };
-
         return (
-            <AutoComplete
-                style={style.autoComplete}
-                textFieldStyle={style.textField}
-                floatingLabelText={this.title}
-                floatingLabelFixed={true}
-                fullWidth={this.props.fullWidth}
+            <AutoSuggest
+                suggestions={this.props.suggestions}
+                helperText={this.title}
+                value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
+                onInputChange={(newValue) => this.handleChange(newValue)}
+                onSuggestionSelected={this.props.onSuggestionSelected ? this.props.onSuggestionSelected : function(){}}
                 disabled={this.props.disabled}
-                searchText={this.state.value}
-                onUpdateInput={(searchText) => super.handleChange(searchText)}
-                onNewRequest={this.props.onNewRequest}
-                multiLine={true}
-                rowsMax={4}
-                dataSource={this.props.dataSource}
-                errorText={this.getErrorText()}
+                fullWidth={this.props.fullWidth}
+                error={super.shouldShowError()}
+                width={this.width}
             />
         );
+
     }
 }
 
 CustomAutoComplete.propTypes = {
     ...AbstractCustomField.propTypes,
-    dataSource: PropTypes.array.isRequired,
+    suggestions: PropTypes.array.isRequired,
     disabled: PropTypes.bool,
-    onNewRequest: PropTypes.func,
+    onSuggestionSelected: PropTypes.func,
 };
 
 CustomAutoComplete.defaultProps = {

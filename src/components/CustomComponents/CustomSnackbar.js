@@ -1,6 +1,6 @@
-import Snackbar from "material-ui/Snackbar";
 import React from "react";
 import PropTypes from 'prop-types';
+import Snackbar from '@material-ui/core/Snackbar';
 
 class CustomSnackbar extends React.Component {
     render() {
@@ -9,7 +9,7 @@ class CustomSnackbar extends React.Component {
                 open={this.props.open}
                 message={this.props.message}
                 autoHideDuration={4000}
-                onRequestClose={this.props.onRequestClose}
+                onClose={this.props.onRequestClose}
             />
         );
     }

@@ -112,18 +112,18 @@ describe('Abstract Field Class', () => {
         expect(updateAction.mock.calls[0]).toEqual(["organizationName", "Amazon"]);
     });
 
-    it('getErrorText - field is not required - empty string', () => {
-        expect(setup().getErrorText()).toEqual("");
+    it('shouldShowError - field is not required - false', () => {
+        expect(setup().shouldShowError()).toBeFalsy();
     });
 
-    it('getErrorText - required but has value - empty string', () => {
-        expect(setup({requiredFields: ["organizationName"]}).getErrorText()).toEqual("");
+    it('shouldShowError - required but has value - false', () => {
+        expect(setup({requiredFields: ["organizationName"]}).shouldShowError()).toBeFalsy();
     });
 
-    it('getErrorText - required with no value - get required string', () => {
+    it('shouldShowError - required with no value - true', () => {
         expect(setup({
             requiredFields: ["organizationName"],
             values: {}
-        }).getErrorText()).toEqual("שדה חובה");
+        }).shouldShowError()).toBeTruthy();
     });
 });

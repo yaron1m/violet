@@ -47,9 +47,8 @@ export default class AbstractCustomField extends React.Component {
         this.updateAction(this.name, newValue);
     }
 
-    getErrorText() {
-        const showError = !this.state.value && !_.isEmpty(this.requiredFields) && _.includes(this.requiredFields, this.name);
-        return showError ? "שדה חובה" : ""; //TODO extract string to labels
+    shouldShowError() {
+        return !this.state.value && !_.isEmpty(this.requiredFields) && _.includes(this.requiredFields, this.name);
     }
 }
 

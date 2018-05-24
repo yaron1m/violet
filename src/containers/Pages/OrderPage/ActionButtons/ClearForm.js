@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFormDialog from './ClearFormDialogContainer'
-import CleanIcon from 'material-ui-icons/Replay';
+import CleanIcon from '@material-ui/icons/Replay';
 import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
 
 export default class ClearFormButton extends React.Component {
@@ -14,16 +14,19 @@ export default class ClearFormButton extends React.Component {
 
     render() {
         return (
-            <CustomIconButton
-                tooltip={this.props.tooltip}
-                onClick={() => this.setState({dialogOpen: true})}
-            >
-                <CleanIcon/>
+            <React.Fragment>
+                <CustomIconButton
+                    tooltip={this.props.tooltip}
+                    onClick={() => this.setState({dialogOpen: true})}
+                >
+                    <CleanIcon/>
+                </CustomIconButton>
+
                 <ClearFormDialog
                     open={this.state.dialogOpen}
                     onRequestClose={() => this.setState({dialogOpen: false})}
                 />
-            </CustomIconButton>
+            </React.Fragment>
         );
     }
 }

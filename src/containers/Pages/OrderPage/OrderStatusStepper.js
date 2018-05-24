@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash'
-import {Step, StepLabel, Stepper} from "material-ui";
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
 import {progressiveStatuses} from "../../../util/consts/status";
 
 export default class OrderStatusStepper extends React.Component {
@@ -9,7 +11,10 @@ export default class OrderStatusStepper extends React.Component {
     render() {
 
         return (
-            <Stepper linear={false} style={{height: 50}}>
+            <Stepper
+                nonLinear
+                style={{backgroundColor: "inherit"}}
+            >
                 {_.map(progressiveStatuses, status =>
                     <Step
                         key={status}

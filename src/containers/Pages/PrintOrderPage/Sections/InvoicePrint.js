@@ -19,7 +19,6 @@ export default class InvoicePrintSection extends React.Component {
                 <PrintOrderConnectedText name="taxInvoiceNumber"/>
                 <PrintOrderConnectedText name="taxInvoiceDate"/>
                 <PrintOrderConnectedText name="receiptNumber"/>
-                <PrintOrderConnectedText name="actualPayDay"/>
             </PrintSection>
         );
     }

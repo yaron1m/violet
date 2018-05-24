@@ -1,7 +1,10 @@
-import Dialog from "material-ui/Dialog";
 import React from "react";
 import PropTypes from 'prop-types';
 import {CustomFlatButton} from "./CustomButtons";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 class CustomDialog extends React.Component {
 
@@ -12,18 +15,22 @@ class CustomDialog extends React.Component {
                 label="אישור"
                 primary={true}
                 onClick={this.props.onRequestClose}
-            />,
+            />
         ];
 
         return (
             <Dialog
-                title={this.props.title}
-                actions={this.props.actions ? this.props.actions : actions}
                 open={this.props.open}
-                onRequestClose={this.props.onRequestClose}
-                autoScrollBodyContent={true}
+                onClose={this.props.onRequestClose}
+                maxWidth="md"
             >
-                {this.props.children}
+                <DialogTitle>{this.props.title}</DialogTitle>
+                <DialogContent>
+                    {this.props.children}
+                </DialogContent>
+                <DialogActions>
+                    {this.props.actions ? this.props.actions : actions}
+                </DialogActions>
             </Dialog>
         );
     }

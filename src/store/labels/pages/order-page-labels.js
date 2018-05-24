@@ -95,18 +95,16 @@ const lectureTimesSectionLabels = {
     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
         {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
     addRow: "הוסף הרצאה חדשה",
-    editDialog: {
-        dialogTitle: "ערוך פרטי הרצאה",
-        titles: {
-            date: "תאריך",
-            startTime: "שעת התחלה",
-            endTime: "שעת סיום",
-            length: "משך",
-            topic: "נושא",
-            audienceSize: "מס' משתתפים",
-            tie: "עניבה"
-        },
-    }
+    titles: {
+        date: "תאריך",
+        startTime: "שעת התחלה",
+        endTime: "שעת סיום",
+        duration: "משך",
+        length: "משך",
+        topic: "נושא",
+        audienceSize: "מס' משתתפים",
+        tie: "עניבה"
+    },
 };
 
 const publicCourseSectionLabels = {
@@ -158,7 +156,6 @@ const invoiceSectionLabels = {
         taxInvoiceNumber: "מספר חשבונית מס",
         taxInvoiceDate: "תאריך חשבונית מס",
         receiptNumber: "מספר קבלה",
-        actualPayDay: "תאריך תשלום בפועל",
         internalOrderNumber: "מספר הזמנת רכש",
     }
 };
