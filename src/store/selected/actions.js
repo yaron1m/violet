@@ -88,7 +88,6 @@ export function updateLectureTime(key, value, lectureTimeIndex) {
     }
 }
 
-//TODO missing tests for this function
 export function addNewLectureTime() {
     return function addNewLectureTime(dispatch, getState) {
         const thisSelectedOrder = Immutable.asMutable(getSelectedOrder(getState()), {deep: true});
@@ -99,7 +98,6 @@ export function addNewLectureTime() {
     }
 }
 
-//TODO missing tests for this function
 export function deleteLectureTime(lectureTimeIndex) {
     return function addNewLectureTime(dispatch, getState) {
         const thisSelectedOrder = Immutable.asMutable(getSelectedOrder(getState()), {deep: true});

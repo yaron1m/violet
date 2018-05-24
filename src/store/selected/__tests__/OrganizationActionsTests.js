@@ -1,6 +1,7 @@
 import React from 'react';
 import * as actions from "../actions";
 import * as actionTypes from "../action-types";
+import * as firebaseActions from "../../firebase/actions";
 
 const id = 123456;
 const value = "value";
@@ -86,8 +87,9 @@ describe('selected actions - organization', () => {
         expect(actions.setIsSelectedOrganization().type).toBe(actionTypes.SET_IS_SELECTED_ORGANIZATION);
     });
 
-    it('sendSelectedOrganizationToDatabase - valid - action', () => {
-        //TODO test is not full
+    it('should dispatch action to send order to database', async () => {
+        firebaseActions.sendDataToDatabase = jest.fn();
+
         const thunkFunction = actions.sendSelectedOrganizationToDatabase();
         expect(thunkFunction).toBeDefined();
 
@@ -101,8 +103,15 @@ describe('selected actions - organization', () => {
                 }
             }
         };
-        thunkFunction(dispatch, getState);
+        await thunkFunction(dispatch, getState);
 
-        expect(dispatch.mock.calls.length).toBe(1);
+        const expectedOrganization = {
+            id,
+            [key]: value,
+        };
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/organizations/' + id, expectedOrganization);
     });
 });
