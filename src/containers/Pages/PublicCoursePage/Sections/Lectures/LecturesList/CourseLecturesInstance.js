@@ -7,9 +7,9 @@ import {
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import Sizes from "../../../../../../util/consts/sizes";
-import Avatar from '@material-ui/core/Avatar';
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
 import CustomDivider from "../../../../../../components/CustomComponents/CustomDivider";
+import IndexAvatar from "../../../../../../components/IndexAvatar";
 
 export default class CourseLecturesInstance extends React.Component {
 
@@ -18,15 +18,9 @@ export default class CourseLecturesInstance extends React.Component {
         return (
             <div>
                 <div style={flexStyle}>
-                    <Avatar
-                        disabled={false}
-                        style={{
-                            marginBottom: 15,
-                            marginLeft: 15,
-                        }}
-                    >
-                        {this.props.index}
-                    </Avatar>
+                    <IndexAvatar
+                        index={this.props.index}
+                    />
 
                     <PublicCourseLectureConnectedDatePicker lectureId={index} name="date"/>
                     <PublicCourseLectureConnectedAutoComplete lectureId={index} name="topic"
