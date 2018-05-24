@@ -34,7 +34,6 @@ export default class InvoiceSection extends React.Component {
                     <OrderCustomText name="taxInvoiceNumber"/>
                     <OrderCustomDatePicker name="taxInvoiceDate" size={Sizes.L}/>
                     <OrderCustomText name="receiptNumber"/>
-                    <OrderCustomDatePicker name="actualPayDay"/>
                 </div>
 
             </CustomPaper>
