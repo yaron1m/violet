@@ -1,6 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../../../components/CustomComponents/CustomPaper";
-import {CustomToggleBox} from "../../../../../../components/CustomComponents/CustomToggle";
+import CustomPaper, {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
 import Sizes from "../../../../../../util/consts/sizes";
 import {
     OrderCustomCheckBox,
@@ -37,7 +36,7 @@ export default class InternalLectureDetails extends React.Component {
                     <OrderCustomText name="daySchedule"/>
                 </div>
 
-                <CustomToggleBox>
+                <div style={flexStyle}>
                     <OrderCustomToggle name="projector"/>
                     <OrderCustomToggle name="soundSystem"/>
                     <OrderCustomToggle name="microphone"/>
@@ -50,7 +49,7 @@ export default class InternalLectureDetails extends React.Component {
                     {this.props.showCancelledCheckBox ?
                         <OrderCustomCheckBox name="cancelled" checkedColor={Colors.red}/> : null}
 
-                </CustomToggleBox>
+                </div>
 
                 <RejectedOrderContainer/>
 

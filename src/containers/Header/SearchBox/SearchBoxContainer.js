@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
@@ -6,11 +6,10 @@ import {getOrganizations} from "../../../store/organizations/reducer";
 import {selectOrder, selectOrganization} from "../../../store/selected/actions";
 import {getOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
-import Colors from "../../../util/consts/colors";
+// import Colors from "../../../util/consts/colors";
 import * as _ from "lodash";
-import EventIcon from '@material-ui/icons/EventNote';
-import BusinessIcon from '@material-ui/icons/Business';
-import CustomMenuItem from "../../../components/CustomComponents/CustomMenuItem";
+// import EventIcon from '@material-ui/icons/EventNote';
+// import BusinessIcon from '@material-ui/icons/Business';
 
 const sourceTypes = {
     organization: 0,
@@ -43,6 +42,7 @@ export function getSuggestions(state) {
 
     const orders = getOrders(state);
 
+    //TODO custom render every menu item
     const organizationNamesObjects = _.values(organizations).map(
         (org) => {
             const text = org.organizationName + (org.companyId ? " (" + org.companyId + ")" : "");
@@ -53,10 +53,10 @@ export function getSuggestions(state) {
                     type: sourceTypes.organization,
                     organizationId: org.id
                 },
-                value: (<CustomMenuItem
-                    primaryText={text}
-                    leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
-                />)
+                // value: (<CustomMenuItem
+                //     primaryText={text}
+                //     leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
+                // />)
             }
         });
 
@@ -68,10 +68,10 @@ export function getSuggestions(state) {
                 orderId: order.id,
                 organizationId: order.organizationId,
             },
-            value: (<CustomMenuItem
-                primaryText={order.id.toString() + " - " + organizations[order.organizationId].organizationName}
-                leftIcon={<EventIcon color={Colors.orderIconColor}/>}
-            />)
+            // value: (<CustomMenuItem
+            //     primaryText={order.id.toString() + " - " + organizations[order.organizationId].organizationName}
+            //     leftIcon={<EventIcon color={Colors.orderIconColor}/>}
+            // />)
         }));
 
     return _.concat(organizationNamesObjects, orderNumbersObjects);

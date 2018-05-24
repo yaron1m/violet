@@ -12,19 +12,13 @@ class CustomTable extends React.Component {
     render() {
         let headerValues = this.props.headers.map((header) => (Object.values(header)[0]));
 
-        if (this.props.hideEdit){
+        if (this.props.hideEdit) {
             headerValues = _.dropRight(headerValues);
         }
 
         return (
-            <Table
-                // style={{tableLayout: 'auto'}}
-                // fixedHeader={false}
-            >
-                <TableHead
-                    // adjustForCheckbox={false}
-                    // displaySelectAll={false}
-                >
+            <Table>
+                <TableHead>
 
                     <TableRow>
                         {_.map(headerValues, ((title, index) =>
@@ -35,10 +29,7 @@ class CustomTable extends React.Component {
 
                 </TableHead>
 
-                <TableBody
-                    // displayRowCheckbox={false}
-                    // showRowHover={true}
-                >
+                <TableBody>
                     {this.props.children}
                 </TableBody>
 

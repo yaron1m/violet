@@ -20,9 +20,7 @@ export class CustomSingleCellRow extends React.Component {
         const textCellIndex = _.floor(numberOfColumns / 2);
 
         return (
-            <TableRow
-                // selectable={false}
-            >
+            <TableRow>
                 {headerKeys.map((header, index) =>
                     index === textCellIndex ?
                         <TableCell key={index}>

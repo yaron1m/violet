@@ -11,22 +11,6 @@ export default class CustomCheckbox extends AbstractCustomField {
     render() {
         const checked = this.state.value === true;
 
-        // const style = {
-        //     checkbox: {
-        //         marginBottom: 6,
-        //         marginTop: 6,
-        //         paddingBottom: 9,
-        //     },
-        //     labelStyle: {
-        //         marginRight: 20,
-        //         color: checked ? this.props.checkedColor : Colors.black,
-        //     },
-        //     iconStyle: {
-        //         fill: checked ? this.props.checkedColor : null,
-        //         borderColor: Colors.black,
-        //     },
-        // };
-
         const labelStyle = {
             color: checked ? this.props.checkedColor : Colors.black
         };
@@ -39,11 +23,6 @@ export default class CustomCheckbox extends AbstractCustomField {
                         checked={checked}
                         onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
                         value={this.title}
-                        // style={style.checkbox}
-                        // labelStyle={style.labelStyle}
-                        // labelPosition="right"
-                        // switched={checked}
-                        // iconStyle={style.iconStyle}
                     />
                 }
                     label={<span style={labelStyle}>{this.title}</span>}
