@@ -46,7 +46,8 @@ function getUpdatedOrder(order) {
     updateField(order, "followUpDate");
     updateField(order, "taxInvoiceDate");
     updateField(order, "proformaInvoiceDate");
-
+    delete order.actualPayDay;
+    
     if (_.has(order, "lectureTimes"))
         _.map(order.lectureTimes, time => {
             updateField(time, "date");
