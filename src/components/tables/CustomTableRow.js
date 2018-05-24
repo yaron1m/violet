@@ -70,12 +70,7 @@ class CustomTableRow extends React.Component {
         }
 
         return (
-            <TableRow
-                // style={this.props.error ? {color: Colors.red} : {}}
-                // selectable={false}
-                // hoverable={true}
-                // key={this.props.rowIndex}
-            >
+            <TableRow>
                 {_.map(headerKeys, this.getCell.bind(this))}
             </TableRow>
         );

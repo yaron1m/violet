@@ -23,8 +23,6 @@ export default class SearchBox extends React.Component {
         const styles = {
             iconButton: {
                 margin: "7px 5px 0px 5px",
-
-                //display: this.state.searchText === "" ? "inline-block" : "none",
             },
             container: {
                 width: "100%",

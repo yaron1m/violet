@@ -13,7 +13,6 @@ function mapStateToProps(state, ownProps) {
         name: ownProps.type,
         type: ownProps.type,
         size: Sizes.XL,
-        //style: {marginRight: 20},
     };
 }
 
