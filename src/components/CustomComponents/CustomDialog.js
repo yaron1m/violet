@@ -22,6 +22,7 @@ class CustomDialog extends React.Component {
             <Dialog
                 open={this.props.open}
                 onClose={this.props.onRequestClose}
+                maxWidth="md"
             >
                 <DialogTitle>{this.props.title}</DialogTitle>
                 <DialogContent>

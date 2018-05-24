@@ -8,6 +8,7 @@ import {
 } from "../../../ConnectedCustomComponents/LectureTimesCustomFields";
 import {flexStyle} from "../../../../../../../components/CustomComponents/CustomPaper";
 import IndexAvatar from "../../../../../../../components/IndexAvatar";
+import DeleteLectureTimeButton from "./DeleteLectureTimeButton";
 
 export default class SingleLectureTime extends React.Component {
     render() {
@@ -27,6 +28,8 @@ export default class SingleLectureTime extends React.Component {
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="duration" size={Sizes.S}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Sizes.M}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Sizes.M}/>
+
+                <DeleteLectureTimeButton lectureTimeIndex={lectureTimeIndex}/>
             </div>
         );
     }

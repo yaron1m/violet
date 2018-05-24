@@ -99,6 +99,17 @@ export function addNewLectureTime() {
     }
 }
 
+//TODO missing tests for this function
+export function deleteLectureTime(lectureTimeIndex) {
+    return function addNewLectureTime(dispatch, getState) {
+        const thisSelectedOrder = Immutable.asMutable(getSelectedOrder(getState()), {deep: true});
+        const lectureTimes = Immutable.asMutable(thisSelectedOrder.lectureTimes);
+        lectureTimes.splice(lectureTimeIndex, 1);
+
+        dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+    }
+}
+
 export function updatePublicCourseParticipant(key, value, participantIndex) {
     return function updatePublicCourseParticipant(dispatch, getState) {
         const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
