@@ -32,7 +32,6 @@ const waitingPayment = mergerRequiredFields(executed, {
 });
 
 const payed = mergerRequiredFields(waitingPayment, {
-    order: ["actualPayDay"]
 });
 
 const cancelled = {
