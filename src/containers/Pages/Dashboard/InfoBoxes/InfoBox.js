@@ -34,7 +34,8 @@ export default class InfoBox extends React.Component {
                 height: 90,
                 width: 90,
                 textAlign: 'center',
-                backgroundColor: this.props.color
+                backgroundColor: this.props.color,
+                color: Colors.white,
             },
             icon: {
                 height: 48,
@@ -44,12 +45,10 @@ export default class InfoBox extends React.Component {
             }
         };
 
-        //TODO add colors to icons
         return (
             <CustomPaper style={styles.paper} onClick={this.props.onClick}>
                 <span style={styles.iconSpan}>
                   <this.props.Icon
-                      //color={Colors.white}
                       style={styles.icon}
                   />
                 </span>

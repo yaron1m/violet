@@ -24,6 +24,7 @@ export default class SingleLectureTime extends React.Component {
                                                 suggestions={this.props.offeredLectures} size={Sizes.XXL}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="startTime" size={Sizes.M}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Sizes.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="duration" size={Sizes.S}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Sizes.M}/>
                 <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Sizes.M}/>
             </div>
