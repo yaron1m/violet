@@ -34,6 +34,7 @@ export default class AbstractCustomField extends React.Component {
     }
 
 
+    //TODO fix deprecated function
     componentWillReceiveProps(nextProps) {
         if (nextProps.values[this.name] !== this.state.value)
             this.setState(Object.assign({}, this.state, {

@@ -4,7 +4,9 @@ import * as actionTypes from './action-types';
 import {receiveOrganizations} from '../organizations/actions'
 import {receiveOrders} from '../orders/actions'
 import {receiveLists} from "../lists/actions";
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import "firebase/auth";
+import "firebase/database";
 import * as reducer from './reducer';
 import {getLabels} from "../labels/reducer";
 import {receivePublicCourses} from "../PublicCourses/actions";
