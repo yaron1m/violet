@@ -27,7 +27,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
     return {
-        onTabClick: (key) => dispatch(updateSelectedOrder("lectureDetailsTabKey", key))
+        onTabClick: (event, value) => dispatch(updateSelectedOrder("lectureDetailsTabKey", value))
     };
 }
 

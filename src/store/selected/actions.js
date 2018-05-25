@@ -65,7 +65,7 @@ export function selectOrder(orderId) {
 }
 
 export function updateSelectedOrder(key, value) {
-    return function updateSelectedOrganization(dispatch, getState) {
+    return function updateSelectedOrder(dispatch, getState) {
         const selectedOrder = changeImmutable(getSelectedOrder(getState()), key, value);
         const status = calculateOrderStatus(selectedOrder);
         const updatedOrder = Immutable.merge(selectedOrder, {
