@@ -2,6 +2,9 @@ import * as _ from "lodash";
 import {getStatusLabels} from "../store/labels/reducer";
 import {getSelectedOrder} from "../store/selected/reducer";
 import {progressiveStatuses, terminatingStatuses} from "./consts/status";
+import {
+    publicCourseTabKey
+} from "../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);
@@ -26,25 +29,37 @@ export default function calculateOrderStatus(order) {
     return status;
 }
 
+//TODO split this code to files and functions
 function meetsRequirements(order, requirement) {
 
     let lectureTimesDates;
+    const lectureDetailsTabKey = order.lectureDetailsTabKey;
 
     switch (requirement) {
         case progressiveStatuses.contact:
             return true;
 
         case progressiveStatuses.offer:
+            if (lectureDetailsTabKey === publicCourseTabKey)
+                return existsAndNotEmpty(order, "publicCourseParticipants");
+
             return existsAndNotEmpty(order, "lectureTimes")
                 && _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
 
         case progressiveStatuses.order:
+            if (lectureDetailsTabKey === publicCourseTabKey)
+                return true;
+
             return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
 
         case progressiveStatuses.approvedOrder:
             return existsAndNotEmpty(order, "orderApproved");
 
         case progressiveStatuses.isExecuting: {
+            if (lectureDetailsTabKey === publicCourseTabKey) {
+                return true; //TODO figure how to know if executing
+            }
+
             lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
             const tomorrowMorning = new Date();
             tomorrowMorning.setDate(tomorrowMorning.getDate() + 1);
@@ -87,7 +102,11 @@ function meetsRequirements(order, requirement) {
 }
 
 export function existsAndNotEmpty(order, key) {
-    return _.has(order, key) && order[key];
+    return _.has(order, key) && order[key] && isNonEmptyArray(order[key]);
+}
+
+function isNonEmptyArray(arr){
+    return _.isArray(arr) ? arr.length !== 0 : true;
 }
 
 export function getSelectedOrderStatus(state) {

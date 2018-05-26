@@ -5,6 +5,7 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
 import Status from "../../util/consts/status";
 import {isEmptyValue} from "../../util/string-util";
+import {publicCourseTabKey} from "../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
@@ -31,6 +32,9 @@ export default function getActionRequiredOrdersArray(state) {
                     return;
 
                 case Status.order: {
+                    if (order.lectureDetailsTabKey === publicCourseTabKey)
+                        return; //TODO add action required for public courses
+
                     const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
                     if (new Date(firstLectureTimeDate) < addTwoWeeks(now.toJSON())) {
                         addOrderToResult(state, result, order, issues.noOrderApproval);
@@ -45,6 +49,9 @@ export default function getActionRequiredOrdersArray(state) {
                 case Status.approvedOrder:
                 case Status.isExecuting:
                 case Status.executed: {
+                    if (order.lectureDetailsTabKey === publicCourseTabKey)
+                        return; //TODO add action required for public courses
+
                     const lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -time.date)[0].date;
                     if (isEmptyValue(order, "proformaInvoiceNumber") && new Date(lastLectureTimeDate) < now) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
