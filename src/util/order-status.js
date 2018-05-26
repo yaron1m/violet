@@ -35,10 +35,11 @@ function meetsRequirements(order, requirement) {
             return true;
 
         case progressiveStatuses.offer:
-            return existsAndNotEmpty(order, "lectureTimes") && _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
+            return existsAndNotEmpty(order, "lectureTimes")
+                && _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
 
         case progressiveStatuses.order:
-            return Boolean(order.lectureTimes[0].date);
+            return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
 
         case progressiveStatuses.approvedOrder:
             return existsAndNotEmpty(order, "orderApproved");
