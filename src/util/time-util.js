@@ -36,3 +36,14 @@ function pad(number) {
         return number.toString();
     return '0' + number.toString();
 }
+
+export function toDateFormat(date) {
+    if (date.getHours() >= 20)
+        date.setHours(date.getHours() + 4); //Increment day by one for time zone change
+
+    const day = pad(date.getDate());
+    const month = pad(date.getMonth() + 1);
+    const year = date.getFullYear();
+
+    return year + "-" + month + "-" + day;
+}

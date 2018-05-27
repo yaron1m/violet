@@ -5,6 +5,7 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrganization} from "../../../../../store/selected/reducer";
 import {isEmptyValue} from "../../../../../util/string-util";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
+import {toDateFormat} from "../../../../../util/time-util";
 
 function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentConditions, updateSelectedOrder) {
     //TODO test this function
@@ -48,7 +49,7 @@ function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentCon
             return;
     }
 
-    updateSelectedOrder("expectedPayDate", paymentDate.toJSON());
+    updateSelectedOrder("expectedPayDate", toDateFormat(paymentDate));
 }
 
 function mapStateToProps(state) {
@@ -66,9 +67,9 @@ function mapDispatchToProps(dispatch) {
 
 function mergeProps(stateProps, dispatchProps) {
     return {
-        updateAction: (key, value) => {
-            dispatchProps.updateSelectedOrder(key, value);
+        updateAction: function (key, value) {
             calculatePayDate(value, stateProps.selectedOrganization, stateProps.paymentConditions, dispatchProps.updateSelectedOrder);
+            dispatchProps.updateSelectedOrder(key, value);
         }
     }
 }
