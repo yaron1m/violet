@@ -56,6 +56,7 @@ function mapStateToProps(state) {
     return {
         paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
         selectedOrganization: getSelectedOrganization(state),
+        calculatePayDate,
     };
 }
 
@@ -65,13 +66,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-function mergeProps(stateProps, dispatchProps) {
-    return {
-        updateAction: function (key, value) {
-            calculatePayDate(value, stateProps.selectedOrganization, stateProps.paymentConditions, dispatchProps.updateSelectedOrder);
-            dispatchProps.updateSelectedOrder(key, value);
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ProformaInvoiceDate);
+export default connect(mapStateToProps, mapDispatchToProps)(ProformaInvoiceDate);
