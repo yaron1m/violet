@@ -11,7 +11,7 @@ import {
     updateSelectedOrganization
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
-import {getSelectedOrder, getSelectedOrganization, isSelectedOrganization} from "../../../../store/selected/reducer";
+import {isSelectedOrganization} from "../../../../store/selected/reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {
@@ -26,6 +26,8 @@ import {getNextOrganizationId, getOrganizationById} from "../../../../store/orga
 import {isEmptyValue} from "../../../../util/string-util";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
+import {getSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
+import {getSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))

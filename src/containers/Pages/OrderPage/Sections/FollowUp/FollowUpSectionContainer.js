@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/labels/reducer";
 import FollowUpSection from "./FollowUpSection";
-import {getSelectedOrder} from "../../../../../store/selected/reducer";
+import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 
 function mapStateToProps(state) {
     return {

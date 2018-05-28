@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getSelectedPublicCourseLecture} from "../../../../../store/selected/reducer";
+import {getSelectedPublicCourseLecture} from "../../../../../store/SelectedPublicCourse/Selectors";
 import {updatePublicCourseLecture} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";

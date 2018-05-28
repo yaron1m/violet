@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getSelectedOrder} from "../../../../../store/selected/reducer";
+import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";

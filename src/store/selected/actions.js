@@ -1,7 +1,7 @@
 import * as actionTypes from './action-types';
 import {getOrganizationById} from "../organizations/reducer";
 import {getOrderById} from "../orders/selectors";
-import {getSelectedOrder, getSelectedOrganization, getSelectedPublicCourse} from "./reducer";
+import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";
 import calculateOrderStatus from '../../util/order-status'
@@ -9,6 +9,8 @@ import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
 import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
+import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
+import {getSelectedOrder} from "../SelectedOrder/Selectors";
 
 // Organizations:
 export function selectOrganization(organizationId) {

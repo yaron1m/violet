@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getSelectedOrganization} from "../../../../../store/selected/reducer";
+import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import {updateSelectedOrganization} from "../../../../../store/selected/actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";

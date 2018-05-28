@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import {getStatusLabels} from "../store/labels/reducer";
-import {getSelectedOrder} from "../store/selected/reducer";
+import {getSelectedOrder} from "../store/SelectedOrder/Selectors";
 import {progressiveStatuses, terminatingStatuses} from "./consts/status";
 
 export default function calculateOrderStatus(order) {

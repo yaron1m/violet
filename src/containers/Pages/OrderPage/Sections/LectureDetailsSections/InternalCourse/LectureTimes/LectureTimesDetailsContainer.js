@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getSelectedOrder} from "../../../../../../../store/selected/reducer";
+import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selectors";
 import LectureTimesDetails from "./LectureTimesDetails";
 import _ from "lodash";
 import {getOfferedLectures} from "../../../../../../../store/lists/reducer";

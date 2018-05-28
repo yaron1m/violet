@@ -1,5 +1,7 @@
 import Immutable from 'seamless-immutable';
-import {getSelectedOrder, getSelectedOrganization, isSelectedOrder, isSelectedOrganization} from "../reducer";
+import {isSelectedOrganization} from "../reducer";
+import {getSelectedOrder, isSelectedOrder} from "../../SelectedOrder/Selectors";
+import {getSelectedOrganization} from "../../SelectedOrganization/Selectors";
 
 const sampleState = Immutable({
     selected: {

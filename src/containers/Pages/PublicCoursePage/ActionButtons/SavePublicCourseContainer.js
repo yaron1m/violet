@@ -4,10 +4,11 @@ import {
     updateSelectedPublicCourse,
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
-import {getSelectedPublicCourse, isSelectedPublicCourse} from "../../../../store/selected/reducer";
+import {isSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 import {getNextPublicCourseId} from "../../../../store/PublicCourses/reducer";
+import {getSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
 
 async function savePublicCourse(selectedPublicCourse, actionButtonsLabels, nextPublicCourseId, dispatch) {
 

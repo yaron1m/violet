@@ -85,22 +85,3 @@ export function isSelectedOrganization(state) {
     return state.selected.isSelectedOrganization;
 }
 
-export function getSelectedOrder(state) {
-    return state.selected.order;
-}
-
-export function isSelectedOrder(state) {
-    return state.selected.isSelectedOrder;
-}
-
-export function getSelectedPublicCourse(state){
-    return state.selected.publicCourse;
-}
-
-export function getSelectedPublicCourseLecture(state, lectureId){
-    return state.selected.publicCourse.lectures[lectureId];
-}
-
-export function isSelectedPublicCourse(state){
-    return state.selected.isSelectedPublicCourse;
-}

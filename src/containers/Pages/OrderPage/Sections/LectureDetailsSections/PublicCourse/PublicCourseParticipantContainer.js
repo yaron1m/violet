@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import PublicCourseParticipant from "./PublicCourseParticipant";
-import {getSelectedOrder, getSelectedPublicCourse} from "../../../../../../store/selected/reducer";
+import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import * as Immutable from "seamless-immutable";
 import {updateSelectedOrder} from "../../../../../../store/selected/actions";
+import {getSelectedPublicCourse} from "../../../../../../store/SelectedPublicCourse/Selectors";
 
 function mapStateToProps(state) {
     return {

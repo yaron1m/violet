@@ -8,7 +8,7 @@ import {
     selectPublicCourse,
     updateSelectedOrder
 } from "../../../../../../store/selected/actions";
-import {getSelectedOrder} from "../../../../../../store/selected/reducer";
+import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../../util/string-util";
 
 function getOption(course) {
