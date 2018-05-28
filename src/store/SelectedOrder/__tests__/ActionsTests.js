@@ -1,8 +1,17 @@
 import React from 'react';
-import * as actions from "../actions";
 import * as orderStatusUtil from '../../../util/order-status'
 import * as firebaseActions from "../../firebase/actions";
-import {SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../../SelectedOrder/ActionTypes";
+import {SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
+import {
+    addNewLectureTime,
+    removeParticipantsFromAllLectures,
+    selectOrder,
+    sendSelectedOrderToDatabase,
+    setIsSelectedOrder,
+    updateLectureTime,
+    updatePublicCourseParticipant,
+    updateSelectedOrder
+} from "../Actions";
 
 
 const id = 123456;
@@ -23,7 +32,7 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action with selected order', () => {
-        const thunkFunction = actions.selectOrder(id);
+        const thunkFunction = selectOrder(id);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -45,7 +54,7 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action with updated order', () => {
-        const thunkFunction = actions.updateSelectedOrder(key, newValue);
+        const thunkFunction = updateSelectedOrder(key, newValue);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -71,7 +80,7 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action with updated order with the same key', () => {
-        const thunkFunction = actions.updateSelectedOrder(key, newValue);
+        const thunkFunction = updateSelectedOrder(key, newValue);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -96,7 +105,7 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action with updated lecture times', () => {
-        const thunkFunction = actions.updateLectureTime(key, value, 1);
+        const thunkFunction = updateLectureTime(key, value, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -143,7 +152,7 @@ describe('Selected order actions', () => {
     });
 
     it('should add lecture time when has none', () => {
-        const thunkFunction = actions.addNewLectureTime();
+        const thunkFunction = addNewLectureTime();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -173,7 +182,7 @@ describe('Selected order actions', () => {
     });
 
     it('should add lecture time when has other', () => {
-        const thunkFunction = actions.addNewLectureTime();
+        const thunkFunction = addNewLectureTime();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -205,7 +214,7 @@ describe('Selected order actions', () => {
     });
 
     it('should update public course participant', () => {
-        const thunkFunction = actions.updatePublicCourseParticipant(key, value, 1);
+        const thunkFunction = updatePublicCourseParticipant(key, value, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -248,7 +257,7 @@ describe('Selected order actions', () => {
     });
 
     it('should update remove participants from all lectures', () => {
-        const thunkFunction = actions.removeParticipantsFromAllLectures();
+        const thunkFunction = removeParticipantsFromAllLectures();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -295,13 +304,13 @@ describe('Selected order actions', () => {
     });
 
     it('should return set is selected action', () => {
-        expect(actions.setIsSelectedOrder().type).toBe(SET_IS_SELECTED_ORDER);
+        expect(setIsSelectedOrder().type).toBe(SET_IS_SELECTED_ORDER);
     });
 
     it('should dispatch action to send order to database', async () => {
         firebaseActions.sendDataToDatabase = jest.fn();
 
-        const thunkFunction = actions.sendSelectedOrderToDatabase();
+        const thunkFunction = sendSelectedOrderToDatabase();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {

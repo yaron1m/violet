@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import {connect} from 'react-redux';
-import {updateSelectedOrder} from "../../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import {isEmptyValue} from "../../../../../util/string-util";

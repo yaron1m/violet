@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import PublicCourseParticipant from "./PublicCourseParticipant";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import * as Immutable from "seamless-immutable";
-import {updateSelectedOrder} from "../../../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../../../store/SelectedOrder/Actions";
 import {getSelectedPublicCourse} from "../../../../../../store/SelectedPublicCourse/Selectors";
 
 function mapStateToProps(state) {

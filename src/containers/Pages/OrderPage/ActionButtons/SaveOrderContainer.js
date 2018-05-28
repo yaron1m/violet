@@ -3,11 +3,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    sendSelectedOrderToDatabase,
     sendSelectedOrganizationToDatabase,
-    setIsSelectedOrder,
     setIsSelectedOrganization,
-    updateSelectedOrder,
     updateSelectedOrganization
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
@@ -28,6 +25,11 @@ import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionB
 import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
 import {getSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import {getSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
+import {
+    sendSelectedOrderToDatabase,
+    setIsSelectedOrder,
+    updateSelectedOrder
+} from "../../../../store/SelectedOrder/Actions";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))

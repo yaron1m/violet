@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../../store/labels/reducer";
-import {updateSelectedOrder} from "../../../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../../../store/SelectedOrder/Actions";
 import * as _ from "lodash";
 import * as Immutable from "seamless-immutable";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";

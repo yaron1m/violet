@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/labels/reducer";
 import * as _ from 'lodash';
-import {updateSelectedOrder} from "../../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../../store/orders/selectors";
 import {getValueOrEmptyString} from "../../../../../util/string-util";
 import ImportContactDialog from "./ImportContactDialog";

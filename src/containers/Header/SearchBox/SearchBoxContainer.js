@@ -3,11 +3,12 @@ import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
 import {getOrganizations} from "../../../store/organizations/reducer";
-import {selectOrder, selectOrganization} from "../../../store/selected/actions";
+import {selectOrganization} from "../../../store/selected/actions";
 import {getOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
 // import Colors from "../../../util/consts/colors";
 import * as _ from "lodash";
+import {selectOrder} from "../../../store/SelectedOrder/Actions";
 // import EventIcon from '@material-ui/icons/EventNote';
 // import BusinessIcon from '@material-ui/icons/Business';
 

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {updateSelectedOrder} from "../../../../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../../../../store/SelectedOrder/Actions";
 import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selectors";
 import {getRejectionReasons} from "../../../../../../../store/lists/reducer";
 import Status from "../../../../../../../util/consts/status";

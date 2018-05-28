@@ -2,6 +2,7 @@ import * as HistoryUtil from "../../../../util/history-util";
 import * as Target from "../SearchBoxContainer";
 import * as SelectedActions from "../../../../store/selected/actions";
 import * as _ from "lodash";
+import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";
 
 let dispatch;
 
@@ -10,7 +11,7 @@ describe('SearchBoxContainer', () => {
         HistoryUtil.redirect = jest.fn();
         dispatch = jest.fn();
         SelectedActions.selectOrganization = jest.fn();
-        SelectedActions.selectOrder = jest.fn();
+        SelectedOrderActions.selectOrder = jest.fn();
     });
 
     it('handleRequest - choose organization - load organization action', () => {
@@ -44,8 +45,8 @@ describe('SearchBoxContainer', () => {
 
         Target.handleRequest(chosenRequest, dispatch);
 
-        expect(SelectedActions.selectOrder.mock.calls.length).toBe(1);
-        expect(SelectedActions.selectOrder.mock.calls[0][0]).toBe(chosenRequest.info.orderId);
+        expect(SelectedOrderActions.selectOrder.mock.calls.length).toBe(1);
+        expect(SelectedOrderActions.selectOrder.mock.calls[0][0]).toBe(chosenRequest.info.orderId);
 
         expect(SelectedActions.selectOrganization.mock.calls.length).toBe(1);
         expect(SelectedActions.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
