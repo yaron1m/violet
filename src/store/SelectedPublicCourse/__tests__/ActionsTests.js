@@ -1,11 +1,11 @@
 import React from 'react';
-import * as actions from "../../SelectedPublicCourse/Actions";
+import * as actions from "../Actions";
 import * as firebaseActions from "../../firebase/actions";
 import {
     SELECT_PUBLIC_COURSE,
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
-} from "../../SelectedPublicCourse/ActionTypes";
+} from "../ActionTypes";
 
 
 const id = 123456;

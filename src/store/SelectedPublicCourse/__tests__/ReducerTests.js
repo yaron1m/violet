@@ -1,5 +1,5 @@
 import React from 'react';
-import target from "../../SelectedPublicCourse/Reducer";
+import target from "../Reducer";
 import {LOGGED_OUT} from "../../firebase/action-types";
 import {
     CLEAR_SELECTED_ORGANIZATION,
@@ -40,6 +40,8 @@ describe('selected actions - organization', () => {
 
         expect(result).toBe(initialState);
     });
+
+    //TODO missing tests here
 
     //
     // it('reducer - CLEAR_SELECTED', () => {
