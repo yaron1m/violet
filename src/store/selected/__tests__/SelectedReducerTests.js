@@ -99,56 +99,6 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeTruthy();
     });
 
-    it('reducer - SELECT_ORDER', () => {
-
-        const initialState = {
-            key: value
-        };
-
-        const action = {
-            type: SELECT_ORDER,
-            payload: payload
-        };
-
-        const result = target(initialState, action);
-
-        expect(result[key]).toEqual(value);
-        expect(result.order).toEqual(payload);
-        expect(result.isSelectedOrder).toBeTruthy();
-    });
-
-    it('reducer - UPDATE_SELECTED_ORDER', () => {
-
-        const initialState = {
-            key: value
-        };
-
-        const action = {
-            type: UPDATE_SELECTED_ORDER,
-            payload: payload
-        };
-
-        const result = target(initialState, action);
-
-        expect(result[key]).toEqual(value);
-        expect(result.order).toEqual(payload);
-    });
-
-    it('reducer - SET_IS_SELECTED_ORDER', () => {
-
-        const initialState = {
-            key: value
-        };
-
-        const action = {
-            type: SET_IS_SELECTED_ORDER,
-            payload: payload
-        };
-
-        const result = target(initialState, action);
-
-        expect(result.isSelectedOrder).toBeTruthy();
-    });
 
     it('reducer - CLEAR_SELECTED', () => {
 
@@ -193,26 +143,5 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeFalsy();
         expect(result.isSelectedOrder).toBeFalsy();
     });
-
-    it('reducer - CLEAR_SELECTED_ORDER', () => {
-
-        const initialState = {
-            organization: payload,
-            order: payload,
-            isSelectedOrganization: true,
-            isSelectedOrder: true,
-        };
-
-        const action = {
-            type: CLEAR_SELECTED_ORDER,
-        };
-
-        const result = target(initialState, action);
-
-        expect(result).toBeDefined();
-        expect(result.organization).toEqual(payload);
-        expect(result.order).toEqual({});
-        expect(result.isSelectedOrganization).toBeTruthy();
-        expect(result.isSelectedOrder).toBeFalsy();
-    });
+    
 });
