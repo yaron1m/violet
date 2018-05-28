@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearSelectedOrganization} from "../../../../store/selected/actions";
+import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {hideRequiredFields} from "../../../../store/appearance/actions";
 import PropTypes from "prop-types";

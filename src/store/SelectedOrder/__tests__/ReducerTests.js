@@ -97,24 +97,6 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: CLEAR_SELECTED,
-        };
-
-        const result = reducer(initialState, action);
-
-        expect(result).toBeDefined();
-        expect(result.order).toEqual({});
-        expect(result.isSelectedOrder).toBeFalsy();
-    });
-
-    it('should return initial state', () => {
-
-        const initialState = {
-            order: payload,
-            isSelectedOrder: true,
-        };
-
-        const action = {
             type: LOGGED_OUT,
         };
 

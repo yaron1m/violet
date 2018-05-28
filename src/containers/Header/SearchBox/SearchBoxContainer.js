@@ -3,7 +3,7 @@ import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
 import {getOrganizations} from "../../../store/organizations/reducer";
-import {selectOrganization} from "../../../store/selected/actions";
+import {selectOrganization} from "../../../store/SelectedOrganization/Actions";
 import {getOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";
 // import Colors from "../../../util/consts/colors";

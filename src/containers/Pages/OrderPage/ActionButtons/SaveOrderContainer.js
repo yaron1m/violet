@@ -3,10 +3,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    sendSelectedOrganizationToDatabase,
-    setIsSelectedOrganization,
-    updateSelectedOrganization
-} from "../../../../store/selected/actions";
+    sendSelectedOrganizationToDatabase} from "../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
@@ -29,6 +26,7 @@ import {
     setIsSelectedOrder,
     updateSelectedOrder
 } from "../../../../store/SelectedOrder/Actions";
+import {setIsSelectedOrganization, updateSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
 
 export async function saveOrder(state, dispatch) {
     if (!shouldSave(state, dispatch))

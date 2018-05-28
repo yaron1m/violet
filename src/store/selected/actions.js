@@ -1,17 +1,9 @@
-import {getOrganizationById} from "../organizations/reducer";
-import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {sendDataToDatabase} from "../firebase/actions";
 import * as Immutable from "seamless-immutable";
 import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
-import {
-    CLEAR_SELECTED_ORGANIZATION,
-    SELECT_ORGANIZATION,
-    SET_IS_SELECTED_ORGANIZATION,
-    UPDATE_SELECTED_ORGANIZATION
-} from "../SelectedOrganization/ActionTypes";
 import {
     SELECT_PUBLIC_COURSE,
     SET_IS_SELECTED_PUBLIC_COURSE,
@@ -20,41 +12,6 @@ import {
 import {changeImmutable} from "../../util/ObjectUpdater";
 
 // Organizations:
-export function selectOrganization(organizationId) {
-    return function selectOrganization(dispatch, getState) {
-        const organization = getOrganizationById(getState(), organizationId);
-        dispatch({
-            type: SELECT_ORGANIZATION,
-            payload: organization
-        })
-    };
-}
-
-export function updateSelectedOrganization(key, value) {
-    return function updateSelectedOrganization(dispatch, getState) {
-        const currentOrganization = getSelectedOrganization(getState());
-        const selectedOrganization = changeImmutable(currentOrganization, key, value);
-        dispatch({
-            type: UPDATE_SELECTED_ORGANIZATION,
-            payload: selectedOrganization,
-        });
-    }
-}
-
-export function setIsSelectedOrganization() {
-    return {
-        type: SET_IS_SELECTED_ORGANIZATION,
-    }
-}
-
-export function sendSelectedOrganizationToDatabase() {
-    return async function sendSelectedOrganizationToDatabase(dispatch, getState) {
-        await dispatch(updateSelectedOrganization("changedDate", new Date().toJSON()));
-        const selectedOrganization = getSelectedOrganization(getState());
-
-        return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);
-    }
-}
 
 // Orders:
 
@@ -131,8 +88,3 @@ export function sendSelectedPublicCourseToDatabase() {
 
 
 
-export function clearSelectedOrganization() {
-    return {
-        type: CLEAR_SELECTED_ORGANIZATION,
-    }
-}

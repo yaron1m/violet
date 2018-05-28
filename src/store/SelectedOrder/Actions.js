@@ -3,11 +3,12 @@ import {getSelectedOrder} from "./Selectors";
 import {calculateDuration} from "../../util/time-util";
 import {getOrderById} from "../orders/selectors";
 import {isEmptyValue} from "../../util/string-util";
-import {selectOrganization, selectPublicCourse} from "../selected/actions";
+import {selectPublicCourse} from "../selected/actions";
 import * as _ from "lodash";
 import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
 import calculateOrderStatus from "../../util/order-status";
 import {sendDataToDatabase} from "../firebase/actions";
+import {selectOrganization} from "../SelectedOrganization/Actions";
 
 export function selectOrder(orderId) {
     return function selectOrder(dispatch, getState) {

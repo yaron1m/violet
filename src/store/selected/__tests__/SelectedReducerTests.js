@@ -2,21 +2,15 @@ import React from 'react';
 import target from "../reducer";
 import {LOGGED_OUT} from "../../firebase/action-types";
 import {
+    CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
 } from "../../SelectedOrganization/ActionTypes";
-import {
-    CLEAR_SELECTED_ORDER,
-    SELECT_ORDER,
-    SET_IS_SELECTED_ORDER,
-    UPDATE_SELECTED_ORDER
-} from "../../SelectedOrder/ActionTypes";
 
-const id = 123456;
+
 const value = "value";
 const key = "key";
-const newValue = "newValue";
 const payload = {
     a: 123
 };
@@ -109,7 +103,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.CLEAR_SELECTED,
+            type: CLEAR_SELECTED_ORGANIZATION,
         };
 
         const result = target(initialState, action);

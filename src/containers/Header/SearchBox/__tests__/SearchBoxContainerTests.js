@@ -1,6 +1,6 @@
 import * as HistoryUtil from "../../../../util/history-util";
 import * as Target from "../SearchBoxContainer";
-import * as SelectedActions from "../../../../store/selected/actions";
+import * as SelectedOrganizationActions from "../../../../store/SelectedOrganization/Actions";
 import * as _ from "lodash";
 import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";
 
@@ -10,7 +10,7 @@ describe('SearchBoxContainer', () => {
     beforeEach(() => {
         HistoryUtil.redirect = jest.fn();
         dispatch = jest.fn();
-        SelectedActions.selectOrganization = jest.fn();
+        SelectedOrganizationActions.selectOrganization = jest.fn();
         SelectedOrderActions.selectOrder = jest.fn();
     });
 
@@ -25,8 +25,8 @@ describe('SearchBoxContainer', () => {
         };
         Target.handleRequest(chosenRequest, dispatch);
 
-        expect(SelectedActions.selectOrganization.mock.calls.length).toBe(1);
-        expect(SelectedActions.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
+        expect(SelectedOrganizationActions.selectOrganization.mock.calls.length).toBe(1);
+        expect(SelectedOrganizationActions.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
 
         expect(HistoryUtil.redirect.mock.calls.length).toBe(1);
         expect(HistoryUtil.redirect.mock.calls[0][0]).toBe("/org");
@@ -48,8 +48,8 @@ describe('SearchBoxContainer', () => {
         expect(SelectedOrderActions.selectOrder.mock.calls.length).toBe(1);
         expect(SelectedOrderActions.selectOrder.mock.calls[0][0]).toBe(chosenRequest.info.orderId);
 
-        expect(SelectedActions.selectOrganization.mock.calls.length).toBe(1);
-        expect(SelectedActions.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
+        expect(SelectedOrganizationActions.selectOrganization.mock.calls.length).toBe(1);
+        expect(SelectedOrganizationActions.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
 
         expect(HistoryUtil.redirect.mock.calls.length).toBe(1);
         expect(HistoryUtil.redirect.mock.calls[0][0]).toBe("/form");

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import {selectOrganization} from "../../../../../store/selected/actions";
+import {selectOrganization} from "../../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getOrganizations} from "../../../../../store/organizations/reducer";
 import PropTypes from 'prop-types';
