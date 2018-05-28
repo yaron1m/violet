@@ -1,3 +1,3 @@
-export function updateObject(oldState, newState){
+export function updateObject(oldState, newState = {}){
     return Object.assign({}, oldState, newState);
 }

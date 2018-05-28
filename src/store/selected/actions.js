@@ -3,7 +3,6 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getOrderById} from "../orders/selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {sendDataToDatabase} from "../firebase/actions";
-import * as Immutable from "seamless-immutable";
 import calculateOrderStatus from '../../util/order-status'
 import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
@@ -27,6 +26,7 @@ import {
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "../SelectedPublicCourse/ActionTypes";
+import {updateObject} from "../../util/ObjectUpdater";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -42,7 +42,7 @@ export function selectOrganization(organizationId) {
 export function updateSelectedOrganization(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
         const currentOrganization = getSelectedOrganization(getState());
-        const selectedOrganization = changeImmutable(currentOrganization, key, value);
+        const selectedOrganization = updateObject(currentOrganization, key, value);
         dispatch({
             type: UPDATE_SELECTED_ORGANIZATION,
             payload: selectedOrganization,
@@ -84,9 +84,9 @@ export function selectOrder(orderId) {
 
 export function updateSelectedOrder(key, value) {
     return function updateSelectedOrganization(dispatch, getState) {
-        const selectedOrder = changeImmutable(getSelectedOrder(getState()), key, value);
+        const selectedOrder = updateObject(getSelectedOrder(getState()), key, value);
         const status = calculateOrderStatus(selectedOrder);
-        const updatedOrder = Immutable.merge(selectedOrder, {
+        const updatedOrder = updateObject(selectedOrder, {
             status: status
         });
 
@@ -99,7 +99,7 @@ export function updateSelectedOrder(key, value) {
 
 export function updateLectureTime(key, value, lectureTimeIndex) {
     return function updateLectureTime(dispatch, getState) {
-        const lectureTimes = Immutable.asMutable(getSelectedOrder(getState()).lectureTimes, {deep: true});
+        const lectureTimes = updateObject(getSelectedOrder(getState()).lectureTimes);
         lectureTimes[lectureTimeIndex][key] = value;
         lectureTimes[lectureTimeIndex].duration = calculateDuration(lectureTimes[lectureTimeIndex]);
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
@@ -108,7 +108,7 @@ export function updateLectureTime(key, value, lectureTimeIndex) {
 
 export function addNewLectureTime() {
     return function addNewLectureTime(dispatch, getState) {
-        const thisSelectedOrder = Immutable.asMutable(getSelectedOrder(getState()), {deep: true});
+        const thisSelectedOrder = updateObject(getSelectedOrder(getState()));
         const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? thisSelectedOrder.lectureTimes : [];
         lectureTimes.push({});
 
@@ -118,8 +118,8 @@ export function addNewLectureTime() {
 
 export function deleteLectureTime(lectureTimeIndex) {
     return function addNewLectureTime(dispatch, getState) {
-        const thisSelectedOrder = Immutable.asMutable(getSelectedOrder(getState()), {deep: true});
-        const lectureTimes = Immutable.asMutable(thisSelectedOrder.lectureTimes);
+        const thisSelectedOrder = updateObject(getSelectedOrder(getState()));
+        const lectureTimes = updateObject(thisSelectedOrder.lectureTimes);
         lectureTimes.splice(lectureTimeIndex, 1);
 
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
@@ -128,7 +128,7 @@ export function deleteLectureTime(lectureTimeIndex) {
 
 export function updatePublicCourseParticipant(key, value, participantIndex) {
     return function updatePublicCourseParticipant(dispatch, getState) {
-        const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
+        const publicCourseParticipants = updateObject(getSelectedOrder(getState()).publicCourseParticipants);
         publicCourseParticipants[participantIndex][key] = value;
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     }
@@ -139,7 +139,7 @@ export function removeParticipantsFromAllLectures() {
         if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
             return;
 
-        const publicCourseParticipants = Immutable.asMutable(getSelectedOrder(getState()).publicCourseParticipants, {deep: true});
+        const publicCourseParticipants = updateObject(getSelectedOrder(getState()).publicCourseParticipants);
         for (const participant in publicCourseParticipants) {
             publicCourseParticipants[participant] = _.omitBy(publicCourseParticipants[participant], (value, key) => _.startsWith(key, "attendingLecture"));
         }
@@ -177,7 +177,7 @@ export function selectPublicCourse(courseId) {
 export function updateSelectedPublicCourse(key, value) {
     return function updateSelectedPublicCourse(dispatch, getState) {
         const currentPublicCourse = getSelectedPublicCourse(getState());
-        const selectedPublicCourse = changeImmutable(currentPublicCourse, key, value);
+        const selectedPublicCourse = updateObject(currentPublicCourse, key, value);
         dispatch({
             type: UPDATE_SELECTED_PUBLIC_COURSE,
             payload: selectedPublicCourse,
@@ -187,7 +187,7 @@ export function updateSelectedPublicCourse(key, value) {
 
 export function updatePublicCourseLecture(key, value, lectureId) {
     return function updatePublicCourseLecture(dispatch, getState) {
-        const lectures = Immutable.asMutable(getSelectedPublicCourse(getState()).lectures, {deep: true});
+        const lectures = updateObject(getSelectedPublicCourse(getState()).lectures);
         lectures[lectureId][key] = value;
         lectures[lectureId].duration = calculateDuration(lectures[lectureId]);
         dispatch(updateSelectedPublicCourse("lectures", lectures));
@@ -196,7 +196,7 @@ export function updatePublicCourseLecture(key, value, lectureId) {
 
 export function addLectureToSelectedPublicCourse() {
     return function addLectureToSelectedPublicCourse(dispatch, getState) {
-        const selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
+        const selectedPublicCourse = updateObject(getSelectedPublicCourse(getState()));
 
         let lectures;
         if (!_.hasIn(selectedPublicCourse, 'lectures')) {
@@ -246,12 +246,4 @@ export function clearSelectedOrder() {
     return {
         type: CLEAR_SELECTED_ORDER,
     }
-}
-
-
-// Helpers
-function changeImmutable(obj, key, value) {
-    return Immutable.merge(obj, {
-        [key]: value
-    });
 }

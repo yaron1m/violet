@@ -1,9 +1,8 @@
-import Immutable from 'seamless-immutable';
 import {isSelectedOrganization} from "../reducer";
 import {getSelectedOrder, isSelectedOrder} from "../../SelectedOrder/Selectors";
 import {getSelectedOrganization} from "../../SelectedOrganization/Selectors";
 
-const sampleState = Immutable({
+const sampleState = {
     selected: {
         organization: {
             "address": "האחות חיה 4, רמת גן",
@@ -77,16 +76,16 @@ const sampleState = Immutable({
         isSelectedOrganization: true,
         isSelectedOrder: true
     }
-});
+};
 
-const emptyState = Immutable({
+const emptyState = {
     selected: {
         organization: {},
         order: {},
         isSelectedOrganization: false,
         isSelectedOrder: false,
     }
-});
+};
 
 describe('store/selected/selectors', () => {
 
