@@ -11,6 +11,7 @@ import orders from './orders/reducer'
 import organizations from './organizations/reducer'
 import publicCourses from './PublicCourses/reducer'
 import selected from './selected/reducer'
+import selectedOrder from './SelectedOrder/Reducer'
 import {initFirebase} from "./firebase/actions";
 
 const combinedReducers = combineReducers({
@@ -22,6 +23,7 @@ const combinedReducers = combineReducers({
     organizations,
     publicCourses,
     selected,
+    selectedOrder
 });
 
 const store = createStore(
