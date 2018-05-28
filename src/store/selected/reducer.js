@@ -1,4 +1,3 @@
-import * as actionTypes from './action-types';
 import {LOGGED_OUT} from "../firebase/action-types";
 import {
     CLEAR_SELECTED_ORGANIZATION,

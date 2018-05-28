@@ -1,6 +1,5 @@
 import React from 'react';
 import target from "../reducer";
-import * as actionTypes from "../action-types";
 import {LOGGED_OUT} from "../../firebase/action-types";
 import {
     SELECT_ORGANIZATION,

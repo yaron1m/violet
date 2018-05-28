@@ -7,7 +7,6 @@ import {
     SET_IS_SELECTED_ORDER,
     UPDATE_SELECTED_ORDER
 } from "../../SelectedOrder/ActionTypes";
-import {CLEAR_SELECTED} from "../../selected/action-types";
 
 const value = "value";
 const key = "key";

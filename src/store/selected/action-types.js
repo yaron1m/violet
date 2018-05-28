@@ -1,1 +1,0 @@
-export const CLEAR_SELECTED = "CLEAR_SELECTED";

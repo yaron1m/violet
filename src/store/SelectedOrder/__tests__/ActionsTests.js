@@ -335,7 +335,7 @@ describe('Selected order actions', () => {
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
     });
 
-    it('clearSelected - valid - action', () => {
+    it('should return clear selected order action', () => {
         expect(clearSelectedOrder().type).toBe(CLEAR_SELECTED_ORDER);
     });
 });

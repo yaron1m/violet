@@ -1,7 +1,6 @@
 import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../firebase/action-types";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
-import {CLEAR_SELECTED} from "../selected/action-types";
 
 const initialState = createImmutable({
     isSelectedOrder: false,
@@ -26,7 +25,6 @@ export default (state = initialState, action = {}) => {
                 isSelectedOrder: true,
             });
 
-        case CLEAR_SELECTED:
         case LOGGED_OUT:
         case actionTypes.CLEAR_SELECTED_ORDER:
             return initialState;
