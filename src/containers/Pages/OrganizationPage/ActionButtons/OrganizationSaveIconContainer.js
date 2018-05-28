@@ -4,10 +4,9 @@ import {
 } from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {getNextOrganizationId} from "../../../../store/organizations/reducer";
-import {isSelectedOrganization} from "../../../../store/selected/reducer";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
-import {getSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
+import {getSelectedOrganization, isSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
 
 function saveExistingOrganization(stateProps, dispatchProps) {
     if (!stateProps.isSelectedOrganization) {

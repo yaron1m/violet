@@ -4,8 +4,8 @@ import {getLabels} from "../../../store/labels/reducer";
 import {redirect} from "../../../util/history-util";
 import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import {getOrdersByOrganization, getOrdersSummary} from "../../../store/orders/selectors";
-import {isSelectedOrganization} from "../../../store/selected/reducer";
 import {selectOrder} from "../../../store/SelectedOrder/Actions";
+import {isSelectedOrganization} from "../../../store/SelectedOrganization/Selectors";
 
 function mapStateToProps(state) {
     return {
