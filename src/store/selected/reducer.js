@@ -1,6 +1,7 @@
 import * as actionTypes from './action-types';
 import {LOGGED_OUT} from "../firebase/action-types";
 import {
+    CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
@@ -56,6 +57,7 @@ export default (state = initialState, action = {}) => {
             });
 
         case actionTypes.CLEAR_SELECTED:
+        case CLEAR_SELECTED_ORGANIZATION:
         case LOGGED_OUT:
             return initialState;
 

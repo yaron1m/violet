@@ -1,9 +1,9 @@
 import React from 'react';
 import * as orderStatusUtil from '../../../util/order-status'
 import * as firebaseActions from "../../firebase/actions";
-import {SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
+import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
 import {
-    addNewLectureTime,
+    addNewLectureTime, clearSelectedOrder,
     removeParticipantsFromAllLectures,
     selectOrder,
     sendSelectedOrderToDatabase,
@@ -333,5 +333,9 @@ describe('Selected order actions', () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
+    });
+
+    it('clearSelected - valid - action', () => {
+        expect(clearSelectedOrder().type).toBe(CLEAR_SELECTED_ORDER);
     });
 });

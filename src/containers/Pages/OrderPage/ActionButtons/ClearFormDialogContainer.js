@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearSelected} from "../../../../store/selected/actions";
+import {clearSelectedOrganization} from "../../../../store/selected/actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {hideRequiredFields} from "../../../../store/appearance/actions";
 import PropTypes from "prop-types";
 import CustomDialog from "../../../../components/CustomComponents/CustomDialog";
 import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
+import {clearSelectedOrder} from "../../../../store/SelectedOrder/Actions";
 
 function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {
     return [
@@ -38,7 +39,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        clearSelected: () => dispatch(clearSelected()),
+        clearSelected: () => {
+            dispatch(clearSelectedOrder());
+            dispatch(clearSelectedOrganization());
+        },
         hideRequiredFields: () => dispatch(hideRequiredFields()),
     };
 }

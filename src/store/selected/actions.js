@@ -1,4 +1,3 @@
-import * as actionTypes from './action-types';
 import {getOrganizationById} from "../organizations/reducer";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {sendDataToDatabase} from "../firebase/actions";
@@ -8,6 +7,7 @@ import {calculateDuration} from "../../util/time-util";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 import {
+    CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
@@ -130,11 +130,9 @@ export function sendSelectedPublicCourseToDatabase() {
 }
 
 
-// Clear
 
-export function clearSelected() {
+export function clearSelectedOrganization() {
     return {
-        type: actionTypes.CLEAR_SELECTED,
+        type: CLEAR_SELECTED_ORGANIZATION,
     }
 }
-

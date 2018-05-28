@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearSelected} from "../../../../store/selected/actions";
+import {clearSelectedOrganization} from "../../../../store/selected/actions";
 import RefreshIcon from '@material-ui/icons/Refresh';
 import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
 
@@ -12,7 +12,7 @@ function mapStateToProps() {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onClick: () => dispatch(clearSelected()),
+        onClick: () => dispatch(clearSelectedOrganization()),
     };
 }
 

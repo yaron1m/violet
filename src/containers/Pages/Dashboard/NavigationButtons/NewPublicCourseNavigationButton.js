@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../store/labels/reducer";
 import {redirect} from "../../../../util/history-util";
-import {clearSelected} from "../../../../store/selected/actions";
 import NavigationButton from "./NavigationButton";
 
 function mapStateToProps(state) {
@@ -10,11 +9,11 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
     return {
         onClick: () => {
             redirect("/publicCourse");
-            dispatch(clearSelected());
+           // dispatch(clearSelected()); //TODO clear selected public course
         }
     };
 }
