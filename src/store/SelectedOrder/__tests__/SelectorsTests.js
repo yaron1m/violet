@@ -1,6 +1,7 @@
+import Immutable from 'seamless-immutable';
 import {getSelectedOrder, isSelectedOrder} from "../Selectors";
 
-const sampleState = {
+const sampleState = Immutable({
     selected: {
         order: {
             "actualPayDay": "Sat Jul 22 2017",
@@ -50,14 +51,14 @@ const sampleState = {
         },
         isSelectedOrder: true
     }
-};
+});
 
-const emptyState = {
+const emptyState = Immutable({
     selected: {
         order: {},
         isSelectedOrder: false,
     }
-};
+});
 
 describe('store/selected/selectors', () => {
     it('should return selected order', () => {
