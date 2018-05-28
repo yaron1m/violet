@@ -143,5 +143,5 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeFalsy();
         expect(result.isSelectedOrder).toBeFalsy();
     });
-    
+
 });

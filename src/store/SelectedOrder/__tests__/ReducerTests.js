@@ -1,5 +1,5 @@
 import React from 'react';
-import reducer from "../reducer";
+import reducer from "../Reducer";
 import {LOGGED_OUT} from "../../firebase/action-types";
 import {
     CLEAR_SELECTED_ORDER,
