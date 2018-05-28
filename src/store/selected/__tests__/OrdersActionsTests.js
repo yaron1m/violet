@@ -1,8 +1,8 @@
 import React from 'react';
 import * as actions from "../actions";
-import * as actionTypes from "../action-types";
 import * as orderStatusUtil from '../../../util/order-status'
 import * as firebaseActions from "../../firebase/actions";
+import {SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../../SelectedOrder/ActionTypes";
 
 
 const id = 123456;
@@ -40,7 +40,7 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.SELECT_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(SELECT_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toBe(value);
     });
 
@@ -66,7 +66,7 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
     });
 
@@ -91,7 +91,7 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
     });
 
@@ -138,7 +138,7 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
@@ -168,7 +168,7 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
@@ -200,7 +200,7 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
@@ -242,7 +242,7 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
 
     });
@@ -289,13 +289,13 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
 
     });
 
     it('should return set is selected action', () => {
-        expect(actions.setIsSelectedOrder().type).toBe(actionTypes.SET_IS_SELECTED_ORDER);
+        expect(actions.setIsSelectedOrder().type).toBe(SET_IS_SELECTED_ORDER);
     });
 
     it('should dispatch action to send order to database', async () => {

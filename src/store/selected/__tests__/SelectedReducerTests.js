@@ -2,6 +2,17 @@ import React from 'react';
 import target from "../reducer";
 import * as actionTypes from "../action-types";
 import {LOGGED_OUT} from "../../firebase/action-types";
+import {
+    SELECT_ORGANIZATION,
+    SET_IS_SELECTED_ORGANIZATION,
+    UPDATE_SELECTED_ORGANIZATION
+} from "../../SelectedOrganization/ActionTypes";
+import {
+    CLEAR_SELECTED_ORDER,
+    SELECT_ORDER,
+    SET_IS_SELECTED_ORDER,
+    UPDATE_SELECTED_ORDER
+} from "../../SelectedOrder/ActionTypes";
 
 const id = 123456;
 const value = "value";
@@ -44,7 +55,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.SELECT_ORGANIZATION,
+            type: SELECT_ORGANIZATION,
             payload: payload
         };
 
@@ -62,7 +73,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
+            type: UPDATE_SELECTED_ORGANIZATION,
             payload: payload
         };
 
@@ -79,7 +90,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.SET_IS_SELECTED_ORGANIZATION,
+            type: SET_IS_SELECTED_ORGANIZATION,
             payload: payload
         };
 
@@ -95,7 +106,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.SELECT_ORDER,
+            type: SELECT_ORDER,
             payload: payload
         };
 
@@ -113,7 +124,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.UPDATE_SELECTED_ORDER,
+            type: UPDATE_SELECTED_ORDER,
             payload: payload
         };
 
@@ -130,7 +141,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.SET_IS_SELECTED_ORDER,
+            type: SET_IS_SELECTED_ORDER,
             payload: payload
         };
 
@@ -193,7 +204,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.CLEAR_SELECTED_ORDER,
+            type: CLEAR_SELECTED_ORDER,
         };
 
         const result = target(initialState, action);

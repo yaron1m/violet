@@ -1,7 +1,11 @@
 import React from 'react';
 import * as actions from "../actions";
-import * as actionTypes from "../action-types";
 import * as firebaseActions from "../../firebase/actions";
+import {
+    SELECT_ORGANIZATION,
+    SET_IS_SELECTED_ORGANIZATION,
+    UPDATE_SELECTED_ORGANIZATION
+} from "../../SelectedOrganization/ActionTypes";
 
 const id = 123456;
 const value = "value";
@@ -30,7 +34,7 @@ describe('selected actions - organization', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.SELECT_ORGANIZATION);
+        expect(dispatch.mock.calls[0][0].type).toBe(SELECT_ORGANIZATION);
         expect(dispatch.mock.calls[0][0].payload).toBe(value);
     });
 
@@ -55,7 +59,7 @@ describe('selected actions - organization', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORGANIZATION);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrganization);
     });
 
@@ -79,12 +83,12 @@ describe('selected actions - organization', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORGANIZATION);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrganization);
     });
 
     it('setIsSelectedOrganization - valid - action', () => {
-        expect(actions.setIsSelectedOrganization().type).toBe(actionTypes.SET_IS_SELECTED_ORGANIZATION);
+        expect(actions.setIsSelectedOrganization().type).toBe(SET_IS_SELECTED_ORGANIZATION);
     });
 
     it('should dispatch action to send order to database', async () => {

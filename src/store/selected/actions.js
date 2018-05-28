@@ -11,13 +11,29 @@ import * as _ from "lodash";
 import {isEmptyValue} from "../../util/string-util";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 import {getSelectedOrder} from "../SelectedOrder/Selectors";
+import {
+    SELECT_ORGANIZATION,
+    SET_IS_SELECTED_ORGANIZATION,
+    UPDATE_SELECTED_ORGANIZATION
+} from "../SelectedOrganization/ActionTypes";
+import {
+    CLEAR_SELECTED_ORDER,
+    SELECT_ORDER,
+    SET_IS_SELECTED_ORDER,
+    UPDATE_SELECTED_ORDER
+} from "../SelectedOrder/ActionTypes";
+import {
+    SELECT_PUBLIC_COURSE,
+    SET_IS_SELECTED_PUBLIC_COURSE,
+    UPDATE_SELECTED_PUBLIC_COURSE
+} from "../SelectedPublicCourse/ActionTypes";
 
 // Organizations:
 export function selectOrganization(organizationId) {
     return function selectOrganization(dispatch, getState) {
         const organization = getOrganizationById(getState(), organizationId);
         dispatch({
-            type: actionTypes.SELECT_ORGANIZATION,
+            type: SELECT_ORGANIZATION,
             payload: organization
         })
     };
@@ -28,7 +44,7 @@ export function updateSelectedOrganization(key, value) {
         const currentOrganization = getSelectedOrganization(getState());
         const selectedOrganization = changeImmutable(currentOrganization, key, value);
         dispatch({
-            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
+            type: UPDATE_SELECTED_ORGANIZATION,
             payload: selectedOrganization,
         });
     }
@@ -36,7 +52,7 @@ export function updateSelectedOrganization(key, value) {
 
 export function setIsSelectedOrganization() {
     return {
-        type: actionTypes.SET_IS_SELECTED_ORGANIZATION,
+        type: SET_IS_SELECTED_ORGANIZATION,
     }
 }
 
@@ -59,7 +75,7 @@ export function selectOrder(orderId) {
             dispatch(selectPublicCourse(order.publicCourseId));
 
         dispatch({
-            type: actionTypes.SELECT_ORDER,
+            type: SELECT_ORDER,
             payload: order
         });
 
@@ -75,7 +91,7 @@ export function updateSelectedOrder(key, value) {
         });
 
         dispatch({
-            type: actionTypes.UPDATE_SELECTED_ORDER,
+            type: UPDATE_SELECTED_ORDER,
             payload: updatedOrder,
         });
     }
@@ -133,7 +149,7 @@ export function removeParticipantsFromAllLectures() {
 
 export function setIsSelectedOrder() {
     return {
-        type: actionTypes.SET_IS_SELECTED_ORDER,
+        type: SET_IS_SELECTED_ORDER,
     }
 }
 
@@ -152,7 +168,7 @@ export function selectPublicCourse(courseId) {
         const publicCourse = getPublicCourseById(getState(), courseId);
         dispatch(setIsSelectedPublicCourse());
         dispatch({
-            type: actionTypes.SELECT_PUBLIC_COURSE,
+            type: SELECT_PUBLIC_COURSE,
             payload: publicCourse
         })
     };
@@ -163,7 +179,7 @@ export function updateSelectedPublicCourse(key, value) {
         const currentPublicCourse = getSelectedPublicCourse(getState());
         const selectedPublicCourse = changeImmutable(currentPublicCourse, key, value);
         dispatch({
-            type: actionTypes.UPDATE_SELECTED_PUBLIC_COURSE,
+            type: UPDATE_SELECTED_PUBLIC_COURSE,
             payload: selectedPublicCourse,
         });
     }
@@ -204,7 +220,7 @@ export function addLectureToSelectedPublicCourse() {
 
 export function setIsSelectedPublicCourse() {
     return {
-        type: actionTypes.SET_IS_SELECTED_PUBLIC_COURSE,
+        type: SET_IS_SELECTED_PUBLIC_COURSE,
     }
 }
 
@@ -228,7 +244,7 @@ export function clearSelected() {
 
 export function clearSelectedOrder() {
     return {
-        type: actionTypes.CLEAR_SELECTED_ORDER,
+        type: CLEAR_SELECTED_ORDER,
     }
 }
 
