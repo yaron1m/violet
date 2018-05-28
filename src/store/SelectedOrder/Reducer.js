@@ -1,28 +1,28 @@
 import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../firebase/action-types";
-import {updateObject} from "../../util/ObjectUpdater";
+import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 import {CLEAR_SELECTED} from "../selected/action-types";
 
-const initialState = {
+const initialState = createImmutable({
     isSelectedOrder: false,
     order: {},
-};
+});
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {
         case actionTypes.SELECT_ORDER:
-            return updateObject(state, {
+            return mergeImmutable(state, {
                 order: action.payload,
                 isSelectedOrder: true,
             });
 
         case actionTypes.UPDATE_SELECTED_ORDER:
-            return updateObject(state, {
+            return mergeImmutable(state, {
                 order: action.payload,
             });
 
         case actionTypes.SET_IS_SELECTED_ORDER:
-            return updateObject(state, {
+            return mergeImmutable(state, {
                 isSelectedOrder: true,
             });
 

@@ -27,6 +27,7 @@ import {
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "../SelectedPublicCourse/ActionTypes";
+import {changeImmutable} from "../../util/ObjectUpdater";
 
 // Organizations:
 export function selectOrganization(organizationId) {
@@ -246,12 +247,4 @@ export function clearSelectedOrder() {
     return {
         type: CLEAR_SELECTED_ORDER,
     }
-}
-
-
-// Helpers
-function changeImmutable(obj, key, value) {
-    return Immutable.merge(obj, {
-        [key]: value
-    });
 }

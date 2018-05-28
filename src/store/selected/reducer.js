@@ -1,5 +1,4 @@
 import * as actionTypes from './action-types';
-import Immutable from 'seamless-immutable';
 import {LOGGED_OUT} from "../firebase/action-types";
 import {
     SELECT_ORGANIZATION,
@@ -17,8 +16,9 @@ import {
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "../SelectedPublicCourse/ActionTypes";
+import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 
-const initialState = Immutable({
+const initialState = createImmutable({
     isSelectedOrganization: false,
     organization: {},
     isSelectedOrder: false,
@@ -30,50 +30,50 @@ const initialState = Immutable({
 export default (state = initialState, action = {}) => {
     switch (action.type) {
         case SELECT_ORGANIZATION:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 organization: action.payload,
                 isSelectedOrganization: true,
             });
 
         case UPDATE_SELECTED_ORGANIZATION:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 organization: action.payload,
             });
 
         case SET_IS_SELECTED_ORGANIZATION:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 isSelectedOrganization: true,
             });
 
         case SELECT_ORDER:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 order: action.payload,
                 isSelectedOrder: true,
             });
 
         case UPDATE_SELECTED_ORDER:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 order: action.payload,
             });
 
         case SET_IS_SELECTED_ORDER:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 isSelectedOrder: true,
             });
 
         case SELECT_PUBLIC_COURSE:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 publicCourse: action.payload,
                 isSelectedPublicCourse: true,
             });
 
         case UPDATE_SELECTED_PUBLIC_COURSE:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 publicCourse: action.payload,
             });
 
         case SET_IS_SELECTED_PUBLIC_COURSE:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 isSelectedPublicCourse: true,
             });
 
@@ -82,7 +82,7 @@ export default (state = initialState, action = {}) => {
             return initialState;
 
         case CLEAR_SELECTED_ORDER:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 order: {},
                 isSelectedOrder: false,
             });

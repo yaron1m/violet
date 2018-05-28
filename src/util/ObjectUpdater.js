@@ -1,3 +1,21 @@
-export function updateObject(oldState, newState = {}){
-    return Object.assign({}, oldState, newState);
+import * as Immutable from "seamless-immutable";
+
+export function changeImmutable(obj, key, value) {
+    return Immutable.merge(obj, {
+        [key]: value
+    });
+}
+
+export function toMutable(obj) {
+    return Immutable.asMutable(obj, { deep: true });
+}
+
+
+export function createImmutable(obj) {
+    return Immutable(obj);
+}
+
+
+export function mergeImmutable(oldState, newState) {
+    return Immutable.merge(oldState, newState);
 }
