@@ -1,5 +1,5 @@
 import React from 'react';
-import * as actions from "../actions";
+import * as actions from "../../SelectedPublicCourse/Actions";
 import * as firebaseActions from "../../firebase/actions";
 import {
     SELECT_PUBLIC_COURSE,

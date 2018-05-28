@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {getSelectedPublicCourseLecture} from "../../../../../store/SelectedPublicCourse/Selectors";
-import {updatePublicCourseLecture} from "../../../../../store/selected/actions";
+import {updatePublicCourseLecture} from "../../../../../store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";

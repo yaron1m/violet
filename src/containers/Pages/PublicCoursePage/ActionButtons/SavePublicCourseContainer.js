@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {
     sendSelectedPublicCourseToDatabase, updateSelectedPublicCourse,
-} from "../../../../store/selected/actions";
+} from "../../../../store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {isSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
 import {openDialog, openSnackbar} from "../../../../store/appearance/actions";

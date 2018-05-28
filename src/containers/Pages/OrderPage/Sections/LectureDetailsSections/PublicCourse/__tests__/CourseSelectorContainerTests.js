@@ -1,5 +1,5 @@
 import {selectFieldUpdateAction} from '../CourseSelectorContainer';
-import * as SelectedActions from "../../../../../../../store/selected/actions";
+import * as SelectedActions from "../../../../../../../store/SelectedPublicCourse/Actions";
 import * as SelectedOrderActions from "../../../../../../../store/SelectedOrder/Actions";
 import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../../store/SelectedOrder/Actions";
 

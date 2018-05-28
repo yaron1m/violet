@@ -3,7 +3,7 @@ import {getSelectedOrder} from "./Selectors";
 import {calculateDuration} from "../../util/time-util";
 import {getOrderById} from "../orders/selectors";
 import {isEmptyValue} from "../../util/string-util";
-import {selectPublicCourse} from "../selected/actions";
+import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
 import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
 import calculateOrderStatus from "../../util/order-status";

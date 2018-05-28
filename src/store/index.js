@@ -10,7 +10,7 @@ import lists from './lists/reducer';
 import orders from './orders/reducer'
 import organizations from './organizations/reducer'
 import publicCourses from './PublicCourses/reducer'
-import selected from './selected/reducer'
+import selected from './SelectedPublicCourse/Reducer'
 import selectedOrder from './SelectedOrder/Reducer'
 import {initFirebase} from "./firebase/actions";
 

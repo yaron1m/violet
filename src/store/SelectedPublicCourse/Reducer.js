@@ -4,14 +4,10 @@ import {
     SELECT_PUBLIC_COURSE,
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
-} from "../SelectedPublicCourse/ActionTypes";
+} from "./ActionTypes";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 
 const initialState = createImmutable({
-    isSelectedOrganization: false,
-    organization: {},
-    isSelectedOrder: false,
-    order: {},
     isSelectedPublicCourse: false,
     publicCourse: {},
 });

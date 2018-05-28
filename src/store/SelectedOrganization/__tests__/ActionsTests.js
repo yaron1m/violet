@@ -4,13 +4,13 @@ import {
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from "../../SelectedOrganization/ActionTypes";
+} from "../ActionTypes";
 import {
     selectOrganization,
     sendSelectedOrganizationToDatabase,
     setIsSelectedOrganization,
     updateSelectedOrganization
-} from "../../SelectedOrganization/Actions";
+} from "../Actions";
 
 const id = 123456;
 const value = "value";

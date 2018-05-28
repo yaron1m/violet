@@ -3,19 +3,14 @@ import * as Immutable from "seamless-immutable";
 import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";
 import * as _ from "lodash";
-import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
+import {getSelectedPublicCourse} from "./Selectors";
 import {
     SELECT_PUBLIC_COURSE,
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
-} from "../SelectedPublicCourse/ActionTypes";
+} from "./ActionTypes";
 import {changeImmutable} from "../../util/ObjectUpdater";
 
-// Organizations:
-
-// Orders:
-
-// Public Courses:
 export function selectPublicCourse(courseId) {
     return function selectPublicCourse(dispatch, getState) {
         const publicCourse = getPublicCourseById(getState(), courseId);
