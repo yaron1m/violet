@@ -41,7 +41,7 @@ const state = {
             createdDate: 456,
         },
     },
-    "selected": {
+    selectedOrganization: {
         isSelectedOrganization: true,
         organization: {
             id: 100,
@@ -100,8 +100,9 @@ describe('store/orders/selectors', () => {
     });
 
     it('getOrdersByOrganization - no organization selected - null', () => {
-        expect(Selectors.getOrdersByOrganization({selected: {isSelectedOrganization: false}}))
-            .toBeNull();
+        expect(Selectors.getOrdersByOrganization({
+            selectedOrganization: {isSelectedOrganization: false}
+        })).toBeNull();
     });
 
     it('getFollowUpOrdersSummary - valid', () => {

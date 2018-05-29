@@ -46,7 +46,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         [id]: value
                     }
@@ -71,7 +71,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         [key]: value
                     }
@@ -95,7 +95,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         lectures: [
                             {id: 0},
@@ -142,7 +142,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         lectures: [
                             {id: 0},
@@ -189,7 +189,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {}
                 }
             }
@@ -228,7 +228,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         id,
                         [key]: value

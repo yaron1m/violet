@@ -49,7 +49,7 @@ describe('selected actions - organization', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrganization: {
                     organization: {
                         [id]: value
                     }
@@ -74,7 +74,7 @@ describe('selected actions - organization', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrganization: {
                     organization: {
                         [key]: value
                     }
@@ -104,7 +104,7 @@ describe('selected actions - organization', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrganization: {
                     organization: {
                         id,
                         [key]: value

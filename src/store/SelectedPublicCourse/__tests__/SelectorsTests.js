@@ -2,7 +2,7 @@ import Immutable from 'seamless-immutable';
 import {getSelectedPublicCourse, isSelectedPublicCourse} from "../Selectors";
 
 const sampleState = Immutable({
-    selected: {
+    selectedPublicCourse: {
         publicCourse: {
             id: 555,
         },
@@ -11,7 +11,7 @@ const sampleState = Immutable({
 });
 
 const emptyState = Immutable({
-    selected: {
+    selectedPublicCourse: {
         publicCourse: {},
         isSelectedPublicCourse: false,
     }
@@ -20,7 +20,7 @@ const emptyState = Immutable({
 describe('store/selected/selectors', () => {
     it('should return selected public course', () => {
         expect(getSelectedPublicCourse(sampleState))
-            .toEqual(sampleState.selected.publicCourse);
+            .toEqual(sampleState.selectedPublicCourse.publicCourse);
     });
 
     it('should return empty object', () => {

@@ -2,7 +2,7 @@ import Immutable from 'seamless-immutable';
 import {getSelectedOrder, isSelectedOrder} from "../Selectors";
 
 const sampleState = Immutable({
-    selected: {
+    selectedOrder: {
         order: {
             "actualPayDay": "Sat Jul 22 2017",
             "audienceType": "מהנדסים וטכנאים",
@@ -13,25 +13,6 @@ const sampleState = Immutable({
             "followUpDetails": "לבדוק אפשרות לצורך בהמשך טיפול",
             "followUpRequired": true,
             "id": 0,
-            "lectureTimes": [{
-                "audienceSize": 25,
-                "date": "01/01/01",
-                "duration": "02:00",
-                "endTime": "13:00",
-                "id": 0,
-                "startTime": "11:00",
-                "tie": "כבשים",
-                "topic": "חשיבה יצירתית"
-            }, {
-                "audienceSize": 40,
-                "date": "02/02/02",
-                "duration": "05:20",
-                "endTime": "15:30",
-                "id": 1,
-                "startTime": "10:10",
-                "tie": "עכבר",
-                "topic": "מודעות לאיכות"
-            }],
             "location": "בניין ראשי",
             "microphone": false,
             "notes": "צריך לרשום כמה הערות",
@@ -54,7 +35,7 @@ const sampleState = Immutable({
 });
 
 const emptyState = Immutable({
-    selected: {
+    selectedOrder: {
         order: {},
         isSelectedOrder: false,
     }
@@ -63,7 +44,7 @@ const emptyState = Immutable({
 describe('store/selected/selectors', () => {
     it('should return selected order', () => {
         expect(getSelectedOrder(sampleState))
-            .toEqual(sampleState.selected.order);
+            .toEqual(sampleState.selectedOrder.order);
     });
 
     it('should return empty object', () => {

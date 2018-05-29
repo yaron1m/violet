@@ -59,7 +59,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         [id]: value
                     }
@@ -85,7 +85,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         [key]: value
                     }
@@ -110,7 +110,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         lectureTimes: [
                             {id: 0},
@@ -157,7 +157,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {}
                 }
             }
@@ -187,7 +187,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         lectureTimes: [{key}, {value}]
                     }
@@ -219,7 +219,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         publicCourseParticipants: [
                             {id: 0},
@@ -262,7 +262,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         publicCourseParticipants: [
                             {
@@ -315,7 +315,7 @@ describe('Selected order actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         id,
                         [key]: value

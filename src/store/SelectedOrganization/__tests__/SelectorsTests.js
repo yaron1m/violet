@@ -2,7 +2,7 @@ import Immutable from 'seamless-immutable';
 import {getSelectedOrganization, isSelectedOrganization} from "../Selectors";
 
 const sampleState = Immutable({
-    selected: {
+    selectedOrganization: {
         organization: {
             "address": "האחות חיה 4, רמת גן",
             "companyId": "514815745",
@@ -15,7 +15,7 @@ const sampleState = Immutable({
 });
 
 const emptyState = Immutable({
-    selected: {
+    selectedOrganization: {
         organization: {},
         isSelectedOrganization: false,
     }
@@ -25,7 +25,7 @@ describe('store/selected/selectors', () => {
 
     it('should return selected organization', () => {
         expect(getSelectedOrganization(sampleState))
-            .toEqual(sampleState.selected.organization);
+            .toEqual(sampleState.selectedOrganization.organization);
     });
 
     it('should return empty object', () => {
