@@ -3,7 +3,7 @@ import {getLabels} from "../../../../store/labels/reducer";
 import {redirect} from "../../../../util/history-util";
 import {getOrders} from "../../../../store/orders/selectors";
 import * as _ from 'lodash';
-import {isFetching} from "../../../../store/firebase/reducer";
+import {isFetching} from "../../../../store/Firebase/Reducer";
 import Status from "../../../../util/consts/status";
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import InfoBox from "./InfoBox";

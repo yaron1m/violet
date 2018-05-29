@@ -5,9 +5,9 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../../components/CustomComponents/CustomAutoComplete";
-import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
+import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {internalTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
-import {isRightTabKey} from "../../../../../store/appearance/RequiredFields/Util";
+import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
 
 function getValues(state, ownProps) {
     if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)

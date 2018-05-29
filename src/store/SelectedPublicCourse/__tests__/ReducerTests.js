@@ -1,6 +1,6 @@
 import React from 'react';
 import target from "../Reducer";
-import {LOGGED_OUT} from "../../firebase/action-types";
+import {LOGGED_OUT} from "../../Firebase/ActionTypes";
 import * as actionTypes from '../ActionTypes';
 
 const value = "value";

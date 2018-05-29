@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../store/labels/reducer";
-import {hideRequiredFields} from "../../../../store/appearance/actions";
+import {hideRequiredFields} from "../../../../store/Appearance/Actions";
 import PropTypes from "prop-types";
 import CustomDialog from "../../../../components/CustomComponents/CustomDialog";
 import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";

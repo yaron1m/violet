@@ -1,8 +1,8 @@
 import React from 'react';
-import {isFetching, isLoggedIn} from "../reducer";
+import {isFetching, isLoggedIn} from "../Reducer";
 
-function setup(extraProps,orders,organizations) {
-    const state = {
+function setup(extraProps, orders, organizations) {
+    return {
         firebase: {
             loggedIn: undefined,
             userId: undefined,
@@ -11,15 +11,13 @@ function setup(extraProps,orders,organizations) {
             fetchingCount: 3,
             ...extraProps
         },
-        orders:{
+        orders: {
             ...orders
         },
-        organizations:{
+        organizations: {
             ...organizations
         },
     };
-
-    return state;
 }
 
 describe('Firebase selectors', () => {
@@ -30,12 +28,12 @@ describe('Firebase selectors', () => {
     });
 
     it('isLoggedIn - not logged in - false', () => {
-        const target = setup({loggedIn:false});
+        const target = setup({loggedIn: false});
         expect(isLoggedIn(target)).toBeFalsy();
     });
 
     it('isLoggedIn - logged in - true', () => {
-        const target = setup({loggedIn:true});
+        const target = setup({loggedIn: true});
         expect(isLoggedIn(target)).toBeTruthy();
     });
 
@@ -45,17 +43,17 @@ describe('Firebase selectors', () => {
     });
 
     it('isFetching - orders not fetched - true', () => {
-        const target = setup({},{},{1:1});
+        const target = setup({}, {}, {1: 1});
         expect(isFetching(target)).toBeTruthy();
     });
 
     it('isFetching - organizations not fetched - true', () => {
-        const target = setup({},{1:1});
+        const target = setup({}, {1: 1});
         expect(isFetching(target)).toBeTruthy();
     });
 
     it('isLoggedIn - all fetched - false', () => {
-        const target = setup({},{1:1},{1:1});
+        const target = setup({}, {1: 1}, {1: 1});
         expect(isLoggedIn(target)).toBeFalsy();
     });
 });

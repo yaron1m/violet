@@ -1,5 +1,5 @@
 import * as actionTypes from './action-types';
-import {LOGGED_OUT} from "../firebase/action-types";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
 
 export default (state = {}, action = {}) => {
     switch (action.type) {

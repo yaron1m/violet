@@ -3,8 +3,8 @@ import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 
 import {combineReducers} from 'redux';
-import appearance from './appearance/reducer';
-import firebase from './firebase/reducer';
+import appearance from './Appearance/Reducer';
+import firebase from './Firebase/Reducer';
 import labels from './labels/reducer';
 import lists from './lists/reducer';
 import orders from './orders/reducer';
@@ -13,7 +13,7 @@ import publicCourses from './PublicCourses/reducer';
 import selectedOrder from './SelectedOrder/Reducer';
 import selectedOrganization from './SelectedOrganization/Reducer';
 import selectedPublicCourse from './SelectedPublicCourse/Reducer';
-import {initFirebase} from "./firebase/actions";
+import {initFirebase} from "./Firebase/Actions";
 
 const combinedReducers = combineReducers({
     appearance,

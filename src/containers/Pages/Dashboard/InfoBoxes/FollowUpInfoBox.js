@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {getLabels} from "../../../../store/labels/reducer";
 import {redirect} from "../../../../util/history-util";
 import {getFollowUpOrdersSummary} from "../../../../store/orders/selectors";
-import {isFetching} from "../../../../store/firebase/reducer";
+import {isFetching} from "../../../../store/Firebase/Reducer";
 import InfoBox from "./InfoBox";
 import Colors from "../../../../util/consts/colors";
 import NotificationsIcon from '@material-ui/icons/Notifications';

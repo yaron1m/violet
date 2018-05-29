@@ -4,7 +4,7 @@ import {
 } from "../../../../store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../../store/labels/reducer";
 import {isSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
-import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
+import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 import {getNextPublicCourseId} from "../../../../store/PublicCourses/reducer";
 import {getSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";

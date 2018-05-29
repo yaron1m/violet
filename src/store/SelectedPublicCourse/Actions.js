@@ -1,4 +1,4 @@
-import {sendDataToDatabase} from "../firebase/actions";
+import {sendDataToDatabase} from "../Firebase/Actions";
 import * as Immutable from "seamless-immutable";
 import {getPublicCourseById} from "../PublicCourses/reducer";
 import {calculateDuration} from "../../util/time-util";

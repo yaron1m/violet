@@ -7,7 +7,7 @@ import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
 import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
 import calculateOrderStatus from "../../util/order-status";
-import {sendDataToDatabase} from "../firebase/actions";
+import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization} from "../SelectedOrganization/Actions";
 
 export function selectOrder(orderId) {

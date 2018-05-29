@@ -1,6 +1,6 @@
 import {shouldSave} from '../SaveOrderContainer';
 import {orderPageLabels} from "../../../../../store/labels/pages/order-page-labels";
-import {SHOW_REQUIRED_FIELDS} from "../../../../../store/appearance/action-types";
+import {SHOW_REQUIRED_FIELDS} from "../../../../../store/Appearance/ActionTypes";
 
 function getState() {
     return {
