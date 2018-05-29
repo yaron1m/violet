@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../store/Labels/Reducer";
 import PropTypes from 'prop-types';
 import {openDialog} from "../../../../../store/Appearance/Actions";
 import ContactRow from "./ContactRow";

@@ -2,7 +2,7 @@ import {getOrders} from "./selectors";
 import _ from 'lodash';
 import {getOrderStatusLabel} from "../../util/OrderStatus";
 import {getOrganizationById} from "../organizations/reducer";
-import {getLabels} from "../labels/reducer";
+import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
 

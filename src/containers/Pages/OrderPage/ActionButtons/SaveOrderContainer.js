@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {
     sendSelectedOrganizationToDatabase
 } from "../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../store/labels/reducer";
+import {getLabels} from "../../../../store/Labels/Reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {

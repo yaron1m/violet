@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../store/Labels/Reducer";
 import FollowUpSection from "./FollowUpSection";
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 

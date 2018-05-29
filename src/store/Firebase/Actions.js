@@ -8,7 +8,7 @@ import firebase from 'firebase/app';
 import "firebase/auth";
 import "firebase/database";
 import * as reducer from './Reducer';
-import {getLabels} from "../labels/reducer";
+import {getLabels} from "../Labels/Reducer";
 import {receivePublicCourses} from "../PublicCourses/actions";
 
 const firebaseProductionConfig = {

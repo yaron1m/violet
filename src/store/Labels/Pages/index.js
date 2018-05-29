@@ -1,5 +1,5 @@
-import {orderPageLabels} from "./order-page-labels";
-import {organizationPageLabels} from "./organiztion-page-labels";
+import {orderPageLabels} from "./OrderPageLabels";
+import {organizationPageLabels} from "./OrganizationPageLabels";
 import {publicCourseLabels} from "./PublicCourseLabels";
 
 const dashboardLabels = {

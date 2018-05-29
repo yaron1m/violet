@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getStatusLabels} from "../../../store/labels/reducer";
+import {getStatusLabels} from "../../../store/Labels/Reducer";
 import OrderStatusStepper from "./OrderStatusStepper";
 import {getSelectedOrder} from "../../../store/SelectedOrder/Selectors";
 import {progressiveStatuses as Status} from "../../../util/Constants/Status";

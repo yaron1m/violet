@@ -1,5 +1,5 @@
 import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../../store/labels/reducer";
+import {getLabels} from "../../../../store/Labels/Reducer";
 import {getSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import LectureTimesPrintSection from "./LectureTimesPrint";
 

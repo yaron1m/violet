@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {selectOrder} from "../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../store/labels/reducer";
+import {getLabels} from "../../../store/Labels/Reducer";
 import {getOrdersSummary, getOrders} from "../../../store/orders/selectors";
 import * as _ from "lodash";
 import {redirect} from "../../../util/HistoryUtil";

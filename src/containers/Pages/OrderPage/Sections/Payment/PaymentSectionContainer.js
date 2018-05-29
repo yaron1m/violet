@@ -1,6 +1,6 @@
 import PaymentSection from './PaymentSection';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../store/Labels/Reducer";
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import calculateSum from './CalculateSum';

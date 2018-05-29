@@ -2,7 +2,7 @@ import React from "react";
 import AllOrdersTableContainer from "../AllOrdersTableContainer";
 import {shallowWithStore} from "../../../../../setupTests";
 import {createMockStore} from "redux-test-utils";
-import labels from '../../../../store/labels/reducer'
+import labels from '../../../../store/Labels/Reducer'
 import Status from "../../../../util/Constants/Status";
 import * as HistoryUtil from "../../../../util/HistoryUtil";
 import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";

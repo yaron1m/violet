@@ -4,7 +4,7 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getOrderStatusLabel, isMatchingStatus} from "../../util/OrderStatus";
 import {cutIfLong, moneyFormat} from "../../util/StringUtil";
 import getActionRequiredOrdersArray from "./action-required-orders";
-import {getLabels} from "../labels/reducer";
+import {getLabels} from "../Labels/Reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
 
 export function getOrders(state, status = null) {

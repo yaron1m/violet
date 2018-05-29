@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import {getStatusLabels} from "../store/labels/reducer";
+import {getStatusLabels} from "../store/Labels/Reducer";
 import {getSelectedOrder} from "../store/SelectedOrder/Selectors";
 import {progressiveStatuses, terminatingStatuses} from "./Constants/Status";
 

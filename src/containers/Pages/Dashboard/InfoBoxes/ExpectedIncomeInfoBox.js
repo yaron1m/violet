@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../store/labels/reducer";
+import {getLabels} from "../../../../store/Labels/Reducer";
 import {redirect} from "../../../../util/HistoryUtil";
 import {getOrders} from "../../../../store/orders/selectors";
 import * as _ from 'lodash';
