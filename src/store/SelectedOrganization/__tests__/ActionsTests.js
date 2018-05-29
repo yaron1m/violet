@@ -1,7 +1,18 @@
 import React from 'react';
-import * as actions from "../actions";
-import * as actionTypes from "../action-types";
 import * as firebaseActions from "../../firebase/actions";
+import {
+    CLEAR_SELECTED_ORGANIZATION,
+    SELECT_ORGANIZATION,
+    SET_IS_SELECTED_ORGANIZATION,
+    UPDATE_SELECTED_ORGANIZATION
+} from "../ActionTypes";
+import {
+    clearSelectedOrganization,
+    selectOrganization,
+    sendSelectedOrganizationToDatabase,
+    setIsSelectedOrganization,
+    updateSelectedOrganization
+} from "../Actions";
 
 const id = 123456;
 const value = "value";
@@ -16,7 +27,7 @@ describe('selected actions - organization', () => {
     });
 
     it('selectOrganization - valid - action', () => {
-        const thunkFunction = actions.selectOrganization(id);
+        const thunkFunction = selectOrganization(id);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -30,17 +41,17 @@ describe('selected actions - organization', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.SELECT_ORGANIZATION);
+        expect(dispatch.mock.calls[0][0].type).toBe(SELECT_ORGANIZATION);
         expect(dispatch.mock.calls[0][0].payload).toBe(value);
     });
 
     it('updateSelectedOrganization - update new key - action', () => {
-        const thunkFunction = actions.updateSelectedOrganization(key, newValue);
+        const thunkFunction = updateSelectedOrganization(key, newValue);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrganization: {
                     organization: {
                         [id]: value
                     }
@@ -55,17 +66,17 @@ describe('selected actions - organization', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORGANIZATION);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrganization);
     });
 
     it('updateSelectedOrganization - update existing key - action', () => {
-        const thunkFunction = actions.updateSelectedOrganization(key, newValue);
+        const thunkFunction = updateSelectedOrganization(key, newValue);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrganization: {
                     organization: {
                         [key]: value
                     }
@@ -79,23 +90,23 @@ describe('selected actions - organization', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORGANIZATION);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrganization);
     });
 
     it('setIsSelectedOrganization - valid - action', () => {
-        expect(actions.setIsSelectedOrganization().type).toBe(actionTypes.SET_IS_SELECTED_ORGANIZATION);
+        expect(setIsSelectedOrganization().type).toBe(SET_IS_SELECTED_ORGANIZATION);
     });
 
     it('should dispatch action to send order to database', async () => {
         firebaseActions.sendDataToDatabase = jest.fn();
 
-        const thunkFunction = actions.sendSelectedOrganizationToDatabase();
+        const thunkFunction = sendSelectedOrganizationToDatabase();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrganization: {
                     organization: {
                         id,
                         [key]: value
@@ -113,5 +124,9 @@ describe('selected actions - organization', () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/organizations/' + id, expectedOrganization);
+    });
+
+    it('should return clear selected organization action', () => {
+        expect(clearSelectedOrganization().type).toBe(CLEAR_SELECTED_ORGANIZATION);
     });
 });

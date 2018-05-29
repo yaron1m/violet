@@ -4,8 +4,8 @@ import {shallowWithStore} from "../../../../../setupTests";
 import {createMockStore} from "redux-test-utils";
 import labels from '../../../../store/labels/reducer'
 import Status from "../../../../util/consts/status";
-import * as SelectedActions from "../../../../store/selected/actions";
 import * as HistoryUtil from "../../../../util/history-util";
+import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";
 
 const state = {
     labels: labels(),
@@ -143,13 +143,13 @@ describe('AllOrdersTableContainer', () => {
     });
 
     it('onEditButton - order is loaded ', () => {
-        SelectedActions.selectOrder = jest.fn();
+        SelectedOrderActions.selectOrder = jest.fn();
         HistoryUtil.redirect = jest.fn();
         component = shallowWithStore(<AllOrdersTableContainer/>, store);
 
         component.prop("onEditButton")(1002);
-        expect(SelectedActions.selectOrder.mock.calls.length).toBe(1);
-        expect(SelectedActions.selectOrder.mock.calls[0][0]).toBe(1002);
+        expect(SelectedOrderActions.selectOrder.mock.calls.length).toBe(1);
+        expect(SelectedOrderActions.selectOrder.mock.calls[0][0]).toBe(1002);
 
         expect(HistoryUtil.redirect.mock.calls.length).toBe(1);
         expect(HistoryUtil.redirect.mock.calls[0][0]).toEqual("/form");

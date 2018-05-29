@@ -1,8 +1,17 @@
 import React from 'react';
-import * as actions from "../actions";
-import * as actionTypes from "../action-types";
 import * as orderStatusUtil from '../../../util/order-status'
 import * as firebaseActions from "../../firebase/actions";
+import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
+import {
+    addNewLectureTime, clearSelectedOrder,
+    removeParticipantsFromAllLectures,
+    selectOrder,
+    sendSelectedOrderToDatabase,
+    setIsSelectedOrder,
+    updateLectureTime,
+    updatePublicCourseParticipant,
+    updateSelectedOrder
+} from "../Actions";
 
 
 const id = 123456;
@@ -23,7 +32,7 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action with selected order', () => {
-        const thunkFunction = actions.selectOrder(id);
+        const thunkFunction = selectOrder(id);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -40,17 +49,17 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.SELECT_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(SELECT_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toBe(value);
     });
 
     it('should dispatch action with updated order', () => {
-        const thunkFunction = actions.updateSelectedOrder(key, newValue);
+        const thunkFunction = updateSelectedOrder(key, newValue);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         [id]: value
                     }
@@ -66,17 +75,17 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
     });
 
     it('should dispatch action with updated order with the same key', () => {
-        const thunkFunction = actions.updateSelectedOrder(key, newValue);
+        const thunkFunction = updateSelectedOrder(key, newValue);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         [key]: value
                     }
@@ -91,17 +100,17 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
     });
 
     it('should dispatch action with updated lecture times', () => {
-        const thunkFunction = actions.updateLectureTime(key, value, 1);
+        const thunkFunction = updateLectureTime(key, value, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         lectureTimes: [
                             {id: 0},
@@ -138,17 +147,17 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
     it('should add lecture time when has none', () => {
-        const thunkFunction = actions.addNewLectureTime();
+        const thunkFunction = addNewLectureTime();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {}
                 }
             }
@@ -168,17 +177,17 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
     it('should add lecture time when has other', () => {
-        const thunkFunction = actions.addNewLectureTime();
+        const thunkFunction = addNewLectureTime();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         lectureTimes: [{key}, {value}]
                     }
@@ -200,17 +209,17 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
     it('should update public course participant', () => {
-        const thunkFunction = actions.updatePublicCourseParticipant(key, value, 1);
+        const thunkFunction = updatePublicCourseParticipant(key, value, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         publicCourseParticipants: [
                             {id: 0},
@@ -242,18 +251,18 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
 
     });
 
     it('should update remove participants from all lectures', () => {
-        const thunkFunction = actions.removeParticipantsFromAllLectures();
+        const thunkFunction = removeParticipantsFromAllLectures();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         publicCourseParticipants: [
                             {
@@ -289,24 +298,24 @@ describe('Selected order actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
 
     });
 
     it('should return set is selected action', () => {
-        expect(actions.setIsSelectedOrder().type).toBe(actionTypes.SET_IS_SELECTED_ORDER);
+        expect(setIsSelectedOrder().type).toBe(SET_IS_SELECTED_ORDER);
     });
 
     it('should dispatch action to send order to database', async () => {
         firebaseActions.sendDataToDatabase = jest.fn();
 
-        const thunkFunction = actions.sendSelectedOrderToDatabase();
+        const thunkFunction = sendSelectedOrderToDatabase();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
-                selected: {
+                selectedOrder: {
                     order: {
                         id,
                         [key]: value
@@ -324,5 +333,9 @@ describe('Selected order actions', () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
+    });
+
+    it('should return clear selected order action', () => {
+        expect(clearSelectedOrder().type).toBe(CLEAR_SELECTED_ORDER);
     });
 });

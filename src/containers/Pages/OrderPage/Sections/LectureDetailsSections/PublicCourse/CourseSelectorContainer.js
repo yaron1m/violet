@@ -4,12 +4,10 @@ import {getPublicCourses} from "../../../../../../store/PublicCourses/reducer";
 import _ from 'lodash';
 import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";
 import {
-    removeParticipantsFromAllLectures,
-    selectPublicCourse,
-    updateSelectedOrder
-} from "../../../../../../store/selected/actions";
-import {getSelectedOrder} from "../../../../../../store/selected/reducer";
+    selectPublicCourse} from "../../../../../../store/SelectedPublicCourse/Actions";
+import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../../util/string-util";
+import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../store/SelectedOrder/Actions";
 
 function getOption(course) {
     return {

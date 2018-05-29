@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getSelectedOrganization} from "../../../../../store/selected/reducer";
+import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import {getLabels} from "../../../../../store/labels/reducer";
 import PrintField from "../../../../../components/CustomComponents/OrderPrint/PrintField";
 

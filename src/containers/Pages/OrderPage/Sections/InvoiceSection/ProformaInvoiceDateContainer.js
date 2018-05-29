@@ -1,10 +1,11 @@
 /* eslint-disable no-magic-numbers */
 import {connect} from 'react-redux';
-import {updateSelectedOrder} from "../../../../../store/selected/actions";
+import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../../../store/labels/reducer";
-import {getSelectedOrganization} from "../../../../../store/selected/reducer";
+import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import {isEmptyValue} from "../../../../../util/string-util";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
+import {toDateFormat} from "../../../../../util/time-util";
 
 function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentConditions, updateSelectedOrder) {
     //TODO test this function
@@ -48,13 +49,14 @@ function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentCon
             return;
     }
 
-    updateSelectedOrder("expectedPayDate", paymentDate.toJSON());
+    updateSelectedOrder("expectedPayDate", toDateFormat(paymentDate));
 }
 
 function mapStateToProps(state) {
     return {
         paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
         selectedOrganization: getSelectedOrganization(state),
+        calculatePayDate,
     };
 }
 
@@ -64,13 +66,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-function mergeProps(stateProps, dispatchProps) {
-    return {
-        updateAction: (key, value) => {
-            dispatchProps.updateSelectedOrder(key, value);
-            calculatePayDate(value, stateProps.selectedOrganization, stateProps.paymentConditions, dispatchProps.updateSelectedOrder);
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ProformaInvoiceDate);
+export default connect(mapStateToProps, mapDispatchToProps)(ProformaInvoiceDate);

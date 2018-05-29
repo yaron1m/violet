@@ -1,5 +1,7 @@
 import {selectFieldUpdateAction} from '../CourseSelectorContainer';
-import * as SelectedActions from "../../../../../../../store/selected/actions";
+import * as SelectedActions from "../../../../../../../store/SelectedPublicCourse/Actions";
+import * as SelectedOrderActions from "../../../../../../../store/SelectedOrder/Actions";
+import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../../store/SelectedOrder/Actions";
 
 describe('selectFieldUpdateAction', () => {
     let dispatch;
@@ -7,8 +9,8 @@ describe('selectFieldUpdateAction', () => {
 
     beforeEach(() => {
         SelectedActions.selectPublicCourse = jest.fn();
-        SelectedActions.updateSelectedOrder = jest.fn();
-        SelectedActions.removeParticipantsFromAllLectures = jest.fn();
+        SelectedOrderActions.updateSelectedOrder = jest.fn();
+        SelectedOrderActions.removeParticipantsFromAllLectures = jest.fn();
         dispatch = jest.fn();
     });
 
@@ -23,14 +25,14 @@ describe('selectFieldUpdateAction', () => {
     it('should update the public course id in selected order', () => {
         selectFieldUpdateAction(dispatch, publicCourseId);
 
-        expect(SelectedActions.updateSelectedOrder.mock.calls).toHaveLength(1);
-        expect(SelectedActions.updateSelectedOrder).toBeCalledWith("publicCourseId", publicCourseId);
+        expect(updateSelectedOrder.mock.calls).toHaveLength(1);
+        expect(updateSelectedOrder).toBeCalledWith("publicCourseId", publicCourseId);
     });
 
     it('should remove order participants from all lectures', () => {
         selectFieldUpdateAction(dispatch, publicCourseId);
 
-        expect(SelectedActions.removeParticipantsFromAllLectures.mock.calls).toHaveLength(1);
-        expect(SelectedActions.removeParticipantsFromAllLectures).toBeCalledWith();
+        expect(removeParticipantsFromAllLectures.mock.calls).toHaveLength(1);
+        expect(removeParticipantsFromAllLectures).toBeCalledWith();
     });
 });
