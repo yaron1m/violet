@@ -51,7 +51,7 @@ const state = {
 
 const organizationReducer = require("../../organizations/reducer");
 const orgDetails = {organizationName: "orgName"};
-organizationReducer.getOrganizationById = jest.fn((state, id) => orgDetails);
+organizationReducer.getOrganizationById = jest.fn(() => orgDetails);
 
 describe('store/orders/selectors', () => {
 

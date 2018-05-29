@@ -1,11 +1,13 @@
 import React from 'react';
 import * as firebaseActions from "../../firebase/actions";
 import {
+    CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
 } from "../ActionTypes";
 import {
+    clearSelectedOrganization,
     selectOrganization,
     sendSelectedOrganizationToDatabase,
     setIsSelectedOrganization,
@@ -122,5 +124,9 @@ describe('selected actions - organization', () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/organizations/' + id, expectedOrganization);
+    });
+
+    it('should return clear selected organization action', () => {
+        expect(clearSelectedOrganization().type).toBe(CLEAR_SELECTED_ORGANIZATION);
     });
 });

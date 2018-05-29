@@ -1,7 +1,9 @@
 import React from 'react';
 import * as actions from "../Actions";
+import {clearSelectedPublicCourse} from "../Actions";
 import * as firebaseActions from "../../firebase/actions";
 import {
+    CLEAR_SELECTED_PUBLIC_COURSE,
     SELECT_PUBLIC_COURSE,
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
@@ -246,5 +248,9 @@ describe('Selected public course actions', () => {
         expect(dispatch.mock.calls.length).toBe(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/publicCourses/' + id, expectedCourse);
+    });
+
+    it('should return clear selected public course action', () => {
+        expect(clearSelectedPublicCourse().type).toBe(CLEAR_SELECTED_PUBLIC_COURSE);
     });
 });

@@ -5,6 +5,7 @@ import {calculateDuration} from "../../util/time-util";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "./Selectors";
 import {
+    CLEAR_SELECTED_PUBLIC_COURSE,
     SELECT_PUBLIC_COURSE,
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
@@ -81,5 +82,10 @@ export function sendSelectedPublicCourseToDatabase() {
     }
 }
 
+export function clearSelectedPublicCourse() {
+    return {
+        type: CLEAR_SELECTED_PUBLIC_COURSE
+    }
+}
 
 
