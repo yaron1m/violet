@@ -1,6 +1,7 @@
 import React from 'react';
 import target from "../Reducer";
 import {LOGGED_OUT} from "../../firebase/action-types";
+import * as actionTypes from '../ActionTypes';
 
 const value = "value";
 const key = "key";
@@ -23,7 +24,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedPublicCourse).toBeFalsy();
     });
 
-    it('reducer - no action with state - return state', () => {
+    it('should do nothing with no action', () => {
 
         const initialState = "initialState";
 
@@ -32,38 +33,81 @@ describe('selected actions - organization', () => {
         expect(result).toBe(initialState);
     });
 
-    //TODO missing tests here
-
-    //
-    // it('reducer - CLEAR_SELECTED', () => {
-    //
-    //     const initialState = {
-    //         organization: payload,
-    //         order: payload,
-    //         isSelectedOrganization: true,
-    //         isSelectedOrder: true,
-    //     };
-    //
-    //     const action = {
-    //         type: CLEAR_SELECTED_ORGANIZATION,
-    //     };
-    //
-    //     const result = target(initialState, action);
-    //
-    //     expect(result).toBeDefined();
-    //     expect(result.organization).toEqual({});
-    //     expect(result.order).toEqual({});
-    //     expect(result.isSelectedOrganization).toBeFalsy();
-    //     expect(result.isSelectedOrder).toBeFalsy();
-    // });
-
-    it('reducer - LOGGED_OUT', () => {
+    it('should select public course', () => {
 
         const initialState = {
-            organization: payload,
-            order: payload,
-            isSelectedOrganization: true,
-            isSelectedOrder: true,
+            key: value
+        };
+
+        const action = {
+            type: actionTypes.SELECT_PUBLIC_COURSE,
+            payload: payload
+        };
+
+        const result = target(initialState, action);
+
+        expect(result[key]).toEqual(value);
+        expect(result.publicCourse).toEqual(payload);
+        expect(result.isSelectedPublicCourse).toBeTruthy();
+    });
+
+    it('should update selected public course', () => {
+
+        const initialState = {
+            key: value
+        };
+
+        const action = {
+            type: actionTypes.UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: payload
+        };
+
+        const result = target(initialState, action);
+
+        expect(result[key]).toEqual(value);
+        expect(result.publicCourse).toEqual(payload);
+    });
+
+    it('set isSelectedPublicCourse', () => {
+
+        const initialState = {
+            key: value
+        };
+
+        const action = {
+            type: actionTypes.SET_IS_SELECTED_PUBLIC_COURSE,
+            payload: payload
+        };
+
+        const result = target(initialState, action);
+
+        expect(result.isSelectedPublicCourse).toBeTruthy();
+    });
+
+
+    it('should clear selected public course', () => {
+
+        const initialState = {
+            publicCourse: payload,
+            isSelectedPublicCourse: true,
+        };
+
+        const action = {
+            type: actionTypes.CLEAR_SELECTED_PUBLIC_COURSE,
+        };
+
+        const result = target(initialState, action);
+
+        expect(result).toBeDefined();
+        expect(result.publicCourse).toEqual({});
+        expect(result.isSelectedPublicCourse).toBeFalsy();
+    });
+
+    it('should clear selected public course', () => {
+
+        const initialState = {
+            publicCourse: payload,
+            isSelectedPublicCourse: true,
         };
 
         const action = {

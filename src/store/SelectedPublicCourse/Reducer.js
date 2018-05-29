@@ -1,10 +1,5 @@
 import {LOGGED_OUT} from "../firebase/action-types";
-import {CLEAR_SELECTED_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
-import {
-    SELECT_PUBLIC_COURSE,
-    SET_IS_SELECTED_PUBLIC_COURSE,
-    UPDATE_SELECTED_PUBLIC_COURSE
-} from "./ActionTypes";
+import * as actionTypes from "./ActionTypes";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 
 const initialState = createImmutable({
@@ -14,26 +9,25 @@ const initialState = createImmutable({
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {
-        case SELECT_PUBLIC_COURSE:
+        case actionTypes.SELECT_PUBLIC_COURSE:
             return mergeImmutable(state, {
                 publicCourse: action.payload,
                 isSelectedPublicCourse: true,
             });
 
-        case UPDATE_SELECTED_PUBLIC_COURSE:
+        case actionTypes.UPDATE_SELECTED_PUBLIC_COURSE:
             return mergeImmutable(state, {
                 publicCourse: action.payload,
             });
 
-        case SET_IS_SELECTED_PUBLIC_COURSE:
+        case actionTypes.SET_IS_SELECTED_PUBLIC_COURSE:
             return mergeImmutable(state, {
                 isSelectedPublicCourse: true,
             });
 
-        case CLEAR_SELECTED_ORGANIZATION:
         case LOGGED_OUT:
+        case actionTypes.CLEAR_SELECTED_PUBLIC_COURSE:
             return initialState;
-
 
         default:
             return state
