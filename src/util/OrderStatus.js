@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import {getStatusLabels} from "../store/labels/reducer";
 import {getSelectedOrder} from "../store/SelectedOrder/Selectors";
-import {progressiveStatuses, terminatingStatuses} from "./consts/status";
+import {progressiveStatuses, terminatingStatuses} from "./Constants/Status";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);

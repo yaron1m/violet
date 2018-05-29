@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {isEmptyValue} from "../../../../../util/string-util";
+import {isEmptyValue} from "../../../../../util/StringUtil";
 
 export default function calculateSum(selectedOrder, updateSelectedOrder) {
     const order = Object.assign({}, selectedOrder);

@@ -4,7 +4,7 @@ import {getLabels} from "../../../../../store/labels/reducer";
 import * as _ from 'lodash';
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../../store/orders/selectors";
-import {getValueOrEmptyString} from "../../../../../util/string-util";
+import {getValueOrEmptyString} from "../../../../../util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 
 function getContacts(state) {

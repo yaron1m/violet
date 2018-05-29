@@ -1,10 +1,10 @@
 import {getOrders} from "./selectors";
 import _ from 'lodash';
-import {getOrderStatusLabel} from "../../util/order-status";
+import {getOrderStatusLabel} from "../../util/OrderStatus";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../labels/reducer";
-import Status from "../../util/consts/status";
-import {isEmptyValue} from "../../util/string-util";
+import Status from "../../util/Constants/Status";
+import {isEmptyValue} from "../../util/StringUtil";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);

@@ -3,7 +3,7 @@ import InternalLectureDetails from "./InternalCourse/InternalLectureDetailsConta
 import PropTypes from 'prop-types';
 // import PublicCourseLectureDetails from "./PublicCourse/PublicCourseLectureDetailsContainer";
 // import {Tab, Tabs} from "material-ui";
-// import Colors from "../../../../../util/consts/colors";
+// import Colors from "../../../../../util/Constants/Colors";
 
 export default class LectureDetailsSection extends React.Component {
 

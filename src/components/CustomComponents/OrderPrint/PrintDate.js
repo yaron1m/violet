@@ -1,4 +1,4 @@
-import {isEmptyValue} from "../../../util/string-util";
+import {isEmptyValue} from "../../../util/StringUtil";
 import PrintField from "./PrintField";
 
 export default class PrintDate extends PrintField {

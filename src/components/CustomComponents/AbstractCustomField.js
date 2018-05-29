@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
-import Sizes from "../../util/consts/sizes";
+import Sizes from "../../util/Constants/Sizes";
 
 export default class AbstractCustomField extends React.Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import {isEmptyValue} from "../../../util/string-util";
+import {isEmptyValue} from "../../../util/StringUtil";
 
 function arrayMerge(objValue, srcValue) {
     if (_.isArray(objValue)) {

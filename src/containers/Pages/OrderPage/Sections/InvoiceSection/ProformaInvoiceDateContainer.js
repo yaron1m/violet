@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
-import {isEmptyValue} from "../../../../../util/string-util";
+import {isEmptyValue} from "../../../../../util/StringUtil";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
-import {toDateFormat} from "../../../../../util/time-util";
+import {toDateFormat} from "../../../../../util/TimeUtil";
 
 function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentConditions, updateSelectedOrder) {
     //TODO test this function

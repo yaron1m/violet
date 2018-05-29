@@ -1,12 +1,12 @@
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {getSelectedOrder} from "./Selectors";
-import {calculateDuration} from "../../util/time-util";
+import {calculateDuration} from "../../util/TimeUtil";
 import {getOrderById} from "../orders/selectors";
-import {isEmptyValue} from "../../util/string-util";
+import {isEmptyValue} from "../../util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
 import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
-import calculateOrderStatus from "../../util/order-status";
+import calculateOrderStatus from "../../util/OrderStatus";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization} from "../SelectedOrganization/Actions";
 

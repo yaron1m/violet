@@ -1,4 +1,4 @@
-import {cutIfLong, getValueOrEmptyString, isEmptyValue, moneyFormat} from "../string-util";
+import {cutIfLong, getValueOrEmptyString, isEmptyValue, moneyFormat} from "../StringUtil";
 
 describe('string-util', () => {
 

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../store/labels/reducer";
 import PropTypes from "prop-types";
 import CustomTextField from "../../../components/CustomComponents/CustomTextField";
-import Sizes from "../../../util/consts/sizes";
+import Sizes from "../../../util/Constants/Sizes";
 
 
 function mapStateToProps(state, ownProps) {

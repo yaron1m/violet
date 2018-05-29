@@ -13,7 +13,7 @@ import {
 } from "../../../../store/Appearance/Actions";
 import {isOrderMissingFields} from "../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
-import {isEmptyValue} from "../../../../util/string-util";
+import {isEmptyValue} from "../../../../util/StringUtil";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
 import {getSelectedOrder} from "../../../../store/SelectedOrder/Selectors";

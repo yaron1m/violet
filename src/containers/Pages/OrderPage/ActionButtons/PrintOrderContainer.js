@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../../store/labels/reducer";
 import {isSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import {openDialog} from "../../../../store/Appearance/Actions";
-import {redirect} from "../../../../util/history-util";
+import {redirect} from "../../../../util/HistoryUtil";
 import PrintOrderButton from "./PrintOrder";
 
 function mapStateToProps(state) {

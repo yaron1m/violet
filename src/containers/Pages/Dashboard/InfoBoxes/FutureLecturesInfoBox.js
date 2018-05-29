@@ -1,13 +1,13 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../store/labels/reducer";
-import {redirect} from "../../../../util/history-util";
+import {redirect} from "../../../../util/HistoryUtil";
 import {getAllLectureTimes} from "../../../../store/orders/selectors";
 import * as _ from 'lodash';
 import {isFetching} from "../../../../store/Firebase/Reducer";
-import Status from "../../../../util/consts/status";
+import Status from "../../../../util/Constants/Status";
 import CheckBoxIcon from '@material-ui/icons/CheckCircle';
 import InfoBox from "./InfoBox";
-import Colors from "../../../../util/consts/colors";
+import Colors from "../../../../util/Constants/Colors";
 
 function calculateFutureLectures(state) {
     if (isFetching(state))

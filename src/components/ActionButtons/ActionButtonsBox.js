@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Colors from "../../util/consts/colors";
+import Colors from "../../util/Constants/Colors";
 
 export class ActionButtonsBox extends React.Component {
 
