@@ -1,5 +1,5 @@
 import React from 'react';
-import target from "../reducer";
+import target from "../Reducer";
 import {LOGGED_OUT} from "../../firebase/action-types";
 import {
     CLEAR_SELECTED_ORGANIZATION,
