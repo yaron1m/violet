@@ -7,11 +7,12 @@ import appearance from './appearance/reducer';
 import firebase from './firebase/reducer';
 import labels from './labels/reducer';
 import lists from './lists/reducer';
-import orders from './orders/reducer'
-import organizations from './organizations/reducer'
-import publicCourses from './PublicCourses/reducer'
-import selected from './SelectedPublicCourse/Reducer'
-import selectedOrder from './SelectedOrder/Reducer'
+import orders from './orders/reducer';
+import organizations from './organizations/reducer';
+import publicCourses from './PublicCourses/reducer';
+import selectedOrder from './SelectedOrder/Reducer';
+import selectedOrganization from './SelectedOrganization/Reducer';
+import selectedPublicCourse from './SelectedPublicCourse/Reducer';
 import {initFirebase} from "./firebase/actions";
 
 const combinedReducers = combineReducers({
@@ -22,8 +23,9 @@ const combinedReducers = combineReducers({
     orders,
     organizations,
     publicCourses,
-    selected,
-    selectedOrder
+    selectedOrder,
+    selectedOrganization,
+    selectedPublicCourse,
 });
 
 const store = createStore(

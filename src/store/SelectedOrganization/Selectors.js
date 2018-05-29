@@ -1,7 +1,7 @@
 export function getSelectedOrganization(state) {
-    return state.selected.organization;
+    return state.selectedOrganization.organization;
 }
 
 export function isSelectedOrganization(state) {
-    return state.selected.isSelectedOrganization;
+    return state.selectedOrganization.isSelectedOrganization;
 }

@@ -1,7 +1,7 @@
 export function getSelectedOrder(state) {
-    return state.selected.order;
+    return state.selectedOrder.order;
 }
 
 export function isSelectedOrder(state) {
-    return state.selected.isSelectedOrder;
+    return state.selectedOrder.isSelectedOrder;
 }

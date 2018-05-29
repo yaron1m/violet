@@ -1,11 +1,11 @@
 export function getSelectedPublicCourse(state) {
-    return state.selected.publicCourse;
+    return state.selectedPublicCourse.publicCourse;
 }
 
 export function getSelectedPublicCourseLecture(state, lectureId) {
-    return state.selected.publicCourse.lectures[lectureId];
+    return state.selectedPublicCourse.publicCourse.lectures[lectureId];
 }
 
 export function isSelectedPublicCourse(state) {
-    return state.selected.isSelectedPublicCourse;
+    return state.selectedPublicCourse.isSelectedPublicCourse;
 }
