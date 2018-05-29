@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {addNewLectureTime} from "../../../../../../../store/selected/actions";
+import {addNewLectureTime} from "../../../../../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../../../../../store/labels/reducer";
 import {CustomRaisedButton} from "../../../../../../../components/CustomComponents/CustomButtons";
 

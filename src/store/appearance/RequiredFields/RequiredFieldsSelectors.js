@@ -1,4 +1,4 @@
-import {getSelectedOrder, getSelectedOrganization} from "../../selected/reducer";
+import {getSelectedOrganization} from "../../SelectedOrganization/Selectors";
 import * as _ from "lodash";
 import requiredFields from "./RequiredFieldsByStatus";
 import {hasMissingFields, isRightTabKey, mergerRequiredFields} from "./Util";
@@ -7,6 +7,7 @@ import {
     internalTabKey,
     publicCourseTabKey
 } from "../../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+import {getSelectedOrder} from "../../SelectedOrder/Selectors";
 
 export function getRequiredFieldsObject(state) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))

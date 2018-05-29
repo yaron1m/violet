@@ -1,12 +1,16 @@
 import React from 'react';
 import target from "../reducer";
-import * as actionTypes from "../action-types";
 import {LOGGED_OUT} from "../../firebase/action-types";
+import {
+    CLEAR_SELECTED_ORGANIZATION,
+    SELECT_ORGANIZATION,
+    SET_IS_SELECTED_ORGANIZATION,
+    UPDATE_SELECTED_ORGANIZATION
+} from "../../SelectedOrganization/ActionTypes";
 
-const id = 123456;
+
 const value = "value";
 const key = "key";
-const newValue = "newValue";
 const payload = {
     a: 123
 };
@@ -23,9 +27,7 @@ describe('selected actions - organization', () => {
 
         expect(result).toBeDefined();
         expect(result.organization).toEqual({});
-        expect(result.order).toEqual({});
         expect(result.isSelectedOrganization).toBeFalsy();
-        expect(result.isSelectedOrder).toBeFalsy();
     });
 
     it('reducer - no action with state - return state', () => {
@@ -44,7 +46,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.SELECT_ORGANIZATION,
+            type: SELECT_ORGANIZATION,
             payload: payload
         };
 
@@ -62,7 +64,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.UPDATE_SELECTED_ORGANIZATION,
+            type: UPDATE_SELECTED_ORGANIZATION,
             payload: payload
         };
 
@@ -79,7 +81,7 @@ describe('selected actions - organization', () => {
         };
 
         const action = {
-            type: actionTypes.SET_IS_SELECTED_ORGANIZATION,
+            type: SET_IS_SELECTED_ORGANIZATION,
             payload: payload
         };
 
@@ -88,86 +90,30 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeTruthy();
     });
 
-    it('reducer - SELECT_ORDER', () => {
 
-        const initialState = {
-            key: value
-        };
-
-        const action = {
-            type: actionTypes.SELECT_ORDER,
-            payload: payload
-        };
-
-        const result = target(initialState, action);
-
-        expect(result[key]).toEqual(value);
-        expect(result.order).toEqual(payload);
-        expect(result.isSelectedOrder).toBeTruthy();
-    });
-
-    it('reducer - UPDATE_SELECTED_ORDER', () => {
-
-        const initialState = {
-            key: value
-        };
-
-        const action = {
-            type: actionTypes.UPDATE_SELECTED_ORDER,
-            payload: payload
-        };
-
-        const result = target(initialState, action);
-
-        expect(result[key]).toEqual(value);
-        expect(result.order).toEqual(payload);
-    });
-
-    it('reducer - SET_IS_SELECTED_ORDER', () => {
-
-        const initialState = {
-            key: value
-        };
-
-        const action = {
-            type: actionTypes.SET_IS_SELECTED_ORDER,
-            payload: payload
-        };
-
-        const result = target(initialState, action);
-
-        expect(result.isSelectedOrder).toBeTruthy();
-    });
-
-    it('reducer - CLEAR_SELECTED', () => {
+    it('reducer - CLEAR_SELECTED_ORGANIZATION', () => {
 
         const initialState = {
             organization: payload,
-            order: payload,
             isSelectedOrganization: true,
-            isSelectedOrder: true,
         };
 
         const action = {
-            type: actionTypes.CLEAR_SELECTED,
+            type: CLEAR_SELECTED_ORGANIZATION,
         };
 
         const result = target(initialState, action);
 
         expect(result).toBeDefined();
         expect(result.organization).toEqual({});
-        expect(result.order).toEqual({});
         expect(result.isSelectedOrganization).toBeFalsy();
-        expect(result.isSelectedOrder).toBeFalsy();
     });
 
     it('reducer - LOGGED_OUT', () => {
 
         const initialState = {
             organization: payload,
-            order: payload,
             isSelectedOrganization: true,
-            isSelectedOrder: true,
         };
 
         const action = {
@@ -178,30 +124,7 @@ describe('selected actions - organization', () => {
 
         expect(result).toBeDefined();
         expect(result.organization).toEqual({});
-        expect(result.order).toEqual({});
         expect(result.isSelectedOrganization).toBeFalsy();
-        expect(result.isSelectedOrder).toBeFalsy();
     });
 
-    it('reducer - CLEAR_SELECTED_ORDER', () => {
-
-        const initialState = {
-            organization: payload,
-            order: payload,
-            isSelectedOrganization: true,
-            isSelectedOrder: true,
-        };
-
-        const action = {
-            type: actionTypes.CLEAR_SELECTED_ORDER,
-        };
-
-        const result = target(initialState, action);
-
-        expect(result).toBeDefined();
-        expect(result.organization).toEqual(payload);
-        expect(result.order).toEqual({});
-        expect(result.isSelectedOrganization).toBeTruthy();
-        expect(result.isSelectedOrder).toBeFalsy();
-    });
 });

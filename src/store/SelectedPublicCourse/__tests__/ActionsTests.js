@@ -1,7 +1,11 @@
 import React from 'react';
-import * as actions from "../actions";
-import * as actionTypes from "../action-types";
+import * as actions from "../Actions";
 import * as firebaseActions from "../../firebase/actions";
+import {
+    SELECT_PUBLIC_COURSE,
+    SET_IS_SELECTED_PUBLIC_COURSE,
+    UPDATE_SELECTED_PUBLIC_COURSE
+} from "../ActionTypes";
 
 
 const id = 123456;
@@ -32,7 +36,7 @@ describe('Selected public course actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.SELECT_PUBLIC_COURSE);
+        expect(dispatch.mock.calls[1][0].type).toBe(SELECT_PUBLIC_COURSE);
         expect(dispatch.mock.calls[1][0].payload).toBe(value);
     });
 
@@ -42,7 +46,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         [id]: value
                     }
@@ -57,7 +61,7 @@ describe('Selected public course actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_PUBLIC_COURSE);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedCourse);
     });
 
@@ -67,7 +71,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         [key]: value
                     }
@@ -81,7 +85,7 @@ describe('Selected public course actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(actionTypes.UPDATE_SELECTED_PUBLIC_COURSE);
+        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
         expect(dispatch.mock.calls[0][0].payload).toEqual(expectedCourse);
     });
 
@@ -91,7 +95,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         lectures: [
                             {id: 0},
@@ -127,7 +131,7 @@ describe('Selected public course actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_PUBLIC_COURSE);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedCourse);
 
     });
@@ -138,7 +142,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         lectures: [
                             {id: 0},
@@ -174,7 +178,7 @@ describe('Selected public course actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_PUBLIC_COURSE);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedCourse);
 
     });
@@ -185,7 +189,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {}
                 }
             }
@@ -207,13 +211,13 @@ describe('Selected public course actions', () => {
         dispatch.mock.calls[0][0](dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(actionTypes.UPDATE_SELECTED_PUBLIC_COURSE);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedCourse);
 
     });
 
     it('should return set is selected public course action', () => {
-        expect(actions.setIsSelectedPublicCourse().type).toBe(actionTypes.SET_IS_SELECTED_PUBLIC_COURSE);
+        expect(actions.setIsSelectedPublicCourse().type).toBe(SET_IS_SELECTED_PUBLIC_COURSE);
     });
 
     it('should dispatch action to send order to database', async () => {
@@ -224,7 +228,7 @@ describe('Selected public course actions', () => {
 
         const getState = () => {
             return {
-                selected: {
+                selectedPublicCourse: {
                     publicCourse: {
                         id,
                         [key]: value

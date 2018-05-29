@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../../store/selected/actions";
+import {selectOrder} from "../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../store/labels/reducer";
 import {getActionRequiredOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/history-util";

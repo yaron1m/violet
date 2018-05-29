@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../store/labels/reducer";
-import {isSelectedOrder} from "../../../../store/selected/reducer";
+import {isSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import {openDialog} from "../../../../store/appearance/actions";
 import {redirect} from "../../../../util/history-util";
 import PrintOrderButton from "./PrintOrder";

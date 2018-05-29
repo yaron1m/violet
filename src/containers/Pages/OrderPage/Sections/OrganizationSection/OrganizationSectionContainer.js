@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import {selectOrganization, updateSelectedOrder} from "../../../../../store/selected/actions";
+import {selectOrganization} from "../../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../../store/labels/reducer";
 import {getOrganizations} from "../../../../../store/organizations/reducer";
 import PropTypes from 'prop-types';
 import OrganizationSection from "./OrganizationSection";
 import {toSuggestions} from "../../../../../components/AutoSuggest";
+import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 
 function mapStateToProps(state, ownProps) {
     return {

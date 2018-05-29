@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/labels/reducer";
-import {isSelectedOrganization} from "../../../../../store/selected/reducer";
 import PropTypes from 'prop-types';
 import {openDialog} from "../../../../../store/appearance/actions";
 import ContactRow from "./ContactRow";
+import {isSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 
 function mapStateToProps(state, ownProps) {
     return {

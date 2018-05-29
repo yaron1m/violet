@@ -12,8 +12,7 @@ function getState() {
                 orderPage: orderPageLabels
             }
         },
-        selected: {
-            isSelectedOrganization: true,
+        selectedOrder: {
             isSelectedOrder: false,
             order: {
                 organizationId: "3",
@@ -21,6 +20,9 @@ function getState() {
                 contactLastName: "last",
                 contactEmail: "email",
             },
+        },
+        selectedOrganization: {
+            isSelectedOrganization: true,
             organization: {
                 organizationName: "Name",
             },
@@ -40,7 +42,7 @@ describe('save order button', () => {
 
     it('shouldSave - organization not selected - false', () => {
         const state = getState();
-        state.selected.isSelectedOrganization = false;
+        state.selectedOrganization.isSelectedOrganization = false;
 
         expect(shouldSave(state, dispatch)).toBeFalsy();
 
@@ -50,7 +52,7 @@ describe('save order button', () => {
 
     it('shouldSave - there are missing fields - false', () => {
         const state = getState();
-        state.selected.isSelectedOrganization = true;
+        state.selectedOrganization.isSelectedOrganization = true;
 
         expect(shouldSave(state, dispatch)).toBeFalsy();
 
@@ -61,8 +63,8 @@ describe('save order button', () => {
 
     it('shouldSave - all valid - true', () => {
         const state = getState();
-        state.selected.isSelectedOrganization = true;
-        state.selected.order.contactPhone1 = "Phone";
+        state.selectedOrganization.isSelectedOrganization = true;
+        state.selectedOrder.order.contactPhone1 = "Phone";
 
         expect(shouldSave(state, dispatch)).toBeTruthy();
     });

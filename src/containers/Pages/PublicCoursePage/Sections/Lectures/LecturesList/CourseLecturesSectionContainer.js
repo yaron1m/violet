@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../../store/labels/reducer";
 import CourseLecturesSection from "./CourseLecturesSection";
-import {getSelectedPublicCourse} from "../../../../../../store/selected/reducer";
+import {getSelectedPublicCourse} from "../../../../../../store/SelectedPublicCourse/Selectors";
 import _ from 'lodash';
 
 function getLecturesIdsOrderedByDate(selectedPublicCourse) {
