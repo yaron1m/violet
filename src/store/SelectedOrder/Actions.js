@@ -6,7 +6,7 @@ import {isEmptyValue} from "../../util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
 import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
-import calculateOrderStatus from "../../util/OrderStatus/OrderStatus";
+import calculateOrderStatus from "../../util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization} from "../SelectedOrganization/Actions";
 

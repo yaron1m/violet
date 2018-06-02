@@ -107,7 +107,7 @@ describe('store/orders/selectors', () => {
     });
 
     it('getFollowUpOrdersSummary - valid', () => {
-        const statuses = require("../../../util/OrderStatus/OrderStatus");
+        const statuses = require("../../../util/OrderStatus/OrderStatusCalculator");
         labelsSelectors.getOrderStatusLabel = jest.fn((state, order) => order.status);
 
         const organizationReducer = require("../../organizations/reducer");
