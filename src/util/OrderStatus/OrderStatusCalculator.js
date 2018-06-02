@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
+import {hasDatePassed} from "../TimeUtil";
 import {
     publicCourseTabKey
 } from "../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
@@ -28,75 +29,101 @@ export default function calculateOrderStatus(order) {
     return status;
 }
 
-//TODO split this code to files and functions
 function meetsRequirements(order, requirement) {
-
-    let lectureTimesDates;
-    const lectureDetailsTabKey = order.lectureDetailsTabKey;
-
     switch (requirement) {
         case progressiveStatuses.contact:
-            return true;
+            return isContact();
 
         case progressiveStatuses.offer:
-            if (lectureDetailsTabKey === publicCourseTabKey)
-                return existsAndNotEmpty(order, "publicCourseParticipants");
-
-            return existsAndNotEmpty(order, "lectureTimes")
-                && _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
+            return isOffer(order);
 
         case progressiveStatuses.order:
-            if (lectureDetailsTabKey === publicCourseTabKey)
-                return true;
-
-            return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
+            return isOrder(order);
 
         case progressiveStatuses.approvedOrder:
-            return existsAndNotEmpty(order, "orderApproved");
+            return isApprovedOrder(order);
 
-        case progressiveStatuses.isExecuting: {
-            if (lectureDetailsTabKey === publicCourseTabKey) {
-                return true; //TODO figure how to know if executing
-            }
+        case progressiveStatuses.isExecuting:
+            return isExecuting(order);
 
-            lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-            const tomorrowMorning = new Date();
-            tomorrowMorning.setDate(tomorrowMorning.getDate() + 1);
-            tomorrowMorning.setHours(0, 0, 0, 0);
-            return _.some(lectureTimesDates, date => new Date(date) <= tomorrowMorning);
-        }
-
-        case progressiveStatuses.executed: {
-
-            if (existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber")) {
-                lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-                const tomorrowMorning = new Date();
-                tomorrowMorning.setDate(tomorrowMorning.getDate() + 1);
-                tomorrowMorning.setHours(0, 0, 0, 0);
-                return _.every(lectureTimesDates, date => new Date(date) <= tomorrowMorning);
-            }
-
-            lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-            const thisMorning = new Date();
-            //yesterday.setDate(yesterday.getDate() - 1);
-            thisMorning.setHours(0, 0, 0, 0);
-            return _.every(lectureTimesDates, date => new Date(date) <= thisMorning);
-        }
+        case progressiveStatuses.executed:
+            return isExecuted(order);
 
         case progressiveStatuses.waitingPayment:
-            return existsAndNotEmpty(order, "proformaInvoiceNumber") || existsAndNotEmpty(order, "taxInvoiceNumber");
+            return isWaitingPayment(order);
 
         case progressiveStatuses.payed:
-            return existsAndNotEmpty(order, "receiptNumber");
+            return isPayed(order);
 
         case terminatingStatuses.cancelled:
-            return order.cancelled;
+            return isCancelled(order);
 
         case terminatingStatuses.rejected:
-            return order.rejected;
+            return isRejected(order);
 
         default:
             return false;
     }
 }
 
+function isContact() {
+    // An order is always a contact
+    return true;
+}
+
+function isOffer(order) {
+    if (order.lectureDetailsTabKey === publicCourseTabKey)
+        return existsAndNotEmpty(order, "publicCourseParticipants");
+
+    // Order must have at least one lecture time with a topic
+    if (!existsAndNotEmpty(order, "lectureTimes"))
+        return false;
+
+    return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
+}
+
+function isOrder(order) {
+    if (order.lectureDetailsTabKey === publicCourseTabKey)
+        return true;
+
+    // Order must have at lease one lecture with date
+    return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
+}
+
+function isApprovedOrder(order) {
+    // Order must be approved
+    return existsAndNotEmpty(order, "orderApproved");
+}
+
+function isExecuting(order) {
+    if (order.lectureDetailsTabKey === publicCourseTabKey) {
+        return true; //TODO figure how to know if executing
+    }
+    // At least one lectures is done
+    const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+    return _.some(lectureTimesDates, hasDatePassed);
+}
+
+function isExecuted(order) {
+    // All lectures passed
+    const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+    return _.every(lectureTimesDates, hasDatePassed);
+}
+
+function isWaitingPayment(order) {
+    // Order has proforma or tax invoice number
+    return existsAndNotEmpty(order, "proformaInvoiceNumber")
+        || existsAndNotEmpty(order, "taxInvoiceNumber");
+}
+
+function isPayed(order) {
+    return existsAndNotEmpty(order, "receiptNumber");
+}
+
+function isCancelled(order) {
+    return order.cancelled;
+}
+
+function isRejected(order) {
+    return order.rejected;
+}

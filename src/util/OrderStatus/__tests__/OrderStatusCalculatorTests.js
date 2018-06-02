@@ -1,5 +1,6 @@
 import calculateOrderStatus from "../OrderStatusCalculator";
 import Status from "../../Constants/Status";
+import {toDateFormat} from "../../TimeUtil";
 
 describe('order-status', () => {
 
@@ -64,25 +65,25 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order)).toEqual(Status.approvedOrder);
     });
 
-    it('calculateOrderStatus - lecture date today - isExecuting', () => {
+    it('calculateOrderStatus - lecture date today - isExecuted', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(0, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 },
                 {
                     topic: "some topic",
-                    date: today,
+                    date: toDateFormat(today),
                 }
             ],
             orderApproved: true,
         };
 
-        expect(calculateOrderStatus(order)).toEqual(Status.isExecuting);
+        expect(calculateOrderStatus(order)).toEqual(Status.executed);
     });
 
     it('calculateOrderStatus - only some of lectures passed - isExecuting', () => {
@@ -90,11 +91,11 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 },
                 {
                     topic: "some topic",
-                    date: "2099-01-01T00:00:00.000Z",
+                    date: "2099-01-01",
                 }
             ],
             orderApproved: true,
@@ -111,7 +112,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 },
                 {
                     topic: "some topic",
@@ -129,7 +130,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -141,13 +142,13 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - has taxInvoiceNumber - waitingPayment', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -159,13 +160,13 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - lecture date today and has proformaInvoiceNumber - waitingPayment', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: today,
+                    date: toDateFormat(today),
                 }
             ],
             orderApproved: true,
@@ -177,13 +178,13 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - lecture date today and has taxInvoiceNumber - waitingPayment', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: today,
+                    date: toDateFormat(today),
                 }
             ],
             orderApproved: true,
@@ -198,7 +199,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -214,13 +215,13 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
-            cancelled:true,
+            cancelled: true,
         };
 
         expect(calculateOrderStatus(order)).toEqual(Status.cancelled);
@@ -231,19 +232,17 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
-            rejected:true,
+            rejected: true,
         };
 
         expect(calculateOrderStatus(order)).toEqual(Status.rejected);
     });
-
-
 
 
 });

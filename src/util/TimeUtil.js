@@ -47,3 +47,8 @@ export function toDateFormat(date) {
 
     return year + "-" + month + "-" + day;
 }
+
+export function hasDatePassed(dateString) {
+    const now = new Date();
+    return now >= new Date(dateString);
+}
