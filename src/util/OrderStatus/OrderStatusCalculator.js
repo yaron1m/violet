@@ -3,7 +3,7 @@ import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {
     publicCourseTabKey
-} from "../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+} from "../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);

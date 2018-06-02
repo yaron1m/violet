@@ -133,7 +133,7 @@ const printPageLabels = {
     printNoOrderSelected: "לא נבחרה הזמנה"
 };
 
-export const pages = {
+export default {
     dashboard: dashboardLabels,
     loginPage: loginPageLabels,
     followUpPage: followUpPageLabels,

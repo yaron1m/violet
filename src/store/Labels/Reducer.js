@@ -1,4 +1,4 @@
-import {pages} from './Pages/index'
+import pages from './Pages/index'
 
 export function getLabels(state) {
     return state.labels
