@@ -3,11 +3,9 @@ import * as _ from "lodash";
 import requiredFields from "./RequiredFieldsByStatus";
 import {hasMissingFields, isRightTabKey, mergerRequiredFields} from "./Util";
 import {shouldShowRequiredFields} from "../Reducer";
-import {
-    internalTabKey,
-    publicCourseTabKey
-} from "../../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+import {publicCourseTabKey} from "../../../util/Constants/TabKeys";
 import {getSelectedOrder} from "../../SelectedOrder/Selectors";
+import {internalTabKey} from "../../../util/Constants/TabKeys";
 
 export function getRequiredFieldsObject(state) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))

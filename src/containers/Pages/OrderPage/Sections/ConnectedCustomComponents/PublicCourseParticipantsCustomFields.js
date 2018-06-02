@@ -8,7 +8,7 @@ import CustomAutoComplete from "../../../../../components/CustomComponents/Custo
 import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
 import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
-import {publicCourseTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
+import {publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
 
 function getValues(state, ownProps) {
     if (ownProps.participantIndex === null || getSelectedOrder(state).publicCourseParticipants === undefined)

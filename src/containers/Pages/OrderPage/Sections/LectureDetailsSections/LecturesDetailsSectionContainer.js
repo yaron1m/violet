@@ -4,9 +4,8 @@ import LectureDetailsSection from "./LecturesDetailsSection";
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../util/StringUtil";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
+import {internalTabKey, publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
 
-export const internalTabKey = "internalTab";
-export const publicCourseTabKey = "publicCourseTab";
 
 function getSelectedTabKey(order){
     if (isEmptyValue(order, "lectureDetailsTabKey"))

@@ -5,7 +5,7 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
-import {publicCourseTabKey} from "../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+import {publicCourseTabKey} from "../../util/Constants/TabKeys";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);

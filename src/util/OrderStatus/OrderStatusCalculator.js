@@ -2,9 +2,7 @@ import * as _ from "lodash";
 import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
-import {
-    publicCourseTabKey
-} from "../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+import {publicCourseTabKey} from "../Constants/TabKeys";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);
