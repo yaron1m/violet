@@ -65,25 +65,25 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order)).toEqual(Status.approvedOrder);
     });
 
-    it('calculateOrderStatus - lecture date today - isExecuting', () => {
+    it('calculateOrderStatus - lecture date today - isExecuted', () => {
         const today = new Date();
-        today.setHours(7, 0, 0);
+        today.setHours(0, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 },
                 {
                     topic: "some topic",
-                    date: today,
+                    date: toDateFormat(today),
                 }
             ],
             orderApproved: true,
         };
 
-        expect(calculateOrderStatus(order)).toEqual(Status.isExecuting);
+        expect(calculateOrderStatus(order)).toEqual(Status.executed);
     });
 
     it('calculateOrderStatus - only some of lectures passed - isExecuting', () => {
@@ -91,11 +91,11 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 },
                 {
                     topic: "some topic",
-                    date: "2099-01-01T00:00:00.000Z",
+                    date: "2099-01-01",
                 }
             ],
             orderApproved: true,
@@ -112,7 +112,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 },
                 {
                     topic: "some topic",
@@ -130,7 +130,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -148,7 +148,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -199,7 +199,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -215,7 +215,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -232,7 +232,7 @@ describe('order-status', () => {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: "2017-01-01T00:00:00.000Z",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,

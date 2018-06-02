@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
+import {hasDatePassed} from "../TimeUtil";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);
@@ -87,21 +88,14 @@ function isApprovedOrder(order) {
 
 function isExecuting(order) {
     // At least one lectures is done
-
     const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-    const tomorrowMorning = new Date();
-    tomorrowMorning.setDate(tomorrowMorning.getDate() + 1);
-    tomorrowMorning.setHours(0, 0, 0, 0);
-    return _.some(lectureTimesDates, date => new Date(date) <= tomorrowMorning);
+    return _.some(lectureTimesDates, hasDatePassed);
 }
 
 function isExecuted(order) {
     // All lectures passed
     const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-    const thisMorning = new Date();
-    const pastUtcMidnightHours = 4;
-    thisMorning.setHours(pastUtcMidnightHours, 0, 0, 0);
-    return _.every(lectureTimesDates, date => new Date(date) <= thisMorning);
+    return _.every(lectureTimesDates, hasDatePassed);
 }
 
 function isWaitingPayment(order) {
