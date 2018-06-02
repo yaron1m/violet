@@ -1,5 +1,6 @@
 import calculateOrderStatus from "../OrderStatusCalculator";
 import Status from "../../Constants/Status";
+import {toDateFormat} from "../../TimeUtil";
 
 describe('order-status', () => {
 
@@ -66,7 +67,7 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - lecture date today - isExecuting', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
@@ -141,7 +142,7 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - has taxInvoiceNumber - waitingPayment', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
@@ -159,13 +160,13 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - lecture date today and has proformaInvoiceNumber - waitingPayment', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: today,
+                    date: toDateFormat(today),
                 }
             ],
             orderApproved: true,
@@ -177,13 +178,13 @@ describe('order-status', () => {
 
     it('calculateOrderStatus - lecture date today and has taxInvoiceNumber - waitingPayment', () => {
         const today = new Date();
-        today.setHours(7,0,0);
+        today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
                     topic: "some topic",
-                    date: today,
+                    date: toDateFormat(today),
                 }
             ],
             orderApproved: true,
@@ -220,7 +221,7 @@ describe('order-status', () => {
             orderApproved: true,
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
-            cancelled:true,
+            cancelled: true,
         };
 
         expect(calculateOrderStatus(order)).toEqual(Status.cancelled);
@@ -237,13 +238,11 @@ describe('order-status', () => {
             orderApproved: true,
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
-            rejected:true,
+            rejected: true,
         };
 
         expect(calculateOrderStatus(order)).toEqual(Status.rejected);
     });
-
-
 
 
 });
