@@ -1,7 +1,7 @@
 import React from 'react';
 import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
 import _ from 'lodash';
-import {isEmptyValue} from "../../../../util/string-util";
+import {isEmptyValue} from "../../../../util/StringUtil";
 import PropTypes from "prop-types";
 
 export default class LectureTimesPrintSection extends React.Component {

@@ -1,5 +1,5 @@
 import * as actionTypes from './ActionTypes';
-import {LOGGED_OUT} from "../firebase/action-types";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 
 const initialState = createImmutable({

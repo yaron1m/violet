@@ -1,5 +1,6 @@
 import * as Selectors from '../selectors';
-import {Status} from "../../../util/consts/status";
+import {Status} from "../../../util/Constants/Status";
+import * as labelsSelectors from "../../Labels/Selectors";
 
 const state = {
     "orders": {
@@ -106,8 +107,8 @@ describe('store/orders/selectors', () => {
     });
 
     it('getFollowUpOrdersSummary - valid', () => {
-        const statuses = require("../../../util/order-status");
-        statuses.getOrderStatusLabel = jest.fn((state, order) => order.status);
+        const statuses = require("../../../util/OrderStatus/OrderStatusCalculator");
+        labelsSelectors.getOrderStatusLabel = jest.fn((state, order) => order.status);
 
         const organizationReducer = require("../../organizations/reducer");
         const orgDetails = {organizationName: "orgName"};

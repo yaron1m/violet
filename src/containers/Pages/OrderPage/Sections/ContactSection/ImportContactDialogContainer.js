@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../store/Labels/Reducer";
 import * as _ from 'lodash';
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../../store/orders/selectors";
-import {getValueOrEmptyString} from "../../../../../util/string-util";
+import {getValueOrEmptyString} from "../../../../../util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 
 function getContacts(state) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sizes from "../../../../../../../util/consts/sizes";
+import Sizes from "../../../../../../../util/Constants/Sizes";
 import {
     LectureTimesCustomAutoComplete,
     LectureTimesCustomDatePicker,

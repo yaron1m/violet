@@ -1,7 +1,7 @@
 import React from 'react';
 import * as actions from "../Actions";
 import {clearSelectedPublicCourse} from "../Actions";
-import * as firebaseActions from "../../firebase/actions";
+import * as firebaseActions from "../../Firebase/Actions";
 import {
     CLEAR_SELECTED_PUBLIC_COURSE,
     SELECT_PUBLIC_COURSE,

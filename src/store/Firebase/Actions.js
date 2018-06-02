@@ -1,14 +1,14 @@
 /*eslint no-console: ["error", { allow: ["error"] }] */
 
-import * as actionTypes from './action-types';
+import * as actionTypes from './ActionTypes';
 import {receiveOrganizations} from '../organizations/actions'
 import {receiveOrders} from '../orders/actions'
 import {receiveLists} from "../lists/actions";
 import firebase from 'firebase/app';
 import "firebase/auth";
 import "firebase/database";
-import * as reducer from './reducer';
-import {getLabels} from "../labels/reducer";
+import * as reducer from './Reducer';
+import {getLabels} from "../Labels/Reducer";
 import {receivePublicCourses} from "../PublicCourses/actions";
 
 const firebaseProductionConfig = {

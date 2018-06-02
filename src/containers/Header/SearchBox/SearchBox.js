@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import Colors from "../../../util/consts/colors";
+import Colors from "../../../util/Constants/Colors";
 import PropTypes from 'prop-types';
 import AutoSuggest from "../../../components/AutoSuggest";
 

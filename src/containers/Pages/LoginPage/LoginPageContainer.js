@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {signInRequest} from "../../../store/firebase/actions";
+import {signInRequest} from "../../../store/Firebase/Actions";
 import LoginPage from "./LoginPage";
-import {getLabels} from "../../../store/labels/reducer";
+import {getLabels} from "../../../store/Labels/Reducer";
 
 function mapStateToProps(state) {
     return {

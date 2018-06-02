@@ -7,7 +7,7 @@ import {
     UPDATE_SELECTED_ORGANIZATION
 } from "./ActionTypes";
 import {getOrganizationById} from "../organizations/reducer";
-import {sendDataToDatabase} from "../firebase/actions";
+import {sendDataToDatabase} from "../Firebase/Actions";
 
 export function selectOrganization(organizationId) {
     return function selectOrganization(dispatch, getState) {

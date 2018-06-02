@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme'
 import SearchBox from '../SearchBox';
-import * as HistoryUtil from "../../../../util/history-util";
+import * as HistoryUtil from "../../../../util/HistoryUtil";
 
 const props = {
     hintText: "hintText",

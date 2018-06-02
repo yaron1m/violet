@@ -3,20 +3,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    sendSelectedOrganizationToDatabase} from "../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../store/labels/reducer";
+    sendSelectedOrganizationToDatabase
+} from "../../../../store/SelectedOrganization/Actions";
+import {getLabels} from "../../../../store/Labels/Reducer";
 import {getNextOrderId} from "../../../../store/orders/selectors";
 import * as _ from "lodash";
 import {
-    closeDialog,
-    hideRequiredFields,
-    openDialog,
-    openSnackbar,
-    showRequiredFields
-} from "../../../../store/appearance/actions";
-import {isOrderMissingFields} from "../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
+    closeDialog, hideRequiredFields, openDialog, openSnackbar, showRequiredFields
+} from "../../../../store/Appearance/Actions";
+import {isOrderMissingFields} from "../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {getNextOrganizationId, getOrganizationById} from "../../../../store/organizations/reducer";
-import {isEmptyValue} from "../../../../util/string-util";
+import {isEmptyValue} from "../../../../util/StringUtil";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
 import {getSelectedOrder} from "../../../../store/SelectedOrder/Selectors";

@@ -1,6 +1,6 @@
 import * as actionTypes from './action-types';
 import _ from 'lodash';
-import {LOGGED_OUT} from "../firebase/action-types";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({

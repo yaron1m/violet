@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {getDialogActions, getDialogContent, getDialogTitle, isDialogOpen} from "../../store/appearance/reducer";
-import {closeDialog} from "../../store/appearance/actions";
+import {getDialogActions, getDialogContent, getDialogTitle, isDialogOpen} from "../../store/Appearance/Reducer";
+import {closeDialog} from "../../store/Appearance/Actions";
 import CustomDialog from "../../components/CustomComponents/CustomDialog";
 
 function mapStateToProps(state) {

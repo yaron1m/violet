@@ -1,4 +1,4 @@
-import {getLabels} from "../reducer";
+import {getLabels} from "../Reducer";
 
 const sampleState = {
     labels: {
@@ -12,7 +12,7 @@ const sampleState = {
     }
 };
 
-describe('store/labels/selectors', () => {
+describe('store/Labels/selectors', () => {
 
     it('getLabels - valid', () => {
         expect(getLabels(sampleState))

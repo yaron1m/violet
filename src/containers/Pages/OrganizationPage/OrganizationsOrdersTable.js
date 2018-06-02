@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {clearSelectedOrder} from "../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../store/labels/reducer";
-import {redirect} from "../../../util/history-util";
+import {getLabels} from "../../../store/Labels/Reducer";
+import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import {getOrdersByOrganization, getOrdersSummary} from "../../../store/orders/selectors";
 import {selectOrder} from "../../../store/SelectedOrder/Actions";

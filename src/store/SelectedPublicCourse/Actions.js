@@ -1,7 +1,7 @@
-import {sendDataToDatabase} from "../firebase/actions";
+import {sendDataToDatabase} from "../Firebase/Actions";
 import * as Immutable from "seamless-immutable";
 import {getPublicCourseById} from "../PublicCourses/reducer";
-import {calculateDuration} from "../../util/time-util";
+import {calculateDuration} from "../../util/TimeUtil";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "./Selectors";
 import {

@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../store/Labels/Reducer";
 import LectureDetailsSection from "./LecturesDetailsSection";
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
-import {isEmptyValue} from "../../../../../util/string-util";
+import {isEmptyValue} from "../../../../../util/StringUtil";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 
 export const internalTabKey = "internalTab";

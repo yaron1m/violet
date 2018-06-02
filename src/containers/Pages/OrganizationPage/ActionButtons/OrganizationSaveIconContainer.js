@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import {
     sendSelectedOrganizationToDatabase} from "../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../store/labels/reducer";
+import {getLabels} from "../../../../store/Labels/Reducer";
 import {getNextOrganizationId} from "../../../../store/organizations/reducer";
-import {openDialog, openSnackbar} from "../../../../store/appearance/actions";
+import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
 import {setIsSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";

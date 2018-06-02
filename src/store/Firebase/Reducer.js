@@ -1,4 +1,4 @@
-import * as actionTypes from './action-types';
+import * as actionTypes from './ActionTypes';
 import _ from 'lodash';
 import Immutable from 'seamless-immutable';
 import {getOrders} from "../orders/selectors";
@@ -38,7 +38,7 @@ export function isLoggedIn(state) {
     return state.firebase.loggedIn;
 }
 
-export function isFetching(state){
+export function isFetching(state) {
     const fetchedOrders = _.isEmpty(getOrders(state));
     const fetchedOrganizations = _.isEmpty(getOrganizations(state));
 

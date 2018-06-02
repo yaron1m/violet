@@ -1,11 +1,12 @@
 /* eslint-disable no-magic-numbers */
 import * as _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
-import {getOrderStatusLabel, isMatchingStatus} from "../../util/order-status";
-import {cutIfLong, moneyFormat} from "../../util/string-util";
+import {isMatchingStatus} from "../../util/OrderStatus/OrderStatusUtils";
+import {cutIfLong, moneyFormat} from "../../util/StringUtil";
 import getActionRequiredOrdersArray from "./action-required-orders";
-import {getLabels} from "../labels/reducer";
+import {getLabels} from "../Labels/Reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
+import {getOrderStatusLabel} from "../Labels/Selectors";
 
 export function getOrders(state, status = null) {
     const orders = state.orders;

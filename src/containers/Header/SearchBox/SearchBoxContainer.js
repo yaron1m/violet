@@ -1,12 +1,12 @@
 // import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../store/labels/reducer";
+import {getLabels} from "../../../store/Labels/Reducer";
 import {getOrganizations} from "../../../store/organizations/reducer";
 import {selectOrganization} from "../../../store/SelectedOrganization/Actions";
 import {getOrders} from "../../../store/orders/selectors";
-import {redirect} from "../../../util/history-util";
-// import Colors from "../../../util/consts/colors";
+import {redirect} from "../../../util/HistoryUtil";
+// import Colors from "../../../util/Constants/Colors";
 import * as _ from "lodash";
 import {selectOrder} from "../../../store/SelectedOrder/Actions";
 // import EventIcon from '@material-ui/icons/EventNote';

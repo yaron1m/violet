@@ -1,5 +1,5 @@
 import React from 'react';
-import * as firebaseActions from "../../firebase/actions";
+import * as firebaseActions from "../../Firebase/Actions";
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,

@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../store/labels/reducer";
+import {getLabels} from "../../../../../store/Labels/Reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
 import CustomToggle from "../../../../../components/CustomComponents/CustomToggle";
 import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
 import CustomSelectField from "../../../../../components/CustomComponents/CustomSelectField";
-import {getRequiredFieldsObject} from "../../../../../store/appearance/RequiredFields/RequiredFieldsSelectors";
+import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
 function mapStateToProps(state) {
     return {

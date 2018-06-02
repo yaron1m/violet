@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 import {selectOrder} from "../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../store/labels/reducer";
+import {getLabels} from "../../../store/Labels/Reducer";
 import {getActionRequiredOrders} from "../../../store/orders/selectors";
-import {redirect} from "../../../util/history-util";
+import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 
 function mapStateToProps(state) {

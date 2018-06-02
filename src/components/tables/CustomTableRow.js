@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CheckIcon from '@material-ui/icons/AddCircleOutline';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
-import {isEmptyValue} from "../../util/string-util";
+import {isEmptyValue} from "../../util/StringUtil";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
 class CustomTableRow extends React.Component {

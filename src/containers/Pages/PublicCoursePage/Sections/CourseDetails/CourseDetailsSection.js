@@ -5,7 +5,7 @@ import {
     PublicCourseConnectedText,
     PublicCourseConnectedToggle
 } from "../ConnectedCustomComponents/PublicCourseCustomFields";
-import Sizes from "../../../../../util/consts/sizes";
+import Sizes from "../../../../../util/Constants/Sizes";
 
 export default class CourseDetailsSection extends React.Component {
 
