@@ -1,6 +1,6 @@
 import connect from "react-redux/es/connect/connect";
 import {getLabels} from "../../../../store/Labels/Reducer";
-import {getSelectedOrderStatus} from "../../../../util/OrderStatus";
+import {getSelectedOrderStatus} from "../../../../store/Labels/Selectors";
 import LectureDetailsPrintSection from "./LectureDetails";
 
 function mapStateToProps(state) {

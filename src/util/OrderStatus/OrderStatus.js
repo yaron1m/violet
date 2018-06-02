@@ -1,7 +1,6 @@
 import * as _ from "lodash";
-import {getStatusLabels} from "../store/Labels/Reducer";
-import {getSelectedOrder} from "../store/SelectedOrder/Selectors";
-import {progressiveStatuses, terminatingStatuses} from "./Constants/Status";
+import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
+import {existsAndNotEmpty} from "./OrderStatusUtils";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);
@@ -85,30 +84,3 @@ function meetsRequirements(order, requirement) {
     }
 }
 
-export function existsAndNotEmpty(order, key) {
-    return _.has(order, key) && order[key];
-}
-
-export function getSelectedOrderStatus(state) {
-    const selectedOrder = getSelectedOrder(state);
-    return getOrderStatusLabel(state, selectedOrder);
-
-}
-
-export function getOrderStatusLabel(state, order) {
-    const labels = getStatusLabels(state);
-    if (_.isEmpty(order))
-        return labels[progressiveStatuses.contact];
-
-    let status = labels[order.status];
-    if (order.followUpRequired)
-        status += labels.followUp;
-    return status;
-}
-
-export function isMatchingStatus(order, status) {
-    if (_.isArray(status))
-        return _.includes(status, order.status);
-
-    return order.status === status;
-}

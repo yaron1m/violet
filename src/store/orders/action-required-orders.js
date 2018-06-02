@@ -1,6 +1,6 @@
 import {getOrders} from "./selectors";
 import _ from 'lodash';
-import {getOrderStatusLabel} from "../../util/OrderStatus";
+import {getOrderStatusLabel} from "../Labels/Selectors";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";

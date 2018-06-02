@@ -1,5 +1,5 @@
 import calculateOrderStatus from "../OrderStatus";
-import Status from "../Constants/Status";
+import Status from "../../Constants/Status";
 
 describe('order-status', () => {
 

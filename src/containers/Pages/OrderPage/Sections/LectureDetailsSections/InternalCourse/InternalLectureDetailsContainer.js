@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../../../../store/Labels/Reducer";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import Status from "../../../../../../util/Constants/Status";
-import {isMatchingStatus} from "../../../../../../util/OrderStatus";
+import {isMatchingStatus} from "../../../../../../util/OrderStatus/OrderStatusUtils";
 import InternalLectureDetails from "./InternalLectureDetails";
 
 function mapStateToProps(state) {
