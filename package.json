@@ -4,8 +4,8 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^1.0.0",
-    "@material-ui/icons": "^1.0.0",
+    "@material-ui/core": "^1.1.0",
+    "@material-ui/icons": "^1.1.0",
     "autosuggest-highlight": "^3.1.1",
     "firebase": "^5.0.4",
     "history": "^4.6.3",
