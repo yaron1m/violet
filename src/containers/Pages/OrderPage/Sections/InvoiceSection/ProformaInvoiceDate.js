@@ -17,7 +17,7 @@ export default class ProformaInvoiceDate extends React.Component {
                         value,
                         this.props.selectedOrganization,
                         this.props.paymentConditions,
-                        this.props.updateSelectedOrder);
+                    );
                 }}
             />
         );
