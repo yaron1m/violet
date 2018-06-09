@@ -172,7 +172,6 @@ describe('selected actions - organization', () => {
 
         // Call updateSelectedOrganization in sendSelectedOrganizationToDatabase
         dispatch.mock.calls[5][0](dispatch, getState);
-        console.log(dispatch.mock.calls);
 
         expect(dispatch.mock.calls[6][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
     });
