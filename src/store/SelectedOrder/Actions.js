@@ -44,8 +44,7 @@ export function saveNewOrder() {
     }
 }
 
-//TODO missing test
-function fillNewOrderMissingFields() {
+export function fillNewOrderMissingFields() {
     return function fillNewOrderMissingFields(dispatch, getState) {
         let idPromise;
         let createdPromise;
@@ -79,7 +78,7 @@ export function selectOrder(orderId) {
 }
 
 export function updateSelectedOrder(key, value) {
-    return function updateSelectedOrganization(dispatch, getState) {
+    return function updateSelectedOrder(dispatch, getState) {
         const status = calculateOrderStatus(getSelectedOrder(getState()));
 
         const order = mergeImmutable(getSelectedOrder(getState()), {
