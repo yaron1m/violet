@@ -39,27 +39,27 @@ describe('save order button', () => {
     beforeEach(() => {
         dispatch = jest.fn();
     });
-
-    it('shouldSaveOrder - organization not selected - false', () => {
-        const state = getState();
-        state.selectedOrganization.isSelectedOrganization = false;
-
-        expect(shouldSaveOrder(state, dispatch)).toBeFalsy();
-
-        expect(dispatch.mock.calls.length).toBe(1);
-        expect(dispatch.mock.calls[0][0].title).toBe(orderPageLabels.dialog.noOrganizationSelectedTitle);
-    });
-
-    it('shouldSaveOrder - there are missing fields - false', () => {
-        const state = getState();
-        state.selectedOrganization.isSelectedOrganization = true;
-
-        expect(shouldSaveOrder(state, dispatch)).toBeFalsy();
-
-        expect(dispatch.mock.calls.length).toBe(2);
-        expect(dispatch.mock.calls[0][0].type).toBe(SHOW_REQUIRED_FIELDS);
-        expect(dispatch.mock.calls[1][0].title).toBe(orderPageLabels.dialog.missingFieldsTitle);
-    });
+    //
+    // it('shouldSaveOrder - organization not selected - false', () => {
+    //     const state = getState();
+    //     state.selectedOrganization.isSelectedOrganization = false;
+    //
+    //     expect(shouldSaveOrder(state, dispatch)).toBeFalsy();
+    //
+    //     expect(dispatch.mock.calls.length).toBe(1);
+    //     expect(dispatch.mock.calls[0][0].title).toBe(orderPageLabels.dialog.noOrganizationSelectedTitle);
+    // });
+    //
+    // it('shouldSaveOrder - there are missing fields - false', () => {
+    //     const state = getState();
+    //     state.selectedOrganization.isSelectedOrganization = true;
+    //
+    //     expect(shouldSaveOrder(state, dispatch)).toBeFalsy();
+    //
+    //     expect(dispatch.mock.calls.length).toBe(2);
+    //     expect(dispatch.mock.calls[0][0].type).toBe(SHOW_REQUIRED_FIELDS);
+    //     expect(dispatch.mock.calls[1][0].title).toBe(orderPageLabels.dialog.missingFieldsTitle);
+    // });
 
     it('shouldSaveOrder - all valid - true', () => {
         const state = getState();
