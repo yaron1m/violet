@@ -14,7 +14,6 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Reducer";
 
-//TODO missing test
 export function saveNewOrder() {
     return async function saveNewOrder(dispatch, getState) {
         await dispatch(fillNewOrderMissingFields());
