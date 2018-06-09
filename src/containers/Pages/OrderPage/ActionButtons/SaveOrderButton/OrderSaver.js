@@ -2,7 +2,9 @@ import React from 'react';
 import {isEmptyValue} from "../../../../../util/StringUtil";
 import {CustomFlatButton} from "../../../../../components/CustomComponents/CustomButtons";
 
-export function shouldSaveOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog, closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder) {
+export function shouldSaveOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
+                                closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder) {
+
     const dialogText = orderPageLabels.dialog;
 
     if (!isSelectedOrganization) {
@@ -35,7 +37,6 @@ function getOrganizationDialogActions(isSelectedOrganization, selectedOrganizati
         <CustomFlatButton
             key={dialogLabels.newOrganization}
             label={dialogLabels.newOrganization}
-            primary={true}
             onClick={async () => {
                 await saveNewOrganization();
                 saveNewOrder();
@@ -44,7 +45,6 @@ function getOrganizationDialogActions(isSelectedOrganization, selectedOrganizati
         <CustomFlatButton
             key={dialogLabels.existingOrganization}
             label={dialogLabels.existingOrganization}
-            primary={true}
             onClick={closeDialog}
         />,
     ];
