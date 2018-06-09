@@ -7,12 +7,13 @@ import {
     UPDATE_SELECTED_ORGANIZATION
 } from "../ActionTypes";
 import {
-    clearSelectedOrganization,
+    clearSelectedOrganization, saveNewOrganization,
     selectOrganization,
     sendSelectedOrganizationToDatabase,
     setIsSelectedOrganization,
     updateSelectedOrganization
 } from "../Actions";
+import {CLOSE_DIALOG} from "../../Appearance/ActionTypes";
 
 const id = 123456;
 const value = "value";
@@ -129,4 +130,51 @@ describe('selected actions - organization', () => {
     it('should return clear selected organization action', () => {
         expect(clearSelectedOrganization().type).toBe(CLEAR_SELECTED_ORGANIZATION);
     });
+
+    it('should save a new organization', async () => {
+        const thunkFunction = saveNewOrganization();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                organizations: {
+                    100: {},
+                    101: {},
+                },
+
+                selectedOrganization: {
+                    organization: {
+                        [key]: value
+                    }
+                }
+            }
+        };
+        const expectedSelectedOrganization = {
+            id: 102,
+            [key]: value,
+        };
+
+        dispatch.mockReturnValue(Promise.resolve("aa"));
+        await thunkFunction(dispatch, getState);
+
+        expect(dispatch.mock.calls.length).toBe(4);
+
+        // Call updateSelectedOrganization
+        dispatch.mock.calls[0][0](dispatch, getState);
+        // Call sendSelectedOrganizationToDatabase
+        dispatch.mock.calls[1][0](dispatch, getState);
+
+        expect(dispatch.mock.calls[2][0].type).toBe(SET_IS_SELECTED_ORGANIZATION);
+        expect(dispatch.mock.calls[3][0].type).toBe(CLOSE_DIALOG);
+
+        expect(dispatch.mock.calls[4][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
+        expect(dispatch.mock.calls[4][0].payload).toEqual(expectedSelectedOrganization);
+
+        // Call updateSelectedOrganization in sendSelectedOrganizationToDatabase
+        dispatch.mock.calls[5][0](dispatch, getState);
+        console.log(dispatch.mock.calls);
+
+        expect(dispatch.mock.calls[6][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
+    });
+
 });

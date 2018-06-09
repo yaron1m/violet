@@ -51,7 +51,6 @@ export function clearSelectedOrganization() {
     }
 }
 
-//TODO missing test
 export function saveNewOrganization() {
     return async function saveNewOrganization(dispatch, getState) {
         const newOrganizationId = getNextOrganizationId(getState());
