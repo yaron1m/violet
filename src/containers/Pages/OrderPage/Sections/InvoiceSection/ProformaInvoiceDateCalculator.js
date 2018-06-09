@@ -3,10 +3,8 @@ import {isEmpty} from "../../../../../util/StringUtil";
 import {toDateFormat} from "../../../../../util/TimeUtil";
 
 export default function calculatePayDate(proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions) {
-    if (isEmpty(selectedPaymentConditions))
+    if (isEmpty(selectedPaymentConditions) || isEmpty(proformaInvoiceValue))
         return null;
-
-    // TODO test this function
 
     const proformaInvoiceDate = new Date(proformaInvoiceValue);
 
@@ -41,7 +39,7 @@ export default function calculatePayDate(proformaInvoiceValue, selectedPaymentCo
             break;
 
         default:
-            return;
+            return null;
     }
 
     return toDateFormat(paymentDate);
