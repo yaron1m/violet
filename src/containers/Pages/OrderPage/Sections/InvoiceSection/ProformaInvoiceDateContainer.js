@@ -7,17 +7,18 @@ import calculatePayDate from "./ProformaInvoiceDateCalculator";
 
 function mapStateToProps(state) {
     return {
-        paymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
-        selectedOrganization: getSelectedOrganization(state),
+        allPaymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
+        selectedPaymentConditions: getSelectedOrganization(state).paymentConditions,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
-        calculatePayDate: function (proformaInvoiceValue, selectedOrganization, paymentConditions) {
-            const payDate = calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentConditions);
-            dispatch(updateSelectedOrder("expectedPayDate", payDate));
+        calculatePayDate: function (proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions) {
+            const payDate = calculatePayDate(proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions);
+            if (payDate !== null)
+                dispatch(updateSelectedOrder("expectedPayDate", payDate));
         }
     }
 }

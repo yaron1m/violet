@@ -1,43 +1,42 @@
 /* eslint-disable no-magic-numbers */
-import {isEmptyValue} from "../../../../../util/StringUtil";
+import {isEmpty} from "../../../../../util/StringUtil";
 import {toDateFormat} from "../../../../../util/TimeUtil";
 
-export default function calculatePayDate(proformaInvoiceValue, selectedOrganization, paymentConditions) {
-    if (isEmptyValue(selectedOrganization, "paymentConditions"))
-        return;
+export default function calculatePayDate(proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions) {
+    if (isEmpty(selectedPaymentConditions))
+        return null;
 
     // TODO test this function
 
     const proformaInvoiceDate = new Date(proformaInvoiceValue);
-    const selectedPaymentConditions = selectedOrganization.paymentConditions;
 
     let paymentDate;
     switch (selectedPaymentConditions) {
-        case paymentConditions["immediate"]:
+        case allPaymentConditions["immediate"]:
             paymentDate = proformaInvoiceDate;
             break;
 
-        case paymentConditions["EOM"]:
+        case allPaymentConditions["EOM"]:
             paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 1, 1);
             break;
 
-        case paymentConditions["EOM+30"]:
+        case allPaymentConditions["EOM+30"]:
             paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 1);
             break;
 
-        case paymentConditions["EOM+45"]:
+        case allPaymentConditions["EOM+45"]:
             paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 15);
             break;
 
-        case paymentConditions["EOM+60"]:
+        case allPaymentConditions["EOM+60"]:
             paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 3, 1);
             break;
 
-        case paymentConditions["EOM+30+7"]:
+        case allPaymentConditions["EOM+30+7"]:
             paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 7);
             break;
 
-        case paymentConditions["EOM+30+22"]:
+        case allPaymentConditions["EOM+30+22"]:
             paymentDate = new Date(proformaInvoiceDate.getFullYear(), proformaInvoiceDate.getMonth() + 2, 22);
             break;
 
