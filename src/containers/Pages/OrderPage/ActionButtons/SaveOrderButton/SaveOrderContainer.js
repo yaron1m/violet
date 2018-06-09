@@ -1,150 +1,58 @@
-/*eslint no-console: ["error", { allow: ["error"] }] */
-
-import React from 'react';
 import {connect} from 'react-redux';
-import {
-    sendSelectedOrganizationToDatabase
-} from "../../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../../store/Labels/Reducer";
-import {getNextOrderId} from "../../../../../store/orders/selectors";
-import * as _ from "lodash";
-import {
-    closeDialog, hideRequiredFields, openDialog, openSnackbar, showRequiredFields
-} from "../../../../../store/Appearance/Actions";
-import {isOrderMissingFields} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
-import {getNextOrganizationId, getOrganizationById} from "../../../../../store/organizations/reducer";
-import {isEmptyValue} from "../../../../../util/StringUtil";
+import {closeDialog, openDialog, showRequiredFields} from "../../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../../components/ActionButtons/SaveActionButton";
-import {CustomFlatButton} from "../../../../../components/CustomComponents/CustomButtons";
-import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
+import {shouldSaveOrder} from "./OrderSaver";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
-import {
-    sendSelectedOrderToDatabase,
-    setIsSelectedOrder,
-    updateSelectedOrder
-} from "../../../../../store/SelectedOrder/Actions";
-import {setIsSelectedOrganization, updateSelectedOrganization} from "../../../../../store/SelectedOrganization/Actions";
-
-export async function saveOrder(state, dispatch) {
-    if (!shouldSave(state, dispatch))
-        return;
-
-    await fillMissingFields(state, dispatch);
-
-    function success() {
-        const snackbarMessage = getLabels(state).pages.orderPage.snackBar.savedSuccessfully.replace("{0}", getSelectedOrder(state).id);
-        dispatch(openSnackbar(snackbarMessage));
-        dispatch(setIsSelectedOrder());
-    }
-
-    function failure(error) {
-        const dialogText = getLabels(state).pages.orderPage.dialog;
-        dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
-        console.error(error);
-    }
-
-    dispatch(sendSelectedOrderToDatabase()).then(success, failure);
-
-    dispatch(hideRequiredFields());
-
-    //Check if there are changes in organization
-    if (!_.isEqual(getSelectedOrganization(state), getOrganizationById(state, getSelectedOrder(state).organizationId))) {
-        dispatch(sendSelectedOrganizationToDatabase());
-    }
-}
-
-export function shouldSave(state, dispatch) {
-    const dialogText = getLabels(state).pages.orderPage.dialog;
-
-    if (!isSelectedOrganization(state)) {
-        const dialogContent = isEmptyValue(getSelectedOrganization(state), "organizationName") ?
-            dialogText.noOrganizationSelectedContent :
-            dialogText.unrecognizedOrganization.replace("{0}", getSelectedOrganization(state).organizationName);
-        dispatch(openDialog(dialogText.noOrganizationSelectedTitle, dialogContent, getOrganizationDialogActions(state, dispatch)));
-        return false;
-    }
-
-    if (isOrderMissingFields(state)) {
-        //Not ready for saving - there are missing fields
-        dispatch(showRequiredFields());
-        dispatch(openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent));
-        return false;
-    }
-
-    return true;
-}
-
-function getOrganizationDialogActions(state, dispatch) {
-    if (isEmptyValue(getSelectedOrganization(state), "organizationName"))
-        return null;
-
-    const dialogLabels = getLabels(state).pages.orderPage.dialog;
-
-    return [
-        <CustomFlatButton
-            key={dialogLabels.newOrganization}
-            label={dialogLabels.newOrganization}
-            primary={true}
-            onClick={() => saveNewOrganization(state, dispatch)}
-        />,
-        <CustomFlatButton
-            key={dialogLabels.existingOrganization}
-            label={dialogLabels.existingOrganization}
-            primary={true}
-            onClick={() => dispatch(closeDialog())}
-        />,
-    ];
-}
-
-async function fillMissingFields(state, dispatch) {
-    let idPromise;
-    let createdPromise;
-    let organizationIdPromise;
-    if (!getSelectedOrder(state).hasOwnProperty("id")) {
-        idPromise = dispatch(updateSelectedOrder("id", getNextOrderId(state)));
-        createdPromise = dispatch(updateSelectedOrder("createdDate", new Date().toJSON()));
-    }
-
-    if (!getSelectedOrder(state).hasOwnProperty("organizationId"))
-        organizationIdPromise = dispatch(updateSelectedOrder("organizationId", getSelectedOrganization(state).id));
-
-    return Promise.all([idPromise, organizationIdPromise, createdPromise]);
-}
-
-async function saveNewOrganization(state, dispatch) {
-    const newOrganizationId = getNextOrganizationId(state);
-    await dispatch(updateSelectedOrganization("id", newOrganizationId));
-
-    async function successSave() {
-        await dispatch(setIsSelectedOrganization());
-        await saveOrder(state, dispatch);
-        dispatch(closeDialog());
-    }
-
-    dispatch(sendSelectedOrganizationToDatabase())
-        .then(successSave)
-        .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
-}
+import {isOrderMissingFields} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {saveNewOrganization} from "../../../../../store/SelectedOrganization/Actions";
+import {saveNewOrder} from "../../../../../store/SelectedOrder/Actions";
 
 
 function mapStateToProps(state) {
+    const orderPageLabels = getLabels(state).pages.orderPage;
     return {
-        tooltip: getLabels(state).pages.orderPage.actionButtons.save,
-        state, //TODO - avoid passing state
+        tooltip: orderPageLabels.actionButtons.save,
+
+        orderPageLabels,
+        isSelectedOrganization: isSelectedOrganization(state),
+        selectedOrganization: getSelectedOrganization(state),
+        isOrderMissingFields: isOrderMissingFields(state),
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        openDialog: (title, content) => dispatch(openDialog(title, content)),
-        dispatch,
+        openDialog: (title, content, actions) => dispatch(openDialog(title, content, actions)),
+        closeDialog: () => dispatch(closeDialog()),
+        showRequiredFields: () => dispatch(showRequiredFields()),
+        saveNewOrganization: () => dispatch(saveNewOrganization()),
+
+        saveNewOrder: () => dispatch(saveNewOrder()),
     }
 }
 
 function mergeProps(stateProps, dispatchProps) {
     return {
         tooltip: stateProps.tooltip,
-        onClick: () => saveOrder(stateProps.state, dispatchProps.dispatch)
+        onClick: () => {
+            const shouldSave = shouldSaveOrder(
+                stateProps.orderPageLabels,
+                stateProps.isSelectedOrganization,
+                stateProps.selectedOrganization,
+                dispatchProps.openDialog,
+                dispatchProps.closeDialog,
+                stateProps.isOrderMissingFields,
+                dispatchProps.showRequiredFields,
+                dispatchProps.saveNewOrganization,
+                dispatchProps.saveNewOrder
+            );
+
+            if (!shouldSave)
+                return;
+
+            dispatchProps.saveNewOrder();
+        }
     }
 }
 
