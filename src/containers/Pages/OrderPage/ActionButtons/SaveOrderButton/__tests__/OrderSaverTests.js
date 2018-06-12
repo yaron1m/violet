@@ -1,8 +1,6 @@
 import {shouldSaveOrder} from '../OrderSaver';
 import {orderPageLabels} from "../../../../../../store/Labels/Pages/OrderPageLabels";
 
-// TODO need MANY more tests here, testing other save order functions
-
 let openDialog;
 let closeDialog;
 let showRequiredFields;
