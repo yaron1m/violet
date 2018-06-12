@@ -12,7 +12,7 @@ export function shouldSaveOrder(orderPageLabels, isSelectedOrganization, selecte
             dialogText.noOrganizationSelectedContent :
             dialogText.unrecognizedOrganization.replace("{0}", selectedOrganization.organizationName);
 
-        const dialogActions = getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, orderPageLabels, closeDialog, saveNewOrganization, saveNewOrder);
+        const dialogActions = getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, dialogText, closeDialog, saveNewOrganization, saveNewOrder);
         openDialog(dialogText.noOrganizationSelectedTitle, dialogContent, dialogActions);
         return false;
     }
@@ -27,11 +27,9 @@ export function shouldSaveOrder(orderPageLabels, isSelectedOrganization, selecte
     return true;
 }
 
-function getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, orderPageLabels, closeDialog, saveNewOrganization, saveNewOrder) {
+function getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, dialogLabels, closeDialog, saveNewOrganization, saveNewOrder) {
     if (isEmptyValue(selectedOrganization, "organizationName"))
         return null;
-
-    const dialogLabels = orderPageLabels.dialog;
 
     return [
         <CustomFlatButton
