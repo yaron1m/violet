@@ -3,8 +3,8 @@ import * as orderStatusUtil from '../../../util/OrderStatus/OrderStatusCalculato
 import * as firebaseActions from "../../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
 import {
-    addNewLectureTime, clearSelectedOrder,
-    removeParticipantsFromAllLectures,
+    addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields,
+    removeParticipantsFromAllLectures, saveNewOrder,
     selectOrder,
     sendSelectedOrderToDatabase,
     setIsSelectedOrder,
@@ -12,7 +12,8 @@ import {
     updatePublicCourseParticipant,
     updateSelectedOrder
 } from "../Actions";
-
+import {HIDE_REQUIRED_FIELDS} from "../../Appearance/ActionTypes";
+import {sendSelectedOrganizationToDatabase} from "../../SelectedOrganization/Actions";
 
 const id = 123456;
 const orgId = 555;
@@ -337,5 +338,180 @@ describe('Selected order actions', () => {
 
     it('should return clear selected order action', () => {
         expect(clearSelectedOrder().type).toBe(CLEAR_SELECTED_ORDER);
+    });
+
+    it('should fill new order missing fields when no field is missing', () => {
+        const thunkFunction = fillNewOrderMissingFields();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                organizations: {
+                    "1234": {
+                        id: "1234"
+                    }
+                },
+                selectedOrganization: {
+                    organization: {
+                        id: "1234",
+                    }
+                },
+                selectedOrder: {
+                    order: {
+                        id,
+                        organizationId: "1234",
+                    }
+                }
+            }
+        };
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(0);
+    });
+
+    it('should fill order id and created date', () => {
+        const thunkFunction = fillNewOrderMissingFields();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                orders: {
+                    "5555": {}
+                },
+                organizations: {
+                    "1234": {
+                        id: "1234"
+                    }
+                },
+                selectedOrganization: {
+                    organization: {
+                        id: "1234",
+                    }
+                },
+                selectedOrder: {
+                    order: {
+                        organizationId: "1234",
+                    }
+                }
+            }
+        };
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[0][0].name).toEqual("updateSelectedOrder");
+        dispatch.mock.calls[0][0](dispatch, getState);
+        expect(dispatch.mock.calls[2][0].type).toEqual(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[2][0].payload.id).toEqual(5556);
+
+
+        expect(dispatch.mock.calls[1][0].name).toEqual("updateSelectedOrder");
+        dispatch.mock.calls[1][0](dispatch, getState);
+        expect(dispatch.mock.calls[3][0].type).toEqual(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[3][0].payload.createdDate.substr(0, 10)).toEqual(new Date().toJSON().substr(0, 10));
+    });
+
+    it('should fill organization id', () => {
+        const thunkFunction = fillNewOrderMissingFields();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                orders: {
+                    "5555": {}
+                },
+                organizations: {
+                    "1234": {
+                        id: "1234"
+                    }
+                },
+                selectedOrganization: {
+                    organization: {
+                        id: "1234",
+                    }
+                },
+                selectedOrder: {
+                    order: {
+                        id
+                    }
+                }
+            }
+        };
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch.mock.calls[0][0].name).toEqual("updateSelectedOrder");
+        dispatch.mock.calls[0][0](dispatch, getState);
+        expect(dispatch.mock.calls[1][0].type).toEqual(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload.organizationId).toEqual("1234");
+    });
+
+    it('should save new order', async () => {
+        const thunkFunction = saveNewOrder();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                organizations: {
+                    "1234": {
+                        id: "1234"
+                    }
+                },
+                selectedOrganization: {
+                    organization: {
+                        id: "1234",
+                    }
+                },
+                selectedOrder: {
+                    order: {
+                        id,
+                        [key]: value,
+                        organizationId: "1234",
+                    }
+                }
+            }
+        };
+        dispatch.mockReturnValue(Promise.resolve());
+        await thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch.mock.calls[0][0].name).toEqual("fillNewOrderMissingFields");
+        expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
+        expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
+    });
+
+    it('should save new order and update organization', async () => {
+        const thunkFunction = saveNewOrder();
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                organizations: {
+                    "1234": {
+                        id: "1234"
+                    }
+                },
+                selectedOrganization: {
+                    organization: {
+                        id: "1234",
+                        [key]: newValue
+                    }
+                },
+                selectedOrder: {
+                    order: {
+                        id,
+                        [key]: value,
+                        organizationId: "1234",
+                    }
+                }
+            }
+        };
+        dispatch.mockReturnValue(Promise.resolve());
+        await thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(4);
+        expect(dispatch.mock.calls[0][0].name).toEqual("fillNewOrderMissingFields");
+        expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
+        expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
+        expect(dispatch.mock.calls[3][0].name).toEqual("sendSelectedOrganizationToDatabase");
     });
 });

@@ -11,10 +11,6 @@ const allPaymentConditions = {
 };
 
 describe('Proforma Invoice Date Calculator', () => {
-    beforeEach(() => {
-
-    });
-
     it('should return null when empty input date', () => {
         const proformaInvoiceDate = "";
 

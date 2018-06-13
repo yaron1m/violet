@@ -76,5 +76,4 @@ export class CustomFlatButton extends React.Component {
 CustomFlatButton.propTypes = {
     label: PropTypes.string,
     onClick: PropTypes.func,
-    primary: PropTypes.bool,
 };
