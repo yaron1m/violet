@@ -5,7 +5,7 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
-import {publicCourseTabKey} from "../../util/Constants/TabKeys";
+import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
@@ -32,7 +32,7 @@ export default function getActionRequiredOrdersArray(state) {
                     return;
 
                 case Status.order: {
-                    if (order.lectureDetailsTabKey === publicCourseTabKey)
+                    if (isPublicCourseOrder(order))
                         return; //TODO add action required for public courses
 
                     const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
@@ -49,7 +49,7 @@ export default function getActionRequiredOrdersArray(state) {
                 case Status.approvedOrder:
                 case Status.isExecuting:
                 case Status.executed: {
-                    if (order.lectureDetailsTabKey === publicCourseTabKey)
+                    if (isPublicCourseOrder(order))
                         return; //TODO add action required for public courses
 
                     const lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -time.date)[0].date;

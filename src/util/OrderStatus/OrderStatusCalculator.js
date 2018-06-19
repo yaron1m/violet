@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
-import {publicCourseTabKey} from "../Constants/TabKeys";
+import {isPublicCourseOrder} from "../../store/SelectedOrder/Selectors";
 
 export default function calculateOrderStatus(order) {
     let possibleStatuses = _.values(terminatingStatuses);
@@ -70,8 +70,9 @@ function isContact() {
 }
 
 function isOffer(order) {
-    if (order.lectureDetailsTabKey === publicCourseTabKey)
+    if (isPublicCourseOrder(order)) {
         return existsAndNotEmpty(order, "publicCourseParticipants");
+    }
 
     // Order must have at least one lecture time with a topic
     if (!existsAndNotEmpty(order, "lectureTimes"))
@@ -81,7 +82,7 @@ function isOffer(order) {
 }
 
 function isOrder(order) {
-    if (order.lectureDetailsTabKey === publicCourseTabKey)
+    if (isPublicCourseOrder(order))
         return true;
 
     // Order must have at lease one lecture with date
@@ -94,9 +95,10 @@ function isApprovedOrder(order) {
 }
 
 function isExecuting(order) {
-    if (order.lectureDetailsTabKey === publicCourseTabKey) {
+    if (isPublicCourseOrder(order)) {
         return true; //TODO figure how to know if executing
     }
+
     // At least one lectures is done
     const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     return _.some(lectureTimesDates, hasDatePassed);
