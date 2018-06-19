@@ -15,9 +15,9 @@ export default class ProformaInvoiceDate extends React.Component {
 
                     this.props.calculatePayDate(
                         value,
-                        this.props.selectedOrganization,
-                        this.props.paymentConditions,
-                        this.props.updateSelectedOrder);
+                        this.props.selectedPaymentConditions,
+                        this.props.allPaymentConditions,
+                    );
                 }}
             />
         );
@@ -27,6 +27,6 @@ export default class ProformaInvoiceDate extends React.Component {
 ProformaInvoiceDate.propTypes = {
     updateSelectedOrder: PropTypes.func.isRequired,
     calculatePayDate: PropTypes.func.isRequired,
-    selectedOrganization: PropTypes.object,
-    paymentConditions: PropTypes.object.isRequired,
+    selectedPaymentConditions: PropTypes.string,
+    allPaymentConditions: PropTypes.object.isRequired,
 };

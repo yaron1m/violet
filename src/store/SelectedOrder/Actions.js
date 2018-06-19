@@ -1,14 +1,64 @@
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {getSelectedOrder} from "./Selectors";
 import {calculateDuration} from "../../util/TimeUtil";
-import {getOrderById} from "../orders/selectors";
+import {getNextOrderId, getOrderById} from "../orders/selectors";
 import {isEmptyValue} from "../../util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
 import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
 import calculateOrderStatus from "../../util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
-import {selectOrganization} from "../SelectedOrganization/Actions";
+import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
+import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
+import {getOrganizationById} from "../organizations/reducer";
+import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
+import {getLabels} from "../Labels/Reducer";
+
+export function saveNewOrder() {
+    return async function saveNewOrder(dispatch, getState) {
+        await dispatch(fillNewOrderMissingFields());
+
+        function success() {
+            const snackbarMessage = getLabels(getState()).pages.orderPage.snackBar.savedSuccessfully
+                .replace("{0}", getSelectedOrder(getState()).id);
+            dispatch(openSnackbar(snackbarMessage));
+            dispatch(setIsSelectedOrder());
+        }
+
+        function failure(error) {
+            const dialogText = getLabels(getState()).pages.orderPage.dialog;
+            dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
+            // eslint-disable-next-line no-console
+            console.error(error);
+        }
+
+        dispatch(sendSelectedOrderToDatabase()).then(success, failure);
+
+        dispatch(hideRequiredFields());
+
+        //Check if there are changes in organization
+        if (!_.isEqual(getSelectedOrganization(getState()), getOrganizationById(getState(), getSelectedOrder(getState()).organizationId))) {
+            dispatch(sendSelectedOrganizationToDatabase());
+        }
+    }
+}
+
+export function fillNewOrderMissingFields() {
+    return function fillNewOrderMissingFields(dispatch, getState) {
+        let idPromise;
+        let createdPromise;
+        let organizationIdPromise;
+        if (!getSelectedOrder(getState()).hasOwnProperty("id")) {
+            idPromise = dispatch(updateSelectedOrder("id", getNextOrderId(getState())));
+            createdPromise = dispatch(updateSelectedOrder("createdDate", new Date().toJSON()));
+        }
+
+        if (!getSelectedOrder(getState()).hasOwnProperty("organizationId"))
+            organizationIdPromise = dispatch(updateSelectedOrder("organizationId", getSelectedOrganization(getState()).id));
+
+        return Promise.all([idPromise, organizationIdPromise, createdPromise]);
+    }
+}
 
 export function selectOrder(orderId) {
     return function selectOrder(dispatch, getState) {
@@ -27,7 +77,7 @@ export function selectOrder(orderId) {
 }
 
 export function updateSelectedOrder(key, value) {
-    return function updateSelectedOrganization(dispatch, getState) {
+    return function updateSelectedOrder(dispatch, getState) {
         const status = calculateOrderStatus(getSelectedOrder(getState()));
 
         const order = mergeImmutable(getSelectedOrder(getState()), {

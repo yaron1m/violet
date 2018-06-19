@@ -11,7 +11,7 @@ export function isEmptyValue(obj, key) {
     return isEmpty(obj) || !obj.hasOwnProperty(key) || isEmpty(obj[key]);
 }
 
-function isEmpty(val) {
+export function isEmpty(val) {
     return !val || val === "";
 }
 
