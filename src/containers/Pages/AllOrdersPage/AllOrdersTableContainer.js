@@ -14,7 +14,7 @@ function mapStateToProps(state, ownProps) {
         elements: _.reverse(getOrdersSummary(state, (state) => getOrders(state, ownProps.filterStatus))),
         rowIndexKey: "id",
         beforeTable: ownProps.beforeTable,
-        limit: 30,
+        limit: ownProps.limit,
     };
 }
 
@@ -32,6 +32,7 @@ const Container = connect(mapStateToProps, mapDispatchToProps)(CustomPaperTable)
 Container.propTypes = {
     beforeTable: PropTypes.node,
     filterStatus: PropTypes.string,
+    limit: PropTypes.number.isRequired,
 };
 
 export default Container;

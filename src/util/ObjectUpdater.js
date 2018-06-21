@@ -19,3 +19,7 @@ export function createImmutable(obj) {
 export function mergeImmutable(oldState, newState) {
     return Immutable.merge(oldState, newState);
 }
+
+export function updateObject(oldObject, newObject){
+    return Object.assign({}, oldObject, newObject);
+}
