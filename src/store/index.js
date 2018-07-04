@@ -6,7 +6,7 @@ import {combineReducers} from 'redux';
 import appearance from './Appearance/Reducer';
 import firebase from './Firebase/Reducer';
 import labels from './Labels/Reducer';
-import lists from './lists/reducer';
+import lists from './Lists/Reducer';
 import orders from './orders/reducer';
 import organizations from './organizations/reducer';
 import publicCourses from './PublicCourses/reducer';
