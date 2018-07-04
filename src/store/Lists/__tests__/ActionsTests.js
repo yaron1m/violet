@@ -1,4 +1,4 @@
-import * as actions from '../actions'
+import * as actions from '../Actions'
 import * as actionTypes from '../ActionTypes'
 
 describe('Lists reducer actions', () => {
