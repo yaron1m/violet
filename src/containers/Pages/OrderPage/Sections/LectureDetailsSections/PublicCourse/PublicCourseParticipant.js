@@ -44,7 +44,7 @@ export default class PublicCourseParticipant extends React.Component {
                             const isAttending = this.props.lecturesAttending ? this.props.lecturesAttending.includes(lecture.id) : false;
                             return (
                                 <PublicCourseParticipantsCustomCheckBox
-                                    key={lecture.id}
+                                    key={this.props.courseId + "-" + lecture.id}
                                     participantIndex={participantId}
                                     name="publicCourseLecture"
                                     values={{publicCourseLecture: isAttending}}
@@ -65,4 +65,5 @@ PublicCourseParticipant.propTypes = {
     onDelete: PropTypes.func.isRequired,
     onLectureCheck: PropTypes.func.isRequired,
     lecturesAttending: PropTypes.array,
+    courseId: PropTypes.number,
 };

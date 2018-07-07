@@ -13,7 +13,8 @@ function mapStateToProps(state, ownProps) {
     return {
         selectedPublicCourseLectures: getSelectedPublicCourse(state) ? getSelectedPublicCourse(state).lectures : [],
         selectedOrder: getSelectedOrder(state),
-        lecturesAttending: getSelectedOrder(state).publicCourseParticipants[ownProps.participantId].lecturesAttending
+        lecturesAttending: getSelectedOrder(state).publicCourseParticipants[ownProps.participantId].lecturesAttending,
+        courseId: getSelectedPublicCourse(state).id
     };
 }
 
@@ -39,6 +40,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         selectedPublicCourseLectures: stateProps.selectedPublicCourseLectures,
         onDelete: () => removeParticipant(stateProps.selectedOrder, dispatchProps.updateSelectedOrder, ownProps.participantId),
         onLectureCheck: dispatchProps.onLectureCheck,
+        courseId: stateProps.courseId,
     }
 }
 
