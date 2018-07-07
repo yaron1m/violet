@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import CourseLecturesInstance from "./CourseLecturesInstance";
 import PropTypes from "prop-types";
-import {getOfferedLectures} from "../../../../../../store/lists/reducer";
+import {getOfferedLectures} from "../../../../../../store/Lists/Reducer";
 
 function mapStateToProps(state, ownProps) {
     return {

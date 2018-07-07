@@ -1,4 +1,4 @@
-import * as actionTypes from './action-types';
+import * as actionTypes from './ActionTypes';
 import _ from 'lodash';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import Immutable from 'seamless-immutable';
