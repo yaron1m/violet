@@ -49,11 +49,7 @@ export default function getActionRequiredOrdersArray(state) {
                 case Status.approvedOrder:
                 case Status.isExecuting:
                 case Status.executed: {
-                    if (isPublicCourseOrder(order))
-                        return; //TODO add action required for public courses
-
-                    const lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -time.date)[0].date;
-                    if (isEmptyValue(order, "proformaInvoiceNumber") && new Date(lastLectureTimeDate) < now) {
+                    if (isEmptyValue(order, "proformaInvoiceNumber")) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                         return;
                     }

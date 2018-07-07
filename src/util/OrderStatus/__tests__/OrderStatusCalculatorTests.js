@@ -66,7 +66,7 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order)).toEqual(Status.approvedOrder);
     });
 
-    it('calculateOrderStatus - lecture date today - isExecuted', () => {
+    it('calculateOrderStatus - lecture date today - Executed', () => {
         const today = new Date();
         today.setHours(0, 0, 0);
 

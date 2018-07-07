@@ -50,5 +50,6 @@ export function toDateFormat(date) {
 
 export function hasDatePassed(dateString) {
     const now = new Date();
+    now.setHours(7);
     return now >= new Date(dateString);
 }
