@@ -6,6 +6,7 @@ import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
+import {getPublicCourseById} from "../PublicCourses/reducer";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
@@ -49,7 +50,18 @@ export default function getActionRequiredOrdersArray(state) {
                 case Status.approvedOrder:
                 case Status.isExecuting:
                 case Status.executed: {
-                    if (isEmptyValue(order, "proformaInvoiceNumber")) {
+                    let lastLectureTimeDate;
+                    if (isPublicCourseOrder(order)) {
+                        const publicCourse = getPublicCourseById(state, order.publicCourseId);
+                        if (!publicCourse) // Data did not load yet
+                            return;
+                        lastLectureTimeDate = _.sortBy(publicCourse.lectures, lecture => -new Date(lecture.date))[0].date;
+                    }
+                    else {
+                        lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -new Date(time.date))[0].date;
+                    }
+
+                    if (isEmptyValue(order, "proformaInvoiceNumber") && new Date(lastLectureTimeDate) < now) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                         return;
                     }
