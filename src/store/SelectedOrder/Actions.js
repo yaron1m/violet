@@ -155,7 +155,8 @@ export function removeParticipantsFromAllLectures() {
 
         const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
         for (const participant in publicCourseParticipants) {
-            publicCourseParticipants[participant] = _.omitBy(publicCourseParticipants[participant], (value, key) => _.startsWith(key, "attendingLecture"));
+            if (publicCourseParticipants[participant].lecturesAttending)
+                publicCourseParticipants[participant].lecturesAttending = [];
         }
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     }

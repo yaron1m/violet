@@ -259,7 +259,7 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(1);
-
+        
         // Call updateSelectedOrder action
         dispatch.mock.calls[0][0](dispatch, getState);
 
@@ -340,7 +340,7 @@ describe('Selected order actions', () => {
                 {id: 0},
                 {
                     id: 9,
-                    lecturesAttending: [2,11,  30],
+                    lecturesAttending: [2, 11, 30],
                 }
             ],
             status
@@ -414,15 +414,9 @@ describe('Selected order actions', () => {
                         publicCourseParticipants: [
                             {
                                 id: 0,
-                                attendingLecture2: true,
-                                attendingLecture3: false,
-                                attendingLecture5: true
+                                lecturesAttending: [2, 4, 6]
                             },
-                            {
-                                id: 9,
-                                attendingLecture5: true,
-                                attendingLecture7: false,
-                            }
+                            {id: 9}
                         ]
 
                     }
@@ -433,7 +427,7 @@ describe('Selected order actions', () => {
         };
         const expectedOrder = {
             publicCourseParticipants: [
-                {id: 0},
+                {id: 0, lecturesAttending: []},
                 {id: 9}
             ],
             status
