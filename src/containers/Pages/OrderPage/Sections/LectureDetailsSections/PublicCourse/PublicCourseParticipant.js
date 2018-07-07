@@ -41,13 +41,15 @@ export default class PublicCourseParticipant extends React.Component {
                 <div>
                     {_.map(_.orderBy(this.props.selectedPublicCourseLectures, x => x.date),
                         lecture => {
-                            const key = "attendingLecture" + lecture.id;
+                            const isAttending = this.props.lecturesAttending ? this.props.lecturesAttending.includes(lecture.id) : false;
                             return (
                                 <PublicCourseParticipantsCustomCheckBox
-                                    key={key}
+                                    key={lecture.id}
                                     participantIndex={participantId}
-                                    name={"attendingLecture" + lecture.id}
-                                    titles={{[key]: new Date(lecture.date).toLocaleDateString() + " - " + lecture.topic}}
+                                    name="publicCourseLecture"
+                                    values={{publicCourseLecture: isAttending}}
+                                    titles={{publicCourseLecture: new Date(lecture.date).toLocaleDateString() + " - " + lecture.topic}}
+                                    updateAction={(key, value) => this.props.onLectureCheck(lecture.id, value)}
                                 />
                             )
                         })}
@@ -61,4 +63,6 @@ PublicCourseParticipant.propTypes = {
     participantId: PropTypes.number.isRequired,
     selectedPublicCourseLectures: PropTypes.array.isRequired,
     onDelete: PropTypes.func.isRequired,
+    onLectureCheck: PropTypes.func.isRequired,
+    lecturesAttending: PropTypes.array,
 };

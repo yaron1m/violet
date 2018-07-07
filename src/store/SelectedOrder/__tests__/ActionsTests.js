@@ -8,7 +8,7 @@ import {
     selectOrder,
     sendSelectedOrderToDatabase,
     setIsSelectedOrder,
-    updateLectureTime,
+    updateLectureTime, updatePublicCourseLectureParticipance,
     updatePublicCourseParticipant,
     updateSelectedOrder
 } from "../Actions";
@@ -267,6 +267,140 @@ describe('Selected order actions', () => {
         expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
 
+    });
+
+    it('should add lecture to public course participant when there are no lectures', () => {
+        const thunkFunction = updatePublicCourseLectureParticipance(2, true, 1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                            }
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {
+                    id: 9,
+                    lecturesAttending: [2],
+                }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
+    });
+
+    it('should add lecture to public course participant when there are lectures', () => {
+        const thunkFunction = updatePublicCourseLectureParticipance(2, true, 1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                                lecturesAttending: [11, 30],
+                            }
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {
+                    id: 9,
+                    lecturesAttending: [2,11,  30],
+                }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
+    });
+
+    it('should remove lecture from public course participant', () => {
+        const thunkFunction = updatePublicCourseLectureParticipance(5, false, 1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                                lecturesAttending: [2, 5, 16],
+                            }
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {
+                    id: 9,
+                    lecturesAttending: [2, 16],
+                }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
     it('should update remove participants from all lectures', () => {

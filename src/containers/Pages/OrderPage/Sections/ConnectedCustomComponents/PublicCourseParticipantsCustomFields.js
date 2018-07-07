@@ -3,8 +3,6 @@ import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updatePublicCourseParticipant} from "../../../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../../../store/Labels/Reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
-import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
-import CustomAutoComplete from "../../../../../components/CustomComponents/CustomAutoComplete";
 import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
 import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
