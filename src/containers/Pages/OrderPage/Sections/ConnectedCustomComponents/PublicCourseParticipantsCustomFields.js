@@ -22,7 +22,6 @@ function mapStateToProps(state, ownProps) {
         titles: getLabels(state).pages.orderPage.sections.publicCourse.titles,
         values: getValues(state, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
-        ...ownProps,
     };
 }
 
@@ -32,8 +31,18 @@ function mapDispatchToProps(dispatch, ownProps) {
     };
 }
 
-export const PublicCourseParticipantsCustomText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
-export const PublicCourseParticipantsCustomDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
-export const PublicCourseParticipantsCustomAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
-export const PublicCourseParticipantsCustomCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
+function mergeProps(stateProps, dispatchProps, ownProps) {
+    return {
+        titles: stateProps.titles,
+        values: stateProps.values,
+        requiredFields: stateProps.requiredFields,
+        updateAction: dispatchProps.updateAction,
+        ...ownProps,
+    };
+}
+
+export const PublicCourseParticipantsCustomText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
+// export const PublicCourseParticipantsCustomDatePicker = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDatePicker);
+// export const PublicCourseParticipantsCustomAutoComplete = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomAutoComplete);
+export const PublicCourseParticipantsCustomCheckBox = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomCheckbox);
 

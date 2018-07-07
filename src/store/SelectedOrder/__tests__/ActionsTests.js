@@ -64,6 +64,8 @@ describe('Selected order actions', () => {
                     order: {
                         [id]: value
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -90,6 +92,8 @@ describe('Selected order actions', () => {
                     order: {
                         [key]: value
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -123,6 +127,8 @@ describe('Selected order actions', () => {
                         ]
 
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -160,6 +166,8 @@ describe('Selected order actions', () => {
             return {
                 selectedOrder: {
                     order: {}
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -192,6 +200,8 @@ describe('Selected order actions', () => {
                     order: {
                         lectureTimes: [{key}, {value}]
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -230,6 +240,8 @@ describe('Selected order actions', () => {
                         ]
 
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -280,6 +292,8 @@ describe('Selected order actions', () => {
                         ]
 
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -321,6 +335,8 @@ describe('Selected order actions', () => {
                         id,
                         [key]: value
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -361,6 +377,8 @@ describe('Selected order actions', () => {
                         id,
                         organizationId: "1234",
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -392,6 +410,8 @@ describe('Selected order actions', () => {
                     order: {
                         organizationId: "1234",
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -433,6 +453,8 @@ describe('Selected order actions', () => {
                     order: {
                         id
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -467,6 +489,8 @@ describe('Selected order actions', () => {
                         [key]: value,
                         organizationId: "1234",
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -502,6 +526,9 @@ describe('Selected order actions', () => {
                         [key]: value,
                         organizationId: "1234",
                     }
+                },
+                selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
