@@ -5,7 +5,7 @@ import * as HistoryUtil from "../../../../util/HistoryUtil";
 
 const props = {
     hintText: "hintText",
-    dataSource: [],
+    suggestions: [],
 };
 
 let enzymeWrapper;

@@ -73,6 +73,7 @@ describe('AllOrdersTableContainer', () => {
     it('elements prop - no filter - show all orders in reverse order', () => {
         const props = {
             filterStatus : null,
+            limit: 30,
         };
         component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
@@ -87,6 +88,7 @@ describe('AllOrdersTableContainer', () => {
     it('elements prop - no filter - show right organization name', () => {
         const props = {
             filterStatus : null,
+            limit: 30,
         };
         component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
@@ -101,6 +103,7 @@ describe('AllOrdersTableContainer', () => {
     it('elements prop - no filter - show right status', () => {
         const props = {
             filterStatus : null,
+            limit: 30,
         };
         component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
@@ -115,6 +118,7 @@ describe('AllOrdersTableContainer', () => {
     it('elements prop - no filter - show right lecture details', () => {
         const props = {
             filterStatus : null,
+            limit: 30,
         };
         component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
@@ -133,6 +137,7 @@ describe('AllOrdersTableContainer', () => {
     it('elements prop - filter - show filtered orders', () => {
         const props = {
             filterStatus : "order",
+            limit: 30,
         };
         component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
@@ -143,9 +148,12 @@ describe('AllOrdersTableContainer', () => {
     });
 
     it('onEditButton - order is loaded ', () => {
+        const props = {
+            limit: 30,
+        };
         SelectedOrderActions.selectOrder = jest.fn();
         HistoryUtil.redirect = jest.fn();
-        component = shallowWithStore(<AllOrdersTableContainer/>, store);
+        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
         component.prop("onEditButton")(1002);
         expect(SelectedOrderActions.selectOrder.mock.calls.length).toBe(1);
