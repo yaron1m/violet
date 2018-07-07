@@ -42,10 +42,10 @@ function meetsRequirements(order, publicCourse, statusName) {
             return isApprovedOrder(order);
 
         case progressiveStatuses.isExecuting:
-            return isExecuting(order);
+            return isExecuting(order, publicCourse);
 
         case progressiveStatuses.executed:
-            return isExecuted(order);
+            return isExecuted(order, publicCourse);
 
         case progressiveStatuses.waitingPayment:
             return isWaitingPayment(order);
@@ -83,7 +83,9 @@ function isOffer(order) {
 
 function isOrder(order) {
     if (isPublicCourseOrder(order)) {
-        return true;
+        // Order must have at lease one participant attending one lecture
+        return _.some(order.publicCourseParticipants, participant =>
+            _.isArray(participant.lecturesAttending) && participant.lecturesAttending.length !== 0);
     }
 
     // Order must have at lease one lecture with date
@@ -95,20 +97,30 @@ function isApprovedOrder(order) {
     return existsAndNotEmpty(order, "orderApproved");
 }
 
-function isExecuting(order) {
+function isExecuting(order, publicCourse) {
+    let datesToCheck;
     if (isPublicCourseOrder(order)) {
-        return true; //TODO figure how to know if executing
+        datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
+    }
+    else {
+        datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
     // At least one lectures is done
-    const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-    return _.some(lectureTimesDates, hasDatePassed);
+    return _.some(datesToCheck, hasDatePassed);
 }
 
-function isExecuted(order) {
+function isExecuted(order, publicCourse) {
     // All lectures passed
-    const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-    return _.every(lectureTimesDates, hasDatePassed);
+    let datesToCheck;
+    if (isPublicCourseOrder(order)) {
+        datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
+    }
+    else {
+        datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+    }
+
+    return _.every(datesToCheck, hasDatePassed);
 }
 
 function isWaitingPayment(order) {

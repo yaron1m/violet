@@ -83,7 +83,7 @@ export function updateSelectedOrder(key, value) {
 
         const order = mergeImmutable(getSelectedOrder(getState()), {
             [key]: value,
-            "status": status
+            status
         });
 
         dispatch({
@@ -130,8 +130,8 @@ export function updatePublicCourseParticipant(key, value, participantIndex) {
     }
 }
 
-export function updatePublicCourseLectureParticipance(lectureId, isAttending, participantIndex) {
-    return function updatePublicCourseLectureParticipance(dispatch, getState) {
+export function updatePublicCourseLectureParticipating(lectureId, isAttending, participantIndex) {
+    return function updatePublicCourseLectureParticipating(dispatch, getState) {
         const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
         const participant = publicCourseParticipants[participantIndex];
         let lecturesAttending = _.hasIn(participant, 'lecturesAttending') ? participant.lecturesAttending : [];

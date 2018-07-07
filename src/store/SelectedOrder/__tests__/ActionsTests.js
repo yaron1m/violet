@@ -8,7 +8,7 @@ import {
     selectOrder,
     sendSelectedOrderToDatabase,
     setIsSelectedOrder,
-    updateLectureTime, updatePublicCourseLectureParticipance,
+    updateLectureTime, updatePublicCourseLectureParticipating,
     updatePublicCourseParticipant,
     updateSelectedOrder
 } from "../Actions";
@@ -270,7 +270,7 @@ describe('Selected order actions', () => {
     });
 
     it('should add lecture to public course participant when there are no lectures', () => {
-        const thunkFunction = updatePublicCourseLectureParticipance(2, true, 1);
+        const thunkFunction = updatePublicCourseLectureParticipating(2, true, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -314,7 +314,7 @@ describe('Selected order actions', () => {
     });
 
     it('should add lecture to public course participant when there are lectures', () => {
-        const thunkFunction = updatePublicCourseLectureParticipance(2, true, 1);
+        const thunkFunction = updatePublicCourseLectureParticipating(2, true, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
@@ -359,7 +359,7 @@ describe('Selected order actions', () => {
     });
 
     it('should remove lecture from public course participant', () => {
-        const thunkFunction = updatePublicCourseLectureParticipance(5, false, 1);
+        const thunkFunction = updatePublicCourseLectureParticipating(5, false, 1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {

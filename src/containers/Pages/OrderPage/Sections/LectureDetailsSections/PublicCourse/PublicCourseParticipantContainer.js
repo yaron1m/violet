@@ -4,7 +4,7 @@ import PublicCourseParticipant from "./PublicCourseParticipant";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import * as Immutable from "seamless-immutable";
 import {
-    updatePublicCourseLectureParticipance,
+    updatePublicCourseLectureParticipating,
     updateSelectedOrder
 } from "../../../../../../store/SelectedOrder/Actions";
 import {getSelectedPublicCourse} from "../../../../../../store/SelectedPublicCourse/Selectors";
@@ -20,7 +20,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
-        onLectureCheck: (lectureId, isAttending) => dispatch(updatePublicCourseLectureParticipance(lectureId, isAttending, ownProps.participantId))
+        onLectureCheck: (lectureId, isAttending) => dispatch(updatePublicCourseLectureParticipating(lectureId, isAttending, ownProps.participantId))
     };
 }
 
