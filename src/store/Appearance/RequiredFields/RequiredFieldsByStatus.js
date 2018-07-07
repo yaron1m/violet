@@ -4,6 +4,7 @@ const contact = {
     order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
     organization: ["organizationName"],
     lectureTimes: [],
+    internalOrder: [],
     publicCourse: [],
 };
 
@@ -18,8 +19,9 @@ const order = mergerRequiredFields(offer, {
 
 const approvedOrder = mergerRequiredFields(order, {
     organization: ["companyId", "paymentConditions"],
-    order: ["street", "streetNumber", "city", "financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "cost", "totalSum", "parking", "projector", "soundSystem", "microphone", "internalOrderNumber"],
+    order: ["financialContactFirstName", "financialContactLastName", "financialContactPhone1",
+        "financialContactEmail", "cost", "totalSum", "internalOrderNumber"],
+    internalOrder: ["street", "streetNumber", "city", "parking", "projector", "soundSystem", "microphone"],
     publicCourse: ["idNumber", "phone", "job", "email"],
 });
 

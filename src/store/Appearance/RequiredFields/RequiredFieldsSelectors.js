@@ -27,9 +27,13 @@ export function isOrderMissingFields(state) {
     if (hasMissingFields(getSelectedOrganization(state), requiredFieldsObject.organization))
         return true;
 
-    if (isRightTabKey(getSelectedOrder(state), internalTabKey, true))
+    if (isRightTabKey(getSelectedOrder(state), internalTabKey, true)) {
         if (isElementInArrayMissingFields(getSelectedOrder(state).lectureTimes, requiredFieldsObject.lectureTimes))
             return true;
+
+        if (hasMissingFields(getSelectedOrder(state), requiredFieldsObject.internalOrder))
+            return true;
+    }
 
     if (isRightTabKey(getSelectedOrder(state), publicCourseTabKey))
         if (isElementInArrayMissingFields(getSelectedOrder(state).publicCourseParticipants, requiredFieldsObject.publicCourse))
