@@ -130,6 +130,24 @@ export function updatePublicCourseParticipant(key, value, participantIndex) {
     }
 }
 
+export function updatePublicCourseLectureParticipance(lectureId, isAttending, participantIndex) {
+    return function updatePublicCourseLectureParticipance(dispatch, getState) {
+        const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
+        const participant = publicCourseParticipants[participantIndex];
+        let lecturesAttending = _.hasIn(participant, 'lecturesAttending') ? participant.lecturesAttending : [];
+        if (isAttending) {
+            lecturesAttending.push(lectureId);
+            lecturesAttending.sort((a, b) => a - b);
+        }
+        else {
+            lecturesAttending = _.without(lecturesAttending, lectureId);
+        }
+
+        publicCourseParticipants[participantIndex].lecturesAttending = lecturesAttending;
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
+    }
+}
+
 export function removeParticipantsFromAllLectures() {
     return function removeParticipantsFromAllLectures(dispatch, getState) {
         if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
