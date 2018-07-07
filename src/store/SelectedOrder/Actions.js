@@ -13,6 +13,7 @@ import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Action
 import {getOrganizationById} from "../organizations/reducer";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Reducer";
+import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 
 export function saveNewOrder() {
     return async function saveNewOrder(dispatch, getState) {
@@ -78,7 +79,7 @@ export function selectOrder(orderId) {
 
 export function updateSelectedOrder(key, value) {
     return function updateSelectedOrder(dispatch, getState) {
-        const status = calculateOrderStatus(getSelectedOrder(getState()));
+        const status = calculateOrderStatus(getSelectedOrder(getState()), getSelectedPublicCourse(getState()));
 
         const order = mergeImmutable(getSelectedOrder(getState()), {
             [key]: value,

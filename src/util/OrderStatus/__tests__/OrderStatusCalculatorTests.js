@@ -2,6 +2,7 @@ import calculateOrderStatus from "../OrderStatusCalculator";
 import Status from "../../Constants/Status";
 import {toDateFormat} from "../../TimeUtil";
 
+// TODO add tests for public course
 describe('order-status', () => {
 
     it('calculateOrderStatus - contact', () => {

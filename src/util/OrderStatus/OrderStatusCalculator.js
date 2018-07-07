@@ -4,10 +4,10 @@ import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
 import {isPublicCourseOrder} from "../../store/SelectedOrder/Selectors";
 
-export default function calculateOrderStatus(order) {
+export default function calculateOrderStatus(order, publicCourse) {
     let possibleStatuses = _.values(terminatingStatuses);
     for (let i = 0; i < possibleStatuses.length; i++) {
-        if (meetsRequirements(order, possibleStatuses[i])) {
+        if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
             return possibleStatuses[i];
         }
     }
@@ -16,7 +16,7 @@ export default function calculateOrderStatus(order) {
     let status;
 
     for (let i = 0; i < possibleStatuses.length; i++) {
-        if (meetsRequirements(order, possibleStatuses[i])) {
+        if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
             status = possibleStatuses[i];
         }
         else {
@@ -27,8 +27,8 @@ export default function calculateOrderStatus(order) {
     return status;
 }
 
-function meetsRequirements(order, requirement) {
-    switch (requirement) {
+function meetsRequirements(order, publicCourse, statusName) {
+    switch (statusName) {
         case progressiveStatuses.contact:
             return isContact();
 
@@ -82,8 +82,9 @@ function isOffer(order) {
 }
 
 function isOrder(order) {
-    if (isPublicCourseOrder(order))
+    if (isPublicCourseOrder(order)) {
         return true;
+    }
 
     // Order must have at lease one lecture with date
     return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
