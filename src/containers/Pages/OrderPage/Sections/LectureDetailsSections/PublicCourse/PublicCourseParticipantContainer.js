@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import PublicCourseParticipant from "./PublicCourseParticipant";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
-import * as Immutable from "seamless-immutable";
 import {
+    removeParticipant,
     updatePublicCourseLectureParticipating,
     updateSelectedOrder
 } from "../../../../../../store/SelectedOrder/Actions";
@@ -21,16 +21,9 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
-        onLectureCheck: (lectureId, isAttending) => dispatch(updatePublicCourseLectureParticipating(lectureId, isAttending, ownProps.participantId))
+        onLectureCheck: (lectureId, isAttending) => dispatch(updatePublicCourseLectureParticipating(lectureId, isAttending, ownProps.participantId)),
+        onDelete: () => dispatch(removeParticipant(ownProps.participantId))
     };
-}
-
-export function removeParticipant(selectedOrder, updateSelectedOrder, participantId) {
-    const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
-    const publicCourseParticipants = thisSelectedOrder.publicCourseParticipants;
-    publicCourseParticipants.splice(participantId, 1);
-
-    updateSelectedOrder("publicCourseParticipants", publicCourseParticipants);
 }
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
@@ -38,7 +31,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         participantId: ownProps.participantId,
         lecturesAttending: stateProps.lecturesAttending,
         selectedPublicCourseLectures: stateProps.selectedPublicCourseLectures,
-        onDelete: () => removeParticipant(stateProps.selectedOrder, dispatchProps.updateSelectedOrder, ownProps.participantId),
+        onDelete: dispatchProps.onDelete,
         onLectureCheck: dispatchProps.onLectureCheck,
         courseId: stateProps.courseId,
     }

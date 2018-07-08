@@ -3,7 +3,7 @@ import * as orderStatusUtil from '../../../util/OrderStatus/OrderStatusCalculato
 import * as firebaseActions from "../../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
 import {
-    addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields,
+    addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields, removeParticipant,
     removeParticipantsFromAllLectures, saveNewOrder,
     selectOrder,
     sendSelectedOrderToDatabase,
@@ -387,6 +387,49 @@ describe('Selected order actions', () => {
                     id: 9,
                     lecturesAttending: [2, 16],
                 }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
+    });
+
+    it('should remove participant from order', () => {
+        const thunkFunction = removeParticipant(9);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                                lecturesAttending: [2, 5, 16],
+                            },
+                            {id:13}
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {id: 13},
             ],
             status
         };

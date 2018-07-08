@@ -28,7 +28,6 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         updateAction: dispatchProps.updateAction,
         ...ownProps,
     };
-
 }
 
 export const InternalOrderCustomText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);

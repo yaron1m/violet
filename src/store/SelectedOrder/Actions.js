@@ -162,6 +162,14 @@ export function removeParticipantsFromAllLectures() {
     }
 }
 
+export function removeParticipant(participantId) {
+    return function removeParticipant(dispatch, getState) {
+        const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
+        publicCourseParticipants.splice(participantId, 1);
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
+    };
+}
+
 export function setIsSelectedOrder() {
     return {
         type: SET_IS_SELECTED_ORDER,
