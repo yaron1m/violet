@@ -33,10 +33,18 @@ export default function getActionRequiredOrdersArray(state) {
                     return;
 
                 case Status.order: {
-                    if (isPublicCourseOrder(order))
-                        return; //TODO add action required for public courses
 
-                    const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
+                    let firstLectureTimeDate;
+                    if (isPublicCourseOrder(order)) {
+                        const publicCourse = getPublicCourseById(state, order.publicCourseId);
+                        if (!publicCourse) // Data did not load yet
+                            return;
+                        firstLectureTimeDate =  _.sortBy(publicCourse.lectures, lecture => new Date(lecture.date))[0].date;
+                    }
+                    else {
+                        firstLectureTimeDate = _.sortBy(order.lectureTimes, time => new Date(time.date))[0].date;
+                    }
+
                     if (new Date(firstLectureTimeDate) < addTwoWeeks(now.toJSON())) {
                         addOrderToResult(state, result, order, issues.noOrderApproval);
                         return;

@@ -404,7 +404,7 @@ describe('Selected order actions', () => {
     });
 
     it('should remove participant from order', () => {
-        const thunkFunction = removeParticipant(9);
+        const thunkFunction = removeParticipant(1);
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
