@@ -3,11 +3,9 @@ import * as _ from "lodash";
 import requiredFields from "./RequiredFieldsByStatus";
 import {hasMissingFields, isRightTabKey, mergerRequiredFields} from "./Util";
 import {shouldShowRequiredFields} from "../Reducer";
-import {
-    internalTabKey,
-    publicCourseTabKey
-} from "../../../containers/Pages/OrderPage/Sections/LectureDetailsSections/LecturesDetailsSectionContainer";
+import {publicCourseTabKey} from "../../../util/Constants/TabKeys";
 import {getSelectedOrder} from "../../SelectedOrder/Selectors";
+import {internalTabKey} from "../../../util/Constants/TabKeys";
 
 export function getRequiredFieldsObject(state) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))
@@ -29,9 +27,13 @@ export function isOrderMissingFields(state) {
     if (hasMissingFields(getSelectedOrganization(state), requiredFieldsObject.organization))
         return true;
 
-    if (isRightTabKey(getSelectedOrder(state), internalTabKey, true))
+    if (isRightTabKey(getSelectedOrder(state), internalTabKey, true)) {
         if (isElementInArrayMissingFields(getSelectedOrder(state).lectureTimes, requiredFieldsObject.lectureTimes))
             return true;
+
+        if (hasMissingFields(getSelectedOrder(state), requiredFieldsObject.internalOrder))
+            return true;
+    }
 
     if (isRightTabKey(getSelectedOrder(state), publicCourseTabKey))
         if (isElementInArrayMissingFields(getSelectedOrder(state).publicCourseParticipants, requiredFieldsObject.publicCourse))

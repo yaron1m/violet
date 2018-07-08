@@ -3,12 +3,10 @@ import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updatePublicCourseParticipant} from "../../../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../../../store/Labels/Reducer";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
-import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
-import CustomAutoComplete from "../../../../../components/CustomComponents/CustomAutoComplete";
 import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
 import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
-import {publicCourseTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
+import {publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
 
 function getValues(state, ownProps) {
     if (ownProps.participantIndex === null || getSelectedOrder(state).publicCourseParticipants === undefined)
@@ -22,7 +20,6 @@ function mapStateToProps(state, ownProps) {
         titles: getLabels(state).pages.orderPage.sections.publicCourse.titles,
         values: getValues(state, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
-        ...ownProps,
     };
 }
 
@@ -32,8 +29,16 @@ function mapDispatchToProps(dispatch, ownProps) {
     };
 }
 
-export const PublicCourseParticipantsCustomText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
-export const PublicCourseParticipantsCustomDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
-export const PublicCourseParticipantsCustomAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
-export const PublicCourseParticipantsCustomCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
+function mergeProps(stateProps, dispatchProps, ownProps) {
+    return {
+        titles: stateProps.titles,
+        values: stateProps.values,
+        requiredFields: stateProps.requiredFields,
+        updateAction: dispatchProps.updateAction,
+        ...ownProps,
+    };
+}
+
+export const PublicCourseParticipantsCustomText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
+export const PublicCourseParticipantsCustomCheckBox = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomCheckbox);
 

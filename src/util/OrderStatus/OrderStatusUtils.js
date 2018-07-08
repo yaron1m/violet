@@ -1,7 +1,11 @@
 import * as _ from "lodash";
 
 export function existsAndNotEmpty(order, key) {
-    return _.has(order, key) && order[key];
+    return _.has(order, key) && order[key] && isNonEmptyArray(order[key]);
+}
+
+function isNonEmptyArray(arr){
+    return _.isArray(arr) ? arr.length !== 0 : true;
 }
 
 export function isMatchingStatus(order, status) {

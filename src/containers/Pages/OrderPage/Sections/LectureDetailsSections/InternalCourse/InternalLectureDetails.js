@@ -1,16 +1,16 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
 import Sizes from "../../../../../../util/Constants/Sizes";
-import {
-    OrderCustomCheckBox,
-    OrderCustomText,
-    OrderCustomToggle
-} from "../../ConnectedCustomComponents/OrderCustomFields";
+import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import Colors from "../../../../../../util/Constants/Colors";
 import PropTypes from "prop-types";
 import LectureTimesDetailsContainer from "./LectureTimes/LectureTimesDetailsContainer";
+import {
+    InternalOrderCustomText,
+    InternalOrderCustomToggle
+} from "../../ConnectedCustomComponents/InternalOrderCustomFields";
 
 export default class InternalLectureDetails extends React.Component {
     constructor() {
@@ -28,21 +28,21 @@ export default class InternalLectureDetails extends React.Component {
             >
 
                 <div>
-                    <OrderCustomText name="street"/>
-                    <OrderCustomText name="streetNumber" size={Sizes.S}/>
-                    <OrderCustomText name="city"/>
-                    <OrderCustomText name="location" size={Sizes.XL}/>
-                    <OrderCustomText name="audienceType"/>
-                    <OrderCustomText name="daySchedule"/>
+                    <InternalOrderCustomText name="street"/>
+                    <InternalOrderCustomText name="streetNumber" size={Sizes.S}/>
+                    <InternalOrderCustomText name="city"/>
+                    <InternalOrderCustomText name="location" size={Sizes.XL}/>
+                    <InternalOrderCustomText name="audienceType"/>
+                    <InternalOrderCustomText name="daySchedule"/>
                 </div>
 
                 <div style={flexStyle}>
-                    <OrderCustomToggle name="projector"/>
-                    <OrderCustomToggle name="soundSystem"/>
-                    <OrderCustomToggle name="microphone"/>
-                    <OrderCustomToggle name="parking"/>
+                    <InternalOrderCustomToggle name="projector"/>
+                    <InternalOrderCustomToggle name="soundSystem"/>
+                    <InternalOrderCustomToggle name="microphone"/>
+                    <InternalOrderCustomToggle name="parking"/>
                     <OrderCustomToggle name="orderApproved"/>
-                    <OrderCustomToggle name="sameAudience"/>
+                    <InternalOrderCustomToggle name="sameAudience"/>
 
                     <OrderCustomCheckBox name="rejected" checkedColor={Colors.red}/>
 

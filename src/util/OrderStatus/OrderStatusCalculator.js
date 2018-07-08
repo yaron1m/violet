@@ -2,11 +2,12 @@ import * as _ from "lodash";
 import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
+import {isPublicCourseOrder} from "../../store/SelectedOrder/Selectors";
 
-export default function calculateOrderStatus(order) {
+export default function calculateOrderStatus(order, publicCourse) {
     let possibleStatuses = _.values(terminatingStatuses);
     for (let i = 0; i < possibleStatuses.length; i++) {
-        if (meetsRequirements(order, possibleStatuses[i])) {
+        if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
             return possibleStatuses[i];
         }
     }
@@ -15,7 +16,7 @@ export default function calculateOrderStatus(order) {
     let status;
 
     for (let i = 0; i < possibleStatuses.length; i++) {
-        if (meetsRequirements(order, possibleStatuses[i])) {
+        if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
             status = possibleStatuses[i];
         }
         else {
@@ -26,8 +27,8 @@ export default function calculateOrderStatus(order) {
     return status;
 }
 
-function meetsRequirements(order, requirement) {
-    switch (requirement) {
+function meetsRequirements(order, publicCourse, statusName) {
+    switch (statusName) {
         case progressiveStatuses.contact:
             return isContact();
 
@@ -41,10 +42,10 @@ function meetsRequirements(order, requirement) {
             return isApprovedOrder(order);
 
         case progressiveStatuses.isExecuting:
-            return isExecuting(order);
+            return isExecuting(order, publicCourse);
 
         case progressiveStatuses.executed:
-            return isExecuted(order);
+            return isExecuted(order, publicCourse);
 
         case progressiveStatuses.waitingPayment:
             return isWaitingPayment(order);
@@ -69,6 +70,10 @@ function isContact() {
 }
 
 function isOffer(order) {
+    if (isPublicCourseOrder(order)) {
+        return existsAndNotEmpty(order, "publicCourseParticipants");
+    }
+
     // Order must have at least one lecture time with a topic
     if (!existsAndNotEmpty(order, "lectureTimes"))
         return false;
@@ -77,6 +82,12 @@ function isOffer(order) {
 }
 
 function isOrder(order) {
+    if (isPublicCourseOrder(order)) {
+        // Order must have at lease one participant attending one lecture
+        return _.some(order.publicCourseParticipants, participant =>
+            _.isArray(participant.lecturesAttending) && participant.lecturesAttending.length !== 0);
+    }
+
     // Order must have at lease one lecture with date
     return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
 }
@@ -86,16 +97,30 @@ function isApprovedOrder(order) {
     return existsAndNotEmpty(order, "orderApproved");
 }
 
-function isExecuting(order) {
+function isExecuting(order, publicCourse) {
+    let datesToCheck;
+    if (isPublicCourseOrder(order)) {
+        datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
+    }
+    else {
+        datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+    }
+
     // At least one lectures is done
-    const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-    return _.some(lectureTimesDates, hasDatePassed);
+    return _.some(datesToCheck, hasDatePassed);
 }
 
-function isExecuted(order) {
+function isExecuted(order, publicCourse) {
     // All lectures passed
-    const lectureTimesDates = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
-    return _.every(lectureTimesDates, hasDatePassed);
+    let datesToCheck;
+    if (isPublicCourseOrder(order)) {
+        datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
+    }
+    else {
+        datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+    }
+
+    return _.every(datesToCheck, hasDatePassed);
 }
 
 function isWaitingPayment(order) {
@@ -104,14 +129,14 @@ function isWaitingPayment(order) {
         || existsAndNotEmpty(order, "taxInvoiceNumber");
 }
 
-function isPayed(order){
+function isPayed(order) {
     return existsAndNotEmpty(order, "receiptNumber");
 }
 
-function isCancelled(order){
+function isCancelled(order) {
     return order.cancelled;
 }
 
-function isRejected(order){
+function isRejected(order) {
     return order.rejected;
 }

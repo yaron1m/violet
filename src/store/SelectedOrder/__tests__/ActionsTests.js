@@ -3,12 +3,12 @@ import * as orderStatusUtil from '../../../util/OrderStatus/OrderStatusCalculato
 import * as firebaseActions from "../../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
 import {
-    addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields,
+    addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields, removeParticipant,
     removeParticipantsFromAllLectures, saveNewOrder,
     selectOrder,
     sendSelectedOrderToDatabase,
     setIsSelectedOrder,
-    updateLectureTime,
+    updateLectureTime, updatePublicCourseLectureParticipating,
     updatePublicCourseParticipant,
     updateSelectedOrder
 } from "../Actions";
@@ -64,6 +64,8 @@ describe('Selected order actions', () => {
                     order: {
                         [id]: value
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -90,6 +92,8 @@ describe('Selected order actions', () => {
                     order: {
                         [key]: value
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -123,6 +127,8 @@ describe('Selected order actions', () => {
                         ]
 
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -160,6 +166,8 @@ describe('Selected order actions', () => {
             return {
                 selectedOrder: {
                     order: {}
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -192,6 +200,8 @@ describe('Selected order actions', () => {
                     order: {
                         lectureTimes: [{key}, {value}]
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -230,6 +240,8 @@ describe('Selected order actions', () => {
                         ]
 
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -247,7 +259,7 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(1);
-
+        
         // Call updateSelectedOrder action
         dispatch.mock.calls[0][0](dispatch, getState);
 
@@ -255,6 +267,183 @@ describe('Selected order actions', () => {
         expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
         expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
 
+    });
+
+    it('should add lecture to public course participant when there are no lectures', () => {
+        const thunkFunction = updatePublicCourseLectureParticipating(2, true, 1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                            }
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {
+                    id: 9,
+                    lecturesAttending: [2],
+                }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
+    });
+
+    it('should add lecture to public course participant when there are lectures', () => {
+        const thunkFunction = updatePublicCourseLectureParticipating(2, true, 1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                                lecturesAttending: [11, 30],
+                            }
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {
+                    id: 9,
+                    lecturesAttending: [2, 11, 30],
+                }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
+    });
+
+    it('should remove lecture from public course participant', () => {
+        const thunkFunction = updatePublicCourseLectureParticipating(5, false, 1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                                lecturesAttending: [2, 5, 16],
+                            }
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {
+                    id: 9,
+                    lecturesAttending: [2, 16],
+                }
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
+    });
+
+    it('should remove participant from order', () => {
+        const thunkFunction = removeParticipant(1);
+        expect(thunkFunction).toBeDefined();
+
+        const getState = () => {
+            return {
+                selectedOrder: {
+                    order: {
+                        publicCourseParticipants: [
+                            {id: 0},
+                            {
+                                id: 9,
+                                lecturesAttending: [2, 5, 16],
+                            },
+                            {id:13}
+                        ]
+
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+        const expectedOrder = {
+            publicCourseParticipants: [
+                {id: 0},
+                {id: 13},
+            ],
+            status
+        };
+
+        thunkFunction(dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        // Call updateSelectedOrder action
+        dispatch.mock.calls[0][0](dispatch, getState);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_ORDER);
+        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedOrder);
     });
 
     it('should update remove participants from all lectures', () => {
@@ -268,24 +457,20 @@ describe('Selected order actions', () => {
                         publicCourseParticipants: [
                             {
                                 id: 0,
-                                attendingLecture2: true,
-                                attendingLecture3: false,
-                                attendingLecture5: true
+                                lecturesAttending: [2, 4, 6]
                             },
-                            {
-                                id: 9,
-                                attendingLecture5: true,
-                                attendingLecture7: false,
-                            }
+                            {id: 9}
                         ]
 
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
         const expectedOrder = {
             publicCourseParticipants: [
-                {id: 0},
+                {id: 0, lecturesAttending: []},
                 {id: 9}
             ],
             status
@@ -321,6 +506,8 @@ describe('Selected order actions', () => {
                         id,
                         [key]: value
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -361,6 +548,8 @@ describe('Selected order actions', () => {
                         id,
                         organizationId: "1234",
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -392,6 +581,8 @@ describe('Selected order actions', () => {
                     order: {
                         organizationId: "1234",
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -433,6 +624,8 @@ describe('Selected order actions', () => {
                     order: {
                         id
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -467,6 +660,8 @@ describe('Selected order actions', () => {
                         [key]: value,
                         organizationId: "1234",
                     }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };
@@ -502,6 +697,9 @@ describe('Selected order actions', () => {
                         [key]: value,
                         organizationId: "1234",
                     }
+                },
+                selectedPublicCourse: {
+                    publicCourse: {}
                 }
             }
         };

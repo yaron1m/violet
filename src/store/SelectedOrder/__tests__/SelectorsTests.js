@@ -1,5 +1,5 @@
 import Immutable from 'seamless-immutable';
-import {getSelectedOrder, isSelectedOrder} from "../Selectors";
+import {getSelectedOrder, isPublicCourseOrder, isSelectedOrder} from "../Selectors";
 
 const sampleState = Immutable({
     selectedOrder: {
@@ -61,5 +61,32 @@ describe('store/selected/selectors', () => {
     it('should return isSelectedOrder', () => {
         expect(isSelectedOrder(emptyState))
             .toBeFalsy();
+    });
+
+    it('should return true since this is a public course order', () =>{
+        const order = {
+            id: 123,
+            lectureDetailsTabKey: "publicCourseTab"
+        } ;
+
+        expect(isPublicCourseOrder(order)).toBeTruthy();
+    });
+
+    it('should return false since this is an internal order', () =>{
+        const order = {
+            id: 123,
+            lectureDetailsTabKey: "internalTab"
+        } ;
+
+        expect(isPublicCourseOrder(order)).toBeFalsy();
+    });
+
+
+    it('should return false since this is a default order', () =>{
+        const order = {
+            id: 123,
+        } ;
+
+        expect(isPublicCourseOrder(order)).toBeFalsy();
     });
 });

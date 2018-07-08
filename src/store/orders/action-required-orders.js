@@ -5,6 +5,8 @@ import {getOrganizationById} from "../organizations/reducer";
 import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
+import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
+import {getPublicCourseById} from "../PublicCourses/reducer";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);
@@ -31,7 +33,18 @@ export default function getActionRequiredOrdersArray(state) {
                     return;
 
                 case Status.order: {
-                    const firstLectureTimeDate = _.sortBy(order.lectureTimes, time => time.date)[0].date;
+
+                    let firstLectureTimeDate;
+                    if (isPublicCourseOrder(order)) {
+                        const publicCourse = getPublicCourseById(state, order.publicCourseId);
+                        if (!publicCourse) // Data did not load yet
+                            return;
+                        firstLectureTimeDate =  _.sortBy(publicCourse.lectures, lecture => new Date(lecture.date))[0].date;
+                    }
+                    else {
+                        firstLectureTimeDate = _.sortBy(order.lectureTimes, time => new Date(time.date))[0].date;
+                    }
+
                     if (new Date(firstLectureTimeDate) < addTwoWeeks(now.toJSON())) {
                         addOrderToResult(state, result, order, issues.noOrderApproval);
                         return;
@@ -45,7 +58,17 @@ export default function getActionRequiredOrdersArray(state) {
                 case Status.approvedOrder:
                 case Status.isExecuting:
                 case Status.executed: {
-                    const lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -time.date)[0].date;
+                    let lastLectureTimeDate;
+                    if (isPublicCourseOrder(order)) {
+                        const publicCourse = getPublicCourseById(state, order.publicCourseId);
+                        if (!publicCourse) // Data did not load yet
+                            return;
+                        lastLectureTimeDate = _.sortBy(publicCourse.lectures, lecture => -new Date(lecture.date))[0].date;
+                    }
+                    else {
+                        lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -new Date(time.date))[0].date;
+                    }
+
                     if (isEmptyValue(order, "proformaInvoiceNumber") && new Date(lastLectureTimeDate) < now) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                         return;

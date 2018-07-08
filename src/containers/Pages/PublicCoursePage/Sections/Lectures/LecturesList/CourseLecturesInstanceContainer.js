@@ -2,12 +2,13 @@ import {connect} from 'react-redux';
 import CourseLecturesInstance from "./CourseLecturesInstance";
 import PropTypes from "prop-types";
 import {getOfferedLectures} from "../../../../../../store/Lists/Reducer";
+import {toSuggestions} from "../../../../../../components/AutoSuggest";
 
 function mapStateToProps(state, ownProps) {
     return {
         index: ownProps.index,
         lectureId: ownProps.lectureId,
-        offeredLectures: getOfferedLectures(state),
+        offeredLectures: toSuggestions(getOfferedLectures(state)),
     };
 }
 

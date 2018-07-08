@@ -42,7 +42,7 @@ class CustomSelectField extends AbstractCustomField {
 
                     {_.map(this.props.options, option =>
                         _.isObject(option) ?
-                            <MenuItem value={option.key} key={option.key}>{option.key}</MenuItem> :
+                            <MenuItem value={option.key} key={option.key}>{option.label}</MenuItem> :
                             <MenuItem value={option} key={option}>{option}</MenuItem>
                     )}
                 </Select>

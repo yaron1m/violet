@@ -6,7 +6,7 @@ import CustomText from "../../../../../components/CustomComponents/CustomTextFie
 import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../../components/CustomComponents/CustomAutoComplete";
 import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
-import {internalTabKey} from "../LectureDetailsSections/LecturesDetailsSectionContainer";
+import {internalTabKey} from "../../../../../util/Constants/TabKeys";
 import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
 
 function getValues(state, ownProps) {
