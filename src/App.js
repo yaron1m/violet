@@ -57,7 +57,7 @@ export default class App extends React.Component {
                         </div>
 
                         <div style={styles.footer}>
-                            Copyright v2.1.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
+                            Copyright v2.0.1 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
                         </div>
 
                         <AppDialog/>
