@@ -3,6 +3,7 @@ const _ = require("lodash");
 exports.calculateOrderStatus = function (order) {
     if (isPublicCourseOrder(order))
         return order.status;
+
     let possibleStatuses = _.values(terminatingStatuses);
     for (let i = 0; i < possibleStatuses.length; i++) {
         if (meetsRequirements(order, possibleStatuses[i])) {

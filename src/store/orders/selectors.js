@@ -7,6 +7,8 @@ import getActionRequiredOrdersArray from "./action-required-orders";
 import {getLabels} from "../Labels/Reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getOrderStatusLabel} from "../Labels/Selectors";
+import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
+import {getPublicCourseByOrder} from "../PublicCourses/reducer";
 
 export function getOrders(state, status = null) {
     const orders = state.orders;
@@ -104,9 +106,20 @@ export function getOrdersSummary(state, getOrdersFunction) {
             status: getOrderStatusLabel(state, order),
             organizationName: getOrganizationById(state, order.organizationId).organizationName
         };
-        if (!_.isEmpty(order.lectureTimes)) {
-            result.date = order.lectureTimes[0].date;
-            result.topic = order.lectureTimes[0].topic;
+
+        if (isPublicCourseOrder(order)) {
+            const publicCourse = getPublicCourseByOrder(state, order);
+            if (!publicCourse) //Did not load yet.
+                return result;
+
+            result.date = _.minBy(publicCourse.lectures, lecture => new Date(lecture.date)).date;
+            result.topic = getLabels(state).pages.orderPage.sections.lectureDetails.tabs.publicCourseLabel + " " + publicCourse.courseName;
+        }
+        else {
+            if (!_.isEmpty(order.lectureTimes)) {
+                result.date = order.lectureTimes[0].date;
+                result.topic = order.lectureTimes[0].topic;
+            }
         }
 
         return result;

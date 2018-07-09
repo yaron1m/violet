@@ -32,6 +32,10 @@ export function getPublicCourseById(state, id) {
     return getPublicCourses(state)[id];
 }
 
+export function getPublicCourseByOrder(state, order) {
+    return getPublicCourses(state)[order.publicCourseId];
+}
+
 export function getPublicCoursesSummary(state) {
     const courses = getPublicCourses(state);
 
