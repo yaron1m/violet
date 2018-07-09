@@ -15,6 +15,7 @@ export default class CourseDetailsSection extends React.Component {
             <CustomPaper title={this.props.sectionName}>
                 <div style={flexStyle}>
                     <PublicCourseConnectedText name="courseName" size={Sizes.XL}/>
+                    <PublicCourseConnectedText name="courseCity"/>
                     <PublicCourseConnectedText name="courseLocation"/>
                     <PublicCourseConnectedText name="mealCost"/>
                     <PublicCourseConnectedText name="distanceCost"/>

@@ -14,6 +14,7 @@ export const publicCourseLabels = {
     fieldTitles: {
         // Course Details
         courseName: "שם הקורס",
+        courseCity: "עיר",
         courseLocation: "מיקום הקורס",
         mealCost: "עלות ארוחה",
         distanceCost: "עלות נסיעות",
