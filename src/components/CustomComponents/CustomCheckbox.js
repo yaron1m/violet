@@ -23,6 +23,7 @@ export default class CustomCheckbox extends AbstractCustomField {
                         checked={checked}
                         onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
                         value={this.title}
+                        color="primary"
                     />
                 }
                     label={<span style={labelStyle}>{this.title}</span>}
