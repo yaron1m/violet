@@ -52,8 +52,13 @@ export function getFollowUpOrdersSummary(state) {
             followUpDetails: cutIfLong(order.followUpDetails, 30),
             organizationName: cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 20),
         };
-        if (!_.isEmpty(order.lectureTimes)) {
-            result.topic = cutIfLong(order.lectureTimes[0].topic, 15);
+        if (isPublicCourseOrder(order)) {
+            result.topic = getLabels(state).orderTypes.publicCourse;
+        }
+        else {
+            if (!_.isEmpty(order.lectureTimes)) {
+                result.topic = cutIfLong(order.lectureTimes[0].topic, 15);
+            }
         }
         return result;
     }
@@ -82,13 +87,18 @@ export function getExpectedIncomeOrders(state, status) {
             id: order.id,
             status: cutIfLong(getOrderStatusLabel(state, order), 20),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
+            expectedPayDate: order.expectedPayDate,
+            totalSum: moneyFormat(order.totalSum, getLabels(state).currencyIcon),
+            organizationName: cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 25),
         };
-        if (!_.isEmpty(order.lectureTimes)) {
-            result.lectureDate = order.lectureTimes[0].date;
-            result.topic = cutIfLong(order.lectureTimes[0].topic, 25);
-            result.expectedPayDate = order.expectedPayDate;
-            result.totalSum = moneyFormat(order.totalSum, getLabels(state).currencyIcon);
-            result.organizationName = cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 25);
+        if (isPublicCourseOrder(order)) {
+            result.topic = getLabels(state).orderTypes.publicCourse;
+        }
+        else {
+            if (!_.isEmpty(order.lectureTimes)) {
+                result.lectureDate = order.lectureTimes[0].date;
+                result.topic = cutIfLong(order.lectureTimes[0].topic, 25);
+            }
         }
 
         return result;

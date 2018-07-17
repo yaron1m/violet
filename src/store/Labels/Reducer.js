@@ -19,6 +19,8 @@ export default function labels() {
             logOut: "יציאה",
         },
         pages,
-
+        orderTypes: {
+            publicCourse: "קורס ציבורי"
+        }
     };
 }
