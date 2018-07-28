@@ -59,6 +59,7 @@
     "email": "yaron1m@gmail.com"
   },
   "jest": {
+    "testURL": "http://localhost/",
     "setupFiles": [
       "raf/polyfill"
     ]
