@@ -27,7 +27,6 @@
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "firebase-tools": "^3.18.5",
     "jest": "^23.0.0",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.3.2",
