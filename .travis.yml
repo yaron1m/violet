@@ -3,10 +3,10 @@ cache: bundler
 node_js:
   - "node"
 before_script:
-- npm install --prefix client
+- npm run client-install
 script:
-- npm run build-client
-- npm run test-client
+- npm run client-build
+- npm run client-test
 - npm run lint
 after_success:
 - firebase deploy --token $FIREBASE_TOKEN -P development --only hosting

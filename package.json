@@ -4,10 +4,11 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "main": "server.js",
   "scripts": {
-    "build-client": "npm run build --prefix client",
+    "client": "npm start --prefix client",
+    "client-build": "npm run build --prefix client",
+    "client-install": "npm install --prefix client",
+    "client-test": "npm test --prefix client",
     "lint": "eslint client/src --fix",
-    "start-client": "npm start --prefix client",
-    "test-client": "npm test --prefix client",
     "watch-client": "npm run watch --prefix client"
   },
   "author": "Yaron Malin",
