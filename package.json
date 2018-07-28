@@ -8,7 +8,7 @@
     "build-client": "npm run build --prefix client",
     "start-client": "npm start --prefix client",
     "test-client": "npm test --prefix client",
-    "watcg-client": "npm watc --prefix client"
+    "watch-client": "npm run watch --prefix client"
   },
   "author": "Yaron Malin",
   "license": "MIT",

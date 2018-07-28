@@ -39,7 +39,7 @@
     "build": "react-scripts build",
     "start": "react-scripts start",
     "test": "jest --setupTestFrameworkScriptFile ./setupTests.js",
-    "watch": "npm test -- --watch"
+    "watch": "npm test --watch"
   },
   "author": {
     "name": "Yaron Malin",
