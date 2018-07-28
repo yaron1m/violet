@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint client/src --fix",
-    "test": "npm test --prefix client"
+    "build-client": "npm run build --prefix client",
+    "test-client": "npm test --prefix client"
   },
   "author": "Yaron Malin",
   "license": "MIT",

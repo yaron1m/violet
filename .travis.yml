@@ -1,11 +1,12 @@
 language: node_js
+cache: bundler
 node_js:
   - "node"
 before_script:
 - npm install --prefix client
 script:
-- npm run build --prefix client
-- npm test
+- npm run build-client
+- npm run test
 - npm run lint
 after_success:
 - firebase deploy --token $FIREBASE_TOKEN -P development --only hosting
