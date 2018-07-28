@@ -14,7 +14,7 @@ describe('addNewParticipant', () => {
             ]
         };
 
-        addNewParticipant(selectedOrder, updateSelectedOrder, );
+        addNewParticipant(selectedOrder, updateSelectedOrder);
 
         expect(updateSelectedOrder.mock.calls).toHaveLength(1);
         expect(updateSelectedOrder).toBeCalledWith("publicCourseParticipants", [{id: 0}, {id: 3}, {id: 7}, {}]);
@@ -23,7 +23,7 @@ describe('addNewParticipant', () => {
     it('should add new participant when there are no participants', () => {
         const selectedOrder = {};
 
-        addNewParticipant(selectedOrder, updateSelectedOrder, );
+        addNewParticipant(selectedOrder, updateSelectedOrder);
 
         expect(updateSelectedOrder.mock.calls).toHaveLength(1);
         expect(updateSelectedOrder).toBeCalledWith("publicCourseParticipants", [{}]);
@@ -34,7 +34,7 @@ describe('addNewParticipant', () => {
             publicCourseParticipants: []
         };
 
-        addNewParticipant(selectedOrder, updateSelectedOrder, );
+        addNewParticipant(selectedOrder, updateSelectedOrder);
 
         expect(updateSelectedOrder.mock.calls).toHaveLength(1);
         expect(updateSelectedOrder).toBeCalledWith("publicCourseParticipants", [{}]);
