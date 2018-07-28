@@ -1,8 +1,7 @@
 {
-  "name": "violet",
+  "name": "violet-client",
   "version": "3.0.0",
   "description": "Customer Relationship Manager for C-Point LTD",
-  "private": true,
   "dependencies": {
     "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.1.0",
