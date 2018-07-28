@@ -6,7 +6,7 @@ before_script:
 - npm install --prefix client
 script:
 - npm run build-client
-- npm run test
+- npm run test-client
 - npm run lint
 after_success:
-- firebase deploy --token $FIREBASE_TOKEN -P development --only hosting
+- cd client && firebase deploy --token $FIREBASE_TOKEN -P development --only hosting

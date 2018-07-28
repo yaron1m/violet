@@ -4,8 +4,8 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint client/src --fix",
     "build-client": "npm run build --prefix client",
+    "lint": "eslint client/src --fix",
     "start-client": "npm start --prefix client",
     "test-client": "npm test --prefix client",
     "watch-client": "npm run watch --prefix client"
