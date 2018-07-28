@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint src --fix",
-    "test": "jest --setupTestFrameworkScriptFile ./setupTests.js"
+    "test": "cd client && npm run test"
   },
   "author": "Yaron Malin",
   "license": "MIT"
