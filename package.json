@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint client/src --fix",
     "build-client": "npm run build --prefix client",
-    "test-client": "npm test --prefix client"
+    "start-client": "npm start --prefix client",
+    "test-client": "npm test --prefix client",
+    "watcg-client": "npm watc --prefix client"
   },
   "author": "Yaron Malin",
   "license": "MIT",
