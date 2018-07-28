@@ -4,8 +4,8 @@ node_js:
 before_script:
 - npm install --prefix client
 script:
+- npm run build --prefix client
 - npm test
 - npm run lint
-- npm run build
 after_success:
 - firebase deploy --token $FIREBASE_TOKEN -P development --only hosting

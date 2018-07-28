@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import Sizes from "../../util/Constants/Sizes";
 
+// eslint-disable-next-line react/no-deprecated
 export default class AbstractCustomField extends React.Component {
     constructor(props) {
         super();

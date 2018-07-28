@@ -4,7 +4,7 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint client --fix",
+    "lint": "eslint client/src --fix",
     "test": "npm test --prefix client"
   },
   "author": "Yaron Malin",
