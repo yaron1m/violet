@@ -46,10 +46,10 @@
     "redux-test-utils": "^0.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src --fix",
+    "start": "react-scripts start",
     "test": "jest --setupTestFrameworkScriptFile ./setupTests.js",
     "watch": "npm test -- --watch"
   },
