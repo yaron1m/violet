@@ -6,6 +6,7 @@
   "scripts": {
     "client": "npm start --prefix client",
     "client-build": "npm run build --prefix client",
+    "client-deploy": "npm run client-test && npm run client-build && firebase deploy -P default",
     "client-install": "npm install --prefix client",
     "client-test": "npm test --prefix client",
     "lint": "eslint client/src --fix",
