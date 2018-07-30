@@ -3,6 +3,7 @@ export const publicCourseLabels = {
     sections: {
         courseDetailsSectionName: "פרטי הקורס",
         courseLecturesSectionName: "הרצאות",
+        courseParticipantsSectionName: "משתתפים",
     },
     actionButtons: {
         save: "שמור קורס",
@@ -37,4 +38,12 @@ export const publicCourseLabels = {
         guestLecturerName: "שם מרצה אורח",
         guestLecturerCost: "עלות מרצה אורח",
     },
+    participantsTableHeaders: [
+        {orderId: "מספר הזמנה"},
+        {participantFirstName: "שם פרטי"},
+        {participantLastName: "שם משפחה"},
+        {organizationName: "ארגון"},
+        {lecturesAttending: "ימים"},
+        {participantCost: "מחיר השתתפות"},
+    ]
 };

@@ -6,7 +6,7 @@ import {getLabels} from "../Labels/Reducer";
 import Status from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
-import {getPublicCourseById} from "../PublicCourses/reducer";
+import {getPublicCourseById} from "../PublicCourses/Selectors";
 
 export default function getActionRequiredOrdersArray(state) {
     const orders = getOrders(state);

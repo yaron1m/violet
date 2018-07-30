@@ -2,6 +2,7 @@ import React from 'react';
 import PublicCoursePageTitle from './PublicCoursePageTitleContainer';
 import PublicCoursePageSections from './Sections';
 import PublicCourseActionButtons from "./ActionButtons";
+import CourseParticipantsTableContainer from "./Sections/CourseParticipants/CourseParticipantsTableContainer";
 
 export default class OrderForm extends React.Component {
 
@@ -10,11 +11,12 @@ export default class OrderForm extends React.Component {
         return (
             <div>
                 <PublicCoursePageTitle/>
-                {/*<OrderEditTimes/>*/}
 
                 <PublicCourseActionButtons/>
 
                 <PublicCoursePageSections/>
+
+                <CourseParticipantsTableContainer/>
             </div>
         );
     }

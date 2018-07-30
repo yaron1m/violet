@@ -8,7 +8,7 @@ import {getLabels} from "../Labels/Reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
-import {getPublicCourseByOrder} from "../PublicCourses/reducer";
+import {getPublicCourseByOrder} from "../PublicCourses/Selectors";
 
 export function getOrders(state, status = null) {
     const orders = state.orders;

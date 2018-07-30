@@ -3,7 +3,7 @@ import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../store/Labels/Reducer";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../components/tables/CustomPaperTable";
-import {getPublicCoursesSummary} from "../../../store/PublicCourses/reducer";
+import {getPublicCoursesSummary} from "../../../store/PublicCourses/Selectors";
 
 function mapStateToProps(state) {
     return {
