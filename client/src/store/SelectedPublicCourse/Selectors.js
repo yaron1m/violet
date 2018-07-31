@@ -58,7 +58,7 @@ export function getSelectedPublicCourseParticipants(state) {
 }
 
 //TODO test
-export function getLecturesParticipantsCount(state) {
+export function getLecturesDetails(state) {
     const lectures = getSelectedPublicCourseLectures(state);
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
 

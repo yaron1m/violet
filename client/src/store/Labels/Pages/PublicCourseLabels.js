@@ -3,6 +3,8 @@ export const publicCourseLabels = {
     sections: {
         courseDetailsSectionName: "פרטי הקורס",
         courseLecturesSectionName: "הרצאות",
+        courseLectureDetailsSectionName: "פרטי ההרצאות",
+        courseIncomeSum: "הכנסות בקורס: ",
         courseParticipantsSectionName: "משתתפים",
     },
     actionButtons: {
@@ -46,5 +48,12 @@ export const publicCourseLabels = {
         {status: "סטאטוס"},
         {lecturesAttending: "ימים"},
         {participantCost: "מחיר השתתפות"},
+    ],
+    LectureDetailsTableHeaders: [
+        {date: "תאריך"},
+        {topic: "נושא"},
+        {participantsCount: "מספר משתתפים"},
+        {price: "מחיר ללקוח"},
+        {income: "הכנסות"},
     ]
 };
