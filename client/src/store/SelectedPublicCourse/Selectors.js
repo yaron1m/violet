@@ -59,7 +59,7 @@ export function getSelectedPublicCourseParticipants(state) {
 
 //TODO test
 export function getLecturesDetails(state) {
-    const lectures = getSelectedPublicCourseLectures(state);
+    const lectures = _.filter(getSelectedPublicCourseLectures(state), x => x.active);
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
 
     const participantsCount = {};
