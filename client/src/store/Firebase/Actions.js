@@ -103,6 +103,7 @@ export function afterSignedIn(user) {
             userId: user.uid,
             displayName: user.displayName,
             photoURL: user.photoURL,
+            isSuperUser: user.email.toLowerCase().includes("asaf"),
         });
         dispatch(fetchData('organizations', receiveOrganizations));
         dispatch(fetchData('orders', receiveOrders));

@@ -1,32 +1,35 @@
 import * as actionTypes from './ActionTypes';
 import _ from 'lodash';
-import Immutable from 'seamless-immutable';
-import {getOrders} from "../orders/selectors";
 import {getOrganizations} from "../organizations/reducer";
+import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
+import {getOrders} from "../orders/selectors";
 
-const initialState = Immutable({
+const initialState = createImmutable({
     loggedIn: undefined,
     userId: undefined,
     displayName: "",
     photoURL: "",
+    isSuperUser: false,
 });
 
 export default function (state = initialState, action = {}) {
     switch (action.type) {
         case actionTypes.LOGGED_IN:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 loggedIn: true,
                 userId: action.userId,
                 displayName: action.displayName,
                 photoURL: action.photoURL,
+                isSuperUser: action.isSuperUser
             });
 
         case actionTypes.LOGGED_OUT:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 loggedIn: false,
                 userId: undefined,
                 displayName: "",
                 photoURL: "",
+                isSuperUser: false
             });
 
         default:
@@ -43,4 +46,8 @@ export function isFetching(state) {
     const fetchedOrganizations = _.isEmpty(getOrganizations(state));
 
     return fetchedOrders || fetchedOrganizations;
+}
+
+export function isSuperUser(state){
+    return state.firebase.isSuperUser;
 }

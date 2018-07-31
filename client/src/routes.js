@@ -8,7 +8,6 @@ import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
 import {isLoggedIn} from "./store/Firebase/Reducer";
 import connect from "react-redux/es/connect/connect";
 import {isRTL} from "./store/Appearance/Reducer";
-import HomePage from "./containers/Pages/Dashboard";
 import PaymentPage from "./containers/Pages/WaitingPaymentPage";
 import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./containers/Pages/FutureLecturesPage";
@@ -18,6 +17,7 @@ import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
 import PrintOrderPage from "./containers/Pages/PrintOrderPage/PrintOrderPageContainer";
 import history from './util/History'
 import PropTypes from "prop-types";
+import DashboardContainer from "./containers/Pages/Dashboard/DashboardContainer";
 
 class Root extends React.Component {
 
@@ -25,7 +25,7 @@ class Root extends React.Component {
         return (
             <Router history={history}>
                 <App isLoggedIn={this.props.isLoggedIn} rtl={this.props.rtl}>
-                    <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/" component={DashboardContainer}/>
                     <Route path="/form" component={LectureForm}/>
                     <Route path="/publicCourse" component={PublicCourse}/>
                     <Route path="/org" component={OrganizationPage}/>
