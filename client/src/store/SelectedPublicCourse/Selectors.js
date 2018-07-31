@@ -1,6 +1,8 @@
 import {getOrders} from "../orders/selectors";
 import _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
+import {getLabels, getStatusLabel} from "../Labels/Reducer";
+import {moneyFormat} from "../../util/StringUtil";
 
 export function getSelectedPublicCourse(state) {
     return state.selectedPublicCourse.publicCourse;
@@ -25,9 +27,10 @@ export function getSelectedPublicCourseParticipants(state) {
             return {
                 participantFirstName: participant.participantFirstName,
                 participantLastName: participant.participantLastName,
-                lecturesAttending: participant.lecturesAttending,
-                participantCost: participant.participantCost,
+                lecturesAttending: participant.lecturesAttending.length,
+                participantCost: moneyFormat(participant.participantCost, getLabels(state).currencyIcon),
                 orderId: order.id,
+                status: getStatusLabel(state, order.status),
                 organizationName,
             }
         })

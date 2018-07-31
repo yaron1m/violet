@@ -8,6 +8,10 @@ export function getStatusLabels(state) {
     return getLabels(state).pages.orderPage.orderStatus
 }
 
+export function getStatusLabel(state, status){
+    return getStatusLabels(state)[status];
+}
+
 export default function labels() {
     return {
         softwareName: "Violet",
