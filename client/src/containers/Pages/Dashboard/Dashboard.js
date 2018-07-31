@@ -7,25 +7,33 @@ import ExpectedIncomeInfoBox from "./InfoBoxes/ExpectedIncomeInfoBox";
 import WaitingPaymentInfoBox from "./InfoBoxes/WaitingPaymentInfoBox";
 import NewPublicCourseNavigationButton from "./NavigationButtons/NewPublicCourseNavigationButton";
 import AllPublicCoursesNavigationButton from "./NavigationButtons/AllPublicCoursesNavigationButton";
+import PropTypes from "prop-types";
 
-export default class HomePage extends React.Component {
-    render() {
-        return (
-            <div>
-                <div style={{display: "flex"}}>
-                    <NewOrderNavigationButton/>
-                    <AllOrdersNavigationButton/>
-                    <NewPublicCourseNavigationButton/>
-                    <AllPublicCoursesNavigationButton/>
-                </div>
+export default function Dashboard(props) {
+    return (
+        <div>
+            <div style={{display: "flex"}}>
+                <NewOrderNavigationButton/>
+                <AllOrdersNavigationButton/>
+                <NewPublicCourseNavigationButton/>
+                <AllPublicCoursesNavigationButton/>
+            </div>
 
+            {props.isSuperUser ?
                 <div style={{display: "flex"}}>
                     <FutureLecturesInfoBox/>
                     <FollowUpInfoBox/>
                     <ExpectedIncomeInfoBox/>
                     <WaitingPaymentInfoBox/>
                 </div>
-            </div>
-        );
-    }
+
+                : null
+            }
+
+        </div>
+    );
 }
+
+Dashboard.propTypes = {
+    isSuperUser: PropTypes.bool.isRequired,
+};
