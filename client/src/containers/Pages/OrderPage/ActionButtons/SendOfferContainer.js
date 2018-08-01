@@ -30,7 +30,9 @@ function getLink(selectedOrder, selectedOrganizationName) {
 function parameter(key, value, first = false) {
     if (value === undefined || value === null)
         return "";
-    return (first ? "" : "&") + key + "=" + value;
+
+    const encodedValue = _.replace(value, "\"", "%22");
+    return (first ? "" : "&") + key + "=" + encodedValue;
 }
 
 function arrayToParameterValue(array) {
