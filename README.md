@@ -11,6 +11,3 @@ A live version of the app can be found [here](https://violet.c-point.co.il/).
 
 ## Author
 **Yaron Malin** - [LinkedIn](https://www.linkedin.com/in/yaron-malin/)
-
-## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
