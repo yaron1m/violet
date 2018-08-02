@@ -14,7 +14,6 @@
     "watch-client": "npm run watch --prefix client"
   },
   "author": "Yaron Malin",
-  "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "babel-jest": "^23.0.0",
