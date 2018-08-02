@@ -8,7 +8,6 @@ export function getSelectedPublicCourse(state) {
     return state.selectedPublicCourse.publicCourse;
 }
 
-//TODO test
 export function getSelectedPublicCourseLectures(state) {
     const course = getSelectedPublicCourse(state);
     if (!course)
@@ -25,8 +24,7 @@ export function isSelectedPublicCourse(state) {
     return state.selectedPublicCourse.isSelectedPublicCourse;
 }
 
-//TODO test
-function getSelectedCourseParticipantsAndOrders(state) {
+export function getSelectedCourseParticipantsAndOrders(state) {
     const orders = getOrders(state);
     const courseId = getSelectedPublicCourse(state).id;
     const publicCourseOrders = _.filter(orders, order => order.publicCourseId === courseId);
