@@ -38,7 +38,6 @@ export function getSelectedCourseParticipantsAndOrders(state) {
     )
 }
 
-//TODO test
 export function getSelectedPublicCourseParticipants(state) {
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
     return _.map(ordersAndParticipants, ({order, participant}) => {
@@ -46,7 +45,7 @@ export function getSelectedPublicCourseParticipants(state) {
         return {
             participantFirstName: participant.participantFirstName,
             participantLastName: participant.participantLastName,
-            lecturesAttending: participant.lecturesAttending.length,
+            numberOfLecturesAttending: participant.lecturesAttending.length,
             participantCost: moneyFormat(participant.participantCost, getLabels(state).currencyIcon),
             orderId: order.id,
             status: getStatusLabel(state, order.status),

@@ -46,7 +46,7 @@ export const publicCourseLabels = {
         {participantLastName: "שם משפחה"},
         {organizationName: "ארגון"},
         {status: "סטאטוס"},
-        {lecturesAttending: "ימים"},
+        {numberOfLecturesAttending: "ימים"},
         {participantCost: "מחיר השתתפות"},
     ],
     LectureDetailsTableHeaders: [

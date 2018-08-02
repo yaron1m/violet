@@ -3,8 +3,18 @@ import {
     getSelectedPublicCourse,
     getSelectedPublicCourseLectures,
     isSelectedPublicCourse,
-    getSelectedCourseParticipantsAndOrders
+    getSelectedCourseParticipantsAndOrders, getSelectedPublicCourseParticipants
 } from "../Selectors";
+import * as lableReducers from "../../Labels/Reducer";
+
+function getParticipant(id) {
+    return {
+        participantFirstName: "first" + id,
+        participantLastName: "last" + id,
+        lecturesAttending: [id, id + 1, id + 2],
+        participantCost: id * 100,
+    }
+}
 
 const state = Immutable({
     selectedPublicCourse: {
@@ -22,29 +32,37 @@ const state = Immutable({
     orders: {
         123: {
             id: 123,
+            organizationId: 10,
             publicCourseId: 555,
             publicCourseParticipants: [
-                {name: "Alpha"},
-                {name: "Bravo"}
+                getParticipant(1),
+                getParticipant(2),
             ]
         },
         124: {
             id: 124,
+            organizationId: 10,
             publicCourseId: 333,
             publicCourseParticipants: [
-                {name: "Charlie"},
-                {name: "Delta"}
+                getParticipant(3),
+                getParticipant(4),
             ]
         },
         125: {
             id: 125,
+            organizationId: 11,
             publicCourseId: 555,
             publicCourseParticipants: [
-                {name: "Echo"},
-                {name: "Foxtrot"}
+                getParticipant(5),
+                getParticipant(6),
             ]
         },
-    }
+    },
+    organizations: {
+        10: {organizationName: "OrgA"},
+        11: {organizationName: "OrgB"}
+    },
+    labels: {currencyIcon: "X"}
 });
 
 const emptyState = Immutable({
@@ -94,10 +112,55 @@ describe('store/selected/selectors', () => {
     it('should return tuples of orders and participants of matching course', () => {
         expect(getSelectedCourseParticipantsAndOrders(state))
             .toEqual([
-                {order: state.orders[123], participant: {name: "Alpha"}},
-                {order: state.orders[123], participant: {name: "Bravo"}},
-                {order: state.orders[125], participant: {name: "Echo"}},
-                {order: state.orders[125], participant: {name: "Foxtrot"}},
+                {order: state.orders[123], participant: state.orders[123].publicCourseParticipants[0]},
+                {order: state.orders[123], participant: state.orders[123].publicCourseParticipants[1]},
+                {order: state.orders[125], participant: state.orders[125].publicCourseParticipants[0]},
+                {order: state.orders[125], participant: state.orders[125].publicCourseParticipants[1]},
             ]);
+    });
+
+    it('should return tuples of orders and participants of matching course', () => {
+        lableReducers.getStatusLabel = jest.fn();
+        const result = getSelectedPublicCourseParticipants(state);
+
+        expect(result).toHaveLength(4);
+
+        expect(result[0]).toEqual({
+            participantFirstName: "first1",
+            participantLastName: "last1",
+            numberOfLecturesAttending: 3,
+            participantCost: "100.00 X",
+            orderId: 123,
+            status: undefined,
+            organizationName: "OrgA",
+        });
+        expect(result[1]).toEqual({
+            participantFirstName: "first2",
+            participantLastName: "last2",
+            numberOfLecturesAttending: 3,
+            participantCost: "200.00 X",
+            orderId: 123,
+            status: undefined,
+            organizationName: "OrgA",
+        });
+        expect(result[2]).toEqual({
+            participantFirstName: "first5",
+            participantLastName: "last5",
+            numberOfLecturesAttending: 3,
+            participantCost: "500.00 X",
+            orderId: 125,
+            status: undefined,
+            organizationName: "OrgB",
+        });
+        expect(result[3]).toEqual({
+            participantFirstName: "first6",
+            participantLastName: "last6",
+            numberOfLecturesAttending: 3,
+            participantCost: "600.00 X",
+            orderId: 125,
+            status: undefined,
+            organizationName: "OrgB",
+        });
+
     });
 });
