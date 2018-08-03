@@ -55,7 +55,6 @@ const styles = {
     }
 };
 
-//TODO test this
 function renderSuggestion(suggestion) {
     let icon;
     switch (suggestion.info.type) {
@@ -70,7 +69,7 @@ function renderSuggestion(suggestion) {
         case sourceTypes.publicCourseParticipant:
             icon = <PersonIcon style={styles.publicCourseParticipantIcon}/>;
             break;
-            
+
         default:
             icon = null;
     }
@@ -115,7 +114,7 @@ export function getSuggestions(organizations, orders, publicCourseParticipants) 
     const participantsObjects = _.values(publicCourseParticipants).map(
         participant => ({
             label: `${participant.orderId} - ${organizations[participant.organizationId].organizationName} - ` +
-            `${participant.participantFirstName} ${participant.participantLastName}`,
+            `${participant.participantFirstName} ${participant.participantLastName} - ${participant.publicCourseName}`,
             info: {
                 type: sourceTypes.publicCourseParticipant,
                 orderId: participant.orderId,
