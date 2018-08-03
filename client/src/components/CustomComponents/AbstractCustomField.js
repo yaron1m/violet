@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import Sizes from "../../util/Constants/Sizes";
+import {updateObject} from "../../util/ObjectUpdater";
 
-// eslint-disable-next-line react/no-deprecated
 export default class AbstractCustomField extends React.Component {
     constructor(props) {
         super();
@@ -12,11 +12,12 @@ export default class AbstractCustomField extends React.Component {
         this.name = props.name;
         this.title = props.titles[props.name];
         this.updateAction = props.updateAction;
-        this.requiredFields = props.requiredFields;
 
         this.width = getWidth(props);
         this.state = {
-            value: props.values[props.name]
+            value: props.values[props.name],
+            name: props.name,
+            isRequired: _.includes(props.requiredFields, props.name)
         };
 
         this.basicStyle = {
@@ -34,15 +35,24 @@ export default class AbstractCustomField extends React.Component {
             throw Error(`Field "${props.name}" - updateAction must be a function`);
     }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        const name = prevState.name;
+        const updatedState = {};
+        if (nextProps.values[name] !== prevState.value) {
+            updatedState.value = nextProps.values[name] ? nextProps.values[name] : "";
+        }
 
-    //TODO fix deprecated function
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.values[this.name] !== this.state.value)
-            this.setState(Object.assign({}, this.state, {
-                value: nextProps.values[this.name] ? nextProps.values[this.name] : ""
-            }));
+        if (prevState.isRequired && !_.includes(nextProps.requiredFields, name)) {
+            updatedState.isRequired = false;
+        }
+        else if (!prevState.isRequired && _.includes(nextProps.requiredFields, name)) {
+            updatedState.isRequired = true;
+        }
 
-        this.requiredFields = nextProps.requiredFields;
+        if (_.isEmpty(updatedState))
+            return null;
+
+        return updateObject(prevState, updatedState);
     }
 
     handleChange(newValue) {
@@ -50,7 +60,7 @@ export default class AbstractCustomField extends React.Component {
     }
 
     shouldShowError() {
-        return !this.state.value && !_.isEmpty(this.requiredFields) && _.includes(this.requiredFields, this.name);
+        return !this.state.value && this.state.isRequired;
     }
 }
 
