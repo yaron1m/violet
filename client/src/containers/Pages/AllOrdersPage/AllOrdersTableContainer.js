@@ -7,11 +7,20 @@ import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import PropTypes from "prop-types";
 
+export function getElements(state, ownProps) {
+    return _.reverse(getOrdersSummary(state, (state) => getOrders(state, ownProps.filterStatus)));
+}
+
+export function onEditButton(dispatch, orderId){
+    dispatch(selectOrder(orderId));
+    redirect('/form');
+}
+
 function mapStateToProps(state, ownProps) {
     return {
         title: getLabels(state).pages.allOrdersPage.title,
         tableHeaders: getLabels(state).pages.allOrdersPage.tableHeaders,
-        elements: _.reverse(getOrdersSummary(state, (state) => getOrders(state, ownProps.filterStatus))),
+        elements: getElements(state, getElements),
         rowIndexKey: "id",
         beforeTable: ownProps.beforeTable,
         limit: ownProps.limit,
@@ -20,10 +29,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onEditButton: (orderId) => {
-            dispatch(selectOrder(orderId));
-            redirect('/form');
-        },
+        onEditButton: (orderId) => onEditButton(dispatch, orderId),
     };
 }
 
