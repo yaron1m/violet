@@ -37,17 +37,11 @@
   "scripts": {
     "build": "react-scripts build",
     "start": "react-scripts start",
-    "test": "jest --setupTestFrameworkScriptFile ./setupTests.js",
+    "test": "jest --testURL http://localhost/",
     "watch": "npm test --watch"
   },
   "author": {
     "name": "Yaron Malin",
     "email": "yaron1m@gmail.com"
-  },
-  "jest": {
-    "testURL": "http://localhost/",
-    "setupFiles": [
-      "raf/polyfill"
-    ]
   }
 }
