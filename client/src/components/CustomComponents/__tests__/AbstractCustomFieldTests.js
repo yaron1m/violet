@@ -22,7 +22,6 @@ function setup(otherProps) {
     };
 
     return new AbstractCustomField(props);
-
 }
 
 describe('Abstract Field Class', () => {
@@ -32,7 +31,11 @@ describe('Abstract Field Class', () => {
 
         expect(target.name).toEqual("organizationName");
         expect(target.title).toEqual("שם הארגון");
-        expect(target.state).toEqual({value: "Google"});
+        expect(target.state).toEqual({
+            name: "organizationName",
+            value: "Google",
+            isRequired: false,
+        });
         expect(target.basicStyle).toEqual({
             marginRight: 20,
             marginBottom: 10,
@@ -59,47 +62,139 @@ describe('Abstract Field Class', () => {
         expect(() => setup({updateAction: null})).toThrow();
     });
 
-    it('componentWillReceiveProps - value not changed - state not changed', () => {
-        const target = setup();
-        target.setState = jest.fn();
+    it('should return null when value is not changed', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: false,
+        };
 
         const newProps = {
             values: {
                 organizationName: "Google",
             },
         };
-        target.componentWillReceiveProps(newProps);
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
 
-        expect(target.setState.mock.calls).toHaveLength(0);
+        expect(result).toBeNull();
     });
 
-
-    it('componentWillReceiveProps - value changed - state changed', () => {
-        const target = setup();
-        target.setState = jest.fn();
+    it('should return state with a new value', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: false,
+        };
 
         const newProps = {
             values: {
                 organizationName: "Amazon",
             },
         };
-        target.componentWillReceiveProps(newProps);
 
-        expect(target.setState.mock.calls).toHaveLength(1);
-        expect(target.setState.mock.calls[0][0].value).toBe("Amazon");
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
+        const expectedResult = {
+            ...state,
+            value: "Amazon",
+        };
+
+        expect(result).toEqual(expectedResult);
     });
 
-    it('componentWillReceiveProps - value changed to undefined - state changed to empty string', () => {
-        const target = setup();
-        target.setState = jest.fn();
+    it('should return value as empty string when value changed to undefined', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: false,
+        };
 
         const newProps = {
             values: {},
         };
-        target.componentWillReceiveProps(newProps);
 
-        expect(target.setState.mock.calls).toHaveLength(1);
-        expect(target.setState.mock.calls[0][0].value).toBe("");
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
+        const expectedResult = {
+            ...state,
+            value: "",
+        };
+
+        expect(result).toEqual(expectedResult);
+    });
+
+    it('should mark isRequired as true when name is in required array', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: false,
+        };
+
+        const newProps = {
+            values: {
+                organizationName: "Google",
+            },
+            requiredFields: ["organizationName"]
+        };
+
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
+
+        expect(result.isRequired).toBeTruthy();
+    });
+
+    it('should mark isRequired as false when name is no longer required', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: true,
+        };
+
+        const newProps = {
+            values: {
+                organizationName: "Google",
+            },
+            requiredFields: ["otherField"]
+        };
+
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
+
+        expect(result.isRequired).toBeFalsy();
+    });
+
+    it('should not update state if was required and still not required', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: false,
+        };
+
+        const newProps = {
+            values: {
+                organizationName: "Google",
+            },
+            requiredFields: ["otherField"]
+        };
+
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
+
+        expect(result).toBeNull();
+    });
+
+    it('should not update state if was required and still required', () => {
+        const state = {
+            name: "organizationName",
+            value: "Google",
+            isRequired: true,
+        };
+
+        const newProps = {
+            values: {
+                organizationName: "Google",
+            },
+            requiredFields: ["organizationName"]
+        };
+
+        const result = AbstractCustomField.getDerivedStateFromProps(newProps, state);
+
+        expect(result).toBeNull();
     });
 
     it('handleChange - new value - called with the name', () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
-import * as _ from "lodash";
 import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../util/Constants/Colors";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 export default class CustomToggle extends AbstractCustomField {
 
     showError() {
-        return this.state.value === undefined && _.includes(this.requiredFields, this.name);
+        return this.state.isRequired && this.state.value === undefined;
     }
 
     render() {
