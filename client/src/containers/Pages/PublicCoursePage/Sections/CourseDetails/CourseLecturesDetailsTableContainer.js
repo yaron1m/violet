@@ -20,8 +20,7 @@ function mapStateToProps(state) {
         title: getLabels(state).pages.publicCoursePage.sections.courseLectureDetailsSectionName,
         elements: details,
         tableHeaders: getLabels(state).pages.publicCoursePage.LectureDetailsTableHeaders,
-        onEditButton: function () {
-        },
+        onEditButton: () => {},
         beforeTable: getBeforeTableDiv(getLabels(state), details),
     };
 }

@@ -3,7 +3,7 @@ import {
     getSelectedPublicCourse,
     getSelectedPublicCourseLectures,
     isSelectedPublicCourse,
-    getSelectedCourseParticipantsAndOrders, getSelectedPublicCourseParticipants
+    getSelectedCourseParticipantsAndOrders, getSelectedPublicCourseParticipants, getLecturesDetails
 } from "../Selectors";
 import * as lableReducers from "../../Labels/Reducer";
 
@@ -11,7 +11,7 @@ function getParticipant(id) {
     return {
         participantFirstName: "first" + id,
         participantLastName: "last" + id,
-        lecturesAttending: [id, id + 1, id + 2],
+        lecturesAttending: [0, 1],
         participantCost: id * 100,
     }
 }
@@ -21,10 +21,34 @@ const state = Immutable({
         publicCourse: {
             id: 555,
             lectures: [
-                {id: 0, date: "2018-07-01"},
-                {id: 1, date: "2018-08-01"},
-                {id: 2, date: "2018-06-01"},
-                {id: 3, date: "2018-05-01"},
+                {
+                    id: 0,
+                    date: "2018-07-01",
+                    active: true,
+                    topic: "T1",
+                    price: "1000",
+                },
+                {
+                    id: 1,
+                    date: "2018-08-01",
+                    active: true,
+                    topic: "T2",
+                    price: "2000",
+                },
+                {
+                    id: 2,
+                    date: "2018-06-01",
+                    active: false,
+                    topic: "T3",
+                    price: "3000",
+                },
+                {
+                    id: 3,
+                    date: "2018-05-01",
+                    active: true,
+                    topic: "T4",
+                    price: "4000",
+                },
             ]
         },
         isSelectedPublicCourse: true
@@ -102,10 +126,9 @@ describe('store/selected/selectors', () => {
     it('should return lectures sorted by date', () => {
         expect(getSelectedPublicCourseLectures(state))
             .toEqual([
-                {id: 3, date: "2018-05-01"},
-                {id: 2, date: "2018-06-01"},
-                {id: 0, date: "2018-07-01"},
-                {id: 1, date: "2018-08-01"},
+                state.selectedPublicCourse.publicCourse.lectures[3],
+                state.selectedPublicCourse.publicCourse.lectures[0],
+                state.selectedPublicCourse.publicCourse.lectures[1],
             ]);
     });
 
@@ -119,7 +142,7 @@ describe('store/selected/selectors', () => {
             ]);
     });
 
-    it('should return tuples of orders and participants of matching course', () => {
+    it('should return summary of participants of matching course', () => {
         lableReducers.getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 
@@ -128,7 +151,7 @@ describe('store/selected/selectors', () => {
         expect(result[0]).toEqual({
             participantFirstName: "first1",
             participantLastName: "last1",
-            numberOfLecturesAttending: 3,
+            numberOfLecturesAttending: 2,
             participantCost: "100.00 X",
             orderId: 123,
             status: undefined,
@@ -137,7 +160,7 @@ describe('store/selected/selectors', () => {
         expect(result[1]).toEqual({
             participantFirstName: "first2",
             participantLastName: "last2",
-            numberOfLecturesAttending: 3,
+            numberOfLecturesAttending: 2,
             participantCost: "200.00 X",
             orderId: 123,
             status: undefined,
@@ -146,7 +169,7 @@ describe('store/selected/selectors', () => {
         expect(result[2]).toEqual({
             participantFirstName: "first5",
             participantLastName: "last5",
-            numberOfLecturesAttending: 3,
+            numberOfLecturesAttending: 2,
             participantCost: "500.00 X",
             orderId: 125,
             status: undefined,
@@ -155,12 +178,39 @@ describe('store/selected/selectors', () => {
         expect(result[3]).toEqual({
             participantFirstName: "first6",
             participantLastName: "last6",
-            numberOfLecturesAttending: 3,
+            numberOfLecturesAttending: 2,
             participantCost: "600.00 X",
             orderId: 125,
             status: undefined,
             organizationName: "OrgB",
         });
+    });
 
+    it('should return summary of lectures of matching course', () => {
+        const result = getLecturesDetails(state);
+
+        expect(result).toHaveLength(3);
+
+        expect(result[0]).toEqual({
+            date: "2018-05-01",
+            topic: "T4",
+            participantsCount: 0,
+            price: "4000",
+            income: 0,
+        });
+        expect(result[1]).toEqual({
+            date: "2018-07-01",
+            topic: "T1",
+            participantsCount: 4,
+            price: "1000",
+            income: 4000,
+        });
+        expect(result[2]).toEqual({
+            date: "2018-08-01",
+            topic: "T2",
+            participantsCount: 4,
+            price: "2000",
+            income: 8000,
+        });
     });
 });

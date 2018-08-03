@@ -13,7 +13,7 @@ export function getSelectedPublicCourseLectures(state) {
     if (!course)
         return [];
 
-    return _.orderBy(course.lectures, lecture => lecture.date);
+    return _.orderBy(_.filter(course.lectures, x => x.active), lecture => lecture.date);
 }
 
 export function getSelectedPublicCourseLecture(state, lectureId) {
@@ -54,9 +54,8 @@ export function getSelectedPublicCourseParticipants(state) {
     });
 }
 
-//TODO test
 export function getLecturesDetails(state) {
-    const lectures = _.filter(getSelectedPublicCourseLectures(state), x => x.active);
+    const lectures = getSelectedPublicCourseLectures(state);
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
 
     const participantsCount = {};
