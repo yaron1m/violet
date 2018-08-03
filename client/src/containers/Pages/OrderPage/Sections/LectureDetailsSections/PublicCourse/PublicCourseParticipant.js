@@ -39,7 +39,7 @@ export default class PublicCourseParticipant extends React.Component {
                     </CustomIconButton>
                 </div>
                 <div>
-                    {_.map(_.orderBy(this.props.selectedPublicCourseLectures, x => x.date),
+                    {_.map(this.props.selectedPublicCourseLectures,
                         lecture => {
                             const isAttending = this.props.lecturesAttending ? this.props.lecturesAttending.includes(lecture.id) : false;
                             return (

@@ -22,7 +22,7 @@ const approvedOrder = mergerRequiredFields(order, {
     order: ["financialContactFirstName", "financialContactLastName", "financialContactPhone1",
         "financialContactEmail", "cost", "totalSum", "internalOrderNumber"],
     internalOrder: ["street", "streetNumber", "city", "parking", "projector", "soundSystem", "microphone"],
-    publicCourse: ["idNumber", "phone", "job", "email"],
+    publicCourse: ["idNumber", "phone", "email"],
 });
 
 const isExecuting = mergerRequiredFields(approvedOrder);

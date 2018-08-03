@@ -1,12 +1,13 @@
 {
   "name": "violet",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Customer Relationship Manager for C-Point LTD",
   "main": "server.js",
   "scripts": {
     "client": "npm start --prefix client",
     "client-build": "npm run build --prefix client",
     "client-deploy": "npm run client-test && npm run client-build && firebase deploy -P default",
+    "client-deploy-dev": "npm run client-test && npm run client-build && firebase deploy -P development",
     "client-install": "npm install --prefix client",
     "client-test": "npm test --prefix client",
     "lint": "eslint client/src --fix",

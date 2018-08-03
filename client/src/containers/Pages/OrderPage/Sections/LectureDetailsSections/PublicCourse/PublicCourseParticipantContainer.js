@@ -7,11 +7,14 @@ import {
     updatePublicCourseLectureParticipating,
     updateSelectedOrder
 } from "../../../../../../store/SelectedOrder/Actions";
-import {getSelectedPublicCourse} from "../../../../../../store/SelectedPublicCourse/Selectors";
+import {
+    getSelectedPublicCourse,
+    getSelectedPublicCourseLectures
+} from "../../../../../../store/SelectedPublicCourse/Selectors";
 
 function mapStateToProps(state, ownProps) {
     return {
-        selectedPublicCourseLectures: getSelectedPublicCourse(state) ? getSelectedPublicCourse(state).lectures : [],
+        selectedPublicCourseLectures: getSelectedPublicCourseLectures(state),
         selectedOrder: getSelectedOrder(state),
         lecturesAttending: getSelectedOrder(state).publicCourseParticipants[ownProps.participantId].lecturesAttending,
         courseId: getSelectedPublicCourse(state).id
