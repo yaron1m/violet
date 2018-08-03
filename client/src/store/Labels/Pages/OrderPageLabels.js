@@ -45,6 +45,7 @@ const contactsSectionLabels = {
     importContactsDialog: {
         buttonTooltip: "יבא איש קשר",
         dialogTitle: "יבא איש קשר",
+        noContactsLabel: "לא קיימים אנשי קשר לארגון זה",
         financialSuffix: " לתשלום",
         noOrganizationSelectedTitle: "לא נבחר ארגון",
         noOrganizationSelectedContent: "כדי לייבא אנשי קשר יש לבחור ארגון",

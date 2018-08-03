@@ -60,6 +60,7 @@ function importContact(contacts, index, updateSelectedOrder, onRequestClose, get
 function mapStateToProps(state, ownProps) {
     return {
         dialogTitle: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.dialogTitle,
+        noContactsLabel: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.noContactsLabel,
         onRequestClose: ownProps.onRequestClose,
 
         contacts: getContacts(state),
@@ -78,6 +79,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
     return {
         dialogOpen: ownProps.dialogOpen,
         dialogTitle: stateProps.dialogTitle,
+        noContactsLabel: stateProps.noContactsLabel,
         contacts: stateProps.contacts,
         tableHeaders: stateProps.tableHeaders,
         onRequestClose: ownProps.onRequestClose,

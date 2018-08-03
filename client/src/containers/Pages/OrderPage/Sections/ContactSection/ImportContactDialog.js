@@ -5,38 +5,36 @@ import CustomTable from "../../../../../components/tables/CustomTable";
 import * as _ from 'lodash';
 import CustomTableRow from "../../../../../components/tables/CustomTableRow";
 
-export default class ImportContactsDialog extends React.Component {
-
-    render() {
-        return (
-            <CustomDialog
-                open={this.props.dialogOpen}
-                title={this.props.dialogTitle}
-                onRequestClose={this.props.onRequestClose}
-            >
-                <CustomTable headers={this.props.tableHeaders}>
-                    {_.isEmpty(this.props.contacts) ? null :
-                        _.map(this.props.contacts, (contactDetails, index) => (
-                            <CustomTableRow
-                                key={index}
-                                rowIndex={index}
-                                headers={this.props.tableHeaders}
-                                element={contactDetails}
-                                onPickButton={this.props.importContact}
-                            />
-                        ))
-                    }
-
+export default function ImportContactsDialog(props) {
+    return (
+        <CustomDialog
+            open={props.dialogOpen}
+            title={props.dialogTitle}
+            onRequestClose={props.onRequestClose}
+        >
+            {_.isEmpty(props.contacts) ?
+                <div>{props.noContactsLabel}</div> :
+                <CustomTable headers={props.tableHeaders}>
+                    {_.map(props.contacts, (contactDetails, index) => (
+                        <CustomTableRow
+                            key={index}
+                            rowIndex={index}
+                            headers={props.tableHeaders}
+                            element={contactDetails}
+                            onPickButton={props.importContact}
+                        />
+                    ))}
                 </CustomTable>
+            }
 
-            </CustomDialog>
-        );
-    }
+        </CustomDialog>
+    );
 }
 
 ImportContactsDialog.propTypes = {
     dialogOpen: PropTypes.bool.isRequired,
     dialogTitle: PropTypes.string,
+    noContactsLabel: PropTypes.string,
     contacts: PropTypes.array,
     tableHeaders: PropTypes.array,
     importContact: PropTypes.func,
