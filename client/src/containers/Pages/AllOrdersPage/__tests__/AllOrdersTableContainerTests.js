@@ -1,11 +1,9 @@
 import React from "react";
-import AllOrdersTableContainer from "../AllOrdersTableContainer";
-import {shallowWithStore} from "../../../../../setupTests";
-import {createMockStore} from "redux-test-utils";
+import {getElements, onEditButton} from "../AllOrdersTableContainer";
 import labels from '../../../../store/Labels/Reducer'
 import Status from "../../../../util/Constants/Status";
-import * as HistoryUtil from "../../../../util/HistoryUtil";
 import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";
+import * as HistoryUtil from "../../../../util/HistoryUtil";
 
 const state = {
     labels: labels(),
@@ -66,18 +64,17 @@ const state = {
 
 };
 
-let component;
-const store = createMockStore(state);
-
 describe('AllOrdersTableContainer', () => {
+    beforeEach(() => {
+    });
+
     it('elements prop - no filter - show all orders in reverse order', () => {
         const props = {
             filterStatus: null,
             limit: 30,
         };
-        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
-        const orders = component.prop("elements");
+        const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
         expect(orders[0].id).toBe(1003);
         expect(orders[1].id).toBe(1002);
@@ -90,9 +87,8 @@ describe('AllOrdersTableContainer', () => {
             filterStatus: null,
             limit: 30,
         };
-        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
-        const orders = component.prop("elements");
+        const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
         expect(orders[0].organizationName).toEqual("OrgB");
         expect(orders[1].organizationName).toEqual("OrgA");
@@ -105,9 +101,8 @@ describe('AllOrdersTableContainer', () => {
             filterStatus: null,
             limit: 30,
         };
-        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
-        const orders = component.prop("elements");
+        const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
         expect(orders[0].status).toEqual("הזמנה מאושרת + המשך טיפול");
         expect(orders[1].status).toEqual("הזמנה + המשך טיפול");
@@ -120,9 +115,8 @@ describe('AllOrdersTableContainer', () => {
             filterStatus: null,
             limit: 30,
         };
-        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
-        const orders = component.prop("elements");
+        const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
         expect(orders[0].topic).toBeUndefined();
         expect(orders[0].date).toBeUndefined();
@@ -139,28 +133,24 @@ describe('AllOrdersTableContainer', () => {
             filterStatus: "order",
             limit: 30,
         };
-        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
 
-        const orders = component.prop("elements");
+        const orders = getElements(state, props);
         expect(orders).toHaveLength(2);
         expect(orders[0].id).toBe(1002);
         expect(orders[1].id).toBe(1001);
     });
 
     it('onEditButton - order is loaded ', () => {
-        const props = {
-            limit: 30,
-        };
         SelectedOrderActions.selectOrder = jest.fn();
         HistoryUtil.redirect = jest.fn();
-        component = shallowWithStore(<AllOrdersTableContainer {...props}/>, store);
+        const dispatch = jest.fn();
 
-        component.prop("onEditButton")(1002);
-        expect(SelectedOrderActions.selectOrder.mock.calls).toHaveLength(1);
-        expect(SelectedOrderActions.selectOrder.mock.calls[0][0]).toBe(1002);
+        onEditButton(dispatch, 1002);
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(SelectedOrderActions.selectOrder).toHaveBeenCalledTimes(1);
+        expect(SelectedOrderActions.selectOrder).toHaveBeenCalledWith(1002);
 
-        expect(HistoryUtil.redirect.mock.calls).toHaveLength(1);
-        expect(HistoryUtil.redirect.mock.calls[0][0]).toEqual("/form");
+        expect(HistoryUtil.redirect).toHaveBeenCalledTimes(1);
+        expect(HistoryUtil.redirect).toHaveBeenCalledWith("/form");
     });
-
 });

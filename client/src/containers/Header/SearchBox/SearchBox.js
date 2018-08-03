@@ -6,15 +6,14 @@ import AutoSuggest from "../../../components/AutoSuggest";
 
 export default class SearchBox extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            searchText: "",
-        };
-    }
+    state = {
+        searchText: "",
+    };
 
     handleRequest(chosenRequest) {
-        this.setState({searchText: ""});
+        this.setState({
+            searchText: ""
+        });
 
         this.props.onSuggestionSelected(chosenRequest);
     }
