@@ -19,7 +19,7 @@ export default {
 
     organizationIconColor: indigo[600],
     orderIconColor: orange[500],
-    publicCourseParticipantIconColor: purple[600],
+    publicCourseParticipantIconColor: red[800],
 
     infoBoxes: {
         orange: orange[600],

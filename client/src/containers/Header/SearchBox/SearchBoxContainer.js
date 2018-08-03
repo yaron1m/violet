@@ -12,6 +12,7 @@ import {selectOrder} from "../../../store/SelectedOrder/Actions";
 import EventIcon from '@material-ui/icons/EventNote';
 import BusinessIcon from '@material-ui/icons/Business';
 import PersonIcon from '@material-ui/icons/Person';
+import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
 
 const sourceTypes = {
     organization: 0,
@@ -56,40 +57,30 @@ const styles = {
 
 //TODO test this
 function renderSuggestion(suggestion) {
+    let icon;
     switch (suggestion.info.type) {
         case sourceTypes.organization:
-            return (
-                <React.Fragment>
-                    <div>
-                        <BusinessIcon style={styles.organizationIcon}/>
-                        <span style={styles.label}>{suggestion.label}</span>
-                    </div>
-                </React.Fragment>
-            );
+            icon = <BusinessIcon style={styles.organizationIcon}/>;
+            break;
 
         case sourceTypes.order:
-            return (
-                <React.Fragment>
-                    <span>
-                    <EventIcon style={styles.orderIcon}/>
-                    </span>
-                    <span style={styles.label}>{suggestion.label}</span>
-                </React.Fragment>
-            );
+            icon = <EventIcon style={styles.orderIcon}/>;
+            break;
 
         case sourceTypes.publicCourseParticipant:
-            return (
-                <React.Fragment>
-                    <span>
-                    <PersonIcon style={styles.publicCourseParticipantIcon}/>
-                    </span>
-                    <span style={styles.label}>{suggestion.label}</span>
-                </React.Fragment>
-            );
-
+            icon = <PersonIcon style={styles.publicCourseParticipantIcon}/>;
+            break;
+            
         default:
-            return suggestion.label;
+            icon = null;
     }
+
+    return (
+        <div style={flexStyle}>
+            {icon}
+            <span style={styles.label}>{suggestion.label}</span>
+        </div>
+    );
 }
 
 
