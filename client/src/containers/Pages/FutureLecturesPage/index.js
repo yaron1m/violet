@@ -30,6 +30,9 @@ function onEditButton(dispatch, info) {
             dispatch(selectPublicCourse(info.id));
             redirect('/publicCourse');
             return;
+
+        default:
+            return;
     }
 }
 
