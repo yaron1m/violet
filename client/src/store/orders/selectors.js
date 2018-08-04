@@ -92,7 +92,7 @@ export function getAllLectureTimes(state, status = null, includePublicCourse = f
                 id: course.id,
             };
             lecture.orderId = course.courseName;
-            lecture.organizationName = "קורס ציבורי";
+            lecture.organizationName = getLabels(state).orderTypes.publicCourse;
             lecture.isPublicCourseOrder = true;
             return lecture;
         });
