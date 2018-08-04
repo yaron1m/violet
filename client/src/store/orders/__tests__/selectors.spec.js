@@ -2,6 +2,7 @@ import * as Selectors from '../selectors';
 import {Status} from "../../../util/Constants/Status";
 import * as labelsSelectors from "../../Labels/Selectors";
 import entityTypes from "../../../util/Constants/EntityTypes";
+import * as organizationReducer from "../../organizations/reducer";
 
 const state = {
     "orders": {
@@ -50,10 +51,6 @@ const state = {
         }
     }
 };
-
-const organizationReducer = require("../../organizations/reducer");
-const orgDetails = {organizationName: "orgName"};
-organizationReducer.getOrganizationById = jest.fn(() => orgDetails);
 
 describe('store/orders/selectors', () => {
 
@@ -108,12 +105,10 @@ describe('store/orders/selectors', () => {
     });
 
     it('getFollowUpOrdersSummary - valid', () => {
-        const statuses = require("../../../util/OrderStatus/OrderStatusCalculator");
         labelsSelectors.getOrderStatusLabel = jest.fn((state, order) => order.status);
 
-        const organizationReducer = require("../../organizations/reducer");
         const orgDetails = {organizationName: "orgName"};
-        organizationReducer.getOrganizationById = jest.fn((state, id) => orgDetails);
+        organizationReducer.getOrganizationById = jest.fn(() => orgDetails);
 
         expect(Selectors.getFollowUpOrdersSummary(state))
             .toEqual([

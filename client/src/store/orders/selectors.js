@@ -67,6 +67,7 @@ export function getFollowUpOrdersSummary(state) {
     return _.map(orders, map)
 }
 
+//TODO update tests
 export function getAllLectureTimes(state, status = null, includePublicCourse = false) {
     function getMappedLectureTimes(order) {
         return _.map(order.lectureTimes, function (time) {
