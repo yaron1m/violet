@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactAutoSuggest from 'react-autosuggest';
-import match from 'autosuggest-highlight/match';
-import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,24 +27,11 @@ function renderInput(inputProps) {
     );
 }
 
-function renderSuggestion(suggestion, {query, isHighlighted}) {
-    const matches = match(suggestion.label, query);
-    const parts = parse(suggestion.label, matches);
-
+function renderSuggestionItem(suggestion, renderSuggestion) {
     return (
-        <MenuItem selected={isHighlighted} component="div">
+        <MenuItem component="div">
             <div>
-                {parts.map((part, index) => {
-                    return part.highlight ? (
-                        <span key={String(index)} style={{fontWeight: 300}}>
-              {part.text}
-            </span>
-                    ) : (
-                        <strong key={String(index)} style={{fontWeight: 500}}>
-                            {part.text}
-                        </strong>
-                    );
-                })}
+                {renderSuggestion(suggestion)}
             </div>
         </MenuItem>
     );
@@ -159,7 +144,7 @@ class AutoSuggest extends React.Component {
                 onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
                 renderSuggestionsContainer={renderSuggestionsContainer}
                 getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
+                renderSuggestion={suggestion => renderSuggestionItem(suggestion, this.props.renderSuggestion)}
                 onSuggestionSelected={(event, {suggestion}) => this.props.onSuggestionSelected(suggestion)}
                 inputProps={{
                     classes,
@@ -192,7 +177,7 @@ AutoSuggest.propTypes = {
      * }
      */
     suggestions: PropTypes.array.isRequired,
-
+    renderSuggestion: PropTypes.func,
 
     // Text field
     value: PropTypes.string,
@@ -210,6 +195,7 @@ AutoSuggest.propTypes = {
 
 AutoSuggest.defaultProps = {
     maxSearchResults: 10,
+    renderSuggestion: suggestion => suggestion.label,
 };
 
 export default withStyles(styles)(AutoSuggest);

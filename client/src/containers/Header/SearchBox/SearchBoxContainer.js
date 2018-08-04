@@ -1,20 +1,23 @@
-// import React from "react";
+import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/Labels/Reducer";
 import {getOrganizations} from "../../../store/organizations/reducer";
 import {selectOrganization} from "../../../store/SelectedOrganization/Actions";
-import {getOrders} from "../../../store/orders/selectors";
+import {getOrders, getPublicCourseParticipantsSummary} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/HistoryUtil";
-// import Colors from "../../../util/Constants/Colors";
+import Colors from "../../../util/Constants/Colors";
 import * as _ from "lodash";
 import {selectOrder} from "../../../store/SelectedOrder/Actions";
-// import EventIcon from '@material-ui/icons/EventNote';
-// import BusinessIcon from '@material-ui/icons/Business';
+import EventIcon from '@material-ui/icons/EventNote';
+import BusinessIcon from '@material-ui/icons/Business';
+import PersonIcon from '@material-ui/icons/Person';
+import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
 
 const sourceTypes = {
     organization: 0,
     order: 1,
+    publicCourseParticipant: 2,
 };
 
 export function handleRequest(chosenRequest, dispatch) {
@@ -25,6 +28,7 @@ export function handleRequest(chosenRequest, dispatch) {
             return;
 
         case sourceTypes.order:
+        case sourceTypes.publicCourseParticipant:
             dispatch(selectOrder(chosenRequest.info.orderId));
             dispatch(selectOrganization(chosenRequest.info.organizationId));
 
@@ -36,14 +40,53 @@ export function handleRequest(chosenRequest, dispatch) {
     }
 }
 
-export function getSuggestions(state) {
-    const organizations = getOrganizations(state);
+const styles = {
+    organizationIcon: {
+        color: Colors.organizationIconColor
+    },
+    orderIcon: {
+        color: Colors.orderIconColor
+    },
+    publicCourseParticipantIcon: {
+        color: Colors.publicCourseParticipantIconColor
+    },
+    label: {
+        marginRight: 10,
+    }
+};
+
+function renderSuggestion(suggestion) {
+    let icon;
+    switch (suggestion.info.type) {
+        case sourceTypes.organization:
+            icon = <BusinessIcon style={styles.organizationIcon}/>;
+            break;
+
+        case sourceTypes.order:
+            icon = <EventIcon style={styles.orderIcon}/>;
+            break;
+
+        case sourceTypes.publicCourseParticipant:
+            icon = <PersonIcon style={styles.publicCourseParticipantIcon}/>;
+            break;
+
+        default:
+            icon = null;
+    }
+
+    return (
+        <div style={flexStyle}>
+            {icon}
+            <span style={styles.label}>{suggestion.label}</span>
+        </div>
+    );
+}
+
+
+export function getSuggestions(organizations, orders, publicCourseParticipants) {
     if (!organizations)
         return [];
 
-    const orders = getOrders(state);
-
-    //TODO custom render every menu item
     const organizationNamesObjects = _.values(organizations).map(
         (org) => {
             const text = org.organizationName + (org.companyId ? " (" + org.companyId + ")" : "");
@@ -54,10 +97,6 @@ export function getSuggestions(state) {
                     type: sourceTypes.organization,
                     organizationId: org.id
                 },
-                // value: (<CustomMenuItem
-                //     primaryText={text}
-                //     leftIcon={<BusinessIcon color={Colors.organizationIconColor}/>}
-                // />)
             }
         });
 
@@ -69,25 +108,38 @@ export function getSuggestions(state) {
                 orderId: order.id,
                 organizationId: order.organizationId,
             },
-            // value: (<CustomMenuItem
-            //     primaryText={order.id.toString() + " - " + organizations[order.organizationId].organizationName}
-            //     leftIcon={<EventIcon color={Colors.orderIconColor}/>}
-            // />)
         }));
 
-    return _.concat(organizationNamesObjects, orderNumbersObjects);
+
+    const participantsObjects = _.values(publicCourseParticipants).map(
+        participant => ({
+            label: `${participant.orderId} - ${organizations[participant.organizationId].organizationName} - ` +
+            `${participant.participantFirstName} ${participant.participantLastName} - ${participant.publicCourseName}`,
+            info: {
+                type: sourceTypes.publicCourseParticipant,
+                orderId: participant.orderId,
+                organizationId: participant.organizationId,
+            },
+        }));
+
+    return _.concat(organizationNamesObjects, orderNumbersObjects, participantsObjects);
 }
 
 function mapStateToProps(state) {
+    const organizations = getOrganizations(state);
+    const orders = getOrders(state);
+    const publicCourseParticipants = getPublicCourseParticipantsSummary(state);
+
     return {
         hintText: getLabels(state).header.searchLineHint,
-        suggestions: getSuggestions(state),
+        suggestions: getSuggestions(organizations, orders, publicCourseParticipants),
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         onSuggestionSelected: (chosenRequest) => handleRequest(chosenRequest, dispatch),
+        renderSuggestion
     };
 }
 

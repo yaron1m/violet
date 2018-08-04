@@ -2,13 +2,13 @@
 import * as _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
 import {isMatchingStatus} from "../../util/OrderStatus/OrderStatusUtils";
-import {cutIfLong, moneyFormat} from "../../util/StringUtil";
+import {cutIfLong, isEmptyValue, moneyFormat} from "../../util/StringUtil";
 import getActionRequiredOrdersArray from "./action-required-orders";
 import {getLabels} from "../Labels/Reducer";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
-import {getPublicCourseByOrder} from "../PublicCourses/Selectors";
+import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
 
 export function getOrders(state, status = null) {
     const orders = state.orders;
@@ -140,4 +140,25 @@ export function getOrdersSummary(state, getOrdersFunction) {
 
 export function getActionRequiredOrders(state) {
     return getActionRequiredOrdersArray(state);
+}
+
+//TODO test function
+export function getPublicCourseParticipantsSummary(state) {
+    if (_.isEmpty(getPublicCourses(state))) {
+        return [];
+    }
+
+    const orders = getOrders(state);
+    const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && !isEmptyValue(order, "publicCourseId"));
+
+    return _.flatMap(publicCourseOrders,
+        order => _.map(order.publicCourseParticipants, participant => {
+            return {
+                orderId: order.id,
+                organizationId: order.organizationId,
+                participantFirstName: participant.participantFirstName,
+                participantLastName: participant.participantLastName,
+                publicCourseName: getPublicCourseByOrder(state, order).courseName,
+            };
+        }));
 }

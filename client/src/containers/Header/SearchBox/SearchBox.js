@@ -33,13 +33,13 @@ export default class SearchBox extends React.Component {
             },
         };
 
-        //TODO render each suggestion with the component I created in the container
         return (
             <div style={styles.container}>
                 <SearchIcon style={styles.iconButton}/>
 
                 <AutoSuggest
                     suggestions={this.props.suggestions}
+                    renderSuggestion={this.props.renderSuggestion}
                     value={this.state.searchText}
                     onInputChange={searchText => this.setState({searchText})}
                     fullWidth
@@ -57,4 +57,5 @@ SearchBox.propTypes = {
     hintText: PropTypes.string.isRequired,
     suggestions: PropTypes.array,
     onSuggestionSelected: PropTypes.func,
+    renderSuggestion: PropTypes.func,
 };

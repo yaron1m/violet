@@ -71,7 +71,7 @@ describe('SearchBoxContainer', () => {
             },
         };
 
-        const result = Target.getSuggestions(state);
+        const result = Target.getSuggestions(state.organizations, state.orders);
 
         expect(result).toHaveLength(2);
 
@@ -98,7 +98,7 @@ describe('SearchBoxContainer', () => {
             },
         };
 
-        const result = Target.getSuggestions(state);
+        const result = Target.getSuggestions(state.organizations);
 
         expect(result).toHaveLength(1);
         expect(result[0].info.type).toBe(0);
@@ -114,7 +114,7 @@ describe('SearchBoxContainer', () => {
             },
         };
 
-        const result = Target.getSuggestions(state);
+        const result = Target.getSuggestions(state.organizations, state.orders);
 
         expect(result).toHaveLength(0);
     });
