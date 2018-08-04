@@ -13,22 +13,17 @@ import EventIcon from '@material-ui/icons/EventNote';
 import BusinessIcon from '@material-ui/icons/Business';
 import PersonIcon from '@material-ui/icons/Person';
 import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
-
-const sourceTypes = {
-    organization: 0,
-    order: 1,
-    publicCourseParticipant: 2,
-};
+import entityTypes from "../../../util/Constants/EntityTypes";
 
 export function handleRequest(chosenRequest, dispatch) {
     switch (chosenRequest.info.type) {
-        case sourceTypes.organization:
+        case entityTypes.organization:
             dispatch(selectOrganization(chosenRequest.info.organizationId));
             redirect('/org');
             return;
 
-        case sourceTypes.order:
-        case sourceTypes.publicCourseParticipant:
+        case entityTypes.order:
+        case entityTypes.publicCourseParticipant:
             dispatch(selectOrder(chosenRequest.info.orderId));
             dispatch(selectOrganization(chosenRequest.info.organizationId));
 
@@ -58,15 +53,15 @@ const styles = {
 function renderSuggestion(suggestion) {
     let icon;
     switch (suggestion.info.type) {
-        case sourceTypes.organization:
+        case entityTypes.organization:
             icon = <BusinessIcon style={styles.organizationIcon}/>;
             break;
 
-        case sourceTypes.order:
+        case entityTypes.order:
             icon = <EventIcon style={styles.orderIcon}/>;
             break;
 
-        case sourceTypes.publicCourseParticipant:
+        case entityTypes.publicCourseParticipant:
             icon = <PersonIcon style={styles.publicCourseParticipantIcon}/>;
             break;
 
@@ -94,7 +89,7 @@ export function getSuggestions(organizations, orders, publicCourseParticipants) 
             return {
                 label: text,
                 info: {
-                    type: sourceTypes.organization,
+                    type: entityTypes.organization,
                     organizationId: org.id
                 },
             }
@@ -104,7 +99,7 @@ export function getSuggestions(organizations, orders, publicCourseParticipants) 
         (order) => ({
             label: order.id.toString() + " - " + organizations[order.organizationId].organizationName,
             info: {
-                type: sourceTypes.order,
+                type: entityTypes.order,
                 orderId: order.id,
                 organizationId: order.organizationId,
             },
@@ -116,7 +111,7 @@ export function getSuggestions(organizations, orders, publicCourseParticipants) 
             label: `${participant.orderId} - ${organizations[participant.organizationId].organizationName} - ` +
             `${participant.participantFirstName} ${participant.participantLastName} - ${participant.publicCourseName}`,
             info: {
-                type: sourceTypes.publicCourseParticipant,
+                type: entityTypes.publicCourseParticipant,
                 orderId: participant.orderId,
                 organizationId: participant.organizationId,
             },

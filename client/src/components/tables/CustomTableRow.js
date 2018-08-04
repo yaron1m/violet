@@ -81,7 +81,10 @@ class CustomTableRow extends React.Component {
 CustomTableRow.propTypes = {
     element: PropTypes.object.isRequired,
     headers: PropTypes.array.isRequired,
-    rowIndex: PropTypes.number,
+    rowIndex: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.number
+    ]),
     onEditButton: PropTypes.func,
     onPickButton: PropTypes.func,
     onDeleteButton: PropTypes.func,

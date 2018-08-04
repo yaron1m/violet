@@ -9,6 +9,7 @@ import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrgani
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
+import entityTypes from "../../util/Constants/EntityTypes";
 
 export function getOrders(state, status = null) {
     const orders = state.orders;
@@ -66,17 +67,40 @@ export function getFollowUpOrdersSummary(state) {
     return _.map(orders, map)
 }
 
-export function getAllLectureTimes(state, status = null) {
+//TODO update tests
+export function getAllLectureTimes(state, status = null, includePublicCourse = false) {
     function getMappedLectureTimes(order) {
         return _.map(order.lectureTimes, function (time) {
+            time.info = {
+                type: entityTypes.order,
+                id: order.id,
+            };
             time.orderId = order.id;
-            time.status = order.status;
             time.organizationName = getOrganizationById(state, order.organizationId).organizationName;
             return time;
         });
     }
 
-    return _.flatMap(getOrders(state, status), getMappedLectureTimes);
+    const internalLectures = _.flatMap(getOrders(state, status), getMappedLectureTimes);
+    if (!includePublicCourse)
+        return internalLectures;
+
+    function mapPublicCourses(course) {
+        return _.map(course.lectures, function (lecture) {
+            lecture.info = {
+                type: entityTypes.publicCourse,
+                id: course.id,
+            };
+            lecture.orderId = course.courseName;
+            lecture.organizationName = getLabels(state).orderTypes.publicCourse;
+            lecture.isPublicCourseOrder = true;
+            return lecture;
+        });
+    }
+
+    const publicCourseLectures = _.flatMap(getPublicCourses(state), mapPublicCourses);
+
+    return _.concat(internalLectures, publicCourseLectures);
 }
 
 export function getExpectedIncomeOrders(state, status) {
