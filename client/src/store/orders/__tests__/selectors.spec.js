@@ -1,6 +1,7 @@
 import * as Selectors from '../selectors';
 import {Status} from "../../../util/Constants/Status";
 import * as labelsSelectors from "../../Labels/Selectors";
+import entityTypes from "../../../util/Constants/EntityTypes";
 
 const state = {
     "orders": {
@@ -144,15 +145,21 @@ describe('store/orders/selectors', () => {
         expect(Selectors.getAllLectureTimes(state))
             .toEqual([
                 {
+                    info: {
+                        id: 1000,
+                        type: entityTypes.order,
+                    },
                     orderId: 1000,
                     topic: "lecture",
                     organizationName: "orgName",
-                    status: Status.contact,
                 }, {
+                    info: {
+                        id: 1002,
+                        type: entityTypes.order,
+                    },
                     orderId: 1002,
                     topic: "topic",
                     organizationName: "orgName",
-                    status: Status.order,
                 }
             ]);
     });
@@ -161,10 +168,13 @@ describe('store/orders/selectors', () => {
         expect(Selectors.getAllLectureTimes(state, Status.contact))
             .toEqual([
                 {
+                    info: {
+                        id: 1000,
+                        type: entityTypes.order,
+                    },
                     orderId: 1000,
                     topic: "lecture",
                     organizationName: "orgName",
-                    status: Status.contact,
                 }
             ]);
     });
