@@ -6,9 +6,11 @@ import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import * as _ from "lodash";
 import {getAllLectureTimes} from "../../../store/orders/selectors";
 import Status from "../../../util/Constants/Status";
+import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
+import entityTypes from "../../../util/Constants/EntityTypes";
 
-export function getFutureLectureTimes(state){
-    const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);
+export function getFutureLectureTimes(state) {
+    const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting], true);
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     yesterday.setHours(0, 0, 0, 0);
@@ -17,21 +19,32 @@ export function getFutureLectureTimes(state){
         x => x.date);
 }
 
+function onEditButton(dispatch, info) {
+    switch (info.type) {
+        case entityTypes.order:
+            dispatch(selectOrder(info.id));
+            redirect('/form');
+            return;
+
+        case entityTypes.publicCourse:
+            dispatch(selectPublicCourse(info.id));
+            redirect('/publicCourse');
+            return;
+    }
+}
+
 function mapStateToProps(state) {
     return {
         title: getLabels(state).pages.futureLecturesPage.table.title,
         tableHeaders: getLabels(state).pages.futureLecturesPage.table.tableHeaders,
         elements: getFutureLectureTimes(state),
-        rowIndexKey: "orderId"
+        rowIndexKey: "info",
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onEditButton: (orderId) => {
-            dispatch(selectOrder(orderId));
-            redirect('/form');
-        },
+        onEditButton: orderId => onEditButton(dispatch, orderId),
     };
 }
 
