@@ -5,7 +5,7 @@ import {getSelectedPublicCourse} from "../../../../../../store/SelectedPublicCou
 import _ from 'lodash';
 
 function getLecturesIdsOrderedByDate(selectedPublicCourse) {
-    const lectures = selectedPublicCourse.lectures;
+    const lectures = _.filter(selectedPublicCourse.lectures, x => x.active);
     const datesAndIds = _.map(_.keys(lectures), key => {
         return {
             key,
