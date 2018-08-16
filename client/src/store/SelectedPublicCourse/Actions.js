@@ -43,7 +43,7 @@ export function updatePublicCourseLecture(key, value, lectureId) {
     }
 }
 
-export function addLectureToSelectedPublicCourse() {
+export function addLectureToSelectedPublicCourse(initialData) {
     return function addLectureToSelectedPublicCourse(dispatch, getState) {
         const selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
 
@@ -60,6 +60,7 @@ export function addLectureToSelectedPublicCourse() {
             lectures[nextId] = {
                 id: nextId,
                 active: true,
+                ...initialData
             };
         }
 
