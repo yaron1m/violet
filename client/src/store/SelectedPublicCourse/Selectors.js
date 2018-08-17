@@ -2,7 +2,7 @@ import {getOrders} from "../orders/selectors";
 import _ from "lodash";
 import {getOrganizationById} from "../organizations/reducer";
 import {getLabels, getStatusLabel} from "../Labels/Reducer";
-import {moneyFormat} from "../../util/StringUtil";
+import {isEmptyValue, moneyFormat} from "../../util/StringUtil";
 
 export function getSelectedPublicCourse(state) {
     return state.selectedPublicCourse.publicCourse;
@@ -13,6 +13,7 @@ export function getSelectedPublicCourseLectures(state) {
     if (!course)
         return [];
 
+    console.log(_.filter(course.lectures, x => x.active))
     return _.orderBy(_.filter(course.lectures, x => x.active), lecture => lecture.date);
 }
 
@@ -71,7 +72,7 @@ export function getLecturesDetails(state) {
             topic: lecture.topic,
             participantsCount: participantsCount[lecture.id],
             price: lecture.price,
-            income: lecture.price * participantsCount[lecture.id],
+            income: isEmptyValue(lecture, "price") ? 0 : lecture.price * participantsCount[lecture.id],
         }
     });
 }
