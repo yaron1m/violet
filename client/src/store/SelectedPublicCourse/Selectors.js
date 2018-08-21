@@ -13,7 +13,6 @@ export function getSelectedPublicCourseLectures(state) {
     if (!course)
         return [];
 
-    console.log(_.filter(course.lectures, x => x.active))
     return _.orderBy(_.filter(course.lectures, x => x.active), lecture => lecture.date);
 }
 
