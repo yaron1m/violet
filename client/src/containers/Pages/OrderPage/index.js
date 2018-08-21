@@ -5,20 +5,16 @@ import OrderActionButtons from './ActionButtons';
 import OrderEditTimes from './OrderEditTimesContainer'
 import OrderStatusStepper from "./OrderStatusStepperContainer";
 
-export default class OrderForm extends React.Component {
+export default function OrderForm() {
+    return (
+        <React.Fragment>
+            <OrderPageTitle/>
+            <OrderStatusStepper/>
+            <OrderEditTimes/>
 
-    render() {
+            <OrderActionButtons/>
 
-        return (
-            <React.Fragment>
-                <OrderPageTitle/>
-                <OrderStatusStepper/>
-                <OrderEditTimes/>
-
-                <OrderActionButtons/>
-
-                <OrderPageSections/>
-            </React.Fragment>
-        );
-    }
+            <OrderPageSections/>
+        </React.Fragment>
+    );
 }
