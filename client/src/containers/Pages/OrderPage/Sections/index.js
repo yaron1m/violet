@@ -7,25 +7,22 @@ import PaymentSection from "./Payment/PaymentSectionContainer";
 import InvoiceSection from "./InvoiceSection/InvoiceSectionContainer";
 import NotesSection from "./Notes/NotesSectionContainer";
 
-export default class OrderForm extends React.Component {
+export default function OrderForm() {
+    return (
+        <div>
+            <OrganizationSection/>
 
-    render() {
-        return (
-            <div>
-                <OrganizationSection/>
+            <ContactsSection/>
 
-                <ContactsSection/>
+            <LectureDetailsSection/>
 
-                <LectureDetailsSection/>
+            <FollowUpSection/>
 
-                <FollowUpSection/>
+            <PaymentSection/>
 
-                <PaymentSection/>
+            <InvoiceSection/>
 
-                <InvoiceSection/>
-
-                <NotesSection/>
-            </div>
-        );
-    }
+            <NotesSection/>
+        </div>
+    );
 }
