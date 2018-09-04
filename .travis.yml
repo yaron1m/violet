@@ -2,7 +2,7 @@ language: node_js
 cache: bundler
 node_js:
   - "node"
-before_script:
+install:
 - npm run client-install
 script:
 - npm run client-build
