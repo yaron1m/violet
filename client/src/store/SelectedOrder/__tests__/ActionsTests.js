@@ -69,10 +69,8 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action with updated order', () => {
-        const thunkFunction = updateSelectedOrder(key, newValue);
-        expect(thunkFunction).toBeDefined();
-
         const getState = () => {
+
             return {
                 selectedOrder: {
                     order: {
@@ -83,22 +81,24 @@ describe('Selected order actions', () => {
                 }
             }
         };
+        dispatch = getMockedDispatch(getState);
+
         const expectedOrder = {
             [id]: value,
             [key]: newValue,
             status
         };
 
-        thunkFunction(dispatch, getState);
+        const target = updateSelectedOrder(key, newValue);
+        target(dispatch, getState);
 
-        expect(dispatch.mock.calls).toHaveLength(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
-        expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
+        expect(dispatch).toBeCalledWith({
+            type: UPDATE_SELECTED_ORDER,
+            payload: expectedOrder,
+        });
     });
 
     it('should dispatch action with updated order with the same key', () => {
-        const thunkFunction = updateSelectedOrder(key, newValue);
-        expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
@@ -111,16 +111,20 @@ describe('Selected order actions', () => {
                 }
             }
         };
+        dispatch = getMockedDispatch(getState);
+
         const expectedOrder = {
             [key]: newValue,
             status
         };
+        const target = updateSelectedOrder(key, newValue);
 
-        thunkFunction(dispatch, getState);
+        target(dispatch, getState);
 
-        expect(dispatch.mock.calls).toHaveLength(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
-        expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
+        expect(dispatch).toBeCalledWith({
+            type: UPDATE_SELECTED_ORDER,
+            payload: expectedOrder,
+        });
     });
 
     it('should dispatch action with updated lecture times', () => {
