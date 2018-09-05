@@ -46,8 +46,7 @@ describe('Selected public course actions', () => {
     });
 
     it('should dispatch action with updated public course', () => {
-        const thunkFunction = actions.updateSelectedPublicCourse(key, newValue);
-        expect(thunkFunction).toBeDefined();
+        const target = actions.updateSelectedPublicCourse(key, newValue);
 
         const getState = () => {
             return {
@@ -63,16 +62,18 @@ describe('Selected public course actions', () => {
             [key]: newValue,
         };
 
-        thunkFunction(dispatch, getState);
+        const mockedDispatch = getMockedDispatch(getState);
 
-        expect(dispatch.mock.calls).toHaveLength(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
-        expect(dispatch.mock.calls[0][0].payload).toEqual(expectedCourse);
+        target(mockedDispatch, getState);
+
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: expectedCourse
+        });
     });
 
     it('should dispatch action with updated order with the same key', () => {
-        const thunkFunction = actions.updateSelectedPublicCourse(key, newValue);
-        expect(thunkFunction).toBeDefined();
+        const target = actions.updateSelectedPublicCourse(key, newValue);
 
         const getState = () => {
             return {
@@ -86,17 +87,18 @@ describe('Selected public course actions', () => {
         const expectedCourse = {
             [key]: newValue,
         };
+        const mockedDispatch = getMockedDispatch(getState);
 
-        thunkFunction(dispatch, getState);
+        target(mockedDispatch, getState);
 
-        expect(dispatch.mock.calls).toHaveLength(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
-        expect(dispatch.mock.calls[0][0].payload).toEqual(expectedCourse);
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: expectedCourse
+        });
     });
 
     it('should dispatch action with updated lectures', () => {
-        const thunkFunction = actions.updatePublicCourseLecture(key, value, 1);
-        expect(thunkFunction).toBeDefined();
+        const target = actions.updatePublicCourseLecture(key, value, 1);
 
         const getState = () => {
             return {
@@ -128,22 +130,18 @@ describe('Selected public course actions', () => {
             ],
         };
 
-        thunkFunction(dispatch, getState);
+        const mockedDispatch = getMockedDispatch(getState);
 
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        target(mockedDispatch, getState);
 
-        // Call updateSelectedOrder action
-        dispatch.mock.calls[0][0](dispatch, getState);
-
-        expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
-        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedCourse);
-
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: expectedCourse
+        });
     });
 
     it('should add empty lecture to selected public course when there are other lectures', () => {
-        const thunkFunction = actions.addLectureToSelectedPublicCourse();
-        expect(thunkFunction).toBeDefined();
+        const target = actions.addLectureToSelectedPublicCourse();
 
         const getState = () => {
             return {
@@ -175,22 +173,18 @@ describe('Selected public course actions', () => {
             ],
         };
 
-        thunkFunction(dispatch, getState);
+        const mockedDispatch = getMockedDispatch(getState);
 
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        target(mockedDispatch, getState);
 
-        // Call updateSelectedOrder action
-        dispatch.mock.calls[0][0](dispatch, getState);
-
-        expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
-        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedCourse);
-
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: expectedCourse
+        });
     });
 
     it('should add empty lecture to selected public course when there are no other lectures', () => {
-        const thunkFunction = actions.addLectureToSelectedPublicCourse();
-        expect(thunkFunction).toBeDefined();
+        const target = actions.addLectureToSelectedPublicCourse();
 
         const getState = () => {
             return {
@@ -208,28 +202,26 @@ describe('Selected public course actions', () => {
             ],
         };
 
-        thunkFunction(dispatch, getState);
+        const mockedDispatch = getMockedDispatch(getState);
 
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        target(mockedDispatch, getState);
 
-        // Call updateSelectedOrder action
-        dispatch.mock.calls[0][0](dispatch, getState);
-
-        expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(UPDATE_SELECTED_PUBLIC_COURSE);
-        expect(dispatch.mock.calls[1][0].payload).toEqual(expectedCourse);
-
+        expect(mockedDispatch).toBeCalledWith({
+            type: UPDATE_SELECTED_PUBLIC_COURSE,
+            payload: expectedCourse
+        });
     });
 
     it('should return set is selected public course action', () => {
-        expect(actions.setIsSelectedPublicCourse().type).toBe(SET_IS_SELECTED_PUBLIC_COURSE);
+        expect(actions.setIsSelectedPublicCourse()).toEqual({
+            type: SET_IS_SELECTED_PUBLIC_COURSE
+        });
     });
 
     it('should dispatch action to send order to database', async () => {
         firebaseActions.sendDataToDatabase = jest.fn();
 
-        const thunkFunction = actions.sendSelectedPublicCourseToDatabase();
-        expect(thunkFunction).toBeDefined();
+        const target = actions.sendSelectedPublicCourseToDatabase();
 
         const getState = () => {
             return {
@@ -242,18 +234,22 @@ describe('Selected public course actions', () => {
             }
         };
 
-        await thunkFunction(dispatch, getState);
-
         const expectedCourse = {
             id,
             [key]: value
         };
-        expect(dispatch.mock.calls).toHaveLength(1);
+
+        const mockedDispatch = getMockedDispatch(getState);
+
+        await target(mockedDispatch, getState);
+
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/publicCourses/' + id, expectedCourse);
     });
 
     it('should return clear selected public course action', () => {
-        expect(clearSelectedPublicCourse().type).toBe(CLEAR_SELECTED_PUBLIC_COURSE);
+        expect(clearSelectedPublicCourse()).toEqual({
+            type: CLEAR_SELECTED_PUBLIC_COURSE
+        });
     });
 });
