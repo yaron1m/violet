@@ -8,6 +8,7 @@ import {
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "../ActionTypes";
+import {getMockedDispatch} from '../../../util/TestUtils';
 
 
 const id = 123456;
@@ -19,13 +20,8 @@ const newValue = "newValue";
 let dispatch;
 
 describe('Selected public course actions', () => {
-    beforeEach(() => {
-        dispatch = jest.fn();
-    });
-
-    it('should dispatch action with selected public course', () => {
-        const thunkFunction = actions.selectPublicCourse(id);
-        expect(thunkFunction).toBeDefined();
+    test('right action is fired when selecting a public course', () => {
+        const target = actions.selectPublicCourse(id);
 
         const getState = () => {
             return {
@@ -35,11 +31,18 @@ describe('Selected public course actions', () => {
             }
         };
 
-        thunkFunction(dispatch, getState);
+        const mockedDispatch = getMockedDispatch(getState);
 
-        expect(dispatch.mock.calls).toHaveLength(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(SELECT_PUBLIC_COURSE);
-        expect(dispatch.mock.calls[1][0].payload).toBe(value);
+        target(mockedDispatch, getState);
+
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: SET_IS_SELECTED_PUBLIC_COURSE,
+        });
+
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: SELECT_PUBLIC_COURSE,
+            payload: value
+        });
     });
 
     it('should dispatch action with updated public course', () => {
