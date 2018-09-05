@@ -114,5 +114,4 @@ describe('selected actions - organization', () => {
         expect(result.publicCourse).toEqual({});
         expect(result.isSelectedPublicCourse).toBeFalsy();
     });
-
 });

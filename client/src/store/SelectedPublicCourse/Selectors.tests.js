@@ -4,8 +4,8 @@ import {
     getSelectedPublicCourseLectures,
     isSelectedPublicCourse,
     getSelectedCourseParticipantsAndOrders, getSelectedPublicCourseParticipants, getLecturesDetails
-} from "../Selectors";
-import * as lableReducers from "../../Labels/Reducer";
+} from "./Selectors";
+import * as labelReducers from "../Labels/Reducer";
 
 function getParticipant(id) {
     return {
@@ -143,7 +143,7 @@ describe('store/selected/selectors', () => {
     });
 
     it('should return summary of participants of matching course', () => {
-        lableReducers.getStatusLabel = jest.fn();
+        labelReducers.getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 
         expect(result).toHaveLength(4);
