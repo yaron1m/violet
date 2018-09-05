@@ -35,5 +35,8 @@
   "author": {
     "name": "Yaron Malin",
     "email": "yaron1m@gmail.com"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.tests\\.js$)"
   }
 }
