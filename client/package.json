@@ -29,11 +29,14 @@
   "scripts": {
     "build": "react-scripts build",
     "start": "react-scripts start",
-    "test": "jest --testURL http://localhost/",
+    "test": "jest",
     "watch": "npm test --watch"
   },
   "author": {
     "name": "Yaron Malin",
     "email": "yaron1m@gmail.com"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.tests\\.js$)"
   }
 }

@@ -1,7 +1,6 @@
-import React from 'react';
-import target from "../Reducer";
-import {LOGGED_OUT} from "../../Firebase/ActionTypes";
-import * as actionTypes from '../ActionTypes';
+import target from "./Reducer";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import * as actionTypes from './ActionTypes';
 
 const value = "value";
 const key = "key";
@@ -9,19 +8,14 @@ const payload = {
     a: 123
 };
 
-let dispatch;
-
 describe('selected actions - organization', () => {
-    beforeEach(() => {
-        dispatch = jest.fn();
-    });
-
     it('reducer - no action - initial state', () => {
         const result = target();
 
-        expect(result).toBeDefined();
-        expect(result.publicCourse).toEqual({});
-        expect(result.isSelectedPublicCourse).toBeFalsy();
+        expect(result).toEqual({
+            publicCourse: {},
+            isSelectedPublicCourse: false,
+        });
     });
 
     it('should do nothing with no action', () => {
@@ -30,7 +24,7 @@ describe('selected actions - organization', () => {
 
         const result = target(initialState);
 
-        expect(result).toBe(initialState);
+        expect(result).toEqual(initialState);
     });
 
     it('should select public course', () => {
@@ -103,7 +97,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedPublicCourse).toBeFalsy();
     });
 
-    it('should clear selected public course', () => {
+    it('should clear selected public course when logged out', () => {
 
         const initialState = {
             publicCourse: payload,
@@ -120,5 +114,4 @@ describe('selected actions - organization', () => {
         expect(result.publicCourse).toEqual({});
         expect(result.isSelectedPublicCourse).toBeFalsy();
     });
-
 });

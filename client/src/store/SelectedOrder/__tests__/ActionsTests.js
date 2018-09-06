@@ -14,6 +14,8 @@ import {
 } from "../Actions";
 import {HIDE_REQUIRED_FIELDS} from "../../Appearance/ActionTypes";
 import {sendSelectedOrganizationToDatabase} from "../../SelectedOrganization/Actions";
+import {getMockedDispatch} from "../../../util/TestUtils";
+import {SELECT_ORGANIZATION} from "../../SelectedOrganization/ActionTypes";
 
 const id = 123456;
 const orgId = 555;
@@ -32,33 +34,43 @@ describe('Selected order actions', () => {
         orderStatusUtil.default.mockReturnValue(status);
     });
 
-    it('should dispatch action with selected order', () => {
-        const thunkFunction = selectOrder(id);
-        expect(thunkFunction).toBeDefined();
-
+    it('should dispatch action with selected order and organization', () => {
         const getState = () => {
             return {
                 organizations: {
                     [orgId]: org
                 },
                 orders: {
-                    [id]: value
+                    [id]: {
+                        [key]: value,
+                        organizationId: orgId,
+                    },
                 }
             }
         };
 
-        thunkFunction(dispatch, getState);
+        dispatch = getMockedDispatch(getState);
 
-        expect(dispatch.mock.calls).toHaveLength(2);
-        expect(dispatch.mock.calls[1][0].type).toBe(SELECT_ORDER);
-        expect(dispatch.mock.calls[1][0].payload).toBe(value);
+        const target = selectOrder(id);
+        target(dispatch, getState);
+
+        expect(dispatch).toBeCalledWith({
+            type: SELECT_ORGANIZATION,
+            payload: org
+        });
+
+        expect(dispatch).toBeCalledWith({
+            type: SELECT_ORDER,
+            payload: {
+                [key]: value,
+                organizationId: orgId,
+            },
+        });
     });
 
     it('should dispatch action with updated order', () => {
-        const thunkFunction = updateSelectedOrder(key, newValue);
-        expect(thunkFunction).toBeDefined();
-
         const getState = () => {
+
             return {
                 selectedOrder: {
                     order: {
@@ -69,22 +81,24 @@ describe('Selected order actions', () => {
                 }
             }
         };
+        dispatch = getMockedDispatch(getState);
+
         const expectedOrder = {
             [id]: value,
             [key]: newValue,
             status
         };
 
-        thunkFunction(dispatch, getState);
+        const target = updateSelectedOrder(key, newValue);
+        target(dispatch, getState);
 
-        expect(dispatch.mock.calls).toHaveLength(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
-        expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
+        expect(dispatch).toBeCalledWith({
+            type: UPDATE_SELECTED_ORDER,
+            payload: expectedOrder,
+        });
     });
 
     it('should dispatch action with updated order with the same key', () => {
-        const thunkFunction = updateSelectedOrder(key, newValue);
-        expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
@@ -97,16 +111,20 @@ describe('Selected order actions', () => {
                 }
             }
         };
+        dispatch = getMockedDispatch(getState);
+
         const expectedOrder = {
             [key]: newValue,
             status
         };
+        const target = updateSelectedOrder(key, newValue);
 
-        thunkFunction(dispatch, getState);
+        target(dispatch, getState);
 
-        expect(dispatch.mock.calls).toHaveLength(1);
-        expect(dispatch.mock.calls[0][0].type).toBe(UPDATE_SELECTED_ORDER);
-        expect(dispatch.mock.calls[0][0].payload).toEqual(expectedOrder);
+        expect(dispatch).toBeCalledWith({
+            type: UPDATE_SELECTED_ORDER,
+            payload: expectedOrder,
+        });
     });
 
     it('should dispatch action with updated lecture times', () => {
@@ -259,7 +277,7 @@ describe('Selected order actions', () => {
         thunkFunction(dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(1);
-        
+
         // Call updateSelectedOrder action
         dispatch.mock.calls[0][0](dispatch, getState);
 

@@ -1,12 +1,11 @@
-import React from 'react';
-import target from "../Reducer";
-import {LOGGED_OUT} from "../../Firebase/ActionTypes";
+import target from "./Reducer";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from "../../SelectedOrganization/ActionTypes";
+} from "./ActionTypes";
 
 
 const value = "value";
@@ -15,13 +14,7 @@ const payload = {
     a: 123
 };
 
-let dispatch;
-
 describe('selected actions - organization', () => {
-    beforeEach(() => {
-        dispatch = jest.fn();
-    });
-
     it('reducer - no action - initial state', () => {
         const result = target();
 
@@ -126,5 +119,4 @@ describe('selected actions - organization', () => {
         expect(result.organization).toEqual({});
         expect(result.isSelectedOrganization).toBeFalsy();
     });
-
 });
