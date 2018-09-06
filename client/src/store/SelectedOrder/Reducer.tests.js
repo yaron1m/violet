@@ -1,12 +1,11 @@
-import React from 'react';
-import reducer from "../Reducer";
-import {LOGGED_OUT} from "../../Firebase/ActionTypes";
+import reducer from "./Reducer";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {
     CLEAR_SELECTED_ORDER,
     SELECT_ORDER,
     SET_IS_SELECTED_ORDER,
     UPDATE_SELECTED_ORDER
-} from "../../SelectedOrder/ActionTypes";
+} from "./ActionTypes";
 
 const value = "value";
 const key = "key";
@@ -14,13 +13,7 @@ const payload = {
     a: 123
 };
 
-let dispatch;
-
 describe('selected actions - organization', () => {
-    beforeEach(() => {
-        dispatch = jest.fn();
-    });
-
     it('should return initial state', () => {
         const result = reducer();
 
@@ -108,7 +101,6 @@ describe('selected actions - organization', () => {
     });
 
     it('should return initial state', () => {
-
         const initialState = {
             order: payload,
             isSelectedOrder: true,
