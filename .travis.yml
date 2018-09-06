@@ -8,8 +8,5 @@ script:
 - npm run client-build
 - npm run test
 - npm run lint
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
-  project: "development"
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN -P development --only hosting
