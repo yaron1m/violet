@@ -1,4 +1,4 @@
-import {shouldSaveOrder} from '../OrderSaver';
+import {shouldSaveNewOrder} from '../NewOrderSaver';
 import {orderPageLabels} from "../../../../../../store/Labels/Pages/OrderPageLabels";
 
 let openDialog;
@@ -8,7 +8,7 @@ let saveNewOrganization;
 let saveNewOrder;
 
 function callTarget(isOrderMissingFields = false, isSelectedOrganization = true, selectedOrganization = {}, ) {
-    return shouldSaveOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
+    return shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
         closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder);
 }
 

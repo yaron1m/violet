@@ -2,8 +2,8 @@ import React from 'react';
 import {isEmptyValue} from "../../../../../util/StringUtil";
 import {CustomFlatButton} from "../../../../../components/CustomComponents/CustomButtons";
 
-export function shouldSaveOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
-                                closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder) {
+export function shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
+                                   closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder) {
 
     const dialogText = orderPageLabels.dialog;
 
