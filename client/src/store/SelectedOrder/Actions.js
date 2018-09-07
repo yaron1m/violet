@@ -33,10 +33,13 @@ export function selectOrder(orderId) {
 
 export function updateSelectedOrder(key, value) {
     return function updateSelectedOrder(dispatch, getState) {
-        const status = calculateOrderStatus(getSelectedOrder(getState()), getSelectedPublicCourse(getState()));
-
-        const order = mergeImmutable(getSelectedOrder(getState()), {
+        let order = mergeImmutable(getSelectedOrder(getState()), {
             [key]: value,
+        });
+
+        const status = calculateOrderStatus(order, getSelectedPublicCourse(getState()));
+
+        order = mergeImmutable(order, {
             status
         });
 
