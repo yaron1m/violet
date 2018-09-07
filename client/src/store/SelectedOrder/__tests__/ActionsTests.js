@@ -522,8 +522,7 @@ describe('Selected order actions', () => {
     it('should dispatch action to send order to database', async () => {
         firebaseActions.sendDataToDatabase = jest.fn();
 
-        const thunkFunction = sendSelectedOrderToDatabase();
-        expect(thunkFunction).toBeDefined();
+        const target = sendSelectedOrderToDatabase();
 
         const getState = () => {
             return {
@@ -537,14 +536,15 @@ describe('Selected order actions', () => {
                 }
             }
         };
-        await thunkFunction(dispatch, getState);
+        const mockedDispatch = getMockedDispatch(getState);
+
+        await target(mockedDispatch, getState);
 
         const expectedOrder = {
             id,
             [key]: value,
         };
 
-        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
     });
@@ -718,6 +718,8 @@ describe('Selected order actions', () => {
                 }
             }
         };
+        const dispatch = jest.fn();
+
         dispatch.mockReturnValue(Promise.resolve());
         await thunkFunction(dispatch, getState);
 
