@@ -6,10 +6,10 @@ import {
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
 } from "./ActionTypes";
-import {getOrganizationById} from "../organizations/Selectors";
+import {getOrganizationById} from "../Organizations/Selectors";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {closeDialog} from "../Appearance/Actions";
-import {getNextOrganizationId} from "../organizations/Selectors";
+import {getNextOrganizationId} from "../Organizations/Selectors";
 
 export function selectOrganization(organizationId) {
     return function selectOrganization(dispatch, getState) {

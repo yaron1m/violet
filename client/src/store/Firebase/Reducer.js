@@ -1,6 +1,6 @@
 import * as actionTypes from './ActionTypes';
 import _ from 'lodash';
-import {getOrganizations} from "../organizations/Selectors";
+import {getOrganizations} from "../Organizations/Selectors";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 import {getOrders} from "../orders/selectors";
 

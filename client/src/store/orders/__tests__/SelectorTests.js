@@ -2,7 +2,7 @@ import * as Selectors from '../selectors';
 import {Status} from "../../../util/Constants/Status";
 import * as labelsSelectors from "../../Labels/Selectors";
 import entityTypes from "../../../util/Constants/EntityTypes";
-import * as organizationSelectors from "../../organizations/Selectors";
+import * as organizationSelectors from "../../Organizations/Selectors";
 
 const state = {
     "orders": {

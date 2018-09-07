@@ -44,7 +44,7 @@ const emptyState = {
     organizations: {}
 };
 
-describe('store/organizations/selectors', () => {
+describe('Organizations selectors', () => {
 
     it('getOrganizations - valid', () => {
         expect(getOrganizations(sampleState))

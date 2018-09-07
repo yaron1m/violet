@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 import {selectOrganization} from "../../../../../store/SelectedOrganization/Actions";
 import {getLabels} from "../../../../../store/Labels/Reducer";
-import {getOrganizations} from "../../../../../store/organizations/Selectors";
+import {getOrganizations} from "../../../../../store/Organizations/Selectors";
 import PropTypes from 'prop-types';
 import OrganizationSection from "./OrganizationSection";
 import {toSuggestions} from "../../../../../components/AutoSuggest";

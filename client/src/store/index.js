@@ -8,7 +8,7 @@ import firebase from './Firebase/Reducer';
 import labels from './Labels/Reducer';
 import lists from './Lists/Reducer';
 import orders from './orders/reducer';
-import organizations from './organizations/Reducer';
+import organizations from './Organizations/Reducer';
 import publicCourses from './PublicCourses/reducer';
 import selectedOrder from './SelectedOrder/Reducer';
 import selectedOrganization from './SelectedOrganization/Reducer';

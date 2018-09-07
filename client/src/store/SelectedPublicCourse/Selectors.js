@@ -1,6 +1,6 @@
 import {getOrders} from "../orders/selectors";
 import _ from "lodash";
-import {getOrganizationById} from "../organizations/Selectors";
+import {getOrganizationById} from "../Organizations/Selectors";
 import {getLabels, getStatusLabel} from "../Labels/Reducer";
 import {isEmptyValue, moneyFormat} from "../../util/StringUtil";
 

@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["error"] }] */
 
 import * as actionTypes from './ActionTypes';
-import {receiveOrganizations} from '../organizations/Actions'
+import {receiveOrganizations} from '../Organizations/Actions'
 import {receiveOrders} from '../orders/actions'
 import {receiveLists} from "../Lists/Actions";
 import firebase from 'firebase/app';
