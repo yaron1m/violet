@@ -56,14 +56,9 @@ export function saveNewOrganization() {
         const newOrganizationId = getNextOrganizationId(getState());
         await dispatch(updateSelectedOrganization("id", newOrganizationId));
 
-        async function successSave() {
-            dispatch(setIsSelectedOrganization());
-            dispatch(closeDialog());
-        }
-
-        dispatch(sendSelectedOrganizationToDatabase())
-            .then(successSave)
-            // eslint-disable-next-line no-console
-            .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
+        await dispatch(sendSelectedOrganizationToDatabase())
+        // eslint-disable-next-line no-console
+        dispatch(setIsSelectedOrganization());
+        dispatch(closeDialog());
     }
 }

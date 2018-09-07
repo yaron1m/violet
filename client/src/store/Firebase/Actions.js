@@ -139,5 +139,6 @@ export function fetchData(collectionName, actionCallback) {
 }
 
 export function sendDataToDatabase(collectionPath, value) {
-    return firebase.database().ref(collectionPath).set(value);
+    return firebase.database().ref(collectionPath).set(value)
+        .catch((e) => console.error(`error saving ${collectionPath} - ` + e));
 }
