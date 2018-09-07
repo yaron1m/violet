@@ -6,13 +6,10 @@ import {updateObject} from "../../../util/ObjectUpdater";
 import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
 
 export default class AllOrdersPage extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            filterStatus: null,
-            showAll: false,
-        };
-    }
+    state = {
+        filterStatus: null,
+        showAll: false,
+    };
 
     updateStatus(status) {
         this.setState(updateObject(this.state, {

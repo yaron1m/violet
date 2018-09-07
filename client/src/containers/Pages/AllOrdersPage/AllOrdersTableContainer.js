@@ -20,7 +20,7 @@ function mapStateToProps(state, ownProps) {
     return {
         title: getLabels(state).pages.allOrdersPage.title,
         tableHeaders: getLabels(state).pages.allOrdersPage.tableHeaders,
-        elements: getElements(state, getElements),
+        elements: getElements(state, ownProps),
         rowIndexKey: "id",
         beforeTable: ownProps.beforeTable,
         limit: ownProps.limit,

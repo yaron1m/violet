@@ -1,9 +1,9 @@
 import React from "react";
-import {getElements, onEditButton} from "../AllOrdersTableContainer";
-import labels from '../../../../store/Labels/Reducer'
-import Status from "../../../../util/Constants/Status";
-import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";
-import * as HistoryUtil from "../../../../util/HistoryUtil";
+import {getElements, onEditButton} from "./AllOrdersTableContainer";
+import labels from '../../../store/Labels/Reducer'
+import Status from "../../../util/Constants/Status";
+import * as SelectedOrderActions from "../../../store/SelectedOrder/Actions";
+import * as HistoryUtil from "../../../util/HistoryUtil";
 
 const state = {
     labels: labels(),
