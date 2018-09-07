@@ -1,5 +1,5 @@
-import {shouldSaveNewOrder} from '../ShouldSaveNewOrderDecider';
-import {orderPageLabels} from "../../../../../../store/Labels/Pages/OrderPageLabels";
+import {shouldSaveNewOrder} from './ShouldSaveNewOrderDecider';
+import {orderPageLabels} from "../../../../../store/Labels/Pages/OrderPageLabels";
 
 let openDialog;
 let closeDialog;
