@@ -17,6 +17,7 @@ import {sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Action
 import {getMockedDispatch} from "../../util/TestUtils";
 import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
 import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../SelectedPublicCourse/ActionTypes";
+import {progressiveStatuses as Status} from "../../util/Constants/Status";
 
 const id = 123456;
 const orgId = 555;
@@ -728,5 +729,43 @@ describe('Selected order actions', () => {
         expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
         expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
         expect(dispatch.mock.calls[3][0].name).toEqual("sendSelectedOrganizationToDatabase");
+    });
+
+    it('should calculate status after updating the order', () => {
+        orderStatusUtil.default = jest.fn(order => {
+            if (order.orderApproved)
+                return Status.approvedOrder;
+
+            return Status.contact;
+        });
+
+        const target = updateSelectedOrder("orderApproved", true);
+        const getState = () => {
+
+            return {
+                selectedOrder: {
+                    order: {
+                        [id]: value
+                    }
+                }, selectedPublicCourse: {
+                    publicCourse: {}
+                }
+            }
+        };
+
+        const mockedDispatch = getMockedDispatch(getState);
+
+        const expectedOrder = {
+            [id]: value,
+            orderApproved: true,
+            status: Status.approvedOrder
+        };
+
+        target(mockedDispatch, getState);
+
+        expect(mockedDispatch).toBeCalledWith({
+            type: UPDATE_SELECTED_ORDER,
+            payload: expectedOrder,
+        });
     });
 });
