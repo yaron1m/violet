@@ -6,9 +6,10 @@ import {
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
 } from "./ActionTypes";
-import {getNextOrganizationId, getOrganizationById} from "../organizations/reducer";
+import {getOrganizationById} from "../organizations/Selectors";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {closeDialog} from "../Appearance/Actions";
+import {getNextOrganizationId} from "../organizations/Selectors";
 
 export function selectOrganization(organizationId) {
     return function selectOrganization(dispatch, getState) {
@@ -56,14 +57,9 @@ export function saveNewOrganization() {
         const newOrganizationId = getNextOrganizationId(getState());
         await dispatch(updateSelectedOrganization("id", newOrganizationId));
 
-        async function successSave() {
-            dispatch(setIsSelectedOrganization());
-            dispatch(closeDialog());
-        }
-
-        dispatch(sendSelectedOrganizationToDatabase())
-            .then(successSave)
-            // eslint-disable-next-line no-console
-            .catch((e) => console.error("error saving new organization - " + e)); //TODO prompt message to users
+        await dispatch(sendSelectedOrganizationToDatabase())
+        // eslint-disable-next-line no-console
+        dispatch(setIsSelectedOrganization());
+        dispatch(closeDialog());
     }
 }

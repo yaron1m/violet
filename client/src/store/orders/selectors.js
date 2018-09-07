@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import * as _ from "lodash";
-import {getOrganizationById} from "../organizations/reducer";
+import {getOrganizationById} from "../organizations/Selectors";
 import {isMatchingStatus} from "../../util/OrderStatus/OrderStatusUtils";
 import {cutIfLong, isEmptyValue, moneyFormat} from "../../util/StringUtil";
 import getActionRequiredOrdersArray from "./action-required-orders";

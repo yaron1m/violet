@@ -1,11 +1,11 @@
 import React from 'react';
-import * as firebaseActions from "../../Firebase/Actions";
+import * as firebaseActions from "../Firebase/Actions";
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from "../ActionTypes";
+} from "./ActionTypes";
 import {
     clearSelectedOrganization,
     saveNewOrganization,
@@ -13,9 +13,9 @@ import {
     sendSelectedOrganizationToDatabase,
     setIsSelectedOrganization,
     updateSelectedOrganization
-} from "../Actions";
-import {CLOSE_DIALOG} from "../../Appearance/ActionTypes";
-import {getMockedDispatch} from "../../../util/TestUtils";
+} from "./Actions";
+import {CLOSE_DIALOG} from "../Appearance/ActionTypes";
+import {getMockedDispatch} from "../../util/TestUtils";
 
 const id = 123456;
 const value = "value";
@@ -135,9 +135,10 @@ describe('selected actions - organization', () => {
         });
     });
 
-    it('should save a new organization', async () => {
-        const thunkFunction = saveNewOrganization();
-        const dispatch = jest.fn();
+    it('should save a new organization to database', async () => {
+        firebaseActions.sendDataToDatabase = jest.fn();
+
+        const target = saveNewOrganization();
 
         const getState = () => {
             return {
@@ -158,27 +159,24 @@ describe('selected actions - organization', () => {
             [key]: value,
         };
 
+        const mockedDispatch = getMockedDispatch(getState);
 
-        dispatch.mockReturnValue(Promise.resolve("aa"));
-        await thunkFunction(dispatch, getState);
+        await target(mockedDispatch, getState);
 
-        expect(dispatch.mock.calls).toHaveLength(4);
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: UPDATE_SELECTED_ORGANIZATION,
+            payload: expectedSelectedOrganization
+        });
 
-        // Call updateSelectedOrganization
-        dispatch.mock.calls[0][0](dispatch, getState);
-        // Call sendSelectedOrganizationToDatabase
-        dispatch.mock.calls[1][0](dispatch, getState);
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: CLOSE_DIALOG
+        });
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: SET_IS_SELECTED_ORGANIZATION
+        });
 
-        expect(dispatch.mock.calls[2][0].type).toBe(SET_IS_SELECTED_ORGANIZATION);
-        expect(dispatch.mock.calls[3][0].type).toBe(CLOSE_DIALOG);
-
-        expect(dispatch.mock.calls[4][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
-        expect(dispatch.mock.calls[4][0].payload).toEqual(expectedSelectedOrganization);
-
-        // Call updateSelectedOrganization in sendSelectedOrganizationToDatabase
-        dispatch.mock.calls[5][0](dispatch, getState);
-
-        expect(dispatch.mock.calls[6][0].type).toBe(UPDATE_SELECTED_ORGANIZATION);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
     });
 
 });
+

@@ -1,4 +1,4 @@
-import * as actionTypes from './action-types';
+import * as actionTypes from './ActionTypes';
 
 export function receiveOrganizations(organizations) {
     return {

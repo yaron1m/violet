@@ -1,5 +1,5 @@
 import Immutable from 'seamless-immutable';
-import {getSelectedOrder, isPublicCourseOrder, isSelectedOrder} from "../Selectors";
+import {getSelectedOrder, isPublicCourseOrder, isSelectedOrder} from "./Selectors";
 
 const sampleState = Immutable({
     selectedOrder: {

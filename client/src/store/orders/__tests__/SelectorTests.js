@@ -2,7 +2,7 @@ import * as Selectors from '../selectors';
 import {Status} from "../../../util/Constants/Status";
 import * as labelsSelectors from "../../Labels/Selectors";
 import entityTypes from "../../../util/Constants/EntityTypes";
-import * as organizationReducer from "../../organizations/reducer";
+import {getOrganizationById} from "../../organizations/Selectors";
 
 const state = {
     "orders": {
@@ -108,7 +108,7 @@ describe('store/orders/selectors', () => {
         labelsSelectors.getOrderStatusLabel = jest.fn((state, order) => order.status);
 
         const orgDetails = {organizationName: "orgName"};
-        organizationReducer.getOrganizationById = jest.fn(() => orgDetails);
+        getOrganizationById = jest.fn(() => orgDetails);
 
         expect(Selectors.getFollowUpOrdersSummary(state))
             .toEqual([

@@ -10,56 +10,10 @@ import calculateOrderStatus from "../../util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
 import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
-import {getOrganizationById} from "../organizations/reducer";
+import {getOrganizationById} from "../organizations/Selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Reducer";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
-
-export function saveNewOrder() {
-    return async function saveNewOrder(dispatch, getState) {
-        await dispatch(fillNewOrderMissingFields());
-
-        function success() {
-            const snackbarMessage = getLabels(getState()).pages.orderPage.snackBar.savedSuccessfully
-                .replace("{0}", getSelectedOrder(getState()).id);
-            dispatch(openSnackbar(snackbarMessage));
-            dispatch(setIsSelectedOrder());
-        }
-
-        function failure(error) {
-            const dialogText = getLabels(getState()).pages.orderPage.dialog;
-            dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
-            // eslint-disable-next-line no-console
-            console.error(error);
-        }
-
-        dispatch(sendSelectedOrderToDatabase()).then(success, failure);
-
-        dispatch(hideRequiredFields());
-
-        //Check if there are changes in organization
-        if (!_.isEqual(getSelectedOrganization(getState()), getOrganizationById(getState(), getSelectedOrder(getState()).organizationId))) {
-            dispatch(sendSelectedOrganizationToDatabase());
-        }
-    }
-}
-
-export function fillNewOrderMissingFields() {
-    return function fillNewOrderMissingFields(dispatch, getState) {
-        let idPromise;
-        let createdPromise;
-        let organizationIdPromise;
-        if (!getSelectedOrder(getState()).hasOwnProperty("id")) {
-            idPromise = dispatch(updateSelectedOrder("id", getNextOrderId(getState())));
-            createdPromise = dispatch(updateSelectedOrder("createdDate", new Date().toJSON()));
-        }
-
-        if (!getSelectedOrder(getState()).hasOwnProperty("organizationId"))
-            organizationIdPromise = dispatch(updateSelectedOrder("organizationId", getSelectedOrganization(getState()).id));
-
-        return Promise.all([idPromise, organizationIdPromise, createdPromise]);
-    }
-}
 
 export function selectOrder(orderId) {
     return function selectOrder(dispatch, getState) {
@@ -188,5 +142,51 @@ export function sendSelectedOrderToDatabase() {
 export function clearSelectedOrder() {
     return {
         type: CLEAR_SELECTED_ORDER,
+    }
+}
+
+export function fillNewOrderMissingFields() {
+    return function fillNewOrderMissingFields(dispatch, getState) {
+        let idPromise;
+        let createdPromise;
+        let organizationIdPromise;
+        if (!getSelectedOrder(getState()).hasOwnProperty("id")) {
+            idPromise = dispatch(updateSelectedOrder("id", getNextOrderId(getState())));
+            createdPromise = dispatch(updateSelectedOrder("createdDate", new Date().toJSON()));
+        }
+
+        if (!getSelectedOrder(getState()).hasOwnProperty("organizationId"))
+            organizationIdPromise = dispatch(updateSelectedOrder("organizationId", getSelectedOrganization(getState()).id));
+
+        return Promise.all([idPromise, organizationIdPromise, createdPromise]);
+    }
+}
+
+export function saveNewOrder() {
+    return async function saveNewOrder(dispatch, getState) {
+        await dispatch(fillNewOrderMissingFields());
+
+        function success() {
+            const snackbarMessage = getLabels(getState()).pages.orderPage.snackBar.savedSuccessfully
+                .replace("{0}", getSelectedOrder(getState()).id);
+            dispatch(openSnackbar(snackbarMessage));
+            dispatch(setIsSelectedOrder());
+        }
+
+        function failure(error) {
+            const dialogText = getLabels(getState()).pages.orderPage.dialog;
+            dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
+            // eslint-disable-next-line no-console
+            console.error(error);
+        }
+
+        dispatch(sendSelectedOrderToDatabase()).then(success, failure);
+
+        dispatch(hideRequiredFields());
+
+        //Check if there are changes in organization
+        if (!_.isEqual(getSelectedOrganization(getState()), getOrganizationById(getState(), getSelectedOrder(getState()).organizationId))) {
+            dispatch(sendSelectedOrganizationToDatabase());
+        }
     }
 }

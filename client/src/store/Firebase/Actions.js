@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["error"] }] */
 
 import * as actionTypes from './ActionTypes';
-import {receiveOrganizations} from '../organizations/actions'
+import {receiveOrganizations} from '../organizations/Actions'
 import {receiveOrders} from '../orders/actions'
 import {receiveLists} from "../Lists/Actions";
 import firebase from 'firebase/app';
@@ -139,5 +139,6 @@ export function fetchData(collectionName, actionCallback) {
 }
 
 export function sendDataToDatabase(collectionPath, value) {
-    return firebase.database().ref(collectionPath).set(value);
+    return firebase.database().ref(collectionPath).set(value)
+        .catch((e) => console.error(`error saving ${collectionPath} - ` + e));
 }
