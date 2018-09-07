@@ -30,6 +30,10 @@ export function getOrderStatusLabel(state, order) {
     return status;
 }
 
+export function getOrderPageLabels(state){
+    return getLabels(state).pages.orderPage;
+}
+
 export function getOrderSectionsLabels(state){
     return getOrderPageLabels(state).sections;
 }
