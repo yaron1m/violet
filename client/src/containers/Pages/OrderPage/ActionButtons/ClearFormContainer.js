@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../store/Labels/Selectors";
 import ClearFormButton from "./ClearForm";
 
 function mapStateToProps(state) {

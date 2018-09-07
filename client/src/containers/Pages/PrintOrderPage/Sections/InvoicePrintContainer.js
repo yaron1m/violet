@@ -1,5 +1,5 @@
 import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../store/Labels/Selectors";
 import InvoicePrintSection from "./InvoicePrint";
 
 function mapStateToProps(state) {

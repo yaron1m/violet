@@ -1,8 +1,9 @@
 import {getOrders} from "../orders/selectors";
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {getLabels, getStatusLabel} from "../Labels/Reducer";
+import {getStatusLabel} from "../Labels/Selectors";
 import {isEmptyValue, moneyFormat} from "../../util/StringUtil";
+import {getLabels} from "../Labels/Selectors";
 
 export function getSelectedPublicCourse(state) {
     return state.selectedPublicCourse.publicCourse;

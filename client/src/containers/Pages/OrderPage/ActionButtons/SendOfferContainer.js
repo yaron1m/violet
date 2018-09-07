@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../store/Labels/Selectors";
 import {getSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
 import * as _ from 'lodash'
 import SendOfferButton from "./SendOffer";

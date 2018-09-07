@@ -1,7 +1,7 @@
 import LeftIcons from './LeftIcons';
 import {connect} from "react-redux";
 import {signOutRequest} from "../../../store/Firebase/Actions";
-import {getLabels} from "../../../store/Labels/Reducer";
+import {getLabels} from "../../../store/Labels/Selectors";
 import {getActionRequiredOrders} from "../../../store/orders/selectors";
 
 function mapStateToProps(state) {

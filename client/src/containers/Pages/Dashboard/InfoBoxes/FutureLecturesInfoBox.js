@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../store/Labels/Selectors";
 import {redirect} from "../../../../util/HistoryUtil";
 import {isFetching} from "../../../../store/Firebase/Reducer";
 import CheckBoxIcon from '@material-ui/icons/CheckCircle';

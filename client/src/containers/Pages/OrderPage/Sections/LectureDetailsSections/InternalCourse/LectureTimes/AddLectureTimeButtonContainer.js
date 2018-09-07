@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {addNewLectureTime} from "../../../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../../../../store/Labels/Selectors";
 import {CustomRaisedButton} from "../../../../../../../components/CustomComponents/CustomButtons";
 
 function mapStateToProps(state) {

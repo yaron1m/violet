@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
-import {getLabels} from "../../../store/Labels/Reducer";
+import {getLabels} from "../../../store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../components/tables/CustomPaperTable";
 import {getPublicCoursesSummary} from "../../../store/PublicCourses/Selectors";

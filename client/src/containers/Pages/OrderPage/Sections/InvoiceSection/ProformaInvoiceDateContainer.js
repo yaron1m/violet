@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../../store/Labels/Selectors";
 import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
 import calculatePayDate from "./ProformaInvoiceDateCalculator";

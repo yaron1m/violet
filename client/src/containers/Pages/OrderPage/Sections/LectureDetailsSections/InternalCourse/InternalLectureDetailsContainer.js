@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../../../store/Labels/Selectors";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
 import Status from "../../../../../../util/Constants/Status";
 import {isMatchingStatus} from "../../../../../../util/OrderStatus/OrderStatusUtils";

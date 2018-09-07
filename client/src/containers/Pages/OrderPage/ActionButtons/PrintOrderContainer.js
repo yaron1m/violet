@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../store/Labels/Selectors";
 import {isSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import {openDialog} from "../../../../store/Appearance/Actions";
 import {redirect} from "../../../../util/HistoryUtil";

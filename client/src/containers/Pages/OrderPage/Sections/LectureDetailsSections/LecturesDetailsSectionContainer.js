@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../../store/Labels/Selectors";
 import LectureDetailsSection from "./LecturesDetailsSection";
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../util/StringUtil";

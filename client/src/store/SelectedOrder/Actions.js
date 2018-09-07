@@ -12,7 +12,7 @@ import {selectOrganization, sendSelectedOrganizationToDatabase} from "../Selecte
 import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
 import {getOrganizationById} from "../Organizations/Selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
-import {getLabels} from "../Labels/Reducer";
+import {getLabels} from "../Labels/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 
 export function selectOrder(orderId) {

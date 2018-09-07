@@ -1,9 +1,10 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getLabels, getStatusLabels} from "../../../store/Labels/Reducer";
+import {getStatusLabels} from "../../../store/Labels/Selectors";
 import Sizes from "../../../util/Constants/Sizes";
 import CustomSelectField from "../../../components/CustomComponents/CustomSelectField";
+import {getLabels} from "../../../store/Labels/Selectors";
 
 function getStatuses(state) {
     const statusObjects = _.map(getStatusLabels(state),

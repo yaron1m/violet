@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import OrderPageTitle from "./OrderPageTitle";
-import {getLabels} from "../../../store/Labels/Reducer";
+import {getLabels} from "../../../store/Labels/Selectors";
 import {isSelectedOrder} from "../../../store/SelectedOrder/Selectors";
 import {getSelectedOrderStatus} from "../../../store/Labels/Selectors";
 import {getSelectedOrder} from "../../../store/SelectedOrder/Selectors";

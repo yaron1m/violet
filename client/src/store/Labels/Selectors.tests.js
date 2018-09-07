@@ -1,4 +1,4 @@
-import {getLabels} from "../Reducer";
+import {getLabels} from "./Selectors";
 
 const sampleState = {
     labels: {

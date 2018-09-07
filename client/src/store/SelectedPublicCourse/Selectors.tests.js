@@ -1,11 +1,13 @@
 import Immutable from 'seamless-immutable';
 import {
+    getLecturesDetails,
+    getSelectedCourseParticipantsAndOrders,
     getSelectedPublicCourse,
     getSelectedPublicCourseLectures,
-    isSelectedPublicCourse,
-    getSelectedCourseParticipantsAndOrders, getSelectedPublicCourseParticipants, getLecturesDetails
+    getSelectedPublicCourseParticipants,
+    isSelectedPublicCourse
 } from "./Selectors";
-import * as labelReducers from "../Labels/Reducer";
+import {getStatusLabel} from "../Labels/Selectors";
 
 function getParticipant(id) {
     return {
@@ -143,7 +145,7 @@ describe('store/selected/selectors', () => {
     });
 
     it('should return summary of participants of matching course', () => {
-        labelReducers.getStatusLabel = jest.fn();
+        getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 
         expect(result).toHaveLength(4);

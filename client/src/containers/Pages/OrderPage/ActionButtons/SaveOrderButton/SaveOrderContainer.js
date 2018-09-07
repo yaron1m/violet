@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../../store/Labels/Selectors";
 import {closeDialog, openDialog, showRequiredFields} from "../../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../../components/ActionButtons/SaveActionButton";
 import {shouldSaveNewOrder} from "./ShouldSaveNewOrderDecider";

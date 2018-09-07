@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {
     sendSelectedOrganizationToDatabase} from "../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../store/Labels/Reducer";
+import {getLabels} from "../../../../store/Labels/Selectors";
 import {getNextOrganizationId} from "../../../../store/Organizations/Selectors";
 import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";

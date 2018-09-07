@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../store/Labels/Reducer";
+import {getLabels} from "../../../store/Labels/Selectors";
 import {getOrganizations} from "../../../store/Organizations/Selectors";
 import {selectOrganization} from "../../../store/SelectedOrganization/Actions";
 import {getOrders, getPublicCourseParticipantsSummary} from "../../../store/orders/selectors";
