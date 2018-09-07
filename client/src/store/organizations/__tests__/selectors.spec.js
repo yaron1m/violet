@@ -1,5 +1,5 @@
 import Immutable from 'seamless-immutable';
-import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../reducer";
+import {getNextOrganizationId, getOrganizationById, getOrganizations} from "../Reducer";
 
 const sampleState = Immutable({
     organizations: {

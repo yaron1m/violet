@@ -10,7 +10,7 @@ import calculateOrderStatus from "../../util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
 import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
-import {getOrganizationById} from "../organizations/reducer";
+import {getOrganizationById} from "../organizations/Reducer";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Reducer";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";

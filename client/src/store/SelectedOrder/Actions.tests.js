@@ -1,7 +1,7 @@
 import React from 'react';
-import * as orderStatusUtil from '../../../util/OrderStatus/OrderStatusCalculator'
-import * as firebaseActions from "../../Firebase/Actions";
-import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "../ActionTypes";
+import * as orderStatusUtil from '../../util/OrderStatus/OrderStatusCalculator'
+import * as firebaseActions from "../Firebase/Actions";
+import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {
     addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields, removeParticipant,
     removeParticipantsFromAllLectures, saveNewOrder,
@@ -11,12 +11,12 @@ import {
     updateLectureTime, updatePublicCourseLectureParticipating,
     updatePublicCourseParticipant,
     updateSelectedOrder
-} from "../Actions";
-import {HIDE_REQUIRED_FIELDS} from "../../Appearance/ActionTypes";
-import {sendSelectedOrganizationToDatabase} from "../../SelectedOrganization/Actions";
-import {getMockedDispatch} from "../../../util/TestUtils";
-import {SELECT_ORGANIZATION} from "../../SelectedOrganization/ActionTypes";
-import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../../SelectedPublicCourse/ActionTypes";
+} from "./Actions";
+import {HIDE_REQUIRED_FIELDS} from "../Appearance/ActionTypes";
+import {sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
+import {getMockedDispatch} from "../../util/TestUtils";
+import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
+import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../SelectedPublicCourse/ActionTypes";
 
 const id = 123456;
 const orgId = 555;

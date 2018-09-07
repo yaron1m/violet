@@ -6,7 +6,7 @@ import {
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
 } from "./ActionTypes";
-import {getNextOrganizationId, getOrganizationById} from "../organizations/reducer";
+import {getNextOrganizationId, getOrganizationById} from "../organizations/Reducer";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {closeDialog} from "../Appearance/Actions";
 
