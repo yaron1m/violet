@@ -4,7 +4,7 @@ import * as actionTypes from './ActionTypes';
 
 const value = "value";
 const org = {
-   A:"B"
+    newKey: "new value"
 };
 
 describe('organizations reducer', () => {

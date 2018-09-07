@@ -1,6 +1,6 @@
 import Immutable from 'seamless-immutable';
-import {getOrganizationById} from "../Selectors";
-import {getNextOrganizationId, getOrganizations} from "../Selectors";
+import {getOrganizationById} from "./Selectors";
+import {getNextOrganizationId, getOrganizations} from "./Selectors";
 
 const sampleState = Immutable({
     organizations: {
@@ -67,7 +67,6 @@ describe('store/organizations/selectors', () => {
     });
 
     it('getOrganizationById - valid', () => {
-
         expect(getOrganizationById(sampleState, 0))
             .toEqual(sampleState.organizations[0]);
     });
@@ -76,7 +75,6 @@ describe('store/organizations/selectors', () => {
         expect(getOrganizationById(sampleState, 999))
             .toBeUndefined();
     });
-
 
     it('getOrganizationById - empty state - return undefined', () => {
         expect(getOrganizationById(emptyState, 0))
