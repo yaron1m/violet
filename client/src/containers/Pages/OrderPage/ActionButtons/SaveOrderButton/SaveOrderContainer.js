@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderPageLabels} from "../../../../../store/Labels/Selectors";
 import {closeDialog, openDialog, showRequiredFields} from "../../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../../components/ActionButtons/SaveActionButton";
 import {shouldSaveNewOrder} from "./ShouldSaveNewOrderDecider";
@@ -10,7 +10,7 @@ import {saveNewOrder} from "../../../../../store/SelectedOrder/Actions";
 
 
 function mapStateToProps(state) {
-    const orderPageLabels = getLabels(state).pages.orderPage;
+    const orderPageLabels = getOrderPageLabels(state);
     return {
         tooltip: orderPageLabels.actionButtons.save,
 

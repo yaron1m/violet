@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import * as _ from 'lodash';
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../../store/orders/selectors";
@@ -59,12 +59,12 @@ function importContact(contacts, index, updateSelectedOrder, onRequestClose, get
 
 function mapStateToProps(state, ownProps) {
     return {
-        dialogTitle: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.dialogTitle,
-        noContactsLabel: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.noContactsLabel,
+        dialogTitle: getOrderSectionsLabels(state).contacts.importContactsDialog.dialogTitle,
+        noContactsLabel: getOrderSectionsLabels(state).contacts.importContactsDialog.noContactsLabel,
         onRequestClose: ownProps.onRequestClose,
 
         contacts: getContacts(state),
-        tableHeaders: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.tableHeaders,
+        tableHeaders: getOrderSectionsLabels(state).contacts.importContactsDialog.tableHeaders,
     };
 }
 

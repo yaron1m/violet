@@ -1,11 +1,11 @@
 import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../store/Labels/Selectors";
 import {getSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import FollowUpPrintSection from "./FollowUpPrint";
 
 function mapStateToProps(state) {
     return {
-        sectionName: getLabels(state).pages.orderPage.sections.followUp.sectionName,
+        sectionName: getOrderSectionsLabels(state).followUp.sectionName,
         display: getSelectedOrder(state).followUpRequired,
     };
 }

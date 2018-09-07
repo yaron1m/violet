@@ -19,3 +19,5 @@ describe('store/Labels/selectors', () => {
             .toEqual(sampleState.labels);
     })
 });
+
+//TODO missing tests herer

@@ -17,8 +17,8 @@ function getSelectedTabKey(order){
 function mapStateToProps(state) {
     return {
         selectedTabKey: getSelectedTabKey(getSelectedOrder(state)),
-        internalLabel: getLabels(state).pages.orderPage.sections.lectureDetails.tabs.internalLabel,
-        publicCourseLabel: getLabels(state).pages.orderPage.sections.lectureDetails.tabs.publicCourseLabel,
+        internalLabel: getLabels(state).orderTypes.internalCourse,
+        publicCourseLabel: getLabels(state).orderTypes.publicCourse,
         internalTabKey,
         publicCourseTabKey,
     };

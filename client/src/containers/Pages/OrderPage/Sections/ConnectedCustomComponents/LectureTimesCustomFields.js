@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updateLectureTime} from "../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../../components/CustomComponents/CustomAutoComplete";
@@ -18,7 +18,7 @@ function getValues(state, ownProps) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        titles: getLabels(state).pages.orderPage.sections.lectureTimes.titles,
+        titles: getOrderSectionsLabels(state).lectureTimes.titles,
         values: getValues(state, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
         SelectedOrder: getSelectedOrder(state),

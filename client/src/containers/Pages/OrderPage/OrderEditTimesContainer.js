@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../store/Labels/Selectors";
+import {getOrderPageLabels} from "../../../store/Labels/Selectors";
 import {isSelectedOrder} from "../../../store/SelectedOrder/Selectors";
 import OrderTimes from "./OrderEditTimes";
 import {getSelectedOrder} from "../../../store/SelectedOrder/Selectors";
@@ -7,9 +7,9 @@ import {getSelectedOrder} from "../../../store/SelectedOrder/Selectors";
 function mapStateToProps(state) {
     return {
         isSelectedOrder: isSelectedOrder(state),
-        createdDateLabel: getLabels(state).pages.orderPage.editTimes.createdDate,
+        createdDateLabel: getOrderPageLabels(state).editTimes.createdDate,
         createdDate: getSelectedOrder(state).createdDate,
-        changedDateLabel: getLabels(state).pages.orderPage.editTimes.changedDate,
+        changedDateLabel: getOrderPageLabels(state).editTimes.changedDate,
         changedDate: getSelectedOrder(state).changedDate,
     };
 }

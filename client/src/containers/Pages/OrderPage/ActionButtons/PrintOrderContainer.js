@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../store/Labels/Selectors";
+import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
 import {isSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
 import {openDialog} from "../../../../store/Appearance/Actions";
 import {redirect} from "../../../../util/HistoryUtil";
@@ -7,9 +7,9 @@ import PrintOrderButton from "./PrintOrder";
 
 function mapStateToProps(state) {
     return {
-        printLabel: getLabels(state).pages.orderPage.actionButtons.print,
-        errorLabel: getLabels(state).pages.orderPage.actionButtons.error,
-        noOrderSelectedLabel: getLabels(state).pages.orderPage.actionButtons.noOrderSelected,
+        printLabel: getOrderPageLabels(state).actionButtons.print,
+        errorLabel: getOrderPageLabels(state).actionButtons.error,
+        noOrderSelectedLabel: getOrderPageLabels(state).actionButtons.noOrderSelected,
         isSelectedOrder: isSelectedOrder(state),
     };
 }

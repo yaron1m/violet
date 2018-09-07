@@ -1,10 +1,10 @@
 import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../store/Labels/Selectors";
 import InvoicePrintSection from "./InvoicePrint";
 
 function mapStateToProps(state) {
     return {
-        sectionName: getLabels(state).pages.orderPage.sections.invoice.sectionName,
+        sectionName: getOrderSectionsLabels(state).invoice.sectionName,
     };
 }
 

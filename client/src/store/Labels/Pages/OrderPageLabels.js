@@ -63,10 +63,6 @@ const contactsSectionLabels = {
 const lectureDetailsSectionLabels = {
     internalLabelSectionName: "פרטי ההרצאה",
     publicCourseSectionName: "הרשמה לקורס ציבורי",
-    tabs: {
-        internalLabel: "קורס פנים ארגוני",
-        publicCourseLabel: "קורס ציבורי",
-    },
     titles: {
         street: "רחוב",
         streetNumber: "מספר",
@@ -229,19 +225,6 @@ export const orderPageLabels = {
     actionButtons: orderPageActionButtonsLabels,
     snackBar: {
         savedSuccessfully: 'הזמנה מספר {0} נשמרה בהצלחה',
-    },
-    orderStatus: {
-        contact: "פנייה",
-        offer: "הצעת מחיר",
-        order: "הזמנה",
-        approvedOrder: "הזמנה מאושרת",
-        isExecuting: "בביצוע",
-        executed: "בוצע",
-        waitingPayment: "ממתין לתשלום",
-        payed: "שולם",
-        cancelled: "בוטל",
-        rejected: "לא אושר",
-        followUp: " + המשך טיפול",
     },
     editTimes: {
         createdDate: "תאריך יצירה - ",

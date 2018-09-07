@@ -8,8 +8,7 @@
     "client-build": "npm run build --prefix client",
     "client-deploy": "npm run client-test && npm run client-build && firebase deploy -P default",
     "client-deploy-dev": "npm run client-test && npm run client-build && firebase deploy -P development",
-    "client-install": "npm install --prefix client",
-    "client-test": "npm test --prefix client",
+    "install-all": "npm install && npm install --prefix client",
     "lint": "eslint client/src --fix",
     "test": "jest",
     "watch": "jest --watch"

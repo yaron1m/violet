@@ -1,12 +1,12 @@
 import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../../store/Labels/Selectors";
-import {getSelectedOrderStatus} from "../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../store/Labels/Selectors";
+import {getSelectedOrderStatusLabel} from "../../../../store/Labels/Selectors";
 import LectureDetailsPrintSection from "./LectureDetails";
 
 function mapStateToProps(state) {
     return {
-        sectionName: getLabels(state).pages.orderPage.sections.lectureDetails.sectionName,
-        status: getSelectedOrderStatus(state),
+        sectionName: getOrderSectionsLabels(state).lectureDetails.sectionName,
+        status: getSelectedOrderStatusLabel(state),
     };
 }
 

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
 import CustomToggle from "../../../../../components/CustomComponents/CustomToggle";
@@ -11,7 +11,7 @@ import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredF
 
 function mapStateToProps(state) {
     return {
-        titles: getLabels(state).pages.orderPage.sections.titles,
+        titles: getOrderSectionsLabels(state).titles,
         values: getSelectedOrder(state),
         requiredFields: getRequiredFieldsObject(state).order,
     };

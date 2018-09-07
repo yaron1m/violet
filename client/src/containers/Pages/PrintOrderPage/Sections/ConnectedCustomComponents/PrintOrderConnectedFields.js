@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import PrintField from "../../../../../components/CustomComponents/OrderPrint/PrintField";
 import PrintDate from "../../../../../components/CustomComponents/OrderPrint/PrintDate";
 import PrintBoolean from "../../../../../components/CustomComponents/OrderPrint/PrintBoolean";
 
 function mapStateToProps(state, ownProps) {
     return {
-        titles: getLabels(state).pages.orderPage.sections.titles,
+        titles: getOrderSectionsLabels(state).titles,
         values: getSelectedOrder(state),
         updateAction: function(){},
         ...ownProps,

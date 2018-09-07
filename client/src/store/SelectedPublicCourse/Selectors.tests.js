@@ -7,7 +7,7 @@ import {
     getSelectedPublicCourseParticipants,
     isSelectedPublicCourse
 } from "./Selectors";
-import {getStatusLabel} from "../Labels/Selectors";
+import * as labelSelectors from "../Labels/Selectors";
 
 function getParticipant(id) {
     return {
@@ -145,7 +145,7 @@ describe('store/selected/selectors', () => {
     });
 
     it('should return summary of participants of matching course', () => {
-        getStatusLabel = jest.fn();
+        labelSelectors.getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 
         expect(result).toHaveLength(4);

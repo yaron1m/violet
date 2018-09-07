@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import PropTypes from 'prop-types';
 import {openDialog} from "../../../../../store/Appearance/Actions";
 import ContactRow from "./ContactRow";
@@ -7,9 +7,9 @@ import {isSelectedOrganization} from "../../../../../store/SelectedOrganization/
 
 function mapStateToProps(state, ownProps) {
     return {
-        buttonTooltip: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog.buttonTooltip,
+        buttonTooltip: getOrderSectionsLabels(state).contacts.importContactsDialog.buttonTooltip,
         isFinancialContacts: ownProps.isFinancialContacts,
-        dialogText: getLabels(state).pages.orderPage.sections.contacts.importContactsDialog,
+        dialogText: getOrderSectionsLabels(state).contacts.importContactsDialog,
         isSelectedOrganization: isSelectedOrganization(state),
     };
 }

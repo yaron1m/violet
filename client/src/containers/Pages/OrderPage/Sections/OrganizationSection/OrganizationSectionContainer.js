@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import _ from 'lodash';
 import {selectOrganization} from "../../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import {getOrganizations} from "../../../../../store/Organizations/Selectors";
 import PropTypes from 'prop-types';
 import OrganizationSection from "./OrganizationSection";
@@ -10,8 +10,8 @@ import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 
 function mapStateToProps(state, ownProps) {
     return {
-        sectionName: getLabels(state).pages.orderPage.sections.organization.sectionName,
-        paymentConditions: toSuggestions(_.values(getLabels(state).pages.orderPage.sections.organization.paymentConditions)),
+        sectionName: getOrderSectionsLabels(state).organization.sectionName,
+        paymentConditions: toSuggestions(_.values(getOrderSectionsLabels(state).organization.paymentConditions)),
         fullDetails: ownProps.fullDetails,
         organizationSuggestions: _.values(getOrganizations(state)).map(
             (org) => ({

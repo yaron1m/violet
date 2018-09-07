@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updatePublicCourseParticipant} from "../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import CustomText from "../../../../../components/CustomComponents/CustomTextField";
 import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
 import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
@@ -17,7 +17,7 @@ function getValues(state, ownProps) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        titles: getLabels(state).pages.orderPage.sections.publicCourse.titles,
+        titles: getOrderSectionsLabels(state).publicCourse.titles,
         values: getValues(state, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
     };

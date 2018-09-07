@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../store/Labels/Selectors";
+import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
 import {hideRequiredFields} from "../../../../store/Appearance/Actions";
 import PropTypes from "prop-types";
 import CustomDialog from "../../../../components/CustomComponents/CustomDialog";
@@ -32,8 +32,8 @@ function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) 
 
 function mapStateToProps(state) {
     return {
-        title: getLabels(state).pages.orderPage.actionButtons.clearDialog.title,
-        dialogText: getLabels(state).pages.orderPage.actionButtons.clearDialog,
+        title: getOrderPageLabels(state).actionButtons.clearDialog.title,
+        dialogText: getOrderPageLabels(state).actionButtons.clearDialog,
     };
 }
 

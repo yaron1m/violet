@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
 import calculatePayDate from "./ProformaInvoiceDateCalculator";
 
 function mapStateToProps(state) {
     return {
-        allPaymentConditions: getLabels(state).pages.orderPage.sections.organization.paymentConditions,
+        allPaymentConditions: getOrderSectionsLabels(state).organization.paymentConditions,
         selectedPaymentConditions: getSelectedOrganization(state).paymentConditions,
     };
 }

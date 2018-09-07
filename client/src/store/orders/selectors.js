@@ -147,7 +147,7 @@ export function getOrdersSummary(state, getOrdersFunction) {
                 return result;
 
             result.date = _.minBy(publicCourse.lectures, lecture => new Date(lecture.date)).date;
-            result.topic = getLabels(state).pages.orderPage.sections.lectureDetails.tabs.publicCourseLabel + " " + publicCourse.courseName;
+            result.topic = getLabels(state).orderTypes.publicCourse + " " + publicCourse.courseName;
         }
         else {
             if (!_.isEmpty(order.lectureTimes)) {
