@@ -7,20 +7,20 @@ export function shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, sele
 
     const dialogText = orderPageLabels.dialog;
 
-    if (!isSelectedOrganization) {
-        const dialogContent = isEmptyValue(selectedOrganization, "organizationName") ?
-            dialogText.noOrganizationSelectedContent :
-            dialogText.unrecognizedOrganization.replace("{0}", selectedOrganization.organizationName);
-
-        const dialogActions = getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, dialogText, closeDialog, saveNewOrganization, saveNewOrder);
-        openDialog(dialogText.noOrganizationSelectedTitle, dialogContent, dialogActions);
-        return false;
-    }
-
     if (isOrderMissingFields) {
         //Not ready for saving - there are missing fields
         showRequiredFields();
         openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent);
+        return false;
+    }
+
+    if (!isSelectedOrganization) {
+
+        const dialogContent = isEmptyValue(selectedOrganization, "organizationName") ?
+            dialogText.noOrganizationSelectedContent :
+            dialogText.unrecognizedOrganization.replace("{0}", selectedOrganization.organizationName);
+        const dialogActions = getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, dialogText, closeDialog, saveNewOrganization, saveNewOrder);
+        openDialog(dialogText.noOrganizationSelectedTitle, dialogContent, dialogActions);
         return false;
     }
 

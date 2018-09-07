@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/Labels/Reducer";
 import {closeDialog, openDialog, showRequiredFields} from "../../../../../store/Appearance/Actions";
 import {SaveActionButton} from "../../../../../components/ActionButtons/SaveActionButton";
-import {shouldSaveNewOrder} from "./NewOrderSaver";
+import {shouldSaveNewOrder} from "./ShouldSaveNewOrderDecider";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
 import {isOrderMissingFields} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {saveNewOrganization} from "../../../../../store/SelectedOrganization/Actions";

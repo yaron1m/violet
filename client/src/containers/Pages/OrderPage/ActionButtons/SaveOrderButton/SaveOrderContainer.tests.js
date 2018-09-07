@@ -1,4 +1,4 @@
-import {shouldSaveNewOrder} from '../NewOrderSaver';
+import {shouldSaveNewOrder} from '../ShouldSaveNewOrderDecider';
 import {orderPageLabels} from "../../../../../../store/Labels/Pages/OrderPageLabels";
 
 let openDialog;
@@ -75,8 +75,23 @@ describe('Order Saver tests', () => {
         expect(closeDialog).toHaveBeenCalledTimes(1);
     });
 
-    it('should return false because there order is missing fields', () => {
+    it('should return false because order is missing fields', () => {
         const result = callTarget(true);
+
+        expect(result).toBeFalsy();
+        expect(openDialog).toHaveBeenCalledTimes(1);
+        expect(openDialog).toBeCalledWith(
+            orderPageLabels.dialog.missingFieldsTitle,
+            orderPageLabels.dialog.missingFieldsContent);
+
+        expect(closeDialog).toHaveBeenCalledTimes(0);
+        expect(showRequiredFields).toHaveBeenCalledTimes(1);
+        expect(saveNewOrganization).toHaveBeenCalledTimes(0);
+        expect(saveNewOrder).toHaveBeenCalledTimes(0);
+    });
+
+    it('should return false because order is missing fields and not because there is no selected organization', () => {
+        const result = callTarget(true, false);
 
         expect(result).toBeFalsy();
         expect(openDialog).toHaveBeenCalledTimes(1);
