@@ -1,45 +1,11 @@
 const _ = require("lodash");
+const utils = require("./OrderStatusCalculatorUtils");
+const isPublicCourseOrder = utils.isPublicCourseOrder;
+const terminatingStatuses = utils.terminatingStatuses;
+const progressiveStatuses = utils.progressiveStatuses;
+const existsAndNotEmpty = utils.existsAndNotEmpty;
+const hasDatePassed = utils.hasDatePassed;
 
-/*
- * Imports
- */
-const terminatingStatuses = {
-    cancelled: "cancelled",
-    rejected: "rejected",
-};
-
-const progressiveStatuses = {
-    contact: "contact",
-    offer: "offer",
-    order: "order",
-    approvedOrder: "approvedOrder",
-    isExecuting: "isExecuting",
-    executed: "executed",
-    waitingPayment: "waitingPayment",
-    payed: "payed",
-};
-
-function isPublicCourseOrder(order) {
-    return order.lectureDetailsTabKey === "publicCourseTab";
-}
-
-function existsAndNotEmpty(order, key) {
-    return _.has(order, key) && order[key] && isNonEmptyArray(order[key]);
-}
-
-function isNonEmptyArray(arr) {
-    return _.isArray(arr) ? arr.length !== 0 : true;
-}
-
-function hasDatePassed(dateString) {
-    const now = new Date();
-    // eslint-disable-next-line no-magic-numbers
-    now.setHours(7);
-    return now >= new Date(dateString);
-}
-/*
- * Function
- */
 
 exports.calculateOrderStatus = function (order, publicCourses) {
 
