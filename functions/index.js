@@ -1,24 +1,26 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const authorizationValidator = require('./AuthorizationValidator');
-const updateStatusFunction = require('./UpdateStatusFunction');
+const updateStatusFunction = require('./order-status/UpdateStatusFunction');
 const dateFormatUpdater = require('./DateFormatUpdater');
 admin.initializeApp(functions.config().firebase);
 
-const ref = admin.database().ref("orders");
+const database = admin.database();
+const ordersRef = database.ref("orders");
+const publicCoursesRef = database.ref("publicCourses");
 
 exports.updateStatusFunction = functions.https.onRequest((request, response) => {
     if (!authorizationValidator(request, response))
         return;
 
-    updateStatusFunction(request, response, ref);
+    updateStatusFunction(request, response, ordersRef, publicCoursesRef);
 });
 
 exports.migrationRunner = functions.https.onRequest((request, response) => {
     if (!authorizationValidator(request, response))
         return;
 
-    dateFormatUpdater(request, response, ref);
+    dateFormatUpdater(request, response, ordersRef);
 });
 
 
