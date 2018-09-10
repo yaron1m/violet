@@ -10,7 +10,7 @@ module.exports = function (request, response, ordersRef, publicCoursesRef) {
 
             snapshot.forEach(order => {
                 const thisOrder = order.val();
-                const calculatedStatus = orderStatusCalculator.calculateOrderStatus(thisOrder);
+                const calculatedStatus = orderStatusCalculator.calculateOrderStatus(thisOrder, publicCourses);
 
                 if (!_.startsWith(calculatedStatus, thisOrder.status)) {
                     console.log("id: " + thisOrder.id + ", old status: " + thisOrder.status + ", new status: " + calculatedStatus);
