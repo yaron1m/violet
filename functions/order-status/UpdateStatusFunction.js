@@ -1,4 +1,4 @@
-const orderStatusCalculator = require("./order-status");
+const orderStatusCalculator = require("./OrderStatusCalculator");
 const _ = require('lodash');
 
 module.exports = function (request, response, ordersRef, publicCoursesRef) {

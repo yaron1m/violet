@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const authorizationValidator = require('./AuthorizationValidator');
-const updateStatusFunction = require('./UpdateStatusFunction');
+const updateStatusFunction = require('./order-status/UpdateStatusFunction');
 const dateFormatUpdater = require('./DateFormatUpdater');
 admin.initializeApp(functions.config().firebase);
 
