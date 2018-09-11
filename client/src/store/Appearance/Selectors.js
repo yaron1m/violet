@@ -26,10 +26,6 @@ export function getSnackbarMessage(state) {
     return state.appearance.snackbar.message;
 }
 
-export function getLanguage(state) {
-    return state.appearance.language;
-}
-
 export function shouldShowRequiredFields(state) {
     return state.appearance.showRequiredFields;
 }
