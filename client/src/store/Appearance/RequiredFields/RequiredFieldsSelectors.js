@@ -2,7 +2,7 @@ import {getSelectedOrganization} from "../../SelectedOrganization/Selectors";
 import * as _ from "lodash";
 import requiredFields from "./RequiredFieldsByStatus";
 import {hasMissingFields, isRightTabKey, mergerRequiredFields} from "./Util";
-import {shouldShowRequiredFields} from "../Reducer";
+import {shouldShowRequiredFields} from "../Selectors";
 import {publicCourseTabKey} from "../../../util/Constants/TabKeys";
 import {getSelectedOrder} from "../../SelectedOrder/Selectors";
 import {internalTabKey} from "../../../util/Constants/TabKeys";

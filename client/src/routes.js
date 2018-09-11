@@ -7,7 +7,7 @@ import OrganizationPage from './containers/Pages/OrganizationPage/';
 import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
 import {isLoggedIn} from "./store/Firebase/Reducer";
 import connect from "react-redux/es/connect/connect";
-import {isRTL} from "./store/Appearance/Reducer";
+import {isRTL} from "./store/Appearance/Selectors";
 import PaymentPage from "./containers/Pages/WaitingPaymentPage";
 import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./containers/Pages/FutureLecturesPage";
