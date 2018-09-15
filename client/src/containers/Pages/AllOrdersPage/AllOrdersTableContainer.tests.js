@@ -1,4 +1,3 @@
-import React from "react";
 import {getElements, onEditButton} from "./AllOrdersTableContainer";
 import labels from '../../../store/Labels/Reducer'
 import Status from "../../../util/Constants/Status";

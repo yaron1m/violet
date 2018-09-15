@@ -1,4 +1,3 @@
-import React from 'react';
 import * as actions from "./Actions";
 import {clearSelectedPublicCourse} from "./Actions";
 import * as firebaseActions from "../Firebase/Actions";

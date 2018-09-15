@@ -1,4 +1,3 @@
-import React from 'react';
 import * as orderStatusUtil from '../../util/OrderStatus/OrderStatusCalculator'
 import * as firebaseActions from "../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";

@@ -1,5 +1,4 @@
-import React from 'react';
-import {isFetching, isLoggedIn} from "../Reducer";
+import {isFetching, isLoggedIn} from "./Reducer";
 
 function setup(extraProps, orders, organizations) {
     return {
