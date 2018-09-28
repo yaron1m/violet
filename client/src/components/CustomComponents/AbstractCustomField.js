@@ -16,7 +16,6 @@ export default class AbstractCustomField extends React.Component {
         this.width = getWidth(props);
         this.state = {
             value: props.values[props.name],
-            name: props.name,
             isRequired: _.includes(props.requiredFields, props.name)
         };
 
@@ -36,7 +35,7 @@ export default class AbstractCustomField extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        const name = prevState.name;
+        const name = nextProps.name;
         const updatedState = {};
         if (nextProps.values[name] !== prevState.value) {
             updatedState.value = nextProps.values[name] ? nextProps.values[name] : "";
