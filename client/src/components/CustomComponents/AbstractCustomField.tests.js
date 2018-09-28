@@ -32,7 +32,6 @@ describe('Abstract Field Class', () => {
         expect(target.name).toEqual("organizationName");
         expect(target.title).toEqual("שם הארגון");
         expect(target.state).toEqual({
-            name: "organizationName",
             value: "Google",
             isRequired: false,
         });
@@ -64,12 +63,12 @@ describe('Abstract Field Class', () => {
 
     it('should return null when value is not changed', () => {
         const state = {
-            name: "organizationName",
             value: "Google",
             isRequired: false,
         };
 
         const newProps = {
+            name: "organizationName",
             values: {
                 organizationName: "Google",
             },
@@ -81,12 +80,12 @@ describe('Abstract Field Class', () => {
 
     it('should return state with a new value', () => {
         const state = {
-            name: "organizationName",
             value: "Google",
             isRequired: false,
         };
 
         const newProps = {
+            name: "organizationName",
             values: {
                 organizationName: "Amazon",
             },
@@ -123,12 +122,12 @@ describe('Abstract Field Class', () => {
 
     it('should mark isRequired as true when name is in required array', () => {
         const state = {
-            name: "organizationName",
             value: "Google",
             isRequired: false,
         };
 
         const newProps = {
+            name: "organizationName",
             values: {
                 organizationName: "Google",
             },
@@ -161,12 +160,12 @@ describe('Abstract Field Class', () => {
 
     it('should not update state if was required and still not required', () => {
         const state = {
-            name: "organizationName",
             value: "Google",
             isRequired: false,
         };
 
         const newProps = {
+            name: "organizationName",
             values: {
                 organizationName: "Google",
             },
@@ -180,12 +179,12 @@ describe('Abstract Field Class', () => {
 
     it('should not update state if was required and still required', () => {
         const state = {
-            name: "organizationName",
             value: "Google",
             isRequired: true,
         };
 
         const newProps = {
+            name: "organizationName",
             values: {
                 organizationName: "Google",
             },
