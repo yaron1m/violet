@@ -1,9 +1,19 @@
 import _ from "lodash";
+import {hasDatePassed} from "../../util/TimeUtil";
 
+//Missing test
 export function getPublicCourses(state) {
     return state.publicCourses;
 }
 
+//Missing test
+export function getActivePublicCourses(state) {
+    return _.filter(getPublicCourses(state), course => {
+        return _.some(course.lectures, lecture => !hasDatePassed(lecture.date))
+    });
+}
+
+//Missing test
 export function getNextPublicCourseId(state) {
     const courses = getPublicCourses(state);
     const keys = _.keys(courses);
@@ -12,14 +22,17 @@ export function getNextPublicCourseId(state) {
     return _.max(_.map(_.keys(courses), _.parseInt)) + 1;
 }
 
+//Missing test
 export function getPublicCourseById(state, id) {
     return getPublicCourses(state)[id];
 }
 
+//Missing test
 export function getPublicCourseByOrder(state, order) {
     return getPublicCourses(state)[order.publicCourseId];
 }
 
+//Missing test
 export function getPublicCoursesSummary(state) {
     const courses = getPublicCourses(state);
 
