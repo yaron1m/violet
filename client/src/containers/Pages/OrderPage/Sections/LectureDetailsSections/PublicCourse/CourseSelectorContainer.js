@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Sizes from "../../../../../../util/Constants/Sizes";
-import {getPublicCourses} from "../../../../../../store/PublicCourses/Selectors";
+import {getActivePublicCourses, getPublicCourses} from "../../../../../../store/PublicCourses/Selectors";
 import _ from 'lodash';
 import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";
 import {selectPublicCourse} from "../../../../../../store/SelectedPublicCourse/Actions";
@@ -33,7 +33,7 @@ export function selectFieldUpdateAction(dispatch, newValue) {
 function mapStateToProps(state) {
     return {
         name: "courseName",
-        options: _.map(getPublicCourses(state), getOption),
+        options: _.map(getActivePublicCourses(state), getOption),
         size: Sizes.XL,
         values: getValues(getSelectedOrder(state), getPublicCourses(state)),
     };

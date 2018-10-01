@@ -70,7 +70,7 @@ export function getFollowUpOrdersSummary(state) {
 //TODO update tests
 export function getAllLectureTimes(state, status = null, includePublicCourse = false) {
     function getMappedLectureTimes(order) {
-        return _.map(order.lectureTimes, function (time) {
+        return _.map(order.lectureTimes, time => {
             time.info = {
                 type: entityTypes.order,
                 id: order.id,

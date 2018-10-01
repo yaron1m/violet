@@ -1,7 +1,14 @@
 import _ from "lodash";
+import {hasDatePassed} from "../../util/TimeUtil";
 
 export function getPublicCourses(state) {
     return state.publicCourses;
+}
+
+export function getActivePublicCourses(state) {
+    return _.filter(getPublicCourses(state), course => {
+        return _.some(course.lectures, lecture => !hasDatePassed(lecture.date))
+    });
 }
 
 export function getNextPublicCourseId(state) {
