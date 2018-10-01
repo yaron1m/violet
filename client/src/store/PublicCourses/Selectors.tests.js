@@ -1,4 +1,11 @@
 import Immutable from 'seamless-immutable';
+import {
+    getActivePublicCourses,
+    getNextPublicCourseId,
+    getPublicCourseById,
+    getPublicCourseByOrder,
+    getPublicCourses, getPublicCoursesSummary
+} from "./Selectors";
 
 const sampleState = Immutable({
     publicCourses: {
@@ -8,10 +15,18 @@ const sampleState = Immutable({
             courseCity: "Ramat-Gan",
             distanceCost: "80",
             id: 1000,
-            lectures:[
+            lectures: [
                 {
-                active: true,
-                    date: "2018-12-31",
+                    active: true,
+                    date: "2017-12-31",
+                    startTime: "9:00",
+                    endTime: "16:00",
+
+
+                },
+                {
+                    active: true,
+                    date: "2017-11-11",
                     startTime: "9:00",
                     endTime: "16:00",
 
@@ -20,57 +35,75 @@ const sampleState = Immutable({
 
             ]
         },
-        1: {
-            "address": "נתניה",
-            "companyId": "0520520352",
-            "id": 1,
-            "name": "סלקום"
+        1001: {
+            id: 1001,
+            courseName: "Another course name",
+            courseLocation: "not my house",
+            lectures: [
+                {
+                    active: true,
+                    date: "2999-01-01"
+                }
+            ]
         },
-        2: {
-            "id": 2,
-            "name": "תעשיה צבאית"
+        1002: {
+            id: 1002
         }
-    }
+    },
 });
 
-const emptyState = {
-    publicCourses: {}
-};
-//
-// describe('Organizations selectors', () => {
-//
-//     it('getOrganizations - valid', () => {
-//         expect(getOrganizations(sampleState))
-//             .toEqual(sampleState.organizations);
-//     });
-//
-//     it('getOrganizations - empty state', () => {
-//         expect(getOrganizations(emptyState))
-//             .toEqual({});
-//     });
-//
-//     it('getNextOrganizationId - valid', () => {
-//         expect(getNextOrganizationId(sampleState))
-//             .toEqual(3);
-//     });
-//
-//     it('getNextOrganizationId - empty state - return null', () => {
-//         expect(getNextOrganizationId(emptyState))
-//             .toBeNull();
-//     });
-//
-//     it('getOrganizationById - valid', () => {
-//         expect(getOrganizationById(sampleState, 0))
-//             .toEqual(sampleState.organizations[0]);
-//     });
-//
-//     it('getOrganizationById - no such organization - return undefined', () => {
-//         expect(getOrganizationById(sampleState, 999))
-//             .toBeUndefined();
-//     });
-//
-//     it('getOrganizationById - empty state - return undefined', () => {
-//         expect(getOrganizationById(emptyState, 0))
-//             .toBeUndefined();
-//     });
-// });
+describe('Public course selectors', () => {
+
+    it('should return all public courses', () => {
+        expect(getPublicCourses(sampleState))
+            .toEqual(sampleState.publicCourses);
+    });
+
+    it('should return only active public courses', () => {
+        expect(getActivePublicCourses(sampleState))
+            .toEqual([sampleState.publicCourses[1001]]);
+    });
+
+    it('should return the next public course id', () => {
+        expect(getNextPublicCourseId(sampleState))
+            .toEqual(1003);
+    });
+
+    it('should return public course by id', () => {
+        expect(getPublicCourseById(sampleState, 1000))
+            .toEqual(sampleState.publicCourses[1000]);
+    });
+
+    it('should return public course by order', () => {
+        const order = {
+            publicCourseId: 1000
+        };
+
+        expect(getPublicCourseByOrder(sampleState, order))
+            .toEqual(sampleState.publicCourses[1000]);
+    });
+
+    it('should return a summary of all public courses', () => {
+        const expectedResult = [
+                {
+                    "id": 1002
+                },
+                {
+                    "courseLocation": "not my house",
+                    "courseName": "Another course name",
+                    "date": "2999-01-01",
+                    "id": 1001
+                },
+                {
+                    "courseLocation": "My house",
+                    "courseName": "my course name",
+                    "date": "2017-11-11",
+                    "id": 1000
+                },
+            ]
+        ;
+
+        expect(getPublicCoursesSummary(sampleState))
+            .toEqual(expectedResult);
+    });
+});
