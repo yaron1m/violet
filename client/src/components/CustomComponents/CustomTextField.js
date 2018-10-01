@@ -12,15 +12,13 @@ const styles = () => ({
     },
 });
 
-const style = {
-    width: this.width,
-    height: "inherit"
-};
-
 class CustomText extends AbstractCustomField {
 
     render() {
-
+        const style = {
+            width: this.width,
+            height: "inherit"
+        };
 
         return (
             <TextField
