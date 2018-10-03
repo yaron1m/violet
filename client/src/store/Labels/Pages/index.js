@@ -125,6 +125,7 @@ const allPublicCoursesPageLabels = {
         {courseName: "שם הקורס"},
         {courseLocation: "מיקום הקורס"},
         {date: "תאריך הרצאה"},
+        {courseIncome: "הכנסות"},
         {edit: "עריכה"}]
 };
 

@@ -1,5 +1,8 @@
 import _ from "lodash";
 import {hasDatePassed} from "../../util/TimeUtil";
+import {getOrders} from "../orders/selectors";
+import {moneyFormat} from "../../util/StringUtil";
+import {getLabels} from "../Labels/Selectors";
 
 export function getPublicCourses(state) {
     return state.publicCourses;
@@ -40,6 +43,10 @@ export function getPublicCoursesSummary(state) {
             const dates = _.map(course.lectures, x => x.date);
             result.date = dates.sort()[0];
         }
+
+        const orders = getOrders(state);
+        const publicCourseOrders = _.filter(orders, order => order.publicCourseId === course.id);
+        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)), getLabels(state).currencyIcon);
 
         return result;
     }
