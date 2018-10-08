@@ -8,6 +8,9 @@ import {
 } from "./Selectors";
 
 const sampleState = Immutable({
+    labels: {
+        currencyIcon: "X"
+    },
     publicCourses: {
         1000: {
             courseName: "my course name",
@@ -21,16 +24,12 @@ const sampleState = Immutable({
                     date: "2017-12-31",
                     startTime: "9:00",
                     endTime: "16:00",
-
-
                 },
                 {
                     active: true,
                     date: "2017-11-11",
                     startTime: "9:00",
                     endTime: "16:00",
-
-
                 }
 
             ]
@@ -50,6 +49,18 @@ const sampleState = Immutable({
             id: 1002
         }
     },
+    orders: {
+        5000: {
+            lectureDetailsTabKey: "publicCourseTab",
+            publicCourseId: 1001,
+            cost: "1111",
+        },
+        5001: {
+            lectureDetailsTabKey: "publicCourseTab",
+            publicCourseId: 1001,
+            cost: "2222",
+        }
+    }
 });
 
 describe('Public course selectors', () => {
@@ -86,19 +97,22 @@ describe('Public course selectors', () => {
     it('should return a summary of all public courses', () => {
         const expectedResult = [
                 {
-                    "id": 1002
+                    "id": 1002,
+                    courseIncome: 0
                 },
                 {
                     "courseLocation": "not my house",
                     "courseName": "Another course name",
                     "date": "2999-01-01",
+                    courseIncome: "3,333.00 X",
                     "id": 1001
                 },
                 {
                     "courseLocation": "My house",
                     "courseName": "my course name",
                     "date": "2017-11-11",
-                    "id": 1000
+                    "id": 1000,
+                    courseIncome: 0
                 },
             ]
         ;

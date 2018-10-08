@@ -3,6 +3,7 @@ import {hasDatePassed} from "../../util/TimeUtil";
 import {getOrders} from "../orders/selectors";
 import {moneyFormat} from "../../util/StringUtil";
 import {getLabels} from "../Labels/Selectors";
+import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 
 export function getPublicCourses(state) {
     return state.publicCourses;
@@ -45,7 +46,7 @@ export function getPublicCoursesSummary(state) {
         }
 
         const orders = getOrders(state);
-        const publicCourseOrders = _.filter(orders, order => order.publicCourseId === course.id);
+        const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && order.publicCourseId === course.id);
         result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)), getLabels(state).currencyIcon);
 
         return result;
