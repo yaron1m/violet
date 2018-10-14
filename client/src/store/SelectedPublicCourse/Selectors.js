@@ -46,7 +46,7 @@ export function getSelectedPublicCourseParticipants(state) {
         return {
             participantFirstName: participant.participantFirstName,
             participantLastName: participant.participantLastName,
-            numberOfLecturesAttending: participant.lecturesAttending.length,
+            numberOfLecturesAttending: participant.lecturesAttending ? participant.lecturesAttending.length : 0,
             participantCost: moneyFormat(participant.participantCost, getLabels(state).currencyIcon),
             orderId: order.id,
             status: getStatusLabel(state, order.status),
