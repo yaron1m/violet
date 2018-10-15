@@ -22,6 +22,7 @@ export default class CourseDetailsSection extends React.Component {
                 </div>
                 <div style={flexStyle}>
                     <PublicCourseConnectedToggle name="roomsApproved"/>
+                    <PublicCourseConnectedToggle name="isoPayed"/>
                     <PublicCourseConnectedToggle name="printedMaterials"/>
                     <PublicCourseConnectedToggle name="printedCertificates"/>
                 </div>

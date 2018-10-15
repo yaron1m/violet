@@ -22,6 +22,7 @@ export const publicCourseLabels = {
         mealCost: "עלות ארוחה",
         distanceCost: "עלות נסיעות",
         roomsApproved: "חדרים אושרו",
+        isoPayed: "שולם לאיגוד",
         printedMaterials: "חוברות הודפסו",
         printedCertificates: "תעודות הודפסו",
 
