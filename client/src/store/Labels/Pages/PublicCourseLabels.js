@@ -4,7 +4,6 @@ export const publicCourseLabels = {
         courseDetailsSectionName: "פרטי הקורס",
         courseLecturesSectionName: "הרצאות",
         courseLectureDetailsSectionName: "פרטי ההרצאות",
-        courseIncomeSum: "הכנסות בקורס: ",
         courseParticipantsSectionName: "משתתפים",
     },
     actionButtons: {
