@@ -63,7 +63,8 @@ const state = Immutable({
             publicCourseParticipants: [
                 getParticipant(1),
                 getParticipant(2),
-            ]
+            ],
+            proformaInvoiceNumber:"1122",
         },
         124: {
             id: 124,
@@ -158,6 +159,7 @@ describe('store/selected/selectors', () => {
             orderId: 123,
             status: undefined,
             organizationName: "OrgA",
+            proformaInvoiceNumber: "1122",
         });
         expect(result[1]).toEqual({
             participantFirstName: "first2",
@@ -167,6 +169,7 @@ describe('store/selected/selectors', () => {
             orderId: 123,
             status: undefined,
             organizationName: "OrgA",
+            proformaInvoiceNumber: "1122",
         });
         expect(result[2]).toEqual({
             participantFirstName: "first5",

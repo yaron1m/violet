@@ -46,6 +46,7 @@ export const publicCourseLabels = {
         {participantLastName: "שם משפחה"},
         {organizationName: "ארגון"},
         {status: "סטאטוס"},
+        {proformaInvoiceNumber: "חשבונית עסקה"},
         {numberOfLecturesAttending: "ימים"},
         {participantCost: "מחיר השתתפות"},
     ],
