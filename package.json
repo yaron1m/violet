@@ -24,7 +24,7 @@
     "eslint-config-google": "0.11.0",
     "eslint-plugin-jest": "^21.24.1",
     "eslint-plugin-react": "^7.11.0",
-    "firebase-tools": "^4.2.1",
+    "firebase-tools": "5.1.1",
     "jest": "^23.6.0"
   },
   "jest": {
