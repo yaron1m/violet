@@ -1,4 +1,4 @@
-import {cutIfLong, getValueOrEmptyString, isEmptyValue, moneyFormat} from "../StringUtil";
+import {cutIfLong, getValueOrEmptyString, isEmptyValue, moneyFormat} from "./StringUtil";
 
 describe('string-util', () => {
 
@@ -40,7 +40,7 @@ describe('string-util', () => {
         expect(isEmptyValue(object, "key")).toBeTruthy();
     });
 
-    it('isEmptyValue - empty value - false', () => {
+    it('isEmptyValue - empty value - true', () => {
         const object = {
             key: ""
         };
