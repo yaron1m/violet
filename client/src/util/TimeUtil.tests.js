@@ -1,4 +1,4 @@
-import {calculateDuration} from "../TimeUtil";
+import {calculateDuration} from "./TimeUtil";
 
 describe('time-util', () => {
 
