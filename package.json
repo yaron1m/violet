@@ -29,5 +29,9 @@
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.tests\\.js$)"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/yaron1m/violet"
   }
 }
