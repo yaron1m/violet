@@ -3,7 +3,7 @@ cache: bundler
 node_js:
   - "node"
 before_script:
-- npm run install-all
+- cd client
 script:
 - npm run client-build
 - npm run test
