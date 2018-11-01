@@ -5,7 +5,7 @@ node_js:
 before_script:
 - cd client
 script:
-- npm run client-build
+- npm run build
 - npm run test
 - npm run lint
 after_success:
