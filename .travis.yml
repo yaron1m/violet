@@ -4,6 +4,7 @@ node_js:
   - "node"
 before_script:
 - cd client
+- npm install
 script:
 - npm run build
 - npm run test

@@ -1,5 +1,5 @@
 {
-  "name": "violet-client",
+  "name": "violet-app",
   "description": "Customer Relationship Manager for C-Point LTD",
   "dependencies": {
     "@material-ui/core": "^3.3.2",
