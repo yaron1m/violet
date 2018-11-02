@@ -48,10 +48,7 @@
     "redux-devtools-extension": "^2.13.5"
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.tests\\.js$)",
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
+    "testRegex": "(/__tests__/.*|\\.tests\\.js$)"
   },
   "browserslist": [
     ">0.2%",
