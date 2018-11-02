@@ -1,18 +1,18 @@
 {
   "name": "violet-app",
   "description": "Customer Relationship Manager for C-Point LTD",
-  "scripts": {
-    "build": "react-scripts build",
-    "deploy": "npm test && npm run build && firebase deploy -P production",
-    "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
-    "lint": "eslint src --fix",
-    "start": "react-scripts start",
-    "test": "jest",
-    "watch": "npm test --watch"
-  },
   "author": {
     "name": "Yaron Malin",
     "email": "yaron1m@gmail.com"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "jest",
+    "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
+    "deploy": "npm test && npm run build && firebase deploy -P production",
+    "build": "react-scripts build",
+    "lint": "eslint src --fix",
+    "watch": "npm test --watch"
   },
   "dependencies": {
     "@material-ui/core": "^3.3.2",
