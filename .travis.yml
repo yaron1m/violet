@@ -10,4 +10,4 @@ script:
 - npm run test
 - npm run lint
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN -P development --only hosting
+  - firebase deploy --token $FIREBASE_TOKEN -P dev --only hosting

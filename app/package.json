@@ -3,6 +3,8 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "scripts": {
     "build": "react-scripts build",
+    "deploy": "npm test && npm run build && firebase deploy -P production",
+    "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
     "lint": "eslint src --fix",
     "start": "react-scripts start",
     "test": "jest",
