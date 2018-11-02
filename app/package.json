@@ -1,6 +1,16 @@
 {
   "name": "violet-app",
   "description": "Customer Relationship Manager for C-Point LTD",
+  "scripts": {
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "test": "jest",
+    "watch": "npm test --watch"
+  },
+  "author": {
+    "name": "Yaron Malin",
+    "email": "yaron1m@gmail.com"
+  },
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",
@@ -23,11 +33,11 @@
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint": "5.6.0",
     "eslint-config-google": "0.11.0",
     "eslint-plugin-jest": "^21.24.1",
@@ -36,18 +46,11 @@
     "jest": "^23.6.0",
     "redux-devtools-extension": "^2.13.5"
   },
-  "scripts": {
-    "build": "react-scripts build",
-    "start": "react-scripts start",
-    "test": "jest",
-    "watch": "npm test --watch"
-  },
-  "author": {
-    "name": "Yaron Malin",
-    "email": "yaron1m@gmail.com"
-  },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.tests\\.js$)"
+    "testRegex": "(/__tests__/.*|\\.tests\\.js$)",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "browserslist": [
     ">0.2%",
