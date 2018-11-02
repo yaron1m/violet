@@ -3,6 +3,7 @@
   "description": "Customer Relationship Manager for C-Point LTD",
   "scripts": {
     "build": "react-scripts build",
+    "lint": "eslint src --fix",
     "start": "react-scripts start",
     "test": "jest",
     "watch": "npm test --watch"

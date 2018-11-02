@@ -64,7 +64,7 @@ const state = Immutable({
                 getParticipant(1),
                 getParticipant(2),
             ],
-            proformaInvoiceNumber:"1122",
+            proformaInvoiceNumber: "1122",
         },
         124: {
             id: 124,
