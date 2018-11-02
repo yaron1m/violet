@@ -49,9 +49,6 @@
     "jest": "^23.6.0",
     "redux-devtools-extension": "^2.13.5"
   },
-  "jest": {
-    "testRegex": "(/__tests__/.*|\\.tests\\.js$)"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
