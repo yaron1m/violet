@@ -1,10 +1,23 @@
 {
-  "name": "violet-client",
+  "name": "violet-app",
   "description": "Customer Relationship Manager for C-Point LTD",
+  "scripts": {
+    "build": "react-scripts build",
+    "deploy": "npm test && npm run build && firebase deploy -P production",
+    "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
+    "lint": "eslint src --fix",
+    "start": "react-scripts start",
+    "test": "jest",
+    "watch": "npm test --watch"
+  },
+  "author": {
+    "name": "Yaron Malin",
+    "email": "yaron1m@gmail.com"
+  },
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",
-    "firebase": "^5.5.7",
+    "firebase": "5.3.0",
     "history": "^4.7.2",
     "jss": "^9.8.7",
     "jss-rtl": "^0.2.3",
@@ -23,17 +36,18 @@
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "9.0.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "5.6.0",
+    "eslint-config-google": "0.11.0",
+    "eslint-plugin-jest": "^21.24.1",
+    "eslint-plugin-react": "^7.11.0",
+    "firebase-tools": "^6.0.1",
+    "jest": "^23.6.0",
     "redux-devtools-extension": "^2.13.5"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "start": "react-scripts start",
-    "test": "jest",
-    "watch": "npm test --watch"
-  },
-  "author": {
-    "name": "Yaron Malin",
-    "email": "yaron1m@gmail.com"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.tests\\.js$)"

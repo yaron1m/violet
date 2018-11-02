@@ -3,7 +3,7 @@ import * as actionTypes from "./ActionTypes";
 
 describe('Selected public course actions', () => {
     it('should dispatch action with dialog parameters without actions', () => {
-        const result = actions.openDialog("myTitle","MyContent");
+        const result = actions.openDialog("myTitle", "MyContent");
 
         expect(result).toEqual({
             type: actionTypes.OPEN_DIALOG,
@@ -14,7 +14,7 @@ describe('Selected public course actions', () => {
     });
 
     it('should dispatch action with dialog parameters with actions', () => {
-        const result = actions.openDialog("myTitle","MyContent", "actions");
+        const result = actions.openDialog("myTitle", "MyContent", "actions");
 
         expect(result).toEqual({
             type: actionTypes.OPEN_DIALOG,
