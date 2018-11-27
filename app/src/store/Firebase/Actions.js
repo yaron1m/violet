@@ -29,6 +29,15 @@ const firebaseDevelopmentConfig = {
     messagingSenderId: "97871190058"
 };
 
+// const firebaseDemoConfig = {
+//     apiKey: "AIzaSyAAHuLkm30DwFxBiFEvfO0ejiBEFAvfhTQ",
+//     authDomain: "violet-demo.firebaseapp.com",
+//     databaseURL: "https://violet-demo.firebaseio.com",
+//     projectId: "violet-demo",
+//     storageBucket: "violet-demo.appspot.com",
+//     messagingSenderId: "425792520023"
+// };
+
 const firebaseConfig = process.env.NODE_ENV === "production" ? firebaseProductionConfig : firebaseDevelopmentConfig;
 
 export function initFirebase() {

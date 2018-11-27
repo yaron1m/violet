@@ -1,8 +1,7 @@
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 
-import {combineReducers} from 'redux';
 import appearance from './Appearance/Reducer';
 import firebase from './Firebase/Reducer';
 import labels from './Labels/Reducer';
