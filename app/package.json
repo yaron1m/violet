@@ -12,7 +12,7 @@
     "deploy": "npm test && npm run build && firebase deploy -P production",
     "demo-deploy": "npm test && npm run build && firebase deploy -P demo",
     "build": "react-scripts build",
-    "lint": "eslint src --fix",
+    "lint": "tslint src/**/*.ts --fix",
     "watch": "npm test --watch"
   },
   "dependencies": {
@@ -37,21 +37,12 @@
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
     "@types/jest": "^24.0.0",
     "@types/node": "^10.12.21",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
     "@types/react-redux": "^7.0.1",
     "@types/react-router": "^4.4.3",
-    "babel-eslint": "9.0.0",
-    "babel-jest": "^23.6.0",
-    "eslint": "5.6.0",
-    "eslint-config-google": "0.11.0",
-    "eslint-plugin-jest": "^21.24.1",
-    "eslint-plugin-react": "^7.11.0",
     "firebase-tools": "^6.0.1",
     "jest": "^23.6.0",
     "redux-devtools-extension": "^2.13.5",
