@@ -71,12 +71,7 @@
     "no-require-imports": false,
     "no-trailing-whitespace": true,
     "object-literal-sort-keys": false,
-    "trailing-comma": [
-      true, {
-        "multiline":  "never",
-        "singleline": "never"
-      }
-    ],
+    "trailing-comma": false,
     "align": [true],
     "class-name": true,
     "comment-format": [
