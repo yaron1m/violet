@@ -3,13 +3,12 @@ import Header from './containers/Header';
 import LoginPage from './containers/Pages/LoginPage/LoginPageContainer';
 import AppDialog from './containers/Messages/AppDialogContainer';
 import AppSnackbar from './containers/Messages/AppSnackBarContainer';
-import {theme} from './theme-default';
+import {theme} from './ThemeDefault';
 import Colors from "./util/Constants/Colors";
-import PropTypes from 'prop-types';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import RTL from "./jss-rtl";
 
-export default class App extends React.Component {
+export default class App extends React.Component<AppProps> {
 
     appBody() {
         if (this.props.isLoggedIn)
@@ -36,7 +35,7 @@ export default class App extends React.Component {
             footer: {
                 marginBottom: 5,
                 marginTop: 10,
-                textAlign: "center",
+                textAlign: "center" as 'center',
                 fontSize: 10,
                 color: Colors.textGray,
             }
@@ -69,8 +68,8 @@ export default class App extends React.Component {
     }
 }
 
-App.propTypes = {
-    isLoggedIn: PropTypes.bool,
-    rtl: PropTypes.bool,
-    children: PropTypes.node,
-};
+interface AppProps {
+    isLoggedIn: boolean;
+    rtl: boolean;
+    children: React.ReactNode;
+}
