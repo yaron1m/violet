@@ -2,7 +2,7 @@ import {isLoggedIn} from './store/Firebase/Reducer';
 import {connect} from 'react-redux';
 import {isRTL} from './store/Appearance/Selectors';
 import Routes from './Routes';
-import {IState} from './Interfaces/IState';
+import {IState} from './Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
     return {

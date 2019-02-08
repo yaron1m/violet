@@ -173,7 +173,7 @@ export interface ISuggestion {
 
 interface AutoSuggestProps {
     // Style
-    classes: any;
+    classes?: any;
 
     suggestions: ISuggestion[];
     renderSuggestion?: (suggestion: ISuggestion) => React.ReactNode;
@@ -182,13 +182,13 @@ interface AutoSuggestProps {
     value: string;
     onInputChange: (label: string) => void; // Returns the label (string)
     onSuggestionSelected: (suggestion: ISuggestion) => void; // Returns the suggestion selected (object)
-    helperText: string;
+    helperText?: string;
     hintText?: string;
-    error: boolean;
+    error?: boolean;
     fullWidth?: boolean;
     disabled?: boolean;
     maxSearchResults?: number;
-    width: number | string;
+    width?: number | string;
     inputTextColor?: string;
 }
 

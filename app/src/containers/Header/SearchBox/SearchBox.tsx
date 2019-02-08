@@ -1,21 +1,20 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import Colors from "../../../util/Constants/Colors";
-import PropTypes from 'prop-types';
-import AutoSuggest from "../../../Components/AutoSuggest";
+import AutoSuggest, {ISuggestion} from "../../../Components/AutoSuggest";
 
-export default class SearchBox extends React.Component {
+export default class SearchBox extends React.Component<SearchBoxProps> {
 
     state = {
         searchText: "",
     };
 
-    handleRequest(chosenRequest) {
+    handleRequest(suggestion: ISuggestion) {
         this.setState({
             searchText: ""
         });
 
-        this.props.onSuggestionSelected(chosenRequest);
+        this.props.onSuggestionSelected(suggestion);
     }
 
     render() {
@@ -29,7 +28,7 @@ export default class SearchBox extends React.Component {
                 borderRadius: 2,
                 height: 35,
                 paddingLeft: 10,
-                display: "flex",
+                display: "flex" as "flex",
             },
         };
 
@@ -42,9 +41,9 @@ export default class SearchBox extends React.Component {
                     renderSuggestion={this.props.renderSuggestion}
                     value={this.state.searchText}
                     onInputChange={searchText => this.setState({searchText})}
+                    onSuggestionSelected={this.handleRequest.bind(this)}
                     fullWidth
                     hintText={this.props.hintText}
-                    onSuggestionSelected={this.handleRequest.bind(this)}
                     maxSearchResults={10}
                     inputTextColor={Colors.white}
                 />
@@ -53,9 +52,9 @@ export default class SearchBox extends React.Component {
     }
 }
 
-SearchBox.propTypes = {
-    hintText: PropTypes.string.isRequired,
-    suggestions: PropTypes.array,
-    onSuggestionSelected: PropTypes.func,
-    renderSuggestion: PropTypes.func,
-};
+interface SearchBoxProps {
+    hintText: string;
+    suggestions: ISuggestion[];
+    onSuggestionSelected: (suggestion: ISuggestion) => void;
+    renderSuggestion: (suggestion: ISuggestion) => React.ReactNode;
+}
