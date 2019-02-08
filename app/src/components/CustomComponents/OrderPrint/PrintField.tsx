@@ -1,17 +1,16 @@
 import React from 'react';
 import _ from 'lodash';
 import AbstractCustomField from "../AbstractCustomField";
-import PropTypes from "prop-types";
 
 export default class PrintField extends AbstractCustomField {
-    constructor(props){
+    constructor(props: PrintFieldProps){
         super({
             ...props,
             updateAction: function(){},
         })
     }
 
-    validateProps(props) {
+    validateProps(props: PrintFieldProps) {
         if (!_.has(props.titles, props.name))
             throw Error(`Field "${props.name}" doesn't have a matching title in data.titles`);
     }
@@ -24,11 +23,10 @@ export default class PrintField extends AbstractCustomField {
         const style = {
             span: {
                 marginLeft: 20,
-                //whiteSpace: "nowrap",
                 marginBottom: 5,
             },
             value: {
-                fontWeight: 'bold'
+                fontWeight: 'bold' as 'bold'
             },
         };
 
@@ -45,8 +43,8 @@ export default class PrintField extends AbstractCustomField {
     }
 }
 
-PrintField.propTypes = {
-    name: PropTypes.string.isRequired,
-    titles: PropTypes.object.isRequired,
-    values: PropTypes.object.isRequired,
-};
+export interface PrintFieldProps {
+    name: string;
+    titles: { [key: string]: string; };
+    values: { [key: string]: string; };
+}
