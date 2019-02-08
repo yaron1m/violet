@@ -4,7 +4,7 @@ import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../util/Constants/Colors";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export default class CustomToggle extends AbstractCustomField {
+export default class CustomToggle extends AbstractCustomField<boolean, {}> {
 
     showError() {
         return this.state.isRequired && this.state.value === undefined;
@@ -32,7 +32,3 @@ export default class CustomToggle extends AbstractCustomField {
         );
     }
 }
-
-CustomToggle.propTypes = {
-    ...AbstractCustomField.propTypes,
-};
