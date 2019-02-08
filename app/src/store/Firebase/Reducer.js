@@ -1,8 +1,5 @@
 import * as actionTypes from './ActionTypes';
-import _ from 'lodash';
-import {getOrganizations} from "../Organizations/Selectors";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
-import {getOrders} from "../orders/selectors";
 
 const initialState = createImmutable({
     loggedIn: undefined,
@@ -37,17 +34,3 @@ export default function (state = initialState, action = {}) {
     }
 }
 
-export function isLoggedIn(state) {
-    return state.firebase.loggedIn;
-}
-
-export function isFetching(state) {
-    const fetchedOrders = _.isEmpty(getOrders(state));
-    const fetchedOrganizations = _.isEmpty(getOrganizations(state));
-
-    return fetchedOrders || fetchedOrganizations;
-}
-
-export function isSuperUser(state){
-    return state.firebase.isSuperUser;
-}

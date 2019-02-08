@@ -69,7 +69,7 @@ export default class App extends React.Component<AppProps> {
 }
 
 interface AppProps {
-    isLoggedIn: boolean;
-    rtl: boolean;
+    isLoggedIn?: boolean;
+    rtl?: boolean;
     children: React.ReactNode;
 }

@@ -7,9 +7,9 @@ import {receiveLists} from "../Lists/Actions";
 import firebase from 'firebase/app';
 import "firebase/auth";
 import "firebase/database";
-import * as reducer from './Reducer';
 import {getLabels} from "../Labels/Selectors";
 import {receivePublicCourses} from "../PublicCourses/actions";
+import {isLoggedIn} from "./Selectors";
 
 const firebaseProductionConfig = {
     apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
@@ -123,7 +123,7 @@ export function afterSignedIn(user) {
 
 export function signOutRequest() {
     return async function signInRequest(dispatch, getState) {
-        if (!reducer.isLoggedIn(getState()))
+        if (!isLoggedIn(getState()))
             return;
 
         firebase.auth().signOut()

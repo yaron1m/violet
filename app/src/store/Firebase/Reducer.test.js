@@ -1,4 +1,5 @@
-import {isFetching, isLoggedIn} from "./Reducer";
+import {isLoggedIn} from "./Selectors";
+import {isFetching} from "./Selectors";
 
 function setup(extraProps, orders, organizations) {
     return {

@@ -37,6 +37,6 @@ export default function Routes(props: RoutesProps) {
 }
 
 interface RoutesProps {
-    isLoggedIn: boolean,
-    rtl: boolean,
-};
+    isLoggedIn?: boolean,
+    rtl?: boolean,
+}

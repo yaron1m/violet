@@ -1,6 +1,6 @@
-import {mergerRequiredFields} from "./Util";
+import {IRequiredFields, mergerRequiredFields} from "./Util";
 
-const contact = {
+const contact: IRequiredFields = {
     order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
     organization: ["organizationName"],
     lectureTimes: [],
@@ -33,25 +33,30 @@ const waitingPayment = mergerRequiredFields(executed, {
     order: ["totalSum", "expectedPayDate"]
 });
 
-const payed = mergerRequiredFields(waitingPayment, {
-});
+const payed = mergerRequiredFields(waitingPayment, {});
 
-const cancelled = {
+const cancelled: IRequiredFields = {
     order: ["cancellationReason"],
     organization: [],
     lectureTimes: [],
+    internalOrder: [],
+    publicCourse: [],
 };
 
-const rejected = {
+const rejected: IRequiredFields = {
     order: ["rejectionReason"],
     organization: [],
     lectureTimes: [],
+    internalOrder: [],
+    publicCourse: [],
 };
 
-const followUpRequired = {
+const followUpRequired: IRequiredFields = {
     order: ["followUpDate", "followUpDetails"],
     organization: [],
     lectureTimes: [],
+    internalOrder: [],
+    publicCourse: [],
 };
 
 export default {

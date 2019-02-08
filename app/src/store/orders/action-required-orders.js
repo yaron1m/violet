@@ -3,7 +3,7 @@ import _ from 'lodash';
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {getOrganizationById} from "../Organizations/Selectors";
 import {getLabels} from "../Labels/Selectors";
-import Status from "../../util/Constants/Status";
+import {Status} from "../../util/Constants/Status";
 import {isEmptyValue} from "../../util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";

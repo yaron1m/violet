@@ -1,4 +1,4 @@
-import {isLoggedIn} from './store/Firebase/Reducer';
+import {isLoggedIn} from './store/Firebase/Selectors';
 import {connect} from 'react-redux';
 import {isRTL} from './store/Appearance/Selectors';
 import Routes from './Routes';

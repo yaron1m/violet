@@ -1,24 +1,26 @@
 import {getSelectedOrganization} from "../../SelectedOrganization/Selectors";
 import * as _ from "lodash";
 import requiredFields from "./RequiredFieldsByStatus";
-import {hasMissingFields, isRightTabKey, mergerRequiredFields} from "./Util";
+import {hasMissingFields, IRequiredFields, isRightTabKey, mergerRequiredFields} from "./Util";
 import {shouldShowRequiredFields} from "../Selectors";
-import {publicCourseTabKey} from "../../../util/Constants/TabKeys";
 import {getSelectedOrder} from "../../SelectedOrder/Selectors";
-import {internalTabKey} from "../../../util/Constants/TabKeys";
+import {IState} from '../../../Interfaces/ReduxInterfaces';
+import IOrder from '../../../Interfaces/IOrder';
+import {TabKey} from '../../../util/Constants/Status';
+import IOrganization from '../../../Interfaces/IOrganization';
 
-export function getRequiredFieldsObject(state) {
-    return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state))
+export function getRequiredFieldsObject(state: IState) {
+    return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state));
 }
 
-function getRequiredFieldsStateObject(state, showRequiredFields) {
+function getRequiredFieldsStateObject(state: IState, showRequiredFields: boolean) {
     const selectedOrder = getSelectedOrder(state);
     const requiredFieldsByEntity = getRequiredFieldsByEntity(selectedOrder, showRequiredFields);
 
     return removeInternalOrderNumber(requiredFieldsByEntity, getSelectedOrganization(state));
 }
 
-export function isOrderMissingFields(state) {
+export function isOrderMissingFields(state: IState) {
     const requiredFieldsObject = getRequiredFieldsStateObject(state, true);
 
     if (hasMissingFields(getSelectedOrder(state), requiredFieldsObject.order))
@@ -27,7 +29,7 @@ export function isOrderMissingFields(state) {
     if (hasMissingFields(getSelectedOrganization(state), requiredFieldsObject.organization))
         return true;
 
-    if (isRightTabKey(getSelectedOrder(state), internalTabKey, true)) {
+    if (isRightTabKey(getSelectedOrder(state), TabKey.internalTabKey, true)) {
         if (isElementInArrayMissingFields(getSelectedOrder(state).lectureTimes, requiredFieldsObject.lectureTimes))
             return true;
 
@@ -35,14 +37,14 @@ export function isOrderMissingFields(state) {
             return true;
     }
 
-    if (isRightTabKey(getSelectedOrder(state), publicCourseTabKey))
+    if (isRightTabKey(getSelectedOrder(state), TabKey.publicCourseTabKey))
         if (isElementInArrayMissingFields(getSelectedOrder(state).publicCourseParticipants, requiredFieldsObject.publicCourse))
             return true;
 
     return false;
 }
 
-function removeInternalOrderNumber(requiredFieldsByEntity, selectedOrganization) {
+function removeInternalOrderNumber(requiredFieldsByEntity: IRequiredFields, selectedOrganization: IOrganization) {
     if (selectedOrganization.internalOrderIdRequired)
         return requiredFieldsByEntity;
 
@@ -52,13 +54,14 @@ function removeInternalOrderNumber(requiredFieldsByEntity, selectedOrganization)
     };
 }
 
-function getRequiredFieldsByEntity(selectedOrder, showRequiredFields) {
+function getRequiredFieldsByEntity(selectedOrder: IOrder, showRequiredFields: boolean): IRequiredFields {
     if (!showRequiredFields)
         return {
             order: [],
             organization: [],
             lectureTimes: [],
             publicCourse: [],
+            internalOrder: [],
         };
 
     if (!selectedOrder.status)
@@ -72,8 +75,7 @@ function getRequiredFieldsByEntity(selectedOrder, showRequiredFields) {
     return statusRequiredFields;
 }
 
-function isElementInArrayMissingFields(array, lectureTimesRequiredFields) {
-
+function isElementInArrayMissingFields(array: any, lectureTimesRequiredFields: string[]) {
     for (let i = 0; i < _.size(array); i++) {
         if (hasMissingFields(array[i], lectureTimesRequiredFields))
             return true;

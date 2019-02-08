@@ -1,7 +1,7 @@
 import * as actionTypes from './ActionTypes';
-import * as Immutable from "seamless-immutable";
+import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 
-const initialState = {
+const initialState = createImmutable({
     rtl: true,
     language: "he",
     dialog: {
@@ -15,18 +15,18 @@ const initialState = {
         message: "",
     },
     showRequiredFields: false,
-};
+});
 
-export default function (state = initialState, action = {}) {
+export default function (state = initialState, action: any = {}) {
     switch (action.type) {
         case actionTypes.CHANGE_LANGUAGE:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 rtl: action.rtl,
                 language: action.language,
             });
 
         case actionTypes.OPEN_DIALOG:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 dialog: {
                     isOpen: true,
                     title: action.title,
@@ -36,7 +36,7 @@ export default function (state = initialState, action = {}) {
             });
 
         case actionTypes.CLOSE_DIALOG:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 dialog: {
                     isOpen: false,
                     title: "",
@@ -46,7 +46,7 @@ export default function (state = initialState, action = {}) {
             });
 
         case actionTypes.OPEN_SNACKBAR:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 snackbar: {
                     isOpen: true,
                     message: action.message,
@@ -54,7 +54,7 @@ export default function (state = initialState, action = {}) {
             });
 
         case actionTypes.CLOSE_SNACKBAR:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 snackbar: {
                     isOpen: false,
                     message: "",
@@ -62,12 +62,12 @@ export default function (state = initialState, action = {}) {
             });
 
         case actionTypes.SHOW_REQUIRED_FIELDS:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 showRequiredFields: true,
             });
 
         case actionTypes.HIDE_REQUIRED_FIELDS:
-            return Immutable.merge(state, {
+            return mergeImmutable(state, {
                 showRequiredFields: false,
             });
 

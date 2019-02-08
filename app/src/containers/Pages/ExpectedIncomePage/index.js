@@ -4,7 +4,7 @@ import {getLabels} from "../../../store/Labels/Selectors";
 import {getExpectedIncomeOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
-import Status from "../../../util/Constants/Status";
+import {Status} from "../../../util/Constants/Status";
 
 function mapStateToProps(state) {
     const acceptedStatuses = [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder];
