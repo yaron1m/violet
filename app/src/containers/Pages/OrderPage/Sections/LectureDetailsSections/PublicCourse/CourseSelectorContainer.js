@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Sizes from "../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../util/Constants/Sizes";
 import {getActivePublicCourses, getPublicCourses} from "../../../../../../store/PublicCourses/Selectors";
 import _ from 'lodash';
 import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";

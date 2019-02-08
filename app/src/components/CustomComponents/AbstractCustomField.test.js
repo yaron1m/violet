@@ -1,6 +1,6 @@
 import React from 'react';
 import AbstractCustomField from "./AbstractCustomField";
-import Sizes from "../../util/Constants/Sizes";
+import {Sizes} from "../../util/Constants/Sizes";
 
 function setup(otherProps) {
     const labels = {

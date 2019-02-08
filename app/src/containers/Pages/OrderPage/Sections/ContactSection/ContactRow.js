@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
-import Sizes from "../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../util/Constants/Sizes";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import {CustomIconButton} from "../../../../../components/CustomComponents/CustomButtons";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sizes from "../../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../../util/Constants/Sizes";
 import {OrderCustomSelectField, OrderCustomText} from "../../../ConnectedCustomComponents/OrderCustomFields";
 
 export default class OrderTerminateOption extends React.Component {

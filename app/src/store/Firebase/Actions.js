@@ -21,7 +21,7 @@ const firebaseProductionConfig = {
 };
 
 const firebaseDevelopmentConfig = {
-    apiKey: "AIzaSyA7_wDCij8hBMy8LxQDRoweaCfyeaZB0Ow",
+    apiKey: "AIzaSyB0hDCH-PoE-nAXVoP4Ba6gNYAfMDufajE",
     authDomain: "violet-dev.firebaseapp.com",
     databaseURL: "https://violet-dev.firebaseio.com",
     projectId: "violet-dev",

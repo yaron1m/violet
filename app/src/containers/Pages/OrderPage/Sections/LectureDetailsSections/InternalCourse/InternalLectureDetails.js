@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
-import Sizes from "../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../util/Constants/Sizes";
 import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
