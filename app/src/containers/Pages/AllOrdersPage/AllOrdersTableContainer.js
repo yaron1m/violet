@@ -4,7 +4,7 @@ import {getLabels} from "../../../store/Labels/Selectors";
 import {getOrdersSummary, getOrders} from "../../../store/orders/selectors";
 import * as _ from "lodash";
 import {redirect} from "../../../util/HistoryUtil";
-import CustomPaperTable from "../../../components/tables/CustomPaperTable";
+import CustomPaperTable from "../../../components/Table/CustomPaperTable";
 import PropTypes from "prop-types";
 
 export function getElements(state, ownProps) {

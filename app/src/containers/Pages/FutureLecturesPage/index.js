@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {selectOrder} from "../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
-import CustomPaperTable from "../../../components/tables/CustomPaperTable";
+import CustomPaperTable from "../../../components/Table/CustomPaperTable";
 import * as _ from "lodash";
 import {getAllLectureTimes} from "../../../store/orders/selectors";
 import Status from "../../../util/Constants/Status";
