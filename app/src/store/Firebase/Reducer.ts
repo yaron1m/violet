@@ -9,7 +9,7 @@ const initialState = createImmutable({
     isSuperUser: false,
 });
 
-export default function (state = initialState, action = {}) {
+export default function (state = initialState, action:any = {}) {
     switch (action.type) {
         case actionTypes.LOGGED_IN:
             return mergeImmutable(state, {

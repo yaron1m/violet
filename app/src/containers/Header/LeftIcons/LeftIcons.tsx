@@ -19,7 +19,7 @@ export default function LeftIcons(props: LeftIconsProps) {
         },
         flippedIcon: {
             color: Colors.white,
-            "-webkit-transform": "scaleX(-1)" as "scaleX(-1)"
+            transform: "rotate(180deg)",
         },
         hiddenBadge: {
             visibility: "hidden" as "hidden",
