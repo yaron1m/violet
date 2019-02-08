@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AbstractCustomField from "./AbstractCustomField";
-import AutoSuggest from "../AutoSuggest";
+import AutoSuggest, {ISuggestion} from "../AutoSuggest";
 
-export default class CustomAutoComplete extends AbstractCustomField {
+export default class CustomAutoComplete extends AbstractCustomField<string, CustomAutoCompleteProps> {
 
     render() {
         return (
@@ -23,14 +23,9 @@ export default class CustomAutoComplete extends AbstractCustomField {
     }
 }
 
-CustomAutoComplete.propTypes = {
-    ...AbstractCustomField.propTypes,
-    suggestions: PropTypes.array.isRequired,
-    disabled: PropTypes.bool,
-    onSuggestionSelected: PropTypes.func,
-};
-
-CustomAutoComplete.defaultProps = {
-    disabled: false,
-    fullWidth: false,
-};
+interface CustomAutoCompleteProps {
+    suggestions: ISuggestion[];
+    fullWidth?: boolean;
+    disabled?: boolean;
+    onSuggestionSelected: (suggestion: ISuggestion) => void;
+}

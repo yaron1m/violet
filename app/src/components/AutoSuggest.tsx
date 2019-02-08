@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import ReactAutoSuggest from 'react-autosuggest';
+import * as ReactAutoSuggest from 'react-autosuggest';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import {withStyles} from '@material-ui/core/styles';
 
-function renderInput(inputProps) {
+function renderInput(inputProps: ReactAutoSuggest.InputProps<ISuggestion>) {
     const {classes, ref, helperText, hintText, fullWidth, disabled, ...other} = inputProps;
 
     return (
@@ -15,6 +14,7 @@ function renderInput(inputProps) {
             disabled={disabled}
             helperText={helperText}
             className={classes.textField}
+            // @ts-ignore
             InputProps={{
                 inputRef: ref,
                 classes: {
@@ -27,17 +27,17 @@ function renderInput(inputProps) {
     );
 }
 
-function renderSuggestionItem(suggestion, renderSuggestion) {
+function renderSuggestionItem(suggestion: ISuggestion, renderSuggestion?: (suggestion: ISuggestion) => React.ReactNode) {
     return (
         <MenuItem component="div">
             <div>
-                {renderSuggestion(suggestion)}
+                {renderSuggestion === undefined ? suggestion.label : renderSuggestion(suggestion)}
             </div>
         </MenuItem>
     );
 }
 
-function renderSuggestionsContainer(options) {
+function renderSuggestionsContainer(options: ReactAutoSuggest.RenderSuggestionsContainerParams) {
     const {containerProps, children} = options;
 
     return (
@@ -47,11 +47,11 @@ function renderSuggestionsContainer(options) {
     );
 }
 
-function getSuggestionValue(suggestion) {
+function getSuggestionValue(suggestion: ISuggestion) {
     return suggestion.label;
 }
 
-function getSuggestions(value, suggestions, maxSearchResults) {
+function getSuggestions(value: string, suggestions: ISuggestion[], maxSearchResults: number) {
     const inputValue = value.toLowerCase();
     const inputLength = inputValue.length;
     let count = 0;
@@ -75,38 +75,40 @@ const styles = () => ({
         width: "100%",
     },
     container: {
-        position: 'relative',
+        position: 'relative' as 'relative',
     },
     suggestionsContainerOpen: {
-        position: 'absolute',
+        position: 'absolute' as 'absolute',
         zIndex: 1,
         left: 0,
         right: 0,
     },
     suggestion: {
-        display: 'block',
+        display: 'block' as 'block',
     },
     suggestionsList: {
         margin: 0,
         padding: 0,
-        listStyleType: 'none',
+        listStyleType: 'none' as 'none',
     },
     textField: {
         marginRight: 20,
         marginBottom: 10,
-        verticalAlign: "bottom",
+        verticalAlign: "bottom" as "bottom",
     },
 });
 
-class AutoSuggest extends React.Component {
+class AutoSuggest extends React.Component<AutoSuggestProps> {
     state = {
         value: '',
         suggestions: [],
     };
 
-    handleSuggestionsFetchRequested = ({value}) => {
+    maxSearchResults = this.props.maxSearchResults ? this.props.maxSearchResults : 10;
+
+    handleSuggestionsFetchRequested = ({value}: ReactAutoSuggest.SuggestionsFetchRequestedParams) => {
         this.setState({
-            suggestions: getSuggestions(value, this.props.suggestions, this.props.maxSearchResults),
+            suggestions: getSuggestions(value, this.props.suggestions, this.maxSearchResults),
         });
     };
 
@@ -116,12 +118,12 @@ class AutoSuggest extends React.Component {
         });
     };
 
-    handleChangeInTextField = (event, {newValue}) => {
+    handleChangeInTextField = (event: React.FormEvent<any>, params: { newValue: string }) => {
         this.setState({
-            value: newValue,
+            value: params.newValue,
         });
 
-        this.props.onInputChange(newValue);
+        this.props.onInputChange(params.newValue);
     };
 
     render() {
@@ -131,7 +133,7 @@ class AutoSuggest extends React.Component {
             " " + classes.fullWidth : "");
 
         return (
-            <ReactAutoSuggest
+            <ReactAutoSuggest.default
                 theme={{
                     container: containerClass,
                     suggestionsContainerOpen: classes.suggestionsContainerOpen,
@@ -165,43 +167,35 @@ class AutoSuggest extends React.Component {
     }
 }
 
-AutoSuggest.propTypes = {
-    // Style
-    classes: PropTypes.object.isRequired,
+export interface ISuggestion {
+    label: string;
+}
 
-    /*
-     * suggestion format:
-     * {
-     *    label,
-     *    otherInfo
-     * }
-     */
-    suggestions: PropTypes.array.isRequired,
-    renderSuggestion: PropTypes.func,
+interface AutoSuggestProps {
+    // Style
+    classes: any;
+
+    suggestions: ISuggestion[];
+    renderSuggestion?: (suggestion: ISuggestion) => React.ReactNode;
 
     // Text field
-    value: PropTypes.string,
-    onInputChange: PropTypes.func.isRequired, // Returns the label (string)
-    onSuggestionSelected: PropTypes.func.isRequired, // Returns the suggestion selected (object)
-    helperText: PropTypes.string,
-    hintText: PropTypes.string,
-    error: PropTypes.bool,
-    fullWidth: PropTypes.bool,
-    disabled: PropTypes.bool,
-    maxSearchResults: PropTypes.number,
-    width: PropTypes.number,
-    inputTextColor: PropTypes.string,
-};
-
-AutoSuggest.defaultProps = {
-    maxSearchResults: 10,
-    renderSuggestion: suggestion => suggestion.label,
-};
+    value: string;
+    onInputChange: (label: string) => void; // Returns the label (string)
+    onSuggestionSelected: (suggestion: ISuggestion) => void; // Returns the suggestion selected (object)
+    helperText: string;
+    hintText?: string;
+    error: boolean;
+    fullWidth?: boolean;
+    disabled?: boolean;
+    maxSearchResults?: number;
+    width: number | string;
+    inputTextColor?: string;
+}
 
 export default withStyles(styles)(AutoSuggest);
 
-export function toSuggestions(suggestions) {
-    return suggestions.map(label => {
-        return {label};
-    });
+export function toSuggestions(suggestions: string[]) {
+    return suggestions.map(label => ({
+        label
+    }));
 }
