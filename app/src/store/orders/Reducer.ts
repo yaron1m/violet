@@ -1,13 +1,16 @@
 import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import {createImmutable} from '../../util/ObjectUpdater';
 
-export default (state = {}, action: any = {}) => {
+const initialState = createImmutable({});
+
+export default (state = initialState, action: any = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_ORDERS:
-            return action.payload;
+            return createImmutable(action.payload);
 
         case LOGGED_OUT:
-            return {};
+            return initialState;
 
         default:
             return state;

@@ -1,8 +1,8 @@
 import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
-import Immutable from 'seamless-immutable';
+import {createImmutable} from '../../util/ObjectUpdater';
 
-const initialState = Immutable({
+const initialState = createImmutable({
     offeredLectures: {},
     cancellationReasons: {},
     rejectionReasons: {},
@@ -11,7 +11,7 @@ const initialState = Immutable({
 export default (state = initialState, action :any= {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_LISTS:
-            return action.payload;
+            return createImmutable(action.payload);
 
         case LOGGED_OUT:
             return initialState;

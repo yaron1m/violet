@@ -3,7 +3,7 @@ import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
 import {isMatchingStatus} from "../../util/OrderStatus/OrderStatusUtils";
 import {cutIfLong, isEmptyValue, moneyFormat} from "../../util/StringUtil";
-import getActionRequiredOrdersArray from "./action-required-orders";
+import getActionRequiredOrdersArray from "./ActionRequiredOrderes";
 import {getLabels} from "../Labels/Selectors";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getOrderStatusLabel} from "../Labels/Selectors";
