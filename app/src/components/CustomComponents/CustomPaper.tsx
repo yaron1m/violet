@@ -24,10 +24,10 @@ export default function CustomPaper(props: CustomPaperProps) {
 }
 
 interface CustomPaperProps {
-    style: React.CSSProperties,
-    onClick: () => void,
-    title: string,
-    children: React.ReactNode,
+    style?: React.CSSProperties,
+    onClick?: () => void,
+    title?: string,
+    children?: React.ReactNode,
 }
 
 export const flexStyle = {

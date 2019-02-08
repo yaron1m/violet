@@ -4,48 +4,37 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import PropTypes from 'prop-types';
 import * as _ from "lodash";
 
-class CustomTable extends React.Component {
+export default function CustomTable(props: CustomTableProps) {
 
-    render() {
-        let headerValues = this.props.headers.map((header) => (Object.values(header)[0]));
+    // @ts-ignore
+    let headerValues = props.headers.map((header) => (Object.values(header)[0]));
 
-        if (this.props.hideEdit) {
-            headerValues = _.dropRight(headerValues);
-        }
-
-        return (
-            <Table>
-                <TableHead>
-
-                    <TableRow>
-                        {_.map(headerValues, ((title, index) =>
-                                <TableCell key={index}>{title}</TableCell>
-                        ))}
-
-                    </TableRow>
-
-                </TableHead>
-
-                <TableBody>
-                    {this.props.children}
-                </TableBody>
-
-            </Table>
-        );
+    if (props.hideEdit) {
+        headerValues = _.dropRight(headerValues);
     }
+
+    return (
+        <Table>
+            <TableHead>
+                <TableRow>
+                    {_.map(headerValues, ((title, index) =>
+                            <TableCell key={index}>{title}</TableCell>
+                    ))}
+
+                </TableRow>
+            </TableHead>
+
+            <TableBody>
+                {props.children}
+            </TableBody>
+        </Table>
+    );
 }
 
-CustomTable.propTypes = {
-    headers: PropTypes.array.isRequired,
-    hideEdit: PropTypes.bool,
-    children: PropTypes.node,
-};
-
-CustomTable.defaultProps = {
-    hideEdit: false,
-};
-
-export default CustomTable;
+interface CustomTableProps {
+    headers: { [key: string]: string }[];
+    hideEdit?: boolean;
+    children?: React.ReactNode;
+}

@@ -27,8 +27,8 @@ export function CustomIconButton(props: CustomIconButtonProps) {
 }
 
 interface CustomIconButtonProps extends CustomFlatButtonProps {
-    children: React.ReactNode;
-    tooltip: string;
+    children?: React.ReactNode;
+    tooltip?: string;
 }
 
 export function CustomRaisedButton(props: CustomRaisedButtonProps) {
@@ -57,7 +57,7 @@ export function CustomFlatButton(props: CustomFlatButtonProps) {
 }
 
 interface CustomFlatButtonProps {
-    label: string;
     onClick: () => void;
+    label?: string;
     style?: React.CSSProperties;
 }

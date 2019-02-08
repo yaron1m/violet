@@ -1,18 +1,15 @@
 import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import PropTypes from 'prop-types';
 import * as _ from "lodash";
 
-export class CustomSingleCellRow extends React.Component {
-
-    render() {
-        if (!this.props.enabled)
+export function CustomSingleCellRow(props: CustomSingleCellRowProps){
+        if (!props.enabled)
             return null;
 
-        let headerKeys = this.props.headers.map((header) => (Object.keys(header)[0]));
+        let headerKeys = props.headers.map((header) => (Object.keys(header)[0]));
 
-        if (this.props.hideEdit) {
+        if (props.hideEdit) {
             headerKeys = _.dropRight(headerKeys);
         }
 
@@ -24,8 +21,8 @@ export class CustomSingleCellRow extends React.Component {
                 {headerKeys.map((header, index) =>
                     index === textCellIndex ?
                         <TableCell key={index}>
-                            <div style={{cursor: "pointer"}} onClick={this.props.onClick}>
-                                {this.props.text}
+                            <div style={{cursor: "pointer"}} onClick={props.onClick}>
+                                {props.text}
                             </div>
                         </TableCell>
                         :
@@ -33,14 +30,13 @@ export class CustomSingleCellRow extends React.Component {
                 )}
             </TableRow>
         );
-    }
 }
 
 
-CustomSingleCellRow.propTypes = {
-    enabled: PropTypes.bool.isRequired,
-    hideEdit: PropTypes.bool,
-    headers: PropTypes.array.isRequired,
-    onClick: PropTypes.func,
-    text: PropTypes.string,
-};
+interface CustomSingleCellRowProps {
+    enabled?: boolean;
+    hideEdit?: boolean;
+    headers: {[key:string]:string}[];
+    onClick: () => void;
+    text?: string;
+}
