@@ -1,7 +1,7 @@
-import * as actionTypes from './action-types';
+import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
 
-export default (state = {}, action = {}) => {
+export default (state = {}, action: any = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_ORDERS:
             return action.payload;
@@ -10,7 +10,7 @@ export default (state = {}, action = {}) => {
             return {};
 
         default:
-            return state
+            return state;
     }
 }
 

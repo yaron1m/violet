@@ -1,4 +1,4 @@
-import {getOrders} from "./selectors";
+import {getOrders} from "./Selectors.ts";
 import _ from 'lodash';
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {getOrganizationById} from "../Organizations/Selectors";

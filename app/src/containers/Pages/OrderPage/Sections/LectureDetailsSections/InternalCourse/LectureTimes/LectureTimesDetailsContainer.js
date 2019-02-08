@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selectors";
 import LectureTimesDetails from "./LectureTimesDetails";
 import _ from "lodash";
-import {getOfferedLectures} from "../../../../../../../store/Lists/Reducer";
+import {getOfferedLectures} from "../../../../../../../store/Lists/Selectors";
 import {toSuggestions} from "../../../../../../../Components/AutoSuggest";
 
 function getLectureTimeIndexes(lectureTimes) {

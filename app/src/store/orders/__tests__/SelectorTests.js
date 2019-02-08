@@ -1,4 +1,4 @@
-import * as Selectors from '../selectors';
+import * as Selectors from '../Selectors.ts';
 import {Status} from "../../../util/Constants/Status";
 import * as labelsSelectors from "../../Labels/Selectors";
 import entityTypes from "../../../util/Constants/EntityTypes";

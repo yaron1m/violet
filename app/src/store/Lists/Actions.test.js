@@ -1,5 +1,5 @@
-import * as actions from '../Actions'
-import * as actionTypes from '../ActionTypes'
+import * as actions from './Actions'
+import * as actionTypes from './ActionTypes'
 
 describe('Lists reducer actions', () => {
     it('should create an action of received lists', () => {

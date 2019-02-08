@@ -4,11 +4,13 @@ import IAppearance from './IAppearance';
 import IFirebase from './IFirebase';
 import IOrder from './IOrder';
 import ILabels from './ILabels';
+import ILists from './ILists';
 
 export type IState = {
     appearance: SeamlessImmutable.Immutable<IAppearance>;
     firebase: SeamlessImmutable.Immutable<IFirebase>;
     labels: ILabels;
+    lists: SeamlessImmutable.Immutable<ILists>;
     selectedOrganization: SeamlessImmutable.Immutable<IOrganization>;
     selectedOrder: SeamlessImmutable.Immutable<IOrder>;
     organizations: SeamlessImmutable.Immutable<{ [id: string]: IOrganization }>;

@@ -1,4 +1,4 @@
-import {getOrders} from "../orders/selectors";
+import {getOrders} from "../orders/Selectors.ts";
 import {getOrganizations} from "../Organizations/Selectors";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import _ from 'lodash';

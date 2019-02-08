@@ -1,5 +1,4 @@
 import * as actionTypes from './ActionTypes';
-import _ from 'lodash';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import Immutable from 'seamless-immutable';
 
@@ -9,7 +8,7 @@ const initialState = Immutable({
     rejectionReasons: {},
 });
 
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action :any= {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_LISTS:
             return action.payload;
@@ -20,16 +19,4 @@ export default (state = initialState, action = {}) => {
         default:
             return state;
     }
-}
-
-export function getOfferedLectures(state) {
-    const offeredLectures = state.lists.offeredLectures;
-    return _.keys(offeredLectures).filter((lecture) => offeredLectures[lecture]);
-}
-
-export function getRejectionReasons(state){
-    return _.values(state.lists.rejectionReasons)
-}
-export function getCancellationReasons(state){
-    return _.values(state.lists.cancellationReasons)
 }

@@ -4,13 +4,13 @@ import {getLabels} from "../../../store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getAllLectureTimes} from "../../../store/orders/selectors";
+import {getAllLectureTimes} from "../../../store/orders/Selectors.ts";
 import {Status} from "../../../util/Constants/Status";
 import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
 import entityTypes from "../../../util/Constants/EntityTypes";
 
 export function getFutureLectureTimes(state) {
-    const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting], true);
+    const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     yesterday.setHours(0, 0, 0, 0);

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../store/Labels/Selectors";
 import {getOrganizations} from "../../../store/Organizations/Selectors";
 import {selectOrganization} from "../../../store/SelectedOrganization/Actions";
-import {getOrders, getPublicCourseParticipantsSummary} from "../../../store/orders/selectors";
+import {getOrders, getPublicCourseParticipantsSummary} from "../../../store/orders/Selectors.ts";
 import {redirect} from "../../../util/HistoryUtil";
 import Colors from "../../../util/Constants/Colors";
 import * as _ from "lodash";

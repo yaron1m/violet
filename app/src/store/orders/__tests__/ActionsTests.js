@@ -1,5 +1,5 @@
-import * as actions from '../actions'
-import * as actionTypes from '../action-types'
+import * as actions from '../Actions'
+import * as actionTypes from '../ActionTypes'
 
 describe('store/orders/actions', () => {
     it('should create an action of received orders', () => {
