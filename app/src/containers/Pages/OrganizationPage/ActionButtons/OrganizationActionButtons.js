@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionButtonsBox} from "../../../../components/ActionButtons/ActionButtonsBox";
+import ActionButtonsBox from "../../../../components/ActionButtons/ActionButtonsBox";
 import OrganizationSaveIconContainer from "./OrganizationSaveIconContainer";
 import OrganizationRefreshIconContainer from "./OrganizationRefreshIconContainer";
 

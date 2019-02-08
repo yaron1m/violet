@@ -4,7 +4,7 @@ import {
 import {getLabels} from "../../../../store/Labels/Selectors";
 import {getNextOrganizationId} from "../../../../store/Organizations/Selectors";
 import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
-import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
+import SaveActionButton from "../../../../components/ActionButtons/SaveActionButton";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
 import {setIsSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
 

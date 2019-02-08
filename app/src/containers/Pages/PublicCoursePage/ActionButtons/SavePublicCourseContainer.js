@@ -5,7 +5,7 @@ import {
 import {getLabels} from "../../../../store/Labels/Selectors";
 import {isSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
 import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
-import {SaveActionButton} from "../../../../components/ActionButtons/SaveActionButton";
+import SaveActionButton from "../../../../components/ActionButtons/SaveActionButton";
 import {getNextPublicCourseId} from "../../../../store/PublicCourses/Selectors";
 import {getSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
 import {setIsSelectedOrder} from "../../../../store/SelectedOrder/Actions";
