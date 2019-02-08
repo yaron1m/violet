@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as _ from "lodash";
 import Select from '@material-ui/core/Select';
 import AbstractCustomField from "./AbstractCustomField";
@@ -16,8 +15,7 @@ const styles = () => ({
     },
 });
 
-class CustomSelectField extends AbstractCustomField {
-
+class CustomSelectField extends AbstractCustomField<string, CustomSelectFieldProps> {
     render() {
         const formStyle = {
             minWidth: this.width,
@@ -26,7 +24,7 @@ class CustomSelectField extends AbstractCustomField {
         return (
             <FormControl
                 style={formStyle}
-                className={this.props.classes.formControl}
+                className={this.props.classes ? this.props.classes.formControl : undefined}
                 error={this.shouldShowError()}
             >
                 <Select
@@ -40,11 +38,9 @@ class CustomSelectField extends AbstractCustomField {
                         </MenuItem>
                         : null}
 
-                    {_.map(this.props.options, option =>
-                        _.isObject(option) ?
-                            <MenuItem value={option.key} key={option.key}>{option.label}</MenuItem> :
-                            <MenuItem value={option} key={option}>{option}</MenuItem>
-                    )}
+                    {_.map(this.props.options, (option) => (
+                        <MenuItem value={option.key} key={option.key}>{option.label}</MenuItem>
+                    ))}
                 </Select>
                 <FormHelperText>{this.title}</FormHelperText>
             </FormControl>
@@ -52,15 +48,21 @@ class CustomSelectField extends AbstractCustomField {
     }
 }
 
-CustomSelectField.propTypes = {
-    ...AbstractCustomField.propTypes,
-    options: PropTypes.array.isRequired,
-    allowEmpty: PropTypes.bool,
-    onChange: PropTypes.func
-};
+interface IOption {
+    key: string;
+    label: string;
+}
 
-CustomSelectField.defaultProps = {
-    allowEmpty: true,
-};
+interface CustomSelectFieldProps {
+    options: IOption[],
+    allowEmpty?: true,
+}
 
 export default withStyles(styles)(CustomSelectField);
+
+export function createOptions(labels: string[]): IOption[]{
+    return _.map(labels, label => ({
+        key: label,
+        label,
+    }));
+}

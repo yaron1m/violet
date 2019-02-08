@@ -3,14 +3,15 @@ import * as _ from "lodash";
 import {updateObject} from "../../util/ObjectUpdater";
 import {Sizes} from '../../util/Constants/Sizes';
 
-export default class AbstractCustomField extends React.Component<AbstractCustomFieldProps, AbstractCustomFieldState> {
+export default class AbstractCustomField<ValueType, AdditionalProps>
+    extends React.Component<AbstractCustomFieldProps<ValueType> & AdditionalProps, AbstractCustomFieldState<ValueType>> {
     name: string;
     title: string;
     updateAction: (name: string, newValue: any) => void;
     width: "100%" | number;
     basicStyle: React.CSSProperties;
 
-    constructor(props: AbstractCustomFieldProps) {
+    constructor(props: AbstractCustomFieldProps<ValueType> & AdditionalProps) {
         super(props);
         this.validateProps(props);
 
@@ -31,7 +32,7 @@ export default class AbstractCustomField extends React.Component<AbstractCustomF
         };
     }
 
-    validateProps(props: AbstractCustomFieldProps) {
+    validateProps(props: AbstractCustomFieldProps<ValueType>) {
         if (!_.has(props.titles, props.name))
             throw Error(`Field "${props.name}" doesn't have a matching title in titles`);
 
@@ -39,7 +40,7 @@ export default class AbstractCustomField extends React.Component<AbstractCustomF
             throw Error(`Field "${props.name}" - updateAction must be a function`);
     }
 
-    static getDerivedStateFromProps(nextProps: AbstractCustomFieldProps, prevState: AbstractCustomFieldState) {
+    static getDerivedStateFromProps<ValueType>(nextProps: AbstractCustomFieldProps<ValueType>, prevState: AbstractCustomFieldState<ValueType>) {
         let shouldUpdate = false;
 
         const name = nextProps.name;
@@ -58,12 +59,12 @@ export default class AbstractCustomField extends React.Component<AbstractCustomF
         }
 
         if (shouldUpdate)
-            return null;
+            return updatedState;
 
-        return updatedState;
+        return null;
     }
 
-    handleChange(newValue: string) {
+    handleChange(newValue: ValueType) {
         this.updateAction(this.name, newValue);
     }
 
@@ -72,18 +73,19 @@ export default class AbstractCustomField extends React.Component<AbstractCustomF
     }
 }
 
-interface AbstractCustomFieldProps {
+export interface AbstractCustomFieldProps<ValueType> {
     name: string;
     titles: { [key: string]: string; };
-    values: { [key: string]: string; };
-    updateAction: (name: string, newValue: string) => void;
+    values: { [key: string]: ValueType; };
+    updateAction: (name: string, newValue: ValueType) => void;
     requiredFields?: string[];
     fullWidth?: boolean;
     size?: Sizes;
+    classes?: { [keu: string]: string };
 }
 
-interface AbstractCustomFieldState {
-    value: string;
+interface AbstractCustomFieldState<ValueType> {
+    value: ValueType | "";
     isRequired: boolean;
 }
 

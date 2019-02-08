@@ -4,9 +4,8 @@ import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../util/Constants/Colors";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
-import PropTypes from 'prop-types';
 
-export default class CustomCheckbox extends AbstractCustomField {
+export default class CustomCheckbox extends AbstractCustomField<boolean, CustomCheckboxProps> {
 
     render() {
         const checked = this.state.value === true;
@@ -19,13 +18,13 @@ export default class CustomCheckbox extends AbstractCustomField {
             <FormGroup row>
                 <FormControlLabel
                     control={
-                    <Checkbox
-                        checked={checked}
-                        onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
-                        value={this.title}
-                        color="primary"
-                    />
-                }
+                        <Checkbox
+                            checked={checked}
+                            onChange={(event, isInputChecked) => this.handleChange(isInputChecked)}
+                            value={this.title}
+                            color="primary"
+                        />
+                    }
                     label={<span style={labelStyle}>{this.title}</span>}
                 />
             </FormGroup>
@@ -33,11 +32,6 @@ export default class CustomCheckbox extends AbstractCustomField {
     }
 }
 
-CustomCheckbox.propTypes = {
-    ...AbstractCustomField.propTypes,
-    checkedColor: PropTypes.string,
-};
-
-CustomCheckbox.defaultProps = {
-    checkedColor: Colors.black,
-};
+interface CustomCheckboxProps {
+    checkedColor: "black";
+}

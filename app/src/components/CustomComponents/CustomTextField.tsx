@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import AbstractCustomField from "./AbstractCustomField";
 import {withStyles} from '@material-ui/core/styles';
@@ -12,7 +11,7 @@ const styles = () => ({
     },
 });
 
-class CustomText extends AbstractCustomField {
+class CustomText extends AbstractCustomField<string, CustomTextFieldProps> {
 
     render() {
         const style = {
@@ -34,22 +33,15 @@ class CustomText extends AbstractCustomField {
                 rowsMax={4}
 
                 inputProps={{style}}
-                className={this.props.classes.textField}
+                className={this.props.classes ? this.props.classes.textField : undefined}
             />
         );
     }
 }
 
-CustomText.propTypes = {
-    ...AbstractCustomField.propTypes,
-    disabled: PropTypes.bool,
-    type: PropTypes.string,
-};
-
-CustomText.defaultProps = {
-    disabled: false,
-    fullWidth: false,
-    type: null,
-};
+export interface CustomTextFieldProps {
+    disabled?: boolean;
+    type?: string;
+}
 
 export default withStyles(styles)(CustomText);

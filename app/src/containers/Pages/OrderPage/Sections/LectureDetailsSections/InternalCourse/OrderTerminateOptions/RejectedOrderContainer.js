@@ -4,13 +4,14 @@ import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selecto
 import {getRejectionReasons} from "../../../../../../../store/Lists/Reducer";
 import Status from "../../../../../../../util/Constants/Status";
 import OrderTerminateOption from "./OrderTerminateOption";
+import {createOptions} from "../../../../../../../components/CustomComponents/CustomSelectField";
 
 function mapStateToProps(state) {
     return {
         show: getSelectedOrder(state).rejected === true,
         selectFieldName: "rejectionReason",
         detailsFieldName: "rejectionDetails",
-        options: getRejectionReasons(state),
+        options: createOptions(getRejectionReasons(state)),
     };
 }
 

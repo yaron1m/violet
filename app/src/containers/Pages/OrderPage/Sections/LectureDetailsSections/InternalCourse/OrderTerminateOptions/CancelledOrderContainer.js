@@ -4,13 +4,14 @@ import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selecto
 import {getCancellationReasons} from "../../../../../../../store/Lists/Reducer";
 import Status from "../../../../../../../util/Constants/Status";
 import OrderTerminateOption from "./OrderTerminateOption";
+import {createOptions} from "../../../../../../../components/CustomComponents/CustomSelectField";
 
 function mapStateToProps(state) {
     return {
         show: getSelectedOrder(state).cancelled === true,
         selectFieldName: "cancellationReason",
         detailsFieldName: "cancellationDetails",
-        options: getCancellationReasons(state),
+        options: createOptions(getCancellationReasons(state)),
     };
 }
 
