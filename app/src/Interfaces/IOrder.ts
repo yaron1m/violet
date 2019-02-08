@@ -3,6 +3,7 @@ import {Status, TabKey} from '../util/Constants/Status';
 export default interface IOrder {
     id: number,
     organizationId: number;
+    publicCourseId: number;
     status: Status;
     changedDate: string;
     createdDate: string;

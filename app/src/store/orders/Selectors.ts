@@ -161,10 +161,11 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
 
         if (isPublicCourseOrder(order)) {
             const publicCourse = getPublicCourseByOrder(state, order);
-            if (!publicCourse) //Did not load yet.
+            if (!publicCourse) //Did not load yet
                 return result;
 
-            result.date = _.minBy(publicCourse.lectures, lecture => new Date(lecture.date)).date;
+            const minLecture = _.minBy(publicCourse.lectures, lecture => new Date(lecture.date));
+            result.date = minLecture && minLecture.date ? minLecture.date : "";
             result.topic = getLabels(state).orderTypes.publicCourse + " " + publicCourse.courseName;
         } else {
             if (!_.isEmpty(order.lectureTimes)) {
