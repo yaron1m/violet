@@ -1,7 +1,7 @@
 import * as Selectors from '../Selectors.ts';
 import {Status} from "../../../util/Constants/Status";
 import * as labelsSelectors from "../../Labels/Selectors";
-import entityTypes from "../../../util/Constants/EntityTypes";
+import EntityType from "../../../util/Constants/EntityType";
 import * as organizationSelectors from "../../Organizations/Selectors";
 
 const state = {
@@ -142,7 +142,7 @@ describe('store/orders/selectors', () => {
                 {
                     info: {
                         id: 1000,
-                        type: entityTypes.order,
+                        type: EntityType.order,
                     },
                     orderId: 1000,
                     topic: "lecture",
@@ -150,7 +150,7 @@ describe('store/orders/selectors', () => {
                 }, {
                     info: {
                         id: 1002,
-                        type: entityTypes.order,
+                        type: EntityType.order,
                     },
                     orderId: 1002,
                     topic: "topic",
@@ -165,7 +165,7 @@ describe('store/orders/selectors', () => {
                 {
                     info: {
                         id: 1000,
-                        type: entityTypes.order,
+                        type: EntityType.order,
                     },
                     orderId: 1000,
                     topic: "lecture",

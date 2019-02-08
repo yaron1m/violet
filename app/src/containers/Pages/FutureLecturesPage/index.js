@@ -7,7 +7,7 @@ import * as _ from "lodash";
 import {getAllLectureTimes} from "../../../store/orders/Selectors.ts";
 import {Status} from "../../../util/Constants/Status";
 import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
-import entityTypes from "../../../util/Constants/EntityTypes";
+import {EntityType} from "../../../util/Constants/EntityType";
 
 export function getFutureLectureTimes(state) {
     const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);
@@ -21,12 +21,12 @@ export function getFutureLectureTimes(state) {
 
 function onEditButton(dispatch, info) {
     switch (info.type) {
-        case entityTypes.order:
+        case EntityType.order:
             dispatch(selectOrder(info.id));
             redirect('/form');
             return;
 
-        case entityTypes.publicCourse:
+        case EntityType.publicCourse:
             dispatch(selectPublicCourse(info.id));
             redirect('/publicCourse');
             return;

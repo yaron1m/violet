@@ -9,15 +9,19 @@ import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrgani
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
-import entityTypes from "../../util/Constants/EntityTypes";
+import {EntityType} from "../../util/Constants/EntityType";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../util/ObjectUpdater';
 import {Status} from '../../util/Constants/Status';
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 
+function getOrdersMap(state: IState){
+    return toMutable(state.orders);
+}
+
 export function getOrders(state: IState, status?: Status): IOrder[] {
-    const orders = toMutable(state.orders);
+    const orders = getOrdersMap(state);
 
     if (status === undefined)
         return _.values(orders);
@@ -26,11 +30,11 @@ export function getOrders(state: IState, status?: Status): IOrder[] {
 }
 
 export function getOrderById(state: IState, id: string): IOrder {
-    return getOrders(state)[id];
+    return getOrdersMap(state)[id];
 }
 
 export function getNextOrderId(state: IState) {
-    const orders = getOrders(state);
+    const orders = getOrdersMap(state);
     const keys = _.keys(orders);
     if (!orders || keys.length === 0)
         return 5000;
@@ -44,7 +48,7 @@ export function getOrdersByOrganization(state: IState) {
         return null;
 
     const organizationId = getSelectedOrganization(state).id;
-    return _.values(getOrders(state)).filter((order) => order.organizationId === organizationId);
+    return getOrders(state).filter((order) => order.organizationId === organizationId);
 }
 
 export function getFollowUpOrdersSummary(state: IState) {
@@ -75,27 +79,27 @@ export function getFollowUpOrdersSummary(state: IState) {
 
 //TODO update tests
 export function getAllLectureTimes(state: IState, status?: Status) {
-    function getMappedLectureTimes(order: IOrder) :lectureTime[]{
+    function getMappedLectureTimes(order: IOrder): lectureTime[] {
         return _.map(order.lectureTimes, time => ({
             date: time.date,
             topic: time.topic,
             orderId: order.id.toString(),
             organizationName: getOrganizationById(state, order.organizationId).organizationName,
-            isPublicCourseOrder:false,
-            entityId:order.id,
+            entityType: EntityType.order,
+            entityId: order.id,
         }));
     }
 
     const internalLectures = _.flatMap(getOrders(state, status), getMappedLectureTimes);
 
-    function mapPublicCourses(course: IPublicCourse) :lectureTime[]{
+    function mapPublicCourses(course: IPublicCourse): lectureTime[] {
         return _.map(course.lectures, lecture => ({
             date: lecture.date,
             topic: lecture.topic,
-            orderId : course.courseName,
+            orderId: course.courseName,
             organizationName: getLabels(state).orderTypes.publicCourse,
 
-            isPublicCourseOrder : true,
+            entityType: EntityType.publicCourse,
             entityId: course.id
         }));
     }
@@ -105,19 +109,19 @@ export function getAllLectureTimes(state: IState, status?: Status) {
     return _.concat(internalLectures, publicCourseLectures);
 }
 
-interface lectureTime{
+interface lectureTime {
     orderId: string;
     date: string;
     topic: string;
     organizationName: string;
-    isPublicCourseOrder: boolean;
+    entityType: EntityType;
     entityId: number;
 }
 
 export function getExpectedIncomeOrders(state: IState, status: Status) {
     const orders = getOrders(state, status);
 
-    function map(order:IOrder) {
+    function map(order: IOrder) {
         const result = {
             id: order.id,
             status: cutIfLong(getOrderStatusLabel(state, order), 20),
@@ -125,6 +129,8 @@ export function getExpectedIncomeOrders(state: IState, status: Status) {
             expectedPayDate: order.expectedPayDate,
             totalSum: moneyFormat(order.totalSum, getLabels(state).currencyIcon),
             organizationName: cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 25),
+            topic: "",
+            lectureDate: "",
         };
         if (isPublicCourseOrder(order)) {
             result.topic = getLabels(state).orderTypes.publicCourse;
@@ -141,14 +147,16 @@ export function getExpectedIncomeOrders(state: IState, status: Status) {
     return _.sortBy(_.map(orders, map), x => x.expectedPayDate);
 }
 
-export function getOrdersSummary(state: IState, getOrdersFunction) {
+export function getOrdersSummary(state: IState, getOrdersFunction: (state: IState) => IOrder[]) {
     const orders = getOrdersFunction(state);
 
-    function map(order) {
+    function map(order: IOrder) {
         const result = {
             id: order.id,
             status: getOrderStatusLabel(state, order),
-            organizationName: getOrganizationById(state, order.organizationId).organizationName
+            organizationName: getOrganizationById(state, order.organizationId).organizationName,
+            date: "",
+            topic: "",
         };
 
         if (isPublicCourseOrder(order)) {

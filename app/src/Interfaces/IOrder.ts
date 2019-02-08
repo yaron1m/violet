@@ -37,6 +37,9 @@ export default interface IOrder {
     cancelled: boolean;
     lectureTimes: ILectureTime[];
 
+    // Public course:
+    publicCourseParticipants: IPublicCourseParticipants[];
+
     // Follow up
     followUpRequired: boolean;
     followUpDate: string;
@@ -81,4 +84,14 @@ interface ILectureTime {
     duration: string;
     endTime: string;
     startTime: string;
+}
+
+interface IPublicCourseParticipants{
+    email: string;
+    idNumber: string;
+    lecturesAttending: number[];
+    participantCost: string;
+    participantFirstName: string;
+    participantLastName: string;
+    phone: string;
 }

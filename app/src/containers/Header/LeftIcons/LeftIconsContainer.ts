@@ -2,7 +2,7 @@ import LeftIcons from './LeftIcons';
 import {connect} from "react-redux";
 import {signOutRequest} from "../../../store/Firebase/Actions";
 import {getLabels} from "../../../store/Labels/Selectors";
-import {getActionRequiredOrders} from "../../../store/orders/Selectors.ts";
+import {getActionRequiredOrders} from "../../../store/orders/Selectors";
 import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
