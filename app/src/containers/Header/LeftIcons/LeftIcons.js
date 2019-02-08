@@ -5,7 +5,7 @@ import ExitIcon from '@material-ui/icons/ExitToApp';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Colors from "../../../util/Constants/Colors";
 import PropTypes from "prop-types";
-import {CustomIconButton} from "../../../components/CustomComponents/CustomButtons";
+import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = () => ({

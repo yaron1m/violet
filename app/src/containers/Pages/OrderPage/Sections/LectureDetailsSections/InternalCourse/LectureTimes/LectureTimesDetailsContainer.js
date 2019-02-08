@@ -3,7 +3,7 @@ import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selecto
 import LectureTimesDetails from "./LectureTimesDetails";
 import _ from "lodash";
 import {getOfferedLectures} from "../../../../../../../store/Lists/Reducer";
-import {toSuggestions} from "../../../../../../../components/AutoSuggest";
+import {toSuggestions} from "../../../../../../../Components/AutoSuggest";
 
 function getLectureTimeIndexes(lectureTimes) {
     if (!lectureTimes)

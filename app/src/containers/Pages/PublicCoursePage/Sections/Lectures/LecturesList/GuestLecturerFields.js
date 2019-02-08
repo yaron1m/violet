@@ -5,7 +5,7 @@ import {
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import {Sizes} from "../../../../../../util/Constants/Sizes";
-import {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
+import {flexStyle} from "../../../../../../Components/CustomComponents/CustomPaper";
 
 export default class CourseLecturesInstance extends React.Component {
 

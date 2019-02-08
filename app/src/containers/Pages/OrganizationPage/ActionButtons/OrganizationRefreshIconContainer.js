@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
 import RefreshIcon from '@material-ui/icons/Refresh';
-import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
+import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
 
 function mapStateToProps() {
     return {

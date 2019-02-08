@@ -1,6 +1,6 @@
 import React from 'react';
 import {isEmptyValue} from "../../../../../util/StringUtil";
-import {CustomFlatButton} from "../../../../../components/CustomComponents/CustomButtons";
+import {CustomFlatButton} from "../../../../../Components/CustomComponents/CustomButtons";
 
 export function shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
                                    closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder) {

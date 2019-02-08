@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {deleteLectureTime} from "../../../../../../../store/SelectedOrder/Actions";
-import {CustomIconButton} from "../../../../../../../components/CustomComponents/CustomButtons";
+import {CustomIconButton} from "../../../../../../../Components/CustomComponents/CustomButtons";
 import PropTypes from "prop-types";
 import DeleteIcon from '@material-ui/icons/Delete';
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
+import PrintSection from "../../../../Components/CustomComponents/OrderPrint/PrintSection";
 import {PrintOrderConnectedDate, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import PropTypes from "prop-types";
-import CustomDivider from "../../../../components/CustomComponents/CustomDivider";
+import CustomDivider from "../../../../Components/CustomComponents/CustomDivider";
 
 export default class InvoicePrintSection extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
+import PrintSection from "../../../../Components/CustomComponents/OrderPrint/PrintSection";
 import {PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 
 export default class NotesPrintSection extends React.Component {

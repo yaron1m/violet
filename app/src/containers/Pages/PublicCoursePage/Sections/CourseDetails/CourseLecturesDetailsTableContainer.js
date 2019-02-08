@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../../../store/Labels/Selectors";
-import CustomPaperTable from "../../../../../components/Table/CustomPaperTable";
+import CustomPaperTable from "../../../../../Components/Table/CustomPaperTable";
 import {getLecturesDetails} from "../../../../../store/SelectedPublicCourse/Selectors";
 
 function mapStateToProps(state) {

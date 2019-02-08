@@ -4,8 +4,8 @@ import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/
 import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
 import {hideRequiredFields} from "../../../../store/Appearance/Actions";
 import PropTypes from "prop-types";
-import CustomDialog from "../../../../components/CustomComponents/CustomDialog";
-import {CustomFlatButton} from "../../../../components/CustomComponents/CustomButtons";
+import CustomDialog from "../../../../Components/CustomComponents/CustomDialog";
+import {CustomFlatButton} from "../../../../Components/CustomComponents/CustomButtons";
 import {clearSelectedOrder} from "../../../../store/SelectedOrder/Actions";
 
 function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {

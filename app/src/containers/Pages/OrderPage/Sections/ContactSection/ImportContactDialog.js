@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CustomDialog from "../../../../../components/CustomComponents/CustomDialog";
-import CustomTable from "../../../../../components/Table/CustomTable";
+import CustomDialog from "../../../../../Components/CustomComponents/CustomDialog";
+import CustomTable from "../../../../../Components/Table/CustomTable";
 import * as _ from 'lodash';
-import CustomTableRow from "../../../../../components/Table/CustomTableRow";
+import CustomTableRow from "../../../../../Components/Table/CustomTableRow";
 
 export default function ImportContactsDialog(props) {
     return (

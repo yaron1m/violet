@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
-import CustomText from "../../../../../components/CustomComponents/CustomTextField";
-import CustomToggle from "../../../../../components/CustomComponents/CustomToggle";
+import CustomText from "../../../../../Components/CustomComponents/CustomTextField";
+import CustomToggle from "../../../../../Components/CustomComponents/CustomToggle";
 import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
 function mapStateToProps(state) {

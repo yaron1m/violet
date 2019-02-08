@@ -1,8 +1,8 @@
 import React from 'react';
 import SingleLectureTime from "./SingleLectureTime";
 import PropTypes from "prop-types";
-import CustomPaper from "../../../../../../../components/CustomComponents/CustomPaper";
-import CustomDivider from "../../../../../../../components/CustomComponents/CustomDivider";
+import CustomPaper from "../../../../../../../Components/CustomComponents/CustomPaper";
+import CustomDivider from "../../../../../../../Components/CustomComponents/CustomDivider";
 import AddLectureTimeButtonContainer from "./AddLectureTimeButtonContainer";
 
 export default class LectureTimesDetails extends React.Component {

@@ -1,7 +1,7 @@
 import connect from "react-redux/es/connect/connect";
 import {getSnackbarMessage} from "../../store/Appearance/Selectors";
 import {closeSnackbar} from "../../store/Appearance/Actions";
-import CustomSnackbar from "../../components/CustomComponents/CustomSnackbar";
+import CustomSnackbar from "../../Components/CustomComponents/CustomSnackbar";
 import {isSnackbarOpen} from "../../store/Appearance/Selectors";
 
 function mapStateToProps(state) {

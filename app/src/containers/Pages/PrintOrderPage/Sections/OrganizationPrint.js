@@ -1,5 +1,5 @@
 import React from 'react';
-import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
+import PrintSection from "../../../../Components/CustomComponents/OrderPrint/PrintSection";
 import {PrintOrganizationConnectedText} from "./ConnectedCustomComponents/PrintOrganizationConnectedFields";
 import PropTypes from "prop-types";
 

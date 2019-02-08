@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
-import CustomPaperTable from "../../../components/Table/CustomPaperTable";
+import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import {getPublicCoursesSummary} from "../../../store/PublicCourses/Selectors";
 
 function mapStateToProps(state) {

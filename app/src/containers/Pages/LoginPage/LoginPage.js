@@ -1,9 +1,9 @@
 import React from 'react';
-import PageTitle from '../../../components/PageTitle';
+import PageTitle from '../../../Components/PageTitle';
 import PropTypes from "prop-types";
 import LoginField from "./LoginField";
 import SignInWithGoogleButtonContainer from "./SignInWithGoogleButtonContainer";
-import CustomPaper from "../../../components/CustomComponents/CustomPaper";
+import CustomPaper from "../../../Components/CustomComponents/CustomPaper";
 import LoginButton from "./LoginButton";
 import Colors from "../../../util/Constants/Colors";
 

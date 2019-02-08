@@ -1,5 +1,5 @@
 import React from 'react';
-import {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
+import {flexStyle} from "../../../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {
     PublicCourseLectureConnectedAutoComplete, PublicCourseLectureConnectedCheckBox,
@@ -8,8 +8,8 @@ import {
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
 import {Sizes} from "../../../../../../util/Constants/Sizes";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
-import CustomDivider from "../../../../../../components/CustomComponents/CustomDivider";
-import IndexAvatar from "../../../../../../components/IndexAvatar";
+import CustomDivider from "../../../../../../Components/CustomComponents/CustomDivider";
+import IndexAvatar from "../../../../../../Components/IndexAvatar";
 
 export default class CourseLecturesInstance extends React.Component {
 

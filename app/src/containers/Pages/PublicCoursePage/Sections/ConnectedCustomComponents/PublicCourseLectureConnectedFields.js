@@ -2,12 +2,12 @@ import {connect} from 'react-redux';
 import {getSelectedPublicCourseLecture} from "../../../../../store/SelectedPublicCourse/Selectors";
 import {updatePublicCourseLecture} from "../../../../../store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../../../store/Labels/Selectors";
-import CustomText from "../../../../../components/CustomComponents/CustomTextField";
-import CustomDatePicker from "../../../../../components/CustomComponents/CustomDatePicker";
-import CustomToggle from "../../../../../components/CustomComponents/CustomToggle";
-import CustomCheckbox from "../../../../../components/CustomComponents/CustomCheckbox";
-import CustomSelectField from "../../../../../components/CustomComponents/CustomSelectField";
-import CustomAutoComplete from "../../../../../components/CustomComponents/CustomAutoComplete";
+import CustomText from "../../../../../Components/CustomComponents/CustomTextField";
+import CustomDatePicker from "../../../../../Components/CustomComponents/CustomDatePicker";
+import CustomToggle from "../../../../../Components/CustomComponents/CustomToggle";
+import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
+import CustomSelectField from "../../../../../Components/CustomComponents/CustomSelectField";
+import CustomAutoComplete from "../../../../../Components/CustomComponents/CustomAutoComplete";
 
 function mapStateToProps(state, ownProps) {
     return {

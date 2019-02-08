@@ -6,7 +6,8 @@ export default function SaveActionButton(props: SaveActionButtonProps) {
     return (
         <CustomIconButton
             onClick={props.onClick}
-            tooltip={props.tooltip}>
+            tooltip={props.tooltip}
+        >
             <SaveIcon/>
         </CustomIconButton>
     );
@@ -15,4 +16,4 @@ export default function SaveActionButton(props: SaveActionButtonProps) {
 interface SaveActionButtonProps {
     tooltip?: string,
     onClick: () => void;
-};
+}

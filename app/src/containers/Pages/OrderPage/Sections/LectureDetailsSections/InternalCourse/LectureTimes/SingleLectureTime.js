@@ -6,8 +6,8 @@ import {
     LectureTimesCustomDatePicker,
     LectureTimesCustomText
 } from "../../../ConnectedCustomComponents/LectureTimesCustomFields";
-import {flexStyle} from "../../../../../../../components/CustomComponents/CustomPaper";
-import IndexAvatar from "../../../../../../../components/IndexAvatar";
+import {flexStyle} from "../../../../../../../Components/CustomComponents/CustomPaper";
+import IndexAvatar from "../../../../../../../Components/IndexAvatar";
 import DeleteLectureTimeButton from "./DeleteLectureTimeButton";
 
 export default class SingleLectureTime extends React.Component {

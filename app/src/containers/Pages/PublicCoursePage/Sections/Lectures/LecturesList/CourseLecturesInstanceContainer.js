@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import CourseLecturesInstance from "./CourseLecturesInstance";
 import PropTypes from "prop-types";
 import {getOfferedLectures} from "../../../../../../store/Lists/Reducer";
-import {toSuggestions} from "../../../../../../components/AutoSuggest";
+import {toSuggestions} from "../../../../../../Components/AutoSuggest";
 
 function mapStateToProps(state, ownProps) {
     return {

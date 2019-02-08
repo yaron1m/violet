@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper from "../../../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import _ from 'lodash';
 import CourseLecturesInstanceContainer from "./CourseLecturesInstanceContainer";

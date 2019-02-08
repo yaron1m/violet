@@ -1,10 +1,10 @@
 import React from 'react';
 import {Sizes} from "../../../../../util/Constants/Sizes";
-import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper from "../../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {OrderCustomText, OrderCustomDatePicker} from "../ConnectedCustomComponents/OrderCustomFields";
 import ProformaInvoiceDateContainer from "./ProformaInvoiceDateContainer";
-import CustomDivider from "../../../../../components/CustomComponents/CustomDivider";
+import CustomDivider from "../../../../../Components/CustomComponents/CustomDivider";
 
 export default class InvoiceSection extends React.Component {
     render() {

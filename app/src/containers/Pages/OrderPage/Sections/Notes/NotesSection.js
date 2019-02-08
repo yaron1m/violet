@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper from "../../../../../Components/CustomComponents/CustomPaper";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import PropTypes from "prop-types";
 

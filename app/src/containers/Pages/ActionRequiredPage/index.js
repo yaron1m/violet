@@ -3,7 +3,7 @@ import {selectOrder} from "../../../store/SelectedOrder/Actions";
 import {getLabels} from "../../../store/Labels/Selectors";
 import {getActionRequiredOrders} from "../../../store/orders/selectors";
 import {redirect} from "../../../util/HistoryUtil";
-import CustomPaperTable from "../../../components/Table/CustomPaperTable";
+import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 
 function mapStateToProps(state) {
     return {

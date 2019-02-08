@@ -12,7 +12,7 @@ import {selectOrder} from "../../../store/SelectedOrder/Actions";
 import EventIcon from '@material-ui/icons/EventNote';
 import BusinessIcon from '@material-ui/icons/Business';
 import PersonIcon from '@material-ui/icons/Person';
-import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
+import {flexStyle} from "../../../Components/CustomComponents/CustomPaper";
 import entityTypes from "../../../util/Constants/EntityTypes";
 
 export function handleRequest(chosenRequest, dispatch) {

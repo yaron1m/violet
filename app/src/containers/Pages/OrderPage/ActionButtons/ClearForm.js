@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFormDialog from './ClearFormDialogContainer'
 import CleanIcon from '@material-ui/icons/Replay';
-import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
+import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
 
 export default class ClearFormButton extends React.Component {
     constructor() {

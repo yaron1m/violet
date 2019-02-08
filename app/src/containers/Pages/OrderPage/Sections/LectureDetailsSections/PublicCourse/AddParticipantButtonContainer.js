@@ -4,7 +4,7 @@ import {updateSelectedOrder} from "../../../../../../store/SelectedOrder/Actions
 import * as _ from "lodash";
 import * as Immutable from "seamless-immutable";
 import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
-import {CustomRaisedButton} from "../../../../../../components/CustomComponents/CustomButtons";
+import {CustomRaisedButton} from "../../../../../../Components/CustomComponents/CustomButtons";
 
 export function addNewParticipant(selectedOrder, updateSelectedOrder) {
     const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});

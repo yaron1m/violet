@@ -1,12 +1,12 @@
 import React from 'react';
-import CustomPaper from "../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper from "../../../../../Components/CustomComponents/CustomPaper";
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
 import CalculateIcon from '@material-ui/icons/LocalAtm';
 import {Sizes} from "../../../../../util/Constants/Sizes";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
-import CustomDivider from "../../../../../components/CustomComponents/CustomDivider";
-import {CustomIconButton} from "../../../../../components/CustomComponents/CustomButtons";
+import CustomDivider from "../../../../../Components/CustomComponents/CustomDivider";
+import {CustomIconButton} from "../../../../../Components/CustomComponents/CustomButtons";
 
 export default class PaymentSection extends React.Component {
 

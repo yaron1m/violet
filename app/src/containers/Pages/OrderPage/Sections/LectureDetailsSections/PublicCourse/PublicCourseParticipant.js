@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper, {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper, {flexStyle} from "../../../../../../Components/CustomComponents/CustomPaper";
 import {
     PublicCourseParticipantsCustomCheckBox,
     PublicCourseParticipantsCustomText
@@ -8,7 +8,7 @@ import {Sizes} from "../../../../../../util/Constants/Sizes";
 import _ from 'lodash';
 import PropTypes from "prop-types";
 import DeleteIcon from '@material-ui/icons/Delete';
-import {CustomIconButton} from "../../../../../../components/CustomComponents/CustomButtons";
+import {CustomIconButton} from "../../../../../../Components/CustomComponents/CustomButtons";
 
 export default class PublicCourseParticipant extends React.Component {
 

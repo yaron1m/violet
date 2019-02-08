@@ -1,7 +1,7 @@
 import React from 'react';
 import SendIcon from '@material-ui/icons/Mail';
 import PropTypes from "prop-types";
-import {CustomIconButton} from "../../../../components/CustomComponents/CustomButtons";
+import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
 
 export default class SendOfferButton extends React.Component {
     render() {

@@ -4,7 +4,7 @@ import {getSelectedOrder} from "../../../../../../../store/SelectedOrder/Selecto
 import {getCancellationReasons} from "../../../../../../../store/Lists/Reducer";
 import Status from "../../../../../../../util/Constants/Status";
 import OrderTerminateOption from "./OrderTerminateOption";
-import {createOptions} from "../../../../../../../components/CustomComponents/CustomSelectField";
+import {createOptions} from "../../../../../../../Components/CustomComponents/CustomSelectField";
 
 function mapStateToProps(state) {
     return {

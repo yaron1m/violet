@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../../store/Labels/Selectors";
 import PropTypes from "prop-types";
-import {CustomRaisedButton} from "../../../components/CustomComponents/CustomButtons";
+import {CustomRaisedButton} from "../../../Components/CustomComponents/CustomButtons";
 
 function mapStateToProps(state) {
     return {

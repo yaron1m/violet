@@ -1,9 +1,9 @@
 import React from 'react';
 import AllOrdersTableContainer from './AllOrdersTableContainer';
 import FilterStatusSelectField from './FilterStatusSelectField';
-import CustomToggle from "../../../components/CustomComponents/CustomToggle";
+import CustomToggle from "../../../Components/CustomComponents/CustomToggle";
 import {updateObject} from "../../../util/ObjectUpdater";
-import {flexStyle} from "../../../components/CustomComponents/CustomPaper";
+import {flexStyle} from "../../../Components/CustomComponents/CustomPaper";
 
 export default class AllOrdersPage extends React.Component {
     state = {

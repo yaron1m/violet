@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper, {flexStyle} from "../../../../../../components/CustomComponents/CustomPaper";
+import CustomPaper, {flexStyle} from "../../../../../../Components/CustomComponents/CustomPaper";
 import {Sizes} from "../../../../../../util/Constants/Sizes";
 import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";

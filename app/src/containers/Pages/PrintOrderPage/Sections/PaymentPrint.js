@@ -1,9 +1,9 @@
 import React from 'react';
-import PrintSection from "../../../../components/CustomComponents/OrderPrint/PrintSection";
+import PrintSection from "../../../../Components/CustomComponents/OrderPrint/PrintSection";
 import ContactsPrintRow from './ContactPrintRowContainer'
 import {PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import PropTypes from "prop-types";
-import CustomDivider from "../../../../components/CustomComponents/CustomDivider";
+import CustomDivider from "../../../../Components/CustomComponents/CustomDivider";
 
 export default class ContactsPrintSection extends React.Component {
     render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomPaper from "../../../../components/CustomComponents/CustomPaper";
+import CustomPaper from "../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 
 export default class NavigationButton extends React.Component {

@@ -5,7 +5,7 @@ import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
 import {getOrganizations} from "../../../../../store/Organizations/Selectors";
 import PropTypes from 'prop-types';
 import OrganizationSection from "./OrganizationSection";
-import {toSuggestions} from "../../../../../components/AutoSuggest";
+import {toSuggestions} from "../../../../../Components/AutoSuggest";
 import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
 
 function mapStateToProps(state, ownProps) {
