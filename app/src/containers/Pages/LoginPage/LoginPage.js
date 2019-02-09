@@ -5,7 +5,7 @@ import LoginField from "./LoginField";
 import SignInWithGoogleButtonContainer from "./SignInWithGoogleButtonContainer";
 import CustomPaper from "../../../Components/CustomComponents/CustomPaper";
 import LoginButton from "./LoginButton";
-import Colors from "../../../util/Constants/Colors";
+import Colors from "../../../Util/Constants/Colors";
 
 export default class LoginPage extends React.Component {
 

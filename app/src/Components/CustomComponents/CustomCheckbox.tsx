@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import AbstractCustomField from "./AbstractCustomField";
-import Colors from "../../util/Constants/Colors";
+import Colors from "../../Util/Constants/Colors";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../../../Components/CustomComponents/CustomPaper";
-import {Sizes} from "../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../Util/Constants/Sizes";
 import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
-import Colors from "../../../../../../util/Constants/Colors";
+import Colors from "../../../../../../Util/Constants/Colors";
 import PropTypes from "prop-types";
 import LectureTimesDetailsContainer from "./LectureTimes/LectureTimesDetailsContainer";
 import {

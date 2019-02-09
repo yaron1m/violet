@@ -2,9 +2,9 @@ import {getOrders} from "../Orders/Selectors";
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
 import {getLabels, getStatusLabel} from "../Labels/Selectors";
-import {isEmptyValue, moneyFormat} from "../../util/StringUtil";
+import {isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import {IState} from '../../Interfaces/ReduxInterfaces';
-import {toMutable} from '../../util/ObjectUpdater';
+import {toMutable} from '../../Util/ObjectUpdater';
 
 export function getSelectedPublicCourse(state: IState) {
     return toMutable(state.selectedPublicCourse).publicCourse;

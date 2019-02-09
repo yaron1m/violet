@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import Colors from "../../../util/Constants/Colors";
+import Colors from "../../../Util/Constants/Colors";
 import AutoSuggest, {ISuggestion} from "../../../Components/AutoSuggest";
 
 export default class SearchBox extends React.Component<SearchBoxProps> {

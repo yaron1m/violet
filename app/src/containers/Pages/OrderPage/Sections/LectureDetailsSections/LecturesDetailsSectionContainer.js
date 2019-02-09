@@ -2,9 +2,9 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../../../Store/Labels/Selectors";
 import LectureDetailsSection from "./LecturesDetailsSection";
 import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
-import {isEmptyValue} from "../../../../../util/StringUtil";
+import {isEmptyValue} from "../../../../../Util/StringUtil";
 import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
-import {internalTabKey, publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
+import {internalTabKey, publicCourseTabKey} from "../../../../../Util/Constants/TabKeys";
 
 
 function getSelectedTabKey(order){

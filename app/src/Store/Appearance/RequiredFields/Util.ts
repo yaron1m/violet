@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import IOrder from '../../../Interfaces/IOrder';
-import {TabKey} from '../../../util/Constants/Status';
+import {TabKey} from '../../../Util/Constants/Status';
 
 function arrayMerge(objValue: string[], srcValue: string[]) {
     if (_.isArray(objValue)) {

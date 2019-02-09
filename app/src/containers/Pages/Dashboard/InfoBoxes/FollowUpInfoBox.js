@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../util/HistoryUtil";
+import {redirect} from "../../../../Util/HistoryUtil";
 import {getFollowUpOrdersSummary} from "../../../../Store/Orders/Selectors.ts";
 import {isFetching} from "../../../../Store/Firebase/Selectors";
 import InfoBox from "./InfoBox";
-import Colors from "../../../../util/Constants/Colors";
+import Colors from "../../../../Util/Constants/Colors";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function calculateFollowUpSummary(state) {

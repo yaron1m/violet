@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getStatusLabels} from "../../../Store/Labels/Selectors";
 import OrderStatusStepper from "./OrderStatusStepper";
 import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
-import {progressiveStatuses as Status} from "../../../util/Constants/Status";
+import {progressiveStatuses as Status} from "../../../Util/Constants/Status";
 
 function getStatus(status){
     return status ? status : Status.contact

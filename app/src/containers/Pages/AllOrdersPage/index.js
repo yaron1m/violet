@@ -2,7 +2,7 @@ import React from 'react';
 import AllOrdersTableContainer from './AllOrdersTableContainer';
 import FilterStatusSelectField from './FilterStatusSelectField';
 import CustomToggle from "../../../Components/CustomComponents/CustomToggle";
-import {updateObject} from "../../../util/ObjectUpdater";
+import {updateObject} from "../../../Util/ObjectUpdater";
 import {flexStyle} from "../../../Components/CustomComponents/CustomPaper";
 
 export default class AllOrdersPage extends React.Component {

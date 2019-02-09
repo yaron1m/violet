@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../util/HistoryUtil";
+import {redirect} from "../../../../Util/HistoryUtil";
 import {clearSelectedOrganization} from "../../../../Store/SelectedOrganization/Actions";
 import NavigationButton from "./NavigationButton";
 import {clearSelectedOrder} from "../../../../Store/SelectedOrder/Actions";

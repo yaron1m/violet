@@ -1,4 +1,4 @@
-import {toMutable} from '../../util/ObjectUpdater';
+import {toMutable} from '../../Util/ObjectUpdater';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
 export function getSelectedOrganization(state: IState) {

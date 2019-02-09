@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {updateSelectedOrder} from "../../../../../../../Store/SelectedOrder/Actions";
 import {getSelectedOrder} from "../../../../../../../Store/SelectedOrder/Selectors";
 import {getCancellationReasons} from "../../../../../../../Store/Lists/Selectors";
-import {Status} from "../../../../../../../util/Constants/Status";
+import {Status} from "../../../../../../../Util/Constants/Status";
 import OrderTerminateOption from "./OrderTerminateOption";
 import {createOptions} from "../../../../../../../Components/CustomComponents/CustomSelectField";
 

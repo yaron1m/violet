@@ -4,7 +4,7 @@ import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import * as _ from 'lodash';
 import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../../Store/Orders/Selectors.ts";
-import {getValueOrEmptyString} from "../../../../../util/StringUtil";
+import {getValueOrEmptyString} from "../../../../../Util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 
 function getContacts(state) {

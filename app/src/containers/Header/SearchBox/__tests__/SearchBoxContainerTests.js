@@ -1,4 +1,4 @@
-import * as HistoryUtil from "../../../../util/HistoryUtil";
+import * as HistoryUtil from "../../../../Util/HistoryUtil";
 import * as Target from "../SearchBoxContainer";
 import * as SelectedOrganizationActions from "../../../../Store/SelectedOrganization/Actions";
 import * as _ from "lodash";

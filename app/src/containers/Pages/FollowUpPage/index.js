@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {selectOrder} from "../../../Store/SelectedOrder/Actions";
 import {getLabels} from "../../../Store/Labels/Selectors";
-import {redirect} from "../../../util/HistoryUtil";
+import {redirect} from "../../../Util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
 import {getFollowUpOrdersSummary} from "../../../Store/Orders/Selectors.ts";

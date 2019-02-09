@@ -1,8 +1,8 @@
 import {getElements, onEditButton} from "./AllOrdersTableContainer";
 import labels from '../../../Store/Labels/Reducer'
-import {Status} from "../../../util/Constants/Status";
+import {Status} from "../../../Util/Constants/Status";
 import * as SelectedOrderActions from "../../../Store/SelectedOrder/Actions";
-import * as HistoryUtil from "../../../util/HistoryUtil";
+import * as HistoryUtil from "../../../Util/HistoryUtil";
 
 const state = {
     labels: labels(),

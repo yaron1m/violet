@@ -4,7 +4,7 @@ import LoginPage from './containers/Pages/LoginPage/LoginPageContainer';
 import AppDialog from './containers/Messages/AppDialogContainer';
 import AppSnackbar from './containers/Messages/AppSnackBarContainer';
 import {theme} from './ThemeDefault';
-import Colors from "./util/Constants/Colors";
+import Colors from "./Util/Constants/Colors";
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import RTL from "./jss-rtl";
 

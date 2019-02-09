@@ -5,15 +5,15 @@ import {getLabels} from "../../../Store/Labels/Selectors";
 import {getOrganizations} from "../../../Store/Organizations/Selectors";
 import {selectOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {getOrders, getPublicCourseParticipantsSummary} from "../../../Store/Orders/Selectors.ts";
-import {redirect} from "../../../util/HistoryUtil";
-import Colors from "../../../util/Constants/Colors";
+import {redirect} from "../../../Util/HistoryUtil";
+import Colors from "../../../Util/Constants/Colors";
 import * as _ from "lodash";
 import {selectOrder} from "../../../Store/SelectedOrder/Actions";
 import EventIcon from '@material-ui/icons/EventNote';
 import BusinessIcon from '@material-ui/icons/Business';
 import PersonIcon from '@material-ui/icons/Person';
 import {flexStyle} from "../../../Components/CustomComponents/CustomPaper";
-import {EntityType} from "../../../util/Constants/EntityType";
+import {EntityType} from "../../../Util/Constants/EntityType";
 
 export function handleRequest(chosenRequest, dispatch) {
     switch (chosenRequest.info.type) {

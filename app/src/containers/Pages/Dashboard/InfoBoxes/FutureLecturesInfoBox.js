@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../util/HistoryUtil";
+import {redirect} from "../../../../Util/HistoryUtil";
 import {isFetching} from "../../../../Store/Firebase/Selectors";
 import CheckBoxIcon from '@material-ui/icons/CheckCircle';
 import InfoBox from "./InfoBox";
-import Colors from "../../../../util/Constants/Colors";
+import Colors from "../../../../Util/Constants/Colors";
 import {getFutureLectureTimes} from "../../FutureLecturesPage";
 
 function calculateFutureLectures(state) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Colors from "../../util/Constants/Colors";
+import Colors from "../../Util/Constants/Colors";
 
 export default function ActionButtonsBox(props: { children: React.ReactNode }) {
     const styles = {

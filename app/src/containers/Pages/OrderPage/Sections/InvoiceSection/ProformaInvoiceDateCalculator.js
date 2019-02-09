@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
-import {isEmpty} from "../../../../../util/StringUtil";
-import {toDateFormat} from "../../../../../util/TimeUtil";
+import {isEmpty} from "../../../../../Util/StringUtil";
+import {toDateFormat} from "../../../../../Util/TimeUtil";
 
 export default function calculatePayDate(proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions) {
     if (isEmpty(selectedPaymentConditions) || isEmpty(proformaInvoiceValue))

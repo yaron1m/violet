@@ -1,4 +1,4 @@
-import {Status, TabKey} from '../util/Constants/Status';
+import {Status, TabKey} from '../Util/Constants/Status';
 
 export default interface IOrder {
     id: number,

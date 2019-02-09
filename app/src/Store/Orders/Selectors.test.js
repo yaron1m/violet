@@ -1,7 +1,7 @@
 import * as Selectors from './Selectors.ts';
-import {Status} from "../../util/Constants/Status";
+import {Status} from "../../Util/Constants/Status";
 import * as labelsSelectors from "../Labels/Selectors";
-import EntityType from "../../util/Constants/EntityType";
+import EntityType from "../../Util/Constants/EntityType";
 import * as organizationSelectors from "../Organizations/Selectors";
 
 const state = {

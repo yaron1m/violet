@@ -1,7 +1,7 @@
 import {IState} from '../../Interfaces/ReduxInterfaces';
-import {toMutable} from '../../util/ObjectUpdater';
+import {toMutable} from '../../Util/ObjectUpdater';
 import IOrder from '../../Interfaces/IOrder';
-import {TabKey} from '../../util/Constants/Status';
+import {TabKey} from '../../Util/Constants/Status';
 
 export function getSelectedOrder(state: IState) {
     return toMutable(state.selectedOrder).order;

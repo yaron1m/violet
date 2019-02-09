@@ -1,8 +1,8 @@
 import React from 'react';
 import HomeIcon from '@material-ui/icons/Home';
-import {redirect} from "../../util/HistoryUtil";
+import {redirect} from "../../Util/HistoryUtil";
 import {CustomIconButton} from "../../Components/CustomComponents/CustomButtons";
-import Colors from "../../util/Constants/Colors";
+import Colors from "../../Util/Constants/Colors";
 import {withStyles} from "@material-ui/core/styles/index";
 import PropTypes from "prop-types";
 

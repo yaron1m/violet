@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import {progressiveStatuses} from "../../../util/Constants/Status";
+import {progressiveStatuses} from "../../../Util/Constants/Status";
 
 export default class OrderStatusStepper extends React.Component {
 

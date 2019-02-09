@@ -1,18 +1,18 @@
 /* eslint-disable no-magic-numbers */
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {isMatchingStatus} from "../../util/OrderStatus/OrderStatusUtils";
-import {cutIfLong, isEmptyValue, moneyFormat} from "../../util/StringUtil";
+import {isMatchingStatus} from "../../Util/OrderStatus/OrderStatusUtils";
+import {cutIfLong, isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import getActionRequiredOrdersArray from "./ActionRequiredOrderes";
 import {getLabels} from "../Labels/Selectors";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
-import {EntityType} from "../../util/Constants/EntityType";
+import {EntityType} from "../../Util/Constants/EntityType";
 import {IState} from '../../Interfaces/ReduxInterfaces';
-import {toMutable} from '../../util/ObjectUpdater';
-import {Status} from '../../util/Constants/Status';
+import {toMutable} from '../../Util/ObjectUpdater';
+import {Status} from '../../Util/Constants/Status';
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from 'prop-types';
-import {Sizes} from "../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../Util/Constants/Sizes";
 import {
     OrganizationCustomAutoComplete,
     OrganizationCustomText, OrganizationCustomToggle

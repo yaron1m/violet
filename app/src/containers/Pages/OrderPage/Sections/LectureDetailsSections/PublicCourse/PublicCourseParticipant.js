@@ -4,7 +4,7 @@ import {
     PublicCourseParticipantsCustomCheckBox,
     PublicCourseParticipantsCustomText
 } from "../../ConnectedCustomComponents/PublicCourseParticipantsCustomFields";
-import {Sizes} from "../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../Util/Constants/Sizes";
 import _ from 'lodash';
 import PropTypes from "prop-types";
 import DeleteIcon from '@material-ui/icons/Delete';

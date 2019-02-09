@@ -1,7 +1,7 @@
 import React from 'react';
 import * as _ from "lodash";
-import {updateObject} from "../../util/ObjectUpdater";
-import {Sizes} from '../../util/Constants/Sizes';
+import {updateObject} from "../../Util/ObjectUpdater";
+import {Sizes} from '../../Util/Constants/Sizes';
 
 export default class AbstractCustomField<ValueType, AdditionalProps>
     extends React.Component<AbstractCustomFieldProps<ValueType> & AdditionalProps, AbstractCustomFieldState<ValueType>> {

@@ -6,7 +6,7 @@ import CustomText from "../../../../../Components/CustomComponents/CustomTextFie
 import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
 import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {isRightTabKey} from "../../../../../Store/Appearance/RequiredFields/Util";
-import {publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
+import {publicCourseTabKey} from "../../../../../Util/Constants/TabKeys";
 
 function getValues(state, ownProps) {
     if (ownProps.participantIndex === null || getSelectedOrder(state).publicCourseParticipants === undefined)

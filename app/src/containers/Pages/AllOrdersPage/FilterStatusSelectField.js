@@ -2,7 +2,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getStatusLabels} from "../../../Store/Labels/Selectors";
-import {Sizes} from "../../../util/Constants/Sizes";
+import {Sizes} from "../../../Util/Constants/Sizes";
 import CustomSelectField from "../../../Components/CustomComponents/CustomSelectField";
 import {getLabels} from "../../../Store/Labels/Selectors";
 

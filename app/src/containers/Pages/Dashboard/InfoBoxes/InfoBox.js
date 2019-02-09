@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Colors from '../../../../util/Constants/Colors'
+import Colors from '../../../../Util/Constants/Colors'
 import CustomPaper from "../../../../Components/CustomComponents/CustomPaper";
 
 export default class InfoBox extends React.Component {

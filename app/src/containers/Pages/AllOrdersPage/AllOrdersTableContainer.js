@@ -3,7 +3,7 @@ import {selectOrder} from "../../../Store/SelectedOrder/Actions";
 import {getLabels} from "../../../Store/Labels/Selectors";
 import {getOrdersSummary, getOrders} from "../../../Store/Orders/Selectors.ts";
 import * as _ from "lodash";
-import {redirect} from "../../../util/HistoryUtil";
+import {redirect} from "../../../Util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import PropTypes from "prop-types";
 

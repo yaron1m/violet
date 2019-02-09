@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../util/HistoryUtil";
+import {redirect} from "../../../../Util/HistoryUtil";
 import NavigationButton from "./NavigationButton";
 
 function mapStateToProps(state) {

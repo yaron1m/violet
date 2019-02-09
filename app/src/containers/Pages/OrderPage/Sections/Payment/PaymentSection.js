@@ -2,7 +2,7 @@ import React from 'react';
 import CustomPaper from "../../../../../Components/CustomComponents/CustomPaper";
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
 import CalculateIcon from '@material-ui/icons/LocalAtm';
-import {Sizes} from "../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../Util/Constants/Sizes";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import CustomDivider from "../../../../../Components/CustomComponents/CustomDivider";

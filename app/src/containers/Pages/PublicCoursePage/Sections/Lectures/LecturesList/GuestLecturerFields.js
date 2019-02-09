@@ -4,7 +4,7 @@ import {
     PublicCourseLectureConnectedCheckBox,
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
-import {Sizes} from "../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../Util/Constants/Sizes";
 import {flexStyle} from "../../../../../../Components/CustomComponents/CustomPaper";
 
 export default class CourseLecturesInstance extends React.Component {

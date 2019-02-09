@@ -12,7 +12,7 @@ import AllOrdersPage from "./containers/Pages/AllOrdersPage";
 import AllPublicCoursesPage from "./containers/Pages/AllPublicCoursesPage";
 import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
 import PrintOrderPage from "./containers/Pages/PrintOrderPage/PrintOrderPageContainer";
-import history from './util/History'
+import history from './Util/History'
 import DashboardContainer from "./containers/Pages/Dashboard/DashboardContainer";
 
 export default function Routes(props: RoutesProps) {

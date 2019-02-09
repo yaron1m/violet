@@ -1,11 +1,11 @@
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {getSelectedOrder} from "./Selectors";
-import {calculateDuration} from "../../util/TimeUtil";
+import {calculateDuration} from "../../Util/TimeUtil";
 import {getNextOrderId, getOrderById} from "../Orders/Selectors";
-import {isEmptyValue} from "../../util/StringUtil";
+import {isEmptyValue} from "../../Util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
-import calculateOrderStatus from "../../util/OrderStatus/OrderStatusCalculator";
+import calculateOrderStatus from "../../Util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
 import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
@@ -14,7 +14,7 @@ import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
-import {TabKey} from '../../util/Constants/Status';
+import {TabKey} from '../../Util/Constants/Status';
 import {ILectureTime, ILectureTimeField, IPublicCourseParticipant, IPublicCourseParticipantField} from '../../Interfaces/IOrder';
 import * as firebase from 'firebase';
 

@@ -1,14 +1,14 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../util/HistoryUtil";
+import {redirect} from "../../../../Util/HistoryUtil";
 import {getOrders} from "../../../../Store/Orders/Selectors.ts";
 import * as _ from 'lodash';
 import {isFetching} from "../../../../Store/Firebase/Selectors";
-import {Status} from "../../../../util/Constants/Status";
+import {Status} from "../../../../Util/Constants/Status";
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import InfoBox from "./InfoBox";
-import Colors from "../../../../util/Constants/Colors";
-import {isEmptyValue, moneyFormat} from "../../../../util/StringUtil";
+import Colors from "../../../../Util/Constants/Colors";
+import {isEmptyValue, moneyFormat} from "../../../../Util/StringUtil";
 
 function calculateExpectedIncome(state) {
     if (isFetching(state))

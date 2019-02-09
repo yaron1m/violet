@@ -1,7 +1,7 @@
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
 import AbstractCustomField from "./AbstractCustomField";
-import Colors from "../../util/Constants/Colors";
+import Colors from "../../Util/Constants/Colors";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class CustomToggle extends AbstractCustomField<boolean, {}> {

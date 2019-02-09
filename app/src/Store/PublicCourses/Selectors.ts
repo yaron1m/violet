@@ -1,11 +1,11 @@
 import _ from "lodash";
-import {hasDatePassed} from "../../util/TimeUtil";
+import {hasDatePassed} from "../../Util/TimeUtil";
 import {getOrders} from "../Orders/Selectors";
-import {moneyFormat} from "../../util/StringUtil";
+import {moneyFormat} from "../../Util/StringUtil";
 import {getLabels} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {IState} from '../../Interfaces/ReduxInterfaces';
-import {toMutable} from '../../util/ObjectUpdater';
+import {toMutable} from '../../Util/ObjectUpdater';
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 

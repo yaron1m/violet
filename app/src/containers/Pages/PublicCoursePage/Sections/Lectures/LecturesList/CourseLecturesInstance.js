@@ -6,7 +6,7 @@ import {
     PublicCourseLectureConnectedDatePicker,
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
-import {Sizes} from "../../../../../../util/Constants/Sizes";
+import {Sizes} from "../../../../../../Util/Constants/Sizes";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
 import CustomDivider from "../../../../../../Components/CustomComponents/CustomDivider";
 import IndexAvatar from "../../../../../../Components/IndexAvatar";

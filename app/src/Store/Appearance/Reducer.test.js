@@ -1,6 +1,6 @@
 import target from "./Reducer";
 import * as actionTypes from './ActionTypes';
-import {updateObject} from "../../util/ObjectUpdater";
+import {updateObject} from "../../Util/ObjectUpdater";
 
 const initialState = {
     rtl: true,

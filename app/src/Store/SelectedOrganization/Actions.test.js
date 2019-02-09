@@ -14,7 +14,7 @@ import {
     updateSelectedOrganization
 } from "./Actions";
 import {CLOSE_DIALOG} from "../Appearance/ActionTypes";
-import {getMockedDispatch} from "../../util/TestUtils";
+import {getMockedDispatch} from "../../Util/TestUtils";
 
 const id = 123456;
 const value = "value";

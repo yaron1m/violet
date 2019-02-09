@@ -7,7 +7,7 @@ import {
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "./ActionTypes";
-import {getMockedDispatch} from '../../util/TestUtils';
+import {getMockedDispatch} from '../../Util/TestUtils';
 
 
 const id = 123456;

@@ -1,6 +1,6 @@
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
-import {calculateDuration} from "../../util/TimeUtil";
+import {calculateDuration} from "../../Util/TimeUtil";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "./Selectors";
 import {

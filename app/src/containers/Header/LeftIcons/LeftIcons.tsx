@@ -1,9 +1,9 @@
 import React from 'react';
 import Badge from '@material-ui/core/Badge';
-import {redirect} from "../../../util/HistoryUtil";
+import {redirect} from "../../../Util/HistoryUtil";
 import ExitIcon from '@material-ui/icons/ExitToApp';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import Colors from "../../../util/Constants/Colors";
+import Colors from "../../../Util/Constants/Colors";
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
 
 export default function LeftIcons(props: LeftIconsProps) {

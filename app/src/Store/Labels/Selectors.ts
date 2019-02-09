@@ -1,6 +1,6 @@
 import {getSelectedOrder} from "../SelectedOrder/Selectors";
 import * as _ from "lodash";
-import {progressiveStatuses, Status} from "../../util/Constants/Status";
+import {progressiveStatuses, Status} from "../../Util/Constants/Status";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import IOrder from '../../Interfaces/IOrder';
 
