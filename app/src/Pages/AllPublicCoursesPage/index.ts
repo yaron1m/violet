@@ -3,29 +3,26 @@ import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../Store/Labels/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
-import {getPublicCoursesSummary} from "../../Store/PublicCourses/Selectors";
+import {getPublicCoursesSummary, IPublicCourseSummary} from "../../Store/PublicCourses/Selectors";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         title: getLabels(state).pages.allPublicCoursesPage.title,
         tableHeaders: getLabels(state).pages.allPublicCoursesPage.tableHeaders,
         elements: getPublicCoursesSummary(state),
-        rowIndexKey: "id",
         limit: 30,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        onEditButton: (id) => {
-            dispatch(selectPublicCourse(id));
+        onEditButton: (courseSummary: IPublicCourseSummary) => {
+            dispatch(selectPublicCourse(courseSummary.id.toString()));
             redirect('/publicCourse');
         },
     };
 }
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(CustomPaperTable);
-
-export default Container;
-
+export default connect(mapStateToProps, mapDispatchToProps)(CustomPaperTable);
 

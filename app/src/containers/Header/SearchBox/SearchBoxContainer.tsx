@@ -1,14 +1,13 @@
 import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
-import {getLabels} from "../../../store/Labels/Selectors";
-import {getOrganizations} from "../../../store/Organizations/Selectors";
-import {selectOrganization} from "../../../store/SelectedOrganization/Actions";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {getOrganizations} from "../../../Store/Organizations/Selectors";
+import {selectOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {getOrders, getPublicCourseParticipantsSummary} from "../../../Store/Orders/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
 import Colors from "../../../Util/Constants/Colors";
 import * as _ from "lodash";
-import {selectOrder} from "../../../store/SelectedOrder/Actions";
 import EventIcon from '@material-ui/icons/EventNote';
 import BusinessIcon from '@material-ui/icons/Business';
 import PersonIcon from '@material-ui/icons/Person';
@@ -18,6 +17,7 @@ import {ISuggestion} from '../../../Components/AutoSuggest';
 import {EntityType} from "../../../Util/Constants/EntityType";
 import IOrganization from '../../../Interfaces/IOrganization';
 import IOrder from '../../../Interfaces/IOrder';
+import {selectOrder} from '../../../Store/SelectedOrder/Actions';
 
 export interface SearchSuggestion extends ISuggestion {
     entityType?: EntityType;

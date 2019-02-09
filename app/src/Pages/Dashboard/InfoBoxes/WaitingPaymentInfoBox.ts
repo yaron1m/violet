@@ -1,16 +1,18 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../Util/HistoryUtil";
-import {getOrders} from "../../../../Store/Orders/Selectors.ts";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {redirect} from "../../../Util/HistoryUtil";
+import {getOrders} from "../../../Store/Orders/Selectors";
 import * as _ from 'lodash';
-import {isFetching} from "../../../../Store/Firebase/Selectors";
-import {Status} from "../../../../Util/Constants/Status";
+import {isFetching} from "../../../Store/Firebase/Selectors";
+import {Status} from "../../../Util/Constants/Status";
 import PaymentIcon from '@material-ui/icons/AttachMoney';
 import InfoBox from "./InfoBox";
-import Colors from "../../../../Util/Constants/Colors";
-import {moneyFormat} from "../../../../Util/StringUtil";
+import Colors from "../../../Util/Constants/Colors";
+import {moneyFormat} from "../../../Util/StringUtil";
+import {IState} from '../../../Interfaces/ReduxInterfaces';
+import {Path} from '../../Path';
 
-function calculateWaitingPaymentSum(state) {
+function calculateWaitingPaymentSum(state: IState) {
     if (isFetching(state))
         return;
 
@@ -20,10 +22,10 @@ function calculateWaitingPaymentSum(state) {
         sum += _.parseInt(order.totalSum);
     });
 
-    return moneyFormat(sum, getLabels(state).currencyIcon);
+    return moneyFormat(sum.toString(), getLabels(state).currencyIcon);
 }
 
-function areThereLatePaymentOrders(state) {
+function areThereLatePaymentOrders(state: IState) {
     if (isFetching(state))
         return;
 
@@ -32,8 +34,7 @@ function areThereLatePaymentOrders(state) {
     return _.some(waitingPaymentOrders, order => new Date(order.expectedPayDate) < now);
 }
 
-
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         Icon: PaymentIcon,
         color: Colors.infoBoxes.green,
@@ -45,7 +46,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps() {
     return {
-        onClick: () => redirect('/payment'),
+        onClick: () => redirect(Path.waitingPayment),
     };
 }
 

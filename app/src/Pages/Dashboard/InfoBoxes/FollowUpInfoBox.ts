@@ -1,31 +1,26 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
-import {getFollowUpOrdersSummary} from "../../../Store/Orders/Selectors.ts";
+import {getFollowUpOrdersSummary} from "../../Store/Orders/Selectors";
 import {isFetching} from "../../../Store/Firebase/Selectors";
 import InfoBox from "./InfoBox";
 import Colors from "../../../Util/Constants/Colors";
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import {Path} from '../../Path';
+import {IState} from '../../../Interfaces/ReduxInterfaces';
 
-function calculateFollowUpSummary(state) {
-    if (isFetching(state))
-        return;
-
-    return getFollowUpOrdersSummary(state).length.toString();
-}
-
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
         Icon: NotificationsIcon,
         color: Colors.infoBoxes.pink,
         title: getLabels(state).pages.dashboard.infoBoxes.followUp,
-        value: calculateFollowUpSummary(state),
+        value: isFetching(state) ? undefined : getFollowUpOrdersSummary(state).length.toString(),
     };
 }
 
 function mapDispatchToProps() {
     return {
-        onClick: () => redirect('/followup'),
+        onClick: () => redirect(Path.followUp),
     };
 }
 

@@ -20,7 +20,7 @@ function getOrdersMap(state: IState) {
     return toMutable(state.orders);
 }
 
-export function getOrders(state: IState, status?: Status): IOrder[] {
+export function getOrders(state: IState, status?: Status | Status[]): IOrder[] {
     const orders = getOrdersMap(state);
 
     if (status === undefined)

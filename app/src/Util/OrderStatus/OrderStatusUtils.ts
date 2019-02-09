@@ -11,7 +11,7 @@ function isNonEmptyArray(arr: any[]){
     return _.isArray(arr) ? arr.length !== 0 : true;
 }
 
-export function isMatchingStatus(order: IOrder, status: Status) {
+export function isMatchingStatus(order: IOrder, status: Status | Status[]) {
     if (_.isArray(status))
         return _.includes(status, order.status);
 

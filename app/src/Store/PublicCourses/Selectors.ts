@@ -36,11 +36,19 @@ export function getPublicCourseByOrder(state: IState, order: IOrder) {
     return getPublicCourses(state)[order.publicCourseId];
 }
 
+export interface IPublicCourseSummary {
+    id: number;
+    courseName: string;
+    courseLocation: string;
+    date: string;
+    courseIncome: string;
+}
+
 export function getPublicCoursesSummary(state: IState) {
     const courses = getPublicCourses(state);
 
     function map(course: IPublicCourse) {
-        const result = {
+        const result:IPublicCourseSummary = {
             id: course.id,
             courseName: course.courseName,
             courseLocation: course.courseLocation,
