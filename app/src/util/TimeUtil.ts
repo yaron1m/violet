@@ -1,8 +1,9 @@
 /* eslint-disable no-magic-numbers */
 
 import {ILectureTime} from '../Interfaces/IOrder';
+import {IPublicCourseLecture} from '../Interfaces/IPublicCourse';
 
-export function calculateDuration(lectureTime: ILectureTime) {
+export function calculateDuration(lectureTime: ILectureTime | IPublicCourseLecture) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
         return "";
 

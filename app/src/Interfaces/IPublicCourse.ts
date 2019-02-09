@@ -10,7 +10,19 @@ export default interface IPublicCourse {
     lectures: IPublicCourseLecture[];
 }
 
-interface IPublicCourseLecture {
+export type IPublicCourseLectureField =
+    "active" |
+    "date" |
+    "duration" |
+    "endTime" |
+    "id" |
+    "isPublicCourseOrder" |
+    "price" |
+    "startTime" |
+    "tie" |
+    "topic";
+
+export interface IPublicCourseLecture {
     active: boolean;
     date: string;
     duration: string;

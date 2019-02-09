@@ -20,7 +20,10 @@ export type IState = {
         isSelectedOrder: boolean;
         order: IOrder,
     }>;
-    selectedPublicCourses: SeamlessImmutable.Immutable<IPublicCourse>;
+    selectedPublicCourse: SeamlessImmutable.Immutable<{
+        isSelectedPublicCourse: boolean;
+        publicCourse: IPublicCourse;
+    }>;
     organizations: SeamlessImmutable.Immutable<{ [id: string]: IOrganization }>;
     orders: SeamlessImmutable.Immutable<{ [id: string]: IOrder }>;
     publicCourses: SeamlessImmutable.Immutable<{ [id: string]: IPublicCourse }>;

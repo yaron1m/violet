@@ -1,15 +1,16 @@
-import {getOrders} from "../Orders/Selectors.ts";
+import {getOrders} from "../Orders/Selectors";
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {getStatusLabel} from "../Labels/Selectors";
+import {getLabels, getStatusLabel} from "../Labels/Selectors";
 import {isEmptyValue, moneyFormat} from "../../util/StringUtil";
-import {getLabels} from "../Labels/Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
+import {toMutable} from '../../util/ObjectUpdater';
 
-export function getSelectedPublicCourse(state) {
-    return state.selectedPublicCourse.publicCourse;
+export function getSelectedPublicCourse(state: IState) {
+    return toMutable(state.selectedPublicCourse).publicCourse;
 }
 
-export function getSelectedPublicCourseLectures(state) {
+export function getSelectedPublicCourseLectures(state: IState) {
     const course = getSelectedPublicCourse(state);
     if (!course)
         return [];
@@ -17,15 +18,15 @@ export function getSelectedPublicCourseLectures(state) {
     return _.orderBy(_.filter(course.lectures, x => x.active), lecture => lecture.date);
 }
 
-export function getSelectedPublicCourseLecture(state, lectureId) {
+export function getSelectedPublicCourseLecture(state: IState, lectureId: number) {
     return state.selectedPublicCourse.publicCourse.lectures[lectureId];
 }
 
-export function isSelectedPublicCourse(state) {
+export function isSelectedPublicCourse(state: IState) {
     return state.selectedPublicCourse.isSelectedPublicCourse;
 }
 
-export function getSelectedCourseParticipantsAndOrders(state) {
+export function getSelectedCourseParticipantsAndOrders(state: IState) {
     const orders = getOrders(state);
     const courseId = getSelectedPublicCourse(state).id;
     const publicCourseOrders = _.filter(orders, order => order.publicCourseId === courseId);
@@ -34,15 +35,15 @@ export function getSelectedCourseParticipantsAndOrders(state) {
             return {
                 order,
                 participant
-            }
+            };
         })
-    )
+    );
 }
 
-export function getSelectedPublicCourseParticipants(state) {
+export function getSelectedPublicCourseParticipants(state: IState) {
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
     return _.map(ordersAndParticipants, ({order, participant}) => {
-        const organizationName = getOrganizationById(state, order.organizationId).organizationName;
+        const organizationName = getOrganizationById(state, order.organizationId.toString()).organizationName;
         return {
             participantFirstName: participant.participantFirstName,
             participantLastName: participant.participantLastName,
@@ -52,15 +53,15 @@ export function getSelectedPublicCourseParticipants(state) {
             orderId: order.id,
             status: getStatusLabel(state, order.status),
             organizationName,
-        }
+        };
     });
 }
 
-export function getLecturesDetails(state) {
+export function getLecturesDetails(state: IState) {
     const lectures = getSelectedPublicCourseLectures(state);
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
 
-    const participantsCount = {};
+    const participantsCount: { [lectureId: number]: number } = {};
     _.map(lectures, lecture => participantsCount[lecture.id] = 0);
 
     _.map(ordersAndParticipants, ({participant}) => {
@@ -73,7 +74,7 @@ export function getLecturesDetails(state) {
             topic: lecture.topic,
             participantsCount: participantsCount[lecture.id],
             price: lecture.price,
-            income: isEmptyValue(lecture, "price") ? 0 : lecture.price * participantsCount[lecture.id],
-        }
+            income: isEmptyValue(lecture, "price") ? 0 : parseInt(lecture.price) * participantsCount[lecture.id],
+        };
     });
 }

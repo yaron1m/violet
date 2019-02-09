@@ -1,5 +1,4 @@
 import {sendDataToDatabase} from "../Firebase/Actions";
-import * as Immutable from "seamless-immutable";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {calculateDuration} from "../../util/TimeUtil";
 import * as _ from "lodash";
@@ -10,10 +9,11 @@ import {
     SET_IS_SELECTED_PUBLIC_COURSE,
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "./ActionTypes";
-import {changeImmutable} from "../../util/ObjectUpdater";
+import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
+import {IPublicCourseLecture, IPublicCourseLectureField} from '../../Interfaces/IPublicCourse';
 
-export function selectPublicCourse(courseId) {
-    return function selectPublicCourse(dispatch, getState) {
+export function selectPublicCourse(courseId:string) {
+    return function selectPublicCourse(dispatch: IDispatch, getState:IGetState) {
         const publicCourse = getPublicCourseById(getState(), courseId);
         dispatch(setIsSelectedPublicCourse());
         dispatch({
@@ -23,10 +23,10 @@ export function selectPublicCourse(courseId) {
     };
 }
 
-export function updateSelectedPublicCourse(key, value) {
-    return function updateSelectedPublicCourse(dispatch, getState) {
+export function updateSelectedPublicCourse(key:string, value:string | IPublicCourseLecture[]) {
+    return function updateSelectedPublicCourse(dispatch: IDispatch, getState:IGetState) {
         const currentPublicCourse = getSelectedPublicCourse(getState());
-        const selectedPublicCourse = changeImmutable(currentPublicCourse, key, value);
+        const selectedPublicCourse = Object.assign(currentPublicCourse, {[key]: value});
         dispatch({
             type: UPDATE_SELECTED_PUBLIC_COURSE,
             payload: selectedPublicCourse,
@@ -34,34 +34,33 @@ export function updateSelectedPublicCourse(key, value) {
     }
 }
 
-export function updatePublicCourseLecture(key, value, lectureId) {
-    return function updatePublicCourseLecture(dispatch, getState) {
-        const lectures = Immutable.asMutable(getSelectedPublicCourse(getState()).lectures, {deep: true});
+export function updatePublicCourseLecture(key:IPublicCourseLectureField, value:string | boolean|number, lectureId:number) {
+    return function updatePublicCourseLecture(dispatch: IDispatch, getState:IGetState) {
+        const lectures = getSelectedPublicCourse(getState()).lectures;
         lectures[lectureId][key] = value;
         lectures[lectureId].duration = calculateDuration(lectures[lectureId]);
         dispatch(updateSelectedPublicCourse("lectures", lectures));
     }
 }
 
-export function addLectureToSelectedPublicCourse(initialData) {
-    return function addLectureToSelectedPublicCourse(dispatch, getState) {
-        const selectedPublicCourse = Immutable.asMutable(getSelectedPublicCourse(getState()), {deep: true});
+export function addLectureToSelectedPublicCourse() {
+    return function addLectureToSelectedPublicCourse(dispatch: IDispatch, getState:IGetState) {
+        const selectedPublicCourse = getSelectedPublicCourse(getState());
 
-        let lectures;
+        let lectures:IPublicCourseLecture[] ;
         if (!_.hasIn(selectedPublicCourse, 'lectures')) {
             lectures = [{
                 id: 0,
                 active: true,
-            }];
+            } as IPublicCourseLecture];
         }
         else {
             lectures = selectedPublicCourse.lectures;
             const nextId = _.keys(lectures).length;
-            lectures[nextId] = {
+            lectures.push({
                 id: nextId,
                 active: true,
-                ...initialData
-            };
+            } as IPublicCourseLecture);
         }
 
         dispatch(updateSelectedPublicCourse("lectures", lectures));
@@ -75,7 +74,7 @@ export function setIsSelectedPublicCourse() {
 }
 
 export function sendSelectedPublicCourseToDatabase() {
-    return async function sendSelectedPublicCourseToDatabase(dispatch, getState) {
+    return async function sendSelectedPublicCourseToDatabase(dispatch: IDispatch, getState:IGetState) {
         await dispatch(updateSelectedPublicCourse("changedDate", new Date().toJSON()));
         const selectedPublicCourse = getSelectedPublicCourse(getState());
 

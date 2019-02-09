@@ -24,7 +24,7 @@ export function selectOrder(orderId: number) {
         dispatch(selectOrganization(order.organizationId));
 
         if (!isEmptyValue(order, "publicCourseId")) {
-            dispatch(selectPublicCourse(order.publicCourseId));
+            dispatch(selectPublicCourse(order.publicCourseId.toString()));
         }
 
         dispatch({
