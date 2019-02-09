@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {getLabels, getStatusLabels} from "../../Store/Labels/Selectors";
-import {Sizes} from "../../Util/Constants/Sizes";
+import {Size} from "../../util/Constants/Size";
 import CustomSelectField from "../../Components/CustomComponents/CustomSelectField";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {Status} from '../../Util/Constants/Status';
@@ -25,7 +25,7 @@ function mapStateToProps(state: IState, ownProps: FilterStatusSelectFieldProps) 
         values: {filterByStatus: ownProps.filterStatus as string},
         updateAction: (key: string, value: string) => ownProps.updateStatus(value as Status),
         options: getStatuses(state),
-        size: Sizes.XL,
+        size: Size.XL,
     };
 }
 

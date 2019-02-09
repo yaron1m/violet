@@ -4,29 +4,41 @@ import {updatePublicCourseLecture} from "../../../../Store/SelectedPublicCourse/
 import {getLabels} from "../../../../Store/Labels/Selectors";
 import CustomText from "../../../../Components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
-import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
-import CustomSelectField from "../../../../Components/CustomComponents/CustomSelectField";
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import {Size} from '../../../../util/Constants/Size';
+import {ISuggestion} from '../../../../components/AutoSuggest';
 
-function mapStateToProps(state, ownProps) {
+interface PublicCourseLectureConnectedFieldsProps {
+    name: string,
+    lectureId: number;
+    size?: Size;
+    suggestions?: ISuggestion[];
+}
+
+function mapStateToProps(state: IState, ownProps: PublicCourseLectureConnectedFieldsProps) {
     return {
         titles: getLabels(state).pages.publicCoursePage.fieldTitles,
         values: getSelectedPublicCourseLecture(state, ownProps.lectureId),
-        //requiredFields: getRequiredFieldsObject(state).order,
+        requiredFields: [],
+        name: ownProps.name,
+        size: ownProps.size,
+        suggestions: ownProps.suggestions,
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps: PublicCourseLectureConnectedFieldsProps) {
     return {
-        updateAction: (key, value) => dispatch(updatePublicCourseLecture(key, value, ownProps.lectureId)),
+        updateAction: (name: string, newValue: any) =>
+            dispatch(updatePublicCourseLecture(name, newValue, ownProps.lectureId)),
     };
 }
 
 export const PublicCourseLectureConnectedText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
 export const PublicCourseLectureConnectedDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
-export const PublicCourseLectureConnectedToggle = connect(mapStateToProps, mapDispatchToProps)(CustomToggle);
+// export const PublicCourseLectureConnectedToggle = connect(mapStateToProps, mapDispatchToProps)(CustomToggle);
 export const PublicCourseLectureConnectedCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
-export const PublicCourseLectureConnectedSelectField = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);
+// export const PublicCourseLectureConnectedSelectField = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);
 export const PublicCourseLectureConnectedAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
 

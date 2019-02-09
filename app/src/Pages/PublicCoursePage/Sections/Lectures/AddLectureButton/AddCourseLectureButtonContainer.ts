@@ -2,8 +2,9 @@ import {connect} from 'react-redux';
 import {getLabels} from "../../../../../Store/Labels/Selectors";
 import {addLectureToSelectedPublicCourse} from "../../../../../Store/SelectedPublicCourse/Actions";
 import {CustomRaisedButton} from "../../../../../Components/CustomComponents/CustomButtons";
+import {IDispatch, IState} from '../../../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         label: getLabels(state).pages.publicCoursePage.actionButtons.addLecture,
         style: {
@@ -12,10 +13,10 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onClick: () => dispatch(addLectureToSelectedPublicCourse())
-    }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);

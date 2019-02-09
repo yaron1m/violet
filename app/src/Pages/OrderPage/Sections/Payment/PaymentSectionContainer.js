@@ -5,7 +5,7 @@ import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import calculateSum from './CalculateSum';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     const labels = getOrderSectionsLabels(state).payment;
 
     return {
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         updateAction: (key, value) => dispatch(updateSelectedOrder(key, value)),
     };

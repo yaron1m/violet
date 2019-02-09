@@ -1,6 +1,6 @@
 import React from 'react';
 import AbstractCustomField from "./AbstractCustomField";
-import {Sizes} from "../../Util/Constants/Sizes";
+import {Size} from "../../util/Constants/Size";
 
 function setup(otherProps) {
     const labels = {
@@ -17,7 +17,7 @@ function setup(otherProps) {
         },
         requiredFields: ["someField"],
         updateAction: jest.fn(),
-        size: Sizes.XL,
+        size: Size.XL,
         ...otherProps,
     };
 
@@ -44,7 +44,7 @@ describe('Abstract Field Class', () => {
 
     it('GetWidth - correct', () => {
         expect(setup().width).toEqual(200);
-        expect(setup({size: Sizes.S}).width).toEqual(50);
+        expect(setup({size: Size.S}).width).toEqual(50);
     });
 
     it('GetWidth - invalid size - return default', () => {

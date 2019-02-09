@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../Store/Labels/Selectors";
 import CustomTextField from "../../Components/CustomComponents/CustomTextField";
-import {Sizes} from "../../Util/Constants/Sizes";
+import {Size} from "../../util/Constants/Size";
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state:IState, ownProps: LoginFieldProps) {
@@ -11,7 +11,7 @@ function mapStateToProps(state:IState, ownProps: LoginFieldProps) {
         requiredFields: [],
         name: ownProps.type,
         type: ownProps.type,
-        size: Sizes.XL,
+        size: Size.XL,
     };
 }
 

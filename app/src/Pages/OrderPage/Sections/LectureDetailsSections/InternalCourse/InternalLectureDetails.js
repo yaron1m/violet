@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
-import {Sizes} from "../../../../../Util/Constants/Sizes";
+import {Size} from "../../../../../util/Constants/Size";
 import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
@@ -29,9 +29,9 @@ export default class InternalLectureDetails extends React.Component {
 
                 <div>
                     <InternalOrderCustomText name="street"/>
-                    <InternalOrderCustomText name="streetNumber" size={Sizes.S}/>
+                    <InternalOrderCustomText name="streetNumber" size={Size.S}/>
                     <InternalOrderCustomText name="city"/>
-                    <InternalOrderCustomText name="location" size={Sizes.XL}/>
+                    <InternalOrderCustomText name="location" size={Size.XL}/>
                     <InternalOrderCustomText name="audienceType"/>
                     <InternalOrderCustomText name="daySchedule"/>
                 </div>

@@ -40,6 +40,17 @@ export function getSelectedCourseParticipantsAndOrders(state: IState) {
     );
 }
 
+export interface ISelectedPublicCourseParticipantsSummary {
+    participantFirstName: string;
+    participantLastName: string;
+    numberOfLecturesAttending: number;
+    participantCost: string;
+    proformaInvoiceNumber: string;
+    orderId: number;
+    status: string;
+    organizationName: string;
+}
+
 export function getSelectedPublicCourseParticipants(state: IState) {
     const ordersAndParticipants = getSelectedCourseParticipantsAndOrders(state);
     return _.map(ordersAndParticipants, ({order, participant}) => {
@@ -53,7 +64,7 @@ export function getSelectedPublicCourseParticipants(state: IState) {
             orderId: order.id,
             status: getStatusLabel(state, order.status),
             organizationName,
-        };
+        } as ISelectedPublicCourseParticipantsSummary;
     });
 }
 

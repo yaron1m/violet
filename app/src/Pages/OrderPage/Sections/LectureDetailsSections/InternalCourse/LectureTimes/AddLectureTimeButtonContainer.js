@@ -3,7 +3,7 @@ import {addNewLectureTime} from "../../../../../../Store/SelectedOrder/Actions";
 import {getOrderSectionsLabels} from "../../../../../../Store/Labels/Selectors";
 import {CustomRaisedButton} from "../../../../../../Components/CustomComponents/CustomButtons";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         label: getOrderSectionsLabels(state).lectureTimes.addRow,
         style: {
@@ -12,7 +12,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         onClick: () => dispatch(addNewLectureTime())
     }

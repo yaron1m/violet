@@ -5,7 +5,6 @@ import CourseParticipantsTableContainer from "./CourseDetails/CourseParticipants
 import CourseLecturesDetailsTableContainer from "./CourseDetails/CourseLecturesDetailsTableContainer";
 
 export default class PublicCourseSections extends React.Component {
-
     render() {
         return (
             <div>

@@ -22,7 +22,7 @@ function getLectureTimeIndexes(lectureTimes) {
     return _.map(sortedLectureTimes, lectureTime => lectureTime.index);
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         lectureTimesIndexes: getLectureTimeIndexes(getSelectedOrder(state).lectureTimes),
         offeredLectures: toSuggestions(getOfferedLectures(state)),

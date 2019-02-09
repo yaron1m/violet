@@ -7,7 +7,7 @@ import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         titles: getOrderSectionsLabels(state).organization.titles,
         values: getSelectedOrganization(state),
@@ -15,7 +15,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         updateAction: (key, value) => dispatch(updateSelectedOrganization(key, value)),
     };

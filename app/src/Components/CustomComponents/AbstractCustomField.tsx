@@ -1,17 +1,17 @@
 import React from 'react';
 import * as _ from "lodash";
 import {updateObject} from "../../Util/ObjectUpdater";
-import {Sizes} from '../../Util/Constants/Sizes';
+import {Size} from '../../util/Constants/Size';
 
-export default class AbstractCustomField<ValueType, AdditionalProps>
-    extends React.Component<AbstractCustomFieldProps<ValueType> & AdditionalProps, AbstractCustomFieldState<ValueType>> {
+export default class AbstractCustomField<AdditionalProps>
+    extends React.Component<AbstractCustomFieldProps & AdditionalProps, AbstractCustomFieldState> {
     name: string;
     title: string;
     updateAction: (name: string, newValue: any) => void;
     width: "100%" | number;
     basicStyle: React.CSSProperties;
 
-    constructor(props: AbstractCustomFieldProps<ValueType> & AdditionalProps) {
+    constructor(props: AbstractCustomFieldProps & AdditionalProps) {
         super(props);
         this.validateProps(props);
 
@@ -32,7 +32,7 @@ export default class AbstractCustomField<ValueType, AdditionalProps>
         };
     }
 
-    validateProps(props: AbstractCustomFieldProps<ValueType>) {
+    validateProps(props: AbstractCustomFieldProps) {
         if (!_.has(props.titles, props.name))
             throw Error(`Field "${props.name}" doesn't have a matching title in titles`);
 
@@ -40,7 +40,7 @@ export default class AbstractCustomField<ValueType, AdditionalProps>
             throw Error(`Field "${props.name}" - updateAction must be a function`);
     }
 
-    static getDerivedStateFromProps<ValueType>(nextProps: AbstractCustomFieldProps<ValueType>, prevState: AbstractCustomFieldState<ValueType>) {
+    static getDerivedStateFromProps(nextProps: AbstractCustomFieldProps, prevState: AbstractCustomFieldState) {
         let shouldUpdate = false;
 
         const name = nextProps.name;
@@ -64,7 +64,7 @@ export default class AbstractCustomField<ValueType, AdditionalProps>
         return null;
     }
 
-    handleChange(newValue: ValueType) {
+    handleChange(newValue: any) {
         this.updateAction(this.name, newValue);
     }
 
@@ -73,42 +73,42 @@ export default class AbstractCustomField<ValueType, AdditionalProps>
     }
 }
 
-export interface AbstractCustomFieldProps<ValueType> {
+export interface AbstractCustomFieldProps {
     name: string;
     titles: { [key: string]: string; };
-    values: { [key: string]: ValueType; };
-    updateAction: (name: string, newValue: ValueType) => void;
+    values: { [key: string]: any; };
+    updateAction: (name: string, newValue: any) => void;
     requiredFields?: string[];
     fullWidth?: boolean;
-    size?: Sizes;
+    size?: Size;
     classes?: { [keu: string]: string };
 }
 
-interface AbstractCustomFieldState<ValueType> {
-    value: ValueType | "";
+interface AbstractCustomFieldState {
+    value: any;
     isRequired: boolean;
 }
 
 /* eslint-disable no-magic-numbers */
-function getWidth(fullWidth?: boolean, size?: Sizes) {
+function getWidth(fullWidth?: boolean, size?: Size) {
     if (fullWidth)
         return "100%";
 
     switch (size) {
-        case Sizes.S:
+        case Size.S:
             return 50;
 
-        case Sizes.M:
+        case Size.M:
             return 100;
 
-        case Sizes.L:
+        case Size.L:
         default:
             return 150;
 
-        case Sizes.XL:
+        case Size.XL:
             return 200;
 
-        case Sizes.XXL:
+        case Size.XXL:
             return 250;
     }
 }

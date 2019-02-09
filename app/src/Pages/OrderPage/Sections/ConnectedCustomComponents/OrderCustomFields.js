@@ -9,7 +9,7 @@ import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckb
 import CustomSelectField from "../../../../Components/CustomComponents/CustomSelectField";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         titles: getOrderSectionsLabels(state).titles,
         values: getSelectedOrder(state),
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         updateAction: (key, value) => dispatch(updateSelectedOrder(key, value)),
     };

@@ -7,7 +7,7 @@ import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import IPublicCourse, {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
-import {Sizes} from '../../../../util/Constants/Sizes';
+import {Size} from '../../../../util/Constants/Size';
 
 function mapStateToProps(state: IState) {
     return {
@@ -28,16 +28,16 @@ function mergeProps(stateProps: {
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
 }, ownProps: {
-    size?: Sizes, options: IOption[]
+    name: string, size?: Size, options?: IOption[]
 }) {
     return {
         titles: stateProps.titles,
         values: stateProps.values,
         requiredFields: [],
         updateAction: dispatchProps.updateAction,
+        name: ownProps.name,
         size: ownProps.size,
     };
-
 }
 
 export const PublicCourseConnectedText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);

@@ -5,14 +5,14 @@ import {getSelectedOrganization} from "../../../../Store/SelectedOrganization/Se
 import ProformaInvoiceDate from './ProformaInvoiceDate'
 import calculatePayDate from "./ProformaInvoiceDateCalculator";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         allPaymentConditions: getOrderSectionsLabels(state).organization.paymentConditions,
         selectedPaymentConditions: getSelectedOrganization(state).paymentConditions,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
         calculatePayDate: function (proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions) {

@@ -1,20 +1,13 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
-import PropTypes from "prop-types";
-import {
-    PublicCourseConnectedText,
-    PublicCourseConnectedToggle
-} from "../ConnectedCustomComponents/PublicCourseCustomFields";
-import {Sizes} from "../../../../Util/Constants/Sizes";
+import {PublicCourseConnectedText, PublicCourseConnectedToggle} from "../ConnectedCustomComponents/PublicCourseCustomFields";
+import {Size} from '../../../../util/Constants/Size';
 
-export default class CourseDetailsSection extends React.Component {
-
-    render() {
-
+export default function CourseDetailsSection (props:{sectionName:string}) {
         return (
-            <CustomPaper title={this.props.sectionName}>
+            <CustomPaper title={props.sectionName}>
                 <div style={flexStyle}>
-                    <PublicCourseConnectedText name="courseName" size={Sizes.XL}/>
+                    <PublicCourseConnectedText name="courseName" size={Size.XL}/>
                     <PublicCourseConnectedText name="courseCity"/>
                     <PublicCourseConnectedText name="courseLocation"/>
                     <PublicCourseConnectedText name="mealCost"/>
@@ -28,9 +21,4 @@ export default class CourseDetailsSection extends React.Component {
                 </div>
             </CustomPaper>
         );
-    }
 }
-
-CourseDetailsSection.propTypes = {
-    sectionName: PropTypes.string.isRequired,
-};

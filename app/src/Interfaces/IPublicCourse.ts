@@ -33,4 +33,5 @@ export interface IPublicCourseLecture {
     startTime: string;
     tie: string;
     topic: string;
+    guestLecturer: boolean;
 }

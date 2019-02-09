@@ -21,7 +21,7 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         selectOrganization: (organizationId) => dispatch(selectOrganization(organizationId)),
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),

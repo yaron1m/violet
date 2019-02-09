@@ -15,7 +15,7 @@ const styles = () => ({
     },
 });
 
-class CustomSelectField extends AbstractCustomField<string, CustomSelectFieldProps> {
+class CustomSelectField extends AbstractCustomField<CustomSelectFieldProps> {
     render() {
         const formStyle = {
             minWidth: this.width,

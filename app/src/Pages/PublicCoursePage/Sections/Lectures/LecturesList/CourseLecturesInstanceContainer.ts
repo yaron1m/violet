@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import CourseLecturesInstance from "./CourseLecturesInstance";
-import PropTypes from "prop-types";
 import {getOfferedLectures} from "../../../../../Store/Lists/Selectors";
 import {toSuggestions} from "../../../../../Components/AutoSuggest";
+import {IState} from '../../../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state:IState, ownProps: {lectureId: number, index: number}) {
     return {
         index: ownProps.index,
         lectureId: ownProps.lectureId,
@@ -12,10 +12,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-const Container = connect(mapStateToProps)(CourseLecturesInstance);
-
-Container.propTypes = {
-    lectureId: PropTypes.string.isRequired,
-};
-
-export default Container;
+export default connect(mapStateToProps)(CourseLecturesInstance);

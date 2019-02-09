@@ -14,7 +14,7 @@ export function addNewParticipant(selectedOrder, updateSelectedOrder) {
     updateSelectedOrder("publicCourseParticipants", publicCourseParticipants);
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         label: getOrderSectionsLabels(state).publicCourse.addParticipant,
         selectedOrder: getSelectedOrder(state),
@@ -22,7 +22,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
     };

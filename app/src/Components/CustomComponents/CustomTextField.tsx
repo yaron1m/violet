@@ -11,7 +11,7 @@ const styles = () => ({
     },
 });
 
-class CustomText extends AbstractCustomField<string, CustomTextFieldProps> {
+class CustomText extends AbstractCustomField<CustomTextFieldProps> {
 
     render() {
         const style = {

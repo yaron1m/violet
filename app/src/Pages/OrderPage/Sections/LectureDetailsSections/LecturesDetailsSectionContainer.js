@@ -14,7 +14,7 @@ function getSelectedTabKey(order){
     return order.lectureDetailsTabKey;
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         selectedTabKey: getSelectedTabKey(getSelectedOrder(state)),
         internalLabel: getLabels(state).orderTypes.internalCourse,
@@ -24,7 +24,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch :IDispatch){
     return {
         onTabClick: (event, value) => dispatch(updateSelectedOrder("lectureDetailsTabKey", value))
     };

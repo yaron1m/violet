@@ -7,7 +7,7 @@ import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {Status} from "../../Util/Constants/Status";
 import {Path} from "../Path";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         title: getLabels(state).pages.paymentPage.table.title,
         tableHeaders: getLabels(state).pages.paymentPage.table.tableHeaders,
@@ -15,7 +15,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         onEditButton: (orderId) => {
             dispatch(selectOrder(orderId));

@@ -5,7 +5,7 @@ import {Status} from "../../../../../Util/Constants/Status";
 import {isMatchingStatus} from "../../../../../Util/OrderStatus/OrderStatusUtils";
 import InternalLectureDetails from "./InternalLectureDetails";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         sectionName: getOrderSectionsLabels(state).lectureDetails.internalLabelSectionName,
         showCancelledCheckBox: isMatchingStatus(getSelectedOrder(state), [Status.approvedOrder, Status.isExecuting, Status.cancelled]),

@@ -3,20 +3,22 @@ import {getLabels} from "../../../../../Store/Labels/Selectors";
 import CourseLecturesSection from "./CourseLecturesSection";
 import {getSelectedPublicCourse} from "../../../../../Store/SelectedPublicCourse/Selectors";
 import _ from 'lodash';
+import {IState} from '../../../../../Interfaces/ReduxInterfaces';
+import IPublicCourse from '../../../../../Interfaces/IPublicCourse';
 
-function getLecturesIdsOrderedByDate(selectedPublicCourse) {
+function getLecturesIdsOrderedByDate(selectedPublicCourse: IPublicCourse) {
     const lectures = _.filter(selectedPublicCourse.lectures, x => x.active);
-    const datesAndIds = _.map(_.keys(lectures), key => {
+    const datesAndIds = _.map(lectures, lecture => {
         return {
-            key,
-            date: lectures[key].date
+            id: lecture.id,
+            date: lectures[lecture.id].date
         };
     });
     const orderedDatesAndIds = _.sortBy(datesAndIds, x => x.date);
-    return _.map(orderedDatesAndIds, x => x.key);
+    return _.map(orderedDatesAndIds, x => x.id);
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         sectionName: getLabels(state).pages.publicCoursePage.sections.courseLecturesSectionName,
         lecturesIds: getLecturesIdsOrderedByDate(getSelectedPublicCourse(state)),

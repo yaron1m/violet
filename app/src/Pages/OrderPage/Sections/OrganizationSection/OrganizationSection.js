@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from 'prop-types';
-import {Sizes} from "../../../../Util/Constants/Sizes";
+import {Size} from "../../../../util/Constants/Size";
 import {
     OrganizationCustomAutoComplete,
     OrganizationCustomText, OrganizationCustomToggle
@@ -21,16 +21,16 @@ export default class OrganizationSection extends React.Component {
                             this.props.selectOrganization(chosenRequest.value);
                             this.props.updateSelectedOrder("organizationId", chosenRequest.value);
                         }}
-                        size={Sizes.XXL}
+                        size={Size.XXL}
                     />
                     <OrganizationCustomText name="organizationAddress"/>
-                    <OrganizationCustomText name="organizationCity" size={Sizes.M}/>
-                    <OrganizationCustomText name="organizationPostalCode" size={Sizes.M}/>
-                    <OrganizationCustomText name="companyId" size={Sizes.M}/>
+                    <OrganizationCustomText name="organizationCity" size={Size.M}/>
+                    <OrganizationCustomText name="organizationPostalCode" size={Size.M}/>
+                    <OrganizationCustomText name="companyId" size={Size.M}/>
                     <OrganizationCustomAutoComplete name="paymentConditions"
                                                     suggestions={this.props.paymentConditions}/>
 
-                    <OrganizationCustomText name="howReachedUs" size={Sizes.XL}/>
+                    <OrganizationCustomText name="howReachedUs" size={Size.XL}/>
 
                     {this.props.fullDetails ?
                         <OrganizationCustomToggle name="internalOrderIdRequired"/>

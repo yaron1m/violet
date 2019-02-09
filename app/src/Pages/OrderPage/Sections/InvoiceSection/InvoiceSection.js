@@ -1,5 +1,5 @@
 import React from 'react';
-import {Sizes} from "../../../../Util/Constants/Sizes";
+import {Size} from "../../../../util/Constants/Size";
 import CustomPaper from "../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {OrderCustomText, OrderCustomDatePicker} from "../ConnectedCustomComponents/OrderCustomFields";
@@ -32,7 +32,7 @@ export default class InvoiceSection extends React.Component {
 
                 <div style={style.flex}>
                     <OrderCustomText name="taxInvoiceNumber"/>
-                    <OrderCustomDatePicker name="taxInvoiceDate" size={Sizes.L}/>
+                    <OrderCustomDatePicker name="taxInvoiceDate" size={Size.L}/>
                     <OrderCustomText name="receiptNumber"/>
                 </div>
 

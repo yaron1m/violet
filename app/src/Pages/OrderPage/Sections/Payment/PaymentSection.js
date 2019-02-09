@@ -2,7 +2,7 @@ import React from 'react';
 import CustomPaper from "../../../../Components/CustomComponents/CustomPaper";
 import ContactRowContainer from '../ContactSection/ContactRowContainer'
 import CalculateIcon from '@material-ui/icons/LocalAtm';
-import {Sizes} from "../../../../Util/Constants/Sizes";
+import {Size} from "../../../../util/Constants/Size";
 import PropTypes from "prop-types";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import CustomDivider from "../../../../Components/CustomComponents/CustomDivider";
@@ -31,11 +31,11 @@ export default class PaymentSection extends React.Component {
                     </CustomIconButton>
 
                     <OrderCustomText name="cost"/>
-                    <OrderCustomText name="oneWayDistance" size={Sizes.M}/>
-                    <OrderCustomText name="travelExpenses" size={Sizes.M}/>
-                    <OrderCustomText name="extraCosts" size={Sizes.M}/>
+                    <OrderCustomText name="oneWayDistance" size={Size.M}/>
+                    <OrderCustomText name="travelExpenses" size={Size.M}/>
+                    <OrderCustomText name="extraCosts" size={Size.M}/>
                     <OrderCustomText name="sum"/>
-                    <OrderCustomText name="vat" size={Sizes.M}/>
+                    <OrderCustomText name="vat" size={Size.M}/>
                     <OrderCustomText name="totalSum"/>
                 </div>
             </CustomPaper>

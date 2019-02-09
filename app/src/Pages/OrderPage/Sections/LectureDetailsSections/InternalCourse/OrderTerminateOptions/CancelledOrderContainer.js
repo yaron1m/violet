@@ -6,7 +6,7 @@ import {Status} from "../../../../../../Util/Constants/Status";
 import OrderTerminateOption from "./OrderTerminateOption";
 import {createOptions} from "../../../../../../Components/CustomComponents/CustomSelectField";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         show: getSelectedOrder(state).cancelled === true,
         selectFieldName: "cancellationReason",
@@ -15,7 +15,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch :IDispatch){
     return {
         updateAction: (key, value) => {
             dispatch(updateSelectedOrder(key, value));

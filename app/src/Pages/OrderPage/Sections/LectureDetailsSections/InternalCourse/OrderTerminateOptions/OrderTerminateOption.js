@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Sizes} from "../../../../../../Util/Constants/Sizes";
+import {Size} from "../../../../../../util/Constants/Size";
 import {OrderCustomSelectField, OrderCustomText} from "../../../ConnectedCustomComponents/OrderCustomFields";
 
 export default class OrderTerminateOption extends React.Component {
@@ -14,7 +14,7 @@ export default class OrderTerminateOption extends React.Component {
                 <OrderCustomSelectField
                     name={this.props.selectFieldName}
                     options={this.props.options}
-                    size={Sizes.XL}
+                    size={Size.XL}
                     updateAction={this.props.updateAction}
                 />
                 <OrderCustomText name={this.props.detailsFieldName} fullWidth={true}/>

@@ -4,7 +4,7 @@ import {
     PublicCourseParticipantsCustomCheckBox,
     PublicCourseParticipantsCustomText
 } from "../../ConnectedCustomComponents/PublicCourseParticipantsCustomFields";
-import {Sizes} from "../../../../../Util/Constants/Sizes";
+import {Size} from "../../../../../util/Constants/Size";
 import _ from 'lodash';
 import PropTypes from "prop-types";
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -30,7 +30,7 @@ export default class PublicCourseParticipant extends React.Component {
                     <PublicCourseParticipantsCustomText participantIndex={participantId} name="phone"/>
                     <PublicCourseParticipantsCustomText participantIndex={participantId} name="job"/>
                     <PublicCourseParticipantsCustomText participantIndex={participantId} name="email"
-                                                        size={Sizes.XL}/>
+                                                        size={Size.XL}/>
                     <PublicCourseParticipantsCustomCheckBox participantIndex={participantId}
                                                             name="isqMember"/>
                     <PublicCourseParticipantsCustomText participantIndex={participantId} name="participantCost"/>

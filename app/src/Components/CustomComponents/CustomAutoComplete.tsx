@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AbstractCustomField from "./AbstractCustomField";
 import AutoSuggest, {ISuggestion} from "../AutoSuggest";
 
-export default class CustomAutoComplete extends AbstractCustomField<string, CustomAutoCompleteProps> {
+export default class CustomAutoComplete extends AbstractCustomField<CustomAutoCompleteProps> {
 
     render() {
         return (
@@ -12,7 +12,8 @@ export default class CustomAutoComplete extends AbstractCustomField<string, Cust
                 helperText={this.title}
                 value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
                 onInputChange={(newValue) => this.handleChange(newValue)}
-                onSuggestionSelected={this.props.onSuggestionSelected ? this.props.onSuggestionSelected : function(){}}
+                onSuggestionSelected={this.props.onSuggestionSelected ? this.props.onSuggestionSelected : function () {
+                }}
                 disabled={this.props.disabled}
                 fullWidth={this.props.fullWidth}
                 error={super.shouldShowError()}
@@ -24,8 +25,8 @@ export default class CustomAutoComplete extends AbstractCustomField<string, Cust
 }
 
 interface CustomAutoCompleteProps {
-    suggestions: ISuggestion[];
+    suggestions?: ISuggestion[];
     fullWidth?: boolean;
     disabled?: boolean;
-    onSuggestionSelected: (suggestion: ISuggestion) => void;
+    onSuggestionSelected?: (suggestion: ISuggestion) => void;
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import _ from 'lodash';
 import AbstractCustomField, {AbstractCustomFieldProps} from "../AbstractCustomField";
 
-export default class PrintField extends AbstractCustomField<any, {}> {
+export default class PrintField extends AbstractCustomField<{}> {
 
-    validateProps(props: AbstractCustomFieldProps<any>) {
+    validateProps(props: AbstractCustomFieldProps) {
         if (!_.has(props.titles, props.name))
             throw Error(`Field "${props.name}" doesn't have a matching title in data.titles`);
     }

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {Sizes} from "../../../../../Util/Constants/Sizes";
+import {Size} from "../../../../../util/Constants/Size";
 import {getActivePublicCourses, getPublicCourses} from "../../../../../Store/PublicCourses/Selectors";
 import _ from 'lodash';
 import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";
@@ -30,16 +30,16 @@ export function selectFieldUpdateAction(dispatch, newValue) {
     dispatch(removeParticipantsFromAllLectures());
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         name: "courseName",
         options: _.map(getActivePublicCourses(state), getOption),
-        size: Sizes.XL,
+        size: Size.XL,
         values: getValues(getSelectedOrder(state), getPublicCourses(state)),
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch :IDispatch) {
     return {
         updateAction: (key, value) => selectFieldUpdateAction(dispatch, value)
     }

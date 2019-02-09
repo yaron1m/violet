@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import InvoiceSection from "./InvoiceSection";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         sectionName: getOrderSectionsLabels(state).invoice.sectionName,
     };

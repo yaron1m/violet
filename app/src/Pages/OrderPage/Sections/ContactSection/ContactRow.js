@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
-import {Sizes} from "../../../../Util/Constants/Sizes";
+import {Size} from "../../../../util/Constants/Size";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
 
@@ -45,14 +45,14 @@ export default class ContactRow extends React.Component {
                     <PersonAddIcon/>
                 </CustomIconButton>
 
-                <OrderCustomText name={getKey("contactFirstName", isFinancial)} size={Sizes.M}/>
-                <OrderCustomText name={getKey("contactLastName", isFinancial)} size={Sizes.M}/>
-                <OrderCustomText name={getKey("contactJob", isFinancial)} size={Sizes.M}/>
-                <OrderCustomText name={getKey("contactPhone1", isFinancial)} size={Sizes.M}/>
-                <OrderCustomText name={getKey("contactEmail", isFinancial)} size={Sizes.XL}/>
-                <OrderCustomText name={getKey("contactPhone2", isFinancial)} size={Sizes.M}/>
-                <OrderCustomText name={getKey("contactPhoneExtension", isFinancial)} size={Sizes.M}/>
-                <OrderCustomText name={getKey("contactFax", isFinancial)} size={Sizes.M}/>
+                <OrderCustomText name={getKey("contactFirstName", isFinancial)} size={Size.M}/>
+                <OrderCustomText name={getKey("contactLastName", isFinancial)} size={Size.M}/>
+                <OrderCustomText name={getKey("contactJob", isFinancial)} size={Size.M}/>
+                <OrderCustomText name={getKey("contactPhone1", isFinancial)} size={Size.M}/>
+                <OrderCustomText name={getKey("contactEmail", isFinancial)} size={Size.XL}/>
+                <OrderCustomText name={getKey("contactPhone2", isFinancial)} size={Size.M}/>
+                <OrderCustomText name={getKey("contactPhoneExtension", isFinancial)} size={Size.M}/>
+                <OrderCustomText name={getKey("contactFax", isFinancial)} size={Size.M}/>
             </div>
         );
     }

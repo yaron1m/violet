@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Sizes} from "../../../../../../Util/Constants/Sizes";
+import {Size} from "../../../../../../util/Constants/Size";
 import {
     LectureTimesCustomAutoComplete,
     LectureTimesCustomDatePicker,
@@ -22,12 +22,12 @@ export default class SingleLectureTime extends React.Component {
 
                 <LectureTimesCustomDatePicker lectureTimeIndex={lectureTimeIndex} name="date"/>
                 <LectureTimesCustomAutoComplete lectureTimeIndex={lectureTimeIndex} name="topic"
-                                                suggestions={this.props.offeredLectures} size={Sizes.XXL}/>
-                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="startTime" size={Sizes.M}/>
-                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Sizes.M}/>
-                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="duration" size={Sizes.S}/>
-                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Sizes.M}/>
-                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Sizes.M}/>
+                                                suggestions={this.props.offeredLectures} size={Size.XXL}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="startTime" size={Size.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Size.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="duration" size={Size.S}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Size.M}/>
+                <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Size.M}/>
 
                 <DeleteLectureTimeButton lectureTimeIndex={lectureTimeIndex}/>
             </div>

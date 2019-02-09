@@ -194,7 +194,7 @@ interface AutoSuggestProps {
 
 export default withStyles(styles)(AutoSuggest);
 
-export function toSuggestions(suggestions: string[]) {
+export function toSuggestions(suggestions: string[]): ISuggestion[] {
     return suggestions.map(label => ({
         label
     }));
