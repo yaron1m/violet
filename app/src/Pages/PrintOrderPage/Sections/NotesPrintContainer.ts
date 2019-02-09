@@ -1,9 +1,9 @@
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import {getOrderSectionsLabels} from "../../../Store/Labels/Selectors";
 import NotesPrintSection from "./NotesPrint";
+import {IState} from "../../../Interfaces/ReduxInterfaces";
 
-
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         sectionName: getOrderSectionsLabels(state).notes.sectionName,
     };

@@ -1,7 +1,7 @@
 import {isEmptyValue} from "../../../Util/StringUtil";
 import PrintField from "./PrintField";
 
-export default class PrintBoolean extends PrintField<string> {
+export default class PrintBoolean extends PrintField {
     getValue() {
         const T = "V";
         const F = "X";

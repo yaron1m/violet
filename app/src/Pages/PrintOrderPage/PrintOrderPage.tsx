@@ -7,9 +7,8 @@ import NotesPrintSection from "./Sections/NotesPrintContainer";
 import OrganizationPrintSection from "./Sections/OrganizationPrintContainer";
 import FollowUpPrintSection from "./Sections/FollowUpPrintContainer";
 import PaymentSection from "./Sections/PaymentPrintContainer";
-import PropTypes from "prop-types";
 
-export default class PrintOrderPage extends React.Component {
+export default class PrintOrderPage extends React.Component<PrintOrderPageProps> {
 
     componentDidMount() {
         this.props.onLoad();
@@ -41,8 +40,8 @@ export default class PrintOrderPage extends React.Component {
     }
 }
 
-PrintOrderPage.propTypes = {
-    onLoad: PropTypes.func,
-    isSelectedOrder: PropTypes.bool,
-    title: PropTypes.string,
-};
+interface PrintOrderPageProps {
+    onLoad: () => void,
+    isSelectedOrder: boolean,
+    title: string,
+}

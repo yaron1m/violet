@@ -4,13 +4,13 @@ import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import PrintField from "../../../../Components/CustomComponents/OrderPrint/PrintField";
 import PrintDate from "../../../../Components/CustomComponents/OrderPrint/PrintDate";
 import PrintBoolean from "../../../../Components/CustomComponents/OrderPrint/PrintBoolean";
+import {IState} from '../../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state:IState, ownProps: {values?:object}) {
     return {
         titles: getOrderSectionsLabels(state).titles,
-        values: getSelectedOrder(state),
+        values: ownProps.values? ownProps.values : getSelectedOrder(state),
         updateAction: function(){},
-        ...ownProps,
     };
 }
 

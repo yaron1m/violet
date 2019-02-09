@@ -1,9 +1,10 @@
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import {getOrderSectionsLabels} from "../../../Store/Labels/Selectors";
 import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 import LectureTimesPrintSection from "./LectureTimesPrint";
+import {IState} from "../../../Interfaces/ReduxInterfaces";
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         sectionName: getOrderSectionsLabels(state).lectureTimes.sectionName,
         tableHeaders: getOrderSectionsLabels(state).lectureTimes.tableHeaders,
