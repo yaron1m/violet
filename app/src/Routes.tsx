@@ -1,19 +1,19 @@
 import React from 'react';
 import {Route, Router} from 'react-router';
 import App from './App'
-import LectureForm from './containers/Pages/OrderPage/';
-import PublicCourse from './containers/Pages/PublicCoursePage/';
-import OrganizationPage from './containers/Pages/OrganizationPage/';
-import FollowUpPageTitle from './containers/Pages/FollowUpPage/';
-import PaymentPage from "./containers/Pages/WaitingPaymentPage";
-import ExpectedIncomePage from "./containers/Pages/ExpectedIncomePage";
-import FutureLecturesPage from "./containers/Pages/FutureLecturesPage";
-import AllOrdersPage from "./containers/Pages/AllOrdersPage";
-import AllPublicCoursesPage from "./containers/Pages/AllPublicCoursesPage";
-import ActionRequiredPage from "./containers/Pages/ActionRequiredPage";
-import PrintOrderPage from "./containers/Pages/PrintOrderPage/PrintOrderPageContainer";
+import LectureForm from './Pages/OrderPage/';
+import PublicCourse from './Pages/PublicCoursePage/';
+import OrganizationPage from './Pages/OrganizationPage/';
+import FollowUpPageTitle from './Pages/FollowUpPage/';
+import PaymentPage from "./Pages/WaitingPaymentPage";
+import ExpectedIncomePage from "./Pages/ExpectedIncomePage";
+import FutureLecturesPage from "./Pages/FutureLecturesPage";
+import AllOrdersPage from "./Pages/AllOrdersPage";
+import AllPublicCoursesPage from "./Pages/AllPublicCoursesPage";
+import ActionRequiredPage from "./Pages/ActionRequiredPage";
+import PrintOrderPage from "./Pages/PrintOrderPage/PrintOrderPageContainer";
 import history from './Util/History'
-import DashboardContainer from "./containers/Pages/Dashboard/DashboardContainer";
+import DashboardContainer from "./Pages/Dashboard/DashboardContainer";
 
 export default function Routes(props: RoutesProps) {
     return (
