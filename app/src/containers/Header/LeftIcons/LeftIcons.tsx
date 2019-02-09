@@ -57,5 +57,4 @@ interface LeftIconsProps {
     logOutLabel: string;
     isProduction: boolean;
     signOut: () => void;
-    classes: object;
 }

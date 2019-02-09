@@ -10,7 +10,7 @@ export default class Header extends React.Component {
     render() {
         const style = {
             appBar: {
-                position: 'fixed',
+                position: 'fixed' as 'fixed',
                 top: 0,
                 maxHeight: 65,
                 paddingBottom: 7,

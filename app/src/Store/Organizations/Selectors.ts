@@ -2,12 +2,16 @@ import _ from "lodash";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 
-export function getOrganizations(state: IState) {
+function getOrganizationsMap(state: IState){
     return toMutable(state.organizations);
 }
 
+export function getOrganizations(state: IState) {
+    return _.values(getOrganizationsMap(state));
+}
+
 export function getOrganizationById(state: IState, id: string) {
-    return getOrganizations(state)[id];
+    return getOrganizationsMap(state)[id];
 }
 
 export function getNextOrganizationId(state: IState) {

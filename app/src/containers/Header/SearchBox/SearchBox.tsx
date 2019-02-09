@@ -2,6 +2,7 @@ import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import Colors from "../../../Util/Constants/Colors";
 import AutoSuggest, {ISuggestion} from "../../../Components/AutoSuggest";
+import {SearchSuggestion} from './SearchBoxContainer';
 
 export default class SearchBox extends React.Component<SearchBoxProps> {
 
@@ -55,6 +56,6 @@ export default class SearchBox extends React.Component<SearchBoxProps> {
 interface SearchBoxProps {
     hintText: string;
     suggestions: ISuggestion[];
-    onSuggestionSelected: (suggestion: ISuggestion) => void;
-    renderSuggestion: (suggestion: ISuggestion) => React.ReactNode;
+    onSuggestionSelected: (suggestion: SearchSuggestion) => void;
+    renderSuggestion: (suggestion: SearchSuggestion) => React.ReactNode;
 }
