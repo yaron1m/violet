@@ -3,12 +3,13 @@ import {getSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Se
 import {updateSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../../Store/Labels/Selectors";
 import CustomText from "../../../../Components/CustomComponents/CustomTextField";
-import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
 import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
-import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
-import CustomSelectField from "../../../../Components/CustomComponents/CustomSelectField";
+import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import IPublicCourse, {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
+import {Sizes} from '../../../../util/Constants/Sizes';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         titles: getLabels(state).pages.publicCoursePage.fieldTitles,
         values: getSelectedPublicCourse(state),
@@ -16,26 +17,32 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key, value) => dispatch(updateSelectedPublicCourse(key, value)),
+        updateAction: (key: string, value: string | IPublicCourseLecture[]) => dispatch(updateSelectedPublicCourse(key, value)),
     };
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
+function mergeProps(stateProps: {
+    titles: { [key: string]: string }; values: IPublicCourse;
+}, dispatchProps: {
+    updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
+}, ownProps: {
+    size?: Sizes, options: IOption[]
+}) {
     return {
         titles: stateProps.titles,
         values: stateProps.values,
-        requiredFields: stateProps.requiredFields,
+        requiredFields: [],
         updateAction: dispatchProps.updateAction,
-        ...ownProps,
+        size: ownProps.size,
     };
 
 }
 
 export const PublicCourseConnectedText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
-export const PublicCourseConnectedDatePicker = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDatePicker);
+// export const PublicCourseConnectedDatePicker = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDatePicker);
 export const PublicCourseConnectedToggle = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomToggle);
-export const PublicCourseConnectedCheckBox = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomCheckbox);
+// export const PublicCourseConnectedCheckBox = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomCheckbox);
 export const PublicCourseConnectedSelectField = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomSelectField);
 

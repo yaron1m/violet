@@ -1,14 +1,11 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../Store/Labels/Selectors";
 import PublicCoursePageTitle from "./PublicCoursePageTitle";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-function getPageTitle(state) {
-    return getLabels(state).pages.publicCoursePage.pageTitle;
-}
-
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
-        title: getPageTitle(state),
+        title: getLabels(state).pages.publicCoursePage.pageTitle
     };
 }
 

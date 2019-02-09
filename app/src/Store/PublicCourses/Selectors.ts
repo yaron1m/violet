@@ -23,7 +23,7 @@ export function getNextPublicCourseId(state: IState) {
     const courses = getPublicCourses(state);
     const keys = _.keys(courses);
     if (!courses || keys.length === 0)
-        return null;
+        return 100;
     // @ts-ignore
     return _.max(_.map(_.keys(courses), _.parseInt)) + 1;
 }

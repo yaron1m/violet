@@ -14,7 +14,7 @@ export enum progressiveStatuses {
     payed = "payed",
 }
 
-export enum Status{
+export enum Status {
     contact = "contact",
     offer = "offer",
     order = "order",

@@ -48,7 +48,7 @@ class CustomSelectField extends AbstractCustomField<string, CustomSelectFieldPro
     }
 }
 
-interface IOption {
+export interface IOption {
     key: string;
     label: string;
 }

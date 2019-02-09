@@ -2,13 +2,14 @@ import {connect} from 'react-redux';
 import {getStatusLabels} from "../../Store/Labels/Selectors";
 import OrderStatusStepper from "./OrderStatusStepper";
 import {getSelectedOrder} from "../../Store/SelectedOrder/Selectors";
-import {progressiveStatuses as Status} from "../../Util/Constants/Status";
+import {Status} from "../../Util/Constants/Status";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-function getStatus(status){
+function getStatus(status: Status){
     return status ? status : Status.contact
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
         status: getStatus(getSelectedOrder(state).status),
         statusLabels: getStatusLabels(state),

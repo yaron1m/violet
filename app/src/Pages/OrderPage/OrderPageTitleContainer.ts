@@ -4,17 +4,14 @@ import {getOrderPageLabels} from "../../Store/Labels/Selectors";
 import {isSelectedOrder} from "../../Store/SelectedOrder/Selectors";
 import {getSelectedOrderStatusLabel} from "../../Store/Labels/Selectors";
 import {getSelectedOrder} from "../../Store/SelectedOrder/Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-function getPageTitle(state){
-    return isSelectedOrder(state) ?
-        getOrderPageLabels(state).title.orderNumberTitle + getSelectedOrder(state).id
-        : getOrderPageLabels(state).title.newOrderTitle;
-}
-
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
-        title: getPageTitle(state),
-        status: getSelectedOrderStatusLabel(state),
+        statusLabel: getSelectedOrderStatusLabel(state),
+        title: isSelectedOrder(state) ?
+            getOrderPageLabels(state).title.orderNumberTitle + getSelectedOrder(state).id
+            : getOrderPageLabels(state).title.newOrderTitle,
     };
 }
 
