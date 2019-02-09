@@ -6,7 +6,7 @@ import appearance from './Appearance/Reducer';
 import firebase from './Firebase/Reducer';
 import labels from './Labels/Reducer';
 import lists from './Lists/Reducer';
-import orders from './orders/Reducer';
+import orders from './Orders/Reducer';
 import organizations from './Organizations/Reducer';
 import publicCourses from './PublicCourses/reducer';
 import selectedOrder from './SelectedOrder/Reducer';

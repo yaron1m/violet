@@ -4,7 +4,7 @@ import {getLabels} from "../../../store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getFollowUpOrdersSummary} from "../../../store/orders/Selectors.ts";
+import {getFollowUpOrdersSummary} from "../../../store/Orders/Selectors.ts";
 
 function mapStateToProps(state) {
     return {

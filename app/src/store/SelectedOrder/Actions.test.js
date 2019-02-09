@@ -546,7 +546,7 @@ describe('Selected order actions', () => {
         };
 
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
-        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/Orders/' + id, expectedOrder);
     });
 
     it('should return clear selected order action', () => {

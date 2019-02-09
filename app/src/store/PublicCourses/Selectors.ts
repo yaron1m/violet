@@ -1,6 +1,6 @@
 import _ from "lodash";
 import {hasDatePassed} from "../../util/TimeUtil";
-import {getOrders} from "../orders/Selectors";
+import {getOrders} from "../Orders/Selectors";
 import {moneyFormat} from "../../util/StringUtil";
 import {getLabels} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";

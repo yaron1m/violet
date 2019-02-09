@@ -1,8 +1,8 @@
-import * as Selectors from '../Selectors.ts';
-import {Status} from "../../../util/Constants/Status";
-import * as labelsSelectors from "../../Labels/Selectors";
-import EntityType from "../../../util/Constants/EntityType";
-import * as organizationSelectors from "../../Organizations/Selectors";
+import * as Selectors from './Selectors.ts';
+import {Status} from "../../util/Constants/Status";
+import * as labelsSelectors from "../Labels/Selectors";
+import EntityType from "../../util/Constants/EntityType";
+import * as organizationSelectors from "../Organizations/Selectors";
 
 const state = {
     "orders": {
@@ -52,7 +52,7 @@ const state = {
     }
 };
 
-describe('store/orders/selectors', () => {
+describe('store/Orders/selectors', () => {
 
     it('getOrders - get all orders', () => {
         expect(Selectors.getOrders(state)).toBe(state.orders);

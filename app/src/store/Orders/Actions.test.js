@@ -1,7 +1,7 @@
-import * as actions from '../Actions'
-import * as actionTypes from '../ActionTypes'
+import * as actions from './Actions'
+import * as actionTypes from './ActionTypes'
 
-describe('store/orders/actions', () => {
+describe('store/Orders/actions', () => {
     it('should create an action of received orders', () => {
         const orders = {0: {}, 1: {}};
         const expectedAction = {

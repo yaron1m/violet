@@ -4,7 +4,7 @@ import {getLabels} from "../../../store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getAllLectureTimes} from "../../../store/orders/Selectors.ts";
+import {getAllLectureTimes} from "../../../store/Orders/Selectors.ts";
 import {Status} from "../../../util/Constants/Status";
 import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
 import {EntityType} from "../../../util/Constants/EntityType";

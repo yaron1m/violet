@@ -1,7 +1,7 @@
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {getSelectedOrder} from "./Selectors";
 import {calculateDuration} from "../../util/TimeUtil";
-import {getNextOrderId, getOrderById} from "../orders/Selectors.ts";
+import {getNextOrderId, getOrderById} from "../Orders/Selectors.ts";
 import {isEmptyValue} from "../../util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
@@ -138,7 +138,7 @@ export function sendSelectedOrderToDatabase() {
         await dispatch(updateSelectedOrder("changedDate", new Date().toJSON()));
         const selectedOrder = getSelectedOrder(getState());
 
-        return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
+        return sendDataToDatabase('/Orders/' + selectedOrder.id, selectedOrder);
     }
 }
 

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {getLabels} from "../../../../store/Labels/Selectors";
 import {redirect} from "../../../../util/HistoryUtil";
-import {getOrders} from "../../../../store/orders/Selectors.ts";
+import {getOrders} from "../../../../store/Orders/Selectors.ts";
 import * as _ from 'lodash';
 import {isFetching} from "../../../../store/Firebase/Selectors";
 import {Status} from "../../../../util/Constants/Status";

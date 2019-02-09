@@ -1,4 +1,3 @@
-import {getOrders} from "./Selectors";
 import _ from 'lodash';
 import {getOrderStatusLabel} from "../Labels/Selectors";
 import {getOrganizationById} from "../Organizations/Selectors";
@@ -9,6 +8,7 @@ import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import IOrder from '../../Interfaces/IOrder';
+import {getOrders} from './Selectors';
 
 interface IActionRequiredOrder {
     id: number;

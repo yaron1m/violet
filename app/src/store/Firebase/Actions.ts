@@ -2,7 +2,7 @@
 
 import * as actionTypes from './ActionTypes';
 import {receiveOrganizations} from '../Organizations/Actions';
-import {receiveOrders} from '../orders/Actions';
+import {receiveOrders} from '../Orders/Actions';
 import {receiveLists} from "../Lists/Actions";
 import firebase from 'firebase/app';
 import "firebase/auth";
