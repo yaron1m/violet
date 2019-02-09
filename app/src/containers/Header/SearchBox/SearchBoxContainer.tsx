@@ -2,7 +2,7 @@ import React from "react";
 import SearchBox from './SearchBox';
 import {connect} from 'react-redux';
 import {getLabels} from "../../../Store/Labels/Selectors";
-import {getOrganizations} from "../../../Store/Organizations/Selectors";
+import {getOrganizationById, getOrganizations} from "../../../Store/Organizations/Selectors";
 import {selectOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {getOrders, getPublicCourseParticipantsSummary} from "../../../Store/Orders/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
@@ -18,6 +18,7 @@ import {EntityType} from "../../../Util/Constants/EntityType";
 import IOrganization from '../../../Interfaces/IOrganization';
 import IOrder from '../../../Interfaces/IOrder';
 import {selectOrder} from '../../../Store/SelectedOrder/Actions';
+import {Path} from '../../../Pages/Path';
 
 export interface SearchSuggestion extends ISuggestion {
     entityType?: EntityType;
@@ -33,7 +34,7 @@ export function handleRequest(chosenRequest: SearchSuggestion, dispatch: IDispat
                 return;
             }
             dispatch(selectOrganization(chosenRequest.organizationId));
-            redirect('/org');
+            redirect(Path.organization);
             return;
 
         case EntityType.order:
@@ -45,7 +46,7 @@ export function handleRequest(chosenRequest: SearchSuggestion, dispatch: IDispat
             dispatch(selectOrder(chosenRequest.orderId));
             dispatch(selectOrganization(chosenRequest.organizationId));
 
-            redirect('/form');
+            redirect(Path.form);
             return;
 
         default:
@@ -96,7 +97,8 @@ function renderSuggestion(suggestion: SearchSuggestion) {
 }
 
 export function getSuggestions(organizations: IOrganization[], orders: IOrder[],
-                               publicCourseParticipants: { orderId: number; organizationId: number; participantFirstName: string; participantLastName: string; publicCourseName: string; }[])
+                               publicCourseParticipants: { orderId: number; organizationId: number; participantFirstName: string; participantLastName: string; publicCourseName: string; }[],
+                               getOrganizationName: (id: string) => string)
     : SearchSuggestion[] {
     if (_.isEmpty(organizations))
         return [];
@@ -114,7 +116,7 @@ export function getSuggestions(organizations: IOrganization[], orders: IOrder[],
 
     const orderNumbersObjects: SearchSuggestion[] = _.values(orders).map(
         (order): SearchSuggestion => ({
-            label: order.id + " - " + organizations[order.organizationId].organizationName,
+            label: order.id + " - " + getOrganizationName(order.organizationId.toString()),
             entityType: EntityType.order,
             orderId: order.id,
             organizationId: order.organizationId,
@@ -122,7 +124,7 @@ export function getSuggestions(organizations: IOrganization[], orders: IOrder[],
 
     const participantsObjects: SearchSuggestion[] = _.values(publicCourseParticipants).map(
         (participant): SearchSuggestion => ({
-            label: `${participant.orderId} - ${organizations[participant.organizationId].organizationName} - ` +
+            label: `${participant.orderId} - ${getOrganizationName(participant.organizationId.toString())} - ` +
                 `${participant.participantFirstName} ${participant.participantLastName} - ${participant.publicCourseName}`,
             entityType: EntityType.publicCourseParticipant,
             orderId: participant.orderId,
@@ -136,10 +138,11 @@ function mapStateToProps(state: IState) {
     const organizations = getOrganizations(state);
     const orders = getOrders(state);
     const publicCourseParticipantsSummary = getPublicCourseParticipantsSummary(state);
+    const getOrganizationName = (id: string) => getOrganizationById(state, id).organizationName;
 
     return {
         hintText: getLabels(state).header.searchLineHint,
-        suggestions: getSuggestions(organizations, orders, publicCourseParticipantsSummary) as ISuggestion[],
+        suggestions: getSuggestions(organizations, orders, publicCourseParticipantsSummary, getOrganizationName) as ISuggestion[],
     };
 }
 

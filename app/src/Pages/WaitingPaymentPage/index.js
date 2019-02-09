@@ -5,6 +5,7 @@ import {getExpectedIncomeOrders} from "../../Store/Orders/Selectors.ts";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {Status} from "../../Util/Constants/Status";
+import {Path} from "../Path";
 
 function mapStateToProps(state) {
     return {
@@ -18,7 +19,7 @@ function mapDispatchToProps(dispatch) {
     return {
         onEditButton: (orderId) => {
             dispatch(selectOrder(orderId));
-            redirect('/form');
+            redirect(Path.form);
         },
     };
 }

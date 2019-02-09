@@ -1,13 +1,14 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
-import {redirect} from "../../../Util/HistoryUtil";
-import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
+import {selectOrder} from "../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../Store/Labels/Selectors";
+import {redirect} from "../../Util/HistoryUtil";
+import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getAllLectureTimes} from "../../../Store/Orders/Selectors.ts";
-import {Status} from "../../../Util/Constants/Status";
-import {selectPublicCourse} from "../../../Store/SelectedPublicCourse/Actions";
-import {EntityType} from "../../../Util/Constants/EntityType";
+import {getAllLectureTimes} from "../../Store/Orders/Selectors.ts";
+import {Status} from "../../Util/Constants/Status";
+import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
+import {EntityType} from "../../Util/Constants/EntityType";
+import {Path} from "../Path";
 
 export function getFutureLectureTimes(state) {
     const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);
@@ -23,12 +24,12 @@ function onEditButton(dispatch, info) {
     switch (info.type) {
         case EntityType.order:
             dispatch(selectOrder(info.id));
-            redirect('/form');
+            redirect(Path.form);
             return;
 
         case EntityType.publicCourse:
             dispatch(selectPublicCourse(info.id));
-            redirect('/publicCourse');
+            redirect(Path.publicCourse);
             return;
 
         default:

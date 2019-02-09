@@ -5,6 +5,7 @@ import {getActionRequiredOrders} from "../../Store/Orders/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
+import {Path} from '../Path';
 
 function mapStateToProps(state: IState) {
     return {
@@ -18,7 +19,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (orderId: number) => {
             dispatch(selectOrder(orderId));
-            redirect('/form');
+            redirect(Path.form);
         },
     };
 }

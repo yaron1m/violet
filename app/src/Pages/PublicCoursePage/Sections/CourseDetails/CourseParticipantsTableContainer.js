@@ -4,6 +4,7 @@ import CustomPaperTable from "../../../../Components/Table/CustomPaperTable";
 import {getSelectedPublicCourseParticipants} from "../../../../Store/SelectedPublicCourse/Selectors";
 import {redirect} from "../../../../Util/HistoryUtil";
 import {selectOrder} from "../../../../Store/SelectedOrder/Actions";
+import {Path} from "../../../Path";
 
 function mapStateToProps(state) {
     return {
@@ -18,7 +19,7 @@ function mapDispatchToProps(dispatch){
     return {
         onEditButton: (orderId) => {
             dispatch(selectOrder(orderId));
-            redirect('/form');
+            redirect(Path.form);
         },
     }
 }

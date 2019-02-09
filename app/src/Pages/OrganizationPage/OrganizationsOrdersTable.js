@@ -6,6 +6,7 @@ import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {getOrdersByOrganization, getOrdersSummary} from "../../Store/Orders/Selectors.ts";
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {isSelectedOrganization} from "../../Store/SelectedOrganization/Selectors";
+import {Path} from "../Path";
 
 function mapStateToProps(state) {
     return {
@@ -22,11 +23,11 @@ function mapDispatchToProps(dispatch) {
     return {
         onEditButton: (orderId) => {
             dispatch(selectOrder(orderId));
-            redirect('/form');
+            redirect(Path.form);
         },
         singleCellRowOnClick: () => {
             dispatch(clearSelectedOrder());
-            redirect('/form');
+            redirect(Path.form);
         }
     };
 }

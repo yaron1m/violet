@@ -4,6 +4,7 @@ import {isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 import {openDialog} from "../../../Store/Appearance/Actions";
 import {redirect} from "../../../Util/HistoryUtil";
 import PrintOrderButton from "./PrintOrder";
+import {Path} from "../../Path";
 
 function mapStateToProps(state) {
     return {
@@ -27,7 +28,7 @@ function mergeProps(stateProps, dispatchProps) {
             if (!stateProps.isSelectedOrder)
                 dispatchProps.openDialog(stateProps.errorLabel, stateProps.noOrderSelectedLabel);
             else
-                redirect("/print");
+                redirect(Path.print);
         }
     }
 }

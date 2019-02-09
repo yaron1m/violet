@@ -8,6 +8,7 @@ import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 import * as React from 'react';
 import {Status} from '../../Util/Constants/Status';
+import {Path} from '../Path';
 
 export function getElements(state: IState, ownProps: AllOrdersTableContainerProps) {
     return _.reverse(getOrdersSummary(state, (state: IState) => getOrders(state, ownProps.filterStatus)));
@@ -15,7 +16,7 @@ export function getElements(state: IState, ownProps: AllOrdersTableContainerProp
 
 export function onEditButton(dispatch: IDispatch, orderId: number) {
     dispatch(selectOrder(orderId));
-    redirect('/form');
+    redirect(Path.form);
 }
 
 function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) {

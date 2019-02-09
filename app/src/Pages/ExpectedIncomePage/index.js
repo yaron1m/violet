@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
-import {getExpectedIncomeOrders} from "../../../Store/Orders/Selectors.ts";
-import {redirect} from "../../../Util/HistoryUtil";
-import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
-import {Status} from "../../../Util/Constants/Status";
+import {selectOrder} from "../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../Store/Labels/Selectors";
+import {getExpectedIncomeOrders} from "../../Store/Orders/Selectors.ts";
+import {redirect} from "../../Util/HistoryUtil";
+import CustomPaperTable from "../../Components/Table/CustomPaperTable";
+import {Status} from "../../Util/Constants/Status";
+import {Path} from "../Path";
 
 function mapStateToProps(state) {
     const acceptedStatuses = [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder];
@@ -20,7 +21,7 @@ function mapDispatchToProps(dispatch) {
     return {
         onEditButton: (orderId) => {
             dispatch(selectOrder(orderId));
-            redirect('/form');
+            redirect(Path.form);
         },
     };
 }

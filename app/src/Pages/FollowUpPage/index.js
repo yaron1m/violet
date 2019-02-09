@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
-import {redirect} from "../../../Util/HistoryUtil";
-import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
+import {selectOrder} from "../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../Store/Labels/Selectors";
+import {redirect} from "../../Util/HistoryUtil";
+import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getFollowUpOrdersSummary} from "../../../Store/Orders/Selectors.ts";
+import {getFollowUpOrdersSummary} from "../../Store/Orders/Selectors.ts";
+import {Path} from "../Path";
 
 function mapStateToProps(state) {
     return {
@@ -18,7 +19,7 @@ function mapDispatchToProps(dispatch) {
     return {
         onEditButton: (orderId) => {
             dispatch(selectOrder(orderId));
-            redirect('/form');
+            redirect(Path.form);
         },
     };
 }

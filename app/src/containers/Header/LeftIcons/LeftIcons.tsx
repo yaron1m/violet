@@ -5,6 +5,7 @@ import ExitIcon from '@material-ui/icons/ExitToApp';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Colors from "../../../Util/Constants/Colors";
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
+import {Path} from '../../../Pages/Path';
 
 export default function LeftIcons(props: LeftIconsProps) {
     const style = {
@@ -31,7 +32,7 @@ export default function LeftIcons(props: LeftIconsProps) {
         <div style={style.container}>
 
             <CustomIconButton
-                onClick={() => redirect('/actionRequired')}
+                onClick={() => redirect(Path.actionRequired)}
             >
                 <Badge
                     hidden

@@ -1,4 +1,4 @@
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import {getSnackbarMessage} from "../../Store/Appearance/Selectors";
 import {closeSnackbar} from "../../Store/Appearance/Actions";
 import CustomSnackbar from "../../Components/CustomComponents/CustomSnackbar";
