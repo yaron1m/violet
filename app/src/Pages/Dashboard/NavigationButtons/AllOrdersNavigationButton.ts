@@ -1,9 +1,11 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../Util/HistoryUtil";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {redirect} from "../../../Util/HistoryUtil";
 import NavigationButton from "./NavigationButton";
+import {Path} from '../../Path';
+import {IState} from '../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         title: getLabels(state).pages.dashboard.navigationButtons.allOrders,
     };
@@ -11,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps() {
     return {
-        onClick: () => redirect("/allOrders"),
+        onClick: () => redirect(Path.allOrders),
     };
 }
 

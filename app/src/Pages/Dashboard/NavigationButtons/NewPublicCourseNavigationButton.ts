@@ -1,9 +1,11 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
-import {redirect} from "../../../../Util/HistoryUtil";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {redirect} from "../../../Util/HistoryUtil";
 import NavigationButton from "./NavigationButton";
+import {IState} from '../../../Interfaces/ReduxInterfaces';
+import {Path} from '../../Path';
 
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
         title: getLabels(state).pages.dashboard.navigationButtons.newPublicCourse,
     };
@@ -12,7 +14,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps() {
     return {
         onClick: () => {
-            redirect("/publicCourse");
+            redirect(Path.publicCourse);
            // dispatch(clearSelected()); //TODO clear selected public course
         }
     };

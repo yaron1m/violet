@@ -7,9 +7,8 @@ import ExpectedIncomeInfoBox from "./InfoBoxes/ExpectedIncomeInfoBox";
 import WaitingPaymentInfoBox from "./InfoBoxes/WaitingPaymentInfoBox";
 import NewPublicCourseNavigationButton from "./NavigationButtons/NewPublicCourseNavigationButton";
 import AllPublicCoursesNavigationButton from "./NavigationButtons/AllPublicCoursesNavigationButton";
-import PropTypes from "prop-types";
 
-export default function Dashboard(props) {
+export default function Dashboard(props: {isSuperUser: boolean}) {
     return (
         <div>
             <div style={{display: "flex"}}>
@@ -33,7 +32,3 @@ export default function Dashboard(props) {
         </div>
     );
 }
-
-Dashboard.propTypes = {
-    isSuperUser: PropTypes.bool.isRequired,
-};

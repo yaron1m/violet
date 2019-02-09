@@ -3,4 +3,8 @@ export enum Path {
     followUp = '/followup',
     expectedIncome = '/expectedIncome',
     waitingPayment = '/payment',
+    allOrders = "/allOrders",
+    allPublicCourses = "/allPublicCourses",
+    form = "/form",
+    publicCourse = "/publicCourse",
 }
