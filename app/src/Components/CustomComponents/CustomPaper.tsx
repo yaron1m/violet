@@ -31,8 +31,8 @@ interface CustomPaperProps {
 }
 
 export const flexStyle = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "flex-end"
+    display: "flex" as "flex",
+    flexDirection: "row" as "row",
+    flexWrap: "wrap" as "wrap",
+    alignItems: "flex-end" as "flex-end",
 };

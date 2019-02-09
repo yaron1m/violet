@@ -4,23 +4,24 @@ import FilterStatusSelectField from './FilterStatusSelectField';
 import CustomToggle from "../../Components/CustomComponents/CustomToggle";
 import {updateObject} from "../../Util/ObjectUpdater";
 import {flexStyle} from "../../Components/CustomComponents/CustomPaper";
+import {Status} from '../../Util/Constants/Status';
 
 export default class AllOrdersPage extends React.Component {
     state = {
-        filterStatus: null,
+        filterStatus: undefined,
         showAll: false,
     };
 
-    updateStatus(status) {
+    updateStatus(status: Status) {
         this.setState(updateObject(this.state, {
             filterStatus: status,
         }));
     }
 
-    updateShowAll(key, value) {
+    updateShowAll(key: string, value: boolean) {
         this.setState(updateObject(this.state, {
             showAll: value,
-        }))
+        }));
     }
 
     render() {
@@ -48,7 +49,7 @@ export default class AllOrdersPage extends React.Component {
     }
 }
 
-function getLimit(showAll) {
+function getLimit(showAll: boolean) {
     const limit = 30;
     return showAll ? -1 : limit;
 }

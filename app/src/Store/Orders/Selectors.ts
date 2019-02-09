@@ -16,7 +16,7 @@ import {Status} from '../../Util/Constants/Status';
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 
-function getOrdersMap(state: IState){
+function getOrdersMap(state: IState) {
     return toMutable(state.orders);
 }
 

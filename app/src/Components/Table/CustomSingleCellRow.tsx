@@ -37,6 +37,6 @@ interface CustomSingleCellRowProps {
     enabled?: boolean;
     hideEdit?: boolean;
     headers: {[key:string]:string}[];
-    onClick: () => void;
+    onClick?: () => void;
     text?: string;
 }

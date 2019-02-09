@@ -19,7 +19,7 @@ export function isEmpty(val: any) {
 
 export function cutIfLong(str: string, maxLength: number) {
     if (isEmpty(str))
-        return undefined;
+        return str;
 
     const addition = "...";
 

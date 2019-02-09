@@ -57,5 +57,5 @@ interface CustomPaperTableProps<TElement> {
 
     singleCellRow?: boolean,
     singleCellRowText?: string,
-    singleCellRowOnClick: () => void,
+    singleCellRowOnClick?: () => void,
 }

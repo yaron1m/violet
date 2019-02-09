@@ -54,7 +54,7 @@ export function getPublicCoursesSummary(state: IState) {
 
         const orders = getOrders(state);
         const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && order.publicCourseId === course.id);
-        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)), getLabels(state).currencyIcon);
+        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)).toString(), getLabels(state).currencyIcon);
 
         return result;
     }
