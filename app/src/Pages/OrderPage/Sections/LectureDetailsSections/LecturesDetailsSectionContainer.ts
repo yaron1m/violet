@@ -5,9 +5,12 @@ import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../Util/StringUtil";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import {internalTabKey, publicCourseTabKey} from "../../../../Util/Constants/TabKeys";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import IOrder from '../../../../Interfaces/IOrder';
+import * as React from 'react';
 
 
-function getSelectedTabKey(order){
+function getSelectedTabKey(order: IOrder){
     if (isEmptyValue(order, "lectureDetailsTabKey"))
         return internalTabKey;
 
@@ -26,7 +29,7 @@ function mapStateToProps(state: IState) {
 
 function mapDispatchToProps(dispatch :IDispatch){
     return {
-        onTabClick: (event, value) => dispatch(updateSelectedOrder("lectureDetailsTabKey", value))
+        onTabClick: (event: React.ChangeEvent<{}>, value: any) => dispatch(updateSelectedOrder("lectureDetailsTabKey", value))
     };
 }
 

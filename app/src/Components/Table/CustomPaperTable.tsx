@@ -4,6 +4,7 @@ import CustomPaper from "../CustomComponents/CustomPaper";
 import CustomTable from "./CustomTable";
 import CustomTableRow from "./CustomTableRow";
 import {CustomSingleCellRow} from "./CustomSingleCellRow";
+import {IStringObject} from '../../Interfaces/IOrder';
 
 export default class CustomPaperTable<TElement extends {[key:string]: string}>
     extends React.Component<CustomPaperTableProps<TElement>> {
@@ -50,7 +51,7 @@ interface CustomPaperTableProps<TElement> {
     elements: TElement[],
     hideEdit?: boolean,
     limit?: number,
-    tableHeaders: {[key:string]:string}[],
+    tableHeaders: IStringObject[],
     onEditButton: (element:TElement) => void,
     onDeleteButton?: (element:TElement) => void,
     beforeTable?: React.ReactNode,

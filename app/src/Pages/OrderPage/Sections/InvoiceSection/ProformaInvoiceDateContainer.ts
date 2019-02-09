@@ -4,18 +4,19 @@ import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import {getSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
 import ProformaInvoiceDate from './ProformaInvoiceDate'
 import calculatePayDate from "./ProformaInvoiceDateCalculator";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
     return {
-        allPaymentConditions: getOrderSectionsLabels(state).organization.paymentConditions,
+        allPaymentConditions: getOrderSectionsLabels(state).organization.paymentConditions as string[],
         selectedPaymentConditions: getSelectedOrganization(state).paymentConditions,
     };
 }
 
 function mapDispatchToProps(dispatch :IDispatch) {
     return {
-        updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
-        calculatePayDate: function (proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions) {
+        updateSelectedOrder: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
+        calculatePayDate: function (proformaInvoiceValue:string, selectedPaymentConditions:string, allPaymentConditions:string[]) {
             const payDate = calculatePayDate(proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions);
             if (payDate !== null)
                 dispatch(updateSelectedOrder("expectedPayDate", payDate));

@@ -4,9 +4,11 @@ import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import calculateSum from './CalculateSum';
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import IOrder, {IStringObject} from '../../../../Interfaces/IOrder';
 
 function mapStateToProps(state: IState) {
-    const labels = getOrderSectionsLabels(state).payment;
+    const labels = getOrderSectionsLabels(state).payment as IStringObject;
 
     return {
         sectionName: labels.sectionName,
@@ -17,13 +19,17 @@ function mapStateToProps(state: IState) {
     };
 }
 
-function mapDispatchToProps(dispatch :IDispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key, value) => dispatch(updateSelectedOrder(key, value)),
+        updateAction: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
     };
 }
 
-function mergeProps(stateProps, dispatchProps){
+function mergeProps(stateProps: {
+    sectionName: string; financialContactTitle: string; buttonTooltip: string; selectedOrder: IOrder;
+}, dispatchProps: {
+    updateAction: (key: string, value: any) => void
+}) {
     return {
         ...stateProps,
         ...dispatchProps,

@@ -4,6 +4,7 @@ import LectureTimesDetails from "./LectureTimesDetails";
 import _ from "lodash";
 import {getOfferedLectures} from "../../../../../../Store/Lists/Selectors";
 import {toSuggestions} from "../../../../../../Components/AutoSuggest";
+import {IState} from '../../../../../../Interfaces/ReduxInterfaces';
 
 function getLectureTimeIndexes(lectureTimes) {
     if (!lectureTimes)

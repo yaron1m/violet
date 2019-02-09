@@ -34,7 +34,7 @@ export function selectOrder(orderId: number) {
     };
 }
 
-export function updateSelectedOrder(key: string, value: string | number | TabKey | ILectureTime[] | IPublicCourseParticipant[]) {
+export function updateSelectedOrder(key: string, value: string | boolean | number | TabKey | ILectureTime[] | IPublicCourseParticipant[]) {
     return function updateSelectedOrder(dispatch: IDispatch, getState: IGetState) {
         let order = Object.assign(getSelectedOrder(getState()), {
             [key]: value,

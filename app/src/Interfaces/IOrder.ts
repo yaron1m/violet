@@ -3,7 +3,6 @@ import {Status, TabKey} from '../Util/Constants/Status';
 export default interface IOrder {
     id: number,
     organizationId: number;
-    publicCourseId: number;
     status: Status;
     changedDate: string;
     createdDate: string;
@@ -39,6 +38,7 @@ export default interface IOrder {
     lectureTimes: ILectureTime[];
 
     // Public course:
+    publicCourseId: number;
     publicCourseParticipants: IPublicCourseParticipant[];
 
     // Follow up

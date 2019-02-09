@@ -2,33 +2,37 @@ import {connect} from 'react-redux';
 import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
 import * as _ from "lodash";
-import * as Immutable from "seamless-immutable";
 import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
 import {CustomRaisedButton} from "../../../../../Components/CustomComponents/CustomButtons";
+import {IDispatch, IState} from '../../../../../Interfaces/ReduxInterfaces';
+import IOrder, {IPublicCourseParticipant} from '../../../../../Interfaces/IOrder';
 
-export function addNewParticipant(selectedOrder, updateSelectedOrder) {
-    const thisSelectedOrder = Immutable.asMutable(selectedOrder, {deep: true});
-    const publicCourseParticipants = _.hasIn(thisSelectedOrder, 'publicCourseParticipants') ? thisSelectedOrder.publicCourseParticipants : [];
-    publicCourseParticipants.push({});
+export function addNewParticipant(selectedOrder: IOrder, updateSelectedOrder: (key: string, value: any) => void) {
+    const publicCourseParticipants = _.hasIn(selectedOrder, 'publicCourseParticipants') ? selectedOrder.publicCourseParticipants : [];
+    publicCourseParticipants.push({} as IPublicCourseParticipant);
 
     updateSelectedOrder("publicCourseParticipants", publicCourseParticipants);
 }
 
 function mapStateToProps(state: IState) {
     return {
-        label: getOrderSectionsLabels(state).publicCourse.addParticipant,
+        label: getOrderSectionsLabels(state).publicCourse.addParticipant as string,
         selectedOrder: getSelectedOrder(state),
         disabled: !getSelectedOrder(state).publicCourseId,
     };
 }
 
-function mapDispatchToProps(dispatch :IDispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
+        updateSelectedOrder: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
     };
 }
 
-function mergeProps(stateProps, dispatchProps) {
+function mergeProps(stateProps: {
+    label: string; selectedOrder: IOrder; disabled: boolean;
+}, dispatchProps: {
+    updateSelectedOrder: (key: string, value: any) => void
+}) {
     return {
         label: stateProps.label,
         disabled: stateProps.disabled,
@@ -38,7 +42,7 @@ function mergeProps(stateProps, dispatchProps) {
             marginRight: 20,
         },
         onClick: () => addNewParticipant(stateProps.selectedOrder, dispatchProps.updateSelectedOrder)
-    }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomRaisedButton);
