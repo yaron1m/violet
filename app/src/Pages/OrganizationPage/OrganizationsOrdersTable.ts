@@ -24,11 +24,11 @@ function mapDispatchToProps(dispatch:IDispatch) {
     return {
         onEditButton: (summary: IOrderSummary) => {
             dispatch(selectOrder(summary.orderId));
-            redirect(Path.form);
+            redirect(Path.order);
         },
         singleCellRowOnClick: () => {
             dispatch(clearSelectedOrder());
-            redirect(Path.form);
+            redirect(Path.order);
         }
     };
 }

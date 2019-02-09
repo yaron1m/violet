@@ -7,7 +7,7 @@ export enum Path {
     waitingPayment = '/payment',
     allOrders = "/allOrders",
     allPublicCourses = "/allPublicCourses",
-    form = "/form",
+    order = "/order",
     publicCourse = "/publicCourse",
     actionRequired = "/actionRequired",
     print = "/print",

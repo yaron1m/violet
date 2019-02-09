@@ -16,7 +16,7 @@ export function getElements(state: IState, ownProps: AllOrdersTableContainerProp
 
 export function onEditButton(dispatch: IDispatch, orderId: number) {
     dispatch(selectOrder(orderId));
-    redirect(Path.form);
+    redirect(Path.order);
 }
 
 function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) {

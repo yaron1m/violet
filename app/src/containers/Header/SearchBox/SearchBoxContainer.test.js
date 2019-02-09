@@ -52,7 +52,7 @@ describe('SearchBoxContainer', () => {
         expect(SelectedOrganizationActions.selectOrganization.mock.calls[0][0]).toBe(chosenRequest.info.organizationId);
 
         expect(HistoryUtil.redirect.mock.calls).toHaveLength(1);
-        expect(HistoryUtil.redirect.mock.calls[0][0]).toBe("/form");
+        expect(HistoryUtil.redirect.mock.calls[0][0]).toBe("/order");
     });
 
     it('getSuggestions - has order and organization - data is correct', () => {

@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch:IDispatch) {
     return {
         onEditButton: (summary: IExpectedIncomeOrderSummary) => {
             dispatch(selectOrder(summary.orderId));
-            redirect(Path.form);
+            redirect(Path.order);
         },
     };
 }

@@ -150,6 +150,6 @@ describe('AllOrdersTableContainer', () => {
         expect(SelectedOrderActions.selectOrder).toHaveBeenCalledWith(1002);
 
         expect(HistoryUtil.redirect).toHaveBeenCalledTimes(1);
-        expect(HistoryUtil.redirect).toHaveBeenCalledWith("/form");
+        expect(HistoryUtil.redirect).toHaveBeenCalledWith("/order");
     });
 });

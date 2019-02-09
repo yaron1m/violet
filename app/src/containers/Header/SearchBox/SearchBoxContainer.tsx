@@ -46,7 +46,7 @@ export function handleRequest(chosenRequest: SearchSuggestion, dispatch: IDispat
             dispatch(selectOrder(chosenRequest.orderId));
             dispatch(selectOrganization(chosenRequest.organizationId));
 
-            redirect(Path.form);
+            redirect(Path.order);
             return;
 
         default:

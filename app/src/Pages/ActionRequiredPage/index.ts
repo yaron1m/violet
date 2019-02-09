@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (orderId: number) => {
             dispatch(selectOrder(orderId));
-            redirect(Path.form);
+            redirect(Path.order);
         },
     };
 }

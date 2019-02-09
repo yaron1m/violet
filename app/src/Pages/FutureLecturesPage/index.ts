@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch:IDispatch) {
             switch (summary.entityType) {
                 case EntityType.order:
                     dispatch(selectOrder(summary.entityId));
-                    redirect(Path.form);
+                    redirect(Path.order);
                     return;
 
                 case EntityType.publicCourse:

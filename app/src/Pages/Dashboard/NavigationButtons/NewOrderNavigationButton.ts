@@ -16,7 +16,7 @@ function mapStateToProps(state:IState) {
 function mapDispatchToProps(dispatch:IDispatch) {
     return {
         onClick: () => {
-            redirect(Path.form);
+            redirect(Path.order);
             dispatch(clearSelectedOrder());
             dispatch(clearSelectedOrganization());
         }
