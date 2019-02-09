@@ -3,31 +3,30 @@ import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {createImmutable, mergeImmutable} from "../../util/ObjectUpdater";
 
 const initialState = createImmutable({
-    isSelectedOrganization: false,
-    organization: {},
+    isSelectedOrder: false,
+    order: {},
 });
 
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action :any = {}) => {
     switch (action.type) {
-        case actionTypes.SELECT_ORGANIZATION:
+        case actionTypes.SELECT_ORDER:
             return mergeImmutable(state, {
-                organization: action.payload,
-                isSelectedOrganization: true,
+                order: action.payload,
+                isSelectedOrder: true,
             });
 
-        case actionTypes.UPDATE_SELECTED_ORGANIZATION:
+        case actionTypes.UPDATE_SELECTED_ORDER:
             return mergeImmutable(state, {
-                organization: action.payload,
+                order: action.payload,
             });
 
-        case actionTypes.SET_IS_SELECTED_ORGANIZATION:
+        case actionTypes.SET_IS_SELECTED_ORDER:
             return mergeImmutable(state, {
-                isSelectedOrganization: true,
+                isSelectedOrder: true,
             });
-
 
         case LOGGED_OUT:
-        case actionTypes.CLEAR_SELECTED_ORGANIZATION:
+        case actionTypes.CLEAR_SELECTED_ORDER:
             return initialState;
 
         default:

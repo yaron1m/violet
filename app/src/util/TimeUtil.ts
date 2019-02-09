@@ -1,6 +1,8 @@
 /* eslint-disable no-magic-numbers */
 
-export function calculateDuration(lectureTime) {
+import {ILectureTime} from '../Interfaces/IOrder';
+
+export function calculateDuration(lectureTime: ILectureTime) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
         return "";
 
@@ -10,34 +12,35 @@ export function calculateDuration(lectureTime) {
     return getDuration(lectureTime.startTime, lectureTime.endTime);
 }
 
-function isValidTimeFormat(time) {
+function isValidTimeFormat(time: string) {
     return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
 }
 
-function getDuration(startTime, endTime) {
+function getDuration(startTime: string, endTime: string) {
     if (!startTime || !endTime)
-        return null;
+        return "";
     const start = startTime.split(':');
     const end = endTime.split(':');
 
     const sh = start[0], sm = start[1], eh = end[0], em = end[1];
 
-    let hours = eh - sh;
+    let hours = parseInt(eh) - parseInt(sh);
     if (hours < 0)
         hours = 24 + hours;
 
-    if (em - sm < 0)
-        return pad(hours - 1) + ':' + pad(em - sm + 60);
-    return pad(hours) + ':' + pad(em - sm);
+    const diff = parseInt(em) - parseInt(sm);
+    if (diff < 0)
+        return pad(hours - 1) + ':' + pad(diff + 60);
+    return pad(hours) + ':' + pad(diff);
 }
 
-function pad(number) {
+function pad(number: number) {
     if (number >= 10)
         return number.toString();
     return '0' + number.toString();
 }
 
-export function toDateFormat(date) {
+export function toDateFormat(date: Date) {
     if (date.getHours() >= 20)
         date.setHours(date.getHours() + 4); //Increment day by one for time zone change
 
@@ -48,7 +51,7 @@ export function toDateFormat(date) {
     return year + "-" + month + "-" + day;
 }
 
-export function hasDatePassed(dateString) {
+export function hasDatePassed(dateString: string) {
     const now = new Date();
     now.setHours(7);
     return now >= new Date(dateString);

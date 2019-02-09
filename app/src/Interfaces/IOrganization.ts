@@ -1,4 +1,9 @@
 export default interface IOrganization{
-    id: string;
+    id: number;
+    organizationName: string;
+    companyId: string;
+    organizationAddress: string;
+    organizationCity: string;
+    organizationPostalCode: string;
     internalOrderIdRequired?: boolean;
 }

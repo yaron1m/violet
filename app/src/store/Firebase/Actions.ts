@@ -8,7 +8,7 @@ import firebase from 'firebase/app';
 import "firebase/auth";
 import "firebase/database";
 import {getLabels} from "../Labels/Selectors";
-import {receivePublicCourses} from "../PublicCourses/actions";
+import {receivePublicCourses} from "../PublicCourses/Actions";
 import {isLoggedIn} from "./Selectors";
 import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
 
@@ -144,6 +144,5 @@ export function fetchData(collectionName: string, actionCallback: (val: any) => 
 }
 
 export function sendDataToDatabase(collectionPath: string, value: object) {
-    return firebase.database().ref(collectionPath).set(value)
-        .catch((e) => console.error(`error saving ${collectionPath} - ` + e));
+    return firebase.database().ref(collectionPath).set(value);
 }

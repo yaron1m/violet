@@ -12,8 +12,14 @@ export type IState = {
     firebase: SeamlessImmutable.Immutable<IFirebase>;
     labels: ILabels;
     lists: SeamlessImmutable.Immutable<ILists>;
-    selectedOrganization: SeamlessImmutable.Immutable<IOrganization>;
-    selectedOrder: SeamlessImmutable.Immutable<IOrder>;
+    selectedOrganization: SeamlessImmutable.Immutable<{
+        isSelectedOrganization: boolean;
+        organization: IOrganization,
+    }>;
+    selectedOrder: SeamlessImmutable.Immutable<{
+        isSelectedOrder: boolean;
+        order: IOrder,
+    }>;
     selectedPublicCourses: SeamlessImmutable.Immutable<IPublicCourse>;
     organizations: SeamlessImmutable.Immutable<{ [id: string]: IOrganization }>;
     orders: SeamlessImmutable.Immutable<{ [id: string]: IOrder }>;

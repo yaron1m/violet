@@ -39,7 +39,7 @@ export default interface IOrder {
     lectureTimes: ILectureTime[];
 
     // Public course:
-    publicCourseParticipants: IPublicCourseParticipants[];
+    publicCourseParticipants: IPublicCourseParticipant[];
 
     // Follow up
     followUpRequired: boolean;
@@ -78,7 +78,9 @@ export default interface IOrder {
     notes: string;
 }
 
-interface ILectureTime {
+export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
+
+export interface ILectureTime {
     topic: string;
     audienceSize: string;
     date: string;
@@ -87,10 +89,19 @@ interface ILectureTime {
     startTime: string;
 }
 
-interface IPublicCourseParticipants{
-    email: string;
+export type IPublicCourseParticipantField =
+    "idNumber"
+    | "lecturesAttending"
+    | "email"
+    | "participantCost"
+    | "participantFirstName"
+    | "participantLastName"
+    | "phone";
+
+export interface IPublicCourseParticipant {
     idNumber: string;
     lecturesAttending: number[];
+    email: string;
     participantCost: string;
     participantFirstName: string;
     participantLastName: string;

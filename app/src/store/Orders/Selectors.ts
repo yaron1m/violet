@@ -61,7 +61,7 @@ export function getFollowUpOrdersSummary(state: IState) {
             createdDate: order.createdDate,
             followUpDate: order.followUpDate,
             followUpDetails: cutIfLong(order.followUpDetails, 30),
-            organizationName: cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 20),
+            organizationName: cutIfLong(getOrganizationById(state, order.organizationId.toString()).organizationName, 20),
             topic: "",
         };
         if (isPublicCourseOrder(order)) {
@@ -84,7 +84,7 @@ export function getAllLectureTimes(state: IState, status?: Status) {
             date: time.date,
             topic: time.topic,
             orderId: order.id.toString(),
-            organizationName: getOrganizationById(state, order.organizationId).organizationName,
+            organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
             entityType: EntityType.order,
             entityId: order.id,
         }));
@@ -128,7 +128,7 @@ export function getExpectedIncomeOrders(state: IState, status: Status) {
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             expectedPayDate: order.expectedPayDate,
             totalSum: moneyFormat(order.totalSum, getLabels(state).currencyIcon),
-            organizationName: cutIfLong(getOrganizationById(state, order.organizationId).organizationName, 25),
+            organizationName: cutIfLong(getOrganizationById(state, order.organizationId.toString()).organizationName, 25),
             topic: "",
             lectureDate: "",
         };
@@ -154,7 +154,7 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
         const result = {
             id: order.id,
             status: getOrderStatusLabel(state, order),
-            organizationName: getOrganizationById(state, order.organizationId).organizationName,
+            organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
             date: "",
             topic: "",
         };

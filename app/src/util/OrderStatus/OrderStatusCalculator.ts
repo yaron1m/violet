@@ -1,62 +1,66 @@
 import * as _ from "lodash";
-import {progressiveStatuses, terminatingStatuses} from "../Constants/Status";
+import {progressiveStatuses, Status, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
 import {isPublicCourseOrder} from "../../store/SelectedOrder/Selectors";
+import IOrder from '../../Interfaces/IOrder';
+import IPublicCourse from '../../Interfaces/IPublicCourse';
 
-export default function calculateOrderStatus(order, publicCourse) {
-    let possibleStatuses = _.values(terminatingStatuses);
-    for (let i = 0; i < possibleStatuses.length; i++) {
-        if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
-            return possibleStatuses[i];
+export default function calculateOrderStatus(order: IOrder, publicCourse: IPublicCourse) {
+    // let possibleStatuses = _.values(terminatingStatuses);
+    // for (let i = 0; i < possibleStatuses.length; i++) {
+    for (let status in terminatingStatuses) {
+        if (meetsRequirements(order, publicCourse, status as Status)) {
+            return status as Status;
         }
     }
 
-    possibleStatuses = _.values(progressiveStatuses);
-    let status;
+    // possibleStatuses = _.values(progressiveStatuses);
+    let result = Status.contact;
 
-    for (let i = 0; i < possibleStatuses.length; i++) {
-        if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
-            status = possibleStatuses[i];
-        }
-        else {
+    // for (let i = 0; i < possibleStatuses.length; i++) {
+    for (let possibleStatus in progressiveStatuses) {
+        const status = possibleStatus as Status;
+        if (meetsRequirements(order, publicCourse, status)) {
+            result = status;
+        } else {
             break;
         }
     }
 
-    return status;
+    return result;
 }
 
-function meetsRequirements(order, publicCourse, statusName) {
+function meetsRequirements(order: IOrder, publicCourse: IPublicCourse, statusName: Status) {
     switch (statusName) {
-        case progressiveStatuses.contact:
+        case Status.contact:
             return isContact();
 
-        case progressiveStatuses.offer:
+        case Status.offer:
             return isOffer(order);
 
-        case progressiveStatuses.order:
+        case Status.order:
             return isOrder(order);
 
-        case progressiveStatuses.approvedOrder:
+        case Status.approvedOrder:
             return isApprovedOrder(order);
 
-        case progressiveStatuses.isExecuting:
+        case Status.isExecuting:
             return isExecuting(order, publicCourse);
 
-        case progressiveStatuses.executed:
+        case Status.executed:
             return isExecuted(order, publicCourse);
 
-        case progressiveStatuses.waitingPayment:
+        case Status.waitingPayment:
             return isWaitingPayment(order);
 
-        case progressiveStatuses.payed:
+        case Status.payed:
             return isPayed(order);
 
-        case terminatingStatuses.cancelled:
+        case Status.cancelled:
             return isCancelled(order);
 
-        case terminatingStatuses.rejected:
+        case Status.rejected:
             return isRejected(order);
 
         default:
@@ -69,7 +73,7 @@ function isContact() {
     return true;
 }
 
-function isOffer(order) {
+function isOffer(order: IOrder) {
     if (isPublicCourseOrder(order)) {
         return existsAndNotEmpty(order, "publicCourseParticipants");
     }
@@ -81,7 +85,7 @@ function isOffer(order) {
     return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
 }
 
-function isOrder(order) {
+function isOrder(order: IOrder) {
     if (isPublicCourseOrder(order)) {
         // Order must have at lease one participant attending one lecture
         return _.some(order.publicCourseParticipants, participant =>
@@ -92,17 +96,16 @@ function isOrder(order) {
     return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.date));
 }
 
-function isApprovedOrder(order) {
+function isApprovedOrder(order: IOrder) {
     // Order must be approved
     return existsAndNotEmpty(order, "orderApproved");
 }
 
-function isExecuting(order, publicCourse) {
+function isExecuting(order: IOrder, publicCourse: IPublicCourse) {
     let datesToCheck;
     if (isPublicCourseOrder(order)) {
         datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
-    }
-    else {
+    } else {
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
@@ -110,33 +113,32 @@ function isExecuting(order, publicCourse) {
     return _.some(datesToCheck, hasDatePassed);
 }
 
-function isExecuted(order, publicCourse) {
+function isExecuted(order: IOrder, publicCourse: IPublicCourse) {
     // All lectures passed
     let datesToCheck;
     if (isPublicCourseOrder(order)) {
         datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
-    }
-    else {
+    } else {
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
     return _.every(datesToCheck, hasDatePassed);
 }
 
-function isWaitingPayment(order) {
+function isWaitingPayment(order: IOrder) {
     // Order has proforma or tax invoice number
     return existsAndNotEmpty(order, "proformaInvoiceNumber")
         || existsAndNotEmpty(order, "taxInvoiceNumber");
 }
 
-function isPayed(order) {
+function isPayed(order: IOrder) {
     return existsAndNotEmpty(order, "receiptNumber");
 }
 
-function isCancelled(order) {
+function isCancelled(order: IOrder) {
     return order.cancelled;
 }
 
-function isRejected(order) {
+function isRejected(order: IOrder) {
     return order.rejected;
 }

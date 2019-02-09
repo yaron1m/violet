@@ -103,7 +103,7 @@ function addOrderToResult(state: IState, result: IActionRequiredOrder[], order: 
         id: order.id,
         createdDate: order.createdDate,
         issue,
-        organizationName: getOrganizationById(state, order.organizationId).organizationName,
+        organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
         status: getOrderStatusLabel(state, order),
     });
 }

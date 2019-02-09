@@ -1,65 +1,59 @@
 import {getSelectedOrganization} from "./Selectors";
-import {changeImmutable} from "../../util/ObjectUpdater";
-import {
-    CLEAR_SELECTED_ORGANIZATION,
-    SELECT_ORGANIZATION,
-    SET_IS_SELECTED_ORGANIZATION,
-    UPDATE_SELECTED_ORGANIZATION
-} from "./ActionTypes";
-import {getOrganizationById} from "../Organizations/Selectors";
+import {CLEAR_SELECTED_ORGANIZATION, SELECT_ORGANIZATION, SET_IS_SELECTED_ORGANIZATION, UPDATE_SELECTED_ORGANIZATION} from "./ActionTypes";
+import {getNextOrganizationId, getOrganizationById} from "../Organizations/Selectors";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {closeDialog} from "../Appearance/Actions";
-import {getNextOrganizationId} from "../Organizations/Selectors";
+import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
 
-export function selectOrganization(organizationId) {
-    return function selectOrganization(dispatch, getState) {
-        const organization = getOrganizationById(getState(), organizationId);
+export function selectOrganization(organizationId: number) {
+    return function selectOrganization(dispatch: IDispatch, getState: IGetState) {
+        const organization = getOrganizationById(getState(), organizationId.toString());
         dispatch({
             type: SELECT_ORGANIZATION,
             payload: organization
-        })
+        });
     };
 }
 
-export function updateSelectedOrganization(key, value) {
-    return function updateSelectedOrganization(dispatch, getState) {
-        const selectedOrganization = changeImmutable(getSelectedOrganization(getState()), key, value);
+export function updateSelectedOrganization(key: string, value: string | number | boolean) {
+    return function updateSelectedOrganization(dispatch: IDispatch, getState: IGetState) {
+        let selectedOrganization = getSelectedOrganization(getState());
+        selectedOrganization = Object.assign(selectedOrganization, {[key]: value});
         dispatch({
             type: UPDATE_SELECTED_ORGANIZATION,
             payload: selectedOrganization,
         });
-    }
+    };
 }
 
 export function setIsSelectedOrganization() {
     return {
         type: SET_IS_SELECTED_ORGANIZATION,
-    }
+    };
 }
 
 export function sendSelectedOrganizationToDatabase() {
-    return async function sendSelectedOrganizationToDatabase(dispatch, getState) {
+    return async function sendSelectedOrganizationToDatabase(dispatch: IDispatch, getState: IGetState) {
         await dispatch(updateSelectedOrganization("changedDate", new Date().toJSON()));
         const selectedOrganization = getSelectedOrganization(getState());
 
         return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);
-    }
+    };
 }
 
 export function clearSelectedOrganization() {
     return {
         type: CLEAR_SELECTED_ORGANIZATION,
-    }
+    };
 }
 
 export function saveNewOrganization() {
-    return async function saveNewOrganization(dispatch, getState) {
+    return async function saveNewOrganization(dispatch: IDispatch, getState: IGetState) {
         const newOrganizationId = getNextOrganizationId(getState());
         await dispatch(updateSelectedOrganization("id", newOrganizationId));
 
-        await dispatch(sendSelectedOrganizationToDatabase())
-        // eslint-disable-next-line no-console
+        await dispatch(sendSelectedOrganizationToDatabase());
         dispatch(setIsSelectedOrganization());
         dispatch(closeDialog());
-    }
+    };
 }

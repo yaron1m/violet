@@ -1,11 +1,10 @@
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {getSelectedOrder} from "./Selectors";
 import {calculateDuration} from "../../util/TimeUtil";
-import {getNextOrderId, getOrderById} from "../Orders/Selectors.ts";
+import {getNextOrderId, getOrderById} from "../Orders/Selectors";
 import {isEmptyValue} from "../../util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
-import {mergeImmutable, toMutable} from "../../util/ObjectUpdater";
 import calculateOrderStatus from "../../util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
@@ -14,10 +13,14 @@ import {getOrganizationById} from "../Organizations/Selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
+import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
+import {TabKey} from '../../util/Constants/Status';
+import {ILectureTime, ILectureTimeField, IPublicCourseParticipant, IPublicCourseParticipantField} from '../../Interfaces/IOrder';
+import * as firebase from 'firebase';
 
-export function selectOrder(orderId) {
-    return function selectOrder(dispatch, getState) {
-        const order = getOrderById(getState(), orderId);
+export function selectOrder(orderId: number) {
+    return function selectOrder(dispatch: IDispatch, getState: IGetState) {
+        const order = getOrderById(getState(), orderId.toString());
         dispatch(selectOrganization(order.organizationId));
 
         if (!isEmptyValue(order, "publicCourseId")) {
@@ -31,97 +34,93 @@ export function selectOrder(orderId) {
     };
 }
 
-export function updateSelectedOrder(key, value) {
-    return function updateSelectedOrder(dispatch, getState) {
-        let order = mergeImmutable(getSelectedOrder(getState()), {
+export function updateSelectedOrder(key: string, value: string | number | TabKey | ILectureTime[] | IPublicCourseParticipant[]) {
+    return function updateSelectedOrder(dispatch: IDispatch, getState: IGetState) {
+        let order = Object.assign(getSelectedOrder(getState()), {
             [key]: value,
         });
 
-        const status = calculateOrderStatus(order, getSelectedPublicCourse(getState()));
-
-        order = mergeImmutable(order, {
-            status
-        });
+        order.status = calculateOrderStatus(order, getSelectedPublicCourse(getState()));
 
         dispatch({
             type: UPDATE_SELECTED_ORDER,
             payload: order,
         });
-    }
+    };
 }
 
-export function updateLectureTime(key, value, lectureTimeIndex) {
-    return function updateLectureTime(dispatch, getState) {
-        const lectureTimes = toMutable(getSelectedOrder(getState()).lectureTimes);
+export function updateLectureTime(key: ILectureTimeField, value: string, lectureTimeIndex: number) {
+    return function updateLectureTime(dispatch: IDispatch, getState: IGetState) {
+        const lectureTimes = getSelectedOrder(getState()).lectureTimes;
         lectureTimes[lectureTimeIndex][key] = value;
         lectureTimes[lectureTimeIndex].duration = calculateDuration(lectureTimes[lectureTimeIndex]);
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-    }
+    };
 }
 
 export function addNewLectureTime() {
-    return function addNewLectureTime(dispatch, getState) {
-        const thisSelectedOrder = toMutable(getSelectedOrder(getState()));
+    return function addNewLectureTime(dispatch: IDispatch, getState: IGetState) {
+        const thisSelectedOrder = getSelectedOrder(getState());
         const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? thisSelectedOrder.lectureTimes : [];
+        // @ts-ignore
         lectureTimes.push({});
 
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-    }
+    };
 }
 
-export function deleteLectureTime(lectureTimeIndex) {
-    return function addNewLectureTime(dispatch, getState) {
-        const thisSelectedOrder = toMutable(getSelectedOrder(getState()));
+export function deleteLectureTime(lectureTimeIndex: number) {
+    return function addNewLectureTime(dispatch: IDispatch, getState: IGetState) {
+        const thisSelectedOrder = getSelectedOrder(getState());
         const lectureTimes = thisSelectedOrder.lectureTimes;
         lectureTimes.splice(lectureTimeIndex, 1);
 
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
-    }
+    };
 }
 
-export function updatePublicCourseParticipant(key, value, participantIndex) {
-    return function updatePublicCourseParticipant(dispatch, getState) {
-        const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
+export function updatePublicCourseParticipant(key: IPublicCourseParticipantField, value: string | number[], participantIndex: number) {
+    return function updatePublicCourseParticipant(dispatch: IDispatch, getState: IGetState) {
+        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
         publicCourseParticipants[participantIndex][key] = value;
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
-    }
+    };
 }
 
-export function updatePublicCourseLectureParticipating(lectureId, isAttending, participantIndex) {
-    return function updatePublicCourseLectureParticipating(dispatch, getState) {
-        const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
+export function updatePublicCourseLectureParticipating(lectureId: number, isAttending: boolean, participantIndex: number) {
+    return function updatePublicCourseLectureParticipating(dispatch: IDispatch, getState: IGetState) {
+        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
         const participant = publicCourseParticipants[participantIndex];
         let lecturesAttending = _.hasIn(participant, 'lecturesAttending') ? participant.lecturesAttending : [];
         if (isAttending) {
             lecturesAttending.push(lectureId);
             lecturesAttending.sort((a, b) => a - b);
-        }
-        else {
+        } else {
             lecturesAttending = _.without(lecturesAttending, lectureId);
         }
 
         publicCourseParticipants[participantIndex].lecturesAttending = lecturesAttending;
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
-    }
+    };
 }
 
 export function removeParticipantsFromAllLectures() {
-    return function removeParticipantsFromAllLectures(dispatch, getState) {
+    return function removeParticipantsFromAllLectures(dispatch: IDispatch, getState: IGetState) {
         if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
             return;
 
-        const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
+        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
         for (const participant in publicCourseParticipants) {
             if (publicCourseParticipants[participant].lecturesAttending)
                 publicCourseParticipants[participant].lecturesAttending = [];
         }
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
-    }
+    };
 }
 
-export function removeParticipant(participantId) {
-    return function removeParticipant(dispatch, getState) {
-        const publicCourseParticipants = toMutable(getSelectedOrder(getState()).publicCourseParticipants);
+export function removeParticipant(participantId: number) {
+    return function removeParticipant(dispatch: IDispatch, getState: IGetState) {
+        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
         publicCourseParticipants.splice(participantId, 1);
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };
@@ -130,26 +129,26 @@ export function removeParticipant(participantId) {
 export function setIsSelectedOrder() {
     return {
         type: SET_IS_SELECTED_ORDER,
-    }
+    };
 }
 
 export function sendSelectedOrderToDatabase() {
-    return async function sendSelectedOrderToDatabase(dispatch, getState) {
+    return async function sendSelectedOrderToDatabase(dispatch: IDispatch, getState: IGetState) {
         await dispatch(updateSelectedOrder("changedDate", new Date().toJSON()));
         const selectedOrder = getSelectedOrder(getState());
 
         return sendDataToDatabase('/Orders/' + selectedOrder.id, selectedOrder);
-    }
+    };
 }
 
 export function clearSelectedOrder() {
     return {
         type: CLEAR_SELECTED_ORDER,
-    }
+    };
 }
 
 export function fillNewOrderMissingFields() {
-    return function fillNewOrderMissingFields(dispatch, getState) {
+    return function fillNewOrderMissingFields(dispatch: IDispatch, getState: IGetState) {
         let idPromise;
         let createdPromise;
         let organizationIdPromise;
@@ -162,11 +161,11 @@ export function fillNewOrderMissingFields() {
             organizationIdPromise = dispatch(updateSelectedOrder("organizationId", getSelectedOrganization(getState()).id));
 
         return Promise.all([idPromise, organizationIdPromise, createdPromise]);
-    }
+    };
 }
 
 export function saveNewOrder() {
-    return async function saveNewOrder(dispatch, getState) {
+    return async function saveNewOrder(dispatch: IDispatch, getState: IGetState) {
         await dispatch(fillNewOrderMissingFields());
 
         function success() {
@@ -176,7 +175,7 @@ export function saveNewOrder() {
             dispatch(setIsSelectedOrder());
         }
 
-        function failure(error) {
+        function failure(error: firebase.auth.Error) {
             const dialogText = getLabels(getState()).pages.orderPage.dialog;
             dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
             // eslint-disable-next-line no-console
@@ -188,8 +187,8 @@ export function saveNewOrder() {
         dispatch(hideRequiredFields());
 
         //Check if there are changes in organization
-        if (!_.isEqual(getSelectedOrganization(getState()), getOrganizationById(getState(), getSelectedOrder(getState()).organizationId))) {
+        if (!_.isEqual(getSelectedOrganization(getState()), getOrganizationById(getState(), getSelectedOrder(getState()).organizationId.toString()))) {
             dispatch(sendSelectedOrganizationToDatabase());
         }
-    }
+    };
 }

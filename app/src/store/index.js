@@ -8,7 +8,7 @@ import labels from './Labels/Reducer';
 import lists from './Lists/Reducer';
 import orders from './Orders/Reducer';
 import organizations from './Organizations/Reducer';
-import publicCourses from './PublicCourses/reducer';
+import publicCourses from './PublicCourses/Reducer';
 import selectedOrder from './SelectedOrder/Reducer';
 import selectedOrganization from './SelectedOrganization/Reducer';
 import selectedPublicCourse from './SelectedPublicCourse/Reducer';
