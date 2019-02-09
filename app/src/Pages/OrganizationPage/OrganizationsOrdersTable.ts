@@ -3,12 +3,13 @@ import {clearSelectedOrder} from "../../Store/SelectedOrder/Actions";
 import {getLabels} from "../../Store/Labels/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
-import {getOrdersByOrganization, getOrdersSummary} from "../../Store/Orders/Selectors";
+import {getOrdersByOrganization, getOrdersSummary, IOrderSummary} from "../../Store/Orders/Selectors";
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {isSelectedOrganization} from "../../Store/SelectedOrganization/Selectors";
 import {Path} from "../Path";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
         title: getLabels(state).pages.organizationPage.ordersSummarySection.title,
         tableHeaders: getLabels(state).pages.organizationPage.ordersSummarySection.tableHeaders,
@@ -19,10 +20,10 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch:IDispatch) {
     return {
-        onEditButton: (orderId) => {
-            dispatch(selectOrder(orderId));
+        onEditButton: (summary: IOrderSummary) => {
+            dispatch(selectOrder(summary.orderId));
             redirect(Path.form);
         },
         singleCellRowOnClick: () => {

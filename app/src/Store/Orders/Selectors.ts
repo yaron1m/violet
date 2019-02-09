@@ -45,7 +45,7 @@ export function getNextOrderId(state: IState) {
 
 export function getOrdersByOrganization(state: IState) {
     if (!isSelectedOrganization(state))
-        return null;
+        return [];
 
     const organizationId = getSelectedOrganization(state).id;
     return getOrders(state).filter((order) => order.organizationId === organizationId);
@@ -168,12 +168,20 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
     return _.sortBy(_.map(orders, map), x => x.expectedPayDate);
 }
 
+export interface IOrderSummary {
+    orderId: number;
+    status: string;
+    organizationName: string;
+    date: string;
+    topic: string;
+}
+
 export function getOrdersSummary(state: IState, getOrdersFunction: (state: IState) => IOrder[]) {
     const orders = getOrdersFunction(state);
 
     function map(order: IOrder) {
-        const result = {
-            id: order.id,
+        const result :IOrderSummary= {
+            orderId: order.id,
             status: getOrderStatusLabel(state, order),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
             date: "",
