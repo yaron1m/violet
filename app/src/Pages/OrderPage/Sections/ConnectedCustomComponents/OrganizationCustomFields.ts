@@ -30,7 +30,7 @@ function mergeProps(stateProps: {
 }, dispatchProps: {
     updateAction: (key: string, value: any) => void;
 }, ownProps: {
-    name: string; size?: Size; suggestions: ISuggestion[]; onSuggestionSelected?: (suggestion: ISuggestion) => void;
+    name: string; size?: Size; suggestions?: ISuggestion[]; onSuggestionSelected?: (suggestion: ISuggestion) => void;
 }) {
     return {
         titles: stateProps.titles,

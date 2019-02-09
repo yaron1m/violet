@@ -1,4 +1,4 @@
-import calculatePayDate from '../ProformaInvoiceDateCalculator';
+import calculatePayDate from './ProformaInvoiceDateCalculator';
 
 const allPaymentConditions = {
     "immediate": "תשלום מיידי",
