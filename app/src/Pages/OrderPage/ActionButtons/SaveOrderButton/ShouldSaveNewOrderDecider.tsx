@@ -1,10 +1,19 @@
 import React from 'react';
 import {isEmptyValue} from "../../../../Util/StringUtil";
 import {CustomFlatButton} from "../../../../Components/CustomComponents/CustomButtons";
+import IOrganization from '../../../../Interfaces/IOrganization';
 
-export function shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, selectedOrganization, openDialog,
-                                   closeDialog, isOrderMissingFields, showRequiredFields, saveNewOrganization, saveNewOrder) {
-
+export function shouldSaveNewOrder(
+    orderPageLabels: any,
+    isSelectedOrganization: boolean,
+    selectedOrganization: IOrganization,
+    openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void,
+    closeDialog: () => void,
+    isOrderMissingFields: boolean,
+    showRequiredFields: () => void,
+    saveNewOrganization: () => void,
+    saveNewOrder: () => void
+) {
     const dialogText = orderPageLabels.dialog;
 
     if (isOrderMissingFields) {
@@ -19,7 +28,7 @@ export function shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, sele
         const dialogContent = isEmptyValue(selectedOrganization, "organizationName") ?
             dialogText.noOrganizationSelectedContent :
             dialogText.unrecognizedOrganization.replace("{0}", selectedOrganization.organizationName);
-        const dialogActions = getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, dialogText, closeDialog, saveNewOrganization, saveNewOrder);
+        const dialogActions = getOrganizationDialogActions(selectedOrganization, dialogText, closeDialog, saveNewOrganization, saveNewOrder);
         openDialog(dialogText.noOrganizationSelectedTitle, dialogContent, dialogActions);
         return false;
     }
@@ -27,9 +36,15 @@ export function shouldSaveNewOrder(orderPageLabels, isSelectedOrganization, sele
     return true;
 }
 
-function getOrganizationDialogActions(isSelectedOrganization, selectedOrganization, dialogLabels, closeDialog, saveNewOrganization, saveNewOrder) {
+function getOrganizationDialogActions(
+    selectedOrganization: IOrganization,
+    dialogLabels: any,
+    closeDialog: () => void,
+    saveNewOrganization: () => void,
+    saveNewOrder: () => void
+) {
     if (isEmptyValue(selectedOrganization, "organizationName"))
-        return null;
+        return [];
 
     return [
         <CustomFlatButton
@@ -40,10 +55,10 @@ function getOrganizationDialogActions(isSelectedOrganization, selectedOrganizati
                 saveNewOrder();
             }}
         />,
-        <CustomFlatButton
+        < CustomFlatButton
             key={dialogLabels.existingOrganization}
             label={dialogLabels.existingOrganization}
             onClick={closeDialog}
-        />,
+        />
     ];
 }

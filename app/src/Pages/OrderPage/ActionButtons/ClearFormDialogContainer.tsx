@@ -3,17 +3,16 @@ import {connect} from 'react-redux';
 import {clearSelectedOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
 import {hideRequiredFields} from "../../../Store/Appearance/Actions";
-import PropTypes from "prop-types";
 import CustomDialog from "../../../Components/CustomComponents/CustomDialog";
 import {CustomFlatButton} from "../../../Components/CustomComponents/CustomButtons";
 import {clearSelectedOrder} from "../../../Store/SelectedOrder/Actions";
+import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
 
-function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {
+function getActions(dialogText: any, clearSelected: () => void, hideRequiredFields: () => void, closeDialog: () => void) {
     return [
         <CustomFlatButton
             key={dialogText.clear}
             label={dialogText.clear}
-            primary={true}
             onClick={() => {
                 clearSelected();
                 hideRequiredFields();
@@ -23,21 +22,20 @@ function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) 
         <CustomFlatButton
             key={dialogText.cancel}
             label={dialogText.cancel}
-            primary={true}
             onClick={() => {
                 closeDialog();
             }}
-        />]
+        />];
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         title: getOrderPageLabels(state).actionButtons.clearDialog.title,
         dialogText: getOrderPageLabels(state).actionButtons.clearDialog,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
         clearSelected: () => {
             dispatch(clearSelectedOrder());
@@ -47,21 +45,23 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
+function mergeProps(stateProps: {
+    title: string,
+    dialogText: any
+}, dispatchProps: {
+    clearSelected: () => void,
+    hideRequiredFields: () => void
+}, ownProps: {
+    open: boolean,
+    onRequestClose: () => void
+}) {
     return {
         open: ownProps.open,
         title: stateProps.title,
         onRequestClose: ownProps.onRequestClose,
         actions: getActions(stateProps.dialogText, dispatchProps.clearSelected,
             dispatchProps.hideRequiredFields, ownProps.onRequestClose),
-    }
+    };
 }
 
-const Container = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDialog);
-
-Container.propTypes = {
-    open: PropTypes.bool.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
-};
-
-export default Container;
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDialog);

@@ -5,21 +5,18 @@ import ClearFormButton from './ClearFormContainer';
 import PrintOrderButton from './PrintOrderContainer';
 import ActionButtonsBox from "../../../Components/ActionButtons/ActionButtonsBox";
 
-export default class OrderActionButtons extends React.Component {
-    render() {
+export default function OrderActionButtons() {
+    return (
+        <ActionButtonsBox>
 
-        return (
-            <ActionButtonsBox>
+            <SaveOrderButton/>
 
-                <SaveOrderButton/>
+            <SendOfferButton/>
 
-                <SendOfferButton/>
+            <PrintOrderButton/>
 
-                <PrintOrderButton/>
+            <ClearFormButton/>
 
-                <ClearFormButton/>
-
-            </ActionButtonsBox>
-        );
-    }
+        </ActionButtonsBox>
+    );
 }

@@ -36,5 +36,5 @@ interface CustomDialogProps {
     title: string;
     onRequestClose: () => void;
     actions?: React.ReactNode[];
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }

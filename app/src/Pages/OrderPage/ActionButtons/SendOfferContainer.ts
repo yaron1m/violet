@@ -1,11 +1,13 @@
 import {connect} from 'react-redux';
 import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
 import {getSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 import SendOfferButton from "./SendOffer";
 import {getSelectedOrder, isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
+import {IState} from '../../../Interfaces/ReduxInterfaces';
+import IOrder from '../../../Interfaces/IOrder';
 
-function getLink(selectedOrder, selectedOrganizationName) {
+function getLink(selectedOrder: IOrder, selectedOrganizationName:string) {
     let topicsArray = _.map(selectedOrder.lectureTimes, lectureTime => lectureTime.topic);
 
     // Remove duplicates
@@ -15,7 +17,7 @@ function getLink(selectedOrder, selectedOrganizationName) {
 
     let href = "violet:";
 
-    href += parameter("id", selectedOrder.id, true);
+    href += parameter("id", selectedOrder.id.toString(), true);
     href += parameter("topic", arrayToParameterValue(topicsArray));
     href += parameter("email", selectedOrder.contactEmail);
     href += parameter("organizationName", selectedOrganizationName);
@@ -27,7 +29,7 @@ function getLink(selectedOrder, selectedOrganizationName) {
     return href;
 }
 
-function parameter(key, value, first = false) {
+function parameter(key: string, value: string, first = false) {
     if (value === undefined || value === null)
         return "";
 
@@ -35,7 +37,7 @@ function parameter(key, value, first = false) {
     return (first ? "" : "&") + key + "=" + encodedValue;
 }
 
-function arrayToParameterValue(array) {
+function arrayToParameterValue(array: string[]) {
     let res = "";
     for (const index in array) {
         res += array[index] + "#";
@@ -44,12 +46,12 @@ function arrayToParameterValue(array) {
     return res.substr(0, res.length - 1);
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
-        sendLabel: getOrderPageLabels(state).actionButtons.send,
+        sendLabel: getOrderPageLabels(state).actionButtons.send as string,
         orderEmailLink: isSelectedOrder(state) ?
             getLink(getSelectedOrder(state), getSelectedOrganization(state).organizationName)
-            : null,
+            : undefined,
     };
 }
 

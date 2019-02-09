@@ -7,13 +7,14 @@ import {getSelectedOrganization, isSelectedOrganization} from "../../../../Store
 import {isOrderMissingFields} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {saveNewOrganization} from "../../../../Store/SelectedOrganization/Actions";
 import {saveNewOrder} from "../../../../Store/SelectedOrder/Actions";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import * as React from 'react';
+import IOrganization from '../../../../Interfaces/IOrganization';
 
-
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     const orderPageLabels = getOrderPageLabels(state);
     return {
-        tooltip: orderPageLabels.actionButtons.save,
-
+        tooltip: orderPageLabels.actionButtons.save as string,
         orderPageLabels,
         isSelectedOrganization: isSelectedOrganization(state),
         selectedOrganization: getSelectedOrganization(state),
@@ -21,18 +22,21 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        openDialog: (title, content, actions) => dispatch(openDialog(title, content, actions)),
+        openDialog: (title: string, content: string, actions?: React.ReactNode[]) => dispatch(openDialog(title, content, actions)),
         closeDialog: () => dispatch(closeDialog()),
         showRequiredFields: () => dispatch(showRequiredFields()),
         saveNewOrganization: () => dispatch(saveNewOrganization()),
-
         saveNewOrder: () => dispatch(saveNewOrder()),
-    }
+    };
 }
 
-function mergeProps(stateProps, dispatchProps) {
+function mergeProps(stateProps: {
+    tooltip: string; orderPageLabels: any; isSelectedOrganization: boolean; selectedOrganization: IOrganization; isOrderMissingFields: boolean;
+}, dispatchProps: {
+    openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void; closeDialog: () => void; showRequiredFields: () => void; saveNewOrganization: () => void; saveNewOrder: () => void;
+}) {
     return {
         tooltip: stateProps.tooltip,
         onClick: () => {
@@ -53,8 +57,7 @@ function mergeProps(stateProps, dispatchProps) {
 
             dispatchProps.saveNewOrder();
         }
-    }
+    };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SaveActionButton);
