@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import * as _ from 'lodash';
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
-import {getOrdersByOrganization} from "../../../../Store/Orders/Selectors.ts";
+import {getOrdersByOrganization} from "../../../../Store/Orders/Selectors";
 import {getValueOrEmptyString} from "../../../../Util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 

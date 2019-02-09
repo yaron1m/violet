@@ -1,25 +1,19 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../Store/Labels/Selectors";
-import PropTypes from "prop-types";
 import {CustomRaisedButton} from "../../Components/CustomComponents/CustomButtons";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         label: getLabels(state).pages.loginPage.signIn,
         style: {marginTop: 10},
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps: { onClick: () => void }) {
     return {
         onClick: ownProps.onClick
-    }
+    };
 }
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);
-
-Container.propTypes = {
-    onClick: PropTypes.func.isRequired,
-};
-
-export default Container;
+export default connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);

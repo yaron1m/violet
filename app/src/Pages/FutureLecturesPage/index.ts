@@ -4,13 +4,14 @@ import {getLabels} from "../../Store/Labels/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getAllLectureTimes} from "../../Store/Orders/Selectors.ts";
+import {getAllLectureTimes, ILectureTimeSummary} from "../../Store/Orders/Selectors";
 import {Status} from "../../Util/Constants/Status";
 import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
 import {EntityType} from "../../Util/Constants/EntityType";
 import {Path} from "../Path";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-export function getFutureLectureTimes(state) {
+export function getFutureLectureTimes(state:IState) {
     const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
@@ -20,24 +21,7 @@ export function getFutureLectureTimes(state) {
         x => x.date);
 }
 
-function onEditButton(dispatch, info) {
-    switch (info.type) {
-        case EntityType.order:
-            dispatch(selectOrder(info.id));
-            redirect(Path.form);
-            return;
-
-        case EntityType.publicCourse:
-            dispatch(selectPublicCourse(info.id));
-            redirect(Path.publicCourse);
-            return;
-
-        default:
-            return;
-    }
-}
-
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     return {
         title: getLabels(state).pages.futureLecturesPage.table.title,
         tableHeaders: getLabels(state).pages.futureLecturesPage.table.tableHeaders,
@@ -46,9 +30,24 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch:IDispatch) {
     return {
-        onEditButton: orderId => onEditButton(dispatch, orderId),
+        onEditButton: (summary: ILectureTimeSummary) => {
+            switch (summary.entityType) {
+                case EntityType.order:
+                    dispatch(selectOrder(summary.entityId));
+                    redirect(Path.form);
+                    return;
+
+                case EntityType.publicCourse:
+                    dispatch(selectPublicCourse(summary.entityId.toString()));
+                    redirect(Path.publicCourse);
+                    return;
+
+                default:
+                    return;
+            }
+        },
     };
 }
 

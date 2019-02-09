@@ -51,12 +51,22 @@ export function getOrdersByOrganization(state: IState) {
     return getOrders(state).filter((order) => order.organizationId === organizationId);
 }
 
+export interface IFollowUpOrderSummary {
+    orderId: number;
+    status: string;
+    createdDate: string;
+    followUpDate: string;
+    followUpDetails: string;
+    organizationName: string;
+    topic: string;
+}
+
 export function getFollowUpOrdersSummary(state: IState) {
     const orders = _.filter(getOrders(state), order => order.followUpRequired);
 
     function map(order: IOrder) {
-        const result = {
-            id: order.id,
+        const result: IFollowUpOrderSummary = {
+            orderId: order.id,
             status: getOrderStatusLabel(state, order),
             createdDate: order.createdDate,
             followUpDate: order.followUpDate,
@@ -78,8 +88,8 @@ export function getFollowUpOrdersSummary(state: IState) {
 }
 
 //TODO update tests
-export function getAllLectureTimes(state: IState, status?: Status) {
-    function getMappedLectureTimes(order: IOrder): lectureTime[] {
+export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
+    function getMappedLectureTimes(order: IOrder): ILectureTimeSummary[] {
         return _.map(order.lectureTimes, time => ({
             date: time.date,
             topic: time.topic,
@@ -92,7 +102,7 @@ export function getAllLectureTimes(state: IState, status?: Status) {
 
     const internalLectures = _.flatMap(getOrders(state, status), getMappedLectureTimes);
 
-    function mapPublicCourses(course: IPublicCourse): lectureTime[] {
+    function mapPublicCourses(course: IPublicCourse): ILectureTimeSummary[] {
         return _.map(course.lectures, lecture => ({
             date: lecture.date,
             topic: lecture.topic,
@@ -109,7 +119,7 @@ export function getAllLectureTimes(state: IState, status?: Status) {
     return _.concat(internalLectures, publicCourseLectures);
 }
 
-interface lectureTime {
+export interface ILectureTimeSummary {
     orderId: string;
     date: string;
     topic: string;
@@ -118,12 +128,23 @@ interface lectureTime {
     entityId: number;
 }
 
-export function getExpectedIncomeOrders(state: IState, status: Status) {
+export interface IExpectedIncomeOrderSummary {
+    orderId: number;
+    status: string;
+    proformaInvoiceNumber: string;
+    expectedPayDate: string;
+    totalSum: string;
+    organizationName: string;
+    topic: string;
+    lectureDate: string;
+}
+
+export function getExpectedIncomeOrders(state: IState, status: Status | Status[]) {
     const orders = getOrders(state, status);
 
     function map(order: IOrder) {
-        const result = {
-            id: order.id,
+        const result: IExpectedIncomeOrderSummary = {
+            orderId: order.id,
             status: cutIfLong(getOrderStatusLabel(state, order), 20),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             expectedPayDate: order.expectedPayDate,

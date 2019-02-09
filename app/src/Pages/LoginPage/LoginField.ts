@@ -1,11 +1,10 @@
 import {connect} from 'react-redux';
 import {getLabels} from "../../Store/Labels/Selectors";
-import PropTypes from "prop-types";
 import CustomTextField from "../../Components/CustomComponents/CustomTextField";
 import {Sizes} from "../../Util/Constants/Sizes";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state:IState, ownProps: LoginFieldProps) {
     return {
         titles: {[ownProps.type]: getLabels(state).pages.loginPage[ownProps.type]},
         values: {[ownProps.type]: ownProps.value},
@@ -16,22 +15,16 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch:IDispatch, ownProps: LoginFieldProps) {
     return {
         updateAction: ownProps.onChange,
-        onKeyDown: (event) => {
-            if (event.key === "Enter")
-                ownProps.onKeyDown();
-        }
     }
 }
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(CustomTextField);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomTextField);
 
-Container.propTypes = {
-    value: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    onKeyDown: PropTypes.func.isRequired,
-};
-
-export default Container;
+interface LoginFieldProps {
+    value: string,
+    onChange: (key: string, newValue: string) => void,
+    type: 'email' | 'password';
+}

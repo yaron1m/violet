@@ -3,7 +3,7 @@ import {clearSelectedOrder} from "../../Store/SelectedOrder/Actions";
 import {getLabels} from "../../Store/Labels/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
-import {getOrdersByOrganization, getOrdersSummary} from "../../Store/Orders/Selectors.ts";
+import {getOrdersByOrganization, getOrdersSummary} from "../../Store/Orders/Selectors";
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {isSelectedOrganization} from "../../Store/SelectedOrganization/Selectors";
 import {Path} from "../Path";

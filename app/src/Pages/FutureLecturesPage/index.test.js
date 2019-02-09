@@ -1,5 +1,5 @@
-import * as Target from "..";
-import {Status} from "../../../Util/Constants/Status";
+import * as Target from ".";
+import {Status} from "../../Util/Constants/Status";
 
 function getState(orders) {
     return {

@@ -1,43 +1,33 @@
 import React from 'react';
 import PageTitle from '../../Components/PageTitle';
-import PropTypes from "prop-types";
 import LoginField from "./LoginField";
-import SignInWithGoogleButtonContainer from "./SignInWithGoogleButtonContainer";
+import SignInWithGoogleButton from "./SignInWithGoogleButton";
 import CustomPaper from "../../Components/CustomComponents/CustomPaper";
 import LoginButton from "./LoginButton";
 import Colors from "../../Util/Constants/Colors";
 
-export default class LoginPage extends React.Component {
+export default class LoginPage extends React.Component<LoginPageProps> {
 
-    constructor() {
-        super();
-        this.state = {
-            email: "",
-            password: "",
-            errorMessage: "",
-        }
-    }
+    state = {
+        email: "",
+        password: "",
+        errorMessage: "",
+    };
 
-    errorCallback(message) {
-        this.setState(Object.assign({}, this.state, {
+    errorCallback(message: string) {
+        this.setState({
             errorMessage: message,
-        }));
+        });
     }
 
-    signInRequest() {
-        function errorCallback(message) {
-            this.setState(Object.assign({}, this.state, {
-                errorMessage: message,
-            }));
-        }
-
-        this.props.signInRequest(this.state.email, this.state.password, errorCallback.bind(this));
-    }
+    signInRequest = (errorCallback: (message: string) => void) => () => {
+        this.props.signInRequest(this.state.email, this.state.password, errorCallback);
+    };
 
     render() {
         const style = {
             div: {
-                textAlign: "center",
+                textAlign: "center" as 'center',
                 margin: "auto",
             },
             paper: {
@@ -55,23 +45,19 @@ export default class LoginPage extends React.Component {
                     <LoginField
                         type="email"
                         value={this.state.email}
-                        onChange={(key, newValue) => (this.setState(Object.assign({}, this.state, {
+                        onChange={(key: string, newValue: string) => (this.setState({
                             email: newValue,
                             errorMessage: "",
-                        })))}
-
-                        onKeyDown={this.signInRequest.bind(this)}
+                        }))}
                     />
 
                     <LoginField
                         type="password"
                         value={this.state.password}
-                        onChange={(key, newValue) => (this.setState(Object.assign({}, this.state, {
+                        onChange={(key: string, newValue: string) => (this.setState({
                             password: newValue,
                             errorMessage: "",
-                        })))}
-
-                        onKeyDown={this.signInRequest.bind(this)}
+                        }))}
                     />
 
                     <div style={{color: Colors.red}}>
@@ -79,10 +65,10 @@ export default class LoginPage extends React.Component {
                     </div>
 
                     <LoginButton
-                        onClick={this.signInRequest.bind(this)}
+                        onClick={this.signInRequest(this.errorCallback)}
                     />
 
-                    <SignInWithGoogleButtonContainer
+                    <SignInWithGoogleButton
                         errorCallback={this.errorCallback.bind(this)}
                     />
                 </CustomPaper>
@@ -92,8 +78,7 @@ export default class LoginPage extends React.Component {
     }
 }
 
-
-LoginPage.propTypes = {
-    title: PropTypes.string.isRequired,
-    signInRequest: PropTypes.func.isRequired,
-};
+interface LoginPageProps {
+    title: string;
+    signInRequest: (email: string, password: string, errorCallback: (message: string) => void) => void;
+}

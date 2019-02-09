@@ -58,15 +58,13 @@ export function initFirebase() {
     };
 }
 
-export function signInWithGoogle(errorCallback: (message: string) => void) { //TODO this should not be an action
-    return function signInRequest() {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithRedirect(provider)
-            .catch(function (error) {
-                errorCallback(error.message);
-                console.error(error);
-            });
-    };
+export function signInWithGoogle(errorCallback: (message: string) => void) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider)
+        .catch(function (error) {
+            errorCallback(error.message);
+            console.error(error);
+        });
 }
 
 export function signInRequest(email: string, password: string, errorCallback: (message: string) => void) {

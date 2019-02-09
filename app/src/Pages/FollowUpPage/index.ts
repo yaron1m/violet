@@ -4,10 +4,11 @@ import {getLabels} from "../../Store/Labels/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getFollowUpOrdersSummary} from "../../Store/Orders/Selectors.ts";
+import {getFollowUpOrdersSummary, IFollowUpOrderSummary} from "../../Store/Orders/Selectors";
 import {Path} from "../Path";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
     return {
         title: getLabels(state).pages.followUpPage.title,
         tableHeaders: getLabels(state).pages.followUpPage.tableHeaders,
@@ -15,10 +16,10 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        onEditButton: (orderId) => {
-            dispatch(selectOrder(orderId));
+        onEditButton: (summary: IFollowUpOrderSummary) => {
+            dispatch(selectOrder(summary.orderId));
             redirect(Path.form);
         },
     };

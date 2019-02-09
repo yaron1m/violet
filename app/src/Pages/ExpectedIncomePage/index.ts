@@ -1,13 +1,14 @@
 import {connect} from 'react-redux';
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {getLabels} from "../../Store/Labels/Selectors";
-import {getExpectedIncomeOrders} from "../../Store/Orders/Selectors.ts";
+import {IExpectedIncomeOrderSummary, getExpectedIncomeOrders} from "../../Store/Orders/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {Status} from "../../Util/Constants/Status";
 import {Path} from "../Path";
+import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state) {
+function mapStateToProps(state:IState) {
     const acceptedStatuses = [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder];
 
     return {
@@ -17,10 +18,10 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch:IDispatch) {
     return {
-        onEditButton: (orderId) => {
-            dispatch(selectOrder(orderId));
+        onEditButton: (summary: IExpectedIncomeOrderSummary) => {
+            dispatch(selectOrder(summary.orderId));
             redirect(Path.form);
         },
     };

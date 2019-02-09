@@ -1,17 +1,14 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import signInWithGoogleNormal from '../../images/google-sign-in/GoogleSigninWeb.png';
 import signInWithGooglePressed from '../../images/google-sign-in/GoogleSigninWebPressed.png';
 import signInWithGoogleFocused from '../../images/google-sign-in/GoogleSigninFocus.png';
+import {signInWithGoogle} from '../../Store/Firebase/Actions';
 
-class SignInWithGoogleButton extends React.Component {
+export default class SignInWithGoogleButton extends React.Component<SignInWithGoogleButtonProps> {
 
-    constructor() {
-        super();
-        this.state = {
-            signInWithGoogleImage: signInWithGoogleNormal,
-        }
-    }
+    state = {
+        signInWithGoogleImage: signInWithGoogleNormal,
+    };
 
     render() {
         const style = {
@@ -24,25 +21,23 @@ class SignInWithGoogleButton extends React.Component {
             <img src={this.state.signInWithGoogleImage}
                  alt="Sign in with Google"
                  style={style}
-                 onMouseOver={() => this.setState(Object.assign({}, this.state, {
+                 onMouseOver={() => this.setState({
                      signInWithGoogleImage: signInWithGoogleFocused,
-                 }))}
-                 onMouseOut={() => this.setState(Object.assign({}, this.state, {
+                 })}
+                 onMouseOut={() => this.setState({
                      signInWithGoogleImage: signInWithGoogleNormal,
-                 }))}
-                 onClick={function () {
-                     this.setState(Object.assign({}, this.state, {
+                 })}
+                 onClick={()=> {
+                     this.setState({
                          signInWithGoogleImage: signInWithGooglePressed,
-                     }));
-                     this.props.signInWithGoogleRequest()
-                 }.bind(this)}
+                     });
+                     signInWithGoogle(this.props.errorCallback);
+                 }}
             />
         );
     }
 }
 
-SignInWithGoogleButton.propTypes = {
-    signInWithGoogleRequest: PropTypes.func.isRequired,
-};
-
-export default SignInWithGoogleButton;
+interface SignInWithGoogleButtonProps {
+    errorCallback: (message: string) => void;
+}
