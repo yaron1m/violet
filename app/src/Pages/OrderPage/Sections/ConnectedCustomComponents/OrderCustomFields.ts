@@ -11,11 +11,10 @@ import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFiel
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../Util/Constants/Size';
 import {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
-import IOrder from '../../../../Interfaces/IOrder';
+import IOrder, {IStringObject} from '../../../../Interfaces/IOrder';
 
 interface OrderCustomFieldsProps {
     name: string;
-    lectureTimeIndex: number;
     size?: Size;
 }
 
@@ -34,7 +33,7 @@ function mapDispatchToProps(dispatch :IDispatch) {
 }
 
 function mergeProps(stateProps:{
-    titles: { [key: string]: string }; values: IOrder; requiredFields:string[];
+    titles: IStringObject; values: IOrder; requiredFields:string[];
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
 }, ownProps:OrderCustomFieldsProps) {

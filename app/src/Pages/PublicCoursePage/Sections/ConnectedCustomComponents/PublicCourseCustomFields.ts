@@ -8,6 +8,7 @@ import CustomSelectField, {IOption} from "../../../../Components/CustomComponent
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import IPublicCourse, {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
 import {Size} from '../../../../util/Constants/Size';
+import {IStringObject} from '../../../../Interfaces/IOrder';
 
 function mapStateToProps(state: IState) {
     return {
@@ -24,7 +25,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 function mergeProps(stateProps: {
-    titles: { [key: string]: string }; values: IPublicCourse;
+    titles: IStringObject; values: IPublicCourse;
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
 }, ownProps: {

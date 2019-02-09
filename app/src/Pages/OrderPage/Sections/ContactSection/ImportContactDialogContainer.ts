@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import * as _ from 'lodash';
@@ -6,9 +5,22 @@ import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../Store/Orders/Selectors";
 import {getValueOrEmptyString} from "../../../../Util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import IOrder, {IStringObject} from '../../../../Interfaces/IOrder';
 
-function getContacts(state) {
-    const allContacts = {};
+export interface IContact extends IStringObject {
+    contactFirstName: string;
+    contactLastName: string;
+    contactPhone1: string;
+    contactPhone2: string;
+    contactPhoneExtension: string;
+    contactEmail: string;
+    contactFax: string;
+    contactJob: string;
+}
+
+function getContacts(state: IState) {
+    const allContacts: { [contactKey: string]: IContact } = {};
     const orders = getOrdersByOrganization(state);
     if (!orders)
         return [];
@@ -20,7 +32,7 @@ function getContacts(state) {
     return _.map(allContacts, x => x);
 }
 
-function addSingleContact(order, allContacts, isFinancialContacts) {
+function addSingleContact(order: IOrder, allContacts: { [contactKey: string]: IContact }, isFinancialContacts: boolean) {
     const thisContact = getContactsFromOrder(order, isFinancialContacts);
     const thisContactKey = thisContact.contactFirstName.trim() + thisContact.contactLastName.trim();
     if (thisContactKey === "" || allContacts.hasOwnProperty(thisContactKey))
@@ -29,8 +41,8 @@ function addSingleContact(order, allContacts, isFinancialContacts) {
     allContacts[thisContactKey] = thisContact;
 }
 
-function getContactsFromOrder(order, isFinancialContacts) {
-    const getKey = (key) => isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key;
+function getContactsFromOrder(order: IOrder, isFinancialContacts: boolean): IContact {
+    const getKey = (key: string) => isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key;
 
     return {
         contactFirstName: getValueOrEmptyString(order, getKey("contactFirstName")),
@@ -41,13 +53,15 @@ function getContactsFromOrder(order, isFinancialContacts) {
         contactEmail: getValueOrEmptyString(order, getKey("contactEmail")),
         contactFax: getValueOrEmptyString(order, getKey("contactFax")),
         contactJob: getValueOrEmptyString(order, getKey("contactJob")),
-    }
+    };
 }
 
-
-function importContact(contacts, index, updateSelectedOrder, onRequestClose, getKey) {
-    const contact = contacts[index];
-
+function importContact(
+    contact: IContact,
+    updateSelectedOrder: (key: string, value: string) => void,
+    onRequestClose: () => void,
+    getKey: (key: string) => string
+) {
     for (const contactKey in contact) {
         if (!contact.hasOwnProperty(contactKey)) continue;
         const key = getKey(contactKey);
@@ -56,26 +70,29 @@ function importContact(contacts, index, updateSelectedOrder, onRequestClose, get
     onRequestClose();
 }
 
-
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: IState, ownProps: ImportContactDialogContainerProps) {
     return {
         dialogTitle: getOrderSectionsLabels(state).contacts.importContactsDialog.dialogTitle,
-        noContactsLabel: getOrderSectionsLabels(state).contacts.importContactsDialog.noContactsLabel,
+        noContactsLabel: getOrderSectionsLabels(state).contacts.importContactsDialog.noContactsLabel as string,
         onRequestClose: ownProps.onRequestClose,
 
         contacts: getContacts(state),
-        tableHeaders: getOrderSectionsLabels(state).contacts.importContactsDialog.tableHeaders,
+        tableHeaders: getOrderSectionsLabels(state).contacts.importContactsDialog.tableHeaders as IStringObject[],
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps: ImportContactDialogContainerProps) {
     return {
-        updateSelectedOrder: (key, value) => dispatch(updateSelectedOrder(key, value)),
-        getKey: (key) => ownProps.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key,
-    }
+        updateSelectedOrder: (key: string, value: string) => dispatch(updateSelectedOrder(key, value)),
+        getKey: (key: string) => ownProps.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key,
+    };
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
+function mergeProps(stateProps: {
+    dialogTitle: any; noContactsLabel: string; onRequestClose: () => void; contacts: IContact[]; tableHeaders: IStringObject[];
+}, dispatchProps: {
+    updateSelectedOrder: (key: string, value: string) => void; getKey: (key: string) => string;
+}, ownProps: ImportContactDialogContainerProps) {
     return {
         dialogOpen: ownProps.dialogOpen,
         dialogTitle: stateProps.dialogTitle,
@@ -84,17 +101,14 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         tableHeaders: stateProps.tableHeaders,
         onRequestClose: ownProps.onRequestClose,
 
-        importContact: (index) => importContact(stateProps.contacts, index, dispatchProps.updateSelectedOrder, ownProps.onRequestClose, dispatchProps.getKey)
+        importContact: (contact: IContact) => importContact(contact, dispatchProps.updateSelectedOrder, ownProps.onRequestClose, dispatchProps.getKey)
     };
 }
 
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ImportContactDialog);
 
-const Container = connect(mapStateToProps, mapDispatchToProps, mergeProps)(ImportContactDialog);
-
-Container.propTypes = {
-    dialogOpen: PropTypes.bool.isRequired,
-    isFinancialContacts: PropTypes.bool,
-    onRequestClose: PropTypes.func.isRequired,
-};
-
-export default Container;
+interface ImportContactDialogContainerProps {
+    dialogOpen: boolean;
+    isFinancialContacts: boolean;
+    onRequestClose: () => void;
+}

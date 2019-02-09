@@ -80,6 +80,8 @@ export default interface IOrder {
 
 export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
 
+export type IStringObject = { [key: string]: string };
+
 export interface ILectureTime {
     topic: string;
     audienceSize: string;

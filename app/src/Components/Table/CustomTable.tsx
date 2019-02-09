@@ -34,7 +34,7 @@ export default function CustomTable(props: CustomTableProps) {
 }
 
 interface CustomTableProps {
-    headers: { [key: string]: string }[];
+    headers: IStringObject[];
     hideEdit?: boolean;
     children?: React.ReactNode;
 }

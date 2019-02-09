@@ -9,10 +9,11 @@ import SaveActionButton from "../../../Components/ActionButtons/SaveActionButton
 import {getSelectedOrganization, isSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
 import {setIsSelectedOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
+import {IStringObject} from '../../../Interfaces/IOrder';
 
 function saveExistingOrganization(
-    dialogText: { [key: string]: string },
-    snackBarText: { [key: string]: string },
+    dialogText: IStringObject,
+    snackBarText: IStringObject,
     selectedOrganizationName: string,
     isSelectedOrganization: boolean,
     nextOrganizationId: number,
@@ -33,8 +34,8 @@ function saveExistingOrganization(
 
 function handleDatabasePromise(
     promise: Promise<void>,
-    dialogText: { [key: string]: string },
-    snackBarText: { [key: string]: string },
+    dialogText: IStringObject,
+    snackBarText: IStringObject,
     selectedOrganizationName: string,
     openDialog: (title: string, content: string) => void,
     openSnackbar: (message: string) => void,
@@ -54,7 +55,7 @@ function handleDatabasePromise(
 function mapStateToProps(state: IState) {
     return {
         tooltip: getLabels(state).pages.organizationPage.actionButtons.save as string,
-        dialogText: getLabels(state).pages.organizationPage.dialog as { [key: string]: string },
+        dialogText: getLabels(state).pages.organizationPage.dialog as IStringObject,
         snackBarText: getLabels(state).pages.organizationPage.snackBar,
         selectedOrganizationName: getSelectedOrganization(state).organizationName,
         isSelectedOrganization: isSelectedOrganization(state),
@@ -72,7 +73,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 function mergeProps(stateProps: {
-    tooltip: string; dialogText: { [key: string]: string }; snackBarText: { [key: string]: string }; selectedOrganizationName: string; isSelectedOrganization: boolean; nextOrganizationId: number;
+    tooltip: string; dialogText: IStringObject; snackBarText: IStringObject; selectedOrganizationName: string; isSelectedOrganization: boolean; nextOrganizationId: number;
 }, dispatchProps: {
     openDialog: (title: string, content: string) => void; openSnackbar: (message: string) => void; setIsSelectedOrganization: () => void; sendSelectedOrganizationToDatabase: () => Promise<void>;
 }) {

@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CustomDialog from "../../../../Components/CustomComponents/CustomDialog";
 import CustomTable from "../../../../Components/Table/CustomTable";
 import * as _ from 'lodash';
 import CustomTableRow from "../../../../Components/Table/CustomTableRow";
+import {IContact} from './ImportContactDialogContainer';
+import {IStringObject} from '../../../../Interfaces/IOrder';
 
-export default function ImportContactsDialog(props) {
+export default function ImportContactsDialog(props: ImportContactsDialogProps) {
     return (
         <CustomDialog
             open={props.dialogOpen}
@@ -18,9 +19,9 @@ export default function ImportContactsDialog(props) {
                     {_.map(props.contacts, (contactDetails, index) => (
                         <CustomTableRow
                             key={index}
-                            rowIndex={index}
                             headers={props.tableHeaders}
                             element={contactDetails}
+                            onEditButton={props.importContact}
                             onPickButton={props.importContact}
                         />
                     ))}
@@ -31,12 +32,12 @@ export default function ImportContactsDialog(props) {
     );
 }
 
-ImportContactsDialog.propTypes = {
-    dialogOpen: PropTypes.bool.isRequired,
-    dialogTitle: PropTypes.string,
-    noContactsLabel: PropTypes.string,
-    contacts: PropTypes.array,
-    tableHeaders: PropTypes.array,
-    importContact: PropTypes.func,
-    onRequestClose: PropTypes.func,
-};
+interface ImportContactsDialogProps {
+    dialogOpen: boolean;
+    dialogTitle: string;
+    noContactsLabel: string;
+    contacts: IContact[];
+    tableHeaders: IStringObject[];
+    importContact: (element: IContact) => void;
+    onRequestClose: () => void;
+}

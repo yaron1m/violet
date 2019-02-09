@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
@@ -7,24 +6,21 @@ import {Size} from "../../../../util/Constants/Size";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
 
-export default class ContactRow extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            dialogOpen: false,
-        };
+export default class ContactRow extends React.Component<ContactRowProps> {
+    state = {
+        dialogOpen: false,
+    };
 
-        this.openContactImportDialog = () => {
-            if (!this.props.isSelectedOrganization) {
-                this.props.openDialog(this.props.dialogText.noOrganizationSelectedTitle, this.props.dialogText.noOrganizationSelectedContent);
-                return false;
-            }
+    openContactImportDialog = () => {
+        if (!this.props.isSelectedOrganization) {
+            this.props.openDialog(this.props.dialogText.noOrganizationSelectedTitle, this.props.dialogText.noOrganizationSelectedContent);
+            return;
+        }
 
-            this.setState({
-                dialogOpen: true,
-            });
-        };
-    }
+        this.setState({
+            dialogOpen: true,
+        });
+    };
 
     render() {
         const isFinancial = this.props.isFinancialContacts;
@@ -58,15 +54,14 @@ export default class ContactRow extends React.Component {
     }
 }
 
-export function getKey(key, isFinancial) {
+export function getKey(key: string, isFinancial: boolean) {
     return isFinancial ? "financial" + _.upperFirst(key) : key;
 }
 
-ContactRow.propTypes = {
-    isFinancialContacts: PropTypes.bool.isRequired,
-    dialogText: PropTypes.object.isRequired,
-    isSelectedOrganization: PropTypes.bool.isRequired,
-    buttonTooltip: PropTypes.string.isRequired,
-    openContactImportDialog: PropTypes.func,
-    openDialog: PropTypes.func,
-};
+interface ContactRowProps {
+    isFinancialContacts: boolean;
+    dialogText: any;
+    isSelectedOrganization: boolean;
+    buttonTooltip: string;
+    openDialog: (title: string, content: string) => void;
+}

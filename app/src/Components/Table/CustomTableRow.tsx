@@ -7,8 +7,9 @@ import CheckIcon from '@material-ui/icons/AddCircleOutline';
 import * as _ from "lodash";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
+import {IStringObject} from '../../Interfaces/IOrder';
 
-export default class CustomTableRow<TElement extends { [key: string]: string }> extends React.Component<CustomTableRowProps<TElement>> {
+export default class CustomTableRow<TElement extends IStringObject> extends React.Component<CustomTableRowProps<TElement>> {
 
     getCell(headerKey: string) {
         function clickAction(onEditButton: (element: TElement) => void, element: TElement) {
@@ -80,7 +81,7 @@ export default class CustomTableRow<TElement extends { [key: string]: string }> 
 
 interface CustomTableRowProps<TElement> {
     element: TElement;
-    headers: { [key: string]: string }[];
+    headers: IStringObject[];
     onEditButton: (element: TElement) => void;
     onPickButton?: (element: TElement) => void;
     onDeleteButton?: (element: TElement) => void;

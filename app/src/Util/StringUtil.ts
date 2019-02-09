@@ -5,7 +5,7 @@ export function getValueOrEmptyString(obj: object, key: string) {
         return "";
 
     // @ts-ignore
-    return obj[key];
+    return obj[key] as string;
 }
 
 export function isEmptyValue(obj: object, key: string) {
