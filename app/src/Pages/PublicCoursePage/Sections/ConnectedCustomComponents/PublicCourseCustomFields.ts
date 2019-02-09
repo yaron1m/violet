@@ -7,7 +7,7 @@ import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import IPublicCourse, {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
-import {Size} from '../../../../util/Constants/Size';
+import {Size} from '../../../../Util/Constants/Size';
 import {IStringObject} from '../../../../Interfaces/IOrder';
 
 function mapStateToProps(state: IState) {

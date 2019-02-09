@@ -5,20 +5,21 @@ import _ from "lodash";
 import {getOfferedLectures} from "../../../../../../Store/Lists/Selectors";
 import {toSuggestions} from "../../../../../../Components/AutoSuggest";
 import {IState} from '../../../../../../Interfaces/ReduxInterfaces';
+import {ILectureTime} from '../../../../../../Interfaces/IOrder';
 
-function getLectureTimeIndexes(lectureTimes) {
+function getLectureTimeIndexes(lectureTimes: ILectureTime[]) {
     if (!lectureTimes)
         return [];
 
     // Add index to every lecture time
-    lectureTimes = _.map(lectureTimes, (lectureTime, index) => {
+    const indexedLectureTimes = _.map(lectureTimes, function (lectureTime, index): ILectureTime & { index: number } {
         return {
             ...lectureTime,
             index: index
-        }
+        };
     });
 
-    const sortedLectureTimes = _.sortBy(lectureTimes, x => x.date);
+    const sortedLectureTimes = _.sortBy(indexedLectureTimes, x => x.date);
 
     return _.map(sortedLectureTimes, lectureTime => lectureTime.index);
 }

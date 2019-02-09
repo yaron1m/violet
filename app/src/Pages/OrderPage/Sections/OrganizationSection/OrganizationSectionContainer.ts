@@ -8,7 +8,7 @@ import {toSuggestions} from "../../../../Components/AutoSuggest";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state: IState, ownProps: { fullDetails: boolean }) {
+function mapStateToProps(state: IState, ownProps: { fullDetails?: boolean }) {
     return {
         sectionName: getOrderSectionsLabels(state).organization.sectionName as string,
         paymentConditionsSuggestions: toSuggestions(_.values(getOrderSectionsLabels(state).organization.paymentConditions)),
@@ -24,7 +24,7 @@ function mapStateToProps(state: IState, ownProps: { fullDetails: boolean }) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         selectOrganization: (organizationId: number) => dispatch(selectOrganization(organizationId)),
-        updateSelectedOrder: (key: string, value: string) => dispatch(updateSelectedOrder(key, value)),
+        updateSelectedOrder: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
     };
 }
 

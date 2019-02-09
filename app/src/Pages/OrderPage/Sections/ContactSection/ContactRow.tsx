@@ -2,7 +2,7 @@ import React from 'react';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';
-import {Size} from "../../../../util/Constants/Size";
+import {Size} from "../../../../Util/Constants/Size";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
 

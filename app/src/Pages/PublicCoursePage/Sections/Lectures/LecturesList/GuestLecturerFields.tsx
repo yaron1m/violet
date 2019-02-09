@@ -4,7 +4,7 @@ import {
     PublicCourseLectureConnectedCheckBox,
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
-import {Size} from "../../../../../util/Constants/Size";
+import {Size} from "../../../../../Util/Constants/Size";
 import {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 
 export default function CourseLecturesInstance(props: CourseLecturesInstanceProps) {

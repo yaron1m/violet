@@ -1,5 +1,5 @@
 import React from 'react';
-import OrganizationSection from "../OrderPage/Sections/OrganizationSection/OrganizationSectionContainer";
+import OrganizationSectionContainer from "../OrderPage/Sections/OrganizationSection/OrganizationSectionContainer";
 import OrganizationActionButtons from './ActionButtons/OrganizationActionButtons';
 import OrganizationsOrdersTable from './OrganizationsOrdersTable';
 
@@ -8,7 +8,7 @@ export default function OrganizationPage() {
         <div>
             <OrganizationActionButtons/>
 
-            <OrganizationSection fullDetails={true}/>
+            <OrganizationSectionContainer fullDetails={true}/>
 
             <OrganizationsOrdersTable/>
         </div>

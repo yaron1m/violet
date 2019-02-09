@@ -1,5 +1,5 @@
 import React from 'react';
-import {Size} from "../../../../util/Constants/Size";
+import {Size} from "../../../../Util/Constants/Size";
 import PropTypes from "prop-types";
 import {OrderCustomDatePicker} from "../ConnectedCustomComponents/OrderCustomFields";
 

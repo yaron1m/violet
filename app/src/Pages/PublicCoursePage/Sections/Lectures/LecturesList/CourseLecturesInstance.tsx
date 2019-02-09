@@ -6,11 +6,11 @@ import {
     PublicCourseLectureConnectedDatePicker,
     PublicCourseLectureConnectedText
 } from "../../ConnectedCustomComponents/PublicCourseLectureConnectedFields";
-import {Size} from "../../../../../util/Constants/Size";
+import {Size} from "../../../../../Util/Constants/Size";
 import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
 import CustomDivider from "../../../../../Components/CustomComponents/CustomDivider";
 import IndexAvatar from "../../../../../Components/IndexAvatar";
-import {ISuggestion} from '../../../../../components/AutoSuggest';
+import {ISuggestion} from '../../../../../Components/AutoSuggest';
 
 export default function CourseLecturesInstance(props: CourseLecturesInstanceProps) {
     const index = props.lectureId;

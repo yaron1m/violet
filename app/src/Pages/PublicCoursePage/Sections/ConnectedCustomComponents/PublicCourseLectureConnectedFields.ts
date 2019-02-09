@@ -7,7 +7,7 @@ import CustomDatePicker from "../../../../Components/CustomComponents/CustomDate
 import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import {Size} from '../../../../util/Constants/Size';
+import {Size} from '../../../../Util/Constants/Size';
 import {ISuggestion} from '../../../../Components/AutoSuggest';
 
 interface PublicCourseLectureConnectedFieldsProps {

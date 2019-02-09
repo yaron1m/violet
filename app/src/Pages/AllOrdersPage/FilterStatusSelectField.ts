@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {getLabels, getStatusLabels} from "../../Store/Labels/Selectors";
-import {Size} from "../../util/Constants/Size";
+import {Size} from "../../Util/Constants/Size";
 import CustomSelectField from "../../Components/CustomComponents/CustomSelectField";
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {Status} from '../../Util/Constants/Status';

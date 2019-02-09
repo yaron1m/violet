@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
-import {Size} from "../../../../util/Constants/Size";
+import {Size} from "../../../../Util/Constants/Size";
 import {
     OrganizationCustomAutoComplete,
     OrganizationCustomText,
@@ -32,25 +32,23 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
 
                 <OrganizationCustomText name="howReachedUs" size={Size.XL}/>
 
-                {props.fullDetails ?
-                    <OrganizationCustomToggle name="internalOrderIdRequired"/>
-                    : null
+                {props.fullDetails &&
+                <OrganizationCustomToggle name="internalOrderIdRequired"/>
                 }
             </div>
         </CustomPaper>
     );
 }
 
-export interface IOrganizationSuggestion extends ISuggestion{
+export interface IOrganizationSuggestion extends ISuggestion {
     organizationId: number;
 }
 
 interface OrganizationSectionProps {
-    fullDetails: boolean,
+    fullDetails?: boolean,
     sectionName: string,
     paymentConditionsSuggestions: ISuggestion[],
     organizationSuggestions: IOrganizationSuggestion[],
-    organizations: IOrganization[],
     selectOrganization: (organizationId: number) => void,
     updateSelectedOrder: (key: string, value: any) => void,
 }
