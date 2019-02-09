@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import OrderPageTitle from "./OrderPageTitle";
-import {getOrderPageLabels} from "../../../store/Labels/Selectors";
-import {isSelectedOrder} from "../../../store/SelectedOrder/Selectors";
-import {getSelectedOrderStatusLabel} from "../../../store/Labels/Selectors";
-import {getSelectedOrder} from "../../../store/SelectedOrder/Selectors";
+import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
+import {isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
+import {getSelectedOrderStatusLabel} from "../../../Store/Labels/Selectors";
+import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 
 function getPageTitle(state){
     return isSelectedOrder(state) ?

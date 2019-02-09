@@ -12,7 +12,7 @@ const sampleState = {
     }
 };
 
-describe('store/Labels/selectors', () => {
+describe('Store/Labels/selectors', () => {
 
     it('getLabels - valid', () => {
         expect(getLabels(sampleState))

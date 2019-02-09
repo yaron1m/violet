@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import {
-    sendSelectedOrganizationToDatabase} from "../../../../store/SelectedOrganization/Actions";
-import {getLabels} from "../../../../store/Labels/Selectors";
-import {getNextOrganizationId} from "../../../../store/Organizations/Selectors";
-import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
+    sendSelectedOrganizationToDatabase} from "../../../../Store/SelectedOrganization/Actions";
+import {getLabels} from "../../../../Store/Labels/Selectors";
+import {getNextOrganizationId} from "../../../../Store/Organizations/Selectors";
+import {openDialog, openSnackbar} from "../../../../Store/Appearance/Actions";
 import SaveActionButton from "../../../../Components/ActionButtons/SaveActionButton";
-import {getSelectedOrganization, isSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
-import {setIsSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
+import {getSelectedOrganization, isSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
+import {setIsSelectedOrganization} from "../../../../Store/SelectedOrganization/Actions";
 
 function saveExistingOrganization(stateProps, dispatchProps) {
     if (!stateProps.isSelectedOrganization) {

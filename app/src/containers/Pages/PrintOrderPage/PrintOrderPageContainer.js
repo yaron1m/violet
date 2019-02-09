@@ -1,8 +1,8 @@
 import connect from "react-redux/es/connect/connect";
-import {getLabels} from "../../../store/Labels/Selectors";
-import {getSelectedOrganization} from "../../../store/SelectedOrganization/Selectors";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {getSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
 import PrintOrderPage from "./PrintOrderPage";
-import {getSelectedOrder, isSelectedOrder} from "../../../store/SelectedOrder/Selectors";
+import {getSelectedOrder, isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 
 function getTitle(isSelectedOrder, labels, selectedOrder, selectedOrganization) {
     if (!isSelectedOrder)

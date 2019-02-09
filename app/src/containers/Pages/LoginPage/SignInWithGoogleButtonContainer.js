@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import SignInWithGoogleButton from "./SignInWithGoogleButton";
-import {signInWithGoogle} from "../../../store/Firebase/Actions";
+import {signInWithGoogle} from "../../../Store/Firebase/Actions";
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {

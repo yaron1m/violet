@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getLabels} from "../../../../../Store/Labels/Selectors";
 import LectureDetailsSection from "./LecturesDetailsSection";
-import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../util/StringUtil";
-import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
+import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
 import {internalTabKey, publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
 
 

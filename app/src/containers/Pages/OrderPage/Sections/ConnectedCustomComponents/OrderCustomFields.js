@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
-import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
-import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import CustomText from "../../../../../Components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../Components/CustomComponents/CustomDatePicker";
 import CustomToggle from "../../../../../Components/CustomComponents/CustomToggle";
 import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
 import CustomSelectField from "../../../../../Components/CustomComponents/CustomSelectField";
-import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
 function mapStateToProps(state) {
     return {

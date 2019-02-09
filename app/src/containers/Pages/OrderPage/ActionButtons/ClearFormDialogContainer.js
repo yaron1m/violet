@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
-import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
-import {hideRequiredFields} from "../../../../store/Appearance/Actions";
+import {clearSelectedOrganization} from "../../../../Store/SelectedOrganization/Actions";
+import {getOrderPageLabels} from "../../../../Store/Labels/Selectors";
+import {hideRequiredFields} from "../../../../Store/Appearance/Actions";
 import PropTypes from "prop-types";
 import CustomDialog from "../../../../Components/CustomComponents/CustomDialog";
 import {CustomFlatButton} from "../../../../Components/CustomComponents/CustomButtons";
-import {clearSelectedOrder} from "../../../../store/SelectedOrder/Actions";
+import {clearSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 
 function getActions(dialogText, clearSelected, hideRequiredFields, closeDialog) {
     return [

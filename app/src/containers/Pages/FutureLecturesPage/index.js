@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../store/Labels/Selectors";
+import {selectOrder} from "../../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
-import {getAllLectureTimes} from "../../../store/Orders/Selectors.ts";
+import {getAllLectureTimes} from "../../../Store/Orders/Selectors.ts";
 import {Status} from "../../../util/Constants/Status";
-import {selectPublicCourse} from "../../../store/SelectedPublicCourse/Actions";
+import {selectPublicCourse} from "../../../Store/SelectedPublicCourse/Actions";
 import {EntityType} from "../../../util/Constants/EntityType";
 
 export function getFutureLectureTimes(state) {

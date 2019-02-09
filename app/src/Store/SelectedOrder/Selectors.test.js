@@ -41,7 +41,7 @@ const emptyState = Immutable({
     }
 });
 
-describe('store/selected/selectors', () => {
+describe('Store/selected/selectors', () => {
     it('should return selected order', () => {
         expect(getSelectedOrder(sampleState))
             .toEqual(sampleState.selectedOrder.order);

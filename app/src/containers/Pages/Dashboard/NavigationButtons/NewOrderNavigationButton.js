@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../store/Labels/Selectors";
+import {getLabels} from "../../../../Store/Labels/Selectors";
 import {redirect} from "../../../../util/HistoryUtil";
-import {clearSelectedOrganization} from "../../../../store/SelectedOrganization/Actions";
+import {clearSelectedOrganization} from "../../../../Store/SelectedOrganization/Actions";
 import NavigationButton from "./NavigationButton";
-import {clearSelectedOrder} from "../../../../store/SelectedOrder/Actions";
+import {clearSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 
 function mapStateToProps(state) {
     return {

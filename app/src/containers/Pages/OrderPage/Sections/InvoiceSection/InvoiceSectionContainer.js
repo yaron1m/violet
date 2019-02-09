@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import InvoiceSection from "./InvoiceSection";
 
 function mapStateToProps(state) {

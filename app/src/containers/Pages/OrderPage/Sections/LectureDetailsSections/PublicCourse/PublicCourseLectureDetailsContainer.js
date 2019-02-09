@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../../store/Labels/Selectors";
-import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
+import {getOrderSectionsLabels} from "../../../../../../Store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
 import PublicCourseLectureDetails from "./PublicCourseLectureDetails";
 
 function mapStateToProps(state) {

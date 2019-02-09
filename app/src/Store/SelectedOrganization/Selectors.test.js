@@ -21,7 +21,7 @@ const emptyState = Immutable({
     }
 });
 
-describe('store/selected/selectors', () => {
+describe('Store/selected/selectors', () => {
 
     it('should return selected organization', () => {
         expect(getSelectedOrganization(sampleState))

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
+import {getOrderPageLabels} from "../../../../Store/Labels/Selectors";
 import ClearFormButton from "./ClearForm";
 
 function mapStateToProps(state) {

@@ -99,7 +99,7 @@ const emptyState = Immutable({
     }
 });
 
-describe('store/selected/selectors', () => {
+describe('Store/selected/selectors', () => {
     it('should return selected public course', () => {
         expect(getSelectedPublicCourse(state))
             .toEqual(state.selectedPublicCourse.publicCourse);

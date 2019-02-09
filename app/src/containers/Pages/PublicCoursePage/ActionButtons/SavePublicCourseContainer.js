@@ -1,14 +1,14 @@
 import {connect} from 'react-redux';
 import {
     sendSelectedPublicCourseToDatabase, updateSelectedPublicCourse,
-} from "../../../../store/SelectedPublicCourse/Actions";
-import {getLabels} from "../../../../store/Labels/Selectors";
-import {isSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
-import {openDialog, openSnackbar} from "../../../../store/Appearance/Actions";
+} from "../../../../Store/SelectedPublicCourse/Actions";
+import {getLabels} from "../../../../Store/Labels/Selectors";
+import {isSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Selectors";
+import {openDialog, openSnackbar} from "../../../../Store/Appearance/Actions";
 import SaveActionButton from "../../../../Components/ActionButtons/SaveActionButton";
-import {getNextPublicCourseId} from "../../../../store/PublicCourses/Selectors";
-import {getSelectedPublicCourse} from "../../../../store/SelectedPublicCourse/Selectors";
-import {setIsSelectedOrder} from "../../../../store/SelectedOrder/Actions";
+import {getNextPublicCourseId} from "../../../../Store/PublicCourses/Selectors";
+import {getSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Selectors";
+import {setIsSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 
 async function savePublicCourse(selectedPublicCourse, actionButtonsLabels, nextPublicCourseId, dispatch) {
 

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
-import {getSelectedPublicCourseLecture} from "../../../../../../store/SelectedPublicCourse/Selectors";
+import {getSelectedPublicCourseLecture} from "../../../../../../Store/SelectedPublicCourse/Selectors";
 import GuestLecturerFields from "./GuestLecturerFields";
 
 function mapStateToProps(state, ownProps) {

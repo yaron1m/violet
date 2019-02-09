@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {getOrderPageLabels} from "../../../store/Labels/Selectors";
-import {isSelectedOrder} from "../../../store/SelectedOrder/Selectors";
+import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
+import {isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 import OrderTimes from "./OrderEditTimes";
-import {getSelectedOrder} from "../../../store/SelectedOrder/Selectors";
+import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 
 function mapStateToProps(state) {
     return {

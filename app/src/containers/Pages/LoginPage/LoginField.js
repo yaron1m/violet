@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../store/Labels/Selectors";
+import {getLabels} from "../../../Store/Labels/Selectors";
 import PropTypes from "prop-types";
 import CustomTextField from "../../../Components/CustomComponents/CustomTextField";
 import {Sizes} from "../../../util/Constants/Sizes";

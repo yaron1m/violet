@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import {progressiveStatuses, Status, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
-import {isPublicCourseOrder} from "../../store/SelectedOrder/Selectors";
+import {isPublicCourseOrder} from "../../Store/SelectedOrder/Selectors";
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 

@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
-import {getSelectedOrganization} from "../../../../store/SelectedOrganization/Selectors";
+import {getOrderPageLabels} from "../../../../Store/Labels/Selectors";
+import {getSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
 import * as _ from 'lodash'
 import SendOfferButton from "./SendOffer";
-import {getSelectedOrder, isSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
+import {getSelectedOrder, isSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 
 function getLink(selectedOrder, selectedOrganizationName) {
     let topicsArray = _.map(selectedOrder.lectureTimes, lectureTime => lectureTime.topic);

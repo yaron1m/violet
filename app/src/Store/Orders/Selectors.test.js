@@ -52,7 +52,7 @@ const state = {
     }
 };
 
-describe('store/Orders/selectors', () => {
+describe('Store/Orders/selectors', () => {
 
     it('getOrders - get all orders', () => {
         expect(Selectors.getOrders(state)).toBe(state.orders);

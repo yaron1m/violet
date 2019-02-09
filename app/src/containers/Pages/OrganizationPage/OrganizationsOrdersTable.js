@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {clearSelectedOrder} from "../../../store/SelectedOrder/Actions";
-import {getLabels} from "../../../store/Labels/Selectors";
+import {clearSelectedOrder} from "../../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../util/HistoryUtil";
 import CustomPaperTable from "../../../Components/Table/CustomPaperTable";
-import {getOrdersByOrganization, getOrdersSummary} from "../../../store/Orders/Selectors.ts";
-import {selectOrder} from "../../../store/SelectedOrder/Actions";
-import {isSelectedOrganization} from "../../../store/SelectedOrganization/Selectors";
+import {getOrdersByOrganization, getOrdersSummary} from "../../../Store/Orders/Selectors.ts";
+import {selectOrder} from "../../../Store/SelectedOrder/Actions";
+import {isSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
 
 function mapStateToProps(state) {
     return {

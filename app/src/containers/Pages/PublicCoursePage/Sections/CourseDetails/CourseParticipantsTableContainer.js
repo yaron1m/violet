@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getLabels} from "../../../../../Store/Labels/Selectors";
 import CustomPaperTable from "../../../../../Components/Table/CustomPaperTable";
-import {getSelectedPublicCourseParticipants} from "../../../../../store/SelectedPublicCourse/Selectors";
+import {getSelectedPublicCourseParticipants} from "../../../../../Store/SelectedPublicCourse/Selectors";
 import {redirect} from "../../../../../util/HistoryUtil";
-import {selectOrder} from "../../../../../store/SelectedOrder/Actions";
+import {selectOrder} from "../../../../../Store/SelectedOrder/Actions";
 
 function mapStateToProps(state) {
     return {

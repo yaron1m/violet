@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {getOrderPageLabels} from "../../../../store/Labels/Selectors";
-import {isSelectedOrder} from "../../../../store/SelectedOrder/Selectors";
-import {openDialog} from "../../../../store/Appearance/Actions";
+import {getOrderPageLabels} from "../../../../Store/Labels/Selectors";
+import {isSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
+import {openDialog} from "../../../../Store/Appearance/Actions";
 import {redirect} from "../../../../util/HistoryUtil";
 import PrintOrderButton from "./PrintOrder";
 

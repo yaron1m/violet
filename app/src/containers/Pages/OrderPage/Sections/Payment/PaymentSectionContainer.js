@@ -1,8 +1,8 @@
 import PaymentSection from './PaymentSection';
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
-import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
-import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
 import calculateSum from './CalculateSum';
 
 function mapStateToProps(state) {

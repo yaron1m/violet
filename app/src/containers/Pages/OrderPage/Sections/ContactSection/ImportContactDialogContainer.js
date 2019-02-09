@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import * as _ from 'lodash';
-import {updateSelectedOrder} from "../../../../../store/SelectedOrder/Actions";
-import {getOrdersByOrganization} from "../../../../../store/Orders/Selectors.ts";
+import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
+import {getOrdersByOrganization} from "../../../../../Store/Orders/Selectors.ts";
 import {getValueOrEmptyString} from "../../../../../util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 

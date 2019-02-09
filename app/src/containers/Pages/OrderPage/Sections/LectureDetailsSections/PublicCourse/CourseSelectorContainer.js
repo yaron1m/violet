@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import {Sizes} from "../../../../../../util/Constants/Sizes";
-import {getActivePublicCourses, getPublicCourses} from "../../../../../../store/PublicCourses/Selectors";
+import {getActivePublicCourses, getPublicCourses} from "../../../../../../Store/PublicCourses/Selectors";
 import _ from 'lodash';
 import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";
-import {selectPublicCourse} from "../../../../../../store/SelectedPublicCourse/Actions";
-import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
+import {selectPublicCourse} from "../../../../../../Store/SelectedPublicCourse/Actions";
+import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../../util/StringUtil";
-import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../store/SelectedOrder/Actions";
+import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../Store/SelectedOrder/Actions";
 
 function getOption(course) {
     return {

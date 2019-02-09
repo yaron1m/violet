@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
-import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
-import {updateLectureTime} from "../../../../../store/SelectedOrder/Actions";
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {updateLectureTime} from "../../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import CustomText from "../../../../../Components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../../Components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../../Components/CustomComponents/CustomAutoComplete";
-import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {internalTabKey} from "../../../../../util/Constants/TabKeys";
-import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
+import {isRightTabKey} from "../../../../../Store/Appearance/RequiredFields/Util";
 
 function getValues(state, ownProps) {
     if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)

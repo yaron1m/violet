@@ -1,8 +1,8 @@
 import * as HistoryUtil from "../../../../util/HistoryUtil";
 import * as Target from "../SearchBoxContainer";
-import * as SelectedOrganizationActions from "../../../../store/SelectedOrganization/Actions";
+import * as SelectedOrganizationActions from "../../../../Store/SelectedOrganization/Actions";
 import * as _ from "lodash";
-import * as SelectedOrderActions from "../../../../store/SelectedOrder/Actions";
+import * as SelectedOrderActions from "../../../../Store/SelectedOrder/Actions";
 
 let dispatch;
 

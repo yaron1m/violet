@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {getSelectedOrder} from "../../../../../store/SelectedOrder/Selectors";
-import {updatePublicCourseParticipant} from "../../../../../store/SelectedOrder/Actions";
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {updatePublicCourseParticipant} from "../../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import CustomText from "../../../../../Components/CustomComponents/CustomTextField";
 import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
-import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
-import {isRightTabKey} from "../../../../../store/Appearance/RequiredFields/Util";
+import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {isRightTabKey} from "../../../../../Store/Appearance/RequiredFields/Util";
 import {publicCourseTabKey} from "../../../../../util/Constants/TabKeys";
 
 function getValues(state, ownProps) {

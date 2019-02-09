@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {getSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
-import {updateSelectedOrganization} from "../../../../../store/SelectedOrganization/Actions";
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getSelectedOrganization} from "../../../../../Store/SelectedOrganization/Selectors";
+import {updateSelectedOrganization} from "../../../../../Store/SelectedOrganization/Actions";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import CustomText from "../../../../../Components/CustomComponents/CustomTextField";
 import CustomToggle from "../../../../../Components/CustomComponents/CustomToggle";
 import CustomAutoComplete from "../../../../../Components/CustomComponents/CustomAutoComplete";
-import {getRequiredFieldsObject} from "../../../../../store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
 function mapStateToProps(state) {
     return {

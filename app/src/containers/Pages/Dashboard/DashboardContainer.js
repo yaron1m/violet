@@ -1,4 +1,4 @@
-import {isSuperUser} from "../../../store/Firebase/Selectors";
+import {isSuperUser} from "../../../Store/Firebase/Selectors";
 import Dashboard from "./Dashboard";
 import {connect} from "react-redux";
 

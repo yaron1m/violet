@@ -1,7 +1,7 @@
 import {selectFieldUpdateAction} from '../CourseSelectorContainer';
-import * as SelectedActions from "../../../../../../../store/SelectedPublicCourse/Actions";
-import * as SelectedOrderActions from "../../../../../../../store/SelectedOrder/Actions";
-import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../../store/SelectedOrder/Actions";
+import * as SelectedActions from "../../../../../../../Store/SelectedPublicCourse/Actions";
+import * as SelectedOrderActions from "../../../../../../../Store/SelectedOrder/Actions";
+import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../../../Store/SelectedOrder/Actions";
 
 describe('selectFieldUpdateAction', () => {
     let dispatch;

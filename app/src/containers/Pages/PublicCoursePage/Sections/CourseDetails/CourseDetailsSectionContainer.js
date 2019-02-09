@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../store/Labels/Selectors";
+import {getLabels} from "../../../../../Store/Labels/Selectors";
 import CourseDetailsSection from "./CourseDetailsSection";
 
 function mapStateToProps(state) {

@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../store/Labels/Selectors";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import PropTypes from 'prop-types';
-import {openDialog} from "../../../../../store/Appearance/Actions";
+import {openDialog} from "../../../../../Store/Appearance/Actions";
 import ContactRow from "./ContactRow";
-import {isSelectedOrganization} from "../../../../../store/SelectedOrganization/Selectors";
+import {isSelectedOrganization} from "../../../../../Store/SelectedOrganization/Selectors";
 
 function mapStateToProps(state, ownProps) {
     return {

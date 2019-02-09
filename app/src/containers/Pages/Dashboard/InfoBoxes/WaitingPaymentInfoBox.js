@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../store/Labels/Selectors";
+import {getLabels} from "../../../../Store/Labels/Selectors";
 import {redirect} from "../../../../util/HistoryUtil";
-import {getOrders} from "../../../../store/Orders/Selectors.ts";
+import {getOrders} from "../../../../Store/Orders/Selectors.ts";
 import * as _ from 'lodash';
-import {isFetching} from "../../../../store/Firebase/Selectors";
+import {isFetching} from "../../../../Store/Firebase/Selectors";
 import {Status} from "../../../../util/Constants/Status";
 import PaymentIcon from '@material-ui/icons/AttachMoney';
 import InfoBox from "./InfoBox";

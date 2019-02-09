@@ -1,16 +1,16 @@
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import PublicCourseParticipant from "./PublicCourseParticipant";
-import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
+import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
 import {
     removeParticipant,
     updatePublicCourseLectureParticipating,
     updateSelectedOrder
-} from "../../../../../../store/SelectedOrder/Actions";
+} from "../../../../../../Store/SelectedOrder/Actions";
 import {
     getSelectedPublicCourse,
     getSelectedPublicCourseLectures
-} from "../../../../../../store/SelectedPublicCourse/Selectors";
+} from "../../../../../../Store/SelectedPublicCourse/Selectors";
 
 function mapStateToProps(state, ownProps) {
     return {

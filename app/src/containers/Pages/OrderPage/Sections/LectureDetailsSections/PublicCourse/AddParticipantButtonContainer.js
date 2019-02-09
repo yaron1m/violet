@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../../store/Labels/Selectors";
-import {updateSelectedOrder} from "../../../../../../store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../../../Store/Labels/Selectors";
+import {updateSelectedOrder} from "../../../../../../Store/SelectedOrder/Actions";
 import * as _ from "lodash";
 import * as Immutable from "seamless-immutable";
-import {getSelectedOrder} from "../../../../../../store/SelectedOrder/Selectors";
+import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
 import {CustomRaisedButton} from "../../../../../../Components/CustomComponents/CustomButtons";
 
 export function addNewParticipant(selectedOrder, updateSelectedOrder) {
