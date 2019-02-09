@@ -8,7 +8,7 @@ export default class CustomAutoComplete extends AbstractCustomField<CustomAutoCo
     render() {
         return (
             <AutoSuggest
-                suggestions={this.props.suggestions}
+                suggestions={this.props.suggestions ? this.props.suggestions : []}
                 helperText={this.title}
                 value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
                 onInputChange={(newValue) => this.handleChange(newValue)}

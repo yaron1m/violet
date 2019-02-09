@@ -49,7 +49,7 @@ export function updateSelectedOrder(key: string, value: string | number | TabKey
     };
 }
 
-export function updateLectureTime(key: ILectureTimeField, value: string, lectureTimeIndex: number) {
+export function updateLectureTime(key: string, value: string, lectureTimeIndex: number) {
     return function updateLectureTime(dispatch: IDispatch, getState: IGetState) {
         const lectureTimes = getSelectedOrder(getState()).lectureTimes;
         lectureTimes[lectureTimeIndex][key] = value;
@@ -79,7 +79,7 @@ export function deleteLectureTime(lectureTimeIndex: number) {
     };
 }
 
-export function updatePublicCourseParticipant(key: IPublicCourseParticipantField, value: string | number[], participantIndex: number) {
+export function updatePublicCourseParticipant(key: string, value: string | number[], participantIndex: number) {
     return function updatePublicCourseParticipant(dispatch: IDispatch, getState: IGetState) {
         const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
         publicCourseParticipants[participantIndex][key] = value;

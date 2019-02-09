@@ -6,29 +6,41 @@ import CustomText from "../../../../Components/CustomComponents/CustomTextField"
 import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
-import {internalTabKey} from "../../../../Util/Constants/TabKeys";
 import {isRightTabKey} from "../../../../Store/Appearance/RequiredFields/Util";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import {Size} from '../../../../Util/Constants/Size';
+import {ISuggestion} from '../../../../Components/AutoSuggest';
+import {TabKey} from '../../../../Util/Constants/Status';
 
-function getValues(state, ownProps) {
+interface LectureTimesCustomFieldsProps {
+    name: string;
+    lectureTimeIndex: number;
+    size?: Size;
+    suggestions: ISuggestion[];
+    onSuggestionSelected?: (suggestion: ISuggestion) => void;
+}
+
+function getValues(state: IState, ownProps:LectureTimesCustomFieldsProps) : {[key:string]:any} {
     if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)
-        return null;
+        return {};
 
     return getSelectedOrder(state).lectureTimes[ownProps.lectureTimeIndex];
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: IState, ownProps:LectureTimesCustomFieldsProps) {
     return {
         titles: getOrderSectionsLabels(state).lectureTimes.titles,
         values: getValues(state, ownProps),
-        requiredFields: isRightTabKey(getSelectedOrder(state), internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
-        SelectedOrder: getSelectedOrder(state),
-        ...ownProps,
+        requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
+        // SelectedOrder: getSelectedOrder(state),
+        name: ownProps.name,
+        size: ownProps.size,
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps:LectureTimesCustomFieldsProps) {
     return {
-        updateAction: (key, value) => dispatch(updateLectureTime(key, value, ownProps.lectureTimeIndex))
+        updateAction: (key: string, value: any) => dispatch(updateLectureTime(key, value, ownProps.lectureTimeIndex))
     };
 }
 

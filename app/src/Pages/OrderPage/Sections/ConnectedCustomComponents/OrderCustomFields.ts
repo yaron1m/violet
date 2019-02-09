@@ -8,6 +8,16 @@ import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
 import CustomSelectField from "../../../../Components/CustomComponents/CustomSelectField";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import {Size} from '../../../../Util/Constants/Size';
+import {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
+import IOrder from '../../../../Interfaces/IOrder';
+
+interface OrderCustomFieldsProps {
+    name: string;
+    lectureTimeIndex: number;
+    size?: Size;
+}
 
 function mapStateToProps(state: IState) {
     return {
@@ -19,17 +29,22 @@ function mapStateToProps(state: IState) {
 
 function mapDispatchToProps(dispatch :IDispatch) {
     return {
-        updateAction: (key, value) => dispatch(updateSelectedOrder(key, value)),
+        updateAction: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
     };
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
+function mergeProps(stateProps:{
+    titles: { [key: string]: string }; values: IOrder; requiredFields:string[];
+}, dispatchProps: {
+    updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
+}, ownProps:OrderCustomFieldsProps) {
     return {
         titles: stateProps.titles,
         values: stateProps.values,
         requiredFields: stateProps.requiredFields,
         updateAction: dispatchProps.updateAction,
-        ...ownProps,
+        name: ownProps.name,
+        size: ownProps.size,
     };
 
 }

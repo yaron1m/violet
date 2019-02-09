@@ -6,6 +6,10 @@ import CustomText from "../../../../Components/CustomComponents/CustomTextField"
 import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
+import IOrganization from '../../../../Interfaces/IOrganization';
+import {Size} from '../../../../Util/Constants/Size';
+import {ISuggestion} from '../../../../Components/AutoSuggest';
 
 function mapStateToProps(state: IState) {
     return {
@@ -15,19 +19,28 @@ function mapStateToProps(state: IState) {
     };
 }
 
-function mapDispatchToProps(dispatch :IDispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key, value) => dispatch(updateSelectedOrganization(key, value)),
+        updateAction: (key: string, value: any) => dispatch(updateSelectedOrganization(key, value)),
     };
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
+function mergeProps(stateProps: {
+    titles: any; values: IOrganization; requiredFields: string[];
+}, dispatchProps: {
+    updateAction: (key: string, value: any) => void;
+}, ownProps: {
+    name: string; size?: Size; suggestions: ISuggestion[]; onSuggestionSelected?: (suggestion: ISuggestion) => void;
+}) {
     return {
         titles: stateProps.titles,
         values: stateProps.values,
         requiredFields: stateProps.requiredFields,
         updateAction: dispatchProps.updateAction,
-        ...ownProps,
+        name: ownProps.name,
+        size: ownProps.size,
+        suggestions: ownProps.suggestions,
+        onSuggestionSelected: ownProps.onSuggestionSelected,
     };
 
 }

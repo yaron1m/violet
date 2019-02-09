@@ -8,7 +8,7 @@ import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckb
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../util/Constants/Size';
-import {ISuggestion} from '../../../../components/AutoSuggest';
+import {ISuggestion} from '../../../../Components/AutoSuggest';
 
 interface PublicCourseLectureConnectedFieldsProps {
     name: string,
