@@ -5,21 +5,14 @@ import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomCompo
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import Colors from "../../../../../Util/Constants/Colors";
-import PropTypes from "prop-types";
 import LectureTimesDetailsContainer from "./LectureTimes/LectureTimesDetailsContainer";
-import {
-    InternalOrderCustomText,
-    InternalOrderCustomToggle
-} from "../../ConnectedCustomComponents/InternalOrderCustomFields";
+import {InternalOrderCustomText, InternalOrderCustomToggle} from "../../ConnectedCustomComponents/InternalOrderCustomFields";
 
-export default class InternalLectureDetails extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            dialogOpen: false,
-            selectedLectureTimeIndex: null,
-        };
-    }
+export default class InternalLectureDetails extends React.Component<InternalLectureDetailsProps> {
+    state = {
+        dialogOpen: false,
+        selectedLectureTimeIndex: null,
+    };
 
     render() {
         return (
@@ -61,7 +54,7 @@ export default class InternalLectureDetails extends React.Component {
     }
 }
 
-InternalLectureDetails.propTypes = {
-    sectionName: PropTypes.string.isRequired,
-    showCancelledCheckBox: PropTypes.bool.isRequired,
-};
+interface InternalLectureDetailsProps {
+    sectionName: string,
+    showCancelledCheckBox: boolean,
+}

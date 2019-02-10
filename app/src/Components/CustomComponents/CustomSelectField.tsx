@@ -54,7 +54,7 @@ export interface IOption {
 }
 
 interface CustomSelectFieldProps {
-    options: IOption[],
+    options?: IOption[],
     allowEmpty?: true,
 }
 

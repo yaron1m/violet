@@ -6,7 +6,7 @@ import CustomText from "../../../../Components/CustomComponents/CustomTextField"
 import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
 import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
-import CustomSelectField from "../../../../Components/CustomComponents/CustomSelectField";
+import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../Util/Constants/Size';
@@ -16,6 +16,8 @@ import IOrder, {IStringObject} from '../../../../Interfaces/IOrder';
 interface OrderCustomFieldsProps {
     name: string;
     size?: Size;
+    updateAction?: (key: string, value: string | IPublicCourseLecture[]) => void;
+    options?: IOption[]
 }
 
 function mapStateToProps(state: IState) {
@@ -26,24 +28,25 @@ function mapStateToProps(state: IState) {
     };
 }
 
-function mapDispatchToProps(dispatch :IDispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
         updateAction: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
     };
 }
 
-function mergeProps(stateProps:{
-    titles: IStringObject; values: IOrder; requiredFields:string[];
+function mergeProps(stateProps: {
+    titles: IStringObject; values: IOrder; requiredFields: string[];
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
-}, ownProps:OrderCustomFieldsProps) {
+}, ownProps: OrderCustomFieldsProps) {
     return {
         titles: stateProps.titles,
         values: stateProps.values,
         requiredFields: stateProps.requiredFields,
-        updateAction: dispatchProps.updateAction,
+        updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,
         name: ownProps.name,
         size: ownProps.size,
+        options: ownProps.options,
     };
 
 }

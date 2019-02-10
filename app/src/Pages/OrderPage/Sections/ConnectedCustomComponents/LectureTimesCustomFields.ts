@@ -16,7 +16,7 @@ interface LectureTimesCustomFieldsProps {
     name: string;
     lectureTimeIndex: number;
     size?: Size;
-    suggestions: ISuggestion[];
+    suggestions?: ISuggestion[];
     onSuggestionSelected?: (suggestion: ISuggestion) => void;
 }
 
@@ -32,7 +32,6 @@ function mapStateToProps(state: IState, ownProps:LectureTimesCustomFieldsProps) 
         titles: getOrderSectionsLabels(state).lectureTimes.titles,
         values: getValues(state, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
-        // SelectedOrder: getSelectedOrder(state),
         name: ownProps.name,
         size: ownProps.size,
     };
@@ -40,7 +39,7 @@ function mapStateToProps(state: IState, ownProps:LectureTimesCustomFieldsProps) 
 
 function mapDispatchToProps(dispatch: IDispatch, ownProps:LectureTimesCustomFieldsProps) {
     return {
-        updateAction: (key: string, value: any) => dispatch(updateLectureTime(key, value, ownProps.lectureTimeIndex))
+        updateAction: (name: string, newValue: any) => dispatch(updateLectureTime(name, newValue, ownProps.lectureTimeIndex))
     };
 }
 
