@@ -1,4 +1,4 @@
-import {addNewParticipant} from '../AddParticipantButtonContainer';
+import {addNewParticipant} from './AddParticipantButtonContainer';
 
 describe('addNewParticipant', () => {
     let updateSelectedOrder;

@@ -2,6 +2,7 @@ import React from 'react';
 import * as _ from "lodash";
 import {updateObject} from "../../Util/ObjectUpdater";
 import {Size} from '../../Util/Constants/Size';
+import {IStringObject} from '../../Interfaces/IOrder';
 
 export default class AbstractCustomField<AdditionalProps>
     extends React.Component<AbstractCustomFieldProps & AdditionalProps, AbstractCustomFieldState> {
@@ -75,7 +76,7 @@ export default class AbstractCustomField<AdditionalProps>
 
 export interface AbstractCustomFieldProps {
     name: string;
-    titles: { [key: string]: string; };
+    titles: IStringObject;
     values: { [key: string]: any; };
     updateAction: (name: string, newValue: any) => void;
     requiredFields?: string[];

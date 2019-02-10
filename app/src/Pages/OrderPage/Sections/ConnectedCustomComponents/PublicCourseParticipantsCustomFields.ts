@@ -8,16 +8,19 @@ import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFiel
 import {isRightTabKey} from "../../../../Store/Appearance/RequiredFields/Util";
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../Util/Constants/Size';
-import IOrder, {IPublicCourseParticipant} from '../../../../Interfaces/IOrder';
+import IOrder, {IPublicCourseParticipant, IStringObject} from '../../../../Interfaces/IOrder';
 import {TabKey} from '../../../../Util/Constants/Status';
 
 interface PublicCourseParticipantsCustomFieldsProps {
     name: string;
     participantIndex: number;
     size?: Size;
+    updateAction?: (key: string, value: any) => void;
+    titles?: IStringObject;
+    values?: { [key: string]: any; };
 }
 
-function getValues(selectedOrder: IOrder, ownProps: PublicCourseParticipantsCustomFieldsProps):IPublicCourseParticipant {
+function getValues(selectedOrder: IOrder, ownProps: PublicCourseParticipantsCustomFieldsProps): IPublicCourseParticipant {
     if (ownProps.participantIndex === null || selectedOrder.publicCourseParticipants === undefined)
         return {} as IPublicCourseParticipant;
 
@@ -27,28 +30,28 @@ function getValues(selectedOrder: IOrder, ownProps: PublicCourseParticipantsCust
 function mapStateToProps(state: IState, ownProps: PublicCourseParticipantsCustomFieldsProps) {
     const selectedOrder = getSelectedOrder(state);
     return {
-        titles: getOrderSectionsLabels(state).publicCourse.titles,
+        titles: getOrderSectionsLabels(state).publicCourse.titles as IStringObject,
         values: getValues(selectedOrder, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
     };
 }
 
-function mapDispatchToProps(dispatch: IDispatch, ownProps:PublicCourseParticipantsCustomFieldsProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps: PublicCourseParticipantsCustomFieldsProps) {
     return {
         updateAction: (key: string, value: any) => dispatch(updatePublicCourseParticipant(key, value, ownProps.participantIndex))
     };
 }
 
 function mergeProps(stateProps: {
-    titles: any; values: IPublicCourseParticipant; requiredFields: string[];
-}, dispatchProps:{
+    titles: IStringObject; values: IPublicCourseParticipant; requiredFields: string[];
+}, dispatchProps: {
     updateAction: (key: string, value: any) => void;
-}, ownProps:PublicCourseParticipantsCustomFieldsProps) {
+}, ownProps: PublicCourseParticipantsCustomFieldsProps) {
     return {
         titles: stateProps.titles,
-        values: stateProps.values,
+        values: ownProps.values ? ownProps.values : stateProps.values,
         requiredFields: stateProps.requiredFields,
-        updateAction: dispatchProps.updateAction,
+        updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,
         name: ownProps.name,
         size: ownProps.size,
     };
