@@ -5,7 +5,7 @@ import {Size} from '../../Util/Constants/Size';
 import {IStringObject} from '../../Interfaces/IOrder';
 
 export default class AbstractCustomField<AdditionalProps>
-    extends React.Component<AbstractCustomFieldProps & AdditionalProps, AbstractCustomFieldState> {
+    extends React.PureComponent<AbstractCustomFieldProps & AdditionalProps, AbstractCustomFieldState> {
     name: string;
     title: string;
     updateAction: (name: string, newValue: any) => void;

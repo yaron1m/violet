@@ -17,7 +17,8 @@ interface OrderCustomFieldsProps {
     name: string;
     size?: Size;
     updateAction?: (key: string, value: string | IPublicCourseLecture[]) => void;
-    options?: IOption[]
+    options?: IOption[],
+    fullWidth?: boolean;
 }
 
 function mapStateToProps(state: IState) {
@@ -47,6 +48,7 @@ function mergeProps(stateProps: {
         name: ownProps.name,
         size: ownProps.size,
         options: ownProps.options,
+        fullWidth: ownProps.fullWidth,
     };
 
 }
