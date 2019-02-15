@@ -2,11 +2,11 @@ import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {createImmutable} from '../../Util/ObjectUpdater';
 
-const initialState = createImmutable({
+const initialState = {
     offeredLectures: {},
     cancellationReasons: {},
     rejectionReasons: {},
-});
+};
 
 export default (state = initialState, action :any= {}) => {
     switch (action.type) {
@@ -14,7 +14,7 @@ export default (state = initialState, action :any= {}) => {
             return createImmutable(action.payload);
 
         case LOGGED_OUT:
-            return initialState;
+            return createImmutable(initialState);
 
         default:
             return state;

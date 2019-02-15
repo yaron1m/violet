@@ -2,10 +2,10 @@ import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import * as actionTypes from "./ActionTypes";
 import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 
-const initialState = createImmutable({
+const initialState = {
     isSelectedPublicCourse: false,
     publicCourse: {},
-});
+};
 
 export default (state = initialState, action: any = {}) => {
     switch (action.type) {
@@ -27,7 +27,7 @@ export default (state = initialState, action: any = {}) => {
 
         case LOGGED_OUT:
         case actionTypes.CLEAR_SELECTED_PUBLIC_COURSE:
-            return initialState;
+            return createImmutable(initialState);
 
         default:
             return state

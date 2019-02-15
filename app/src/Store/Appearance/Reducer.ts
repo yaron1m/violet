@@ -1,7 +1,8 @@
 import * as actionTypes from './ActionTypes';
 import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
 
-const initialState = createImmutable({
+const initialState = {
     rtl: true,
     language: "he",
     dialog: {
@@ -15,7 +16,7 @@ const initialState = createImmutable({
         message: "",
     },
     showRequiredFields: false,
-});
+};
 
 export default function (state = initialState, action: any = {}) {
     switch (action.type) {
@@ -70,6 +71,9 @@ export default function (state = initialState, action: any = {}) {
             return mergeImmutable(state, {
                 showRequiredFields: false,
             });
+
+        case LOGGED_OUT:
+            return createImmutable(initialState);
 
         default:
             return state;

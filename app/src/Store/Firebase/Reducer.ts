@@ -1,13 +1,13 @@
 import * as actionTypes from './ActionTypes';
 import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 
-const initialState = createImmutable({
+const initialState = {
     loggedIn: undefined,
     userId: undefined,
     displayName: "",
     photoURL: "",
     isSuperUser: false,
-});
+};
 
 export default function (state = initialState, action:any = {}) {
     switch (action.type) {
@@ -21,13 +21,7 @@ export default function (state = initialState, action:any = {}) {
             });
 
         case actionTypes.LOGGED_OUT:
-            return mergeImmutable(state, {
-                loggedIn: false,
-                userId: undefined,
-                displayName: "",
-                photoURL: "",
-                isSuperUser: false
-            });
+            return createImmutable(initialState);
 
         default:
             return state;

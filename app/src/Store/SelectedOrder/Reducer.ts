@@ -2,10 +2,10 @@ import * as actionTypes from './ActionTypes';
 import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 
-const initialState = createImmutable({
+const initialState = {
     isSelectedOrder: false,
     order: {},
-});
+};
 
 export default (state = initialState, action :any = {}) => {
     switch (action.type) {
@@ -27,7 +27,7 @@ export default (state = initialState, action :any = {}) => {
 
         case LOGGED_OUT:
         case actionTypes.CLEAR_SELECTED_ORDER:
-            return initialState;
+            return createImmutable(initialState);
 
         default:
             return state
