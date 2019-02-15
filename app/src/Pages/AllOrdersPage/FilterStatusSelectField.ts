@@ -26,6 +26,7 @@ function mapStateToProps(state: IState, ownProps: FilterStatusSelectFieldProps) 
         updateAction: (key: string, value: string) => ownProps.updateStatus(value as Status),
         options: getStatuses(state),
         size: Size.XL,
+        entityId: "filterByStatus"
     };
 }
 

@@ -14,6 +14,7 @@ function mapStateToProps(state: IState) {
         titles: getOrderSectionsLabels(state).titles,
         values: getSelectedOrder(state),
         requiredFields: getRequiredFieldsObject(state).internalOrder,
+        entityId: getSelectedOrder(state).id
     };
 }
 
@@ -24,7 +25,7 @@ function mapDispatchToProps(dispatch :IDispatch) {
 }
 
 function mergeProps(stateProps: {
-    titles: any; values: IOrder; requiredFields: string[];
+    titles: any; values: IOrder; requiredFields: string[]; entityId: number;
 }, dispatchProps:{
     updateAction: (key: string, value: any) => void;
 }, ownProps: {
@@ -34,6 +35,7 @@ function mergeProps(stateProps: {
         titles: stateProps.titles,
         values: stateProps.values,
         requiredFields: stateProps.requiredFields,
+        entityId: stateProps.entityId,
         updateAction: dispatchProps.updateAction,
         name: ownProps.name,
         size: ownProps.size,

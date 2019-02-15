@@ -1,6 +1,5 @@
 import React from 'react';
 import * as _ from "lodash";
-import {updateObject} from "../../Util/ObjectUpdater";
 import {Size} from '../../Util/Constants/Size';
 import {IStringObject} from '../../Interfaces/IOrder';
 
@@ -18,13 +17,12 @@ export default class AbstractCustomField<AdditionalProps>
 
         this.name = props.name;
         this.title = props.titles[props.name];
-        this.updateAction = props.updateAction;
+
+        // Avoid sending too many actions
+        this.updateAction = _.debounce(props.updateAction, 400);
 
         this.width = getWidth(props.fullWidth, props.size);
-        this.state = {
-            value: props.values[props.name],
-            isRequired: _.includes(props.requiredFields, props.name)
-        };
+        this.state = getInitialStateFromProps(props);
 
         this.basicStyle = {
             marginRight: 20,
@@ -41,37 +39,35 @@ export default class AbstractCustomField<AdditionalProps>
             throw Error(`Field "${props.name}" - updateAction must be a function`);
     }
 
-    static getDerivedStateFromProps(nextProps: AbstractCustomFieldProps, prevState: AbstractCustomFieldState) {
-        let shouldUpdate = false;
-
-        const name = nextProps.name;
-        const updatedState = updateObject(prevState);
-        if (nextProps.values[name] !== prevState.value) {
-            updatedState.value = nextProps.values[name] ? nextProps.values[name] : "";
-            shouldUpdate = true;
+    static getDerivedStateFromProps(props: AbstractCustomFieldProps, state: AbstractCustomFieldState) {
+        if (props.entityId !== state.entityId) {
+            // New entity was loaded - must update state
+            return getInitialStateFromProps(props);
         }
 
-        if (prevState.isRequired && !_.includes(nextProps.requiredFields, name)) {
-            updatedState.isRequired = false;
-            shouldUpdate = true;
-        } else if (!prevState.isRequired && _.includes(nextProps.requiredFields, name)) {
-            updatedState.isRequired = true;
-            shouldUpdate = true;
-        }
-
-        if (shouldUpdate)
-            return updatedState;
-
-        return null;
+        // Otherwise - update only on state changes
+        return state;
     }
 
     handleChange(newValue: any) {
-        this.updateAction(this.name, newValue);
+        this.setState({
+            value: newValue
+        });
+
+        this.updateAction(this.name, newValue)
     }
 
     shouldShowError() {
         return !this.state.value && this.state.isRequired;
     }
+}
+
+function getInitialStateFromProps(props: AbstractCustomFieldProps): AbstractCustomFieldState {
+    return {
+        value: props.values[props.name],
+        isRequired: _.includes(props.requiredFields, props.name),
+        entityId: props.entityId,
+    };
 }
 
 export interface AbstractCustomFieldProps {
@@ -82,12 +78,14 @@ export interface AbstractCustomFieldProps {
     requiredFields?: string[];
     fullWidth?: boolean;
     size?: Size;
-    classes?: { [keu: string]: string };
+    classes?: IStringObject;
+    entityId: number | string;
 }
 
 interface AbstractCustomFieldState {
     value: any;
     isRequired: boolean;
+    entityId: number | string;
 }
 
 /* eslint-disable no-magic-numbers */

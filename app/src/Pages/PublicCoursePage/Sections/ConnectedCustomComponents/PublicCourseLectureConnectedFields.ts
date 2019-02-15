@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getSelectedPublicCourseLecture} from "../../../../Store/SelectedPublicCourse/Selectors";
+import {getSelectedPublicCourse, getSelectedPublicCourseLecture} from "../../../../Store/SelectedPublicCourse/Selectors";
 import {updatePublicCourseLecture} from "../../../../Store/SelectedPublicCourse/Actions";
 import {getLabels} from "../../../../Store/Labels/Selectors";
 import CustomText from "../../../../Components/CustomComponents/CustomTextField";
@@ -25,6 +25,7 @@ function mapStateToProps(state: IState, ownProps: PublicCourseLectureConnectedFi
         name: ownProps.name,
         size: ownProps.size,
         suggestions: ownProps.suggestions,
+        entityId: getSelectedPublicCourse(state).id + "#" + ownProps.lectureId,
     };
 }
 

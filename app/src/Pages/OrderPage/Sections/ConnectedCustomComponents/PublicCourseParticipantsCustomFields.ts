@@ -33,7 +33,8 @@ function mapStateToProps(state: IState, ownProps: PublicCourseParticipantsCustom
         titles: getOrderSectionsLabels(state).publicCourse.titles as IStringObject,
         values: getValues(selectedOrder, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
-    };
+        entityId: selectedOrder.id + "#" + ownProps.participantIndex,
+    }
 }
 
 function mapDispatchToProps(dispatch: IDispatch, ownProps: PublicCourseParticipantsCustomFieldsProps) {
@@ -43,7 +44,7 @@ function mapDispatchToProps(dispatch: IDispatch, ownProps: PublicCourseParticipa
 }
 
 function mergeProps(stateProps: {
-    titles: IStringObject; values: IPublicCourseParticipant; requiredFields: string[];
+    titles: IStringObject; values: IPublicCourseParticipant; requiredFields: string[]; entityId: string;
 }, dispatchProps: {
     updateAction: (key: string, value: any) => void;
 }, ownProps: PublicCourseParticipantsCustomFieldsProps) {
@@ -51,6 +52,7 @@ function mergeProps(stateProps: {
         titles: stateProps.titles,
         values: ownProps.values ? ownProps.values : stateProps.values,
         requiredFields: stateProps.requiredFields,
+        entityId: stateProps.entityId,
         updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,
         name: ownProps.name,
         size: ownProps.size,
