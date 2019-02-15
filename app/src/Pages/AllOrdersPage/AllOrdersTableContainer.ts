@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {getLabels} from "../../Store/Labels/Selectors";
-import {getOrders, getOrdersSummary} from "../../Store/Orders/Selectors";
+import {getOrders, getOrdersSummary, IOrderSummary} from "../../Store/Orders/Selectors";
 import * as _ from "lodash";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
@@ -14,17 +14,11 @@ export function getElements(state: IState, ownProps: AllOrdersTableContainerProp
     return _.reverse(getOrdersSummary(state, (state: IState) => getOrders(state, ownProps.filterStatus)));
 }
 
-export function onEditButton(dispatch: IDispatch, orderId: number) {
-    dispatch(selectOrder(orderId));
-    redirect(Path.order);
-}
-
 function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) {
     return {
         title: getLabels(state).pages.allOrdersPage.title,
         tableHeaders: getLabels(state).pages.allOrdersPage.tableHeaders,
         elements: getElements(state, ownProps),
-        rowIndexKey: "id",
         beforeTable: ownProps.beforeTable,
         limit: ownProps.limit,
     };
@@ -32,7 +26,10 @@ function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) 
 
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        onEditButton: (orderId: number) => onEditButton(dispatch, orderId),
+        onEditButton: (summary: IOrderSummary) => {
+            dispatch(selectOrder(summary.orderId));
+            redirect(Path.order);
+        },
     };
 }
 

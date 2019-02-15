@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 import appearance from './Appearance/Reducer';
 import firebase from './Firebase/Reducer';

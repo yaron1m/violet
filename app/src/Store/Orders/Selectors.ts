@@ -180,7 +180,7 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
     const orders = getOrdersFunction(state);
 
     function map(order: IOrder) {
-        const result :IOrderSummary= {
+        const result: IOrderSummary = {
             orderId: order.id,
             status: getOrderStatusLabel(state, order),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,

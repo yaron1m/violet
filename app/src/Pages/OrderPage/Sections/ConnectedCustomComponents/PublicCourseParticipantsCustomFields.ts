@@ -48,7 +48,7 @@ function mergeProps(stateProps: {
     updateAction: (key: string, value: any) => void;
 }, ownProps: PublicCourseParticipantsCustomFieldsProps) {
     return {
-        titles: stateProps.titles,
+        titles: ownProps.titles ? ownProps.titles : stateProps.titles,
         values: ownProps.values ? ownProps.values : stateProps.values,
         requiredFields: stateProps.requiredFields,
         updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,

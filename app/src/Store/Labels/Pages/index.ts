@@ -111,7 +111,7 @@ const allOrdersPageLabels = {
     filterByStatus: "סנן לפי סטאטוס",
     title: "כל ההזמנות",
     tableHeaders: [
-        {id: "מספר הזמנה"},
+        {orderId: "מספר הזמנה"},
         {organizationName: "שם הארגון"},
         {date: "תאריך הרצאה"},
         {topic: "נושא"},
