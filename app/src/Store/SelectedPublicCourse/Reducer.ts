@@ -7,7 +7,7 @@ const initialState = {
     publicCourse: {},
 };
 
-export default (state = initialState, action: any = {}) => {
+export default (state = createImmutable(initialState), action: any = {}) => {
     switch (action.type) {
         case actionTypes.SELECT_PUBLIC_COURSE:
             return mergeImmutable(state, {

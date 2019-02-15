@@ -7,7 +7,7 @@ const initialState = {
     organization: {},
 };
 
-export default (state = initialState, action: any = {}) => {
+export default (state = createImmutable(initialState), action: any = {}) => {
     switch (action.type) {
         case actionTypes.SELECT_ORGANIZATION:
             return mergeImmutable(state, {

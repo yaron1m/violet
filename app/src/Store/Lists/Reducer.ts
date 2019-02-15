@@ -8,7 +8,7 @@ const initialState = {
     rejectionReasons: {},
 };
 
-export default (state = initialState, action :any= {}) => {
+export default (state = createImmutable(initialState), action :any= {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_LISTS:
             return createImmutable(action.payload);

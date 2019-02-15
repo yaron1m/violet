@@ -4,7 +4,7 @@ import {createImmutable} from '../../Util/ObjectUpdater';
 
 const initialState = {};
 
-export default (state = initialState, action: any = {}) => {
+export default (state = createImmutable(initialState), action: any = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_ORDERS:
             return createImmutable(action.payload);

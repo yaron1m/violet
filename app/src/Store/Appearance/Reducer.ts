@@ -18,7 +18,7 @@ const initialState = {
     showRequiredFields: false,
 };
 
-export default function (state = initialState, action: any = {}) {
+export default function (state = createImmutable(initialState), action: any = {}) {
     switch (action.type) {
         case actionTypes.CHANGE_LANGUAGE:
             return mergeImmutable(state, {

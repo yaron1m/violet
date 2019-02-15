@@ -7,7 +7,7 @@ const initialState = {
     order: {},
 };
 
-export default (state = initialState, action :any = {}) => {
+export default (state = createImmutable(initialState), action :any = {}) => {
     switch (action.type) {
         case actionTypes.SELECT_ORDER:
             return mergeImmutable(state, {

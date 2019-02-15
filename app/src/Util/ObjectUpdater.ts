@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export function toMutable<T>(obj: T): T {
     return obj;
 }
@@ -11,5 +13,5 @@ export function mergeImmutable<T>(oldState: T, newState: object): T {
 }
 
 export function updateObject<T>(oldObject: T, newObject = {}): T {
-    return Object.assign({}, oldObject, newObject);
+    return Object.assign({}, _.cloneDeep(oldObject), newObject);
 }
