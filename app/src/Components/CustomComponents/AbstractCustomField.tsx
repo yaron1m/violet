@@ -19,7 +19,7 @@ export default class AbstractCustomField<AdditionalProps>
         this.title = props.titles[props.name];
 
         // Avoid sending too many actions
-        this.updateAction = _.debounce(props.updateAction, 400);
+        this.updateAction = _.debounce(props.updateAction, 500);
 
         this.width = getWidth(props.fullWidth, props.size);
         this.state = getInitialStateFromProps(props);
@@ -54,7 +54,7 @@ export default class AbstractCustomField<AdditionalProps>
             value: newValue
         });
 
-        this.updateAction(this.name, newValue)
+        this.updateAction(this.name, newValue);
     }
 
     shouldShowError() {
