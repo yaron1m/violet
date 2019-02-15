@@ -1,4 +1,3 @@
-import * as SeamlessImmutable from 'seamless-immutable';
 import IOrganization from './IOrganization';
 import IAppearance from './IAppearance';
 import IFirebase from './IFirebase';
@@ -8,25 +7,25 @@ import ILists from './ILists';
 import IPublicCourse from './IPublicCourse';
 
 export type IState = {
-    appearance: SeamlessImmutable.Immutable<IAppearance>;
-    firebase: SeamlessImmutable.Immutable<IFirebase>;
+    appearance: IAppearance;
+    firebase: IFirebase;
     labels: ILabels;
-    lists: SeamlessImmutable.Immutable<ILists>;
-    selectedOrganization: SeamlessImmutable.Immutable<{
+    lists: ILists;
+    selectedOrganization: {
         isSelectedOrganization: boolean;
         organization: IOrganization,
-    }>;
-    selectedOrder: SeamlessImmutable.Immutable<{
+    };
+    selectedOrder: {
         isSelectedOrder: boolean;
         order: IOrder,
-    }>;
-    selectedPublicCourse: SeamlessImmutable.Immutable<{
+    };
+    selectedPublicCourse: {
         isSelectedPublicCourse: boolean;
         publicCourse: IPublicCourse;
-    }>;
-    organizations: SeamlessImmutable.Immutable<{ [id: string]: IOrganization }>;
-    orders: SeamlessImmutable.Immutable<{ [id: string]: IOrder }>;
-    publicCourses: SeamlessImmutable.Immutable<{ [id: string]: IPublicCourse }>;
+    };
+    organizations: { [id: string]: IOrganization };
+    orders: { [id: string]: IOrder };
+    publicCourses: { [id: string]: IPublicCourse };
 };
 export type IDispatch = Function; // TODO figure this out
 export type IGetState = () => IState;
