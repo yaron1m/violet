@@ -26,21 +26,17 @@ function mapStateToProps(state: IState) {
         titles: getOrderSectionsLabels(state).titles,
         values: getSelectedOrder(state),
         requiredFields: getRequiredFieldsObject(state).order,
-        entityId: getSelectedOrder(state).id
     };
 }
 
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key: string, value: any) => {
-            console.log("updateSelectedOrder called with value " + value);
-            dispatch(updateSelectedOrder(key, value));
-        },
+        updateAction: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
     };
 }
 
 function mergeProps(stateProps: {
-    titles: IStringObject; values: IOrder; requiredFields: string[]; entityId: number;
+    titles: IStringObject; values: IOrder; requiredFields: string[];
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
 }, ownProps: OrderCustomFieldsProps) {
@@ -48,7 +44,6 @@ function mergeProps(stateProps: {
         titles: stateProps.titles,
         values: stateProps.values,
         requiredFields: stateProps.requiredFields,
-        entityId: stateProps.entityId,
         updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,
         name: ownProps.name,
         size: ownProps.size,

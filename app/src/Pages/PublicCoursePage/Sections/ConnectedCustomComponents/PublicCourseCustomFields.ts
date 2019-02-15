@@ -14,7 +14,6 @@ function mapStateToProps(state: IState) {
     return {
         titles: getLabels(state).pages.publicCoursePage.fieldTitles,
         values: getSelectedPublicCourse(state),
-        entityId: getSelectedPublicCourse(state).id
     };
 }
 
@@ -25,7 +24,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 function mergeProps(stateProps: {
-    titles: IStringObject; values: IPublicCourse; entityId: number
+    titles: IStringObject; values: IPublicCourse;
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
 }, ownProps: {
@@ -34,7 +33,6 @@ function mergeProps(stateProps: {
     return {
         titles: stateProps.titles,
         values: stateProps.values,
-        entityId: stateProps.entityId,
         requiredFields: [],
         updateAction: dispatchProps.updateAction,
         name: ownProps.name,

@@ -12,7 +12,6 @@ function mapStateToProps(state:IState, ownProps: LoginFieldProps) {
         name: ownProps.type,
         type: ownProps.type,
         size: Size.XL,
-        entityId: ownProps.type,
     };
 }
 

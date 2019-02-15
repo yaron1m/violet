@@ -11,7 +11,6 @@ function mapStateToProps(state:IState, ownProps: {values?:object}) {
         titles: getOrderSectionsLabels(state).titles,
         values: ownProps.values? ownProps.values : getSelectedOrder(state),
         updateAction: function(){},
-        entityId: getSelectedOrder(state).id
     };
 }
 

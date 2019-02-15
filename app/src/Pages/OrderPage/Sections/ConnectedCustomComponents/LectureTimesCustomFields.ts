@@ -11,7 +11,6 @@ import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../Util/Constants/Size';
 import {ISuggestion} from '../../../../Components/AutoSuggest';
 import {TabKey} from '../../../../Util/Constants/Status';
-import IOrder from '../../../../Interfaces/IOrder';
 
 interface LectureTimesCustomFieldsProps {
     name: string;
@@ -21,27 +20,24 @@ interface LectureTimesCustomFieldsProps {
     onSuggestionSelected?: (suggestion: ISuggestion) => void;
 }
 
-function getValues(selectedOrder: IOrder, ownProps: LectureTimesCustomFieldsProps): { [key: string]: any } {
-    if (ownProps.lectureTimeIndex === null || selectedOrder.lectureTimes === undefined)
+function getValues(state: IState, ownProps:LectureTimesCustomFieldsProps) : {[key:string]:any} {
+    if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)
         return {};
 
-    return selectedOrder.lectureTimes[ownProps.lectureTimeIndex];
+    return getSelectedOrder(state).lectureTimes[ownProps.lectureTimeIndex];
 }
 
-function mapStateToProps(state: IState, ownProps: LectureTimesCustomFieldsProps) {
-    const selectedOrder = getSelectedOrder(state);
-
+function mapStateToProps(state: IState, ownProps:LectureTimesCustomFieldsProps) {
     return {
         titles: getOrderSectionsLabels(state).lectureTimes.titles,
-        values: getValues(selectedOrder, ownProps),
+        values: getValues(state, ownProps),
         requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
         name: ownProps.name,
         size: ownProps.size,
-        entityId: selectedOrder.id + "@" + ownProps.lectureTimeIndex,
     };
 }
 
-function mapDispatchToProps(dispatch: IDispatch, ownProps: LectureTimesCustomFieldsProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps:LectureTimesCustomFieldsProps) {
     return {
         updateAction: (name: string, newValue: any) => dispatch(updateLectureTime(name, newValue, ownProps.lectureTimeIndex))
     };

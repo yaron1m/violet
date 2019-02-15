@@ -36,7 +36,6 @@ export default class AllOrdersPage extends React.Component {
                     titles={{showAll: "הצג הכל"}}
                     updateAction={this.updateShowAll.bind(this)}
                     values={{showAll: this.state.showAll}}
-                    entityId="showAll"
                 />
             </div>;
 

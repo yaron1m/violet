@@ -9,7 +9,6 @@ function mapStateToProps(state:IState) {
         titles: getOrderSectionsLabels(state).titles,
         values: getSelectedOrganization(state),
         updateAction: function(){},
-        entityId: getSelectedOrganization(state).id
     };
 }
 
