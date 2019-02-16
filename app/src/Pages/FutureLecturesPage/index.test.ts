@@ -1,7 +1,9 @@
 import * as Target from ".";
 import {Status} from "../../Util/Constants/Status";
+import {IState} from '../../Interfaces/ReduxInterfaces';
+import IOrder from '../../Interfaces/IOrder';
 
-function getState(orders) {
+function getState(orders: { [key: string]: IOrder }) {
     return {
         orders,
         organizations: {
@@ -10,7 +12,7 @@ function getState(orders) {
                 organizationName: "OrgA"
             }
         }
-    };
+    } as unknown as IState;
 }
 
 describe('FutureLecturesPage', () => {
@@ -49,7 +51,7 @@ describe('FutureLecturesPage', () => {
                 ],
                 "status": Status.approvedOrder,
                 organizationId: 100,
-            },
+            } as unknown as IOrder,
             "1001": {
                 "id": 1001,
                 "lectureTimes": [
@@ -64,7 +66,7 @@ describe('FutureLecturesPage', () => {
                 ],
                 "status": Status.contact,
                 organizationId: 100,
-            },
+            } as unknown as IOrder,
         };
 
         const result = Target.getFutureLectureTimes(getState(orders));

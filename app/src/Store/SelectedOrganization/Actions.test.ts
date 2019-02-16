@@ -15,6 +15,7 @@ import {
 } from "./Actions";
 import {CLOSE_DIALOG} from "../Appearance/ActionTypes";
 import {getMockedDispatch} from "../../Util/TestUtils";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const id = 123456;
 const value = "value";
@@ -30,7 +31,7 @@ describe('selected actions - organization', () => {
                 organizations: {
                     [id]: value
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -53,7 +54,7 @@ describe('selected actions - organization', () => {
                         [id]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -79,7 +80,7 @@ describe('selected actions - organization', () => {
                         [key]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -101,6 +102,7 @@ describe('selected actions - organization', () => {
     });
 
     it('should dispatch action to send order to database', async () => {
+        // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 
         const target = sendSelectedOrganizationToDatabase();
@@ -113,7 +115,7 @@ describe('selected actions - organization', () => {
                         [key]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
         const mockedDispatch = getMockedDispatch(getState);
 
@@ -135,6 +137,7 @@ describe('selected actions - organization', () => {
     });
 
     it('should save a new organization to database', async () => {
+        // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 
         const target = saveNewOrganization();
@@ -151,7 +154,7 @@ describe('selected actions - organization', () => {
                         [key]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
         const expectedSelectedOrganization = {
             id: 102,

@@ -14,13 +14,13 @@ describe('Selected public course actions', () => {
     });
 
     it('should dispatch action with dialog parameters with actions', () => {
-        const result = actions.openDialog("myTitle", "MyContent", "actions");
+        const result = actions.openDialog("myTitle", "MyContent", []);
 
         expect(result).toEqual({
             type: actionTypes.OPEN_DIALOG,
             title: "myTitle",
             content: "MyContent",
-            actions: "actions",
+            actions: [],
         });
     });
 

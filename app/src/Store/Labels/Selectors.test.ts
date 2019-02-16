@@ -1,4 +1,5 @@
 import {getLabels} from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const sampleState = {
     labels: {
@@ -10,14 +11,14 @@ const sampleState = {
             orderPrefix: "הזמנה: ",
         },
     }
-};
+} as unknown as IState;
 
 describe('Store/Labels/selectors', () => {
 
     it('getLabels - valid', () => {
         expect(getLabels(sampleState))
             .toEqual(sampleState.labels);
-    })
+    });
 });
 
 //TODO missing tests herer

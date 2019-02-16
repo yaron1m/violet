@@ -7,7 +7,7 @@ export default interface IAppearance {
         isOpen: boolean,
         title: string,
         content: string,
-        actions: React.ReactNode[],
+        actions?: React.ReactNode[],
     },
     snackbar: {
         isOpen: boolean,

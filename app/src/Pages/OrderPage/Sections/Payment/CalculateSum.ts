@@ -9,7 +9,7 @@ export default function calculateSum(selectedOrder: IOrder, updateSelectedOrder:
 
     let cost = parseFloat(order.cost);
 
-    if (isEmptyValue(order, "cost") || isNaN(parseInt(order.cost))) {
+    if (isEmptyValue(order, "cost") || isNaN(Number(order.cost))) {
         // Allow 1500 * 3:
         //TODO support distance calculations as well
         const groups = /^([0-9]*)\*([0-9]*)$/g.exec(order.cost);

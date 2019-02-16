@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
     };
 }
 
-interface AllOrdersTableContainerProps {
+export interface AllOrdersTableContainerProps {
     beforeTable?: React.ReactNode;
     filterStatus?: Status;
     limit: number;

@@ -1,7 +1,7 @@
-import {isLoggedIn} from "./Selectors";
-import {isFetching} from "./Selectors";
+import {isFetching, isLoggedIn} from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-function setup(extraProps, orders, organizations) {
+function setup(extraProps = {}, orders = {}, organizations = {}) {
     return {
         firebase: {
             loggedIn: undefined,
@@ -17,7 +17,7 @@ function setup(extraProps, orders, organizations) {
         organizations: {
             ...organizations
         },
-    };
+    } as unknown as IState;
 }
 
 describe('Firebase selectors', () => {

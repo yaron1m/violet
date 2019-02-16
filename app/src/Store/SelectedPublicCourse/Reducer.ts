@@ -5,7 +5,7 @@ import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 const initialState = {
     isSelectedPublicCourse: false,
     publicCourse: {},
-};
+} as any;
 
 export default (state = createImmutable(initialState), action: any = {}) => {
     switch (action.type) {

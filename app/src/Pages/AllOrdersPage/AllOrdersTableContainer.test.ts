@@ -1,8 +1,7 @@
-import {getElements, onEditButton} from "./AllOrdersTableContainer";
-import labels from '../../Store/Labels/Reducer'
+import {AllOrdersTableContainerProps, getElements} from "./AllOrdersTableContainer";
+import labels from '../../Store/Labels/Reducer';
 import {Status} from "../../Util/Constants/Status";
-import * as SelectedOrderActions from "../../Store/SelectedOrder/Actions";
-import * as HistoryUtil from "../../Util/HistoryUtil";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const state = {
     labels: labels(),
@@ -60,8 +59,7 @@ const state = {
             createdDate: 456,
         },
     },
-
-};
+} as unknown as IState;
 
 describe('AllOrdersTableContainer', () => {
     beforeEach(() => {
@@ -69,23 +67,23 @@ describe('AllOrdersTableContainer', () => {
 
     it('elements prop - no filter - show all orders in reverse order', () => {
         const props = {
-            filterStatus: null,
+            filterStatus: undefined,
             limit: 30,
-        };
+        } as AllOrdersTableContainerProps;
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
-        expect(orders[0].id).toBe(1003);
-        expect(orders[1].id).toBe(1002);
-        expect(orders[2].id).toBe(1001);
-        expect(orders[3].id).toBe(1000);
+        expect(orders[0].orderId).toBe(1003);
+        expect(orders[1].orderId).toBe(1002);
+        expect(orders[2].orderId).toBe(1001);
+        expect(orders[3].orderId).toBe(1000);
     });
 
     it('elements prop - no filter - show right organization name', () => {
         const props = {
-            filterStatus: null,
+            filterStatus: undefined,
             limit: 30,
-        };
+        } as AllOrdersTableContainerProps;
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
@@ -97,9 +95,9 @@ describe('AllOrdersTableContainer', () => {
 
     it('elements prop - no filter - show right status', () => {
         const props = {
-            filterStatus: null,
+            filterStatus: undefined,
             limit: 30,
-        };
+        } as AllOrdersTableContainerProps;
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
@@ -111,45 +109,31 @@ describe('AllOrdersTableContainer', () => {
 
     it('elements prop - no filter - show right lecture details', () => {
         const props = {
-            filterStatus: null,
+            filterStatus: undefined,
             limit: 30,
-        };
+        } as AllOrdersTableContainerProps;
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
-        expect(orders[0].topic).toBeUndefined();
-        expect(orders[0].date).toBeUndefined();
+        expect(orders[0].topic).toEqual("");
+        expect(orders[0].date).toEqual("");
         expect(orders[1].topic).toEqual("lecture2");
         expect(orders[1].date).toEqual("2/2/17");
-        expect(orders[2].topic).toBeUndefined();
-        expect(orders[2].date).toBeUndefined();
+        expect(orders[2].topic).toEqual("");
+        expect(orders[2].date).toEqual("");
         expect(orders[3].topic).toEqual("lecture1");
         expect(orders[3].date).toEqual("1/1/17");
     });
 
     it('elements prop - filter - show filtered orders', () => {
         const props = {
-            filterStatus: "order",
+            filterStatus: Status.order,
             limit: 30,
         };
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(2);
-        expect(orders[0].id).toBe(1002);
-        expect(orders[1].id).toBe(1001);
-    });
-
-    it('onEditButton - order is loaded ', () => {
-        SelectedOrderActions.selectOrder = jest.fn();
-        HistoryUtil.redirect = jest.fn();
-        const dispatch = jest.fn();
-
-        onEditButton(dispatch, 1002);
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(SelectedOrderActions.selectOrder).toHaveBeenCalledTimes(1);
-        expect(SelectedOrderActions.selectOrder).toHaveBeenCalledWith(1002);
-
-        expect(HistoryUtil.redirect).toHaveBeenCalledTimes(1);
-        expect(HistoryUtil.redirect).toHaveBeenCalledWith("/order");
+        expect(orders[0].orderId).toBe(1002);
+        expect(orders[1].orderId).toBe(1001);
     });
 });

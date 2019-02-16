@@ -1,22 +1,22 @@
 import target from "./Reducer";
 import * as actionTypes from './ActionTypes';
 import {updateObject} from "../../Util/ObjectUpdater";
+import IAppearance from '../../Interfaces/IAppearance';
 
 const initialState = {
-    rtl: true,
-    language: "he",
-    dialog: {
-        isOpen: false,
-        title: "",
-        content: "",
-        actions: null,
-    },
-    snackbar: {
-        isOpen: false,
-        message: "",
-    },
-    showRequiredFields: false,
-};
+        rtl: true,
+        language: "he",
+        dialog: {
+            isOpen: false,
+            title: "",
+            content: "",
+        },
+        snackbar: {
+            isOpen: false,
+            message: "",
+        },
+        showRequiredFields: false,
+} as IAppearance;
 
 describe('Appearance reducer', () => {
     it('reducer - no action - initial state', () => {
@@ -26,7 +26,7 @@ describe('Appearance reducer', () => {
     });
 
     it('should do nothing with no action', () => {
-        const initialState = "initialState";
+        const initialState = "initialState" as unknown as IAppearance;
 
         const result = target(initialState);
 

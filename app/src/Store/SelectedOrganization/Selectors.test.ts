@@ -1,7 +1,7 @@
-import Immutable from 'seamless-immutable';
 import {getSelectedOrganization, isSelectedOrganization} from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-const sampleState = Immutable({
+const sampleState = {
     selectedOrganization: {
         organization: {
             "address": "האחות חיה 4, רמת גן",
@@ -12,14 +12,14 @@ const sampleState = Immutable({
         },
         isSelectedOrganization: true,
     }
-});
+} as unknown as IState;
 
-const emptyState = Immutable({
+const emptyState = {
     selectedOrganization: {
         organization: {},
         isSelectedOrganization: false,
     }
-});
+} as unknown as IState;
 
 describe('Store/selected/selectors', () => {
 

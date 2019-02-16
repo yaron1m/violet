@@ -27,6 +27,7 @@ describe('Proforma Invoice Date Calculator', () => {
 
         const selectedPaymentConditions = allPaymentConditions.immediate;
 
+        // @ts-ignore
         const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
 
         expect(result).toBeNull();
@@ -47,6 +48,7 @@ describe('Proforma Invoice Date Calculator', () => {
 
         const selectedPaymentConditions = null;
 
+        // @ts-ignore
         const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
 
         expect(result).toBeNull();

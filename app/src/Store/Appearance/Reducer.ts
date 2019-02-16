@@ -1,15 +1,16 @@
 import * as actionTypes from './ActionTypes';
 import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 import {LOGGED_OUT} from '../Firebase/ActionTypes';
+import IAppearance from '../../Interfaces/IAppearance';
 
-const initialState = {
+const initialState : IAppearance= {
     rtl: true,
     language: "he",
     dialog: {
         isOpen: false,
         title: "",
         content: "",
-        actions: null,
+        actions: undefined,
     },
     snackbar: {
         isOpen: false,

@@ -1,7 +1,7 @@
-import Immutable from 'seamless-immutable';
 import * as target from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-const state = Immutable({
+const state = {
     appearance: {
         rtl: "rtl",
         language: "he",
@@ -17,7 +17,7 @@ const state = Immutable({
         },
         showRequiredFields: "showRequiredFields",
     }
-});
+} as unknown as IState;
 
 describe('Appearance Selectors', () => {
     it('should return isRTL', () => {

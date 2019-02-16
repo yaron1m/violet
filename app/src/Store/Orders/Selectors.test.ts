@@ -1,8 +1,10 @@
 import * as Selectors from './Selectors';
 import {Status} from "../../Util/Constants/Status";
 import * as labelsSelectors from "../Labels/Selectors";
-import EntityType from "../../Util/Constants/EntityType";
 import * as organizationSelectors from "../Organizations/Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
+import {EntityType} from '../../Util/Constants/EntityType';
+import _ from 'lodash';
 
 const state = {
     "orders": {
@@ -50,12 +52,18 @@ const state = {
             id: 100,
         }
     }
-};
+} as unknown as IState;
 
 describe('Store/Orders/selectors', () => {
 
+    beforeAll(() => {
+        const orgDetails = {organizationName: "orgName"};
+        // @ts-ignore
+        organizationSelectors.getOrganizationById = jest.fn(() => orgDetails);
+    });
+
     it('getOrders - get all orders', () => {
-        expect(Selectors.getOrders(state)).toBe(state.orders);
+        expect(Selectors.getOrders(state)).toEqual(_.values(state.orders));
     });
 
     it('getOrders - filtered by status', () => {
@@ -74,12 +82,12 @@ describe('Store/Orders/selectors', () => {
     });
 
     it('getOrderById - valid - order returned', () => {
-        expect(Selectors.getOrderById(state, 1001))
+        expect(Selectors.getOrderById(state, "1001"))
             .toEqual(state.orders[1001]);
     });
 
     it('getOrderById - no such id - undefined', () => {
-        expect(Selectors.getOrderById(state, 9999))
+        expect(Selectors.getOrderById(state, "9999"))
             .toBeUndefined();
     });
 
@@ -89,7 +97,8 @@ describe('Store/Orders/selectors', () => {
     });
 
     it('getNextOrderId - no orders', () => {
-        expect(Selectors.getNextOrderId({orders: {}}))
+        const noOrdersState = {orders: {}} as IState;
+        expect(Selectors.getNextOrderId(noOrdersState))
             .toBe(5000);
     });
 
@@ -101,19 +110,17 @@ describe('Store/Orders/selectors', () => {
     it('getOrdersByOrganization - no organization selected - null', () => {
         expect(Selectors.getOrdersByOrganization({
             selectedOrganization: {isSelectedOrganization: false}
-        })).toBeNull();
+        } as IState)).toEqual([]);
     });
 
     it('getFollowUpOrdersSummary - valid', () => {
+        // @ts-ignore
         labelsSelectors.getOrderStatusLabel = jest.fn((state, order) => order.status);
-
-        const orgDetails = {organizationName: "orgName"};
-        organizationSelectors.getOrganizationById = jest.fn(() => orgDetails);
 
         expect(Selectors.getFollowUpOrdersSummary(state))
             .toEqual([
                 {
-                    id: 1002,
+                    orderId: 1002,
                     organizationName: "orgName",
                     topic: "topic",
                     status: Status.order,
@@ -121,18 +128,20 @@ describe('Store/Orders/selectors', () => {
                     followUpDetails: "bla",
                     createdDate: 123,
                 }, {
-                    id: 1003,
+                    orderId: 1003,
                     organizationName: "orgName",
                     status: Status.approvedOrder,
                     followUpDate: 222,
                     followUpDetails: "bla bla",
                     createdDate: 456,
+                    topic: "",
                 }
             ]);
     });
 
     it('getFollowUpOrdersSummary - no orders - empty array', () => {
-        expect(Selectors.getFollowUpOrdersSummary({orders: {}}))
+        const noOrdersState = {orders: {}} as IState;
+        expect(Selectors.getFollowUpOrdersSummary(noOrdersState))
             .toEqual([]);
     });
 
@@ -140,19 +149,15 @@ describe('Store/Orders/selectors', () => {
         expect(Selectors.getAllLectureTimes(state))
             .toEqual([
                 {
-                    info: {
-                        id: 1000,
-                        type: EntityType.order,
-                    },
-                    orderId: 1000,
+                    entityId: 1000,
+                    entityType: EntityType.order,
+                    orderId: "1000",
                     topic: "lecture",
                     organizationName: "orgName",
                 }, {
-                    info: {
-                        id: 1002,
-                        type: EntityType.order,
-                    },
-                    orderId: 1002,
+                    entityId: 1002,
+                    entityType: EntityType.order,
+                    orderId: "1002",
                     topic: "topic",
                     organizationName: "orgName",
                 }
@@ -163,11 +168,9 @@ describe('Store/Orders/selectors', () => {
         expect(Selectors.getAllLectureTimes(state, Status.contact))
             .toEqual([
                 {
-                    info: {
-                        id: 1000,
-                        type: EntityType.order,
-                    },
-                    orderId: 1000,
+                    entityId: 1000,
+                    entityType: EntityType.order,
+                    orderId: "1000",
                     topic: "lecture",
                     organizationName: "orgName",
                 }
