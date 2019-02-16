@@ -15,7 +15,7 @@ export function getOrganizationById(state: IState, id: string) {
 }
 
 export function getNextOrganizationId(state: IState) {
-    const organizations = getOrganizations(state);
+    const organizations = getOrganizationsMap(state);
     const keys = _.keys(organizations);
     if (!organizations || keys.length === 0)
         return 1000;

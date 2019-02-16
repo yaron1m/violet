@@ -33,8 +33,8 @@ export function setIsSelectedOrganization() {
 }
 
 export function sendSelectedOrganizationToDatabase() {
-    return async function sendSelectedOrganizationToDatabase(dispatch: IDispatch, getState: IGetState) {
-        await dispatch(updateSelectedOrganization("changedDate", new Date().toJSON()));
+    return function sendSelectedOrganizationToDatabase(dispatch: IDispatch, getState: IGetState) {
+        dispatch(updateSelectedOrganization("changedDate", new Date().toJSON()));
         const selectedOrganization = getSelectedOrganization(getState());
 
         return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);

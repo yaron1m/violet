@@ -171,14 +171,14 @@ describe('selected actions - organization', () => {
         });
 
         expect(mockedDispatch).toHaveBeenCalledWith({
-            type: CLOSE_DIALOG
-        });
-        expect(mockedDispatch).toHaveBeenCalledWith({
             type: SET_IS_SELECTED_ORGANIZATION
+        });
+
+        expect(mockedDispatch).toHaveBeenCalledWith({
+            type: CLOSE_DIALOG
         });
 
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
     });
-
 });
 
