@@ -1,7 +1,8 @@
-import Immutable from 'seamless-immutable';
 import {getSelectedOrder, isPublicCourseOrder, isSelectedOrder} from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
+import IOrder from '../../Interfaces/IOrder';
 
-const sampleState = Immutable({
+const sampleState = {
     selectedOrder: {
         order: {
             "actualPayDay": "Sat Jul 22 2017",
@@ -32,14 +33,14 @@ const sampleState = Immutable({
         },
         isSelectedOrder: true
     }
-});
+} as unknown as IState;
 
-const emptyState = Immutable({
+const emptyState = {
     selectedOrder: {
         order: {},
         isSelectedOrder: false,
     }
-});
+} as IState;
 
 describe('Store/selected/selectors', () => {
     it('should return selected order', () => {
@@ -52,7 +53,6 @@ describe('Store/selected/selectors', () => {
             .toEqual({});
     });
 
-
     it('should return isSelectedOrder', () => {
         expect(isSelectedOrder(sampleState))
             .toBeTruthy();
@@ -63,29 +63,28 @@ describe('Store/selected/selectors', () => {
             .toBeFalsy();
     });
 
-    it('should return true since this is a public course order', () =>{
+    it('should return true since this is a public course order', () => {
         const order = {
             id: 123,
             lectureDetailsTabKey: "publicCourseTab"
-        } ;
+        } as IOrder;
 
         expect(isPublicCourseOrder(order)).toBeTruthy();
     });
 
-    it('should return false since this is an internal order', () =>{
+    it('should return false since this is an internal order', () => {
         const order = {
             id: 123,
             lectureDetailsTabKey: "internalTab"
-        } ;
+        } as IOrder;
 
         expect(isPublicCourseOrder(order)).toBeFalsy();
     });
 
-
-    it('should return false since this is a default order', () =>{
+    it('should return false since this is a default order', () => {
         const order = {
             id: 123,
-        } ;
+        } as IOrder;
 
         expect(isPublicCourseOrder(order)).toBeFalsy();
     });

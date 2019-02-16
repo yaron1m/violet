@@ -1,4 +1,3 @@
-import Immutable from 'seamless-immutable';
 import {
     getLecturesDetails,
     getSelectedCourseParticipantsAndOrders,
@@ -8,17 +7,18 @@ import {
     isSelectedPublicCourse
 } from "./Selectors";
 import * as labelSelectors from "../Labels/Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-function getParticipant(id) {
+function getParticipant(id:number) {
     return {
         participantFirstName: "first" + id,
         participantLastName: "last" + id,
         lecturesAttending: [0, 1],
         participantCost: id * 100,
-    }
+    };
 }
 
-const state = Immutable({
+const state = {
     selectedPublicCourse: {
         publicCourse: {
             id: 555,
@@ -90,14 +90,14 @@ const state = Immutable({
         11: {organizationName: "OrgB"}
     },
     labels: {currencyIcon: "X"}
-});
+} as unknown as IState;
 
-const emptyState = Immutable({
+const emptyState = {
     selectedPublicCourse: {
         publicCourse: {},
         isSelectedPublicCourse: false,
     }
-});
+}as unknown as IState;
 
 describe('Store/selected/selectors', () => {
     it('should return selected public course', () => {
@@ -146,6 +146,7 @@ describe('Store/selected/selectors', () => {
     });
 
     it('should return summary of participants of matching course', () => {
+        // @ts-ignore
         labelSelectors.getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 

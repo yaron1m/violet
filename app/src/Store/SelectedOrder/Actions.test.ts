@@ -1,4 +1,4 @@
-import * as orderStatusUtil from '../../Util/OrderStatus/OrderStatusCalculator'
+import * as orderStatusUtil from '../../Util/OrderStatus/OrderStatusCalculator';
 import * as firebaseActions from "../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {
@@ -17,6 +17,7 @@ import {getMockedDispatch} from "../../Util/TestUtils";
 import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
 import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../SelectedPublicCourse/ActionTypes";
 import {progressiveStatuses as Status} from "../../Util/Constants/Status";
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const id = 123456;
 const orgId = 555;
@@ -29,7 +30,9 @@ const status = "status";
 
 describe('Selected order actions', () => {
     beforeEach(() => {
+        // @ts-ignore
         orderStatusUtil.default = jest.fn();
+        // @ts-ignore
         orderStatusUtil.default.mockReturnValue(status);
     });
 
@@ -46,7 +49,7 @@ describe('Selected order actions', () => {
                         organizationId: orgId,
                     },
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -86,7 +89,7 @@ describe('Selected order actions', () => {
                         a: "b"
                     }
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -117,7 +120,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -148,7 +151,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const mockedDispatch = getMockedDispatch(getState);
 
@@ -185,7 +188,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             lectureTimes: [
@@ -220,7 +223,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             lectureTimes: [
@@ -250,7 +253,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             lectureTimes: [
@@ -286,7 +289,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             publicCourseParticipants: [
@@ -327,7 +330,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             publicCourseParticipants: [
@@ -369,7 +372,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             publicCourseParticipants: [
@@ -411,7 +414,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             publicCourseParticipants: [
@@ -453,7 +456,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             publicCourseParticipants: [
@@ -493,7 +496,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const expectedOrder = {
             publicCourseParticipants: [
@@ -512,7 +515,6 @@ describe('Selected order actions', () => {
         });
     });
 
-
     it('should return set is selected action', () => {
         expect(setIsSelectedOrder()).toEqual({
             type: SET_IS_SELECTED_ORDER
@@ -520,6 +522,7 @@ describe('Selected order actions', () => {
     });
 
     it('should dispatch action to send order to database', async () => {
+        // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 
         const target = sendSelectedOrderToDatabase();
@@ -534,7 +537,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const mockedDispatch = getMockedDispatch(getState);
 
@@ -546,7 +549,7 @@ describe('Selected order actions', () => {
         };
 
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
-        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/Orders/' + id, expectedOrder);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
     });
 
     it('should return clear selected order action', () => {
@@ -579,7 +582,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -591,7 +594,7 @@ describe('Selected order actions', () => {
     it('should fill order id and created date', () => {
         const thunkFunction = fillNewOrderMissingFields();
         const now = new Date();
-        // noinspection JSUnresolvedVariable
+        // @ts-ignore
         global.Date = jest.fn(() => now);
 
         const getState = () => {
@@ -616,7 +619,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -674,7 +677,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
 
         const dispatch = jest.fn();
@@ -716,7 +719,7 @@ describe('Selected order actions', () => {
                 selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
         const dispatch = jest.fn();
 
@@ -731,6 +734,7 @@ describe('Selected order actions', () => {
     });
 
     it('should calculate status after updating the order', () => {
+        // @ts-ignore
         orderStatusUtil.default = jest.fn(order => {
             if (order.orderApproved)
                 return Status.approvedOrder;
@@ -749,7 +753,7 @@ describe('Selected order actions', () => {
                 }, selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);

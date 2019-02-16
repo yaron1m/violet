@@ -1,22 +1,14 @@
 import * as actions from "./Actions";
 import {clearSelectedPublicCourse} from "./Actions";
 import * as firebaseActions from "../Firebase/Actions";
-import {
-    CLEAR_SELECTED_PUBLIC_COURSE,
-    SELECT_PUBLIC_COURSE,
-    SET_IS_SELECTED_PUBLIC_COURSE,
-    UPDATE_SELECTED_PUBLIC_COURSE
-} from "./ActionTypes";
+import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from "./ActionTypes";
 import {getMockedDispatch} from '../../Util/TestUtils';
+import {IState} from '../../Interfaces/ReduxInterfaces';
 
-
-const id = 123456;
-const org = "org";
+const id = "123456";
 const value = "value";
 const key = "key";
 const newValue = "newValue";
-
-let dispatch;
 
 describe('Selected public course actions', () => {
     test('right action is fired when selecting a public course', () => {
@@ -27,7 +19,7 @@ describe('Selected public course actions', () => {
                 publicCourses: {
                     [id]: value
                 }
-            }
+            } as unknown as IState;
         };
 
         const mockedDispatch = getMockedDispatch(getState);
@@ -54,7 +46,7 @@ describe('Selected public course actions', () => {
                         [id]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
         const expectedCourse = {
             [id]: value,
@@ -81,7 +73,7 @@ describe('Selected public course actions', () => {
                         [key]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
         const expectedCourse = {
             [key]: newValue,
@@ -114,7 +106,7 @@ describe('Selected public course actions', () => {
 
                     }
                 }
-            }
+            } as unknown as IState;
         };
         const expectedCourse = {
             lectures: [
@@ -156,7 +148,7 @@ describe('Selected public course actions', () => {
 
                     }
                 }
-            }
+            } as IState;
         };
         const expectedCourse = {
             lectures: [
@@ -190,7 +182,7 @@ describe('Selected public course actions', () => {
                 selectedPublicCourse: {
                     publicCourse: {}
                 }
-            }
+            } as IState;
         };
         const expectedCourse = {
             lectures: [
@@ -218,6 +210,7 @@ describe('Selected public course actions', () => {
     });
 
     it('should dispatch action to send order to database', async () => {
+        // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 
         const target = actions.sendSelectedPublicCourseToDatabase();
@@ -230,7 +223,7 @@ describe('Selected public course actions', () => {
                         [key]: value
                     }
                 }
-            }
+            } as unknown as IState;
         };
 
         const expectedCourse = {

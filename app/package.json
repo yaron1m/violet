@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "jest",
+    "test": "react-scripts test",
     "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
     "deploy": "npm test && npm run build && firebase deploy -P production",
     "demo-deploy": "npm test && npm run build && firebase deploy -P demo",
@@ -36,7 +36,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.0",
+    "@types/jest": "^24.0.5",
     "@types/lodash": "^4.14.120",
     "@types/node": "^10.12.21",
     "@types/react": "^16.8.2",

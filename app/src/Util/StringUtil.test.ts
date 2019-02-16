@@ -9,18 +9,6 @@ describe('string-util', () => {
         expect(isEmptyValue(object, "key")).toBeFalsy();
     });
 
-    it('isEmptyValue - undefined object - false', () => {
-        expect(isEmptyValue(undefined, "key")).toBeTruthy();
-    });
-
-    it('isEmptyValue - null object - false', () => {
-        expect(isEmptyValue(null, "key")).toBeTruthy();
-    });
-
-    it('isEmptyValue - empty string object - false', () => {
-        expect(isEmptyValue("", "key")).toBeTruthy();
-    });
-
     it('isEmptyValue - no such key - false', () => {
         const object = {};
         expect(isEmptyValue(object, "key")).toBeTruthy();
@@ -54,16 +42,12 @@ describe('string-util', () => {
         expect(getValueOrEmptyString(object, "key")).toEqual("value");
     });
 
-    it('getValueOrEmptyString - invalid - empty string', () => {
-        expect(getValueOrEmptyString(null, "key")).toEqual("");
-    });
-
     it('cutIfLong - valid - valid', () => {
         expect(cutIfLong("abcdefg", 6)).toEqual("abc...");
     });
 
     it('cutIfLong - empty input - undefined', () => {
-        expect(cutIfLong("", 3)).toBeUndefined();
+        expect(cutIfLong("", 3)).toEqual("");
     });
 
     it('cutIfLong - short input - undefined', () => {

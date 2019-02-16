@@ -1,13 +1,15 @@
 import calculateOrderStatus from "./OrderStatusCalculator";
 import {Status} from "../Constants/Status";
 import {toDateFormat} from "../TimeUtil";
+import IOrder from '../../Interfaces/IOrder';
+import IPublicCourse from '../../Interfaces/IPublicCourse';
 
 // TODO add tests for public course
 describe('order-status', () => {
 
     it('calculateOrderStatus - contact', () => {
-        const order = {};
-        expect(calculateOrderStatus(order)).toEqual(Status.contact);
+        const order = {} as IOrder;
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.contact);
     });
 
     it('calculateOrderStatus - offer', () => {
@@ -17,9 +19,9 @@ describe('order-status', () => {
                     topic: "some topic"
                 }
             ]
-        };
+        } as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.offer);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.offer);
     });
 
     it('calculateOrderStatus - offer', () => {
@@ -30,9 +32,9 @@ describe('order-status', () => {
                     date: "some date",
                 }
             ]
-        };
+        } as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.order);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.order);
     });
 
     it('calculateOrderStatus - approvedOrder', () => {
@@ -44,9 +46,9 @@ describe('order-status', () => {
                 }
             ],
             orderApproved: true,
-        };
+        } as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.approvedOrder);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.approvedOrder);
     });
 
     it('calculateOrderStatus - lecture date tomorrow - isExecuting', () => {
@@ -61,9 +63,9 @@ describe('order-status', () => {
                 }
             ],
             orderApproved: true,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.approvedOrder);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.approvedOrder);
     });
 
     it('calculateOrderStatus - lecture date today - Executed', () => {
@@ -82,9 +84,9 @@ describe('order-status', () => {
                 }
             ],
             orderApproved: true,
-        };
+        } as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.executed);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.executed);
     });
 
     it('calculateOrderStatus - only some of lectures passed - isExecuting', () => {
@@ -100,9 +102,9 @@ describe('order-status', () => {
                 }
             ],
             orderApproved: true,
-        };
+        } as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.isExecuting);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.isExecuting);
     });
 
     it('calculateOrderStatus - all lectures passed - executed', () => {
@@ -121,9 +123,9 @@ describe('order-status', () => {
                 }
             ],
             orderApproved: true,
-        };
+        } as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.executed);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.executed);
     });
 
     it('calculateOrderStatus - has proformaInvoiceNumber - waitingPayment', () => {
@@ -136,9 +138,9 @@ describe('order-status', () => {
             ],
             orderApproved: true,
             proformaInvoiceNumber: 123,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.waitingPayment);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
     it('calculateOrderStatus - has taxInvoiceNumber - waitingPayment', () => {
@@ -154,9 +156,9 @@ describe('order-status', () => {
             ],
             orderApproved: true,
             taxInvoiceNumber: 123,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.waitingPayment);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
     it('calculateOrderStatus - lecture date today and has proformaInvoiceNumber - waitingPayment', () => {
@@ -172,9 +174,9 @@ describe('order-status', () => {
             ],
             orderApproved: true,
             proformaInvoiceNumber: 123,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.waitingPayment);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
     it('calculateOrderStatus - lecture date today and has taxInvoiceNumber - waitingPayment', () => {
@@ -190,9 +192,9 @@ describe('order-status', () => {
             ],
             orderApproved: true,
             taxInvoiceNumber: 123,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.waitingPayment);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
     it('calculateOrderStatus - has receiptNumber - Payed', () => {
@@ -206,9 +208,9 @@ describe('order-status', () => {
             orderApproved: true,
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.payed);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.payed);
     });
 
     it('calculateOrderStatus - cancelled', () => {
@@ -223,9 +225,9 @@ describe('order-status', () => {
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
             cancelled: true,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.cancelled);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.cancelled);
     });
 
     it('calculateOrderStatus - rejected', () => {
@@ -240,10 +242,9 @@ describe('order-status', () => {
             proformaInvoiceNumber: 123,
             receiptNumber: 456,
             rejected: true,
-        };
+        } as unknown as IOrder;
 
-        expect(calculateOrderStatus(order)).toEqual(Status.rejected);
+        expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.rejected);
     });
-
 
 });
