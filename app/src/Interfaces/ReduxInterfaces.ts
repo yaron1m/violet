@@ -5,6 +5,8 @@ import IOrder from './IOrder';
 import ILabels from './ILabels';
 import ILists from './ILists';
 import IPublicCourse from './IPublicCourse';
+import {ThunkDispatch} from 'redux-thunk';
+import {AnyAction} from 'redux';
 
 export type IState = {
     appearance: IAppearance;
@@ -27,5 +29,6 @@ export type IState = {
     orders: { [id: string]: IOrder };
     publicCourses: { [id: string]: IPublicCourse };
 };
-export type IDispatch = Function; // TODO figure this out
+
+export type IDispatch = ThunkDispatch<IState, any, AnyAction>;
 export type IGetState = () => IState;

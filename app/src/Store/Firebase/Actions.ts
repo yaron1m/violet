@@ -11,6 +11,7 @@ import {getLabels} from '../Labels/Selectors';
 import {receivePublicCourses} from '../PublicCourses/Actions';
 import {isLoggedIn} from './Selectors';
 import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
+import {AnyAction} from 'redux';
 
 const firebaseProductionConfig = {
     apiKey: 'AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c',
@@ -129,7 +130,7 @@ export function signOutRequest() {
     };
 }
 
-export function fetchData(collectionName: string, actionCallback: (val: any) => object) {
+export function fetchData(collectionName: string, actionCallback: (val: any) => AnyAction) {
     return function afterSignedIn(dispatch: IDispatch) {
         firebase.database().ref(collectionName).on('value', snapshot => {
                 if (snapshot !== null)

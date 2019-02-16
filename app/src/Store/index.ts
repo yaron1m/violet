@@ -36,6 +36,7 @@ const store = createStore(
     )
 );
 
+// @ts-ignore
 store.dispatch(initFirebase());
 
 export default store;
