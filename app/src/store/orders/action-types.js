@@ -1,1 +1,0 @@
-export const RECEIVE_ORDERS = "RECEIVE_ORDERS";
