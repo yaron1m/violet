@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {addNewLectureTime} from "../../../../../../Store/SelectedOrder/Actions";
-import {getOrderSectionsLabels} from "../../../../../../Store/Labels/Selectors";
-import {CustomRaisedButton} from "../../../../../../Components/CustomComponents/CustomButtons";
+import {addNewLectureTime} from '../../../../../../Store/SelectedOrder/Actions';
+import {getOrderSectionsLabels} from '../../../../../../Store/Labels/Selectors';
+import {CustomRaisedButton} from '../../../../../../Components/CustomComponents/CustomButtons';
 import {IDispatch, IState} from '../../../../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
@@ -20,4 +20,4 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);
-
+

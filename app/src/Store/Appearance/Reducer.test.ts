@@ -1,19 +1,19 @@
-import target from "./Reducer";
+import target from './Reducer';
 import * as actionTypes from './ActionTypes';
-import {updateObject} from "../../Util/ObjectUpdater";
+import {updateObject} from '../../Util/ObjectUpdater';
 import IAppearance from '../../Interfaces/IAppearance';
 
 const initialState = {
         rtl: true,
-        language: "he",
+        language: 'he',
         dialog: {
             isOpen: false,
-            title: "",
-            content: "",
+            title: '',
+            content: '',
         },
         snackbar: {
             isOpen: false,
-            message: "",
+            message: '',
         },
         showRequiredFields: false,
 } as IAppearance;
@@ -26,7 +26,7 @@ describe('Appearance reducer', () => {
     });
 
     it('should do nothing with no action', () => {
-        const initialState = "initialState" as unknown as IAppearance;
+        const initialState = 'initialState' as unknown as IAppearance;
 
         const result = target(initialState);
 
@@ -36,9 +36,9 @@ describe('Appearance reducer', () => {
     it('should open the dialog and set its content', () => {
         const action = {
             type: actionTypes.OPEN_DIALOG,
-            title: "myTitle",
-            content: "myContent",
-            actions: "myActions",
+            title: 'myTitle',
+            content: 'myContent',
+            actions: 'myActions',
         };
 
         const result = target(initialState, action);
@@ -46,9 +46,9 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(initialState, {
             dialog: {
                 isOpen: true,
-                title: "myTitle",
-                content: "myContent",
-                actions: "myActions",
+                title: 'myTitle',
+                content: 'myContent',
+                actions: 'myActions',
             }
         }));
     });
@@ -57,9 +57,9 @@ describe('Appearance reducer', () => {
         const thisState = updateObject(initialState, {
             dialog: {
                 isOpen: true,
-                title: "myTitle",
-                content: "myContent",
-                actions: "myActions",
+                title: 'myTitle',
+                content: 'myContent',
+                actions: 'myActions',
             }
         });
 
@@ -72,8 +72,8 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(thisState, {
             dialog: {
                 isOpen: false,
-                title: "",
-                content: "",
+                title: '',
+                content: '',
                 actions: null,
             }
         }));
@@ -82,7 +82,7 @@ describe('Appearance reducer', () => {
     it('should open the snackbar', () => {
         const action = {
             type: actionTypes.OPEN_SNACKBAR,
-            message: "myMessage",
+            message: 'myMessage',
         };
 
         const result = target(initialState, action);
@@ -90,7 +90,7 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(initialState, {
             snackbar: {
                 isOpen: true,
-                message: "myMessage",
+                message: 'myMessage',
             }
         }));
     });
@@ -99,7 +99,7 @@ describe('Appearance reducer', () => {
         const thisState = updateObject(initialState, {
             snackbar: {
                 isOpen: true,
-                message: "myMessage",
+                message: 'myMessage',
             }
         });
 
@@ -112,7 +112,7 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(thisState, {
             snackbar: {
                 isOpen: false,
-                message: "",
+                message: '',
             }
         }));
     });

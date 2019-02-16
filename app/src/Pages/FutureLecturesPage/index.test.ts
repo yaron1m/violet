@@ -1,5 +1,5 @@
-import * as Target from ".";
-import {Status} from "../../Util/Constants/Status";
+import * as Target from '.';
+import {Status} from '../../Util/Constants/Status';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import IOrder from '../../Interfaces/IOrder';
 
@@ -9,7 +9,7 @@ function getState(orders: { [key: string]: IOrder }) {
         organizations: {
             100: {
                 organizationId: 100,
-                organizationName: "OrgA"
+                organizationName: 'OrgA'
             }
         }
     } as unknown as IState;
@@ -29,42 +29,42 @@ describe('FutureLecturesPage', () => {
         tomorrow.setDate(now.getDate() + 1);
 
         const orders = {
-            "1000": {
-                "id": 1000,
-                "lectureTimes": [
+            '1000': {
+                'id': 1000,
+                'lectureTimes': [
                     {
-                        topic: "3 days ago",
+                        topic: '3 days ago',
                         date: new Date().setDate(now.getDate() - 3)
                     },
                     {
-                        topic: "yesterday",
+                        topic: 'yesterday',
                         date: yesterday
                     },
                     {
-                        topic: "this morning",
+                        topic: 'this morning',
                         date: thisMorning
                     },
                     {
-                        topic: "tomorrow",
+                        topic: 'tomorrow',
                         date: tomorrow
                     },
                 ],
-                "status": Status.approvedOrder,
+                'status': Status.approvedOrder,
                 organizationId: 100,
             } as unknown as IOrder,
-            "1001": {
-                "id": 1001,
-                "lectureTimes": [
+            '1001': {
+                'id': 1001,
+                'lectureTimes': [
                     {
-                        topic: "lecture1",
+                        topic: 'lecture1',
                         date: new Date()
                     },
                     {
-                        topic: "other lecture",
+                        topic: 'other lecture',
                         date: new Date()
                     }
                 ],
-                "status": Status.contact,
+                'status': Status.contact,
                 organizationId: 100,
             } as unknown as IOrder,
         };
@@ -72,9 +72,8 @@ describe('FutureLecturesPage', () => {
         const result = Target.getFutureLectureTimes(getState(orders));
 
         expect(result).toHaveLength(2);
-        expect(result[0].topic).toEqual("this morning");
-        expect(result[1].topic).toEqual("tomorrow");
+        expect(result[0].topic).toEqual('this morning');
+        expect(result[1].topic).toEqual('tomorrow');
     });
 });
-
-
+

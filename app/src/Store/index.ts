@@ -12,7 +12,7 @@ import publicCourses from './PublicCourses/Reducer';
 import selectedOrder from './SelectedOrder/Reducer';
 import selectedOrganization from './SelectedOrganization/Reducer';
 import selectedPublicCourse from './SelectedPublicCourse/Reducer';
-import {initFirebase} from "./Firebase/Actions";
+import {initFirebase} from './Firebase/Actions';
 
 const combinedReducers = combineReducers({
     appearance,

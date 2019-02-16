@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../Store/Labels/Selectors";
-import {getOrders, getOrdersSummary, IOrderSummary} from "../../Store/Orders/Selectors";
-import * as _ from "lodash";
-import {redirect} from "../../Util/HistoryUtil";
-import CustomPaperTable from "../../Components/Table/CustomPaperTable";
+import {selectOrder} from '../../Store/SelectedOrder/Actions';
+import {getLabels} from '../../Store/Labels/Selectors';
+import {getOrders, getOrdersSummary, IOrderSummary} from '../../Store/Orders/Selectors';
+import * as _ from 'lodash';
+import {redirect} from '../../Util/HistoryUtil';
+import CustomPaperTable from '../../Components/Table/CustomPaperTable';
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 import * as React from 'react';
 import {Status} from '../../Util/Constants/Status';

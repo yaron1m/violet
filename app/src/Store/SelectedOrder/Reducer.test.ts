@@ -1,6 +1,6 @@
-import reducer from "./Reducer";
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
-import {CLEAR_SELECTED_ORDER} from "./ActionTypes";
+import reducer from './Reducer';
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
+import {CLEAR_SELECTED_ORDER} from './ActionTypes';
 
 const payload = {
     a: 123

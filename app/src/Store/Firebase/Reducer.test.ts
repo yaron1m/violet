@@ -1,4 +1,4 @@
-import {isFetching, isLoggedIn} from "./Selectors";
+import {isFetching, isLoggedIn} from './Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
 function setup(extraProps = {}, orders = {}, organizations = {}) {
@@ -6,8 +6,8 @@ function setup(extraProps = {}, orders = {}, organizations = {}) {
         firebase: {
             loggedIn: undefined,
             userId: undefined,
-            displayName: "",
-            photoURL: "",
+            displayName: '',
+            photoURL: '',
             fetchingCount: 3,
             ...extraProps
         },

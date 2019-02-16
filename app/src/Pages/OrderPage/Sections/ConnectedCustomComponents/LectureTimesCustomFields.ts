@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
-import {updateLectureTime} from "../../../../Store/SelectedOrder/Actions";
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
-import CustomText from "../../../../Components/CustomComponents/CustomTextField";
-import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
-import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
-import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
-import {isRightTabKey} from "../../../../Store/Appearance/RequiredFields/Util";
+import {getSelectedOrder} from '../../../../Store/SelectedOrder/Selectors';
+import {updateLectureTime} from '../../../../Store/SelectedOrder/Actions';
+import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
+import CustomText from '../../../../Components/CustomComponents/CustomTextField';
+import CustomDatePicker from '../../../../Components/CustomComponents/CustomDatePicker';
+import CustomAutoComplete from '../../../../Components/CustomComponents/CustomAutoComplete';
+import {getRequiredFieldsObject} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
+import {isRightTabKey} from '../../../../Store/Appearance/RequiredFields/Util';
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../Util/Constants/Size';
 import {ISuggestion} from '../../../../Components/AutoSuggest';
@@ -50,4 +50,4 @@ function mapDispatchToProps(dispatch: IDispatch, ownProps: LectureTimesCustomFie
 export const LectureTimesCustomText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
 export const LectureTimesCustomDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
 export const LectureTimesCustomAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
-
+

@@ -1,13 +1,13 @@
 import * as actionTypes from './ActionTypes';
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
-import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
+import {createImmutable, mergeImmutable} from '../../Util/ObjectUpdater';
 
 const initialState = {
     isSelectedOrder: false,
     order: {},
 };
 
-export default (state = createImmutable(initialState), action :any = {}) => {
+export default (state = createImmutable(initialState), action: any = {}) => {
     switch (action.type) {
         case actionTypes.SELECT_ORDER:
             return mergeImmutable(state, {
@@ -30,7 +30,6 @@ export default (state = createImmutable(initialState), action :any = {}) => {
             return createImmutable(initialState);
 
         default:
-            return state
+            return state;
     }
-}
-
+};

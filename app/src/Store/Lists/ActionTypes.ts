@@ -1,1 +1,1 @@
-export const RECEIVE_LISTS = "RECEIVE_LISTS";
+export const RECEIVE_LISTS = 'RECEIVE_LISTS';

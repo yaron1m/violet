@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
-import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
-import PublicCourseLectureDetails from "./PublicCourseLectureDetails";
+import {getOrderSectionsLabels} from '../../../../../Store/Labels/Selectors';
+import {getSelectedOrder} from '../../../../../Store/SelectedOrder/Selectors';
+import PublicCourseLectureDetails from './PublicCourseLectureDetails';
 import {IState} from '../../../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {

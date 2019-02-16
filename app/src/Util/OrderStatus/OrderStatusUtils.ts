@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import * as _ from 'lodash';
 import IOrder from '../../Interfaces/IOrder';
 import {Status} from '../Constants/Status';
 
@@ -7,7 +7,7 @@ export function existsAndNotEmpty(order: IOrder, key: string) {
     return _.has(order, key) && order[key] && isNonEmptyArray(order[key]);
 }
 
-function isNonEmptyArray(arr: any[]){
+function isNonEmptyArray(arr: any[]) {
     return _.isArray(arr) ? arr.length !== 0 : true;
 }
 

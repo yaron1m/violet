@@ -1,9 +1,9 @@
-import {sendDataToDatabase} from "../Firebase/Actions";
-import {getPublicCourseById} from "../PublicCourses/Selectors";
-import {calculateDuration} from "../../Util/TimeUtil";
-import * as _ from "lodash";
-import {getSelectedPublicCourse} from "./Selectors";
-import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from "./ActionTypes";
+import {sendDataToDatabase} from '../Firebase/Actions';
+import {getPublicCourseById} from '../PublicCourses/Selectors';
+import {calculateDuration} from '../../Util/TimeUtil';
+import * as _ from 'lodash';
+import {getSelectedPublicCourse} from './Selectors';
+import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from './ActionTypes';
 import {IDispatch, IGetState, IState} from '../../Interfaces/ReduxInterfaces';
 import {IPublicCourseLecture} from '../../Interfaces/IPublicCourse';
 
@@ -29,8 +29,8 @@ export function updateSelectedPublicCourse(key: string, value: string | IPublicC
     };
 }
 
-function getSelectedPublicCourseLecture(state: IState){
-    return _.cloneDeep(getSelectedPublicCourse(state).lectures)
+function getSelectedPublicCourseLecture(state: IState) {
+    return _.cloneDeep(getSelectedPublicCourse(state).lectures);
 }
 
 export function updatePublicCourseLecture(key: string, value: string | boolean | number, lectureId: number) {
@@ -39,7 +39,7 @@ export function updatePublicCourseLecture(key: string, value: string | boolean |
         // @ts-ignore
         lectures[lectureId][key] = value;
         lectures[lectureId].duration = calculateDuration(lectures[lectureId]);
-        dispatch(updateSelectedPublicCourse("lectures", lectures));
+        dispatch(updateSelectedPublicCourse('lectures', lectures));
     };
 }
 
@@ -60,7 +60,7 @@ export function addLectureToSelectedPublicCourse() {
             } as IPublicCourseLecture);
         }
 
-        dispatch(updateSelectedPublicCourse("lectures", lectures));
+        dispatch(updateSelectedPublicCourse('lectures', lectures));
     };
 }
 
@@ -72,7 +72,7 @@ export function setIsSelectedPublicCourse() {
 
 export function sendSelectedPublicCourseToDatabase() {
     return async function sendSelectedPublicCourseToDatabase(dispatch: IDispatch, getState: IGetState) {
-        await dispatch(updateSelectedPublicCourse("changedDate", new Date().toJSON()));
+        await dispatch(updateSelectedPublicCourse('changedDate', new Date().toJSON()));
         const selectedPublicCourse = getSelectedPublicCourse(getState());
 
         return sendDataToDatabase('/publicCourses/' + selectedPublicCourse.id, selectedPublicCourse);
@@ -84,5 +84,4 @@ export function clearSelectedPublicCourse() {
         type: CLEAR_SELECTED_PUBLIC_COURSE
     };
 }
-
-
+

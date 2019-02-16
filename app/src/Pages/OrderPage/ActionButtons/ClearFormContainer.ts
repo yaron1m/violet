@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
-import ClearFormButton from "./ClearForm";
+import {getOrderPageLabels} from '../../../Store/Labels/Selectors';
+import ClearFormButton from './ClearForm';
 import {IState} from '../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state:IState) {
+function mapStateToProps(state: IState) {
     return {
         tooltip: getOrderPageLabels(state).actionButtons.clear,
     };

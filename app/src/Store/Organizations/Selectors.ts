@@ -1,8 +1,8 @@
-import _ from "lodash";
+import _ from 'lodash';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 
-function getOrganizationsMap(state: IState){
+function getOrganizationsMap(state: IState) {
     return toMutable(state.organizations);
 }
 

@@ -3,31 +3,31 @@
 import * as actionTypes from './ActionTypes';
 import {receiveOrganizations} from '../Organizations/Actions';
 import {receiveOrders} from '../Orders/Actions';
-import {receiveLists} from "../Lists/Actions";
+import {receiveLists} from '../Lists/Actions';
 import firebase from 'firebase/app';
-import "firebase/auth";
-import "firebase/database";
-import {getLabels} from "../Labels/Selectors";
-import {receivePublicCourses} from "../PublicCourses/Actions";
-import {isLoggedIn} from "./Selectors";
+import 'firebase/auth';
+import 'firebase/database';
+import {getLabels} from '../Labels/Selectors';
+import {receivePublicCourses} from '../PublicCourses/Actions';
+import {isLoggedIn} from './Selectors';
 import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
 
 const firebaseProductionConfig = {
-    apiKey: "AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c",
-    authDomain: "violet-36bed.firebaseapp.com",
-    databaseURL: "https://violet-36bed.firebaseio.com",
-    projectId: "violet-36bed",
-    storageBucket: "violet-36bed.appspot.com",
-    messagingSenderId: "259015014878"
+    apiKey: 'AIzaSyBYLZaVfwMoWhCBzvhO8qJjC-CzqRceR0c',
+    authDomain: 'violet-36bed.firebaseapp.com',
+    databaseURL: 'https://violet-36bed.firebaseio.com',
+    projectId: 'violet-36bed',
+    storageBucket: 'violet-36bed.appspot.com',
+    messagingSenderId: '259015014878'
 };
 
 const firebaseDevelopmentConfig = {
-    apiKey: "AIzaSyB0hDCH-PoE-nAXVoP4Ba6gNYAfMDufajE",
-    authDomain: "violet-dev.firebaseapp.com",
-    databaseURL: "https://violet-dev.firebaseio.com",
-    projectId: "violet-dev",
-    storageBucket: "violet-dev.appspot.com",
-    messagingSenderId: "97871190058"
+    apiKey: 'AIzaSyB0hDCH-PoE-nAXVoP4Ba6gNYAfMDufajE',
+    authDomain: 'violet-dev.firebaseapp.com',
+    databaseURL: 'https://violet-dev.firebaseio.com',
+    projectId: 'violet-dev',
+    storageBucket: 'violet-dev.appspot.com',
+    messagingSenderId: '97871190058'
 };
 
 // const firebaseDemoConfig = {
@@ -39,7 +39,7 @@ const firebaseDevelopmentConfig = {
 //     messagingSenderId: "425792520023"
 // };
 
-const firebaseConfig = process.env.NODE_ENV === "production" ? firebaseProductionConfig : firebaseDevelopmentConfig;
+const firebaseConfig = process.env.NODE_ENV === 'production' ? firebaseProductionConfig : firebaseDevelopmentConfig;
 
 export function initFirebase() {
     return async function signInRequest(dispatch: IDispatch) {
@@ -105,7 +105,7 @@ export function afterSignedIn(user: firebase.User) {
             userId: user.uid,
             displayName: user.displayName,
             photoURL: user.photoURL,
-            isSuperUser: user.email ? !user.email.toLowerCase().includes("asaf") : false,
+            isSuperUser: user.email ? !user.email.toLowerCase().includes('asaf') : false,
         });
         dispatch(fetchData('organizations', receiveOrganizations));
         dispatch(fetchData('orders', receiveOrders));
@@ -136,7 +136,7 @@ export function fetchData(collectionName: string, actionCallback: (val: any) => 
                     dispatch(actionCallback(snapshot.val()));
             },
             (error: firebase.FirebaseError) => {
-                console.error("The request for " + collectionName + " failed: " + error.code);
+                console.error('The request for ' + collectionName + ' failed: ' + error.code);
             });
     };
 }

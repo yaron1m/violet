@@ -1,11 +1,11 @@
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {getLabels} from '../../../Store/Labels/Selectors';
 import {redirect} from '../../../Util/HistoryUtil';
-import NavigationButton from "./NavigationButton";
+import NavigationButton from './NavigationButton';
 import {Path} from '../../Path';
 import {IState} from '../../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state:IState) {
+function mapStateToProps(state: IState) {
     return {
         title: getLabels(state).pages.dashboard.navigationButtons.allPublicCourses,
     };

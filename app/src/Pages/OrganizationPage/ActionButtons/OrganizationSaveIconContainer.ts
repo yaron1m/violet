@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import {
     sendSelectedOrganizationToDatabase
-} from "../../../Store/SelectedOrganization/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
-import {getNextOrganizationId} from "../../../Store/Organizations/Selectors";
-import {openDialog, openSnackbar} from "../../../Store/Appearance/Actions";
-import SaveActionButton from "../../../Components/ActionButtons/SaveActionButton";
-import {getSelectedOrganization, isSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
-import {setIsSelectedOrganization} from "../../../Store/SelectedOrganization/Actions";
+} from '../../../Store/SelectedOrganization/Actions';
+import {getLabels} from '../../../Store/Labels/Selectors';
+import {getNextOrganizationId} from '../../../Store/Organizations/Selectors';
+import {openDialog, openSnackbar} from '../../../Store/Appearance/Actions';
+import SaveActionButton from '../../../Components/ActionButtons/SaveActionButton';
+import {getSelectedOrganization, isSelectedOrganization} from '../../../Store/SelectedOrganization/Selectors';
+import {setIsSelectedOrganization} from '../../../Store/SelectedOrganization/Actions';
 import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
 import {IStringObject} from '../../../Interfaces/IOrder';
 
@@ -42,7 +42,7 @@ function handleDatabasePromise(
     setIsSelectedOrganization: () => void
 ) {
     promise.then(() => {
-        const snackbarMessage = snackBarText.savedSuccessfully.replace("{0}", selectedOrganizationName);
+        const snackbarMessage = snackBarText.savedSuccessfully.replace('{0}', selectedOrganizationName);
         openSnackbar(snackbarMessage);
         setIsSelectedOrganization();
     }).catch(() => {

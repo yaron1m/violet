@@ -78,7 +78,7 @@ export default interface IOrder {
     notes: string;
 }
 
-export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
+export type ILectureTimeField = 'topic' | 'audienceSize' | 'date' | 'duration' | 'endTime' | 'startTime';
 
 export type IStringObject = { [key: string]: string };
 
@@ -92,13 +92,13 @@ export interface ILectureTime {
 }
 
 export type IPublicCourseParticipantField =
-    "idNumber"
-    | "lecturesAttending"
-    | "email"
-    | "participantCost"
-    | "participantFirstName"
-    | "participantLastName"
-    | "phone";
+    'idNumber'
+    | 'lecturesAttending'
+    | 'email'
+    | 'participantCost'
+    | 'participantFirstName'
+    | 'participantLastName'
+    | 'phone';
 
 export interface IPublicCourseParticipant {
     idNumber: string;

@@ -1,8 +1,8 @@
-import {getOrders} from "../Orders/Selectors";
-import _ from "lodash";
-import {getOrganizationById} from "../Organizations/Selectors";
-import {getLabels, getStatusLabel} from "../Labels/Selectors";
-import {isEmptyValue, moneyFormat} from "../../Util/StringUtil";
+import {getOrders} from '../Orders/Selectors';
+import _ from 'lodash';
+import {getOrganizationById} from '../Organizations/Selectors';
+import {getLabels, getStatusLabel} from '../Labels/Selectors';
+import {isEmptyValue, moneyFormat} from '../../Util/StringUtil';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 
@@ -85,7 +85,7 @@ export function getLecturesDetails(state: IState) {
             topic: lecture.topic,
             participantsCount: participantsCount[lecture.id],
             price: lecture.price,
-            income: isEmptyValue(lecture, "price") ? 0 : parseInt(lecture.price) * participantsCount[lecture.id],
+            income: isEmptyValue(lecture, 'price') ? 0 : parseInt(lecture.price) * participantsCount[lecture.id],
         };
     });
 }

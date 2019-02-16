@@ -2,7 +2,7 @@ import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 import _ from 'lodash';
 
-function getLists(state: IState){
+function getLists(state: IState) {
     return toMutable(state.lists);
 }
 

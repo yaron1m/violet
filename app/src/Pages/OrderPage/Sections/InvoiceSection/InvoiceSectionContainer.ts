@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
-import InvoiceSection from "./InvoiceSection";
+import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
+import InvoiceSection from './InvoiceSection';
 import {IState} from '../../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
@@ -10,4 +10,4 @@ function mapStateToProps(state: IState) {
 }
 
 export default connect(mapStateToProps)(InvoiceSection);
-
+

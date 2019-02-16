@@ -1,4 +1,4 @@
-export default interface IOrganization{
+export default interface IOrganization {
     id: number;
     organizationName: string;
     companyId: string;

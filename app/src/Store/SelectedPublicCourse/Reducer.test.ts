@@ -1,9 +1,9 @@
-import target from "./Reducer";
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import target from './Reducer';
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
 import * as actionTypes from './ActionTypes';
 
-const value = "value";
-const key = "key";
+const value = 'value';
+const key = 'key';
 const payload = {
     a: 123
 };
@@ -20,7 +20,7 @@ describe('selected actions - organization', () => {
 
     it('should do nothing with no action', () => {
 
-        const initialState = "initialState";
+        const initialState = 'initialState';
 
         const result = target(initialState);
 
@@ -77,7 +77,6 @@ describe('selected actions - organization', () => {
 
         expect(result.isSelectedPublicCourse).toBeTruthy();
     });
-
 
     it('should clear selected public course', () => {
 

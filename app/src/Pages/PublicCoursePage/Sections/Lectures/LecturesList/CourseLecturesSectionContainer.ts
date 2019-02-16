@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../../Store/Labels/Selectors";
-import CourseLecturesSection from "./CourseLecturesSection";
-import {getSelectedPublicCourse} from "../../../../../Store/SelectedPublicCourse/Selectors";
+import {getLabels} from '../../../../../Store/Labels/Selectors';
+import CourseLecturesSection from './CourseLecturesSection';
+import {getSelectedPublicCourse} from '../../../../../Store/SelectedPublicCourse/Selectors';
 import _ from 'lodash';
 import {IState} from '../../../../../Interfaces/ReduxInterfaces';
 import IPublicCourse from '../../../../../Interfaces/IPublicCourse';
@@ -26,4 +26,4 @@ function mapStateToProps(state: IState) {
 }
 
 export default connect(mapStateToProps)(CourseLecturesSection);
-
+

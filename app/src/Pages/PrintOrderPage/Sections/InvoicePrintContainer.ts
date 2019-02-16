@@ -1,7 +1,7 @@
-import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../Store/Labels/Selectors";
-import InvoicePrintSection from "./InvoicePrint";
-import {IState} from "../../../Interfaces/ReduxInterfaces";
+import {connect} from 'react-redux';
+import {getOrderSectionsLabels} from '../../../Store/Labels/Selectors';
+import InvoicePrintSection from './InvoicePrint';
+import {IState} from '../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
     return {

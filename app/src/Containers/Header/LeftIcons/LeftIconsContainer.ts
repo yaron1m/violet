@@ -1,15 +1,15 @@
 import LeftIcons from './LeftIcons';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {signOutRequest} from '../../../Store/Firebase/Actions';
-import {getLabels} from "../../../Store/Labels/Selectors";
-import {getActionRequiredOrders} from "../../../Store/Orders/Selectors";
+import {getLabels} from '../../../Store/Labels/Selectors';
+import {getActionRequiredOrders} from '../../../Store/Orders/Selectors';
 import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
     return {
         logOutLabel: getLabels(state).header.logOut,
         notificationCount: getActionRequiredOrders(state).length,
-        isProduction: process.env.NODE_ENV === "production",
+        isProduction: process.env.NODE_ENV === 'production',
     };
 }
 

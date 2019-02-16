@@ -1,7 +1,7 @@
 import {selectFieldUpdateAction} from './CourseSelectorContainer';
-import * as SelectedActions from "../../../../../Store/SelectedPublicCourse/Actions";
-import * as SelectedOrderActions from "../../../../../Store/SelectedOrder/Actions";
-import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
+import * as SelectedActions from '../../../../../Store/SelectedPublicCourse/Actions';
+import * as SelectedOrderActions from '../../../../../Store/SelectedOrder/Actions';
+import {removeParticipantsFromAllLectures, updateSelectedOrder} from '../../../../../Store/SelectedOrder/Actions';
 import {IDispatch} from '../../../../../Interfaces/ReduxInterfaces';
 
 describe('selectFieldUpdateAction', () => {
@@ -32,7 +32,7 @@ describe('selectFieldUpdateAction', () => {
 
         // @ts-ignore
         expect(updateSelectedOrder.mock.calls).toHaveLength(1);
-        expect(updateSelectedOrder).toBeCalledWith("publicCourseId", publicCourseId);
+        expect(updateSelectedOrder).toBeCalledWith('publicCourseId', publicCourseId);
     });
 
     it('should remove order participants from all lectures', () => {

@@ -1,10 +1,10 @@
-import target from "./Reducer";
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import target from './Reducer';
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
 import * as actionTypes from './ActionTypes';
 
-const value = "value";
+const value = 'value';
 const org = {
-    newKey: "new value"
+    newKey: 'new value'
 };
 
 describe('organizations reducer', () => {
@@ -16,7 +16,7 @@ describe('organizations reducer', () => {
 
     it('should do nothing with no action', () => {
 
-        const initialState = "initialState";
+        const initialState = 'initialState';
 
         const result = target(initialState);
 

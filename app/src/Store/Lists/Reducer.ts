@@ -1,5 +1,5 @@
 import * as actionTypes from './ActionTypes';
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
 import {createImmutable} from '../../Util/ObjectUpdater';
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
     rejectionReasons: {},
 };
 
-export default (state = createImmutable(initialState), action :any= {}) => {
+export default (state = createImmutable(initialState), action: any= {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_LISTS:
             return createImmutable(action.payload);
@@ -19,4 +19,4 @@ export default (state = createImmutable(initialState), action :any= {}) => {
         default:
             return state;
     }
-}
+};

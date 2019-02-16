@@ -1,9 +1,9 @@
-import _ from "lodash";
-import {hasDatePassed} from "../../Util/TimeUtil";
-import {getOrders} from "../Orders/Selectors";
-import {moneyFormat} from "../../Util/StringUtil";
-import {getLabels} from "../Labels/Selectors";
-import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
+import _ from 'lodash';
+import {hasDatePassed} from '../../Util/TimeUtil';
+import {getOrders} from '../Orders/Selectors';
+import {moneyFormat} from '../../Util/StringUtil';
+import {getLabels} from '../Labels/Selectors';
+import {isPublicCourseOrder} from '../SelectedOrder/Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 import IOrder from '../../Interfaces/IOrder';
@@ -48,12 +48,12 @@ export function getPublicCoursesSummary(state: IState) {
     const courses = getPublicCourses(state);
 
     function map(course: IPublicCourse) {
-        const result:IPublicCourseSummary = {
+        const result: IPublicCourseSummary = {
             id: course.id,
             courseName: course.courseName,
             courseLocation: course.courseLocation,
-            date: "",
-            courseIncome: "",
+            date: '',
+            courseIncome: '',
         };
         if (!_.isEmpty(course.lectures)) {
             const dates = _.map(course.lectures, x => x.date);

@@ -1,14 +1,14 @@
-import {getSelectedOrganization, isSelectedOrganization} from "./Selectors";
+import {getSelectedOrganization, isSelectedOrganization} from './Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const sampleState = {
     selectedOrganization: {
         organization: {
-            "address": "האחות חיה 4, רמת גן",
-            "companyId": "514815745",
-            "howReachedUs": "מפה לאוזן",
-            "id": 0,
-            "name": "שיא האיכות בע\"מ"
+            'address': 'האחות חיה 4, רמת גן',
+            'companyId': '514815745',
+            'howReachedUs': 'מפה לאוזן',
+            'id': 0,
+            'name': 'שיא האיכות בע"מ'
         },
         isSelectedOrganization: true,
     }

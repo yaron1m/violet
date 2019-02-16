@@ -1,15 +1,14 @@
-import target from "./Reducer";
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import target from './Reducer';
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from "./ActionTypes";
+} from './ActionTypes';
 
-
-const value = "value";
-const key = "key";
+const value = 'value';
+const key = 'key';
 const payload = {
     a: 123
 };
@@ -25,7 +24,7 @@ describe('selected actions - organization', () => {
 
     it('reducer - no action with state - return state', () => {
 
-        const initialState = "initialState";
+        const initialState = 'initialState';
 
         const result = target(initialState);
 
@@ -82,7 +81,6 @@ describe('selected actions - organization', () => {
 
         expect(result.isSelectedOrganization).toBeTruthy();
     });
-
 
     it('reducer - CLEAR_SELECTED_ORGANIZATION', () => {
 

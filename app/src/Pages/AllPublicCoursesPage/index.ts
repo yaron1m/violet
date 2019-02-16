@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
-import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
-import {getLabels} from "../../Store/Labels/Selectors";
-import {redirect} from "../../Util/HistoryUtil";
-import CustomPaperTable from "../../Components/Table/CustomPaperTable";
-import {getPublicCoursesSummary, IPublicCourseSummary} from "../../Store/PublicCourses/Selectors";
+import {selectPublicCourse} from '../../Store/SelectedPublicCourse/Actions';
+import {getLabels} from '../../Store/Labels/Selectors';
+import {redirect} from '../../Util/HistoryUtil';
+import CustomPaperTable from '../../Components/Table/CustomPaperTable';
+import {getPublicCoursesSummary, IPublicCourseSummary} from '../../Store/PublicCourses/Selectors';
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 import {Path} from '../Path';
 
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomPaperTable);
-
+

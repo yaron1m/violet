@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../Store/Labels/Selectors";
-import CustomTextField from "../../Components/CustomComponents/CustomTextField";
-import {Size} from "../../Util/Constants/Size";
+import {getLabels} from '../../Store/Labels/Selectors';
+import CustomTextField from '../../Components/CustomComponents/CustomTextField';
+import {Size} from '../../Util/Constants/Size';
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-function mapStateToProps(state:IState, ownProps: LoginFieldProps) {
+function mapStateToProps(state: IState, ownProps: LoginFieldProps) {
     return {
         titles: {[ownProps.type]: getLabels(state).pages.loginPage[ownProps.type]},
         values: {[ownProps.type]: ownProps.value},
@@ -15,10 +15,10 @@ function mapStateToProps(state:IState, ownProps: LoginFieldProps) {
     };
 }
 
-function mapDispatchToProps(dispatch:IDispatch, ownProps: LoginFieldProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps: LoginFieldProps) {
     return {
         updateAction: ownProps.onChange,
-    }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomTextField);

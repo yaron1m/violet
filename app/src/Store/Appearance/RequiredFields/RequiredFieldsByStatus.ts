@@ -1,28 +1,28 @@
-import {IRequiredFields, mergerRequiredFields} from "./Util";
+import {IRequiredFields, mergerRequiredFields} from './Util';
 
 const contact: IRequiredFields = {
-    order: ["contactFirstName", "contactLastName", "contactPhone1", "contactEmail"],
-    organization: ["organizationName"],
+    order: ['contactFirstName', 'contactLastName', 'contactPhone1', 'contactEmail'],
+    organization: ['organizationName'],
     lectureTimes: [],
     internalOrder: [],
     publicCourse: [],
 };
 
 const offer = mergerRequiredFields(contact, {
-    lectureTimes: ["topic"],
+    lectureTimes: ['topic'],
 });
 
 const order = mergerRequiredFields(offer, {
-    lectureTimes: ["date", "startTime", "endTime"],
-    publicCourse: ["participantFirstName", "participantLastName"],
+    lectureTimes: ['date', 'startTime', 'endTime'],
+    publicCourse: ['participantFirstName', 'participantLastName'],
 });
 
 const approvedOrder = mergerRequiredFields(order, {
-    organization: ["companyId", "paymentConditions"],
-    order: ["financialContactFirstName", "financialContactLastName", "financialContactPhone1",
-        "financialContactEmail", "cost", "totalSum", "internalOrderNumber"],
-    internalOrder: ["street", "streetNumber", "city", "parking", "projector", "soundSystem", "microphone"],
-    publicCourse: ["idNumber", "phone", "email"],
+    organization: ['companyId', 'paymentConditions'],
+    order: ['financialContactFirstName', 'financialContactLastName', 'financialContactPhone1',
+        'financialContactEmail', 'cost', 'totalSum', 'internalOrderNumber'],
+    internalOrder: ['street', 'streetNumber', 'city', 'parking', 'projector', 'soundSystem', 'microphone'],
+    publicCourse: ['idNumber', 'phone', 'email'],
 });
 
 const isExecuting = mergerRequiredFields(approvedOrder);
@@ -30,13 +30,13 @@ const isExecuting = mergerRequiredFields(approvedOrder);
 const executed = mergerRequiredFields(isExecuting);
 
 const waitingPayment = mergerRequiredFields(executed, {
-    order: ["totalSum", "expectedPayDate"]
+    order: ['totalSum', 'expectedPayDate']
 });
 
 const payed = mergerRequiredFields(waitingPayment, {});
 
 const cancelled: IRequiredFields = {
-    order: ["cancellationReason"],
+    order: ['cancellationReason'],
     organization: [],
     lectureTimes: [],
     internalOrder: [],
@@ -44,7 +44,7 @@ const cancelled: IRequiredFields = {
 };
 
 const rejected: IRequiredFields = {
-    order: ["rejectionReason"],
+    order: ['rejectionReason'],
     organization: [],
     lectureTimes: [],
     internalOrder: [],
@@ -52,7 +52,7 @@ const rejected: IRequiredFields = {
 };
 
 const followUpRequired: IRequiredFields = {
-    order: ["followUpDate", "followUpDetails"],
+    order: ['followUpDate', 'followUpDetails'],
     organization: [],
     lectureTimes: [],
     internalOrder: [],

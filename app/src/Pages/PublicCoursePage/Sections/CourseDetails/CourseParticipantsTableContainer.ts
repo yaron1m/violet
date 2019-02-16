@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {getLabels} from "../../../../Store/Labels/Selectors";
-import CustomPaperTable from "../../../../Components/Table/CustomPaperTable";
-import {getSelectedPublicCourseParticipants, ISelectedPublicCourseParticipantsSummary} from "../../../../Store/SelectedPublicCourse/Selectors";
-import {redirect} from "../../../../Util/HistoryUtil";
-import {selectOrder} from "../../../../Store/SelectedOrder/Actions";
-import {Path} from "../../../Path";
+import {getLabels} from '../../../../Store/Labels/Selectors';
+import CustomPaperTable from '../../../../Components/Table/CustomPaperTable';
+import {getSelectedPublicCourseParticipants, ISelectedPublicCourseParticipantsSummary} from '../../../../Store/SelectedPublicCourse/Selectors';
+import {redirect} from '../../../../Util/HistoryUtil';
+import {selectOrder} from '../../../../Store/SelectedOrder/Actions';
+import {Path} from '../../../Path';
 import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {
@@ -12,7 +12,7 @@ function mapStateToProps(state: IState) {
         title: getLabels(state).pages.publicCoursePage.sections.courseParticipantsSectionName,
         elements: getSelectedPublicCourseParticipants(state),
         tableHeaders: getLabels(state).pages.publicCoursePage.participantsTableHeaders,
-        rowIndexKey: "orderId",
+        rowIndexKey: 'orderId',
     };
 }
 
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomPaperTable);
-
+

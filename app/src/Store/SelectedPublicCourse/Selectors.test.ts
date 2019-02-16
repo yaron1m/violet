@@ -5,14 +5,14 @@ import {
     getSelectedPublicCourseLectures,
     getSelectedPublicCourseParticipants,
     isSelectedPublicCourse
-} from "./Selectors";
-import * as labelSelectors from "../Labels/Selectors";
+} from './Selectors';
+import * as labelSelectors from '../Labels/Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
-function getParticipant(id:number) {
+function getParticipant(id: number) {
     return {
-        participantFirstName: "first" + id,
-        participantLastName: "last" + id,
+        participantFirstName: 'first' + id,
+        participantLastName: 'last' + id,
         lecturesAttending: [0, 1],
         participantCost: id * 100,
     };
@@ -25,31 +25,31 @@ const state = {
             lectures: [
                 {
                     id: 0,
-                    date: "2018-07-01",
+                    date: '2018-07-01',
                     active: true,
-                    topic: "T1",
-                    price: "1000",
+                    topic: 'T1',
+                    price: '1000',
                 },
                 {
                     id: 1,
-                    date: "2018-08-01",
+                    date: '2018-08-01',
                     active: true,
-                    topic: "T2",
-                    price: "2000",
+                    topic: 'T2',
+                    price: '2000',
                 },
                 {
                     id: 2,
-                    date: "2018-06-01",
+                    date: '2018-06-01',
                     active: false,
-                    topic: "T3",
-                    price: "3000",
+                    topic: 'T3',
+                    price: '3000',
                 },
                 {
                     id: 3,
-                    date: "2018-05-01",
+                    date: '2018-05-01',
                     active: true,
-                    topic: "T4",
-                    price: "4000",
+                    topic: 'T4',
+                    price: '4000',
                 },
             ]
         },
@@ -64,7 +64,7 @@ const state = {
                 getParticipant(1),
                 getParticipant(2),
             ],
-            proformaInvoiceNumber: "1122",
+            proformaInvoiceNumber: '1122',
         },
         124: {
             id: 124,
@@ -86,10 +86,10 @@ const state = {
         },
     },
     organizations: {
-        10: {organizationName: "OrgA"},
-        11: {organizationName: "OrgB"}
+        10: {organizationName: 'OrgA'},
+        11: {organizationName: 'OrgB'}
     },
-    labels: {currencyIcon: "X"}
+    labels: {currencyIcon: 'X'}
 } as unknown as IState;
 
 const emptyState = {
@@ -109,7 +109,6 @@ describe('Store/selected/selectors', () => {
         expect(getSelectedPublicCourse(emptyState))
             .toEqual({});
     });
-
 
     it('should return isSelectedPublicCourse', () => {
         expect(isSelectedPublicCourse(state))
@@ -153,42 +152,42 @@ describe('Store/selected/selectors', () => {
         expect(result).toHaveLength(4);
 
         expect(result[0]).toEqual({
-            participantFirstName: "first1",
-            participantLastName: "last1",
+            participantFirstName: 'first1',
+            participantLastName: 'last1',
             numberOfLecturesAttending: 2,
-            participantCost: "100.00 X",
+            participantCost: '100.00 X',
             orderId: 123,
             status: undefined,
-            organizationName: "OrgA",
-            proformaInvoiceNumber: "1122",
+            organizationName: 'OrgA',
+            proformaInvoiceNumber: '1122',
         });
         expect(result[1]).toEqual({
-            participantFirstName: "first2",
-            participantLastName: "last2",
+            participantFirstName: 'first2',
+            participantLastName: 'last2',
             numberOfLecturesAttending: 2,
-            participantCost: "200.00 X",
+            participantCost: '200.00 X',
             orderId: 123,
             status: undefined,
-            organizationName: "OrgA",
-            proformaInvoiceNumber: "1122",
+            organizationName: 'OrgA',
+            proformaInvoiceNumber: '1122',
         });
         expect(result[2]).toEqual({
-            participantFirstName: "first5",
-            participantLastName: "last5",
+            participantFirstName: 'first5',
+            participantLastName: 'last5',
             numberOfLecturesAttending: 2,
-            participantCost: "500.00 X",
+            participantCost: '500.00 X',
             orderId: 125,
             status: undefined,
-            organizationName: "OrgB",
+            organizationName: 'OrgB',
         });
         expect(result[3]).toEqual({
-            participantFirstName: "first6",
-            participantLastName: "last6",
+            participantFirstName: 'first6',
+            participantLastName: 'last6',
             numberOfLecturesAttending: 2,
-            participantCost: "600.00 X",
+            participantCost: '600.00 X',
             orderId: 125,
             status: undefined,
-            organizationName: "OrgB",
+            organizationName: 'OrgB',
         });
     });
 
@@ -198,24 +197,24 @@ describe('Store/selected/selectors', () => {
         expect(result).toHaveLength(3);
 
         expect(result[0]).toEqual({
-            date: "2018-05-01",
-            topic: "T4",
+            date: '2018-05-01',
+            topic: 'T4',
             participantsCount: 0,
-            price: "4000",
+            price: '4000',
             income: 0,
         });
         expect(result[1]).toEqual({
-            date: "2018-07-01",
-            topic: "T1",
+            date: '2018-07-01',
+            topic: 'T1',
             participantsCount: 4,
-            price: "1000",
+            price: '1000',
             income: 4000,
         });
         expect(result[2]).toEqual({
-            date: "2018-08-01",
-            topic: "T2",
+            date: '2018-08-01',
+            topic: 'T2',
             participantsCount: 4,
-            price: "2000",
+            price: '2000',
             income: 8000,
         });
     });

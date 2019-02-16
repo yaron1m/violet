@@ -1,15 +1,15 @@
 /* eslint-disable no-magic-numbers */
-import _ from "lodash";
-import {getOrganizationById} from "../Organizations/Selectors";
-import {isMatchingStatus} from "../../Util/OrderStatus/OrderStatusUtils";
-import {cutIfLong, isEmptyValue, moneyFormat} from "../../Util/StringUtil";
-import getActionRequiredOrdersArray from "./ActionRequiredOrderes";
-import {getLabels} from "../Labels/Selectors";
-import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
-import {getOrderStatusLabel} from "../Labels/Selectors";
-import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
-import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
-import {EntityType} from "../../Util/Constants/EntityType";
+import _ from 'lodash';
+import {getOrganizationById} from '../Organizations/Selectors';
+import {isMatchingStatus} from '../../Util/OrderStatus/OrderStatusUtils';
+import {cutIfLong, isEmptyValue, moneyFormat} from '../../Util/StringUtil';
+import getActionRequiredOrdersArray from './ActionRequiredOrderes';
+import {getLabels} from '../Labels/Selectors';
+import {getSelectedOrganization, isSelectedOrganization} from '../SelectedOrganization/Selectors';
+import {getOrderStatusLabel} from '../Labels/Selectors';
+import {isPublicCourseOrder} from '../SelectedOrder/Selectors';
+import {getPublicCourseByOrder, getPublicCourses} from '../PublicCourses/Selectors';
+import {EntityType} from '../../Util/Constants/EntityType';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 import {Status} from '../../Util/Constants/Status';
@@ -72,7 +72,7 @@ export function getFollowUpOrdersSummary(state: IState) {
             followUpDate: order.followUpDate,
             followUpDetails: cutIfLong(order.followUpDetails, 30),
             organizationName: cutIfLong(getOrganizationById(state, order.organizationId.toString()).organizationName, 20),
-            topic: "",
+            topic: '',
         };
         if (isPublicCourseOrder(order)) {
             result.topic = getLabels(state).orderTypes.publicCourse;
@@ -87,7 +87,7 @@ export function getFollowUpOrdersSummary(state: IState) {
     return _.map(orders, map);
 }
 
-//TODO update tests
+// TODO update tests
 export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
     function getMappedLectureTimes(order: IOrder): ILectureTimeSummary[] {
         return _.map(order.lectureTimes, time => ({
@@ -150,8 +150,8 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
             expectedPayDate: order.expectedPayDate,
             totalSum: moneyFormat(order.totalSum, getLabels(state).currencyIcon),
             organizationName: cutIfLong(getOrganizationById(state, order.organizationId.toString()).organizationName, 25),
-            topic: "",
-            lectureDate: "",
+            topic: '',
+            lectureDate: '',
         };
         if (isPublicCourseOrder(order)) {
             result.topic = getLabels(state).orderTypes.publicCourse;
@@ -184,18 +184,18 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
             orderId: order.id,
             status: getOrderStatusLabel(state, order),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
-            date: "",
-            topic: "",
+            date: '',
+            topic: '',
         };
 
         if (isPublicCourseOrder(order)) {
             const publicCourse = getPublicCourseByOrder(state, order);
-            if (!publicCourse) //Did not load yet
+            if (!publicCourse) // Did not load yet
                 return result;
 
             const minLecture = _.minBy(publicCourse.lectures, lecture => new Date(lecture.date));
-            result.date = minLecture && minLecture.date ? minLecture.date : "";
-            result.topic = getLabels(state).orderTypes.publicCourse + " " + publicCourse.courseName;
+            result.date = minLecture && minLecture.date ? minLecture.date : '';
+            result.topic = getLabels(state).orderTypes.publicCourse + ' ' + publicCourse.courseName;
         } else {
             if (!_.isEmpty(order.lectureTimes)) {
                 result.date = order.lectureTimes[0].date;
@@ -213,14 +213,14 @@ export function getActionRequiredOrders(state: IState) {
     return getActionRequiredOrdersArray(state);
 }
 
-//TODO test function
+// TODO test function
 export function getPublicCourseParticipantsSummary(state: IState) {
     if (_.isEmpty(getPublicCourses(state))) {
         return [];
     }
 
     const orders = getOrders(state);
-    const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && !isEmptyValue(order, "publicCourseId"));
+    const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && !isEmptyValue(order, 'publicCourseId'));
 
     return _.flatMap(publicCourseOrders,
         order => _.map(order.publicCourseParticipants, participant => {

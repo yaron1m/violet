@@ -1,14 +1,14 @@
-import * as actions from "./Actions";
-import {clearSelectedPublicCourse} from "./Actions";
-import * as firebaseActions from "../Firebase/Actions";
-import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from "./ActionTypes";
+import * as actions from './Actions';
+import {clearSelectedPublicCourse} from './Actions';
+import * as firebaseActions from '../Firebase/Actions';
+import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from './ActionTypes';
 import {getMockedDispatch} from '../../Util/TestUtils';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
-const id = "123456";
-const value = "value";
-const key = "key";
-const newValue = "newValue";
+const id = '123456';
+const value = 'value';
+const key = 'key';
+const newValue = 'newValue';
 
 describe('Selected public course actions', () => {
     test('right action is fired when selecting a public course', () => {
@@ -99,8 +99,8 @@ describe('Selected public course actions', () => {
                             {id: 0},
                             {
                                 id: 9,
-                                startTime: "12:00",
-                                endTime: "13:00",
+                                startTime: '12:00',
+                                endTime: '13:00',
                             }
                         ]
 
@@ -114,9 +114,9 @@ describe('Selected public course actions', () => {
                 {
                     id: 9,
                     [key]: value,
-                    startTime: "12:00",
-                    endTime: "13:00",
-                    duration: "01:00"
+                    startTime: '12:00',
+                    endTime: '13:00',
+                    duration: '01:00'
                 }
             ],
         };
@@ -142,7 +142,7 @@ describe('Selected public course actions', () => {
                             {id: 0},
                             {
                                 id: 9,
-                                startTime: "12:00",
+                                startTime: '12:00',
                             }
                         ]
 
@@ -155,7 +155,7 @@ describe('Selected public course actions', () => {
                 {id: 0},
                 {
                     id: 9,
-                    startTime: "12:00",
+                    startTime: '12:00',
                 },
                 {
                     id: 2,

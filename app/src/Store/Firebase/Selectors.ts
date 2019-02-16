@@ -1,11 +1,11 @@
-import {getOrders} from "../Orders/Selectors";
-import {getOrganizations} from "../Organizations/Selectors";
+import {getOrders} from '../Orders/Selectors';
+import {getOrganizations} from '../Organizations/Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import _ from 'lodash';
 import {toMutable} from '../../Util/ObjectUpdater';
 
-function getFirebase(state: IState){
-    return toMutable(state.firebase)
+function getFirebase(state: IState) {
+    return toMutable(state.firebase);
 }
 
 export function isLoggedIn(state: IState) {

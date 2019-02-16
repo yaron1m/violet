@@ -1,6 +1,6 @@
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
-import * as actionTypes from "./ActionTypes";
-import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
+import * as actionTypes from './ActionTypes';
+import {createImmutable, mergeImmutable} from '../../Util/ObjectUpdater';
 
 const initialState = {
     isSelectedPublicCourse: false,
@@ -30,6 +30,6 @@ export default (state = createImmutable(initialState), action: any = {}) => {
             return createImmutable(initialState);
 
         default:
-            return state
+            return state;
     }
-}
+};

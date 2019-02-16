@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
-import {selectOrder} from "../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../Store/Labels/Selectors";
-import {redirect} from "../../Util/HistoryUtil";
-import CustomPaperTable from "../../Components/Table/CustomPaperTable";
-import * as _ from "lodash";
-import {getAllLectureTimes, ILectureTimeSummary} from "../../Store/Orders/Selectors";
-import {Status} from "../../Util/Constants/Status";
-import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
-import {EntityType} from "../../Util/Constants/EntityType";
-import {Path} from "../Path";
+import {selectOrder} from '../../Store/SelectedOrder/Actions';
+import {getLabels} from '../../Store/Labels/Selectors';
+import {redirect} from '../../Util/HistoryUtil';
+import CustomPaperTable from '../../Components/Table/CustomPaperTable';
+import * as _ from 'lodash';
+import {getAllLectureTimes, ILectureTimeSummary} from '../../Store/Orders/Selectors';
+import {Status} from '../../Util/Constants/Status';
+import {selectPublicCourse} from '../../Store/SelectedPublicCourse/Actions';
+import {EntityType} from '../../Util/Constants/EntityType';
+import {Path} from '../Path';
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 
-export function getFutureLectureTimes(state:IState) {
+export function getFutureLectureTimes(state: IState) {
     const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
@@ -21,16 +21,16 @@ export function getFutureLectureTimes(state:IState) {
         x => x.date);
 }
 
-function mapStateToProps(state:IState) {
+function mapStateToProps(state: IState) {
     return {
         title: getLabels(state).pages.futureLecturesPage.table.title,
         tableHeaders: getLabels(state).pages.futureLecturesPage.table.tableHeaders,
         elements: getFutureLectureTimes(state),
-        rowIndexKey: "info",
+        rowIndexKey: 'info',
     };
 }
 
-function mapDispatchToProps(dispatch:IDispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (summary: ILectureTimeSummary) => {
             switch (summary.entityType) {

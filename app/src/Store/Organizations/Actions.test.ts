@@ -10,6 +10,6 @@ describe('organizations actions', () => {
         expect(result).toEqual({
             type: actionTypes.RECEIVE_ORGANIZATIONS,
             payload: organizations,
-        })
-    })
+        });
+    });
 });

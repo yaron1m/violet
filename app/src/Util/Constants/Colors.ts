@@ -9,8 +9,8 @@ import green from '@material-ui/core/colors/green';
 
 export default {
     red: red[500],
-    white: "white",
-    black: "black",
+    white: 'white',
+    black: 'black',
     textGray: grey[800],
     purple: purple[800],
     lightPurple: purple[600],
@@ -27,4 +27,4 @@ export default {
         lightBlue: lightBlue[700],
         green: green[500],
     }
-}
+};

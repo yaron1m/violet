@@ -1,6 +1,6 @@
-import calculateOrderStatus from "./OrderStatusCalculator";
-import {Status} from "../Constants/Status";
-import {toDateFormat} from "../TimeUtil";
+import calculateOrderStatus from './OrderStatusCalculator';
+import {Status} from '../Constants/Status';
+import {toDateFormat} from '../TimeUtil';
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 
@@ -16,7 +16,7 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic"
+                    topic: 'some topic'
                 }
             ]
         } as IOrder;
@@ -28,8 +28,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "some date",
+                    topic: 'some topic',
+                    date: 'some date',
                 }
             ]
         } as IOrder;
@@ -41,8 +41,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "some date",
+                    topic: 'some topic',
+                    date: 'some date',
                 }
             ],
             orderApproved: true,
@@ -58,7 +58,7 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
+                    topic: 'some topic',
                     date: tomorrow,
                 }
             ],
@@ -75,11 +75,11 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 },
                 {
-                    topic: "some topic",
+                    topic: 'some topic',
                     date: toDateFormat(today),
                 }
             ],
@@ -93,12 +93,12 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 },
                 {
-                    topic: "some topic",
-                    date: "2099-01-01",
+                    topic: 'some topic',
+                    date: '2099-01-01',
                 }
             ],
             orderApproved: true,
@@ -114,11 +114,11 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 },
                 {
-                    topic: "some topic",
+                    topic: 'some topic',
                     date: yesterday,
                 }
             ],
@@ -132,8 +132,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 }
             ],
             orderApproved: true,
@@ -150,8 +150,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 }
             ],
             orderApproved: true,
@@ -168,7 +168,7 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
+                    topic: 'some topic',
                     date: toDateFormat(today),
                 }
             ],
@@ -186,7 +186,7 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
+                    topic: 'some topic',
                     date: toDateFormat(today),
                 }
             ],
@@ -201,8 +201,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 }
             ],
             orderApproved: true,
@@ -217,8 +217,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 }
             ],
             orderApproved: true,
@@ -234,8 +234,8 @@ describe('order-status', () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: "some topic",
-                    date: "2017-01-01",
+                    topic: 'some topic',
+                    date: '2017-01-01',
                 }
             ],
             orderApproved: true,

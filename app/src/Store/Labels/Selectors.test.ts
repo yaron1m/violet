@@ -1,14 +1,14 @@
-import {getLabels} from "./Selectors";
+import {getLabels} from './Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const sampleState = {
     labels: {
-        softwareName: "Violet",
-        version: "0.0.0",
+        softwareName: 'Violet',
+        version: '0.0.0',
         header: {
-            searchLineHint: "חיפוש...",
-            organizationPrefix: "ארגון: ",
-            orderPrefix: "הזמנה: ",
+            searchLineHint: 'חיפוש...',
+            organizationPrefix: 'ארגון: ',
+            orderPrefix: 'הזמנה: ',
         },
     }
 } as unknown as IState;
@@ -21,4 +21,4 @@ describe('Store/Labels/selectors', () => {
     });
 });
 
-//TODO missing tests herer
+// TODO missing tests herer

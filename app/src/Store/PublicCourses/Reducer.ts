@@ -1,10 +1,10 @@
 import * as actionTypes from './ActionTypes';
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
-import {createImmutable} from "../../Util/ObjectUpdater";
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
+import {createImmutable} from '../../Util/ObjectUpdater';
 
 const initialState = {};
 
-export default (state = createImmutable(initialState), action:any = {}) => {
+export default (state = createImmutable(initialState), action: any = {}) => {
     switch (action.type) {
         case actionTypes.RECEIVE_PUBLIC_COURSES:
             return createImmutable(action.payload);
@@ -13,6 +13,6 @@ export default (state = createImmutable(initialState), action:any = {}) => {
             return createImmutable(initialState);
 
         default:
-            return state
+            return state;
     }
-}
+};

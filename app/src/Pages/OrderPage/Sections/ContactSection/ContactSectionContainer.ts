@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
-import ContactsSection from "./ContactSection";
+import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
+import ContactsSection from './ContactSection';
 import {IState} from '../../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps(state: IState) {

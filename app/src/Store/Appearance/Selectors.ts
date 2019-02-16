@@ -1,7 +1,7 @@
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {toMutable} from '../../Util/ObjectUpdater';
 
-function getAppearance(state: IState){
+function getAppearance(state: IState) {
     return toMutable(state.appearance);
 }
 

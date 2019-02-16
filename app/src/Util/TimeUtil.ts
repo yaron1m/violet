@@ -5,10 +5,10 @@ import {IPublicCourseLecture} from '../Interfaces/IPublicCourse';
 
 export function calculateDuration(lectureTime: ILectureTime | IPublicCourseLecture) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
-        return "";
+        return '';
 
     if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.endTime))
-        return "";
+        return '';
 
     return getDuration(lectureTime.startTime, lectureTime.endTime);
 }
@@ -19,7 +19,7 @@ function isValidTimeFormat(time: string) {
 
 function getDuration(startTime: string, endTime: string) {
     if (!startTime || !endTime)
-        return "";
+        return '';
     const start = startTime.split(':');
     const end = endTime.split(':');
 
@@ -43,13 +43,13 @@ function pad(number: number) {
 
 export function toDateFormat(date: Date) {
     if (date.getHours() >= 20)
-        date.setHours(date.getHours() + 4); //Increment day by one for time zone change
+        date.setHours(date.getHours() + 4); // Increment day by one for time zone change
 
     const day = pad(date.getDate());
     const month = pad(date.getMonth() + 1);
     const year = date.getFullYear();
 
-    return year + "-" + month + "-" + day;
+    return year + '-' + month + '-' + day;
 }
 
 export function hasDatePassed(dateString: string) {

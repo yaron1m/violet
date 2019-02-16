@@ -1,10 +1,10 @@
-import * as firebaseActions from "../Firebase/Actions";
+import * as firebaseActions from '../Firebase/Actions';
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from "./ActionTypes";
+} from './ActionTypes';
 import {
     clearSelectedOrganization,
     saveNewOrganization,
@@ -12,15 +12,15 @@ import {
     sendSelectedOrganizationToDatabase,
     setIsSelectedOrganization,
     updateSelectedOrganization
-} from "./Actions";
-import {CLOSE_DIALOG} from "../Appearance/ActionTypes";
-import {getMockedDispatch} from "../../Util/TestUtils";
+} from './Actions';
+import {CLOSE_DIALOG} from '../Appearance/ActionTypes';
+import {getMockedDispatch} from '../../Util/TestUtils';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 
 const id = 123456;
-const value = "value";
-const key = "key";
-const newValue = "newValue";
+const value = 'value';
+const key = 'key';
+const newValue = 'newValue';
 
 describe('selected actions - organization', () => {
     it('selectOrganization - valid - action', () => {
@@ -181,4 +181,4 @@ describe('selected actions - organization', () => {
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
     });
 });
-
+

@@ -1,48 +1,48 @@
 import * as Selectors from './Selectors';
-import {Status} from "../../Util/Constants/Status";
-import * as labelsSelectors from "../Labels/Selectors";
-import * as organizationSelectors from "../Organizations/Selectors";
+import {Status} from '../../Util/Constants/Status';
+import * as labelsSelectors from '../Labels/Selectors';
+import * as organizationSelectors from '../Organizations/Selectors';
 import {IState} from '../../Interfaces/ReduxInterfaces';
 import {EntityType} from '../../Util/Constants/EntityType';
 import _ from 'lodash';
 
 const state = {
-    "orders": {
-        "1000": {
-            "id": 1000,
-            "organizationId": 100,
-            "lectureTimes": [{
-                topic: "lecture"
+    'orders': {
+        '1000': {
+            'id': 1000,
+            'organizationId': 100,
+            'lectureTimes': [{
+                topic: 'lecture'
             }],
-            "status": Status.contact,
+            'status': Status.contact,
             followUpRequired: false,
         },
-        "1001": {
-            "id": 1001,
-            "organizationId": 101,
-            "lectureTimes": [],
-            "status": Status.order,
+        '1001': {
+            'id': 1001,
+            'organizationId': 101,
+            'lectureTimes': [],
+            'status': Status.order,
             followUpRequired: false,
         },
-        "1002": {
-            "id": 1002,
-            "organizationId": 100,
-            "lectureTimes": [{
-                topic: "topic",
+        '1002': {
+            'id': 1002,
+            'organizationId': 100,
+            'lectureTimes': [{
+                topic: 'topic',
             }],
-            "status": Status.order,
+            'status': Status.order,
             followUpRequired: true,
             followUpDate: 111,
-            followUpDetails: "bla",
+            followUpDetails: 'bla',
             createdDate: 123,
         },
-        "1003": {
-            "id": 1003,
-            "organizationId": 101,
-            "status": Status.approvedOrder,
+        '1003': {
+            'id': 1003,
+            'organizationId': 101,
+            'status': Status.approvedOrder,
             followUpRequired: true,
             followUpDate: 222,
-            followUpDetails: "bla bla",
+            followUpDetails: 'bla bla',
             createdDate: 456,
         },
     },
@@ -57,7 +57,7 @@ const state = {
 describe('Store/Orders/selectors', () => {
 
     beforeAll(() => {
-        const orgDetails = {organizationName: "orgName"};
+        const orgDetails = {organizationName: 'orgName'};
         // @ts-ignore
         organizationSelectors.getOrganizationById = jest.fn(() => orgDetails);
     });
@@ -82,12 +82,12 @@ describe('Store/Orders/selectors', () => {
     });
 
     it('getOrderById - valid - order returned', () => {
-        expect(Selectors.getOrderById(state, "1001"))
+        expect(Selectors.getOrderById(state, '1001'))
             .toEqual(state.orders[1001]);
     });
 
     it('getOrderById - no such id - undefined', () => {
-        expect(Selectors.getOrderById(state, "9999"))
+        expect(Selectors.getOrderById(state, '9999'))
             .toBeUndefined();
     });
 
@@ -121,20 +121,20 @@ describe('Store/Orders/selectors', () => {
             .toEqual([
                 {
                     orderId: 1002,
-                    organizationName: "orgName",
-                    topic: "topic",
+                    organizationName: 'orgName',
+                    topic: 'topic',
                     status: Status.order,
                     followUpDate: 111,
-                    followUpDetails: "bla",
+                    followUpDetails: 'bla',
                     createdDate: 123,
                 }, {
                     orderId: 1003,
-                    organizationName: "orgName",
+                    organizationName: 'orgName',
                     status: Status.approvedOrder,
                     followUpDate: 222,
-                    followUpDetails: "bla bla",
+                    followUpDetails: 'bla bla',
                     createdDate: 456,
-                    topic: "",
+                    topic: '',
                 }
             ]);
     });
@@ -151,15 +151,15 @@ describe('Store/Orders/selectors', () => {
                 {
                     entityId: 1000,
                     entityType: EntityType.order,
-                    orderId: "1000",
-                    topic: "lecture",
-                    organizationName: "orgName",
+                    orderId: '1000',
+                    topic: 'lecture',
+                    organizationName: 'orgName',
                 }, {
                     entityId: 1002,
                     entityType: EntityType.order,
-                    orderId: "1002",
-                    topic: "topic",
-                    organizationName: "orgName",
+                    orderId: '1002',
+                    topic: 'topic',
+                    organizationName: 'orgName',
                 }
             ]);
     });
@@ -170,9 +170,9 @@ describe('Store/Orders/selectors', () => {
                 {
                     entityId: 1000,
                     entityType: EntityType.order,
-                    orderId: "1000",
-                    topic: "lecture",
-                    organizationName: "orgName",
+                    orderId: '1000',
+                    topic: 'lecture',
+                    organizationName: 'orgName',
                 }
             ]);
     });

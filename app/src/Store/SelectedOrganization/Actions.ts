@@ -1,8 +1,8 @@
-import {getSelectedOrganization} from "./Selectors";
-import {CLEAR_SELECTED_ORGANIZATION, SELECT_ORGANIZATION, SET_IS_SELECTED_ORGANIZATION, UPDATE_SELECTED_ORGANIZATION} from "./ActionTypes";
-import {getNextOrganizationId, getOrganizationById} from "../Organizations/Selectors";
-import {sendDataToDatabase} from "../Firebase/Actions";
-import {closeDialog} from "../Appearance/Actions";
+import {getSelectedOrganization} from './Selectors';
+import {CLEAR_SELECTED_ORGANIZATION, SELECT_ORGANIZATION, SET_IS_SELECTED_ORGANIZATION, UPDATE_SELECTED_ORGANIZATION} from './ActionTypes';
+import {getNextOrganizationId, getOrganizationById} from '../Organizations/Selectors';
+import {sendDataToDatabase} from '../Firebase/Actions';
+import {closeDialog} from '../Appearance/Actions';
 import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
 
 export function selectOrganization(organizationId: number) {
@@ -34,7 +34,7 @@ export function setIsSelectedOrganization() {
 
 export function sendSelectedOrganizationToDatabase() {
     return function sendSelectedOrganizationToDatabase(dispatch: IDispatch, getState: IGetState) {
-        dispatch(updateSelectedOrganization("changedDate", new Date().toJSON()));
+        dispatch(updateSelectedOrganization('changedDate', new Date().toJSON()));
         const selectedOrganization = getSelectedOrganization(getState());
 
         return sendDataToDatabase('/organizations/' + selectedOrganization.id, selectedOrganization);
@@ -50,7 +50,7 @@ export function clearSelectedOrganization() {
 export function saveNewOrganization() {
     return async function saveNewOrganization(dispatch: IDispatch, getState: IGetState) {
         const newOrganizationId = getNextOrganizationId(getState());
-        await dispatch(updateSelectedOrganization("id", newOrganizationId));
+        await dispatch(updateSelectedOrganization('id', newOrganizationId));
 
         await dispatch(sendSelectedOrganizationToDatabase());
         dispatch(setIsSelectedOrganization());

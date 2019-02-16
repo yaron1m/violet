@@ -1,5 +1,5 @@
 import * as actionTypes from './ActionTypes';
-import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import {LOGGED_OUT} from '../Firebase/ActionTypes';
 import {createImmutable} from '../../Util/ObjectUpdater';
 
 const initialState = {};
@@ -15,4 +15,4 @@ export default (state = createImmutable(initialState), action: any = {}) => {
         default:
             return state;
     }
-}
+};
