@@ -11,7 +11,7 @@ function getLecturesIdsOrderedByDate(selectedPublicCourse: IPublicCourse) {
     const datesAndIds = _.map(lectures, lecture => {
         return {
             id: lecture.id,
-            date: lectures[lecture.id].date
+            date: lecture.date
         };
     });
     const orderedDatesAndIds = _.sortBy(datesAndIds, x => x.date);

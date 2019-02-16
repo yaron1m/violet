@@ -33,7 +33,7 @@ const loginPageLabels = {
 const followUpPageLabels = {
     title: "המשך טיפול - טבלת מעקב",
     tableHeaders: [
-        {id: "מספר הזמנה"},
+        {orderId: "מספר הזמנה"},
         {organizationName: "שם הארגון"},
         {createdDate: "תאריך יצירה"},
         {topic: "נושא"},
@@ -46,7 +46,7 @@ const followUpPageLabels = {
 const actionRequiredPageLabels = {
     title: "הזמנות שדורשות פעולה",
     tableHeaders: [
-        {id: "מספר הזמנה"},
+        {orderId: "מספר הזמנה"},
         {createdDate: "תאריך יצירת הזמנה"},
         {organizationName: "שם הארגון"},
         {status: "סטאטוס הזמנה"},
@@ -67,7 +67,7 @@ const paymentPageLabels = {
     table: {
         title: "הזמנות ממתינות לתשלום",
         tableHeaders: [
-            {id: "מספר הזמנה"},
+            {orderId: "מספר הזמנה"},
             {organizationName: "שם הארגון"},
             {lectureDate: "תאריך הרצאה"},
             {proformaInvoiceNumber: "חשבונית עסקה"},
@@ -82,7 +82,7 @@ const expectedIncomePageLabels = {
     table: {
         title: "הזמנות מאושרות",
         tableHeaders: [
-            {id: "מספר הזמנה"},
+            {orderId: "מספר הזמנה"},
             {organizationName: "שם הארגון"},
             {lectureDate: "תאריך הרצאה"},
             {topic: "נושא"},
