@@ -62,9 +62,6 @@ const state = {
 } as unknown as IState;
 
 describe('AllOrdersTableContainer', () => {
-    beforeEach(() => {
-    });
-
     it('elements prop - no filter - show all orders in reverse order', () => {
         const props = {
             filterStatus: undefined,

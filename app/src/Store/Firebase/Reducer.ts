@@ -27,4 +27,3 @@ export default function (state = createImmutable(initialState), action: any = {}
             return state;
     }
 }
-

@@ -50,4 +50,3 @@ function mapDispatchToProps(dispatch: IDispatch, ownProps: LectureTimesCustomFie
 export const LectureTimesCustomText = connect(mapStateToProps, mapDispatchToProps)(CustomText);
 export const LectureTimesCustomDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
 export const LectureTimesCustomAutoComplete = connect(mapStateToProps, mapDispatchToProps)(CustomAutoComplete);
-

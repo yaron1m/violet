@@ -42,4 +42,3 @@ function mergeProps(stateProps: {
 
 export const InternalOrderCustomText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
 export const InternalOrderCustomToggle = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomToggle);
-

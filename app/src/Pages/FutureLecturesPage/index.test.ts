@@ -76,4 +76,3 @@ describe('FutureLecturesPage', () => {
         expect(result[1].topic).toEqual('tomorrow');
     });
 });
-

@@ -7,4 +7,3 @@ export function receivePublicCourses(courses: { [id: string]: IPublicCourse }) {
         payload: courses,
     };
 }
-

@@ -84,4 +84,3 @@ export function clearSelectedPublicCourse() {
         type: CLEAR_SELECTED_PUBLIC_COURSE
     };
 }
-

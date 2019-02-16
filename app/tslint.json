@@ -48,7 +48,7 @@
     "no-empty": true,
     "no-eval": true,
     "no-null-keyword": true,
-    "no-shadowed-variable": true,
+    "no-shadowed-variable": false,
     "no-string-literal": true,
     "no-switch-case-fall-through": true,
     "no-unused-expression": true,

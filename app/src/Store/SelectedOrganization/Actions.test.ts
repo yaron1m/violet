@@ -181,4 +181,3 @@ describe('selected actions - organization', () => {
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
     });
 });
-

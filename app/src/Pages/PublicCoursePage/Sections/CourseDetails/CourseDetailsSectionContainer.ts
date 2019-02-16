@@ -10,4 +10,3 @@ function mapStateToProps(state: IState) {
 }
 
 export default connect(mapStateToProps)(CourseDetailsSection);
-

@@ -20,4 +20,3 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);
-

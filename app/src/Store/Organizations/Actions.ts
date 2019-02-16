@@ -7,4 +7,3 @@ export function receiveOrganizations(organizations: { [id: string]: IOrganizatio
         payload: organizations,
     };
 }
-
