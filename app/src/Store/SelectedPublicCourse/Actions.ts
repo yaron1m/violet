@@ -4,7 +4,7 @@ import {calculateDuration} from "../../Util/TimeUtil";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "./Selectors";
 import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from "./ActionTypes";
-import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
+import {IDispatch, IGetState, IState} from '../../Interfaces/ReduxInterfaces';
 import {IPublicCourseLecture} from '../../Interfaces/IPublicCourse';
 
 export function selectPublicCourse(courseId: string) {
@@ -29,11 +29,15 @@ export function updateSelectedPublicCourse(key: string, value: string | IPublicC
     };
 }
 
+function getSelectedPublicCourseLecture(state: IState){
+    return _.cloneDeep(getSelectedPublicCourse(state).lectures)
+}
+
 export function updatePublicCourseLecture(key: string, value: string | boolean | number, lectureId: number) {
     return function updatePublicCourseLecture(dispatch: IDispatch, getState: IGetState) {
-        const lectures = Object.assign(getSelectedPublicCourse(getState()).lectures, {
-            [key] : value
-        });
+        const lectures = getSelectedPublicCourseLecture(getState());
+        // @ts-ignore
+        lectures[lectureId][key] = value;
         lectures[lectureId].duration = calculateDuration(lectures[lectureId]);
         dispatch(updateSelectedPublicCourse("lectures", lectures));
     };
@@ -41,16 +45,14 @@ export function updatePublicCourseLecture(key: string, value: string | boolean |
 
 export function addLectureToSelectedPublicCourse() {
     return function addLectureToSelectedPublicCourse(dispatch: IDispatch, getState: IGetState) {
-        const selectedPublicCourse = getSelectedPublicCourse(getState());
+        let lectures = getSelectedPublicCourseLecture(getState());
 
-        let lectures: IPublicCourseLecture[];
-        if (!_.hasIn(selectedPublicCourse, 'lectures')) {
+        if (!lectures) {
             lectures = [{
                 id: 0,
                 active: true,
             } as IPublicCourseLecture];
         } else {
-            lectures = selectedPublicCourse.lectures;
             const nextId = _.keys(lectures).length;
             lectures.push({
                 id: nextId,
