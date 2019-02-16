@@ -42,5 +42,5 @@ function updateValue(updateSelectedOrder: (key: string, value: any) => void, ord
 
 function getValue(order: IOrder, key: string) {
     // @ts-ignore
-    return isEmptyValue(order, key) || isNaN(order[key]) || isNaN(Number(order.cost)) ? 0 : parseFloat(order[key]);
+    return isEmptyValue(order, key) || isNaN(order[key]) ? 0 : parseFloat(order[key]);
 }

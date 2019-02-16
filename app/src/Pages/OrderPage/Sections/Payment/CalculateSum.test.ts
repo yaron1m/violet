@@ -68,10 +68,10 @@ describe('payment section - calculate sum', () => {
 
         expect(updateAction).toHaveBeenCalledTimes(4);
 
-        expect(updateAction).toHaveBeenNthCalledWith(1, 'travelExpenses', '534');
-        expect(updateAction).toHaveBeenNthCalledWith(2, 'sum', '1534');
-        expect(updateAction).toHaveBeenNthCalledWith(3, 'vat', '260.78');
-        expect(updateAction).toHaveBeenNthCalledWith(4, 'totalSum', '1794');
+        expect(updateAction).toHaveBeenCalledWith( 'travelExpenses', '534');
+        expect(updateAction).toHaveBeenCalledWith( 'sum', '1534');
+        expect(updateAction).toHaveBeenCalledWith( 'vat', '260.78');
+        expect(updateAction).toHaveBeenCalledWith( 'totalSum', '1794');
     });
 
     it('calculateSum - cost has multiple sign - calculate totalSum', async function () {
