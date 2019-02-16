@@ -17,6 +17,7 @@ import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
 import {TabKey} from '../../Util/Constants/Status';
 import {ILectureTime, ILectureTimeField, IPublicCourseParticipant, IPublicCourseParticipantField} from '../../Interfaces/IOrder';
 import * as firebase from 'firebase';
+import {updateObject} from '../../Util/ObjectUpdater';
 
 export function selectOrder(orderId: number) {
     return function selectOrder(dispatch: IDispatch, getState: IGetState) {
@@ -36,7 +37,7 @@ export function selectOrder(orderId: number) {
 
 export function updateSelectedOrder(key: string, value: string | boolean | number | TabKey | ILectureTime[] | IPublicCourseParticipant[]) {
     return function updateSelectedOrder(dispatch: IDispatch, getState: IGetState) {
-        let order = Object.assign(getSelectedOrder(getState()), {
+        let order = updateObject(getSelectedOrder(getState()), {
             [key]: value,
         });
 
@@ -51,11 +52,13 @@ export function updateSelectedOrder(key: string, value: string | boolean | numbe
 
 export function updateLectureTime(key: string, value: string, lectureTimeIndex: number) {
     return function updateLectureTime(dispatch: IDispatch, getState: IGetState) {
-        const lectureTimes = Object.assign(getSelectedOrder(getState()).lectureTimes,{
-           [key]:value
-        });
-        lectureTimes[lectureTimeIndex].duration = calculateDuration(lectureTimes[lectureTimeIndex]);
-        dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
+        const allLectureTimes = _.cloneDeep(getSelectedOrder(getState()).lectureTimes)
+        const lectureTime = allLectureTimes[lectureTimeIndex];
+        // @ts-ignore
+        lectureTime[key] = value;
+        lectureTime.duration = calculateDuration(allLectureTimes[lectureTimeIndex]);
+
+        dispatch(updateSelectedOrder("lectureTimes", allLectureTimes));
     };
 }
 
@@ -63,8 +66,7 @@ export function addNewLectureTime() {
     return function addNewLectureTime(dispatch: IDispatch, getState: IGetState) {
         const thisSelectedOrder = getSelectedOrder(getState());
         const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? thisSelectedOrder.lectureTimes : [];
-        // @ts-ignore
-        lectureTimes.push({});
+        lectureTimes.push({} as ILectureTime);
 
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
     };
@@ -139,7 +141,7 @@ export function sendSelectedOrderToDatabase() {
         await dispatch(updateSelectedOrder("changedDate", new Date().toJSON()));
         const selectedOrder = getSelectedOrder(getState());
 
-        return sendDataToDatabase('/Orders/' + selectedOrder.id, selectedOrder);
+        return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
     };
 }
 

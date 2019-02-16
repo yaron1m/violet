@@ -11,6 +11,7 @@ import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
 import {Size} from '../../../../Util/Constants/Size';
 import {ISuggestion} from '../../../../Components/AutoSuggest';
 import {TabKey} from '../../../../Util/Constants/Status';
+import IOrder, {ILectureTime} from '../../../../Interfaces/IOrder';
 
 interface LectureTimesCustomFieldsProps {
     name: string;
@@ -20,26 +21,29 @@ interface LectureTimesCustomFieldsProps {
     onSuggestionSelected?: (suggestion: ISuggestion) => void;
 }
 
-function getValues(state: IState, ownProps:LectureTimesCustomFieldsProps) : {[key:string]:any} {
-    if (ownProps.lectureTimeIndex === null || getSelectedOrder(state).lectureTimes === undefined)
-        return {};
+function getValues(selectedOrder: IOrder, lectureTimeIndex: number): ILectureTime {
+    if (lectureTimeIndex === null || selectedOrder.lectureTimes === undefined)
+        return {} as ILectureTime;
 
-    return getSelectedOrder(state).lectureTimes[ownProps.lectureTimeIndex];
+    return selectedOrder.lectureTimes[lectureTimeIndex];
 }
 
-function mapStateToProps(state: IState, ownProps:LectureTimesCustomFieldsProps) {
+function mapStateToProps(state: IState, ownProps: LectureTimesCustomFieldsProps) {
+    const selectedOrder = getSelectedOrder(state);
     return {
         titles: getOrderSectionsLabels(state).lectureTimes.titles,
-        values: getValues(state, ownProps),
-        requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
+        values: getValues(selectedOrder, ownProps.lectureTimeIndex),
+        requiredFields: isRightTabKey(selectedOrder, TabKey.internalTabKey, true) ? getRequiredFieldsObject(state).lectureTimes : [],
         name: ownProps.name,
         size: ownProps.size,
     };
 }
 
-function mapDispatchToProps(dispatch: IDispatch, ownProps:LectureTimesCustomFieldsProps) {
+function mapDispatchToProps(dispatch: IDispatch, ownProps: LectureTimesCustomFieldsProps) {
     return {
-        updateAction: (name: string, newValue: any) => dispatch(updateLectureTime(name, newValue, ownProps.lectureTimeIndex))
+        updateAction: (name: string, newValue: any) => {
+            dispatch(updateLectureTime(name, newValue, ownProps.lectureTimeIndex));
+        }
     };
 }
 
