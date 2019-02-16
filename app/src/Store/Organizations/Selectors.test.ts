@@ -1,8 +1,8 @@
-import Immutable from 'seamless-immutable';
-import {getOrganizationById} from "./Selectors";
-import {getNextOrganizationId, getOrganizations} from "./Selectors";
+import {getNextOrganizationId, getOrganizationById, getOrganizations} from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
+import _ from 'lodash';
 
-const sampleState = Immutable({
+const sampleState = {
     organizations: {
         0: {
             "address": "האחות חיה 4, רמת גן",
@@ -38,22 +38,22 @@ const sampleState = Immutable({
             "name": "תעשיה צבאית"
         }
     }
-});
+} as unknown as IState;
 
 const emptyState = {
     organizations: {}
-};
+} as IState;
 
 describe('Organizations selectors', () => {
 
     it('getOrganizations - valid', () => {
         expect(getOrganizations(sampleState))
-            .toEqual(sampleState.organizations);
+            .toEqual(_.values(sampleState.organizations));
     });
 
     it('getOrganizations - empty state', () => {
         expect(getOrganizations(emptyState))
-            .toEqual({});
+            .toEqual([]);
     });
 
     it('getNextOrganizationId - valid', () => {
@@ -63,21 +63,21 @@ describe('Organizations selectors', () => {
 
     it('getNextOrganizationId - empty state - return null', () => {
         expect(getNextOrganizationId(emptyState))
-            .toBeNull();
+            .toEqual(1000);
     });
 
     it('getOrganizationById - valid', () => {
-        expect(getOrganizationById(sampleState, 0))
+        expect(getOrganizationById(sampleState, "0"))
             .toEqual(sampleState.organizations[0]);
     });
 
     it('getOrganizationById - no such organization - return undefined', () => {
-        expect(getOrganizationById(sampleState, 999))
+        expect(getOrganizationById(sampleState, "999"))
             .toBeUndefined();
     });
 
     it('getOrganizationById - empty state - return undefined', () => {
-        expect(getOrganizationById(emptyState, 0))
+        expect(getOrganizationById(emptyState, "0"))
             .toBeUndefined();
     });
 });

@@ -36,9 +36,6 @@ export default class AbstractCustomField<AdditionalProps>
     validateProps(props: AbstractCustomFieldProps) {
         if (!_.has(props.titles, props.name))
             throw Error(`Field "${props.name}" doesn't have a matching title in titles`);
-
-        if (!_.isFunction(props.updateAction))
-            throw Error(`Field "${props.name}" - updateAction must be a function`);
     }
 
     static getDerivedStateFromProps(nextProps: AbstractCustomFieldProps, prevState: AbstractCustomFieldState) {

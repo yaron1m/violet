@@ -1,13 +1,15 @@
-import Immutable from 'seamless-immutable';
 import {
     getActivePublicCourses,
     getNextPublicCourseId,
     getPublicCourseById,
     getPublicCourseByOrder,
-    getPublicCourses, getPublicCoursesSummary
+    getPublicCourses,
+    getPublicCoursesSummary
 } from "./Selectors";
+import {IState} from '../../Interfaces/ReduxInterfaces';
+import IOrder from '../../Interfaces/IOrder';
 
-const sampleState = Immutable({
+const sampleState = {
     labels: {
         currencyIcon: "X"
     },
@@ -61,7 +63,7 @@ const sampleState = Immutable({
             cost: "2222",
         }
     }
-});
+} as unknown as IState;
 
 describe('Public course selectors', () => {
 
@@ -81,14 +83,14 @@ describe('Public course selectors', () => {
     });
 
     it('should return public course by id', () => {
-        expect(getPublicCourseById(sampleState, 1000))
+        expect(getPublicCourseById(sampleState, "1000"))
             .toEqual(sampleState.publicCourses[1000]);
     });
 
     it('should return public course by order', () => {
         const order = {
             publicCourseId: 1000
-        };
+        } as IOrder;
 
         expect(getPublicCourseByOrder(sampleState, order))
             .toEqual(sampleState.publicCourses[1000]);
@@ -96,26 +98,26 @@ describe('Public course selectors', () => {
 
     it('should return a summary of all public courses', () => {
         const expectedResult = [
-                {
-                    "id": 1002,
-                    courseIncome: 0
-                },
-                {
-                    "courseLocation": "not my house",
-                    "courseName": "Another course name",
-                    "date": "2999-01-01",
-                    courseIncome: "3,333.00 X",
-                    "id": 1001
-                },
-                {
-                    "courseLocation": "My house",
-                    "courseName": "my course name",
-                    "date": "2017-11-11",
-                    "id": 1000,
-                    courseIncome: 0
-                },
-            ]
-        ;
+            {
+                "id": 1002,
+                "courseIncome": "0.00 X",
+                "date": "",
+            },
+            {
+                "courseLocation": "not my house",
+                "courseName": "Another course name",
+                "date": "2999-01-01",
+                "courseIncome": "3,333.00 X",
+                "id": 1001
+            },
+            {
+                "courseLocation": "My house",
+                "courseName": "my course name",
+                "date": "2017-11-11",
+                "id": 1000,
+                "courseIncome": "0.00 X",
+            },
+        ];
 
         expect(getPublicCoursesSummary(sampleState))
             .toEqual(expectedResult);
