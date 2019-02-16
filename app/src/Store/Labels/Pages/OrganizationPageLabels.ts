@@ -2,7 +2,7 @@ const ordersSummarySectionLabels = {
     title: "הזמנות",
     addRow: "הוסף הזמנה חדשה",
     tableHeaders: [
-        {id: "מספר הזמנה"},
+        {orderId: "מספר הזמנה"},
         {date: "תאריך הרצאה"},
         {topic: "נושא"},
         {status: "סטאטוס"},

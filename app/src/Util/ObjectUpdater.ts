@@ -5,7 +5,7 @@ export function toMutable<T>(obj: T): T {
 }
 
 export function createImmutable<T>(obj: T) {
-    return updateObject(obj);
+    return _.cloneDeep(obj);
 }
 
 export function mergeImmutable<T>(oldState: T, newState: object): T {

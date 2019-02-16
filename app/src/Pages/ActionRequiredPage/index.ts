@@ -6,6 +6,7 @@ import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
 import {Path} from '../Path';
+import {IActionRequiredOrder} from '../../Store/Orders/ActionRequiredOrderes';
 
 function mapStateToProps(state: IState) {
     return {
@@ -17,8 +18,8 @@ function mapStateToProps(state: IState) {
 
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        onEditButton: (orderId: number) => {
-            dispatch(selectOrder(orderId));
+        onEditButton: (orderSummary: IActionRequiredOrder) => {
+            dispatch(selectOrder(orderSummary.orderId));
             redirect(Path.order);
         },
     };

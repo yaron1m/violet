@@ -10,8 +10,8 @@ import {IState} from '../../Interfaces/ReduxInterfaces';
 import IOrder from '../../Interfaces/IOrder';
 import {getOrders} from './Selectors';
 
-interface IActionRequiredOrder {
-    id: number;
+export interface IActionRequiredOrder {
+    orderId: number;
     createdDate: string;
     organizationName: string;
     status: string;
@@ -100,7 +100,7 @@ export default function getActionRequiredOrdersArray(state: IState) {
 
 function addOrderToResult(state: IState, result: IActionRequiredOrder[], order: IOrder, issue: string) {
     result.push({
-        id: order.id,
+        orderId: order.id,
         createdDate: order.createdDate,
         issue,
         organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,

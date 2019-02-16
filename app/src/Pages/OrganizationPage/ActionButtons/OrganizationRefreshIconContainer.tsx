@@ -7,7 +7,7 @@ import {IDispatch} from '../../../Interfaces/ReduxInterfaces';
 
 function mapStateToProps() {
     return {
-        children: RefreshIcon,
+        children: <RefreshIcon/>,
     };
 }
 
