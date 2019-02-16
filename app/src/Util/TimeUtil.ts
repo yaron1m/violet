@@ -35,10 +35,10 @@ function getDuration(startTime: string, endTime: string) {
     return pad(hours) + ':' + pad(diff);
 }
 
-function pad(number: number) {
-    if (number >= 10)
-        return number.toString();
-    return '0' + number.toString();
+function pad(num: number) {
+    if (num >= 10)
+        return num.toString();
+    return '0' + num.toString();
 }
 
 export function toDateFormat(date: Date) {

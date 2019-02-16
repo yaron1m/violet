@@ -198,7 +198,9 @@ export function saveNewOrder() {
         dispatch(hideRequiredFields());
 
         // Check if there are changes in organization
-        if (!_.isEqual(getSelectedOrganization(getState()), getOrganizationById(getState(), getSelectedOrder(getState()).organizationId.toString()))) {
+        const selectedOrganization = getSelectedOrganization(getState());
+        const savedOrganization = getOrganizationById(getState(), getSelectedOrder(getState()).organizationId.toString());
+        if (!_.isEqual(selectedOrganization, savedOrganization)) {
             dispatch(sendSelectedOrganizationToDatabase());
         }
     };

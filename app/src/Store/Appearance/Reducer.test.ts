@@ -74,7 +74,7 @@ describe('Appearance reducer', () => {
                 isOpen: false,
                 title: '',
                 content: '',
-                actions: null,
+                actions: undefined,
             }
         }));
     });

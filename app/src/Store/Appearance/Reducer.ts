@@ -43,7 +43,7 @@ export default function (state = createImmutable(initialState), action: any = {}
                     isOpen: false,
                     title: '',
                     content: '',
-                    actions: null,
+                    actions: undefined,
                 }
             });
 

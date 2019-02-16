@@ -73,9 +73,17 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 function mergeProps(stateProps: {
-    tooltip: string; dialogText: IStringObject; snackBarText: IStringObject; selectedOrganizationName: string; isSelectedOrganization: boolean; nextOrganizationId: number;
+    tooltip: string;
+    dialogText: IStringObject;
+    snackBarText: IStringObject;
+    selectedOrganizationName: string;
+    isSelectedOrganization: boolean;
+    nextOrganizationId: number;
 }, dispatchProps: {
-    openDialog: (title: string, content: string) => void; openSnackbar: (message: string) => void; setIsSelectedOrganization: () => void; sendSelectedOrganizationToDatabase: () => Promise<void>;
+    openDialog: (title: string, content: string) => void;
+    openSnackbar: (message: string) => void;
+    setIsSelectedOrganization: () => void;
+    sendSelectedOrganizationToDatabase: () => Promise<void>;
 }) {
     return {
         tooltip: stateProps.tooltip,

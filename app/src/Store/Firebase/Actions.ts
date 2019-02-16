@@ -70,7 +70,7 @@ export function signInWithGoogle(errorCallback: (message: string) => void) {
 export function signInRequest(email: string, password: string, errorCallback: (message: string) => void) {
     return function signInRequest(dispatch: IDispatch, getState: IGetState) {
         return firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(null, signInFailure);
+            .then(undefined, signInFailure);
 
         function signInFailure(error: firebase.auth.Error) {
             switch (error.code) {

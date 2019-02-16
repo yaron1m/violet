@@ -35,7 +35,11 @@ function mapDispatchToProps(dispatch: IDispatch) {
 function mergeProps(stateProps: {
     tooltip: string; orderPageLabels: any; isSelectedOrganization: boolean; selectedOrganization: IOrganization; isOrderMissingFields: boolean;
 }, dispatchProps: {
-    openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void; closeDialog: () => void; showRequiredFields: () => void; saveNewOrganization: () => void; saveNewOrder: () => void;
+    openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void;
+    closeDialog: () => void;
+    showRequiredFields: () => void;
+    saveNewOrganization: () => void;
+    saveNewOrder: () => void;
 }) {
     return {
         tooltip: stateProps.tooltip,

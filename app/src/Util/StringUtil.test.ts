@@ -16,7 +16,7 @@ describe('string-util', () => {
 
     it('isEmptyValue - null value - false', () => {
         const object = {
-            key: null
+            key: undefined
         };
         expect(isEmptyValue(object, 'key')).toBeTruthy();
     });

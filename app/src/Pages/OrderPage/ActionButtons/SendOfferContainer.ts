@@ -38,12 +38,7 @@ function parameter(key: string, value: string, first = false) {
 }
 
 function arrayToParameterValue(array: string[]) {
-    let res = '';
-    for (const index in array) {
-        res += array[index] + '#';
-    }
-
-    return res.substr(0, res.length - 1);
+    return _.join(array, '#');
 }
 
 function mapStateToProps(state: IState) {
