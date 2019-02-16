@@ -23,7 +23,6 @@
     "jss": "^9.8.7",
     "jss-rtl": "^0.2.3",
     "lodash": "^4.17.11",
-    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.6.0",

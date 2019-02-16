@@ -4,7 +4,7 @@ import {toDateFormat} from '../TimeUtil';
 import IOrder from '../../Interfaces/IOrder';
 import IPublicCourse from '../../Interfaces/IPublicCourse';
 
-// TODO add tests for public course
+// TODO TEST - add tests for public course
 describe('order-status', () => {
 
     it('calculateOrderStatus - contact', () => {

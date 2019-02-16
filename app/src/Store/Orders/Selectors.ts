@@ -87,7 +87,7 @@ export function getFollowUpOrdersSummary(state: IState) {
     return _.map(orders, map);
 }
 
-// TODO update tests
+// TODO TESTS -  update tests
 export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
     function getMappedLectureTimes(order: IOrder): ILectureTimeSummary[] {
         return _.map(order.lectureTimes, time => ({
@@ -213,7 +213,7 @@ export function getActionRequiredOrders(state: IState) {
     return getActionRequiredOrdersArray(state);
 }
 
-// TODO test function
+// TODO TESTS - test function
 export function getPublicCourseParticipantsSummary(state: IState) {
     if (_.isEmpty(getPublicCourses(state))) {
         return [];
