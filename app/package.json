@@ -7,13 +7,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "react-scripts test",
+    "test": "set CI=true && react-scripts test",
     "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
     "deploy": "npm test && npm run build && firebase deploy -P production",
     "demo-deploy": "npm test && npm run build && firebase deploy -P demo",
     "build": "react-scripts build",
     "lint": "tslint src/**/*.ts --fix",
-    "watch": "npm test --watch"
+    "watch": "react-scripts test"
   },
   "dependencies": {
     "@material-ui/core": "^3.3.2",
