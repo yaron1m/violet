@@ -12,19 +12,19 @@ import IOrder from '../../../../../Interfaces/IOrder';
 import IPublicCourse from '../../../../../Interfaces/IPublicCourse';
 import {IOption} from '../../../../../Components/CustomComponents/CustomSelectField';
 
-function getOption(course:IPublicCourse) :IOption {
+function getOption(course: IPublicCourse): IOption {
     return {
         key: course.id.toString(),
         label: course.courseName,
-    }
+    };
 }
 
-function getValues(selectedOrder: IOrder, getPublicCourseById: (id:number) => IPublicCourse) {
+function getValues(selectedOrder: IOrder, getPublicCourseById: (id: number) => IPublicCourse) {
     if (isEmptyValue(selectedOrder, "publicCourseId"))
         return {};
 
     return {
-        courseName: getPublicCourseById(selectedOrder.publicCourseId).id
+        courseName: getPublicCourseById(selectedOrder.publicCourseId).id.toString()
     };
 }
 
@@ -43,10 +43,10 @@ function mapStateToProps(state: IState) {
     };
 }
 
-function mapDispatchToProps(dispatch :IDispatch) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key:string, value: number) => selectFieldUpdateAction(dispatch, value)
-    }
+        updateAction: (key: string, value: number) => selectFieldUpdateAction(dispatch, value)
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PublicCourseConnectedSelectField);

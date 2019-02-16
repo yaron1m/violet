@@ -13,9 +13,9 @@ import {getOrganizationById} from "../Organizations/Selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getLabels} from "../Labels/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
-import {IDispatch, IGetState} from '../../Interfaces/ReduxInterfaces';
+import {IDispatch, IGetState, IState} from '../../Interfaces/ReduxInterfaces';
 import {TabKey} from '../../Util/Constants/Status';
-import {ILectureTime, ILectureTimeField, IPublicCourseParticipant, IPublicCourseParticipantField} from '../../Interfaces/IOrder';
+import {ILectureTime, IPublicCourseParticipant} from '../../Interfaces/IOrder';
 import * as firebase from 'firebase';
 import {updateObject} from '../../Util/ObjectUpdater';
 
@@ -50,9 +50,17 @@ export function updateSelectedOrder(key: string, value: string | boolean | numbe
     };
 }
 
+function getSelectedOrderLectureTimes(state: IState){
+    return _.cloneDeep(getSelectedOrder(state).lectureTimes)
+}
+
+function getSelectedOrderPublicCourseParticipants(state: IState){
+    return _.cloneDeep(getSelectedOrder(state).publicCourseParticipants)
+}
+
 export function updateLectureTime(key: string, value: string, lectureTimeIndex: number) {
     return function updateLectureTime(dispatch: IDispatch, getState: IGetState) {
-        const allLectureTimes = _.cloneDeep(getSelectedOrder(getState()).lectureTimes)
+        const allLectureTimes = getSelectedOrderLectureTimes(getState());
         const lectureTime = allLectureTimes[lectureTimeIndex];
         // @ts-ignore
         lectureTime[key] = value;
@@ -65,7 +73,7 @@ export function updateLectureTime(key: string, value: string, lectureTimeIndex: 
 export function addNewLectureTime() {
     return function addNewLectureTime(dispatch: IDispatch, getState: IGetState) {
         const thisSelectedOrder = getSelectedOrder(getState());
-        const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? thisSelectedOrder.lectureTimes : [];
+        const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? getSelectedOrderLectureTimes(getState()) : [];
         lectureTimes.push({} as ILectureTime);
 
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
@@ -74,8 +82,7 @@ export function addNewLectureTime() {
 
 export function deleteLectureTime(lectureTimeIndex: number) {
     return function addNewLectureTime(dispatch: IDispatch, getState: IGetState) {
-        const thisSelectedOrder = getSelectedOrder(getState());
-        const lectureTimes = thisSelectedOrder.lectureTimes;
+        const lectureTimes = getSelectedOrderLectureTimes(getState());
         lectureTimes.splice(lectureTimeIndex, 1);
 
         dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
@@ -84,16 +91,16 @@ export function deleteLectureTime(lectureTimeIndex: number) {
 
 export function updatePublicCourseParticipant(key: string, value: string | number[], participantIndex: number) {
     return function updatePublicCourseParticipant(dispatch: IDispatch, getState: IGetState) {
-        const publicCourseParticipants = Object.assign(getSelectedOrder(getState()).publicCourseParticipants, {
-            [key]:value
-        });
+        const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
+        // @ts-ignore
+        publicCourseParticipants[participantIndex][key] = value;
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };
 }
 
 export function updatePublicCourseLectureParticipating(lectureId: number, isAttending: boolean, participantIndex: number) {
     return function updatePublicCourseLectureParticipating(dispatch: IDispatch, getState: IGetState) {
-        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
+        const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         const participant = publicCourseParticipants[participantIndex];
         let lecturesAttending = _.hasIn(participant, 'lecturesAttending') ? participant.lecturesAttending : [];
         if (isAttending) {
@@ -113,7 +120,7 @@ export function removeParticipantsFromAllLectures() {
         if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
             return;
 
-        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
+        const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         for (const participant in publicCourseParticipants) {
             if (publicCourseParticipants[participant].lecturesAttending)
                 publicCourseParticipants[participant].lecturesAttending = [];
@@ -124,7 +131,7 @@ export function removeParticipantsFromAllLectures() {
 
 export function removeParticipant(participantId: number) {
     return function removeParticipant(dispatch: IDispatch, getState: IGetState) {
-        const publicCourseParticipants = getSelectedOrder(getState()).publicCourseParticipants;
+        const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         publicCourseParticipants.splice(participantId, 1);
         dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };

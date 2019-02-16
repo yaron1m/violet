@@ -10,6 +10,14 @@ import IPublicCourse, {IPublicCourseLecture} from '../../../../Interfaces/IPubli
 import {Size} from '../../../../Util/Constants/Size';
 import {IStringObject} from '../../../../Interfaces/IOrder';
 
+interface PublicCourseCustomFieldsProps {
+    name: string;
+    size?: Size;
+    options?: IOption[];
+    updateAction?: (name: string, newValue: any) => void;
+    values?: any;
+}
+
 function mapStateToProps(state: IState) {
     return {
         titles: getLabels(state).pages.publicCoursePage.fieldTitles,
@@ -27,16 +35,15 @@ function mergeProps(stateProps: {
     titles: IStringObject; values: IPublicCourse;
 }, dispatchProps: {
     updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
-}, ownProps: {
-    name: string, size?: Size, options?: IOption[]
-}) {
+}, ownProps: PublicCourseCustomFieldsProps) {
     return {
         titles: stateProps.titles,
-        values: stateProps.values,
+        values: ownProps.values ? ownProps.values : stateProps.values,
         requiredFields: [],
-        updateAction: dispatchProps.updateAction,
+        updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,
         name: ownProps.name,
         size: ownProps.size,
+        options: ownProps.options,
     };
 }
 
