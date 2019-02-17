@@ -1,10 +1,10 @@
-import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from '../../../../../Store/Labels/Selectors';
-import {getSelectedOrder} from '../../../../../Store/SelectedOrder/Selectors';
-import {Status} from '../../../../../Util/Constants/Status';
-import {isMatchingStatus} from '../../../../../Util/OrderStatus/OrderStatusUtils';
-import InternalLectureDetails from './InternalLectureDetails';
-import {IState} from '../../../../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {Status} from "../../../../../Util/Constants/Status";
+import {isMatchingStatus} from "../../../../../Util/OrderStatus/OrderStatusUtils";
+import InternalLectureDetails from "./InternalLectureDetails";
+import {IState} from "../../../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

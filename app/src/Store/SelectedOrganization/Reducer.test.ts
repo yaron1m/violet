@@ -1,20 +1,20 @@
-import target from './Reducer';
-import {LOGGED_OUT} from '../Firebase/ActionTypes';
+import target from "./Reducer";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from './ActionTypes';
+} from "./ActionTypes";
 
-const value = 'value';
-const key = 'key';
+const value = "value";
+const key = "key";
 const payload = {
     a: 123
 };
 
-describe('selected actions - organization', () => {
-    it('reducer - no action - initial state', () => {
+describe("selected actions - organization", () => {
+    it("reducer - no action - initial state", () => {
         const result = target();
 
         expect(result).toBeDefined();
@@ -22,16 +22,16 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeFalsy();
     });
 
-    it('reducer - no action with state - return state', () => {
+    it("reducer - no action with state - return state", () => {
 
-        const initialState = 'initialState';
+        const initialState = "initialState";
 
         const result = target(initialState);
 
         expect(result).toBe(initialState);
     });
 
-    it('reducer - SELECT_ORGANIZATION', () => {
+    it("reducer - SELECT_ORGANIZATION", () => {
 
         const initialState = {
             key: value
@@ -49,7 +49,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeTruthy();
     });
 
-    it('reducer - UPDATE_SELECTED_ORGANIZATION', () => {
+    it("reducer - UPDATE_SELECTED_ORGANIZATION", () => {
 
         const initialState = {
             key: value
@@ -66,7 +66,7 @@ describe('selected actions - organization', () => {
         expect(result.organization).toEqual(payload);
     });
 
-    it('reducer - SET_IS_SELECTED_ORGANIZATION', () => {
+    it("reducer - SET_IS_SELECTED_ORGANIZATION", () => {
 
         const initialState = {
             key: value
@@ -82,7 +82,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeTruthy();
     });
 
-    it('reducer - CLEAR_SELECTED_ORGANIZATION', () => {
+    it("reducer - CLEAR_SELECTED_ORGANIZATION", () => {
 
         const initialState = {
             organization: payload,
@@ -100,7 +100,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrganization).toBeFalsy();
     });
 
-    it('reducer - LOGGED_OUT', () => {
+    it("reducer - LOGGED_OUT", () => {
 
         const initialState = {
             organization: payload,

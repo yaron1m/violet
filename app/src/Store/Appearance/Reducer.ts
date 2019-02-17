@@ -1,20 +1,20 @@
-import * as actionTypes from './ActionTypes';
-import {createImmutable, mergeImmutable} from '../../Util/ObjectUpdater';
-import {LOGGED_OUT} from '../Firebase/ActionTypes';
-import IAppearance from '../../Interfaces/IAppearance';
+import * as actionTypes from "./ActionTypes";
+import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import IAppearance from "../../Interfaces/IAppearance";
 
 const initialState: IAppearance = {
     rtl: true,
-    language: 'he',
+    language: "he",
     dialog: {
         isOpen: false,
-        title: '',
-        content: '',
+        title: "",
+        content: "",
         actions: undefined,
     },
     snackbar: {
         isOpen: false,
-        message: '',
+        message: "",
     },
     showRequiredFields: false,
 };
@@ -41,8 +41,8 @@ export default function (state = createImmutable(initialState), action: any = {}
             return mergeImmutable(state, {
                 dialog: {
                     isOpen: false,
-                    title: '',
-                    content: '',
+                    title: "",
+                    content: "",
                     actions: undefined,
                 }
             });
@@ -59,7 +59,7 @@ export default function (state = createImmutable(initialState), action: any = {}
             return mergeImmutable(state, {
                 snackbar: {
                     isOpen: false,
-                    message: '',
+                    message: "",
                 }
             });
 

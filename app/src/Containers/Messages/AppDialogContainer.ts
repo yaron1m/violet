@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
-import CustomDialog from '../../Components/CustomComponents/CustomDialog';
-import {getDialogActions, getDialogContent, getDialogTitle, isDialogOpen} from '../../Store/Appearance/Selectors';
-import {closeDialog} from '../../Store/Appearance/Actions';
-import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import CustomDialog from "../../Components/CustomComponents/CustomDialog";
+import {getDialogActions, getDialogContent, getDialogTitle, isDialogOpen} from "../../Store/Appearance/Selectors";
+import {closeDialog} from "../../Store/Appearance/Actions";
+import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

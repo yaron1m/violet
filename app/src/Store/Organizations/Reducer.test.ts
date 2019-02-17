@@ -1,29 +1,29 @@
-import target from './Reducer';
-import {LOGGED_OUT} from '../Firebase/ActionTypes';
-import * as actionTypes from './ActionTypes';
+import target from "./Reducer";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import * as actionTypes from "./ActionTypes";
 
-const value = 'value';
+const value = "value";
 const org = {
-    newKey: 'new value'
+    newKey: "new value"
 };
 
-describe('organizations reducer', () => {
-    it('reducer - no action - initial state', () => {
+describe("organizations reducer", () => {
+    it("reducer - no action - initial state", () => {
         const result = target();
 
         expect(result).toEqual({});
     });
 
-    it('should do nothing with no action', () => {
+    it("should do nothing with no action", () => {
 
-        const initialState = 'initialState';
+        const initialState = "initialState";
 
         const result = target(initialState);
 
         expect(result).toEqual(initialState);
     });
 
-    it('should return received organizations', () => {
+    it("should return received organizations", () => {
         const initialState = {
             key: value
         };
@@ -38,7 +38,7 @@ describe('organizations reducer', () => {
         expect(result).toEqual(org);
     });
 
-    it('should clear selected public course when logged out', () => {
+    it("should clear selected public course when logged out", () => {
 
         const initialState = org;
 

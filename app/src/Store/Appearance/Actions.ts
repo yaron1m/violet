@@ -1,5 +1,5 @@
-import * as actionTypes from './ActionTypes';
-import React from 'react';
+import * as actionTypes from "./ActionTypes";
+import React from "react";
 
 export function openDialog(title: string, content: string, actions: React.ReactNode[] | null = null) {
     return {

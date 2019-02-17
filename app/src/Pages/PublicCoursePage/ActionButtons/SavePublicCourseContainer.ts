@@ -1,16 +1,16 @@
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 import {
     sendSelectedPublicCourseToDatabase, updateSelectedPublicCourse,
-} from '../../../Store/SelectedPublicCourse/Actions';
-import {getLabels} from '../../../Store/Labels/Selectors';
-import {isSelectedPublicCourse} from '../../../Store/SelectedPublicCourse/Selectors';
-import {openDialog, openSnackbar} from '../../../Store/Appearance/Actions';
-import SaveActionButton from '../../../Components/ActionButtons/SaveActionButton';
-import {getNextPublicCourseId} from '../../../Store/PublicCourses/Selectors';
-import {getSelectedPublicCourse} from '../../../Store/SelectedPublicCourse/Selectors';
-import {setIsSelectedOrder} from '../../../Store/SelectedOrder/Actions';
-import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
-import IPublicCourse from '../../../Interfaces/IPublicCourse';
+} from "../../../Store/SelectedPublicCourse/Actions";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {isSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Selectors";
+import {openDialog, openSnackbar} from "../../../Store/Appearance/Actions";
+import SaveActionButton from "../../../Components/ActionButtons/SaveActionButton";
+import {getNextPublicCourseId} from "../../../Store/PublicCourses/Selectors";
+import {getSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Selectors";
+import {setIsSelectedOrder} from "../../../Store/SelectedOrder/Actions";
+import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
+import IPublicCourse from "../../../Interfaces/IPublicCourse";
 
 async function savePublicCourse(
     selectedPublicCourse: IPublicCourse,
@@ -22,7 +22,7 @@ async function savePublicCourse(
     await fillMissingFields(selectedPublicCourse, nextPublicCourseId, dispatch);
 
     function success() {
-        const snackbarMessage = actionButtonsLabels.savedSuccessfully.replace('{0}', selectedPublicCourse.courseName);
+        const snackbarMessage = actionButtonsLabels.savedSuccessfully.replace("{0}", selectedPublicCourse.courseName);
         dispatch(openSnackbar(snackbarMessage));
         dispatch(setIsSelectedOrder());
     }
@@ -35,9 +35,9 @@ async function savePublicCourse(
 }
 
 async function fillMissingFields(selectedPublicCourse: IPublicCourse, nextPublicCourseId: number, dispatch: IDispatch) {
-    if (!selectedPublicCourse.hasOwnProperty('id')) {
-        await dispatch(updateSelectedPublicCourse('id', nextPublicCourseId.toString()));
-        await dispatch(updateSelectedPublicCourse('createdDate', new Date().toJSON()));
+    if (!selectedPublicCourse.hasOwnProperty("id")) {
+        await dispatch(updateSelectedPublicCourse("id", nextPublicCourseId.toString()));
+        await dispatch(updateSelectedPublicCourse("createdDate", new Date().toJSON()));
     }
 }
 

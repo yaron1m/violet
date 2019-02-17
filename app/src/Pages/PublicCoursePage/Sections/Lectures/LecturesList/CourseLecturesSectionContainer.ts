@@ -1,10 +1,10 @@
-import {connect} from 'react-redux';
-import {getLabels} from '../../../../../Store/Labels/Selectors';
-import CourseLecturesSection from './CourseLecturesSection';
-import {getSelectedPublicCourse} from '../../../../../Store/SelectedPublicCourse/Selectors';
-import _ from 'lodash';
-import {IState} from '../../../../../Interfaces/ReduxInterfaces';
-import IPublicCourse from '../../../../../Interfaces/IPublicCourse';
+import {connect} from "react-redux";
+import {getLabels} from "../../../../../Store/Labels/Selectors";
+import CourseLecturesSection from "./CourseLecturesSection";
+import {getSelectedPublicCourse} from "../../../../../Store/SelectedPublicCourse/Selectors";
+import _ from "lodash";
+import {IState} from "../../../../../Interfaces/ReduxInterfaces";
+import IPublicCourse from "../../../../../Interfaces/IPublicCourse";
 
 function getLecturesIdsOrderedByDate(selectedPublicCourse: IPublicCourse) {
     const lectures = _.filter(selectedPublicCourse.lectures, x => x.active);

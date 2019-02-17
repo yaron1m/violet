@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 export default interface IAppearance {
     rtl: boolean,
-    language: 'he',
+    language: "he",
     dialog: {
         isOpen: boolean,
         title: string,

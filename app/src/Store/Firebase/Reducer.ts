@@ -1,11 +1,11 @@
-import * as actionTypes from './ActionTypes';
-import {createImmutable, mergeImmutable} from '../../Util/ObjectUpdater';
+import * as actionTypes from "./ActionTypes";
+import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 
 const initialState = {
     loggedIn: undefined,
     userId: undefined,
-    displayName: '',
-    photoURL: '',
+    displayName: "",
+    photoURL: "",
     isSuperUser: false,
 };
 

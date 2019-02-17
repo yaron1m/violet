@@ -1,17 +1,17 @@
-import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from '../../../../../Store/Labels/Selectors';
-import {updateSelectedOrder} from '../../../../../Store/SelectedOrder/Actions';
-import * as _ from 'lodash';
-import {getSelectedOrder} from '../../../../../Store/SelectedOrder/Selectors';
-import {CustomRaisedButton} from '../../../../../Components/CustomComponents/CustomButtons';
-import {IDispatch, IState} from '../../../../../Interfaces/ReduxInterfaces';
-import IOrder, {IPublicCourseParticipant} from '../../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
+import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
+import * as _ from "lodash";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {CustomRaisedButton} from "../../../../../Components/CustomComponents/CustomButtons";
+import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
+import IOrder, {IPublicCourseParticipant} from "../../../../../Interfaces/IOrder";
 
 export function addNewParticipant(selectedOrder: IOrder, updateSelectedOrder: (key: string, value: any) => void) {
-    const publicCourseParticipants = _.hasIn(selectedOrder, 'publicCourseParticipants') ? selectedOrder.publicCourseParticipants : [];
+    const publicCourseParticipants = _.hasIn(selectedOrder, "publicCourseParticipants") ? selectedOrder.publicCourseParticipants : [];
     publicCourseParticipants.push({} as IPublicCourseParticipant);
 
-    updateSelectedOrder('publicCourseParticipants', publicCourseParticipants);
+    updateSelectedOrder("publicCourseParticipants", publicCourseParticipants);
 }
 
 function mapStateToProps(state: IState) {

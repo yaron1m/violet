@@ -1,12 +1,12 @@
-import {connect} from 'react-redux';
-import {selectOrder} from '../../Store/SelectedOrder/Actions';
-import {getLabels} from '../../Store/Labels/Selectors';
-import {IExpectedIncomeOrderSummary, getExpectedIncomeOrders} from '../../Store/Orders/Selectors';
-import {redirect} from '../../Util/HistoryUtil';
-import CustomPaperTable from '../../Components/Table/CustomPaperTable';
-import {Status} from '../../Util/Constants/Status';
-import {Path} from '../Path';
-import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {selectOrder} from "../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../Store/Labels/Selectors";
+import {IExpectedIncomeOrderSummary, getExpectedIncomeOrders} from "../../Store/Orders/Selectors";
+import {redirect} from "../../Util/HistoryUtil";
+import CustomPaperTable from "../../Components/Table/CustomPaperTable";
+import {Status} from "../../Util/Constants/Status";
+import {Path} from "../Path";
+import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     const acceptedStatuses = [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder];

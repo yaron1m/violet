@@ -1,17 +1,17 @@
-import {connect} from 'react-redux';
-import {getSelectedOrder} from '../../../../Store/SelectedOrder/Selectors';
-import {updateSelectedOrder} from '../../../../Store/SelectedOrder/Actions';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import CustomText from '../../../../Components/CustomComponents/CustomTextField';
-import CustomDatePicker from '../../../../Components/CustomComponents/CustomDatePicker';
-import CustomToggle from '../../../../Components/CustomComponents/CustomToggle';
-import CustomCheckbox from '../../../../Components/CustomComponents/CustomCheckbox';
-import CustomSelectField, {IOption} from '../../../../Components/CustomComponents/CustomSelectField';
-import {getRequiredFieldsObject} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import {Size} from '../../../../Util/Constants/Size';
-import {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
-import IOrder, {IStringObject} from '../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
+import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
+import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
+import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
+import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
+import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {Size} from "../../../../Util/Constants/Size";
+import {IPublicCourseLecture} from "../../../../Interfaces/IPublicCourse";
+import IOrder, {IStringObject} from "../../../../Interfaces/IOrder";
 
 interface OrderCustomFieldsProps {
     name: string;

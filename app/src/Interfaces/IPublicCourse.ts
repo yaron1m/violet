@@ -11,16 +11,16 @@ export default interface IPublicCourse {
 }
 
 export type IPublicCourseLectureField =
-    'active' |
-    'date' |
-    'duration' |
-    'endTime' |
-    'id' |
-    'isPublicCourseOrder' |
-    'price' |
-    'startTime' |
-    'tie' |
-    'topic';
+    "active" |
+    "date" |
+    "duration" |
+    "endTime" |
+    "id" |
+    "isPublicCourseOrder" |
+    "price" |
+    "startTime" |
+    "tie" |
+    "topic";
 
 export interface IPublicCourseLecture {
     active: boolean;

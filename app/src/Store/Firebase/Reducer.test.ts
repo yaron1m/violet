@@ -1,13 +1,13 @@
-import {isFetching, isLoggedIn} from './Selectors';
-import {IState} from '../../Interfaces/ReduxInterfaces';
+import {isFetching, isLoggedIn} from "./Selectors";
+import {IState} from "../../Interfaces/ReduxInterfaces";
 
 function setup(extraProps = {}, orders = {}, organizations = {}) {
     return {
         firebase: {
             loggedIn: undefined,
             userId: undefined,
-            displayName: '',
-            photoURL: '',
+            displayName: "",
+            photoURL: "",
             fetchingCount: 3,
             ...extraProps
         },
@@ -20,39 +20,39 @@ function setup(extraProps = {}, orders = {}, organizations = {}) {
     } as unknown as IState;
 }
 
-describe('Firebase selectors', () => {
+describe("Firebase selectors", () => {
 
-    it('isLoggedIn - initial state - undefined', () => {
+    it("isLoggedIn - initial state - undefined", () => {
         const target = setup();
         expect(isLoggedIn(target)).toBeUndefined();
     });
 
-    it('isLoggedIn - not logged in - false', () => {
+    it("isLoggedIn - not logged in - false", () => {
         const target = setup({loggedIn: false});
         expect(isLoggedIn(target)).toBeFalsy();
     });
 
-    it('isLoggedIn - logged in - true', () => {
+    it("isLoggedIn - logged in - true", () => {
         const target = setup({loggedIn: true});
         expect(isLoggedIn(target)).toBeTruthy();
     });
 
-    it('isFetching - initial state - true', () => {
+    it("isFetching - initial state - true", () => {
         const target = setup({});
         expect(isFetching(target)).toBeTruthy();
     });
 
-    it('isFetching - orders not fetched - true', () => {
+    it("isFetching - orders not fetched - true", () => {
         const target = setup({}, {}, {1: 1});
         expect(isFetching(target)).toBeTruthy();
     });
 
-    it('isFetching - organizations not fetched - true', () => {
+    it("isFetching - organizations not fetched - true", () => {
         const target = setup({}, {1: 1});
         expect(isFetching(target)).toBeTruthy();
     });
 
-    it('isLoggedIn - all fetched - false', () => {
+    it("isLoggedIn - all fetched - false", () => {
         const target = setup({}, {1: 1}, {1: 1});
         expect(isLoggedIn(target)).toBeFalsy();
     });

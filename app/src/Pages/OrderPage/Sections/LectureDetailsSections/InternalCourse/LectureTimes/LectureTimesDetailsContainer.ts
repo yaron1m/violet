@@ -1,11 +1,11 @@
-import {connect} from 'react-redux';
-import {getSelectedOrder} from '../../../../../../Store/SelectedOrder/Selectors';
-import LectureTimesDetails from './LectureTimesDetails';
-import _ from 'lodash';
-import {getOfferedLectures} from '../../../../../../Store/Lists/Selectors';
-import {toSuggestions} from '../../../../../../Components/AutoSuggest';
-import {IState} from '../../../../../../Interfaces/ReduxInterfaces';
-import {ILectureTime} from '../../../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
+import LectureTimesDetails from "./LectureTimesDetails";
+import _ from "lodash";
+import {getOfferedLectures} from "../../../../../../Store/Lists/Selectors";
+import {toSuggestions} from "../../../../../../Components/AutoSuggest";
+import {IState} from "../../../../../../Interfaces/ReduxInterfaces";
+import {ILectureTime} from "../../../../../../Interfaces/IOrder";
 
 function getLectureTimeIndexes(lectureTimes: ILectureTime[]) {
     if (!lectureTimes)

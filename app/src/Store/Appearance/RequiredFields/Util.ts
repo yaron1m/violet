@@ -1,6 +1,6 @@
-import * as _ from 'lodash';
-import IOrder from '../../../Interfaces/IOrder';
-import {TabKey} from '../../../Util/Constants/Status';
+import * as _ from "lodash";
+import IOrder from "../../../Interfaces/IOrder";
+import {TabKey} from "../../../Util/Constants/Status";
 
 function arrayMerge(objValue: string[], srcValue: string[]) {
     if (_.isArray(objValue)) {
@@ -21,7 +21,7 @@ export function mergerRequiredFields(base: IRequiredFields, newFields: Partial<I
 }
 
 export function hasMissingFields(object: any, required: string[]) {
-    const nonEmptyKeys = _.filter(_.keys(object), key => object[key] !== '');
+    const nonEmptyKeys = _.filter(_.keys(object), key => object[key] !== "");
     return !_.isEmpty(_.difference(required, nonEmptyKeys));
 }
 

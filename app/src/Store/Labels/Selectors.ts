@@ -1,8 +1,8 @@
-import {getSelectedOrder} from '../SelectedOrder/Selectors';
-import * as _ from 'lodash';
-import {progressiveStatuses, Status} from '../../Util/Constants/Status';
-import {IState} from '../../Interfaces/ReduxInterfaces';
-import IOrder from '../../Interfaces/IOrder';
+import {getSelectedOrder} from "../SelectedOrder/Selectors";
+import * as _ from "lodash";
+import {progressiveStatuses, Status} from "../../Util/Constants/Status";
+import {IState} from "../../Interfaces/ReduxInterfaces";
+import IOrder from "../../Interfaces/IOrder";
 
 export function getLabels(state: IState) {
     return state.labels;

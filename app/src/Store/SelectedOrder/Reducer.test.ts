@@ -1,13 +1,13 @@
-import reducer from './Reducer';
-import {LOGGED_OUT} from '../Firebase/ActionTypes';
-import {CLEAR_SELECTED_ORDER} from './ActionTypes';
+import reducer from "./Reducer";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import {CLEAR_SELECTED_ORDER} from "./ActionTypes";
 
 const payload = {
     a: 123
 };
 
-describe('selected actions - organization', () => {
-    it('should return initial state', () => {
+describe("selected actions - organization", () => {
+    it("should return initial state", () => {
         const result = reducer();
 
         expect(result).toBeDefined();
@@ -15,7 +15,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrder).toBeFalsy();
     });
 
-    it('should return initial state', () => {
+    it("should return initial state", () => {
 
         const initialState = {
             order: payload,
@@ -33,7 +33,7 @@ describe('selected actions - organization', () => {
         expect(result.isSelectedOrder).toBeFalsy();
     });
 
-    it('should return initial state', () => {
+    it("should return initial state", () => {
         const initialState = {
             order: payload,
             isSelectedOrder: true,

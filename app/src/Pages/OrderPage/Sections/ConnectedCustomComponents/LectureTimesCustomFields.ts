@@ -1,17 +1,17 @@
-import {connect} from 'react-redux';
-import {getSelectedOrder} from '../../../../Store/SelectedOrder/Selectors';
-import {updateLectureTime} from '../../../../Store/SelectedOrder/Actions';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import CustomText from '../../../../Components/CustomComponents/CustomTextField';
-import CustomDatePicker from '../../../../Components/CustomComponents/CustomDatePicker';
-import CustomAutoComplete from '../../../../Components/CustomComponents/CustomAutoComplete';
-import {getRequiredFieldsObject} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
-import {isRightTabKey} from '../../../../Store/Appearance/RequiredFields/Util';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import {Size} from '../../../../Util/Constants/Size';
-import {ISuggestion} from '../../../../Components/AutoSuggest';
-import {TabKey} from '../../../../Util/Constants/Status';
-import IOrder, {ILectureTime} from '../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
+import {updateLectureTime} from "../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
+import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
+import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {isRightTabKey} from "../../../../Store/Appearance/RequiredFields/Util";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {Size} from "../../../../Util/Constants/Size";
+import {ISuggestion} from "../../../../Components/AutoSuggest";
+import {TabKey} from "../../../../Util/Constants/Status";
+import IOrder, {ILectureTime} from "../../../../Interfaces/IOrder";
 
 interface LectureTimesCustomFieldsProps {
     name: string;

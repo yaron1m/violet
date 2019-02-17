@@ -1,11 +1,11 @@
-import {connect} from 'react-redux';
-import {getOrderPageLabels} from '../../../Store/Labels/Selectors';
-import {isSelectedOrder} from '../../../Store/SelectedOrder/Selectors';
-import {openDialog} from '../../../Store/Appearance/Actions';
-import {redirect} from '../../../Util/HistoryUtil';
-import PrintOrderButton from './PrintOrder';
-import {Path} from '../../Path';
-import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
+import {isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
+import {openDialog} from "../../../Store/Appearance/Actions";
+import {redirect} from "../../../Util/HistoryUtil";
+import PrintOrderButton from "./PrintOrder";
+import {Path} from "../../Path";
+import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

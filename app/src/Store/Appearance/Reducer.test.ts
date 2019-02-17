@@ -1,44 +1,44 @@
-import target from './Reducer';
-import * as actionTypes from './ActionTypes';
-import {updateObject} from '../../Util/ObjectUpdater';
-import IAppearance from '../../Interfaces/IAppearance';
+import target from "./Reducer";
+import * as actionTypes from "./ActionTypes";
+import {updateObject} from "../../Util/ObjectUpdater";
+import IAppearance from "../../Interfaces/IAppearance";
 
 const initialState = {
         rtl: true,
-        language: 'he',
+        language: "he",
         dialog: {
             isOpen: false,
-            title: '',
-            content: '',
+            title: "",
+            content: "",
         },
         snackbar: {
             isOpen: false,
-            message: '',
+            message: "",
         },
         showRequiredFields: false,
 } as IAppearance;
 
-describe('Appearance reducer', () => {
-    it('reducer - no action - initial state', () => {
+describe("Appearance reducer", () => {
+    it("reducer - no action - initial state", () => {
         const result = target();
 
         expect(result).toEqual(initialState);
     });
 
-    it('should do nothing with no action', () => {
-        const initialState = 'initialState' as unknown as IAppearance;
+    it("should do nothing with no action", () => {
+        const initialState = "initialState" as unknown as IAppearance;
 
         const result = target(initialState);
 
         expect(result).toEqual(initialState);
     });
 
-    it('should open the dialog and set its content', () => {
+    it("should open the dialog and set its content", () => {
         const action = {
             type: actionTypes.OPEN_DIALOG,
-            title: 'myTitle',
-            content: 'myContent',
-            actions: 'myActions',
+            title: "myTitle",
+            content: "myContent",
+            actions: "myActions",
         };
 
         const result = target(initialState, action);
@@ -46,20 +46,20 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(initialState, {
             dialog: {
                 isOpen: true,
-                title: 'myTitle',
-                content: 'myContent',
-                actions: 'myActions',
+                title: "myTitle",
+                content: "myContent",
+                actions: "myActions",
             }
         }));
     });
 
-    it('should close the dialog', () => {
+    it("should close the dialog", () => {
         const thisState = updateObject(initialState, {
             dialog: {
                 isOpen: true,
-                title: 'myTitle',
-                content: 'myContent',
-                actions: 'myActions',
+                title: "myTitle",
+                content: "myContent",
+                actions: "myActions",
             }
         });
 
@@ -72,17 +72,17 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(thisState, {
             dialog: {
                 isOpen: false,
-                title: '',
-                content: '',
+                title: "",
+                content: "",
                 actions: undefined,
             }
         }));
     });
 
-    it('should open the snackbar', () => {
+    it("should open the snackbar", () => {
         const action = {
             type: actionTypes.OPEN_SNACKBAR,
-            message: 'myMessage',
+            message: "myMessage",
         };
 
         const result = target(initialState, action);
@@ -90,16 +90,16 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(initialState, {
             snackbar: {
                 isOpen: true,
-                message: 'myMessage',
+                message: "myMessage",
             }
         }));
     });
 
-    it('should close the snackbar', () => {
+    it("should close the snackbar", () => {
         const thisState = updateObject(initialState, {
             snackbar: {
                 isOpen: true,
-                message: 'myMessage',
+                message: "myMessage",
             }
         });
 
@@ -112,12 +112,12 @@ describe('Appearance reducer', () => {
         expect(result).toEqual(updateObject(thisState, {
             snackbar: {
                 isOpen: false,
-                message: '',
+                message: "",
             }
         }));
     });
 
-    it('should show required fields', () => {
+    it("should show required fields", () => {
         const action = {
             type: actionTypes.SHOW_REQUIRED_FIELDS,
         };
@@ -129,7 +129,7 @@ describe('Appearance reducer', () => {
         }));
     });
 
-    it('should show required fields', () => {
+    it("should show required fields", () => {
         const thisState = updateObject(initialState, {
             showRequiredFields: true,
         });

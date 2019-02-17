@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
-import {getLabels} from '../../Store/Labels/Selectors';
-import {CustomRaisedButton} from '../../Components/CustomComponents/CustomButtons';
-import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {getLabels} from "../../Store/Labels/Selectors";
+import {CustomRaisedButton} from "../../Components/CustomComponents/CustomButtons";
+import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

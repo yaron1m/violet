@@ -1,6 +1,6 @@
-import * as orderStatusUtil from '../../Util/OrderStatus/OrderStatusCalculator';
-import * as firebaseActions from '../Firebase/Actions';
-import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from './ActionTypes';
+import * as orderStatusUtil from "../../Util/OrderStatus/OrderStatusCalculator";
+import * as firebaseActions from "../Firebase/Actions";
+import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {
     addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields, removeParticipant,
     removeParticipantsFromAllLectures, saveNewOrder,
@@ -10,25 +10,25 @@ import {
     updateLectureTime, updatePublicCourseLectureParticipating,
     updatePublicCourseParticipant,
     updateSelectedOrder
-} from './Actions';
-import {HIDE_REQUIRED_FIELDS} from '../Appearance/ActionTypes';
-import {sendSelectedOrganizationToDatabase} from '../SelectedOrganization/Actions';
-import {getMockedDispatch} from '../../Util/TestUtils';
-import {SELECT_ORGANIZATION} from '../SelectedOrganization/ActionTypes';
-import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from '../SelectedPublicCourse/ActionTypes';
-import {progressiveStatuses as Status} from '../../Util/Constants/Status';
-import {IState} from '../../Interfaces/ReduxInterfaces';
+} from "./Actions";
+import {HIDE_REQUIRED_FIELDS} from "../Appearance/ActionTypes";
+import {sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
+import {getMockedDispatch} from "../../Util/TestUtils";
+import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
+import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../SelectedPublicCourse/ActionTypes";
+import {progressiveStatuses as Status} from "../../Util/Constants/Status";
+import {IState} from "../../Interfaces/ReduxInterfaces";
 
 const id = 123456;
 const orgId = 555;
 const publicCourseId = 99;
-const org = 'org';
-const value = 'value';
-const key = 'key';
-const newValue = 'newValue';
-const status = 'status';
+const org = "org";
+const value = "value";
+const key = "key";
+const newValue = "newValue";
+const status = "status";
 
-describe('Selected order actions', () => {
+describe("Selected order actions", () => {
     beforeEach(() => {
         // @ts-ignore
         orderStatusUtil.default = jest.fn();
@@ -36,7 +36,7 @@ describe('Selected order actions', () => {
         orderStatusUtil.default.mockReturnValue(status);
     });
 
-    it('should dispatch action with selected order and organization', () => {
+    it("should dispatch action with selected order and organization", () => {
         const target = selectOrder(id);
         const getState = () => {
             return {
@@ -70,7 +70,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should dispatch action with public course id, when has one', () => {
+    it("should dispatch action with public course id, when has one", () => {
         const target = selectOrder(id);
         const getState = () => {
             return {
@@ -86,7 +86,7 @@ describe('Selected order actions', () => {
                 },
                 publicCourses: {
                     [publicCourseId]: {
-                        a: 'b'
+                        a: "b"
                     }
                 }
             } as unknown as IState;
@@ -103,12 +103,12 @@ describe('Selected order actions', () => {
         expect(mockedDispatch).toBeCalledWith({
             type: SELECT_PUBLIC_COURSE,
             payload: {
-                a: 'b'
+                a: "b"
             }
         });
     });
 
-    it('should dispatch action with updated order', () => {
+    it("should dispatch action with updated order", () => {
         const target = updateSelectedOrder(key, newValue);
         const getState = () => {
 
@@ -139,7 +139,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should dispatch action with updated order with the same key', () => {
+    it("should dispatch action with updated order with the same key", () => {
         const target = updateSelectedOrder(key, newValue);
 
         const getState = () => {
@@ -168,7 +168,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should dispatch action with updated lecture times', () => {
+    it("should dispatch action with updated lecture times", () => {
         const thunkFunction = updateLectureTime(key, value, 1);
 
         const getState = () => {
@@ -179,8 +179,8 @@ describe('Selected order actions', () => {
                             {id: 0},
                             {
                                 id: 9,
-                                startTime: '12:00',
-                                endTime: '13:00',
+                                startTime: "12:00",
+                                endTime: "13:00",
                             }
                         ]
 
@@ -196,9 +196,9 @@ describe('Selected order actions', () => {
                 {
                     id: 9,
                     [key]: value,
-                    startTime: '12:00',
-                    endTime: '13:00',
-                    duration: '01:00'
+                    startTime: "12:00",
+                    endTime: "13:00",
+                    duration: "01:00"
                 }
             ],
             status
@@ -213,7 +213,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should add lecture time when has none', () => {
+    it("should add lecture time when has none", () => {
         const thunkFunction = addNewLectureTime();
 
         const getState = () => {
@@ -241,7 +241,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should add lecture time when has other', () => {
+    it("should add lecture time when has other", () => {
         const thunkFunction = addNewLectureTime();
 
         const getState = () => {
@@ -271,7 +271,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should update public course participant', () => {
+    it("should update public course participant", () => {
         const thunkFunction = updatePublicCourseParticipant(key, value, 1);
 
         const getState = () => {
@@ -311,7 +311,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should add lecture to public course participant when there are no lectures', () => {
+    it("should add lecture to public course participant when there are no lectures", () => {
         const thunkFunction = updatePublicCourseLectureParticipating(2, true, 1);
         expect(thunkFunction).toBeDefined();
 
@@ -352,7 +352,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should add lecture to public course participant when there are lectures', () => {
+    it("should add lecture to public course participant when there are lectures", () => {
         const thunkFunction = updatePublicCourseLectureParticipating(2, true, 1);
         expect(thunkFunction).toBeDefined();
 
@@ -394,7 +394,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should remove lecture from public course participant', () => {
+    it("should remove lecture from public course participant", () => {
         const thunkFunction = updatePublicCourseLectureParticipating(5, false, 1);
         expect(thunkFunction).toBeDefined();
 
@@ -436,7 +436,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should update remove participants from all lectures', () => {
+    it("should update remove participants from all lectures", () => {
         const thunkFunction = removeParticipantsFromAllLectures();
         expect(thunkFunction).toBeDefined();
 
@@ -475,7 +475,7 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should remove participant from order', () => {
+    it("should remove participant from order", () => {
         const thunkFunction = removeParticipant(1);
         expect(thunkFunction).toBeDefined();
 
@@ -515,13 +515,13 @@ describe('Selected order actions', () => {
         });
     });
 
-    it('should return set is selected action', () => {
+    it("should return set is selected action", () => {
         expect(setIsSelectedOrder()).toEqual({
             type: SET_IS_SELECTED_ORDER
         });
     });
 
-    it('should dispatch action to send order to database', async () => {
+    it("should dispatch action to send order to database", async () => {
         // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 
@@ -549,35 +549,35 @@ describe('Selected order actions', () => {
         };
 
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
-        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/orders/' + id, expectedOrder);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith("/orders/" + id, expectedOrder);
     });
 
-    it('should return clear selected order action', () => {
+    it("should return clear selected order action", () => {
         expect(clearSelectedOrder()).toEqual({
             type: CLEAR_SELECTED_ORDER
         });
     });
 
-    it('should fill new order missing fields when no field is missing', () => {
+    it("should fill new order missing fields when no field is missing", () => {
         const thunkFunction = fillNewOrderMissingFields();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
                 organizations: {
-                    '1234': {
-                        id: '1234'
+                    "1234": {
+                        id: "1234"
                     }
                 },
                 selectedOrganization: {
                     organization: {
-                        id: '1234',
+                        id: "1234",
                     }
                 },
                 selectedOrder: {
                     order: {
                         id,
-                        organizationId: '1234',
+                        organizationId: "1234",
                     }
                 }, selectedPublicCourse: {
                     publicCourse: {}
@@ -591,7 +591,7 @@ describe('Selected order actions', () => {
         expect(mockedDispatch).toHaveBeenCalledTimes(0);
     });
 
-    it('should fill order id and created date', () => {
+    it("should fill order id and created date", () => {
         const thunkFunction = fillNewOrderMissingFields();
         const now = new Date();
         // @ts-ignore
@@ -600,16 +600,16 @@ describe('Selected order actions', () => {
         const getState = () => {
             return {
                 orders: {
-                    '5555': {}
+                    "5555": {}
                 },
                 organizations: {
-                    '1234': {
-                        id: '1234'
+                    "1234": {
+                        id: "1234"
                     }
                 },
                 selectedOrganization: {
                     organization: {
-                        id: '1234',
+                        id: "1234",
                     }
                 },
                 selectedOrder: {
@@ -629,7 +629,7 @@ describe('Selected order actions', () => {
             type: UPDATE_SELECTED_ORDER,
             payload: {
                 id: 5556,
-                status: 'status',
+                status: "status",
                 [key]: value,
             },
         });
@@ -638,7 +638,7 @@ describe('Selected order actions', () => {
             type: UPDATE_SELECTED_ORDER,
             payload: {
                 createdDate: now.toJSON(),
-                status: 'status',
+                status: "status",
                 [key]: value,
             },
         });
@@ -646,33 +646,33 @@ describe('Selected order actions', () => {
         expect(mockedDispatch).toBeCalledWith({
             type: UPDATE_SELECTED_ORDER,
             payload: {
-                organizationId: '1234',
-                status: 'status',
+                organizationId: "1234",
+                status: "status",
                 [key]: value,
             },
         });
     });
 
-    it('should save new order', async () => {
+    it("should save new order", async () => {
         const thunkFunction = saveNewOrder();
 
         const getState = () => {
             return {
                 organizations: {
-                    '1234': {
-                        id: '1234'
+                    "1234": {
+                        id: "1234"
                     }
                 },
                 selectedOrganization: {
                     organization: {
-                        id: '1234',
+                        id: "1234",
                     }
                 },
                 selectedOrder: {
                     order: {
                         id,
                         [key]: value,
-                        organizationId: '1234',
+                        organizationId: "1234",
                     }
                 }, selectedPublicCourse: {
                     publicCourse: {}
@@ -687,25 +687,25 @@ describe('Selected order actions', () => {
         await thunkFunction(dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch.mock.calls[0][0].name).toEqual('fillNewOrderMissingFields');
-        expect(dispatch.mock.calls[1][0].name).toEqual('sendSelectedOrderToDatabase');
+        expect(dispatch.mock.calls[0][0].name).toEqual("fillNewOrderMissingFields");
+        expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
         expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
     });
 
-    it('should save new order and update organization', async () => {
+    it("should save new order and update organization", async () => {
         const thunkFunction = saveNewOrder();
         expect(thunkFunction).toBeDefined();
 
         const getState = () => {
             return {
                 organizations: {
-                    '1234': {
-                        id: '1234'
+                    "1234": {
+                        id: "1234"
                     }
                 },
                 selectedOrganization: {
                     organization: {
-                        id: '1234',
+                        id: "1234",
                         [key]: newValue
                     }
                 },
@@ -713,7 +713,7 @@ describe('Selected order actions', () => {
                     order: {
                         id,
                         [key]: value,
-                        organizationId: '1234',
+                        organizationId: "1234",
                     }
                 },
                 selectedPublicCourse: {
@@ -727,13 +727,13 @@ describe('Selected order actions', () => {
         await thunkFunction(dispatch, getState);
 
         expect(dispatch).toHaveBeenCalledTimes(4);
-        expect(dispatch.mock.calls[0][0].name).toEqual('fillNewOrderMissingFields');
-        expect(dispatch.mock.calls[1][0].name).toEqual('sendSelectedOrderToDatabase');
+        expect(dispatch.mock.calls[0][0].name).toEqual("fillNewOrderMissingFields");
+        expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
         expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
-        expect(dispatch.mock.calls[3][0].name).toEqual('sendSelectedOrganizationToDatabase');
+        expect(dispatch.mock.calls[3][0].name).toEqual("sendSelectedOrganizationToDatabase");
     });
 
-    it('should calculate status after updating the order', () => {
+    it("should calculate status after updating the order", () => {
         // @ts-ignore
         orderStatusUtil.default = jest.fn(order => {
             if (order.orderApproved)
@@ -742,7 +742,7 @@ describe('Selected order actions', () => {
             return Status.contact;
         });
 
-        const target = updateSelectedOrder('orderApproved', true);
+        const target = updateSelectedOrder("orderApproved", true);
         const getState = () => {
 
             return {

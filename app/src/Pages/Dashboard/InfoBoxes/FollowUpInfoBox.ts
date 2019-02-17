@@ -1,13 +1,13 @@
-import {connect} from 'react-redux';
-import {getLabels} from '../../../Store/Labels/Selectors';
-import {redirect} from '../../../Util/HistoryUtil';
-import {getFollowUpOrdersSummary} from '../../../Store/Orders/Selectors';
-import {isFetching} from '../../../Store/Firebase/Selectors';
-import InfoBox from './InfoBox';
-import Colors from '../../../Util/Constants/Colors';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import {Path} from '../../Path';
-import {IState} from '../../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {redirect} from "../../../Util/HistoryUtil";
+import {getFollowUpOrdersSummary} from "../../../Store/Orders/Selectors";
+import {isFetching} from "../../../Store/Firebase/Selectors";
+import InfoBox from "./InfoBox";
+import Colors from "../../../Util/Constants/Colors";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import {Path} from "../../Path";
+import {IState} from "../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

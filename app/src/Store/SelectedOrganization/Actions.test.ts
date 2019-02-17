@@ -1,10 +1,10 @@
-import * as firebaseActions from '../Firebase/Actions';
+import * as firebaseActions from "../Firebase/Actions";
 import {
     CLEAR_SELECTED_ORGANIZATION,
     SELECT_ORGANIZATION,
     SET_IS_SELECTED_ORGANIZATION,
     UPDATE_SELECTED_ORGANIZATION
-} from './ActionTypes';
+} from "./ActionTypes";
 import {
     clearSelectedOrganization,
     saveNewOrganization,
@@ -12,18 +12,18 @@ import {
     sendSelectedOrganizationToDatabase,
     setIsSelectedOrganization,
     updateSelectedOrganization
-} from './Actions';
-import {CLOSE_DIALOG} from '../Appearance/ActionTypes';
-import {getMockedDispatch} from '../../Util/TestUtils';
-import {IState} from '../../Interfaces/ReduxInterfaces';
+} from "./Actions";
+import {CLOSE_DIALOG} from "../Appearance/ActionTypes";
+import {getMockedDispatch} from "../../Util/TestUtils";
+import {IState} from "../../Interfaces/ReduxInterfaces";
 
 const id = 123456;
-const value = 'value';
-const key = 'key';
-const newValue = 'newValue';
+const value = "value";
+const key = "key";
+const newValue = "newValue";
 
-describe('selected actions - organization', () => {
-    it('selectOrganization - valid - action', () => {
+describe("selected actions - organization", () => {
+    it("selectOrganization - valid - action", () => {
         const target = selectOrganization(id);
 
         const getState = () => {
@@ -44,7 +44,7 @@ describe('selected actions - organization', () => {
         });
     });
 
-    it('updateSelectedOrganization - update new key - action', () => {
+    it("updateSelectedOrganization - update new key - action", () => {
         const target = updateSelectedOrganization(key, newValue);
 
         const getState = () => {
@@ -70,7 +70,7 @@ describe('selected actions - organization', () => {
         });
     });
 
-    it('updateSelectedOrganization - update existing key - action', () => {
+    it("updateSelectedOrganization - update existing key - action", () => {
         const target = updateSelectedOrganization(key, newValue);
 
         const getState = () => {
@@ -95,13 +95,13 @@ describe('selected actions - organization', () => {
         });
     });
 
-    it('setIsSelectedOrganization - valid - action', () => {
+    it("setIsSelectedOrganization - valid - action", () => {
         expect(setIsSelectedOrganization()).toEqual({
             type: SET_IS_SELECTED_ORGANIZATION
         });
     });
 
-    it('should dispatch action to send order to database', async () => {
+    it("should dispatch action to send order to database", async () => {
         // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 
@@ -127,16 +127,16 @@ describe('selected actions - organization', () => {
         };
 
         expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledTimes(1);
-        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith('/organizations/' + id, expectedOrganization);
+        expect(firebaseActions.sendDataToDatabase).toHaveBeenCalledWith("/organizations/" + id, expectedOrganization);
     });
 
-    it('should return clear selected organization action', () => {
+    it("should return clear selected organization action", () => {
         expect(clearSelectedOrganization()).toEqual({
             type: CLEAR_SELECTED_ORGANIZATION
         });
     });
 
-    it('should save a new organization to database', async () => {
+    it("should save a new organization to database", async () => {
         // @ts-ignore
         firebaseActions.sendDataToDatabase = jest.fn();
 

@@ -1,15 +1,15 @@
-import {connect} from 'react-redux';
-import {getOrderPageLabels} from '../../../../Store/Labels/Selectors';
-import {closeDialog, openDialog, showRequiredFields} from '../../../../Store/Appearance/Actions';
-import SaveActionButton from '../../../../Components/ActionButtons/SaveActionButton';
-import {shouldSaveNewOrder} from './ShouldSaveNewOrderDecider';
-import {getSelectedOrganization, isSelectedOrganization} from '../../../../Store/SelectedOrganization/Selectors';
-import {isOrderMissingFields} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
-import {saveNewOrganization} from '../../../../Store/SelectedOrganization/Actions';
-import {saveNewOrder} from '../../../../Store/SelectedOrder/Actions';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import * as React from 'react';
-import IOrganization from '../../../../Interfaces/IOrganization';
+import {connect} from "react-redux";
+import {getOrderPageLabels} from "../../../../Store/Labels/Selectors";
+import {closeDialog, openDialog, showRequiredFields} from "../../../../Store/Appearance/Actions";
+import SaveActionButton from "../../../../Components/ActionButtons/SaveActionButton";
+import {shouldSaveNewOrder} from "./ShouldSaveNewOrderDecider";
+import {getSelectedOrganization, isSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
+import {isOrderMissingFields} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {saveNewOrganization} from "../../../../Store/SelectedOrganization/Actions";
+import {saveNewOrder} from "../../../../Store/SelectedOrder/Actions";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import * as React from "react";
+import IOrganization from "../../../../Interfaces/IOrganization";
 
 function mapStateToProps(state: IState) {
     const orderPageLabels = getOrderPageLabels(state);

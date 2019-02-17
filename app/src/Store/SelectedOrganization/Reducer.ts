@@ -1,6 +1,6 @@
-import * as actionTypes from './ActionTypes';
-import {LOGGED_OUT} from '../Firebase/ActionTypes';
-import {createImmutable, mergeImmutable} from '../../Util/ObjectUpdater';
+import * as actionTypes from "./ActionTypes";
+import {LOGGED_OUT} from "../Firebase/ActionTypes";
+import {createImmutable, mergeImmutable} from "../../Util/ObjectUpdater";
 
 const initialState = {
     isSelectedOrganization: false,

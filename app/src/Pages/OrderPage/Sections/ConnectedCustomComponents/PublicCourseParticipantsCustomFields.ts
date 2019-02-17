@@ -1,15 +1,15 @@
-import {connect} from 'react-redux';
-import {getSelectedOrder} from '../../../../Store/SelectedOrder/Selectors';
-import {updatePublicCourseParticipant} from '../../../../Store/SelectedOrder/Actions';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import CustomText from '../../../../Components/CustomComponents/CustomTextField';
-import CustomCheckbox from '../../../../Components/CustomComponents/CustomCheckbox';
-import {getRequiredFieldsObject} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
-import {isRightTabKey} from '../../../../Store/Appearance/RequiredFields/Util';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import {Size} from '../../../../Util/Constants/Size';
-import IOrder, {IPublicCourseParticipant, IStringObject} from '../../../../Interfaces/IOrder';
-import {TabKey} from '../../../../Util/Constants/Status';
+import {connect} from "react-redux";
+import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
+import {updatePublicCourseParticipant} from "../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
+import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {isRightTabKey} from "../../../../Store/Appearance/RequiredFields/Util";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {Size} from "../../../../Util/Constants/Size";
+import IOrder, {IPublicCourseParticipant, IStringObject} from "../../../../Interfaces/IOrder";
+import {TabKey} from "../../../../Util/Constants/Status";
 
 interface PublicCourseParticipantsCustomFieldsProps {
     name: string;

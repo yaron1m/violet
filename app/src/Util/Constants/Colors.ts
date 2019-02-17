@@ -1,16 +1,16 @@
-import purple from '@material-ui/core/colors/purple';
-import red from '@material-ui/core/colors/red';
-import grey from '@material-ui/core/colors/grey';
-import indigo from '@material-ui/core/colors/indigo';
-import orange from '@material-ui/core/colors/orange';
-import pink from '@material-ui/core/colors/pink';
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import green from '@material-ui/core/colors/green';
+import purple from "@material-ui/core/colors/purple";
+import red from "@material-ui/core/colors/red";
+import grey from "@material-ui/core/colors/grey";
+import indigo from "@material-ui/core/colors/indigo";
+import orange from "@material-ui/core/colors/orange";
+import pink from "@material-ui/core/colors/pink";
+import lightBlue from "@material-ui/core/colors/lightBlue";
+import green from "@material-ui/core/colors/green";
 
 export default {
     red: red[500],
-    white: 'white',
-    black: 'black',
+    white: "white",
+    black: "black",
     textGray: grey[800],
     purple: purple[800],
     lightPurple: purple[600],

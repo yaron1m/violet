@@ -1,4 +1,4 @@
-import {IGetState} from '../Interfaces/ReduxInterfaces';
+import {IGetState} from "../Interfaces/ReduxInterfaces";
 
 export function getMockedDispatch(mockedGetState: IGetState) {
     const mockedDispatch = jest.fn(action => {
@@ -10,5 +10,5 @@ export function getMockedDispatch(mockedGetState: IGetState) {
 }
 
 function isFunction(functionToCheck: Function) {
-    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+    return functionToCheck && {}.toString.call(functionToCheck) === "[object Function]";
 }

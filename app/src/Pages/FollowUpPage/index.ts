@@ -1,12 +1,12 @@
-import {connect} from 'react-redux';
-import {selectOrder} from '../../Store/SelectedOrder/Actions';
-import {getLabels} from '../../Store/Labels/Selectors';
-import {redirect} from '../../Util/HistoryUtil';
-import CustomPaperTable from '../../Components/Table/CustomPaperTable';
-import * as _ from 'lodash';
-import {getFollowUpOrdersSummary, IFollowUpOrderSummary} from '../../Store/Orders/Selectors';
-import {Path} from '../Path';
-import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {selectOrder} from "../../Store/SelectedOrder/Actions";
+import {getLabels} from "../../Store/Labels/Selectors";
+import {redirect} from "../../Util/HistoryUtil";
+import CustomPaperTable from "../../Components/Table/CustomPaperTable";
+import * as _ from "lodash";
+import {getFollowUpOrdersSummary, IFollowUpOrderSummary} from "../../Store/Orders/Selectors";
+import {Path} from "../Path";
+import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

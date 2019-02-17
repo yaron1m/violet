@@ -1,30 +1,30 @@
-import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from './ActionTypes';
-import {getSelectedOrder} from './Selectors';
-import {calculateDuration} from '../../Util/TimeUtil';
-import {getNextOrderId, getOrderById} from '../Orders/Selectors';
-import {isEmptyValue} from '../../Util/StringUtil';
-import {selectPublicCourse} from '../SelectedPublicCourse/Actions';
-import * as _ from 'lodash';
-import calculateOrderStatus from '../../Util/OrderStatus/OrderStatusCalculator';
-import {sendDataToDatabase} from '../Firebase/Actions';
-import {selectOrganization, sendSelectedOrganizationToDatabase} from '../SelectedOrganization/Actions';
-import {hideRequiredFields, openDialog, openSnackbar} from '../Appearance/Actions';
-import {getOrganizationById} from '../Organizations/Selectors';
-import {getSelectedOrganization} from '../SelectedOrganization/Selectors';
-import {getLabels} from '../Labels/Selectors';
-import {getSelectedPublicCourse} from '../SelectedPublicCourse/Selectors';
-import {IDispatch, IGetState, IState} from '../../Interfaces/ReduxInterfaces';
-import {TabKey} from '../../Util/Constants/Status';
-import {ILectureTime, IPublicCourseParticipant} from '../../Interfaces/IOrder';
-import * as firebase from 'firebase';
-import {updateObject} from '../../Util/ObjectUpdater';
+import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
+import {getSelectedOrder} from "./Selectors";
+import {calculateDuration} from "../../Util/TimeUtil";
+import {getNextOrderId, getOrderById} from "../Orders/Selectors";
+import {isEmptyValue} from "../../Util/StringUtil";
+import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
+import * as _ from "lodash";
+import calculateOrderStatus from "../../Util/OrderStatus/OrderStatusCalculator";
+import {sendDataToDatabase} from "../Firebase/Actions";
+import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
+import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
+import {getOrganizationById} from "../Organizations/Selectors";
+import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
+import {getLabels} from "../Labels/Selectors";
+import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
+import {IDispatch, IGetState, IState} from "../../Interfaces/ReduxInterfaces";
+import {TabKey} from "../../Util/Constants/Status";
+import {ILectureTime, IPublicCourseParticipant} from "../../Interfaces/IOrder";
+import * as firebase from "firebase";
+import {updateObject} from "../../Util/ObjectUpdater";
 
 export function selectOrder(orderId: number) {
     return function selectOrder(dispatch: IDispatch, getState: IGetState) {
         const order = getOrderById(getState(), orderId.toString());
         dispatch(selectOrganization(order.organizationId));
 
-        if (!isEmptyValue(order, 'publicCourseId')) {
+        if (!isEmptyValue(order, "publicCourseId")) {
             dispatch(selectPublicCourse(order.publicCourseId.toString()));
         }
 
@@ -66,17 +66,17 @@ export function updateLectureTime(key: string, value: string, lectureTimeIndex: 
         lectureTime[key] = value;
         lectureTime.duration = calculateDuration(allLectureTimes[lectureTimeIndex]);
 
-        dispatch(updateSelectedOrder('lectureTimes', allLectureTimes));
+        dispatch(updateSelectedOrder("lectureTimes", allLectureTimes));
     };
 }
 
 export function addNewLectureTime() {
     return function addNewLectureTime(dispatch: IDispatch, getState: IGetState) {
         const thisSelectedOrder = getSelectedOrder(getState());
-        const lectureTimes = _.hasIn(thisSelectedOrder, 'lectureTimes') ? getSelectedOrderLectureTimes(getState()) : [];
+        const lectureTimes = _.hasIn(thisSelectedOrder, "lectureTimes") ? getSelectedOrderLectureTimes(getState()) : [];
         lectureTimes.push({} as ILectureTime);
 
-        dispatch(updateSelectedOrder('lectureTimes', lectureTimes));
+        dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
     };
 }
 
@@ -85,7 +85,7 @@ export function deleteLectureTime(lectureTimeIndex: number) {
         const lectureTimes = getSelectedOrderLectureTimes(getState());
         lectureTimes.splice(lectureTimeIndex, 1);
 
-        dispatch(updateSelectedOrder('lectureTimes', lectureTimes));
+        dispatch(updateSelectedOrder("lectureTimes", lectureTimes));
     };
 }
 
@@ -94,7 +94,7 @@ export function updatePublicCourseParticipant(key: string, value: string | numbe
         const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         // @ts-ignore
         publicCourseParticipants[participantIndex][key] = value;
-        dispatch(updateSelectedOrder('publicCourseParticipants', publicCourseParticipants));
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };
 }
 
@@ -102,7 +102,7 @@ export function updatePublicCourseLectureParticipating(lectureId: number, isAtte
     return function updatePublicCourseLectureParticipating(dispatch: IDispatch, getState: IGetState) {
         const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         const participant = publicCourseParticipants[participantIndex];
-        let lecturesAttending = _.hasIn(participant, 'lecturesAttending') ? participant.lecturesAttending : [];
+        let lecturesAttending = _.hasIn(participant, "lecturesAttending") ? participant.lecturesAttending : [];
         if (isAttending) {
             lecturesAttending.push(lectureId);
             lecturesAttending.sort((a, b) => a - b);
@@ -111,13 +111,13 @@ export function updatePublicCourseLectureParticipating(lectureId: number, isAtte
         }
 
         publicCourseParticipants[participantIndex].lecturesAttending = lecturesAttending;
-        dispatch(updateSelectedOrder('publicCourseParticipants', publicCourseParticipants));
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };
 }
 
 export function removeParticipantsFromAllLectures() {
     return function removeParticipantsFromAllLectures(dispatch: IDispatch, getState: IGetState) {
-        if (isEmptyValue(getSelectedOrder(getState()), 'publicCourseParticipants'))
+        if (isEmptyValue(getSelectedOrder(getState()), "publicCourseParticipants"))
             return;
 
         const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
@@ -125,7 +125,7 @@ export function removeParticipantsFromAllLectures() {
             if (publicCourseParticipants[participant].lecturesAttending)
                 publicCourseParticipants[participant].lecturesAttending = [];
         }
-        dispatch(updateSelectedOrder('publicCourseParticipants', publicCourseParticipants));
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };
 }
 
@@ -133,7 +133,7 @@ export function removeParticipant(participantId: number) {
     return function removeParticipant(dispatch: IDispatch, getState: IGetState) {
         const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         publicCourseParticipants.splice(participantId, 1);
-        dispatch(updateSelectedOrder('publicCourseParticipants', publicCourseParticipants));
+        dispatch(updateSelectedOrder("publicCourseParticipants", publicCourseParticipants));
     };
 }
 
@@ -145,10 +145,10 @@ export function setIsSelectedOrder() {
 
 export function sendSelectedOrderToDatabase() {
     return async function sendSelectedOrderToDatabase(dispatch: IDispatch, getState: IGetState) {
-        await dispatch(updateSelectedOrder('changedDate', new Date().toJSON()));
+        await dispatch(updateSelectedOrder("changedDate", new Date().toJSON()));
         const selectedOrder = getSelectedOrder(getState());
 
-        return sendDataToDatabase('/orders/' + selectedOrder.id, selectedOrder);
+        return sendDataToDatabase("/orders/" + selectedOrder.id, selectedOrder);
     };
 }
 
@@ -163,13 +163,13 @@ export function fillNewOrderMissingFields() {
         let idPromise;
         let createdPromise;
         let organizationIdPromise;
-        if (!getSelectedOrder(getState()).hasOwnProperty('id')) {
-            idPromise = dispatch(updateSelectedOrder('id', getNextOrderId(getState())));
-            createdPromise = dispatch(updateSelectedOrder('createdDate', new Date().toJSON()));
+        if (!getSelectedOrder(getState()).hasOwnProperty("id")) {
+            idPromise = dispatch(updateSelectedOrder("id", getNextOrderId(getState())));
+            createdPromise = dispatch(updateSelectedOrder("createdDate", new Date().toJSON()));
         }
 
-        if (!getSelectedOrder(getState()).hasOwnProperty('organizationId'))
-            organizationIdPromise = dispatch(updateSelectedOrder('organizationId', getSelectedOrganization(getState()).id));
+        if (!getSelectedOrder(getState()).hasOwnProperty("organizationId"))
+            organizationIdPromise = dispatch(updateSelectedOrder("organizationId", getSelectedOrganization(getState()).id));
 
         return Promise.all([idPromise, organizationIdPromise, createdPromise]);
     };
@@ -181,7 +181,7 @@ export function saveNewOrder() {
 
         function success() {
             const snackbarMessage = getLabels(getState()).pages.orderPage.snackBar.savedSuccessfully
-                .replace('{0}', getSelectedOrder(getState()).id);
+                .replace("{0}", getSelectedOrder(getState()).id);
             dispatch(openSnackbar(snackbarMessage));
             dispatch(setIsSelectedOrder());
         }

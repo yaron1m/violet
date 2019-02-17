@@ -1,14 +1,14 @@
-import Colors from './Util/Constants/Colors';
-import {createMuiTheme} from '@material-ui/core/styles';
+import Colors from "./Util/Constants/Colors";
+import {createMuiTheme} from "@material-ui/core/styles";
 
 export const theme = createMuiTheme({
-    direction: 'rtl',
+    direction: "rtl",
     palette: {
         primary: {
-            light: '#757ce8',
+            light: "#757ce8",
             main: Colors.purple,
-            dark: '#002884',
-            contrastText: '#ffffff',
+            dark: "#002884",
+            contrastText: "#ffffff",
         },
     },
     typography: {

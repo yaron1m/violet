@@ -1,14 +1,14 @@
-import _ from 'lodash';
-import {getOrderStatusLabel} from '../Labels/Selectors';
-import {getOrganizationById} from '../Organizations/Selectors';
-import {getLabels} from '../Labels/Selectors';
-import {Status} from '../../Util/Constants/Status';
-import {isEmptyValue} from '../../Util/StringUtil';
-import {isPublicCourseOrder} from '../SelectedOrder/Selectors';
-import {getPublicCourseById} from '../PublicCourses/Selectors';
-import {IState} from '../../Interfaces/ReduxInterfaces';
-import IOrder from '../../Interfaces/IOrder';
-import {getOrders} from './Selectors';
+import _ from "lodash";
+import {getOrderStatusLabel} from "../Labels/Selectors";
+import {getOrganizationById} from "../Organizations/Selectors";
+import {getLabels} from "../Labels/Selectors";
+import {Status} from "../../Util/Constants/Status";
+import {isEmptyValue} from "../../Util/StringUtil";
+import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
+import {getPublicCourseById} from "../PublicCourses/Selectors";
+import {IState} from "../../Interfaces/ReduxInterfaces";
+import IOrder from "../../Interfaces/IOrder";
+import {getOrders} from "./Selectors";
 
 export interface IActionRequiredOrder {
     orderId: number;
@@ -30,7 +30,7 @@ export default function getActionRequiredOrdersArray(state: IState) {
             if (order.followUpRequired) {
                 if (new Date(order.followUpDate) < now)
                     addOrderToResult(state, result, order, issues.followUpRequired
-                        + ' - ' + new Date(order.followUpDate).toLocaleDateString());
+                        + " - " + new Date(order.followUpDate).toLocaleDateString());
                 return;
             }
 
@@ -77,7 +77,7 @@ export default function getActionRequiredOrdersArray(state: IState) {
                         lastLectureTimeDate = _.sortBy(order.lectureTimes, time => -new Date(time.date))[0].date;
                     }
 
-                    if (isEmptyValue(order, 'proformaInvoiceNumber') && new Date(lastLectureTimeDate) < now) {
+                    if (isEmptyValue(order, "proformaInvoiceNumber") && new Date(lastLectureTimeDate) < now) {
                         addOrderToResult(state, result, order, issues.executedAndNoInvoice);
                         return;
                     }

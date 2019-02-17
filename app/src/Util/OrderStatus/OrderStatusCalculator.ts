@@ -1,10 +1,10 @@
-import * as _ from 'lodash';
-import {progressiveStatuses, Status, terminatingStatuses} from '../Constants/Status';
-import {existsAndNotEmpty} from './OrderStatusUtils';
-import {hasDatePassed} from '../TimeUtil';
-import {isPublicCourseOrder} from '../../Store/SelectedOrder/Selectors';
-import IOrder from '../../Interfaces/IOrder';
-import IPublicCourse from '../../Interfaces/IPublicCourse';
+import * as _ from "lodash";
+import {progressiveStatuses, Status, terminatingStatuses} from "../Constants/Status";
+import {existsAndNotEmpty} from "./OrderStatusUtils";
+import {hasDatePassed} from "../TimeUtil";
+import {isPublicCourseOrder} from "../../Store/SelectedOrder/Selectors";
+import IOrder from "../../Interfaces/IOrder";
+import IPublicCourse from "../../Interfaces/IPublicCourse";
 
 export default function calculateOrderStatus(order: IOrder, publicCourse: IPublicCourse) {
     // let possibleStatuses = _.values(terminatingStatuses);
@@ -75,11 +75,11 @@ function isContact() {
 
 function isOffer(order: IOrder) {
     if (isPublicCourseOrder(order)) {
-        return existsAndNotEmpty(order, 'publicCourseParticipants');
+        return existsAndNotEmpty(order, "publicCourseParticipants");
     }
 
     // Order must have at least one lecture time with a topic
-    if (!existsAndNotEmpty(order, 'lectureTimes'))
+    if (!existsAndNotEmpty(order, "lectureTimes"))
         return false;
 
     return _.some(order.lectureTimes, lectureTime => Boolean(lectureTime.topic));
@@ -98,7 +98,7 @@ function isOrder(order: IOrder) {
 
 function isApprovedOrder(order: IOrder) {
     // Order must be approved
-    return existsAndNotEmpty(order, 'orderApproved');
+    return existsAndNotEmpty(order, "orderApproved");
 }
 
 function isExecuting(order: IOrder, publicCourse: IPublicCourse) {
@@ -127,12 +127,12 @@ function isExecuted(order: IOrder, publicCourse: IPublicCourse) {
 
 function isWaitingPayment(order: IOrder) {
     // Order has proforma or tax invoice number
-    return existsAndNotEmpty(order, 'proformaInvoiceNumber')
-        || existsAndNotEmpty(order, 'taxInvoiceNumber');
+    return existsAndNotEmpty(order, "proformaInvoiceNumber")
+        || existsAndNotEmpty(order, "taxInvoiceNumber");
 }
 
 function isPayed(order: IOrder) {
-    return existsAndNotEmpty(order, 'receiptNumber');
+    return existsAndNotEmpty(order, "receiptNumber");
 }
 
 function isCancelled(order: IOrder) {

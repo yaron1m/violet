@@ -1,13 +1,13 @@
-import {getSelectedOrganization} from '../../SelectedOrganization/Selectors';
-import * as _ from 'lodash';
-import requiredFields from './RequiredFieldsByStatus';
-import {hasMissingFields, IRequiredFields, isRightTabKey, mergerRequiredFields} from './Util';
-import {shouldShowRequiredFields} from '../Selectors';
-import {getSelectedOrder} from '../../SelectedOrder/Selectors';
-import {IState} from '../../../Interfaces/ReduxInterfaces';
-import IOrder from '../../../Interfaces/IOrder';
-import {TabKey} from '../../../Util/Constants/Status';
-import IOrganization from '../../../Interfaces/IOrganization';
+import {getSelectedOrganization} from "../../SelectedOrganization/Selectors";
+import * as _ from "lodash";
+import requiredFields from "./RequiredFieldsByStatus";
+import {hasMissingFields, IRequiredFields, isRightTabKey, mergerRequiredFields} from "./Util";
+import {shouldShowRequiredFields} from "../Selectors";
+import {getSelectedOrder} from "../../SelectedOrder/Selectors";
+import {IState} from "../../../Interfaces/ReduxInterfaces";
+import IOrder from "../../../Interfaces/IOrder";
+import {TabKey} from "../../../Util/Constants/Status";
+import IOrganization from "../../../Interfaces/IOrganization";
 
 export function getRequiredFieldsObject(state: IState) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state));
@@ -50,7 +50,7 @@ function removeInternalOrderNumber(requiredFieldsByEntity: IRequiredFields, sele
 
     return {
         ...requiredFieldsByEntity,
-        order: _.without(requiredFieldsByEntity.order, 'internalOrderNumber')
+        order: _.without(requiredFieldsByEntity.order, "internalOrderNumber")
     };
 }
 

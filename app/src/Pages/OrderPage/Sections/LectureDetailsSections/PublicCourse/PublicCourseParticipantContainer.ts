@@ -1,11 +1,11 @@
-import {connect} from 'react-redux';
-import PublicCourseParticipant from './PublicCourseParticipant';
-import {getSelectedOrder} from '../../../../../Store/SelectedOrder/Selectors';
-import {removeParticipant, updatePublicCourseLectureParticipating, updateSelectedOrder} from '../../../../../Store/SelectedOrder/Actions';
-import {getSelectedPublicCourse, getSelectedPublicCourseLectures} from '../../../../../Store/SelectedPublicCourse/Selectors';
-import {IDispatch, IState} from '../../../../../Interfaces/ReduxInterfaces';
-import {IPublicCourseLecture} from '../../../../../Interfaces/IPublicCourse';
-import IOrder from '../../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import PublicCourseParticipant from "./PublicCourseParticipant";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {removeParticipant, updatePublicCourseLectureParticipating, updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
+import {getSelectedPublicCourse, getSelectedPublicCourseLectures} from "../../../../../Store/SelectedPublicCourse/Selectors";
+import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
+import {IPublicCourseLecture} from "../../../../../Interfaces/IPublicCourse";
+import IOrder from "../../../../../Interfaces/IOrder";
 
 interface PublicCourseParticipantContainerProps {
     participantId: number

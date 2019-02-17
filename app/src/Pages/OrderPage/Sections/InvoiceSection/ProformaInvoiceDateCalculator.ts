@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
-import {isEmpty} from '../../../../Util/StringUtil';
-import {toDateFormat} from '../../../../Util/TimeUtil';
-import {IStringObject} from '../../../../Interfaces/IOrder';
-import {PaymentCondition} from '../../../../Util/Constants/PaymentCondition';
+import {isEmpty} from "../../../../Util/StringUtil";
+import {toDateFormat} from "../../../../Util/TimeUtil";
+import {IStringObject} from "../../../../Interfaces/IOrder";
+import {PaymentCondition} from "../../../../Util/Constants/PaymentCondition";
 
 export default function calculatePayDate(proformaInvoiceValue: string, selectedPaymentConditions: string, allPaymentConditions: IStringObject) {
     if (isEmpty(selectedPaymentConditions) || isEmpty(proformaInvoiceValue))

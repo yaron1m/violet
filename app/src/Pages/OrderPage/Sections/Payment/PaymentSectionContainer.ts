@@ -1,11 +1,11 @@
-import PaymentSection from './PaymentSection';
-import {connect} from 'react-redux';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import {getSelectedOrder} from '../../../../Store/SelectedOrder/Selectors';
-import {updateSelectedOrder} from '../../../../Store/SelectedOrder/Actions';
-import calculateSum from './CalculateSum';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import IOrder, {IStringObject} from '../../../../Interfaces/IOrder';
+import PaymentSection from "./PaymentSection";
+import {connect} from "react-redux";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
+import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
+import calculateSum from "./CalculateSum";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import IOrder, {IStringObject} from "../../../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
     const labels = getOrderSectionsLabels(state).payment as IStringObject;

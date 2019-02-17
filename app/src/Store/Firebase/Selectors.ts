@@ -1,8 +1,8 @@
-import {getOrders} from '../Orders/Selectors';
-import {getOrganizations} from '../Organizations/Selectors';
-import {IState} from '../../Interfaces/ReduxInterfaces';
-import _ from 'lodash';
-import {toMutable} from '../../Util/ObjectUpdater';
+import {getOrders} from "../Orders/Selectors";
+import {getOrganizations} from "../Organizations/Selectors";
+import {IState} from "../../Interfaces/ReduxInterfaces";
+import _ from "lodash";
+import {toMutable} from "../../Util/ObjectUpdater";
 
 function getFirebase(state: IState) {
     return toMutable(state.firebase);

@@ -1,5 +1,5 @@
-import * as actionTypes from './ActionTypes';
-import IPublicCourse from '../../Interfaces/IPublicCourse';
+import * as actionTypes from "./ActionTypes";
+import IPublicCourse from "../../Interfaces/IPublicCourse";
 
 export function receivePublicCourses(courses: { [id: string]: IPublicCourse }) {
     return {

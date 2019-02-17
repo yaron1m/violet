@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
-import {getLabels} from '../../Store/Labels/Selectors';
-import CustomTextField from '../../Components/CustomComponents/CustomTextField';
-import {Size} from '../../Util/Constants/Size';
-import {IDispatch, IState} from '../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {getLabels} from "../../Store/Labels/Selectors";
+import CustomTextField from "../../Components/CustomComponents/CustomTextField";
+import {Size} from "../../Util/Constants/Size";
+import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState, ownProps: LoginFieldProps) {
     return {
@@ -26,5 +26,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(CustomTextField);
 interface LoginFieldProps {
     value: string,
     onChange: (key: string, newValue: string) => void,
-    type: 'email' | 'password';
+    type: "email" | "password";
 }

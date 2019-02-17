@@ -1,11 +1,11 @@
-import {connect} from 'react-redux';
-import {updateSelectedOrder} from '../../../../Store/SelectedOrder/Actions';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import {getSelectedOrganization} from '../../../../Store/SelectedOrganization/Selectors';
-import ProformaInvoiceDate from './ProformaInvoiceDate';
-import calculatePayDate from './ProformaInvoiceDateCalculator';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import {IStringObject} from '../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import {getSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
+import ProformaInvoiceDate from "./ProformaInvoiceDate";
+import calculatePayDate from "./ProformaInvoiceDateCalculator";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {IStringObject} from "../../../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
     return {
@@ -20,7 +20,7 @@ function mapDispatchToProps(dispatch: IDispatch) {
         calculatePayDate: function (proformaInvoiceValue: string, selectedPaymentConditions: string, allPaymentConditions: IStringObject) {
             const payDate = calculatePayDate(proformaInvoiceValue, selectedPaymentConditions, allPaymentConditions);
             if (payDate !== null)
-                dispatch(updateSelectedOrder('expectedPayDate', payDate));
+                dispatch(updateSelectedOrder("expectedPayDate", payDate));
         }
     };
 }

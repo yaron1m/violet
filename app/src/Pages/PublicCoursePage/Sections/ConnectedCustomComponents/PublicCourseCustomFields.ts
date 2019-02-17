@@ -1,14 +1,14 @@
-import {connect} from 'react-redux';
-import {getSelectedPublicCourse} from '../../../../Store/SelectedPublicCourse/Selectors';
-import {updateSelectedPublicCourse} from '../../../../Store/SelectedPublicCourse/Actions';
-import {getLabels} from '../../../../Store/Labels/Selectors';
-import CustomText from '../../../../Components/CustomComponents/CustomTextField';
-import CustomToggle from '../../../../Components/CustomComponents/CustomToggle';
-import CustomSelectField, {IOption} from '../../../../Components/CustomComponents/CustomSelectField';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import IPublicCourse, {IPublicCourseLecture} from '../../../../Interfaces/IPublicCourse';
-import {Size} from '../../../../Util/Constants/Size';
-import {IStringObject} from '../../../../Interfaces/IOrder';
+import {connect} from "react-redux";
+import {getSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Selectors";
+import {updateSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Actions";
+import {getLabels} from "../../../../Store/Labels/Selectors";
+import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
+import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import IPublicCourse, {IPublicCourseLecture} from "../../../../Interfaces/IPublicCourse";
+import {Size} from "../../../../Util/Constants/Size";
+import {IStringObject} from "../../../../Interfaces/IOrder";
 
 interface PublicCourseCustomFieldsProps {
     name: string;

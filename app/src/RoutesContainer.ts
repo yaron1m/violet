@@ -1,8 +1,8 @@
-import {isLoggedIn} from './Store/Firebase/Selectors';
-import {connect} from 'react-redux';
-import {isRTL} from './Store/Appearance/Selectors';
-import Routes from './Routes';
-import {IState} from './Interfaces/ReduxInterfaces';
+import {isLoggedIn} from "./Store/Firebase/Selectors";
+import {connect} from "react-redux";
+import {isRTL} from "./Store/Appearance/Selectors";
+import Routes from "./Routes";
+import {IState} from "./Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

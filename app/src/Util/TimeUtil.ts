@@ -1,14 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
-import {ILectureTime} from '../Interfaces/IOrder';
-import {IPublicCourseLecture} from '../Interfaces/IPublicCourse';
+import {ILectureTime} from "../Interfaces/IOrder";
+import {IPublicCourseLecture} from "../Interfaces/IPublicCourse";
 
 export function calculateDuration(lectureTime: ILectureTime | IPublicCourseLecture) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
-        return '';
+        return "";
 
     if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.endTime))
-        return '';
+        return "";
 
     return getDuration(lectureTime.startTime, lectureTime.endTime);
 }
@@ -19,9 +19,9 @@ function isValidTimeFormat(time: string) {
 
 function getDuration(startTime: string, endTime: string) {
     if (!startTime || !endTime)
-        return '';
-    const start = startTime.split(':');
-    const end = endTime.split(':');
+        return "";
+    const start = startTime.split(":");
+    const end = endTime.split(":");
 
     const sh = start[0], sm = start[1], eh = end[0], em = end[1];
 
@@ -31,14 +31,14 @@ function getDuration(startTime: string, endTime: string) {
 
     const diff = parseInt(em) - parseInt(sm);
     if (diff < 0)
-        return pad(hours - 1) + ':' + pad(diff + 60);
-    return pad(hours) + ':' + pad(diff);
+        return pad(hours - 1) + ":" + pad(diff + 60);
+    return pad(hours) + ":" + pad(diff);
 }
 
 function pad(num: number) {
     if (num >= 10)
         return num.toString();
-    return '0' + num.toString();
+    return "0" + num.toString();
 }
 
 export function toDateFormat(date: Date) {
@@ -49,7 +49,7 @@ export function toDateFormat(date: Date) {
     const month = pad(date.getMonth() + 1);
     const year = date.getFullYear();
 
-    return year + '-' + month + '-' + day;
+    return year + "-" + month + "-" + day;
 }
 
 export function hasDatePassed(dateString: string) {

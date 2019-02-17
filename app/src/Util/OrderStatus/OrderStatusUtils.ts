@@ -1,6 +1,6 @@
-import * as _ from 'lodash';
-import IOrder from '../../Interfaces/IOrder';
-import {Status} from '../Constants/Status';
+import * as _ from "lodash";
+import IOrder from "../../Interfaces/IOrder";
+import {Status} from "../Constants/Status";
 
 export function existsAndNotEmpty(order: IOrder, key: string) {
     // @ts-ignore

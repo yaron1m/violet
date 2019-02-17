@@ -1,30 +1,30 @@
-import * as actions from './Actions';
-import * as actionTypes from './ActionTypes';
+import * as actions from "./Actions";
+import * as actionTypes from "./ActionTypes";
 
-describe('Selected public course actions', () => {
-    it('should dispatch action with dialog parameters without actions', () => {
-        const result = actions.openDialog('myTitle', 'MyContent');
+describe("Selected public course actions", () => {
+    it("should dispatch action with dialog parameters without actions", () => {
+        const result = actions.openDialog("myTitle", "MyContent");
 
         expect(result).toEqual({
             type: actionTypes.OPEN_DIALOG,
-            title: 'myTitle',
-            content: 'MyContent',
+            title: "myTitle",
+            content: "MyContent",
             actions: null,
         });
     });
 
-    it('should dispatch action with dialog parameters with actions', () => {
-        const result = actions.openDialog('myTitle', 'MyContent', []);
+    it("should dispatch action with dialog parameters with actions", () => {
+        const result = actions.openDialog("myTitle", "MyContent", []);
 
         expect(result).toEqual({
             type: actionTypes.OPEN_DIALOG,
-            title: 'myTitle',
-            content: 'MyContent',
+            title: "myTitle",
+            content: "MyContent",
             actions: [],
         });
     });
 
-    it('should dispatch action to close the dialog', () => {
+    it("should dispatch action to close the dialog", () => {
         const result = actions.closeDialog();
 
         expect(result).toEqual({
@@ -32,16 +32,16 @@ describe('Selected public course actions', () => {
         });
     });
 
-    it('should dispatch action to open snackbar', () => {
-        const result = actions.openSnackbar('message');
+    it("should dispatch action to open snackbar", () => {
+        const result = actions.openSnackbar("message");
 
         expect(result).toEqual({
             type: actionTypes.OPEN_SNACKBAR,
-            message: 'message',
+            message: "message",
         });
     });
 
-    it('should dispatch action to close the snackbar', () => {
+    it("should dispatch action to close the snackbar", () => {
         const result = actions.closeSnackbar();
 
         expect(result).toEqual({
@@ -49,7 +49,7 @@ describe('Selected public course actions', () => {
         });
     });
 
-    it('should dispatch action to show required fields', () => {
+    it("should dispatch action to show required fields", () => {
         const result = actions.showRequiredFields();
 
         expect(result).toEqual({
@@ -57,7 +57,7 @@ describe('Selected public course actions', () => {
         });
     });
 
-    it('should dispatch action to hide required fields', () => {
+    it("should dispatch action to hide required fields", () => {
         const result = actions.hideRequiredFields();
 
         expect(result).toEqual({

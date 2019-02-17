@@ -1,16 +1,16 @@
-import {connect} from 'react-redux';
-import {Size} from '../../../../../Util/Constants/Size';
-import {getActivePublicCourses, getPublicCourseById} from '../../../../../Store/PublicCourses/Selectors';
-import _ from 'lodash';
-import {PublicCourseConnectedSelectField} from '../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields';
-import {selectPublicCourse} from '../../../../../Store/SelectedPublicCourse/Actions';
-import {getSelectedOrder} from '../../../../../Store/SelectedOrder/Selectors';
-import {isEmptyValue} from '../../../../../Util/StringUtil';
-import {removeParticipantsFromAllLectures, updateSelectedOrder} from '../../../../../Store/SelectedOrder/Actions';
-import {IDispatch, IState} from '../../../../../Interfaces/ReduxInterfaces';
-import IOrder from '../../../../../Interfaces/IOrder';
-import IPublicCourse from '../../../../../Interfaces/IPublicCourse';
-import {IOption} from '../../../../../Components/CustomComponents/CustomSelectField';
+import {connect} from "react-redux";
+import {Size} from "../../../../../Util/Constants/Size";
+import {getActivePublicCourses, getPublicCourseById} from "../../../../../Store/PublicCourses/Selectors";
+import _ from "lodash";
+import {PublicCourseConnectedSelectField} from "../../../../PublicCoursePage/Sections/ConnectedCustomComponents/PublicCourseCustomFields";
+import {selectPublicCourse} from "../../../../../Store/SelectedPublicCourse/Actions";
+import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
+import {isEmptyValue} from "../../../../../Util/StringUtil";
+import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
+import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
+import IOrder from "../../../../../Interfaces/IOrder";
+import IPublicCourse from "../../../../../Interfaces/IPublicCourse";
+import {IOption} from "../../../../../Components/CustomComponents/CustomSelectField";
 
 function getOption(course: IPublicCourse): IOption {
     return {
@@ -20,7 +20,7 @@ function getOption(course: IPublicCourse): IOption {
 }
 
 function getValues(selectedOrder: IOrder, getPublicCourseById: (id: number) => IPublicCourse) {
-    if (isEmptyValue(selectedOrder, 'publicCourseId'))
+    if (isEmptyValue(selectedOrder, "publicCourseId"))
         return {};
 
     return {
@@ -30,13 +30,13 @@ function getValues(selectedOrder: IOrder, getPublicCourseById: (id: number) => I
 
 export function selectFieldUpdateAction(dispatch: IDispatch, newValue: number) {
     dispatch(selectPublicCourse(newValue.toString()));
-    dispatch(updateSelectedOrder('publicCourseId', newValue));
+    dispatch(updateSelectedOrder("publicCourseId", newValue));
     dispatch(removeParticipantsFromAllLectures());
 }
 
 function mapStateToProps(state: IState) {
     return {
-        name: 'courseName',
+        name: "courseName",
         options: _.map(getActivePublicCourses(state), getOption),
         size: Size.XL,
         values: getValues(getSelectedOrder(state), (id: number) => getPublicCourseById(state, id.toString())),

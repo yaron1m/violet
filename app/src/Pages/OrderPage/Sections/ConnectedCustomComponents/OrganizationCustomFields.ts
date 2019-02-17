@@ -1,15 +1,15 @@
-import {connect} from 'react-redux';
-import {getSelectedOrganization} from '../../../../Store/SelectedOrganization/Selectors';
-import {updateSelectedOrganization} from '../../../../Store/SelectedOrganization/Actions';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import CustomText from '../../../../Components/CustomComponents/CustomTextField';
-import CustomToggle from '../../../../Components/CustomComponents/CustomToggle';
-import CustomAutoComplete from '../../../../Components/CustomComponents/CustomAutoComplete';
-import {getRequiredFieldsObject} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import IOrganization from '../../../../Interfaces/IOrganization';
-import {Size} from '../../../../Util/Constants/Size';
-import {ISuggestion} from '../../../../Components/AutoSuggest';
+import {connect} from "react-redux";
+import {getSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
+import {updateSelectedOrganization} from "../../../../Store/SelectedOrganization/Actions";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
+import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
+import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import IOrganization from "../../../../Interfaces/IOrganization";
+import {Size} from "../../../../Util/Constants/Size";
+import {ISuggestion} from "../../../../Components/AutoSuggest";
 
 function mapStateToProps(state: IState) {
     return {

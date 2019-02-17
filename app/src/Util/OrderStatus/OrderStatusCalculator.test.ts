@@ -1,22 +1,22 @@
-import calculateOrderStatus from './OrderStatusCalculator';
-import {Status} from '../Constants/Status';
-import {toDateFormat} from '../TimeUtil';
-import IOrder from '../../Interfaces/IOrder';
-import IPublicCourse from '../../Interfaces/IPublicCourse';
+import calculateOrderStatus from "./OrderStatusCalculator";
+import {Status} from "../Constants/Status";
+import {toDateFormat} from "../TimeUtil";
+import IOrder from "../../Interfaces/IOrder";
+import IPublicCourse from "../../Interfaces/IPublicCourse";
 
 // TODO TEST - add tests for public course
-describe('order-status', () => {
+describe("order-status", () => {
 
-    it('calculateOrderStatus - contact', () => {
+    it("calculateOrderStatus - contact", () => {
         const order = {} as IOrder;
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.contact);
     });
 
-    it('calculateOrderStatus - offer', () => {
+    it("calculateOrderStatus - offer", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic'
+                    topic: "some topic"
                 }
             ]
         } as IOrder;
@@ -24,12 +24,12 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.offer);
     });
 
-    it('calculateOrderStatus - offer', () => {
+    it("calculateOrderStatus - offer", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: 'some date',
+                    topic: "some topic",
+                    date: "some date",
                 }
             ]
         } as IOrder;
@@ -37,12 +37,12 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.order);
     });
 
-    it('calculateOrderStatus - approvedOrder', () => {
+    it("calculateOrderStatus - approvedOrder", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: 'some date',
+                    topic: "some topic",
+                    date: "some date",
                 }
             ],
             orderApproved: true,
@@ -51,14 +51,14 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.approvedOrder);
     });
 
-    it('calculateOrderStatus - lecture date tomorrow - isExecuting', () => {
+    it("calculateOrderStatus - lecture date tomorrow - isExecuting", () => {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
 
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
+                    topic: "some topic",
                     date: tomorrow,
                 }
             ],
@@ -68,18 +68,18 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.approvedOrder);
     });
 
-    it('calculateOrderStatus - lecture date today - Executed', () => {
+    it("calculateOrderStatus - lecture date today - Executed", () => {
         const today = new Date();
         today.setHours(0, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 },
                 {
-                    topic: 'some topic',
+                    topic: "some topic",
                     date: toDateFormat(today),
                 }
             ],
@@ -89,16 +89,16 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.executed);
     });
 
-    it('calculateOrderStatus - only some of lectures passed - isExecuting', () => {
+    it("calculateOrderStatus - only some of lectures passed - isExecuting", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 },
                 {
-                    topic: 'some topic',
-                    date: '2099-01-01',
+                    topic: "some topic",
+                    date: "2099-01-01",
                 }
             ],
             orderApproved: true,
@@ -107,18 +107,18 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.isExecuting);
     });
 
-    it('calculateOrderStatus - all lectures passed - executed', () => {
+    it("calculateOrderStatus - all lectures passed - executed", () => {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
 
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 },
                 {
-                    topic: 'some topic',
+                    topic: "some topic",
                     date: yesterday,
                 }
             ],
@@ -128,12 +128,12 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.executed);
     });
 
-    it('calculateOrderStatus - has proformaInvoiceNumber - waitingPayment', () => {
+    it("calculateOrderStatus - has proformaInvoiceNumber - waitingPayment", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -143,15 +143,15 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
-    it('calculateOrderStatus - has taxInvoiceNumber - waitingPayment', () => {
+    it("calculateOrderStatus - has taxInvoiceNumber - waitingPayment", () => {
         const today = new Date();
         today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -161,14 +161,14 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
-    it('calculateOrderStatus - lecture date today and has proformaInvoiceNumber - waitingPayment', () => {
+    it("calculateOrderStatus - lecture date today and has proformaInvoiceNumber - waitingPayment", () => {
         const today = new Date();
         today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
+                    topic: "some topic",
                     date: toDateFormat(today),
                 }
             ],
@@ -179,14 +179,14 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
-    it('calculateOrderStatus - lecture date today and has taxInvoiceNumber - waitingPayment', () => {
+    it("calculateOrderStatus - lecture date today and has taxInvoiceNumber - waitingPayment", () => {
         const today = new Date();
         today.setHours(7, 0, 0);
 
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
+                    topic: "some topic",
                     date: toDateFormat(today),
                 }
             ],
@@ -197,12 +197,12 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.waitingPayment);
     });
 
-    it('calculateOrderStatus - has receiptNumber - Payed', () => {
+    it("calculateOrderStatus - has receiptNumber - Payed", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -213,12 +213,12 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.payed);
     });
 
-    it('calculateOrderStatus - cancelled', () => {
+    it("calculateOrderStatus - cancelled", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,
@@ -230,12 +230,12 @@ describe('order-status', () => {
         expect(calculateOrderStatus(order, {} as IPublicCourse)).toEqual(Status.cancelled);
     });
 
-    it('calculateOrderStatus - rejected', () => {
+    it("calculateOrderStatus - rejected", () => {
         const order = {
             lectureTimes: [
                 {
-                    topic: 'some topic',
-                    date: '2017-01-01',
+                    topic: "some topic",
+                    date: "2017-01-01",
                 }
             ],
             orderApproved: true,

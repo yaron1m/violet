@@ -1,5 +1,5 @@
-import * as actionTypes from './ActionTypes';
-import ILists from '../../Interfaces/ILists';
+import * as actionTypes from "./ActionTypes";
+import ILists from "../../Interfaces/ILists";
 
 export function receiveLists(lists: ILists) {
     return {

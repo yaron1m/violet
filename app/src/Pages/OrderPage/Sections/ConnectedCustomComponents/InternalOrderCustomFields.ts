@@ -1,13 +1,13 @@
-import {connect} from 'react-redux';
-import {getSelectedOrder} from '../../../../Store/SelectedOrder/Selectors';
-import {updateSelectedOrder} from '../../../../Store/SelectedOrder/Actions';
-import {getOrderSectionsLabels} from '../../../../Store/Labels/Selectors';
-import CustomText from '../../../../Components/CustomComponents/CustomTextField';
-import CustomToggle from '../../../../Components/CustomComponents/CustomToggle';
-import {getRequiredFieldsObject} from '../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors';
-import {IDispatch, IState} from '../../../../Interfaces/ReduxInterfaces';
-import IOrder from '../../../../Interfaces/IOrder';
-import {Size} from '../../../../Util/Constants/Size';
+import {connect} from "react-redux";
+import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
+import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
+import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
+import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
+import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import IOrder from "../../../../Interfaces/IOrder";
+import {Size} from "../../../../Util/Constants/Size";
 
 function mapStateToProps(state: IState) {
     return {

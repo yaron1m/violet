@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
-import {getLabels} from '../../../../Store/Labels/Selectors';
-import CourseDetailsSection from './CourseDetailsSection';
-import {IState} from '../../../../Interfaces/ReduxInterfaces';
+import {connect} from "react-redux";
+import {getLabels} from "../../../../Store/Labels/Selectors";
+import CourseDetailsSection from "./CourseDetailsSection";
+import {IState} from "../../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {

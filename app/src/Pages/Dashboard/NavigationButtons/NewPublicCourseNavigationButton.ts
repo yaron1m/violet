@@ -1,10 +1,10 @@
-import {connect} from 'react-redux';
-import {getLabels} from '../../../Store/Labels/Selectors';
-import {redirect} from '../../../Util/HistoryUtil';
-import NavigationButton from './NavigationButton';
-import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
-import {Path} from '../../Path';
-import {clearSelectedPublicCourse} from '../../../Store/SelectedPublicCourse/Actions';
+import {connect} from "react-redux";
+import {getLabels} from "../../../Store/Labels/Selectors";
+import {redirect} from "../../../Util/HistoryUtil";
+import NavigationButton from "./NavigationButton";
+import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
+import {Path} from "../../Path";
+import {clearSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Actions";
 
 function mapStateToProps(state: IState) {
     return {
