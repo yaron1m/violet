@@ -1,7 +1,7 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
 import AbstractCustomField from "./AbstractCustomField";
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from "@material-ui/core/styles";
 
 const styles = () => ({
     textField: {
@@ -16,7 +16,6 @@ class CustomText extends AbstractCustomField<CustomTextFieldProps> {
     render() {
         const style = {
             width: this.width,
-            height: "inherit"
         };
 
         return (
