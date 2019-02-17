@@ -21,7 +21,9 @@ export default function (state = createImmutable(initialState), action: any = {}
             });
 
         case actionTypes.LOGGED_OUT:
-            return createImmutable(initialState);
+            return mergeImmutable(initialState, {
+                loggedIn: false,
+            });
 
         default:
             return state;
