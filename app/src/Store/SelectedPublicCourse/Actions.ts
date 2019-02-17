@@ -6,6 +6,7 @@ import {getSelectedPublicCourse} from './Selectors';
 import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from './ActionTypes';
 import {IDispatch, IGetState, IState} from '../../Interfaces/ReduxInterfaces';
 import {IPublicCourseLecture} from '../../Interfaces/IPublicCourse';
+import {updateObject} from '../../Util/ObjectUpdater';
 
 export function selectPublicCourse(courseId: string) {
     return function selectPublicCourse(dispatch: IDispatch, getState: IGetState) {
@@ -21,7 +22,7 @@ export function selectPublicCourse(courseId: string) {
 export function updateSelectedPublicCourse(key: string, value: string | IPublicCourseLecture[]) {
     return function updateSelectedPublicCourse(dispatch: IDispatch, getState: IGetState) {
         const currentPublicCourse = getSelectedPublicCourse(getState());
-        const selectedPublicCourse = Object.assign(currentPublicCourse, {[key]: value});
+        const selectedPublicCourse = updateObject(currentPublicCourse, {[key]: value});
         dispatch({
             type: UPDATE_SELECTED_PUBLIC_COURSE,
             payload: selectedPublicCourse,

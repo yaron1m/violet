@@ -12,7 +12,6 @@ export default function LectureDetailsSection(props: LectureDetailsSectionProps)
                 value={props.selectedTabKey}
                 onChange={props.onTabClick}
                 indicatorColor='primary'
-                fullWidth
             >
                 <Tab label={props.internalLabel} value={TabKey.internalTabKey}/>
 
