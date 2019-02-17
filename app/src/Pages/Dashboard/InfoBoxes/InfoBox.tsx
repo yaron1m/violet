@@ -1,13 +1,12 @@
 import React from 'react';
 import Colors from '../../../Util/Constants/Colors';
-import CustomPaper from "../../../Components/CustomComponents/CustomPaper";
+import CustomPaper from '../../../Components/CustomComponents/CustomPaper';
 
 export default function InfoBox(props: InfoBoxProps) {
     const styles = {
         paper: {
-            width: "100%",
-            marginRight: 20,
-            cursor: "pointer",
+            width: 270,
+            cursor: 'pointer',
             padding: 0,
         },
         content: {
@@ -19,7 +18,7 @@ export default function InfoBox(props: InfoBoxProps) {
             display: 'block' as 'block',
             fontSize: 22,
             color: props.error ? Colors.red : Colors.textGray,
-            fontWeight: "bold" as 'bold',
+            fontWeight: 'bold' as 'bold',
             paddingTop: 10
         },
         text: {
