@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import * as _ from "lodash";
 import CustomPaper from "../CustomComponents/CustomPaper";
 import CustomTable from "./CustomTable";

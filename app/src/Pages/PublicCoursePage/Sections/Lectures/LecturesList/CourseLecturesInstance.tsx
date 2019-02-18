@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import PropTypes from "prop-types";
 import {

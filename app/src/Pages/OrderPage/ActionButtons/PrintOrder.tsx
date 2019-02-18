@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PrintIcon from '@material-ui/icons/Print';
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Badge from '@material-ui/core/Badge';
 import {redirect} from "../../../Util/HistoryUtil";
 import ExitIcon from '@material-ui/icons/ExitToApp';

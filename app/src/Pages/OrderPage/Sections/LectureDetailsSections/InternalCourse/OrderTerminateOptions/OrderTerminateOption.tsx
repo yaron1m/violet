@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Size} from "../../../../../../Util/Constants/Size";
 import {OrderCustomSelectField, OrderCustomText} from "../../../ConnectedCustomComponents/OrderCustomFields";
 import {IOption} from '../../../../../../Components/CustomComponents/CustomSelectField';

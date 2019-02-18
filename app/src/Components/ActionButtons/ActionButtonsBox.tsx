@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Colors from "../../Util/Constants/Colors";
 
 export default function ActionButtonsBox(props: { children: React.ReactNode }) {

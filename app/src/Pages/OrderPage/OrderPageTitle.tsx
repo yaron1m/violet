@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function OrderPageTitle(props: { title: string, statusLabel: string }) {
     const style = {

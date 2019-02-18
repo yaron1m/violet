@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import SearchIcon from '@material-ui/icons/Search';
 import Colors from "../../../Util/Constants/Colors";
 import AutoSuggest, {ISuggestion} from "../../../Components/AutoSuggest";

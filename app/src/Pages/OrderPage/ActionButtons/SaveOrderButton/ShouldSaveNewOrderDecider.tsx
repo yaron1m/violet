@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {isEmptyValue} from "../../../../Util/StringUtil";
 import {CustomFlatButton} from "../../../../Components/CustomComponents/CustomButtons";
 import IOrganization from '../../../../Interfaces/IOrganization';

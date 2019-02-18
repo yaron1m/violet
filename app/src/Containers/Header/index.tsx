@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import AppBar from '@material-ui/core/AppBar';
 import SearchBoxContainer from './SearchBox/SearchBoxContainer';
 import LeftIconsContainer from './LeftIcons/LeftIconsContainer';

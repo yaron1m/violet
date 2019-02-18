@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {getKey} from "../../OrderPage/Sections/ContactSection/ContactRow";
 import {PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 

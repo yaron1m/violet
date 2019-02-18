@@ -1,7 +1,7 @@
 import {shouldSaveNewOrder} from './ShouldSaveNewOrderDecider';
 import {orderPageLabels} from "../../../../Store/Labels/Pages/OrderPageLabels";
 import IOrganization from '../../../../Interfaces/IOrganization';
-import React from 'react';
+import React from "react";
 
 let openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void;
 let closeDialog: () => void;

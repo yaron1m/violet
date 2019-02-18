@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import * as _ from "lodash";
 import Select from '@material-ui/core/Select';
 import AbstractCustomField from "./AbstractCustomField";

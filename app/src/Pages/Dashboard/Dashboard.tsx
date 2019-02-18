@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import NewOrderNavigationButton from './NavigationButtons/NewOrderNavigationButton';
 import AllOrdersNavigationButton from './NavigationButtons/AllOrdersNavigationButton';
 import FutureLecturesInfoBox from './InfoBoxes/FutureLecturesInfoBox';

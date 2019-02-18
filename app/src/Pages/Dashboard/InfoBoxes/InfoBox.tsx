@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Colors from '../../../Util/Constants/Colors';
 import CustomPaper from '../../../Components/CustomComponents/CustomPaper';
 

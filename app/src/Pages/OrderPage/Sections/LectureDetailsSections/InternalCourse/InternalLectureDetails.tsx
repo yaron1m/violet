@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import {Size} from "../../../../../Util/Constants/Size";
 import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";

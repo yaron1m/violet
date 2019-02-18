@@ -24,8 +24,12 @@ export function getNextPublicCourseId(state: IState) {
     const keys = _.keys(courses);
     if (!courses || keys.length === 0)
         return 100;
-    // @ts-ignore
-    return _.max(_.map(_.keys(courses), _.parseInt)) + 1;
+
+    const maxId = _.max(_.map(_.keys(courses), _.parseInt));
+    if (!maxId)
+        return 100;
+
+    return maxId + 1;
 }
 
 export function getPublicCourseById(state: IState, id: string) {

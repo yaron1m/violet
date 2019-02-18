@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {connect} from 'react-redux';
 import {clearSelectedOrganization} from "../../../Store/SelectedOrganization/Actions";
 import RefreshIcon from '@material-ui/icons/Refresh';

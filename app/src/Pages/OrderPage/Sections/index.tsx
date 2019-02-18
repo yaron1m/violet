@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import OrganizationSection from "./OrganizationSection/OrganizationSectionContainer";
 import LectureDetailsSection from "./LectureDetailsSections/LecturesDetailsSectionContainer";
 import ContactsSection from "./ContactSection/ContactSectionContainer";

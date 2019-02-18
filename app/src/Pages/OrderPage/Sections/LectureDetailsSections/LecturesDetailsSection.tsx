@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import InternalLectureDetails from './InternalCourse/InternalLectureDetailsContainer';
 import PublicCourseLectureDetails from './PublicCourse/PublicCourseLectureDetailsContainer';
 import Tabs from '@material-ui/core/Tabs';

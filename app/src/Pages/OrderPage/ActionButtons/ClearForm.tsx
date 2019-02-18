@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ClearFormDialog from './ClearFormDialogContainer';
 import CleanIcon from '@material-ui/icons/Replay';
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";

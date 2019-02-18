@@ -1,9 +1,9 @@
-import React from 'react';
-import * as ReactAutoSuggest from 'react-autosuggest';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import MenuItem from '@material-ui/core/MenuItem';
-import {withStyles} from '@material-ui/core/styles';
+import React from "react";
+import * as ReactAutoSuggest from "react-autosuggest";
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
+import MenuItem from "@material-ui/core/MenuItem";
+import {withStyles} from "@material-ui/core/styles";
 
 function renderInput(inputProps: ReactAutoSuggest.InputProps<ISuggestion>) {
     const {classes, ref, helperText, hintText, fullWidth, disabled, ...other} = inputProps;
@@ -14,6 +14,7 @@ function renderInput(inputProps: ReactAutoSuggest.InputProps<ISuggestion>) {
             disabled={disabled}
             helperText={helperText}
             className={classes.textField}
+
             // @ts-ignore
             InputProps={{
                 inputRef: ref,
@@ -21,7 +22,7 @@ function renderInput(inputProps: ReactAutoSuggest.InputProps<ISuggestion>) {
                     input: classes.input,
                 },
                 placeholder: hintText,
-                ...other,
+                ...other
             }}
         />
     );
@@ -75,21 +76,21 @@ const styles = () => ({
         width: "100%",
     },
     container: {
-        position: 'relative' as 'relative',
+        position: "relative" as "relative",
     },
     suggestionsContainerOpen: {
-        position: 'absolute' as 'absolute',
+        position: "absolute" as "absolute",
         zIndex: 1,
         left: 0,
         right: 0,
     },
     suggestion: {
-        display: 'block' as 'block',
+        display: "block" as "block",
     },
     suggestionsList: {
         margin: 0,
         padding: 0,
-        listStyleType: 'none' as 'none',
+        listStyleType: "none" as "none",
     },
     textField: {
         marginRight: 20,
@@ -100,7 +101,7 @@ const styles = () => ({
 
 class AutoSuggest extends React.Component<AutoSuggestProps> {
     state = {
-        value: '',
+        value: "",
         suggestions: [],
     };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import AbstractCustomField, {AbstractCustomFieldProps} from "./AbstractCustomField";
 import {Size} from "../../Util/Constants/Size";
 
@@ -24,9 +24,9 @@ function setup(otherProps: Partial<AbstractCustomFieldProps> = {}) {
     return new AbstractCustomField(props);
 }
 
-describe('Abstract Field Class', () => {
+describe("Abstract Field Class", () => {
 
-    it('Constructor - fields are correct', () => {
+    it("Constructor - fields are correct", () => {
         const target = setup({});
 
         expect(target.name).toEqual("organizationName");
@@ -42,16 +42,16 @@ describe('Abstract Field Class', () => {
         });
     });
 
-    it('GetWidth - correct', () => {
+    it("GetWidth - correct", () => {
         expect(setup().width).toEqual(200);
         expect(setup({size: Size.S}).width).toEqual(50);
     });
 
-    it('validateProps - missing title - throws exception', () => {
+    it("validateProps - missing title - throws exception", () => {
         expect(() => setup({name: "hello"})).toThrow();
     });
 
-    it('should return null when value is not changed', () => {
+    it("should return null when value is not changed", () => {
         const state = {
             value: "Google",
             isRequired: false,
@@ -69,7 +69,7 @@ describe('Abstract Field Class', () => {
         expect(result).toBeNull();
     });
 
-    it('should return state with a new value', () => {
+    it("should return state with a new value", () => {
         const state = {
             value: "Google",
             isRequired: false,
@@ -91,7 +91,7 @@ describe('Abstract Field Class', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it('should return value as empty string when value changed to undefined', () => {
+    it("should return value as empty string when value changed to undefined", () => {
         const state = {
             name: "organizationName",
             value: "Google",
@@ -111,7 +111,7 @@ describe('Abstract Field Class', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it('should mark isRequired as true when name is in required array', () => {
+    it("should mark isRequired as true when name is in required array", () => {
         const state = {
             value: "Google",
             isRequired: false,
@@ -131,7 +131,7 @@ describe('Abstract Field Class', () => {
         expect(result.isRequired).toBeTruthy();
     });
 
-    it('should mark isRequired as false when name is no longer required', () => {
+    it("should mark isRequired as false when name is no longer required", () => {
         const state = {
             name: "organizationName",
             value: "Google",
@@ -151,7 +151,7 @@ describe('Abstract Field Class', () => {
         expect(result.isRequired).toBeFalsy();
     });
 
-    it('should not update state if was required and still not required', () => {
+    it("should not update state if was required and still not required", () => {
         const state = {
             value: "Google",
             isRequired: false,
@@ -170,7 +170,7 @@ describe('Abstract Field Class', () => {
         expect(result).toBeNull();
     });
 
-    it('should not update state if was required and still required', () => {
+    it("should not update state if was required and still required", () => {
         const state = {
             value: "Google",
             isRequired: true,
@@ -189,7 +189,7 @@ describe('Abstract Field Class', () => {
         expect(result).toBeNull();
     });
 
-    it('handleChange - new value - called with the name', () => {
+    it("handleChange - new value - called with the name", () => {
         const updateAction = jest.fn();
         const target = setup({updateAction});
 
@@ -199,15 +199,15 @@ describe('Abstract Field Class', () => {
         expect(updateAction.mock.calls[0]).toEqual(["organizationName", "Amazon"]);
     });
 
-    it('shouldShowError - field is not required - false', () => {
+    it("shouldShowError - field is not required - false", () => {
         expect(setup().shouldShowError()).toBeFalsy();
     });
 
-    it('shouldShowError - required but has value - false', () => {
+    it("shouldShowError - required but has value - false", () => {
         expect(setup({requiredFields: ["organizationName"]}).shouldShowError()).toBeFalsy();
     });
 
-    it('shouldShowError - required with no value - true', () => {
+    it("shouldShowError - required with no value - true", () => {
         expect(setup({
             requiredFields: ["organizationName"],
             values: {}

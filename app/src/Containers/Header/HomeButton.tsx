@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import HomeIcon from '@material-ui/icons/Home';
 import {redirect} from "../../Util/HistoryUtil";
 import {CustomIconButton} from "../../Components/CustomComponents/CustomButtons";

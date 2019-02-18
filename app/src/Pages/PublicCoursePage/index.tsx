@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PublicCoursePageTitle from './PublicCoursePageTitleContainer';
 import PublicCoursePageSections from './Sections';
 import PublicCourseActionButtons from "./ActionButtons";

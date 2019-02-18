@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import SingleLectureTime from "./SingleLectureTime";
 import CustomPaper from "../../../../../../Components/CustomComponents/CustomPaper";
 import CustomDivider from "../../../../../../Components/CustomComponents/CustomDivider";

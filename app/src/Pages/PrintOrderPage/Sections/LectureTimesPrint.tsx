@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import _ from 'lodash';
 import {isEmptyValue} from "../../../Util/StringUtil";

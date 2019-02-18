@@ -1,13 +1,13 @@
-import React from 'react';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CheckIcon from '@material-ui/icons/AddCircleOutline';
+import React from "react";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import CheckIcon from "@material-ui/icons/AddCircleOutline";
 import * as _ from "lodash";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
-import {IStringObject} from '../../Interfaces/IOrder';
+import {IStringObject} from "../../Interfaces/IOrder";
 
 export default class CustomTableRow<TElement extends IStringObject> extends React.Component<CustomTableRowProps<TElement>> {
 
@@ -46,8 +46,7 @@ export default class CustomTableRow<TElement extends IStringObject> extends Reac
                         <EditIcon/>
                     </CustomIconButton>
                     {this.props.onDeleteButton !== undefined && (
-                        // @ts-ignore
-                        <CustomIconButton onClick={() => this.props.onDeleteButton(this.props.element)}>
+                        <CustomIconButton onClick={() => this.props.onDeleteButton && this.props.onDeleteButton(this.props.element)}>
                             <DeleteIcon/>
                         </CustomIconButton>
                     )}
@@ -55,8 +54,7 @@ export default class CustomTableRow<TElement extends IStringObject> extends Reac
 
             case "pick":
                 return (
-                    // @ts-ignore
-                    <CustomIconButton onClick={() => this.props.onPickButton(this.props.element)}>
+                    <CustomIconButton onClick={() => this.props.onPickButton && this.props.onPickButton(this.props.element)}>
                         <CheckIcon/>
                     </CustomIconButton>);
             default:

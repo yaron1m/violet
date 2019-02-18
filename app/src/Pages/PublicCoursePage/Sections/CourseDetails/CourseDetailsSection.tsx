@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import CustomPaper, {flexStyle} from '../../../../Components/CustomComponents/CustomPaper';
 import {PublicCourseConnectedText, PublicCourseConnectedToggle} from '../ConnectedCustomComponents/PublicCourseCustomFields';
 import {Size} from '../../../../Util/Constants/Size';

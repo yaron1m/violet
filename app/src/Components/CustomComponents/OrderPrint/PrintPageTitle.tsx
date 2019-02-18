@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function PrintPageTitle(props: { title: string }) {
     const style = {

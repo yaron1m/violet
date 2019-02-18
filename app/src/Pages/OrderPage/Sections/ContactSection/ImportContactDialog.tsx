@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import CustomDialog from "../../../../Components/CustomComponents/CustomDialog";
 import CustomTable from "../../../../Components/Table/CustomTable";
 import * as _ from 'lodash';

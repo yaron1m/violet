@@ -20,6 +20,9 @@ export function getNextOrganizationId(state: IState) {
     if (!organizations || keys.length === 0)
         return 1000;
 
-    // @ts-ignore
-    return _.max(_.map(_.keys(organizations), _.parseInt)) + 1;
+    const maxId = _.max(_.map(_.keys(organizations), _.parseInt));
+    if (!maxId)
+        return 1000;
+
+    return maxId + 1;
 }

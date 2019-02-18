@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import * as _ from "lodash";

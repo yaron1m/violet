@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Switch from '@material-ui/core/Switch';
 import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../Util/Constants/Colors";

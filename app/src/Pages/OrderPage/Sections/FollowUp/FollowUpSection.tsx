@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
 import {OrderCustomDatePicker, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
 

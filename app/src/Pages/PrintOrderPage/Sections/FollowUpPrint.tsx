@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import {PrintOrderConnectedBoolean, PrintOrderConnectedDate, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 

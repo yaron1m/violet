@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {PrintPageTitle} from "../../Components/CustomComponents/OrderPrint/PrintPageTitle";
 import LectureTimesPrintSection from "./Sections/LectureTimesPrintContainer";
 import LectureDetailsPrintSection from "./Sections/LectureDetailsContainer";

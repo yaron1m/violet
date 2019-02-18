@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import * as _ from "lodash";
 import {updateObject} from "../../Util/ObjectUpdater";
 import {Size} from '../../Util/Constants/Size';

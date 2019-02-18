@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Checkbox from '@material-ui/core/Checkbox';
 import AbstractCustomField from "./AbstractCustomField";
 import Colors from "../../Util/Constants/Colors";

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import CourseDetailsSection from "./CourseDetails/CourseDetailsSectionContainer";
 import CourseLecturesSection from "./Lectures/LecturesList/CourseLecturesSectionContainer";
 import CourseParticipantsTableContainer from "./CourseDetails/CourseParticipantsTableContainer";

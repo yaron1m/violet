@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import signInWithGoogleNormal from '../../images/google-sign-in/GoogleSigninWeb.png';
 import signInWithGooglePressed from '../../images/google-sign-in/GoogleSigninWebPressed.png';
 import signInWithGoogleFocused from '../../images/google-sign-in/GoogleSigninFocus.png';

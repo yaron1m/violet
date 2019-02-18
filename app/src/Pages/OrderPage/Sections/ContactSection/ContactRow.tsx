@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsDialogContainer from './ImportContactDialogContainer';
 import _ from 'lodash';

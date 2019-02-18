@@ -1,9 +1,9 @@
-import React from 'react';
-import {create} from 'jss';
-import rtl from 'jss-rtl';
+import React from "react";
+import {create} from "jss";
+import rtl from "jss-rtl";
 // @ts-ignore
-import JssProvider from 'react-jss/lib/JssProvider';
-import {createGenerateClassName, jssPreset} from '@material-ui/core/styles';
+import JssProvider from "react-jss/lib/JssProvider";
+import {createGenerateClassName, jssPreset} from "@material-ui/core/styles";
 
 // Configure JSS
 // @ts-ignore
