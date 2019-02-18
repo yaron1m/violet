@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
 import {Size} from "../../../../Util/Constants/Size";
 import {
@@ -6,8 +6,7 @@ import {
     OrganizationCustomText,
     OrganizationCustomToggle
 } from "../ConnectedCustomComponents/OrganizationCustomFields";
-import {ISuggestion} from '../../../../Components/AutoSuggest';
-import IOrganization from '../../../../Interfaces/IOrganization';
+import {ISuggestion} from "../../../../Components/AutoSuggest";
 
 export default function OrganizationSection(props: OrganizationSectionProps) {
     return (
@@ -25,11 +24,9 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
                 />
                 <OrganizationCustomText name="organizationAddress"/>
                 <OrganizationCustomText name="organizationCity" size={Size.M}/>
-                <OrganizationCustomText name="organizationPostalCode" size={Size.M}/>
+                <OrganizationCustomText name="organizationPostalCode" size={Size.S}/>
                 <OrganizationCustomText name="companyId" size={Size.M}/>
-                <OrganizationCustomAutoComplete name="paymentConditions"
-                                                suggestions={props.paymentConditionsSuggestions}/>
-
+                <OrganizationCustomAutoComplete name="paymentConditions" suggestions={props.paymentConditionsSuggestions}/>
                 <OrganizationCustomText name="howReachedUs" size={Size.XL}/>
 
                 {props.fullDetails &&
