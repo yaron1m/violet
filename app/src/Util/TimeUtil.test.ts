@@ -1,4 +1,4 @@
-import {calculateDuration} from "./TimeUtil";
+import {calculateDuration, calculatePreparationTimes, toDateFormat} from "./TimeUtil";
 import {ILectureTime} from "../Interfaces/IOrder";
 
 describe("time-util", () => {
@@ -64,5 +64,41 @@ describe("time-util", () => {
         const endTime = "11:36";
         const lectureTime = {startTime, endTime} as ILectureTime;
         expect(calculateDuration(lectureTime)).toEqual("");
+    });
+
+    it("returns undefined when start time is invalid", () => {
+        const startTime = "99";
+        const travelTime = "11:36";
+        const lectureTime = {startTime, travelTime} as ILectureTime;
+        expect(calculatePreparationTimes(lectureTime)).toBeUndefined();
+    });
+
+    it("returns undefined when travel time is invalid", () => {
+        const startTime = "11:39";
+        const travelTime = "#";
+        const lectureTime = {startTime, travelTime} as ILectureTime;
+        expect(calculatePreparationTimes(lectureTime)).toBeUndefined();
+    });
+
+    it("returns Preparation Times when lecture time is valid", () => {
+        const startTime = "9:39";
+        const travelTime = "00:21";
+        const lectureTime = {startTime, travelTime} as ILectureTime;
+        expect(calculatePreparationTimes(lectureTime)).toEqual({
+            wakeUpTime: "08:18",
+            leaveHomeTime: "08:48",
+            arriveTime: "09:09",
+            lectureStartTime: "09:39"
+        });
+    });
+
+    it("converts date to format", () => {
+        const date = new Date(2019, 8, 15, 14, 21, 33);
+        expect(toDateFormat(date)).toEqual("2019-09-15");
+    });
+
+    it("advances the day for time zones considerations", () => {
+        const date = new Date(2019, 8, 15, 22, 21, 33);
+        expect(toDateFormat(date)).toEqual("2019-09-16");
     });
 });

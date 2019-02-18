@@ -31,8 +31,9 @@ function mergeProps(stateProps: {
     updateAction: (key: string, value: any) => void
 }) {
     return {
-        ...stateProps,
-        ...dispatchProps,
+        sectionName: stateProps.sectionName,
+        financialContactTitle: stateProps.financialContactTitle,
+        buttonTooltip: stateProps.buttonTooltip,
         calculateSum: () => calculateSum(stateProps.selectedOrder, dispatchProps.updateAction)
     };
 }
