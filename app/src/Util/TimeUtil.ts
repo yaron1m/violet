@@ -1,7 +1,7 @@
 import {ILectureTime} from "../Interfaces/IOrder";
 import {IPublicCourseLecture} from "../Interfaces/IPublicCourse";
 
-interface ITime{
+interface ITime {
     hours: number;
     minutes: number;
 }
@@ -15,7 +15,30 @@ export function calculateDuration(lectureTime: ILectureTime | IPublicCourseLectu
 
     const startT = toTime(lectureTime.startTime), endT = toTime(lectureTime.endTime);
 
-    return timeToString(substractTime(endT, startT));
+    return timeToString(subtractTime(endT, startT));
+}
+
+export function calculatePreparationTimes(lectureTime: ILectureTime) {
+    if (!lectureTime || !lectureTime.startTime || !lectureTime.travelTime)
+        return undefined;
+
+    if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.travelTime))
+        return undefined;
+
+    const lectureStartTime = toTime(lectureTime.startTime);
+    const travelTime = toTime(lectureTime.travelTime);
+
+    const arriveTime = subtractTime(lectureStartTime, {hours: 0, minutes: 30});
+    const leaveHomeTime = subtractTime(arriveTime, travelTime);
+    const wakeUpTime = subtractTime(leaveHomeTime, {hours: 0, minutes: 30});
+
+    return {
+        wakeUpTime: timeToString(wakeUpTime),
+        leaveHomeTime: timeToString(leaveHomeTime),
+        arriveTime: timeToString(arriveTime),
+        lectureStartTime: timeToString(lectureStartTime),
+    };
+
 }
 
 export function toDateFormat(date: Date) {
@@ -39,34 +62,33 @@ function isValidTimeFormat(time: string) {
     return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
 }
 
-function toTime(time: string){
+function toTime(time: string) {
     const timeArr = time.split(":");
 
     return {
         hours: parseInt(timeArr[0]),
         minutes: parseInt(timeArr[1]),
-    }
+    };
 }
 
-function substractTime(time: ITime, timeToSubstract: ITime) : ITime{
-    let hours = time.hours - timeToSubstract.hours;
+function subtractTime(time: ITime, timeToSubtract: ITime): ITime {
+    let hours = time.hours - timeToSubtract.hours;
     if (hours < 0)
         hours = 24 + hours;
 
-
-    let minutes = time.minutes - timeToSubstract.minutes;
-    if (minutes < 0){
+    let minutes = time.minutes - timeToSubtract.minutes;
+    if (minutes < 0) {
         hours--;
         minutes += 60;
-    }    
+    }
 
     return {
         hours,
         minutes
-    }
+    };
 }
 
-function timeToString(time: ITime){
+function timeToString(time: ITime) {
     return pad(time.hours) + ":" + pad(time.minutes);
 }
 

@@ -8,6 +8,7 @@ import {
 import IndexAvatar from "../../../../../../Components/IndexAvatar";
 import DeleteLectureTimeButton from "./DeleteLectureTimeButton";
 import {ISuggestion} from "../../../../../../Components/AutoSuggest";
+import PreparationTimesContainer from "./PreparationTimesContainer";
 
 const styles = {
     container: {
@@ -44,9 +45,7 @@ export default function SingleLectureTime(props: SingleLectureTime) {
                     <DeleteLectureTimeButton lectureTimeIndex={lectureTimeIndex}/>
                 </div>
 
-                <div style={styles.row}>
-
-                </div>
+                <PreparationTimesContainer lectureTimeIndex={lectureTimeIndex}/>
             </div>
 
 

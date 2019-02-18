@@ -92,6 +92,12 @@ const lectureTimesSectionLabels = {
     tableHeaders: [{date: "תאריך"}, {startTime: "שעת התחלה"}, {endTime: "שעת סיום"}, {duration: "משך"}, {topic: "נושא"},
         {audienceSize: "מס' משתתפים"}, {tie: "עניבה"}, {edit: "עריכה"}],
     addRow: "הוסף הרצאה חדשה",
+    preparationTimes: {
+        wakeUpTime: "זמן לקום",
+        leaveHomeTime: "יציאה מהבית",
+        arriveTime: "הגעה למקום",
+        lectureStartTime: "תחילת ההרצאה",
+    },
     titles: {
         date: "תאריך",
         startTime: "שעת התחלה",
