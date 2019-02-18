@@ -1,7 +1,10 @@
-/* eslint-disable no-magic-numbers */
-
 import {ILectureTime} from "../Interfaces/IOrder";
 import {IPublicCourseLecture} from "../Interfaces/IPublicCourse";
+
+interface ITime{
+    hours: number;
+    minutes: number;
+}
 
 export function calculateDuration(lectureTime: ILectureTime | IPublicCourseLecture) {
     if (!lectureTime || !lectureTime.startTime || !lectureTime.endTime)
@@ -10,35 +13,9 @@ export function calculateDuration(lectureTime: ILectureTime | IPublicCourseLectu
     if (!isValidTimeFormat(lectureTime.startTime) || !isValidTimeFormat(lectureTime.endTime))
         return "";
 
-    return getDuration(lectureTime.startTime, lectureTime.endTime);
-}
+    const startT = toTime(lectureTime.startTime), endT = toTime(lectureTime.endTime);
 
-function isValidTimeFormat(time: string) {
-    return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
-}
-
-function getDuration(startTime: string, endTime: string) {
-    if (!startTime || !endTime)
-        return "";
-    const start = startTime.split(":");
-    const end = endTime.split(":");
-
-    const sh = start[0], sm = start[1], eh = end[0], em = end[1];
-
-    let hours = parseInt(eh) - parseInt(sh);
-    if (hours < 0)
-        hours = 24 + hours;
-
-    const diff = parseInt(em) - parseInt(sm);
-    if (diff < 0)
-        return pad(hours - 1) + ":" + pad(diff + 60);
-    return pad(hours) + ":" + pad(diff);
-}
-
-function pad(num: number) {
-    if (num >= 10)
-        return num.toString();
-    return "0" + num.toString();
+    return timeToString(substractTime(endT, startT));
 }
 
 export function toDateFormat(date: Date) {
@@ -56,4 +33,45 @@ export function hasDatePassed(dateString: string) {
     const now = new Date();
     now.setHours(7);
     return now >= new Date(dateString);
+}
+
+function isValidTimeFormat(time: string) {
+    return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
+}
+
+function toTime(time: string){
+    const timeArr = time.split(":");
+
+    return {
+        hours: parseInt(timeArr[0]),
+        minutes: parseInt(timeArr[1]),
+    }
+}
+
+function substractTime(time: ITime, timeToSubstract: ITime) : ITime{
+    let hours = time.hours - timeToSubstract.hours;
+    if (hours < 0)
+        hours = 24 + hours;
+
+
+    let minutes = time.minutes - timeToSubstract.minutes;
+    if (minutes < 0){
+        hours--;
+        minutes += 60;
+    }    
+
+    return {
+        hours,
+        minutes
+    }
+}
+
+function timeToString(time: ITime){
+    return pad(time.hours) + ":" + pad(time.minutes);
+}
+
+function pad(num: number) {
+    if (num >= 10)
+        return num.toString();
+    return "0" + num.toString();
 }

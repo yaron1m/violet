@@ -20,11 +20,12 @@ export default function SingleLectureTime(props: SingleLectureTime) {
             <LectureTimesCustomDatePicker lectureTimeIndex={lectureTimeIndex} name="date"/>
             <LectureTimesCustomAutoComplete lectureTimeIndex={lectureTimeIndex} name="topic"
                                             suggestions={props.offeredLectures} size={Size.XXL}/>
-            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="startTime" size={Size.M}/>
-            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Size.M}/>
+            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="startTime" size={Size.S}/>
+            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="endTime" size={Size.S}/>
             <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="duration" size={Size.S}/>
-            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Size.M}/>
+            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="audienceSize" size={Size.S}/>
             <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="tie" size={Size.M}/>
+            <LectureTimesCustomText lectureTimeIndex={lectureTimeIndex} name="travelTime" size={Size.S}/>
 
             <DeleteLectureTimeButton lectureTimeIndex={lectureTimeIndex}/>
         </div>

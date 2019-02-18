@@ -100,7 +100,8 @@ const lectureTimesSectionLabels = {
         length: "משך",
         topic: "נושא",
         audienceSize: "מס' משתתפים",
-        tie: "עניבה"
+        tie: "עניבה",
+        travelTime: "זמן נסיעה",
     },
 };
 

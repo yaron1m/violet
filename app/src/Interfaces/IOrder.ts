@@ -89,6 +89,8 @@ export interface ILectureTime {
     duration: string;
     endTime: string;
     startTime: string;
+    tie: string;
+    travelTime: string;
 }
 
 export type IPublicCourseParticipantField =
