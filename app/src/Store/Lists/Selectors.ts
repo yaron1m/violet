@@ -18,3 +18,7 @@ export function getRejectionReasons(state: IState) {
 export function getCancellationReasons(state: IState) {
     return _.values(getLists(state).cancellationReasons);
 }
+
+export function getReferralWays(state: IState) {
+    return _.values(getLists(state).referralWays);
+}

@@ -1,5 +1,8 @@
+import {IStringObject} from "./IOrder";
+
 export default interface ILists {
-    offeredLectures: {[key: string]: boolean};
-    cancellationReasons: {[key: string]: string};
-    rejectionReasons: {[key: string]: string};
+    offeredLectures: IStringObject;
+    cancellationReasons: IStringObject;
+    rejectionReasons: IStringObject;
+    referralWays: IStringObject;
 }

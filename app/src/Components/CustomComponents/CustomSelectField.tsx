@@ -60,7 +60,7 @@ interface CustomSelectFieldProps {
 
 export default withStyles(styles)(CustomSelectField);
 
-export function createOptions(labels: string[]): IOption[]{
+export function createOptions(labels: string[]): IOption[] {
     return _.map(labels, label => ({
         key: label,
         label,

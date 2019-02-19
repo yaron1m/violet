@@ -4,6 +4,7 @@ import {getNextOrganizationId, getOrganizationById} from "../Organizations/Selec
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {closeDialog} from "../Appearance/Actions";
 import {IDispatch, IGetState} from "../../Interfaces/ReduxInterfaces";
+import {updateObject} from "../../Util/ObjectUpdater";
 
 export function selectOrganization(organizationId: number) {
     return function selectOrganization(dispatch: IDispatch, getState: IGetState) {
@@ -17,8 +18,9 @@ export function selectOrganization(organizationId: number) {
 
 export function updateSelectedOrganization(key: string, value: string | number | boolean) {
     return function updateSelectedOrganization(dispatch: IDispatch, getState: IGetState) {
-        let selectedOrganization = getSelectedOrganization(getState());
-        selectedOrganization = Object.assign(selectedOrganization, {[key]: value});
+        let selectedOrganization = updateObject(getSelectedOrganization(getState()), {
+            [key]: value
+        });
         dispatch({
             type: UPDATE_SELECTED_ORGANIZATION,
             payload: selectedOrganization,

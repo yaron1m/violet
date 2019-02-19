@@ -3,10 +3,12 @@ import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/Cu
 import {Size} from "../../../../Util/Constants/Size";
 import {
     OrganizationCustomAutoComplete,
+    OrganizationCustomSelectField,
     OrganizationCustomText,
     OrganizationCustomToggle
 } from "../ConnectedCustomComponents/OrganizationCustomFields";
 import {ISuggestion} from "../../../../Components/AutoSuggest";
+import {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
 
 export default function OrganizationSection(props: OrganizationSectionProps) {
     return (
@@ -27,11 +29,12 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
                 <OrganizationCustomText name="organizationPostalCode" size={Size.S}/>
                 <OrganizationCustomText name="companyId" size={Size.M}/>
                 <OrganizationCustomAutoComplete name="paymentConditions" suggestions={props.paymentConditionsSuggestions}/>
-                <OrganizationCustomText name="howReachedUs" size={Size.XL}/>
+            </div>
+            <div style={flexStyle}>
+                <OrganizationCustomSelectField name="referralWay" size={Size.XL} options={props.referralWayOptions}/>
+                <OrganizationCustomText name="referralWayDetails" size={Size.XXL}/>
 
-                {props.fullDetails &&
-                <OrganizationCustomToggle name="internalOrderIdRequired"/>
-                }
+                {props.fullDetails && <OrganizationCustomToggle name="internalOrderIdRequired"/>}
             </div>
         </CustomPaper>
     );
@@ -42,10 +45,11 @@ export interface IOrganizationSuggestion extends ISuggestion {
 }
 
 interface OrganizationSectionProps {
-    fullDetails?: boolean,
-    sectionName: string,
-    paymentConditionsSuggestions: ISuggestion[],
-    organizationSuggestions: IOrganizationSuggestion[],
-    selectOrganization: (organizationId: number) => void,
-    updateSelectedOrder: (key: string, value: any) => void,
+    fullDetails?: boolean;
+    sectionName: string;
+    paymentConditionsSuggestions: ISuggestion[];
+    organizationSuggestions: IOrganizationSuggestion[];
+    selectOrganization: (organizationId: number) => void;
+    updateSelectedOrder: (key: string, value: any) => void;
+    referralWayOptions: IOption[];
 }

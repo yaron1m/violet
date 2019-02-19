@@ -7,12 +7,15 @@ import OrganizationSection, {IOrganizationSuggestion} from "./OrganizationSectio
 import {toSuggestions} from "../../../../Components/AutoSuggest";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {getReferralWays} from "../../../../Store/Lists/Selectors";
+import {createOptions} from "../../../../Components/CustomComponents/CustomSelectField";
 
 function mapStateToProps(state: IState, ownProps: { fullDetails?: boolean }) {
     return {
         sectionName: getOrderSectionsLabels(state).organization.sectionName as string,
         paymentConditionsSuggestions: toSuggestions(_.values(getOrderSectionsLabels(state).organization.paymentConditions)),
         fullDetails: ownProps.fullDetails,
+        referralWayOptions: createOptions(getReferralWays(state)),
         organizationSuggestions: getOrganizations(state).map(
             (org) => ({
                 label: org.organizationName,

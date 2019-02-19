@@ -7,8 +7,9 @@ const organizationSectionLabels = {
         organizationPostalCode: "מיקוד",
         companyId: "ח.פ / ע.מ",
         paymentConditions: "תנאי תשלום",
-        howReachedUs: "איך הגיע אלינו",
         internalOrderIdRequired: "נדרשת הזמנת רכש",
+        referralWay: "איך הגיע אלינו",
+        referralWayDetails: "פרטי ההגעה",
     },
     paymentConditions: {
         "immediate": "תשלום מיידי",
