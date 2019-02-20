@@ -71,7 +71,7 @@ describe("payment section - calculate sum", () => {
         expect(updateAction).toHaveBeenCalledWith( "travelExpenses", "534");
         expect(updateAction).toHaveBeenCalledWith( "sum", "1534");
         expect(updateAction).toHaveBeenCalledWith( "vat", "260.78");
-        expect(updateAction).toHaveBeenCalledWith( "totalSum", "1794");
+        expect(updateAction).toHaveBeenCalledWith( "totalSum", "1795");
     });
 
     it("calculateSum - cost has multiple sign - calculate totalSum", async function () {
@@ -91,7 +91,27 @@ describe("payment section - calculate sum", () => {
         expect(updateAction).toHaveBeenNthCalledWith(1, "travelExpenses", "534");
         expect(updateAction).toHaveBeenNthCalledWith(2, "sum", "3534");
         expect(updateAction).toHaveBeenNthCalledWith(3, "vat", "600.78");
-        expect(updateAction).toHaveBeenNthCalledWith(4, "totalSum", "4134");
+        expect(updateAction).toHaveBeenNthCalledWith(4, "totalSum", "4135");
+    });
+
+    it("calculateSum - oneWayDistance has multiple sign - calculate totalSum", async function () {
+        const initialState = {
+            selectedOrder: {
+                order: {
+                    cost: "1000",
+                    oneWayDistance: "50*6"
+                }
+            }
+        } as unknown as IState;
+
+        calculateSum(initialState.selectedOrder.order, updateAction);
+
+        expect(updateAction).toHaveBeenCalledTimes(4);
+
+        expect(updateAction).toHaveBeenNthCalledWith(1, "travelExpenses", "3204");
+        expect(updateAction).toHaveBeenNthCalledWith(2, "sum", "4204");
+        expect(updateAction).toHaveBeenNthCalledWith(3, "vat", "714.68");
+        expect(updateAction).toHaveBeenNthCalledWith(4, "totalSum", "4919");
     });
 
     it("calculateSum - cost has invalid multiple sign - do nothing", async function () {
@@ -100,6 +120,21 @@ describe("payment section - calculate sum", () => {
                 order: {
                     cost: "1000*3*5",
                     oneWayDistance: "50"
+                }
+            }
+        } as unknown as IState;
+
+        calculateSum(initialState.selectedOrder.order, updateAction);
+
+        expect(updateAction).toHaveBeenCalledTimes(0);
+    });
+
+    it("calculateSum - distance has invalid multiple sign - do nothing", async function () {
+        const initialState = {
+            selectedOrder: {
+                order: {
+                    cost: "1000",
+                    oneWayDistance: "50*2*6"
                 }
             }
         } as unknown as IState;
@@ -125,7 +160,7 @@ describe("payment section - calculate sum", () => {
 
         expect(updateAction).toHaveBeenNthCalledWith(1, "travelExpenses", "1.07");
         expect(updateAction).toHaveBeenNthCalledWith(2, "sum", "1001.07");
-        expect(updateAction).toHaveBeenNthCalledWith(3, "vat", "170.17");
+        expect(updateAction).toHaveBeenNthCalledWith(3, "vat", "170.18");
         expect(updateAction).toHaveBeenNthCalledWith(4, "totalSum", "1171");
     });
 });
