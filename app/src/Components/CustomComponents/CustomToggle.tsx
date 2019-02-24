@@ -1,34 +1,27 @@
 import React from "react";
-import Switch from '@material-ui/core/Switch';
-import AbstractCustomField from "./AbstractCustomField";
+import Switch from "@material-ui/core/Switch";
+import {AbstractCustomFieldProps} from "./AbstractCustomFieldProps";
 import Colors from "../../Util/Constants/Colors";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-export default class CustomToggle extends AbstractCustomField<{}> {
+export default function CustomToggle(props: AbstractCustomFieldProps<boolean>) {
+    const labelStyle = {
+        color: props.isRequired && props.value === undefined ? Colors.red : Colors.black
+    };
 
-    showError() {
-        return this.state.isRequired && this.state.value === undefined;
-    }
+    return (
+        <div>
+            <FormControlLabel
+                control={
+                    <Switch
+                        checked={props.value}
+                        onChange={(event, checked) => props.onChange(checked)}
+                        color="primary"
+                    />
+                }
+                label={<span style={labelStyle}>{props.title}</span>}
+            />
+        </div>
 
-    render() {
-        const labelStyle = {
-            color: this.showError() ? Colors.red : Colors.black
-        };
-
-        return (
-            <div>
-                <FormControlLabel
-                    control={
-                        <Switch
-                            checked={this.state.value === true}
-                            onChange={(event, checked) => this.handleChange(checked)}
-                            color="primary"
-                        />
-                    }
-                    label={<span style={labelStyle}>{this.title}</span>}
-                />
-            </div>
-
-        );
-    }
+    );
 }

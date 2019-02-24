@@ -1,11 +1,12 @@
 import React from "react";
 import * as _ from "lodash";
-import Select from '@material-ui/core/Select';
-import AbstractCustomField from "./AbstractCustomField";
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import {withStyles} from '@material-ui/core/styles';
-import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from "@material-ui/core/Select";
+import {AbstractCustomFieldProps} from "./AbstractCustomFieldProps";
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
+import {withStyles} from "@material-ui/core/styles";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import {getFieldWidth} from "../../Util/Constants/Size";
 
 const styles = () => ({
     formControl: {
@@ -15,21 +16,21 @@ const styles = () => ({
     },
 });
 
-class CustomSelectField extends AbstractCustomField<CustomSelectFieldProps> {
+class CustomSelectField extends React.PureComponent<CustomSelectFieldProps> {
     render() {
         const formStyle = {
-            minWidth: this.width,
+            minWidth: getFieldWidth(this.props.fullWidth, this.props.size),
         };
 
         return (
             <FormControl
                 style={formStyle}
                 className={this.props.classes ? this.props.classes.formControl : undefined}
-                error={this.shouldShowError()}
+                error={this.props.isRequired && !this.props.value}
             >
                 <Select
-                    value={this.state.value ? this.state.value : ""}
-                    onChange={(event) => this.handleChange(event.target.value)}
+                    value={this.props.value || ""}
+                    onChange={(event) => this.props.onChange(event.target.value)}
                 >
 
                     {this.props.allowEmpty ?
@@ -42,7 +43,7 @@ class CustomSelectField extends AbstractCustomField<CustomSelectFieldProps> {
                         <MenuItem value={option.key} key={option.key}>{option.label}</MenuItem>
                     ))}
                 </Select>
-                <FormHelperText>{this.title}</FormHelperText>
+                <FormHelperText>{this.props.title}</FormHelperText>
             </FormControl>
         );
     }
@@ -53,7 +54,7 @@ export interface IOption {
     label: string;
 }
 
-interface CustomSelectFieldProps {
+interface CustomSelectFieldProps extends AbstractCustomFieldProps<string> {
     options?: IOption[],
     allowEmpty?: true,
 }

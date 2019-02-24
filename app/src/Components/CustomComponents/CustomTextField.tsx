@@ -1,7 +1,8 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import AbstractCustomField from "./AbstractCustomField";
+import {AbstractCustomFieldProps} from "./AbstractCustomFieldProps";
 import {withStyles} from "@material-ui/core/styles";
+import {getFieldWidth} from "../../Util/Constants/Size";
 
 const styles = () => ({
     textField: {
@@ -11,34 +12,30 @@ const styles = () => ({
     },
 });
 
-class CustomText extends AbstractCustomField<CustomTextFieldProps> {
+class CustomText extends React.PureComponent<CustomTextFieldProps> {
 
     render() {
-        const style = {
-            width: this.width,
-        };
-
         return (
             <TextField
-                helperText={this.title}
-                value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
-                onChange={event => this.handleChange(event.target.value)}
+                helperText={this.props.title}
+                value={this.props.value || ""} // A controlled element should not have null or undefined as value
+                onChange={event => this.props.onChange(event.target.value)}
                 fullWidth={this.props.fullWidth}
                 disabled={this.props.disabled}
-                error={super.shouldShowError()}
+                error={this.props.isRequired && !this.props.value}
 
                 type={this.props.type}
                 multiline={this.props.type !== "date" && this.props.type !== "email" && this.props.type !== "password"}
                 rowsMax={4}
 
-                inputProps={{style}}
+                inputProps={{width: getFieldWidth(this.props.fullWidth, this.props.size)}}
                 className={this.props.classes ? this.props.classes.textField : undefined}
             />
         );
     }
 }
 
-export interface CustomTextFieldProps {
+export interface CustomTextFieldProps extends AbstractCustomFieldProps<string> {
     disabled?: boolean;
     type?: string;
 }
