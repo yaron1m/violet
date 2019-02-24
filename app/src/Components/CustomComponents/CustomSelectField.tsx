@@ -55,7 +55,7 @@ export interface IOption {
 }
 
 interface CustomSelectFieldProps extends AbstractCustomFieldProps<string> {
-    options?: IOption[],
+    options: IOption[],
     allowEmpty?: true,
 }
 

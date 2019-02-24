@@ -5,8 +5,8 @@ export interface AbstractCustomFieldProps<ValueType> {
     title: string;
     value: ValueType;
     isRequired: boolean;
-    onChange: (newValue: ValueType) => void;
     fullWidth?: boolean;
     size?: Size;
     classes?: IStringObject;
+    onChange: (newValue: ValueType) => void;
 }

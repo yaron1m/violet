@@ -78,6 +78,58 @@ export default interface IOrder {
     notes: string;
 }
 
+type IOrderBooleanField = "projector" |
+    "soundSystem" |
+    "microphone" |
+    "parking" |
+    "orderApproved" |
+    "sameAudience" |
+    "rejected" |
+    "cancelled" |
+    "followUpRequired";
+
+export type IOrderStringField = "changedDate" |
+    "createdDate" |
+    "contactFirstName" |
+    "contactLastName" |
+    "contactPhone1" |
+    "contactPhone2" |
+    "contactEmail" |
+    "contactJob" |
+    "contactPhoneExtension" |
+    "contactFax" |
+    "street" |
+    "streetNumber" |
+    "city" |
+    "location" |
+    "audienceType" |
+    "daySchedule" |
+    "followUpDate" |
+    "followUpDetails" |
+    "cost" |
+    "oneWayDistance" |
+    "travelExpenses" |
+    "extraCosts" |
+    "sum" |
+    "vat" |
+    "totalSum" |
+    "financialContactFirstName" |
+    "financialContactLastName" |
+    "financialContactPhone1" |
+    "financialContactPhone2" |
+    "financialContactEmail" |
+    "financialContactJob" |
+    "financialContactPhoneExtension" |
+    "financialContactFax" |
+    "proformaInvoiceNumber" |
+    "proformaInvoiceDate" |
+    "expectedPayDate" |
+    "internalOrderNumber" |
+    "taxInvoiceNumber" |
+    "taxInvoiceDate" |
+    "receiptNumber" |
+    "notes";
+
 export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
 
 export type IStringObject = { [key: string]: string };

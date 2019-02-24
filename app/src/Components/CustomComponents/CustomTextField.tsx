@@ -12,7 +12,7 @@ const styles = () => ({
     },
 });
 
-class CustomText extends React.PureComponent<CustomTextFieldProps> {
+class CustomTextField extends React.PureComponent<CustomTextFieldProps> {
 
     render() {
         return (
@@ -40,4 +40,4 @@ export interface CustomTextFieldProps extends AbstractCustomFieldProps<string> {
     type?: string;
 }
 
-export default withStyles(styles)(CustomText);
+export default withStyles(styles)(CustomTextField);
