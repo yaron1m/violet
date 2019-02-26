@@ -14,7 +14,7 @@ export default class ContactRow extends React.Component<ContactRowProps> {
 
     openContactImportDialog = () => {
         if (!this.props.isSelectedOrganization) {
-            this.props.openDialog(this.props.dialogText.noOrganizationSelectedTitle, this.props.dialogText.noOrganizationSelectedContent);
+            this.props.openDialog("לא נבחר ארגון", "כדי לייבא אנשי קשר יש לבחור ארגון");
             return;
         }
 
@@ -36,7 +36,7 @@ export default class ContactRow extends React.Component<ContactRowProps> {
 
                 <CustomIconButton
                     onClick={this.openContactImportDialog}
-                    tooltip={this.props.buttonTooltip}
+                    tooltip="יבא איש קשר"
                     style={{marginBottom: 10, marginLeft: 10}}
                 >
                     <PersonAddIcon/>
@@ -61,8 +61,6 @@ export function getKey(key: IOrderStringField, isFinancial: boolean): IOrderStri
 
 interface ContactRowProps {
     isFinancialContacts: boolean;
-    dialogText: any;
     isSelectedOrganization: boolean;
-    buttonTooltip: string;
     openDialog: (title: string, content: string) => void;
 }

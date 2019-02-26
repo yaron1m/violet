@@ -10,8 +10,10 @@ import {IDispatch, IState} from "../../../../../../Interfaces/ReduxInterfaces";
 function mapStateToProps(state: IState) {
     return {
         show: getSelectedOrder(state).rejected === true,
-        selectFieldName: "rejectionReason",
-        detailsFieldName: "rejectionDetails",
+        selectFieldName: "rejectionReason" as "rejectionReason",
+        selectFieldTitle: "סיבת דחיה",
+        detailsFieldName: "rejectionDetails" as "rejectionDetails",
+        detailsFieldTitle: "פרטי הדחיה",
         options: createOptions(getRejectionReasons(state)),
     };
 }

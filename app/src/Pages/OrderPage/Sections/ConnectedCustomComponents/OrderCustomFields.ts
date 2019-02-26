@@ -48,6 +48,7 @@ function mapDispatchToPropsString(dispatch: IDispatch, ownProps: OrderStringFiel
 
 export const OrderCustomText = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomTextField);
 export const OrderCustomDatePicker = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomDatePicker);
+export const OrderCustomSelectField = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomSelectField);
 
 function mapStateToPropsBoolean(state: IState, ownProps: OrderBooleanFieldProps) {
     return {
@@ -56,7 +57,6 @@ function mapStateToPropsBoolean(state: IState, ownProps: OrderBooleanFieldProps)
         isRequired: _.includes(getRequiredFieldsObject(state).order, ownProps.name),
         size: ownProps.size,
         fullWidth: ownProps.fullWidth,
-        options: ownProps.options,
     };
 }
 
@@ -68,4 +68,3 @@ function mapDispatchToPropsBoolean(dispatch: IDispatch, ownProps: OrderBooleanFi
 
 export const OrderCustomToggle = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomToggle);
 export const OrderCustomCheckBox = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomCheckbox);
-export const OrderCustomSelectField = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);

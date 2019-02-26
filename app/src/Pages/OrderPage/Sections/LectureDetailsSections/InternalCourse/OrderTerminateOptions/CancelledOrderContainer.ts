@@ -10,8 +10,10 @@ import {IDispatch, IState} from "../../../../../../Interfaces/ReduxInterfaces";
 function mapStateToProps(state: IState) {
     return {
         show: getSelectedOrder(state).cancelled === true,
-        selectFieldName: "cancellationReason",
-        detailsFieldName: "cancellationDetails",
+        selectFieldName: "cancellationReason" as "cancellationReason",
+        selectFieldTitle: "סיבת ביטול",
+        detailsFieldName: "cancellationDetails" as "cancellationDetails",
+        detailsFieldTitle: "פרטי הביטול",
         options: createOptions(getCancellationReasons(state)),
     };
 }
