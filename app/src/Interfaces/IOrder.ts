@@ -34,7 +34,11 @@ export default interface IOrder {
     orderApproved: boolean;
     sameAudience: boolean;
     rejected: boolean;
+    rejectionReason: string;
+    rejectionDetails: string;
     cancelled: boolean;
+    cancellationReason: string;
+    cancellationDetails: string;
     lectureTimes: ILectureTime[];
 
     // Public course:
@@ -78,7 +82,7 @@ export default interface IOrder {
     notes: string;
 }
 
-type IOrderBooleanField = "projector" |
+export type IOrderBooleanField = "projector" |
     "soundSystem" |
     "microphone" |
     "parking" |
@@ -88,7 +92,8 @@ type IOrderBooleanField = "projector" |
     "cancelled" |
     "followUpRequired";
 
-export type IOrderStringField = "changedDate" |
+export type IOrderStringField =
+    "changedDate" |
     "createdDate" |
     "contactFirstName" |
     "contactLastName" |
@@ -128,7 +133,12 @@ export type IOrderStringField = "changedDate" |
     "taxInvoiceNumber" |
     "taxInvoiceDate" |
     "receiptNumber" |
-    "notes";
+    "notes" |
+    "rejectionReason" |
+    "rejectionDetails" |
+    "cancelled" |
+    "cancellationReason" |
+    "cancellationDetails";
 
 export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
 

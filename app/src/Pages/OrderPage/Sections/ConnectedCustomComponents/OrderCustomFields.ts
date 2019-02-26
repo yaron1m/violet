@@ -9,18 +9,27 @@ import CustomSelectField, {IOption} from "../../../../Components/CustomComponent
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
 import {Size} from "../../../../Util/Constants/Size";
-import {IOrderStringField} from "../../../../Interfaces/IOrder";
+import {IOrderBooleanField, IOrderStringField} from "../../../../Interfaces/IOrder";
 
-interface OrderCustomFieldsProps {
-    name: IOrderStringField;
+interface OrderFieldProps {
     title: string,
     size?: Size;
     options?: IOption[],
     fullWidth?: boolean;
+
+}
+
+interface OrderStringFieldProps extends OrderFieldProps {
+    name: IOrderStringField;
     onChange?: (value: string) => void;
 }
 
-function mapStateToProps(state: IState, ownProps: OrderCustomFieldsProps) {
+interface OrderBooleanFieldProps extends OrderFieldProps {
+    name: IOrderBooleanField;
+    onChange?: (value: boolean) => void;
+}
+
+function mapStateToPropsString(state: IState, ownProps: OrderStringFieldProps) {
     return {
         title: ownProps.title,
         value: getSelectedOrder(state)[ownProps.name],
@@ -31,15 +40,32 @@ function mapStateToProps(state: IState, ownProps: OrderCustomFieldsProps) {
     };
 }
 
-function mapDispatchToProps(dispatch: IDispatch, ownProps: OrderCustomFieldsProps) {
+function mapDispatchToPropsString(dispatch: IDispatch, ownProps: OrderStringFieldProps) {
     return {
         onChange: (value: string) => dispatch(updateSelectedOrder(ownProps.name, value)),
     };
 }
 
-export const OrderCustomText = connect(mapStateToProps, mapDispatchToProps)(CustomTextField);
-export const OrderCustomDatePicker = connect(mapStateToProps, mapDispatchToProps)(CustomDatePicker);
+export const OrderCustomText = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomTextField);
+export const OrderCustomDatePicker = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomDatePicker);
 
-export const OrderCustomToggle = connect(mapStateToProps, mapDispatchToProps)(CustomToggle);
-export const OrderCustomCheckBox = connect(mapStateToProps, mapDispatchToProps)(CustomCheckbox);
+function mapStateToPropsBoolean(state: IState, ownProps: OrderBooleanFieldProps) {
+    return {
+        title: ownProps.title,
+        value: getSelectedOrder(state)[ownProps.name],
+        isRequired: _.includes(getRequiredFieldsObject(state).order, ownProps.name),
+        size: ownProps.size,
+        fullWidth: ownProps.fullWidth,
+        options: ownProps.options,
+    };
+}
+
+function mapDispatchToPropsBoolean(dispatch: IDispatch, ownProps: OrderBooleanFieldProps) {
+    return {
+        onChange: (value: boolean) => dispatch(updateSelectedOrder(ownProps.name, value)),
+    };
+}
+
+export const OrderCustomToggle = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomToggle);
+export const OrderCustomCheckBox = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomCheckbox);
 export const OrderCustomSelectField = connect(mapStateToProps, mapDispatchToProps)(CustomSelectField);
