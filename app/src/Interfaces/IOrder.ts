@@ -136,7 +136,6 @@ export type IOrderStringField =
     "notes" |
     "rejectionReason" |
     "rejectionDetails" |
-    "cancelled" |
     "cancellationReason" |
     "cancellationDetails";
 

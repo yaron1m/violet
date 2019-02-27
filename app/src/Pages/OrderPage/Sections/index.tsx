@@ -10,7 +10,7 @@ import NotesSection from "./Notes/NotesSection";
 export default function OrderForm() {
     return (
         <div>
-            <OrganizationSection/>
+            <OrganizationSection fullDetails={false}/>
 
             <ContactsSection/>
 

@@ -10,6 +10,7 @@ import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFiel
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
 import {Size} from "../../../../Util/Constants/Size";
 import {IOrderBooleanField, IOrderStringField} from "../../../../Interfaces/IOrder";
+import _ from "lodash";
 
 interface OrderFieldProps {
     title: string,
