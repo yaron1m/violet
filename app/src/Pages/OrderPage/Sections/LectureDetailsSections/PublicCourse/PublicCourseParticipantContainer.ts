@@ -4,7 +4,6 @@ import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
 import {removeParticipant, updatePublicCourseLectureParticipating, updatePublicCourseParticipant} from "../../../../../Store/SelectedOrder/Actions";
 import {getSelectedPublicCourse, getSelectedPublicCourseLectures} from "../../../../../Store/SelectedPublicCourse/Selectors";
 import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
-import {isRightTabKey} from "../../../../../Store/Appearance/RequiredFields/Util";
 import {TabKey} from "../../../../../Util/Constants/Status";
 import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
@@ -15,7 +14,7 @@ interface PublicCourseParticipantContainerProps {
 function mapStateToProps(state: IState, ownProps: PublicCourseParticipantContainerProps) {
     return {
         participant: getSelectedOrder(state).publicCourseParticipants[ownProps.participantId],
-        requiredFields: isRightTabKey(getSelectedOrder(state), TabKey.publicCourseTabKey) ? getRequiredFieldsObject(state).publicCourse : [],
+        requiredFields: getSelectedOrder(state).lectureDetailsTabKey === TabKey.publicCourseTabKey ? getRequiredFieldsObject(state).publicCourse : [],
         selectedPublicCourseLectures: getSelectedPublicCourseLectures(state),
         courseId: getSelectedPublicCourse(state).id
     };
