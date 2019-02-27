@@ -12,12 +12,18 @@ import {Size} from "../../../../Util/Constants/Size";
 import {IOrderBooleanField, IOrderStringField} from "../../../../Interfaces/IOrder";
 import _ from "lodash";
 
+export enum FieldType {
+    Order,
+    InternalLecture,
+    PublicCourseOrder
+}
+
 interface OrderFieldProps {
     title: string,
     size?: Size;
     options?: IOption[],
     fullWidth?: boolean;
-
+    fieldType?: FieldType;
 }
 
 interface OrderStringFieldProps extends OrderFieldProps {
@@ -34,7 +40,7 @@ function mapStateToPropsString(state: IState, ownProps: OrderStringFieldProps) {
     return {
         title: ownProps.title,
         value: getSelectedOrder(state)[ownProps.name],
-        isRequired: _.includes(getRequiredFieldsObject(state).order, ownProps.name),
+        isRequired: isRequiredField(state, ownProps.name, ownProps.fieldType),
         size: ownProps.size,
         fullWidth: ownProps.fullWidth,
         options: ownProps.options,
@@ -55,7 +61,7 @@ function mapStateToPropsBoolean(state: IState, ownProps: OrderBooleanFieldProps)
     return {
         title: ownProps.title,
         value: getSelectedOrder(state)[ownProps.name],
-        isRequired: _.includes(getRequiredFieldsObject(state).order, ownProps.name),
+        isRequired: isRequiredField(state, ownProps.name, ownProps.fieldType),
         size: ownProps.size,
         fullWidth: ownProps.fullWidth,
     };
@@ -69,3 +75,18 @@ function mapDispatchToPropsBoolean(dispatch: IDispatch, ownProps: OrderBooleanFi
 
 export const OrderCustomToggle = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomToggle);
 export const OrderCustomCheckBox = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomCheckbox);
+
+function isRequiredField(state: IState, name: string, fieldType?: FieldType) {
+    const requiredFieldsObject = getRequiredFieldsObject(state);
+    switch (fieldType) {
+        case FieldType.InternalLecture:
+            return _.includes(requiredFieldsObject.internalOrder, name);
+
+        case FieldType.PublicCourseOrder:
+            return _.includes(requiredFieldsObject.publicCourse, name);
+
+        case FieldType.Order:
+        default:
+            return _.includes(requiredFieldsObject.order, name);
+    }
+}
