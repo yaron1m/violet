@@ -89,7 +89,7 @@ export function deleteLectureTime(lectureTimeIndex: number) {
     };
 }
 
-export function updatePublicCourseParticipant(key: string, value: string | number[], participantIndex: number) {
+export function updatePublicCourseParticipant(key: string, value: string | number[] | boolean, participantIndex: number) {
     return function updatePublicCourseParticipant(dispatch: IDispatch, getState: IGetState) {
         const publicCourseParticipants = getSelectedOrderPublicCourseParticipants(getState());
         // @ts-ignore

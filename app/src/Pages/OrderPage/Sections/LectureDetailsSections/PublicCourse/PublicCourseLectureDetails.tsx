@@ -16,7 +16,7 @@ export default function PublicCourseLectureDetails(props: PublicCourseLectureDet
 
                 <AddParticipantButtonContainer/>
 
-                <OrderCustomToggle name="orderApproved"/>
+                <OrderCustomToggle title="הזמנה אושרה" name="orderApproved"/>
             </div>
 
             {_.map(_.range(props.numberOfParticipants), (participantId) =>

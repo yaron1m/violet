@@ -1,7 +1,7 @@
 import React from "react";
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import {Size} from "../../../../../Util/Constants/Size";
-import {FieldType, OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
+import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import Colors from "../../../../../Util/Constants/Colors";
@@ -12,27 +12,27 @@ export default function InternalLectureDetails(props: InternalLectureDetailsProp
         <CustomPaper title="פרטי ההרצאה">
 
             <div>
-                <OrderCustomText title="רחוב" name="street" fieldType={FieldType.InternalLecture}/>
-                <OrderCustomText title="מספר" name="streetNumber" size={Size.S} fieldType={FieldType.InternalLecture}/>
-                <OrderCustomText title="עיר" name="city" fieldType={FieldType.InternalLecture}/>
-                <OrderCustomText title="מיקום" name="location" size={Size.XL} fieldType={FieldType.InternalLecture}/>
-                <OrderCustomText title="קהל יעד" name="audienceType" fieldType={FieldType.InternalLecture}/>
-                <OrderCustomText title='מהות היום + לו"ז' name="daySchedule" fieldType={FieldType.InternalLecture}/>
+                <OrderCustomText title="רחוב" name="street" internalLectureField={true}/>
+                <OrderCustomText title="מספר" name="streetNumber" size={Size.S} internalLectureField={true}/>
+                <OrderCustomText title="עיר" name="city" internalLectureField={true}/>
+                <OrderCustomText title="מיקום" name="location" size={Size.XL} internalLectureField={true}/>
+                <OrderCustomText title="קהל יעד" name="audienceType" internalLectureField={true}/>
+                <OrderCustomText title='מהות היום + לו"ז' name="daySchedule" internalLectureField={true}/>
             </div>
 
             <div style={flexStyle}>
-                <OrderCustomToggle title="מקרן" name="projector" fieldType={FieldType.InternalLecture}/>
-                <OrderCustomToggle title="מערכת הגברה" name="soundSystem" fieldType={FieldType.InternalLecture}/>
-                <OrderCustomToggle title="מיקרופון דש" name="microphone" fieldType={FieldType.InternalLecture}/>
-                <OrderCustomToggle title="חניה" name="parking" fieldType={FieldType.InternalLecture}/>
+                <OrderCustomToggle title="מקרן" name="projector" internalLectureField={true}/>
+                <OrderCustomToggle title="מערכת הגברה" name="soundSystem" internalLectureField={true}/>
+                <OrderCustomToggle title="מיקרופון דש" name="microphone" internalLectureField={true}/>
+                <OrderCustomToggle title="חניה" name="parking" internalLectureField={true}/>
                 <OrderCustomToggle title="הזמנה אושרה" name="orderApproved"/>
-                <OrderCustomToggle title="קהל יעד זהה" name="sameAudience" fieldType={FieldType.InternalLecture}/>
+                <OrderCustomToggle title="קהל יעד זהה" name="sameAudience" internalLectureField={true}/>
 
                 <OrderCustomCheckBox
                     title="הזמנה לא יצאה לפועל"
                     name="rejected"
                     checkedColor={Colors.red}
-                    fieldType={FieldType.InternalLecture}
+                    internalLectureField={true}
                 />
 
                 {props.showCancelledCheckBox &&
@@ -40,7 +40,7 @@ export default function InternalLectureDetails(props: InternalLectureDetailsProp
                     title="הזמנה בוטלה"
                     name="cancelled"
                     checkedColor={Colors.red}
-                    fieldType={FieldType.InternalLecture}
+                    internalLectureField={true}
                 />}
             </div>
 
