@@ -19,7 +19,7 @@ export function selectPublicCourse(courseId: string) {
     };
 }
 
-export function updateSelectedPublicCourse(key: string, value: string | IPublicCourseLecture[]) {
+export function updateSelectedPublicCourse(key: string, value: string | boolean | IPublicCourseLecture[]) {
     return function updateSelectedPublicCourse(dispatch: IDispatch, getState: IGetState) {
         const currentPublicCourse = getSelectedPublicCourse(getState());
         const selectedPublicCourse = updateObject(currentPublicCourse, {[key]: value});

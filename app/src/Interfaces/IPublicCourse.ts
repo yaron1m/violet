@@ -5,22 +5,14 @@ export default interface IPublicCourse {
     courseLocation: string;
     courseName: string;
     createdDate: string;
+    mealCost: string;
     distanceCost: string;
+    roomsApproved: boolean;
     isoPayed: boolean;
+    printedMaterials: boolean;
+    printedCertificates: boolean;
     lectures: IPublicCourseLecture[];
 }
-
-export type IPublicCourseLectureField =
-    "active" |
-    "date" |
-    "duration" |
-    "endTime" |
-    "id" |
-    "isPublicCourseOrder" |
-    "price" |
-    "startTime" |
-    "tie" |
-    "topic";
 
 export interface IPublicCourseLecture {
     active: boolean;
