@@ -13,7 +13,7 @@ export default function OrderTerminateOption(props: OrderTerminateOption) {
                 name={props.selectFieldName}
                 options={props.options}
                 size={Size.XL}
-                updateAction={props.updateAction}
+                onChange={props.onChange}
                 title={props.selectFieldTitle}
             />
             <OrderCustomText title={props.detailsFieldTitle} name={props.detailsFieldName} fullWidth={true}/>
@@ -26,7 +26,7 @@ interface OrderTerminateOption {
     detailsFieldTitle: string,
     selectFieldTitle: string,
     selectFieldName: "cancellationReason" | "rejectionReason",
-    detailsFieldName: "cancellationDetails" |"rejectionDetails",
-    updateAction: (name: string, newValue: any) => void,
+    detailsFieldName: "cancellationDetails" | "rejectionDetails",
+    onChange: (newValue: any) => void,
     options: IOption[],
 }

@@ -46,6 +46,7 @@ export function CustomRaisedButton(props: CustomRaisedButtonProps) {
 
 interface CustomRaisedButtonProps extends CustomFlatButtonProps {
     disabled?: boolean;
+    label: string;
 }
 
 export function CustomFlatButton(props: CustomFlatButtonProps) {
