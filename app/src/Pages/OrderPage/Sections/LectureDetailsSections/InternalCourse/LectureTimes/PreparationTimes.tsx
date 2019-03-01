@@ -1,5 +1,5 @@
 import React from "react";
-import {ILectureTime, IStringObject} from "../../../../../../Interfaces/IOrder";
+import {ILectureTime} from "../../../../../../Interfaces/IOrder";
 import {calculatePreparationTimes} from "../../../../../../Util/TimeUtil";
 
 export default function PreparationTimes(props: PreparationTimesProps) {
@@ -10,10 +10,10 @@ export default function PreparationTimes(props: PreparationTimesProps) {
 
     return (
         <div style={styles.container}>
-            {getField(props.labels.wakeUpTime, preparationTimes.wakeUpTime)}
-            {getField(props.labels.leaveHomeTime, preparationTimes.leaveHomeTime)}
-            {getField(props.labels.arriveTime, preparationTimes.arriveTime)}
-            {getField(props.labels.lectureStartTime, preparationTimes.lectureStartTime)}
+            {getField("זמן לקום", preparationTimes.wakeUpTime)}
+            {getField("יציאה מהבית", preparationTimes.leaveHomeTime)}
+            {getField("הגעה למקום", preparationTimes.arriveTime)}
+            {getField("תחילת ההרצאה", preparationTimes.lectureStartTime)}
         </div>
     );
 }
@@ -45,5 +45,4 @@ function getField(label: string, value: string) {
 
 interface PreparationTimesProps {
     lectureTime: ILectureTime,
-    labels: IStringObject,
 }
