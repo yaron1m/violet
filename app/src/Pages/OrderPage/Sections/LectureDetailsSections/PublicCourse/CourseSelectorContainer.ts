@@ -27,7 +27,7 @@ function getValue(selectedOrder: IOrder, getPublicCourseById: (id: number) => IP
 
 export function selectFieldUpdateAction(dispatch: IDispatch, newValue: string) {
     dispatch(selectPublicCourse(newValue.toString()));
-    dispatch(updateSelectedOrder("courseName", newValue));
+    dispatch(updateSelectedOrder("publicCourseId", newValue));
     dispatch(removeParticipantsFromAllLectures());
 }
 
