@@ -14,7 +14,7 @@ export default function CustomToggle(props: AbstractCustomFieldProps<boolean>) {
             <FormControlLabel
                 control={
                     <Switch
-                        checked={props.value}
+                        checked={props.value === true}
                         onChange={(event, checked) => props.onChange(checked)}
                         color="primary"
                     />

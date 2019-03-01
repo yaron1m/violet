@@ -16,7 +16,7 @@ export default function CustomCheckbox(props: CustomCheckboxProps) {
             <FormControlLabel
                 control={
                     <Checkbox
-                        checked={props.value}
+                        checked={props.value === true}
                         onChange={(event, isInputChecked) => props.onChange(isInputChecked)}
                         value={props.title}
                         color="primary"

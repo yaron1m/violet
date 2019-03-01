@@ -13,8 +13,11 @@ const styles = () => ({
 });
 
 class CustomTextField extends React.PureComponent<CustomTextFieldProps> {
-
     render() {
+        const style = {
+            width: getFieldWidth(this.props.fullWidth, this.props.size),
+        };
+
         return (
             <TextField
                 helperText={this.props.title}
@@ -28,7 +31,7 @@ class CustomTextField extends React.PureComponent<CustomTextFieldProps> {
                 multiline={this.props.type !== "date" && this.props.type !== "email" && this.props.type !== "password"}
                 rowsMax={4}
 
-                inputProps={{width: getFieldWidth(this.props.fullWidth, this.props.size)}}
+                inputProps={{style}}
                 className={this.props.classes ? this.props.classes.textField : undefined}
             />
         );
