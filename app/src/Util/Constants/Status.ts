@@ -1,3 +1,6 @@
+import {IState} from "../../Interfaces/ReduxInterfaces";
+import {getLabels} from "../../Store/Labels/Selectors";
+
 export enum terminatingStatuses {
     cancelled = "cancelled",
     rejected = "rejected",
@@ -33,4 +36,20 @@ export enum Status {
 export enum TabKey {
     internalTabKey = "internalTab",
     publicCourseTabKey = "publicCourseTab"
+}
+
+export function getStatusLabels() {
+    return {
+        contact: "פנייה",
+        offer: "הצעת מחיר",
+        order: "הזמנה",
+        approvedOrder: "הזמנה מאושרת",
+        isExecuting: "בביצוע",
+        executed: "בוצע",
+        waitingPayment: "ממתין לתשלום",
+        payed: "שולם",
+        cancelled: "בוטל",
+        rejected: "לא אושר",
+        followUp: " + המשך טיפול",
+    };
 }

@@ -62,7 +62,7 @@ export function getSelectedPublicCourseParticipants(state: IState) {
             participantCost: moneyFormat(participant.participantCost),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             orderId: order.id,
-            status: getStatusLabel(state, order.status),
+            status: getStatusLabel(order.status),
             organizationName,
         } as ISelectedPublicCourseParticipantsSummary;
     });

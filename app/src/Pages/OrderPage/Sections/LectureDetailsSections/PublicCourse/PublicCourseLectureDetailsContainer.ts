@@ -6,7 +6,6 @@ import {IState} from "../../../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {
-        sectionName: getOrderSectionsLabels(state).lectureDetails.publicCourseSectionName,
         numberOfParticipants: getSelectedOrder(state).publicCourseParticipants ? getSelectedOrder(state).publicCourseParticipants.length : 0,
     };
 }

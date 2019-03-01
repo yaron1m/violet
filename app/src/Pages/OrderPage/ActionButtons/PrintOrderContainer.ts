@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
 import {isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 import {openDialog} from "../../../Store/Appearance/Actions";
 import {redirect} from "../../../Util/HistoryUtil";
@@ -9,9 +8,6 @@ import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {
-        printLabel: getOrderPageLabels(state).actionButtons.print as string,
-        errorLabel: getOrderPageLabels(state).actionButtons.error as string,
-        noOrderSelectedLabel: getOrderPageLabels(state).actionButtons.noOrderSelected as string,
         isSelectedOrder: isSelectedOrder(state),
     };
 }
@@ -22,16 +18,12 @@ function mapDispatchToProps(dispatch: IDispatch) {
     };
 }
 
-function mergeProps(stateProps: {
-    printLabel: string; errorLabel: string; noOrderSelectedLabel: string; isSelectedOrder: boolean;
-}, dispatchProps: {
-    openDialog: (title: string, content: string) => void;
-}) {
+function mergeProps(stateProps: { isSelectedOrder: boolean; }, dispatchProps: { openDialog: (title: string, content: string) => void; }) {
     return {
-        printLabel: stateProps.printLabel,
+        printLabel: "הדפס הזמנה",
         onClick: () => {
             if (!stateProps.isSelectedOrder)
-                dispatchProps.openDialog(stateProps.errorLabel, stateProps.noOrderSelectedLabel);
+                dispatchProps.openDialog("שגיאה", "לא נבחרה הזמנה");
             else
                 redirect(Path.print);
         }

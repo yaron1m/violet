@@ -11,11 +11,11 @@ export default function ImportContactsDialog(props: ImportContactsDialogProps) {
     return (
         <CustomDialog
             open={props.dialogOpen}
-            title={props.dialogTitle}
+            title="יבא איש קשר"
             onRequestClose={props.onRequestClose}
         >
             {_.isEmpty(props.contacts) ?
-                <div>{props.noContactsLabel}</div> :
+                <div>לא קיימים אנשי קשר לארגון זה</div> :
                 <CustomTable headers={props.tableHeaders}>
                     {_.map(props.contacts, (contactDetails, index) => (
                         <CustomTableRow
@@ -35,8 +35,6 @@ export default function ImportContactsDialog(props: ImportContactsDialogProps) {
 
 interface ImportContactsDialogProps {
     dialogOpen: boolean;
-    dialogTitle: string;
-    noContactsLabel: string;
     contacts: IContact[];
     tableHeaders: IStringObject[];
     importContact: (element: IContact) => void;

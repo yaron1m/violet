@@ -16,7 +16,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions.immediate;
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toBeNull();
     });
@@ -27,7 +27,7 @@ describe("Proforma Invoice Date Calculator", () => {
         const selectedPaymentConditions = allPaymentConditions.immediate;
 
         // @ts-ignore
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toBeNull();
     });
@@ -37,7 +37,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = "";
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toBeNull();
     });
@@ -48,7 +48,7 @@ describe("Proforma Invoice Date Calculator", () => {
         const selectedPaymentConditions = null;
 
         // @ts-ignore
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toBeNull();
     });
@@ -58,7 +58,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions.immediate;
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2018-06-09");
     });
@@ -68,7 +68,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions.EOM;
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2019-01-01");
     });
@@ -78,7 +78,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions["EOM+30"];
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2019-02-01");
     });
@@ -88,7 +88,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions["EOM+45"];
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2019-02-15");
     });
@@ -98,7 +98,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions["EOM+60"];
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2019-03-01");
     });
@@ -108,7 +108,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions["EOM+30+7"];
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2019-02-07");
     });
@@ -118,7 +118,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = allPaymentConditions["EOM+30+22"];
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toEqual("2019-02-22");
     });
@@ -128,7 +128,7 @@ describe("Proforma Invoice Date Calculator", () => {
 
         const selectedPaymentConditions = "Blah";
 
-        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions, allPaymentConditions);
+        const result = calculatePayDate(proformaInvoiceDate, selectedPaymentConditions);
 
         expect(result).toBeNull();
     });

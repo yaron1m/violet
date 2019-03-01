@@ -1,12 +1,12 @@
 import React from "react";
-import SaveIcon from '@material-ui/icons/Save';
+import SaveIcon from "@material-ui/icons/Save";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
 
 export default function SaveActionButton(props: SaveActionButtonProps) {
     return (
         <CustomIconButton
             onClick={props.onClick}
-            tooltip={props.tooltip}
+            tooltip="שמור הזמנה"
         >
             <SaveIcon/>
         </CustomIconButton>
@@ -14,6 +14,5 @@ export default function SaveActionButton(props: SaveActionButtonProps) {
 }
 
 interface SaveActionButtonProps {
-    tooltip?: string,
     onClick: () => void;
 }

@@ -1,10 +1,9 @@
 import React from "react";
 import {isEmptyValue} from "../../../../Util/StringUtil";
 import {CustomFlatButton} from "../../../../Components/CustomComponents/CustomButtons";
-import IOrganization from '../../../../Interfaces/IOrganization';
+import IOrganization from "../../../../Interfaces/IOrganization";
 
 export function shouldSaveNewOrder(
-    orderPageLabels: any,
     isSelectedOrganization: boolean,
     selectedOrganization: IOrganization,
     openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void,
@@ -14,22 +13,20 @@ export function shouldSaveNewOrder(
     saveNewOrganization: () => void,
     saveNewOrder: () => void
 ) {
-    const dialogText = orderPageLabels.dialog;
 
     if (isOrderMissingFields) {
-        //Not ready for saving - there are missing fields
+        // Not ready for saving - there are missing fields
         showRequiredFields();
-        openDialog(dialogText.missingFieldsTitle, dialogText.missingFieldsContent);
+        openDialog("שדות חובה חסרים", "יש למלא את כל שדות החובה המסומנים");
         return false;
     }
 
     if (!isSelectedOrganization) {
-
         const dialogContent = isEmptyValue(selectedOrganization, "organizationName") ?
-            dialogText.noOrganizationSelectedContent :
-            dialogText.unrecognizedOrganization.replace("{0}", selectedOrganization.organizationName);
-        const dialogActions = getOrganizationDialogActions(selectedOrganization, dialogText, closeDialog, saveNewOrganization, saveNewOrder);
-        openDialog(dialogText.noOrganizationSelectedTitle, dialogContent, dialogActions);
+            "לשמירת הזמנה יש לבחור ארגון" :
+            'ארגון "{0}" אינו מזוהה. האם זהו ארגון חדש או קיים?'.replace("{0}", selectedOrganization.organizationName);
+        const dialogActions = getOrganizationDialogActions(selectedOrganization, closeDialog, saveNewOrganization, saveNewOrder);
+        openDialog("לא נבחר ארגון", dialogContent, dialogActions);
         return false;
     }
 
@@ -38,7 +35,6 @@ export function shouldSaveNewOrder(
 
 function getOrganizationDialogActions(
     selectedOrganization: IOrganization,
-    dialogLabels: any,
     closeDialog: () => void,
     saveNewOrganization: () => void,
     saveNewOrder: () => void
@@ -48,16 +44,16 @@ function getOrganizationDialogActions(
 
     return [
         <CustomFlatButton
-            key={dialogLabels.newOrganization}
-            label={dialogLabels.newOrganization}
+            key="ארגון חדש"
+            label="ארגון חדש"
             onClick={async () => {
                 await saveNewOrganization();
                 saveNewOrder();
             }}
         />,
         < CustomFlatButton
-            key={dialogLabels.existingOrganization}
-            label={dialogLabels.existingOrganization}
+            key="ארגון קיים"
+            label="ארגון קיים"
             onClick={closeDialog}
         />
     ];

@@ -4,7 +4,7 @@ import {OrderCustomDatePicker, OrderCustomText, OrderCustomToggle} from "../Conn
 
 export default function FollowUpSection(props: FollowUpSectionProps) {
     return (
-        <CustomPaper title={props.sectionName}>
+        <CustomPaper title="המשך טיפול">
             <div style={flexStyle}>
                 <OrderCustomToggle title="נדרש המשך טיפול" name="followUpRequired"/>
 
@@ -25,6 +25,5 @@ export default function FollowUpSection(props: FollowUpSectionProps) {
 }
 
 interface FollowUpSectionProps {
-    sectionName: string;
     followUpRequired: boolean;
 }

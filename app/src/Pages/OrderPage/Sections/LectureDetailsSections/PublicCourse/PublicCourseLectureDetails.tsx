@@ -8,9 +8,7 @@ import {OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFiel
 
 export default function PublicCourseLectureDetails(props: PublicCourseLectureDetails) {
     return (
-        <CustomPaper
-            title={props.sectionName}
-        >
+        <CustomPaper title="הרשמה לקורס ציבורי">
             <div style={flexStyle}>
                 <CourseSelectorContainer/>
 
@@ -26,6 +24,5 @@ export default function PublicCourseLectureDetails(props: PublicCourseLectureDet
 }
 
 interface PublicCourseLectureDetails {
-    sectionName: string,
     numberOfParticipants: number,
 }

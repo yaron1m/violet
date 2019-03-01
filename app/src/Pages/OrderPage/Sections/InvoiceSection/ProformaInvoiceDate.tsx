@@ -15,7 +15,6 @@ export default function ProformaInvoiceDate(props: ProformaInvoiceDate) {
                 props.calculatePayDate(
                     value,
                     props.selectedPaymentConditions,
-                    props.allPaymentConditions,
                 );
             }}
         />
@@ -24,7 +23,6 @@ export default function ProformaInvoiceDate(props: ProformaInvoiceDate) {
 
 interface ProformaInvoiceDate {
     onChangeProformaInvoiceDate: (value: string) => void;
-    calculatePayDate: (proformaInvoiceValue: string, selectedPaymentConditions: string, allPaymentConditions: IStringObject) => void;
+    calculatePayDate: (proformaInvoiceValue: string, selectedPaymentConditions: string) => void;
     selectedPaymentConditions: string;
-    allPaymentConditions: IStringObject;
 }

@@ -1,6 +1,6 @@
 import {getSelectedOrder} from "../SelectedOrder/Selectors";
 import * as _ from "lodash";
-import {progressiveStatuses, Status} from "../../Util/Constants/Status";
+import {getStatusLabels, progressiveStatuses, Status} from "../../Util/Constants/Status";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import IOrder from "../../Interfaces/IOrder";
 
@@ -13,16 +13,16 @@ export function getSelectedOrderStatusLabel(state: IState) {
     return getOrderStatusLabel(state, selectedOrder);
 }
 
-export function getStatusLabels(state: IState) {
+function getStatusLabels1(state: IState) {
     return getLabels(state).orderStatus;
 }
 
-export function getStatusLabel(state: IState, status: Status) {
-    return getStatusLabels(state)[status];
+export function getStatusLabel(status: Status) {
+    return getStatusLabels()[status];
 }
 
 export function getOrderStatusLabel(state: IState, order: IOrder) {
-    const labels = getStatusLabels(state);
+    const labels = getStatusLabels1(state);
     if (_.isEmpty(order))
         return labels[progressiveStatuses.contact];
 
@@ -32,10 +32,6 @@ export function getOrderStatusLabel(state: IState, order: IOrder) {
     return status;
 }
 
-export function getOrderPageLabels(state: IState) {
-    return getLabels(state).pages.orderPage;
-}
-
 export function getOrderSectionsLabels(state: IState) {
-    return getOrderPageLabels(state).sections;
+    return getLabels(state).pages.orderPage.sections;
 }
