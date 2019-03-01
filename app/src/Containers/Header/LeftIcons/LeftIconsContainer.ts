@@ -7,7 +7,6 @@ import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
 
 function mapStateToProps(state: IState) {
     return {
-        logOutLabel: getLabels(state).header.logOut,
         notificationCount: getActionRequiredOrders(state).length,
         isProduction: process.env.NODE_ENV === "production",
     };

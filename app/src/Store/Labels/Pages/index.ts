@@ -115,7 +115,8 @@ const allOrdersPageLabels = {
         {date: "תאריך הרצאה"},
         {topic: "נושא"},
         {status: "סטאטוס"},
-        {edit: "עריכה"}]
+        {edit: "עריכה"}
+        ]
 };
 
 const allPublicCoursesPageLabels = {

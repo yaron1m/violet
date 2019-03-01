@@ -59,7 +59,7 @@ export function getSelectedPublicCourseParticipants(state: IState) {
             participantFirstName: participant.participantFirstName,
             participantLastName: participant.participantLastName,
             numberOfLecturesAttending: participant.lecturesAttending ? participant.lecturesAttending.length : 0,
-            participantCost: moneyFormat(participant.participantCost, getLabels(state).currencyIcon),
+            participantCost: moneyFormat(participant.participantCost),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             orderId: order.id,
             status: getStatusLabel(state, order.status),

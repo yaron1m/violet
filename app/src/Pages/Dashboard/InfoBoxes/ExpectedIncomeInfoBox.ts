@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
 import {getOrders} from "../../../Store/Orders/Selectors";
 import * as _ from "lodash";
@@ -13,7 +12,7 @@ import {IState} from "../../../Interfaces/ReduxInterfaces";
 import IOrder from "../../../Interfaces/IOrder";
 import {Path} from "../../Path";
 
-function calculateExpectedIncome(isFetching: boolean, expectedIncomeOrders: IOrder[], currencyIcon: string) {
+function calculateExpectedIncome(isFetching: boolean, expectedIncomeOrders: IOrder[]) {
     if (isFetching)
         return;
 
@@ -24,17 +23,16 @@ function calculateExpectedIncome(isFetching: boolean, expectedIncomeOrders: IOrd
             sum += _.parseInt(order.totalSum);
     });
 
-    return moneyFormat(sum.toString(), currencyIcon);
+    return moneyFormat(sum.toString());
 }
 
 function mapStateToProps(state: IState) {
     return {
         Icon: CreditCardIcon,
         color: Colors.infoBoxes.lightBlue,
-        title: getLabels(state).pages.dashboard.infoBoxes.expectedIncome,
+        title: "צבר הזמנות",
         value: calculateExpectedIncome(isFetching(state),
-            getOrders(state, [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder]),
-            getLabels(state).currencyIcon),
+            getOrders(state, [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder])),
     };
 }
 

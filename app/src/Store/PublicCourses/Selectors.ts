@@ -2,7 +2,6 @@ import _ from "lodash";
 import {hasDatePassed} from "../../Util/TimeUtil";
 import {getOrders} from "../Orders/Selectors";
 import {moneyFormat} from "../../Util/StringUtil";
-import {getLabels} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
@@ -66,7 +65,7 @@ export function getPublicCoursesSummary(state: IState) {
 
         const orders = getOrders(state);
         const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && order.publicCourseId === course.id);
-        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)).toString(), getLabels(state).currencyIcon);
+        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)).toString());
 
         return result;
     }

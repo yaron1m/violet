@@ -1,8 +1,8 @@
 import React from "react";
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from "@material-ui/icons/Search";
 import Colors from "../../../Util/Constants/Colors";
 import AutoSuggest, {ISuggestion} from "../../../Components/AutoSuggest";
-import {SearchSuggestion} from './SearchBoxContainer';
+import {SearchSuggestion} from "./SearchBoxContainer";
 
 export default class SearchBox extends React.Component<SearchBoxProps> {
 
@@ -44,7 +44,7 @@ export default class SearchBox extends React.Component<SearchBoxProps> {
                     onInputChange={searchText => this.setState({searchText})}
                     onSuggestionSelected={this.handleRequest.bind(this)}
                     fullWidth
-                    hintText={this.props.hintText}
+                    hintText="חיפוש..."
                     maxSearchResults={10}
                     inputTextColor={Colors.white}
                 />
@@ -54,7 +54,6 @@ export default class SearchBox extends React.Component<SearchBoxProps> {
 }
 
 interface SearchBoxProps {
-    hintText: string;
     suggestions: ISuggestion[];
     onSuggestionSelected: (suggestion: SearchSuggestion) => void;
     renderSuggestion: (suggestion: SearchSuggestion) => React.ReactNode;

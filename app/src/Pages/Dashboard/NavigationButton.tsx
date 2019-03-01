@@ -1,5 +1,5 @@
 import React from "react";
-import CustomPaper from "../../../Components/CustomComponents/CustomPaper";
+import CustomPaper from "../../Components/CustomComponents/CustomPaper";
 
 export default function NavigationButton(props: NavigationButtonProps) {
     const style = {

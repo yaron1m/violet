@@ -148,7 +148,7 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
             status: cutIfLong(getOrderStatusLabel(state, order), 20),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             expectedPayDate: order.expectedPayDate,
-            totalSum: moneyFormat(order.totalSum, getLabels(state).currencyIcon),
+            totalSum: moneyFormat(order.totalSum),
             organizationName: cutIfLong(getOrganizationById(state, order.organizationId.toString()).organizationName, 25),
             topic: "",
             lectureDate: "",

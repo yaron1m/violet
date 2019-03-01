@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
 import {getFollowUpOrdersSummary} from "../../../Store/Orders/Selectors";
 import {isFetching} from "../../../Store/Firebase/Selectors";
@@ -13,7 +12,7 @@ function mapStateToProps(state: IState) {
     return {
         Icon: NotificationsIcon,
         color: Colors.infoBoxes.pink,
-        title: getLabels(state).pages.dashboard.infoBoxes.followUp,
+        title: "ממתינות לטיפול",
         value: isFetching(state) ? undefined : getFollowUpOrdersSummary(state).length.toString(),
     };
 }

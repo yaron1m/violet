@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
 import {getOrders} from "../../../Store/Orders/Selectors";
 import * as _ from "lodash";
@@ -22,7 +21,7 @@ function calculateWaitingPaymentSum(state: IState) {
         sum += _.parseInt(order.totalSum);
     });
 
-    return moneyFormat(sum.toString(), getLabels(state).currencyIcon);
+    return moneyFormat(sum.toString());
 }
 
 function areThereLatePaymentOrders(state: IState) {
@@ -38,7 +37,7 @@ function mapStateToProps(state: IState) {
     return {
         Icon: PaymentIcon,
         color: Colors.infoBoxes.green,
-        title: getLabels(state).pages.dashboard.infoBoxes.waitingPayment,
+        title: "ממתין לתשלום",
         value: calculateWaitingPaymentSum(state),
         error: areThereLatePaymentOrders(state),
     };

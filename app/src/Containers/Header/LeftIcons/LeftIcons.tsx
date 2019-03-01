@@ -1,11 +1,11 @@
 import React from "react";
-import Badge from '@material-ui/core/Badge';
+import Badge from "@material-ui/core/Badge";
 import {redirect} from "../../../Util/HistoryUtil";
-import ExitIcon from '@material-ui/icons/ExitToApp';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import ExitIcon from "@material-ui/icons/ExitToApp";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 import Colors from "../../../Util/Constants/Colors";
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
-import {Path} from '../../../Pages/Path';
+import {Path} from "../../../Pages/Path";
 
 export default function LeftIcons(props: LeftIconsProps) {
     const style = {
@@ -55,7 +55,6 @@ export default function LeftIcons(props: LeftIconsProps) {
 
 interface LeftIconsProps {
     notificationCount: number;
-    logOutLabel: string;
     isProduction: boolean;
     signOut: () => void;
 }
