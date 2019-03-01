@@ -154,7 +154,7 @@ describe("Store/selected/selectors", () => {
             numberOfLecturesAttending: 2,
             participantCost: "100.00 ₪",
             orderId: 123,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgA",
             proformaInvoiceNumber: "1122",
         });
@@ -164,7 +164,7 @@ describe("Store/selected/selectors", () => {
             numberOfLecturesAttending: 2,
             participantCost: "200.00 ₪",
             orderId: 123,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgA",
             proformaInvoiceNumber: "1122",
         });
@@ -174,7 +174,7 @@ describe("Store/selected/selectors", () => {
             numberOfLecturesAttending: 2,
             participantCost: "500.00 ₪",
             orderId: 125,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgB",
         });
         expect(result[3]).toEqual({
