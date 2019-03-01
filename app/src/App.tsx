@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Containers/Header";
-import LoginPage from "./Pages/LoginPage/LoginPageContainer";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 import AppDialog from "./Containers/Messages/AppDialogContainer";
 import AppSnackbar from "./Containers/Messages/AppSnackBarContainer";
 import {theme} from "./ThemeDefault";

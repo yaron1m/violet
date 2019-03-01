@@ -1,7 +1,6 @@
 import LeftIcons from "./LeftIcons";
 import {connect} from "react-redux";
 import {signOutRequest} from "../../../Store/Firebase/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
 import {getActionRequiredOrders} from "../../../Store/Orders/Selectors";
 import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
 
