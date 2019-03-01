@@ -183,7 +183,7 @@ describe("Store/selected/selectors", () => {
             numberOfLecturesAttending: 2,
             participantCost: "600.00 ₪",
             orderId: 125,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgB",
         });
     });
