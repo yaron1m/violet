@@ -1,10 +1,8 @@
 import {AllOrdersTableContainerProps, getElements} from "./AllOrdersTableContainer";
-import labels from "../../Store/Labels/Reducer";
 import {Status} from "../../Util/Constants/Status";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 
 const state = {
-    labels: labels(),
     organizations: {
         100: {
             organizationId: 100,
