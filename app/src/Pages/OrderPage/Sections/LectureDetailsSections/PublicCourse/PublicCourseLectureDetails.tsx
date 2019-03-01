@@ -1,5 +1,5 @@
 import React from "react";
-import _ from 'lodash';
+import _ from "lodash";
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import AddParticipantButtonContainer from "./AddParticipantButtonContainer";
 import PublicCourseParticipantContainer from "./PublicCourseParticipantContainer";

@@ -58,7 +58,7 @@ function getSelectedOrderPublicCourseParticipants(state: IState) {
     return _.cloneDeep(getSelectedOrder(state).publicCourseParticipants);
 }
 
-export function updateLectureTime(key: string, value: string, lectureTimeIndex: number) {
+export function updateLectureTime(key: string, value: string | boolean, lectureTimeIndex: number) {
     return function updateLectureTime(dispatch: IDispatch, getState: IGetState) {
         const allLectureTimes = getSelectedOrderLectureTimes(getState());
         const lectureTime = allLectureTimes[lectureTimeIndex];

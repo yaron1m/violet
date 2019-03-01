@@ -22,8 +22,12 @@ export interface IPublicCourseLecture {
     id: number;
     isPublicCourseOrder: boolean;
     price: string;
+    roomCost: string;
+    pages: string;
     startTime: string;
     tie: string;
     topic: string;
     guestLecturer: boolean;
+    guestLecturerName: string;
+    guestLecturerCost: string;
 }

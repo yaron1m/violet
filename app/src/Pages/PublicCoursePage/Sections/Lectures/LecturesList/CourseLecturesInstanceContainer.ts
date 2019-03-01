@@ -2,14 +2,28 @@ import {connect} from "react-redux";
 import CourseLecturesInstance from "./CourseLecturesInstance";
 import {getOfferedLectures} from "../../../../../Store/Lists/Selectors";
 import {toSuggestions} from "../../../../../Components/AutoSuggest";
-import {IState} from "../../../../../Interfaces/ReduxInterfaces";
+import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
+import {getSelectedPublicCourseLecture} from "../../../../../Store/SelectedPublicCourse/Selectors";
+import {updatePublicCourseLecture} from "../../../../../Store/SelectedPublicCourse/Actions";
 
-function mapStateToProps(state: IState, ownProps: {lectureId: number, index: number}) {
+function mapStateToProps(state: IState, ownProps: CourseLecturesInstanceContainerProps) {
     return {
-        index: ownProps.index,
+        publicCourseLecture: getSelectedPublicCourseLecture(state, ownProps.lectureId),
         lectureId: ownProps.lectureId,
         offeredLectures: toSuggestions(getOfferedLectures(state)),
+        requiredFields: [],
     };
 }
 
-export default connect(mapStateToProps)(CourseLecturesInstance);
+function mapDispatchToProps(dispatch: IDispatch, ownProps: CourseLecturesInstanceContainerProps) {
+    return {
+        onChange: (key: string) => (newValue: string) => dispatch(updatePublicCourseLecture(name, newValue, ownProps.lectureId)),
+        onChangeBoolean: (key: string) => (newValue: boolean) => dispatch(updatePublicCourseLecture(name, newValue, ownProps.lectureId)),
+    };
+}
+
+interface CourseLecturesInstanceContainerProps {
+    lectureId: number;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseLecturesInstance);
