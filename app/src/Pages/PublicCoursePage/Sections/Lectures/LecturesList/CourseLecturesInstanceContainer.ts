@@ -17,8 +17,8 @@ function mapStateToProps(state: IState, ownProps: CourseLecturesInstanceContaine
 
 function mapDispatchToProps(dispatch: IDispatch, ownProps: CourseLecturesInstanceContainerProps) {
     return {
-        onChange: (key: string) => (newValue: string) => dispatch(updatePublicCourseLecture(name, newValue, ownProps.lectureId)),
-        onChangeBoolean: (key: string) => (newValue: boolean) => dispatch(updatePublicCourseLecture(name, newValue, ownProps.lectureId)),
+        onChange: (key: string) => (newValue: string) => dispatch(updatePublicCourseLecture(key, newValue, ownProps.lectureId)),
+        onChangeBoolean: (key: string) => (newValue: boolean) => dispatch(updatePublicCourseLecture(key, newValue, ownProps.lectureId)),
     };
 }
 
