@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../Store/Labels/Selectors";
 import ContactsPrintRow from "./ContactPrintRow";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
 import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";

@@ -31,7 +31,3 @@ export function getOrderStatusLabel(state: IState, order: IOrder) {
         status += labels.followUp;
     return status;
 }
-
-export function getOrderSectionsLabels(state: IState) {
-    return getLabels(state).pages.orderPage.sections;
-}

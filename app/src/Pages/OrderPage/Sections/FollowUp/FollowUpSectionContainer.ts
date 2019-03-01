@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import FollowUpSection from "./FollowUpSection";
 import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {IState} from "../../../../Interfaces/ReduxInterfaces";
