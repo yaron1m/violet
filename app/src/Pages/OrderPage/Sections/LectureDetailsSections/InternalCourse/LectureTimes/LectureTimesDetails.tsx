@@ -31,5 +31,4 @@ export default function LectureTimesDetails(props: LectureTimesDetails) {
 
 interface LectureTimesDetails {
     lectureTimesIndexes: number[];
-    offeredLectures: ISuggestion[];
 }

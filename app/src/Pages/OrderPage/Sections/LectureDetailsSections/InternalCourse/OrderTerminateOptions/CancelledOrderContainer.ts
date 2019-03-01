@@ -20,8 +20,8 @@ function mapStateToProps(state: IState) {
 
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key: string, value: any) => {
-            dispatch(updateSelectedOrder(key, value));
+        onSelectFieldChange: (value: any) => {
+            dispatch(updateSelectedOrder("cancellationReason", value));
 
             // Allow only one terminating status
             if (value === true)

@@ -4,7 +4,6 @@ import {Size} from "../../../../../../Util/Constants/Size";
 import IndexAvatar from "../../../../../../Components/IndexAvatar";
 import DeleteLectureTimeButton from "./DeleteLectureTimeButton";
 import {ISuggestion} from "../../../../../../Components/AutoSuggest";
-import PreparationTimesContainer from "./PreparationTimesContainer";
 import {ILectureTime} from "../../../../../../Interfaces/IOrder";
 import CustomDatePicker from "../../../../../../Components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../../../Components/CustomComponents/CustomAutoComplete";

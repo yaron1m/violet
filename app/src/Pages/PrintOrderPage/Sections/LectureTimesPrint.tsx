@@ -1,21 +1,21 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
-import _ from 'lodash';
+import _ from "lodash";
 import {isEmptyValue} from "../../../Util/StringUtil";
-import {ILectureTime, ILectureTimeField} from '../../../Interfaces/IOrder';
+import {ILectureTime, ILectureTimeField} from "../../../Interfaces/IOrder";
 
 export default function (props: LectureTimesPrintProps) {
     const style = {
         table: {
             width: "100%",
-            borderCollapse: "collapse" as 'collapse',
+            borderCollapse: "collapse" as "collapse",
         },
         header: {
             border: "1px solid black",
         },
         value: {
             border: "1px solid black",
-            fontWeight: 'bold' as 'bold'
+            fontWeight: "bold" as "bold"
         }
     };
 
