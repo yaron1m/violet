@@ -6,13 +6,22 @@ import {redirect} from "../../../../Util/HistoryUtil";
 import {selectOrder} from "../../../../Store/SelectedOrder/Actions";
 import {Path} from "../../../Path";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {IStringObject} from "../../../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
     return {
-        title: getLabels(state).pages.publicCoursePage.sections.courseParticipantsSectionName,
+        title: "משתתפים",
         elements: getSelectedPublicCourseParticipants(state),
-        tableHeaders: getLabels(state).pages.publicCoursePage.participantsTableHeaders,
-        rowIndexKey: "orderId",
+        tableHeaders: [
+            {orderId: "מספר הזמנה"},
+            {participantFirstName: "שם פרטי"},
+            {participantLastName: "שם משפחה"},
+            {organizationName: "ארגון"},
+            {status: "סטאטוס"},
+            {proformaInvoiceNumber: "חשבונית עסקה"},
+            {numberOfLecturesAttending: "ימים"},
+            {participantCost: "מחיר השתתפות"},
+        ] as IStringObject[],
     };
 }
 

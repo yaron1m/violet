@@ -1,6 +1,7 @@
 import {orderPageLabels} from "./OrderPageLabels";
 import {organizationPageLabels} from "./OrganizationPageLabels";
 import {publicCourseLabels} from "./PublicCourseLabels";
+import {IStringObject} from "../../../Interfaces/IOrder";
 
 const dashboardLabels = {
     navigationButtons: {
@@ -102,7 +103,8 @@ const futureLecturesPageLabels = {
             {date: "תאריך הרצאה"},
             {topic: "נושא"},
             {organizationName: "שם הארגון"},
-            {edit: "עריכה"}]
+            {edit: "עריכה"}
+            ] as IStringObject[]
     },
 };
 
@@ -116,7 +118,7 @@ const allOrdersPageLabels = {
         {topic: "נושא"},
         {status: "סטאטוס"},
         {edit: "עריכה"}
-        ]
+    ] as IStringObject[]
 };
 
 const allPublicCoursesPageLabels = {

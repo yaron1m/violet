@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
 import LectureDetailsSection from "./LecturesDetailsSection";
 import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../Util/StringUtil";
@@ -19,8 +18,6 @@ function getSelectedTabKey(order: IOrder) {
 function mapStateToProps(state: IState) {
     return {
         selectedTabKey: getSelectedTabKey(getSelectedOrder(state)),
-        internalLabel: getLabels(state).orderTypes.internalCourse,
-        publicCourseLabel: getLabels(state).orderTypes.publicCourse,
     };
 }
 

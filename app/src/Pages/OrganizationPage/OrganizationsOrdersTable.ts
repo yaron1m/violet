@@ -1,22 +1,28 @@
 import {connect} from "react-redux";
-import {clearSelectedOrder} from "../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../Store/Labels/Selectors";
+import {clearSelectedOrder, selectOrder} from "../../Store/SelectedOrder/Actions";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {getOrdersByOrganization, getOrdersSummary, IOrderSummary} from "../../Store/Orders/Selectors";
-import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {isSelectedOrganization} from "../../Store/SelectedOrganization/Selectors";
 import {Path} from "../Path";
 import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
+import {IStringObject} from "../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
     return {
-        title: getLabels(state).pages.organizationPage.ordersSummarySection.title,
-        tableHeaders: getLabels(state).pages.organizationPage.ordersSummarySection.tableHeaders,
+        title: "הזמנות",
         elements: getOrdersSummary(state, getOrdersByOrganization).reverse(),
 
         singleCellRow: isSelectedOrganization(state),
-        singleCellRowText: getLabels(state).pages.organizationPage.ordersSummarySection.addRow,
+        singleCellRowText: "הוסף הזמנה חדשה",
+
+        tableHeaders: [
+            {orderId: "מספר הזמנה"},
+            {date: "תאריך הרצאה"},
+            {topic: "נושא"},
+            {status: "סטאטוס"},
+            {edit: "עריכה"}
+        ] as IStringObject[]
     };
 }
 

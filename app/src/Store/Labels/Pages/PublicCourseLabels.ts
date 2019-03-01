@@ -9,7 +9,7 @@ export const publicCourseLabels = {
     actionButtons: {
         save: "שמור קורס",
         savedSuccessfully: "קורס ציבורי {0} נשמר בהצלחה",
-        sendingToDatabaseFailedTitle: "שגיאה בשמירת קורס ציבוי",
+        sendingToDatabaseFailedTitle: "שגיאה בשמירת קורס ציבורי",
         sendingToDatabaseFailedContent: "חלה שגיאה בשמירת הקורס הציבוי בשרת",
         addLecture: "הוסף הרצאה",
     },

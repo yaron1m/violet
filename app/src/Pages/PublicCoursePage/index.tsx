@@ -1,6 +1,6 @@
 import React from "react";
-import PublicCoursePageTitle from './PublicCoursePageTitleContainer';
-import PublicCoursePageSections from './Sections';
+import PublicCoursePageTitle from "./PublicCoursePageTitle";
+import PublicCoursePageSections from "./Sections";
 import PublicCourseActionButtons from "./ActionButtons";
 
 export default function PublicCoursePage() {

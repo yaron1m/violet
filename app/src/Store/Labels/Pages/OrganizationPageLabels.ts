@@ -1,3 +1,5 @@
+import {IStringObject} from "../../../Interfaces/IOrder";
+
 const ordersSummarySectionLabels = {
     title: "הזמנות",
     addRow: "הוסף הזמנה חדשה",
@@ -7,7 +9,7 @@ const ordersSummarySectionLabels = {
         {topic: "נושא"},
         {status: "סטאטוס"},
         {edit: "עריכה"}
-    ]
+    ] as IStringObject[]
 };
 
 const organizationPageDialogLabels = {
