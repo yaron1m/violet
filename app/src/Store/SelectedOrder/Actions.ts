@@ -11,7 +11,6 @@ import {selectOrganization, sendSelectedOrganizationToDatabase} from "../Selecte
 import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
 import {getOrganizationById} from "../Organizations/Selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
-import {getLabels} from "../Labels/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 import {IDispatch, IGetState, IState} from "../../Interfaces/ReduxInterfaces";
 import {TabKey} from "../../Util/Constants/Status";
@@ -180,15 +179,13 @@ export function saveNewOrder() {
         await dispatch(fillNewOrderMissingFields());
 
         function success() {
-            const snackbarMessage = getLabels(getState()).pages.orderPage.snackBar.savedSuccessfully
-                .replace("{0}", getSelectedOrder(getState()).id);
+            const snackbarMessage = "הזמנה מספר {0} נשמרה בהצלחה".replace("{0}", getSelectedOrder(getState()).id.toString());
             dispatch(openSnackbar(snackbarMessage));
             dispatch(setIsSelectedOrder());
         }
 
         function failure(error: firebase.auth.Error) {
-            const dialogText = getLabels(getState()).pages.orderPage.dialog;
-            dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
+            dispatch(openDialog("שגיאה בשמירת הזמנה", "חלה שגיאה בשמירת ההזמנה בשרת"));
             // eslint-disable-next-line no-console
             console.error(error);
         }

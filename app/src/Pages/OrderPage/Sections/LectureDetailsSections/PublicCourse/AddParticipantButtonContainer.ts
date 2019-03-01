@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../../../Store/Labels/Selectors";
 import {updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
 import * as _ from "lodash";
 import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
@@ -16,7 +15,7 @@ export function addNewParticipant(selectedOrder: IOrder, updateSelectedOrder: (k
 
 function mapStateToProps(state: IState) {
     return {
-        label: getOrderSectionsLabels(state).publicCourse.addParticipant as string,
+        label: "הוסף משתתף",
         selectedOrder: getSelectedOrder(state),
         disabled: !getSelectedOrder(state).publicCourseId,
     };

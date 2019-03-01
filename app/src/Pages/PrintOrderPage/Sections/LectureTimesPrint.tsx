@@ -2,7 +2,7 @@ import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import _ from "lodash";
 import {isEmptyValue} from "../../../Util/StringUtil";
-import {ILectureTime, ILectureTimeField} from "../../../Interfaces/IOrder";
+import {ILectureTime, ILectureTimeField, IStringObject} from "../../../Interfaces/IOrder";
 
 export default function (props: LectureTimesPrintProps) {
     const style = {
@@ -21,7 +21,7 @@ export default function (props: LectureTimesPrintProps) {
 
     const tableHeaders = _.dropRight(props.tableHeaders);
     return (
-        <PrintSection title={props.sectionName}>
+        <PrintSection title="הרצאות">
             <table style={style.table}>
                 <tbody>
                 <tr>
@@ -56,7 +56,6 @@ export default function (props: LectureTimesPrintProps) {
 }
 
 interface LectureTimesPrintProps {
-    sectionName: string;
-    tableHeaders: { [key in ILectureTimeField]: string }[];
+    tableHeaders: IStringObject[];
     lectureTimes: ILectureTime[];
 }

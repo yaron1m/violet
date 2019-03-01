@@ -3,8 +3,7 @@ import _ from "lodash";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import {progressiveStatuses, Status} from "../../Util/Constants/Status";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {getStatusLabel, progressiveStatuses, Status} from "../../Util/Constants/Status";
 
 export default function OrderStatusStepper(props: OrderStatusStepperProps) {
     return (
@@ -17,7 +16,7 @@ export default function OrderStatusStepper(props: OrderStatusStepperProps) {
                     key={status}
                     active={status === props.status}
                 >
-                    <StepLabel>{props.statusLabels[status]}</StepLabel>
+                    <StepLabel>{getStatusLabel(status as Status)}</StepLabel>
                 </Step>
             )}
         </Stepper>
@@ -26,6 +25,4 @@ export default function OrderStatusStepper(props: OrderStatusStepperProps) {
 
 interface OrderStatusStepperProps {
     status: Status,
-    statusLabels: IStringObject,
 }
-

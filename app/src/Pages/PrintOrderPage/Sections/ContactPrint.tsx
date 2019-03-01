@@ -2,11 +2,9 @@ import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import ContactsPrintRow from "./ContactPrintRowContainer";
 
-export default function (props: { sectionName: string }) {
+export default function () {
     return (
-        <PrintSection
-            title={props.sectionName}
-        >
+        <PrintSection title="איש קשר">
             <ContactsPrintRow isFinancial={false}/>
         </PrintSection>
     );

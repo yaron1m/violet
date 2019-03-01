@@ -1,6 +1,5 @@
 import {connect} from "react-redux";
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../Store/Labels/Selectors";
 import {getOrders, getOrdersSummary, IOrderSummary} from "../../Store/Orders/Selectors";
 import * as _ from "lodash";
 import {redirect} from "../../Util/HistoryUtil";
@@ -9,6 +8,7 @@ import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 import * as React from "react";
 import {Status} from "../../Util/Constants/Status";
 import {Path} from "../Path";
+import {IStringObject} from "../../Interfaces/IOrder";
 
 export function getElements(state: IState, ownProps: AllOrdersTableContainerProps) {
     return _.reverse(getOrdersSummary(state, (state: IState) => getOrders(state, ownProps.filterStatus)));
@@ -16,11 +16,18 @@ export function getElements(state: IState, ownProps: AllOrdersTableContainerProp
 
 function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) {
     return {
-        title: getLabels(state).pages.allOrdersPage.title,
-        tableHeaders: getLabels(state).pages.allOrdersPage.tableHeaders,
+        title: "כל ההזמנות",
         elements: getElements(state, ownProps),
         beforeTable: ownProps.beforeTable,
         limit: ownProps.limit,
+        tableHeaders: [
+            {orderId: "מספר הזמנה"},
+            {organizationName: "שם הארגון"},
+            {date: "תאריך הרצאה"},
+            {topic: "נושא"},
+            {status: "סטאטוס"},
+            {edit: "עריכה"}
+        ] as IStringObject[]
     };
 }
 

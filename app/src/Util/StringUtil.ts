@@ -29,9 +29,9 @@ export function cutIfLong(str: string, maxLength: number) {
     return str.substr(0, maxLength - addition.length) + addition;
 }
 
-export function moneyFormat(str: string, currencyIcon: string) {
+export function moneyFormat(str: string) {
     if (isEmpty(str) || isNaN(parseInt(str)))
         return str;
 
-    return _.toNumber(str).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,") + " " + currencyIcon;
+    return _.toNumber(str).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,") + " ₪";
 }

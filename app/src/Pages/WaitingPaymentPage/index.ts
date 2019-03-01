@@ -1,6 +1,5 @@
 import {connect} from "react-redux";
 import {selectOrder} from "../../Store/SelectedOrder/Actions";
-import {getLabels} from "../../Store/Labels/Selectors";
 import {getExpectedIncomeOrders, IExpectedIncomeOrderSummary} from "../../Store/Orders/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
@@ -11,9 +10,17 @@ import {IStringObject} from "../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
     return {
-        title: getLabels(state).pages.paymentPage.table.title,
-        tableHeaders: getLabels(state).pages.paymentPage.table.tableHeaders as IStringObject[],
+        title: "הזמנות ממתינות לתשלום",
         elements: getExpectedIncomeOrders(state, Status.waitingPayment),
+        tableHeaders: [
+            {orderId: "מספר הזמנה"},
+            {organizationName: "שם הארגון"},
+            {lectureDate: "תאריך הרצאה"},
+            {proformaInvoiceNumber: "חשבונית עסקה"},
+            {expectedPayDate: "תאריך תשלום"},
+            {totalSum: "סכום לתשלום"},
+            {edit: "עריכה"}
+        ] as IStringObject[],
     };
 }
 

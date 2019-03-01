@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getOrderPageLabels} from "../../../Store/Labels/Selectors";
 import {getSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
 import * as _ from "lodash";
 import SendOfferButton from "./SendOffer";
@@ -43,7 +42,6 @@ function arrayToParameterValue(array: string[]) {
 
 function mapStateToProps(state: IState) {
     return {
-        sendLabel: getOrderPageLabels(state).actionButtons.send as string,
         orderEmailLink: isSelectedOrder(state) ?
             getLink(getSelectedOrder(state), getSelectedOrganization(state).organizationName)
             : undefined,

@@ -1,9 +1,9 @@
 import React from "react";
-import ClearFormDialog from './ClearFormDialogContainer';
-import CleanIcon from '@material-ui/icons/Replay';
+import ClearFormDialog from "./ClearFormDialogContainer";
+import CleanIcon from "@material-ui/icons/Replay";
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
 
-export default class ClearFormButton extends React.Component<{ tooltip: string }> {
+export default class ClearFormButton extends React.Component {
     state = {
         dialogOpen: false,
     };
@@ -12,7 +12,7 @@ export default class ClearFormButton extends React.Component<{ tooltip: string }
         return (
             <React.Fragment>
                 <CustomIconButton
-                    tooltip={this.props.tooltip}
+                    tooltip="נקה טופס"
                     onClick={() => this.setState({dialogOpen: true})}
                 >
                     <CleanIcon/>

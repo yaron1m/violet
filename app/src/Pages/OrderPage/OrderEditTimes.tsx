@@ -11,10 +11,10 @@ export default function OrderTimes(props: OrderTimesProps) {
 
     return (
         <div style={style}>
-            <span>{props.createdDateLabel}</span>
+            <span>תאריך יצירה - </span>
             <span>{new Date(props.createdDate).toLocaleDateString()}</span>
             <span>  ;  </span>
-            <span>{props.changedDateLabel}</span>
+            <span>תאריך שינוי - </span>
             <span>{new Date(props.changedDate).toLocaleDateString()}</span>
         </div>
     );
@@ -22,8 +22,6 @@ export default function OrderTimes(props: OrderTimesProps) {
 
 interface OrderTimesProps {
     isSelectedOrder: boolean,
-    createdDateLabel: string,
     createdDate: string,
-    changedDateLabel: string,
     changedDate: string,
 }

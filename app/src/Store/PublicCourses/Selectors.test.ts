@@ -10,9 +10,6 @@ import {IState} from "../../Interfaces/ReduxInterfaces";
 import IOrder from "../../Interfaces/IOrder";
 
 const sampleState = {
-    labels: {
-        currencyIcon: "X"
-    },
     publicCourses: {
         1000: {
             courseName: "my course name",
@@ -100,14 +97,14 @@ describe("Public course selectors", () => {
         const expectedResult = [
             {
                 "id": 1002,
-                "courseIncome": "0.00 X",
+                "courseIncome": "0.00 ₪",
                 "date": "",
             },
             {
                 "courseLocation": "not my house",
                 "courseName": "Another course name",
                 "date": "2999-01-01",
-                "courseIncome": "3,333.00 X",
+                "courseIncome": "3,333.00 ₪",
                 "id": 1001
             },
             {
@@ -115,7 +112,7 @@ describe("Public course selectors", () => {
                 "courseName": "my course name",
                 "date": "2017-11-11",
                 "id": 1000,
-                "courseIncome": "0.00 X",
+                "courseIncome": "0.00 ₪",
             },
         ];
 

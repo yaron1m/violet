@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../Store/Labels/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
 import {isFetching} from "../../../Store/Firebase/Selectors";
 import CheckBoxIcon from "@material-ui/icons/CheckCircle";
@@ -13,7 +12,7 @@ function mapStateToProps(state: IState) {
     return {
         Icon: CheckBoxIcon,
         color: Colors.infoBoxes.orange,
-        title: getLabels(state).pages.dashboard.infoBoxes.futureLectures,
+        title: "הרצאות עתידיות",
         value: isFetching(state) ? undefined : getFutureLectureTimes(state).length.toString(),
     };
 }

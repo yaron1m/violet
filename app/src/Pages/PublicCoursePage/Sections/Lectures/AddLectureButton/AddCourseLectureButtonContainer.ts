@@ -1,22 +1,16 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../../Store/Labels/Selectors";
 import {addLectureToSelectedPublicCourse} from "../../../../../Store/SelectedPublicCourse/Actions";
 import {CustomRaisedButton} from "../../../../../Components/CustomComponents/CustomButtons";
-import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
+import {IDispatch} from "../../../../../Interfaces/ReduxInterfaces";
 
-function mapStateToProps(state: IState) {
+function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        label: getLabels(state).pages.publicCoursePage.actionButtons.addLecture,
+        onClick: () => dispatch(addLectureToSelectedPublicCourse()),
+        label: "הוסף הרצאה",
         style: {
             marginTop: 10
         }
     };
 }
 
-function mapDispatchToProps(dispatch: IDispatch) {
-    return {
-        onClick: () => dispatch(addLectureToSelectedPublicCourse())
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CustomRaisedButton);
+export default connect(undefined, mapDispatchToProps)(CustomRaisedButton);

@@ -56,19 +56,19 @@ describe("string-util", () => {
     });
 
     it("moneyFormat - valid - valid", () => {
-        expect(moneyFormat("1", "X")).toEqual("1.00 X");
-        expect(moneyFormat("1234", "X")).toEqual("1,234.00 X");
-        expect(moneyFormat("1234567", "X")).toEqual("1,234,567.00 X");
-        expect(moneyFormat("1.2345", "X")).toEqual("1.23 X");
-        expect(moneyFormat("1.9999", "X")).toEqual("2.00 X");
-        expect(moneyFormat("012345.1234", "X")).toEqual("12,345.12 X");
+        expect(moneyFormat("1")).toEqual("1.00 ₪");
+        expect(moneyFormat("1234")).toEqual("1,234.00 ₪");
+        expect(moneyFormat("1234567")).toEqual("1,234,567.00 ₪");
+        expect(moneyFormat("1.2345")).toEqual("1.23 ₪");
+        expect(moneyFormat("1.9999")).toEqual("2.00 ₪");
+        expect(moneyFormat("012345.1234")).toEqual("12,345.12 ₪");
     });
 
     it("moneyFormat - empty input - input", () => {
-        expect(moneyFormat("", "X")).toEqual("");
+        expect(moneyFormat("")).toEqual("");
     });
 
     it("moneyFormat - non numeric input - input", () => {
-        expect(moneyFormat("AAA", "X")).toEqual("AAA");
+        expect(moneyFormat("AAA")).toEqual("AAA");
     });
 });

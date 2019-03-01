@@ -1,8 +1,6 @@
 import _ from "lodash";
-import {getOrderStatusLabel} from "../Labels/Selectors";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {getLabels} from "../Labels/Selectors";
-import {Status} from "../../Util/Constants/Status";
+import {getOrderStatusLabel, getStatusLabel, Status} from "../../Util/Constants/Status";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
@@ -20,7 +18,13 @@ export interface IActionRequiredOrder {
 
 export default function getActionRequiredOrdersArray(state: IState) {
     const orders = getOrders(state);
-    const issues = getLabels(state).pages.actionRequiredPage.issues;
+    const issues = {
+        followUpRequired: "נדרש המשך טיפול",
+        notPaidOnTime: "תאריך לתשלום עבר",
+        twoWeeksPassedFromCreation: "חלפו שבועיים מיצירת ההזמנה ללא התקדמות",
+        executedAndNoInvoice: "לא הונפקה חשבונית",
+        noOrderApproval: "הזמנה לא אושרה, הרצאה עוד שבועיים",
+    };
 
     const now = new Date();
 
@@ -104,7 +108,7 @@ function addOrderToResult(state: IState, result: IActionRequiredOrder[], order: 
         createdDate: order.createdDate,
         issue,
         organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
-        status: getOrderStatusLabel(state, order),
+        status: getOrderStatusLabel(order),
     });
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import {PrintPageTitle} from "../../Components/CustomComponents/OrderPrint/PrintPageTitle";
 import LectureTimesPrintSection from "./Sections/LectureTimesPrintContainer";
 import LectureDetailsPrintSection from "./Sections/LectureDetailsContainer";
-import ContactsPrintSection from "./Sections/ContactPrintContainer";
+import ContactsPrintSection from "./Sections/ContactPrint";
 import NotesPrintSection from "./Sections/NotesPrintContainer";
 import OrganizationPrintSection from "./Sections/OrganizationPrintContainer";
 import FollowUpPrintSection from "./Sections/FollowUpPrintContainer";

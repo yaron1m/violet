@@ -6,8 +6,9 @@ import Colors from "../../Util/Constants/Colors";
 import CustomTextField from "../../Components/CustomComponents/CustomTextField";
 import {Size} from "../../Util/Constants/Size";
 import {CustomRaisedButton} from "../../Components/CustomComponents/CustomButtons";
+import {signInRequest} from "../../Store/Firebase/Actions";
 
-export default class LoginPage extends React.Component<LoginPageProps> {
+export default class LoginPage extends React.Component {
 
     state = {
         email: "",
@@ -22,7 +23,7 @@ export default class LoginPage extends React.Component<LoginPageProps> {
     }
 
     signInRequest = (errorCallback: (message: string) => void) => () => {
-        this.props.signInRequest(this.state.email, this.state.password, errorCallback);
+        signInRequest(this.state.email, this.state.password, errorCallback);
     };
 
     render() {
@@ -83,8 +84,4 @@ export default class LoginPage extends React.Component<LoginPageProps> {
             </div>
         );
     }
-}
-
-interface LoginPageProps {
-    signInRequest: (email: string, password: string, errorCallback: (message: string) => void) => void;
 }

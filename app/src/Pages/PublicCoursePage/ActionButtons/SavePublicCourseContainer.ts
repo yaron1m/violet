@@ -1,34 +1,28 @@
 import {connect} from "react-redux";
-import {
-    sendSelectedPublicCourseToDatabase, updateSelectedPublicCourse,
-} from "../../../Store/SelectedPublicCourse/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
-import {isSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Selectors";
+import {sendSelectedPublicCourseToDatabase, updateSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Actions";
+import {getSelectedPublicCourse, isSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Selectors";
 import {openDialog, openSnackbar} from "../../../Store/Appearance/Actions";
 import SaveActionButton from "../../../Components/ActionButtons/SaveActionButton";
 import {getNextPublicCourseId} from "../../../Store/PublicCourses/Selectors";
-import {getSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Selectors";
 import {setIsSelectedOrder} from "../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
 import IPublicCourse from "../../../Interfaces/IPublicCourse";
 
 async function savePublicCourse(
     selectedPublicCourse: IPublicCourse,
-    actionButtonsLabels: any,
     nextPublicCourseId: number,
-    dialogText: any,
     dispatch: IDispatch
 ) {
     await fillMissingFields(selectedPublicCourse, nextPublicCourseId, dispatch);
 
     function success() {
-        const snackbarMessage = actionButtonsLabels.savedSuccessfully.replace("{0}", selectedPublicCourse.courseName);
+        const snackbarMessage = "קורס ציבורי {0} נשמר בהצלחה".replace("{0}", selectedPublicCourse.courseName);
         dispatch(openSnackbar(snackbarMessage));
         dispatch(setIsSelectedOrder());
     }
 
     function failure() {
-        dispatch(openDialog(dialogText.sendingToDatabaseFailedTitle, dialogText.sendingToDatabaseFailedContent));
+        dispatch(openDialog("שגיאה בשמירת קורס ציבורי", "חלה שגיאה בשמירת הקורס הציבורי בשרת"));
     }
 
     dispatch(sendSelectedPublicCourseToDatabase()).then(success, failure);
@@ -43,11 +37,9 @@ async function fillMissingFields(selectedPublicCourse: IPublicCourse, nextPublic
 
 function mapStateToProps(state: IState) {
     return {
-        actionButtonsLabels: getLabels(state).pages.publicCoursePage.actionButtons,
         isSelectedPublicCourse: isSelectedPublicCourse(state),
         selectedPublicCourse: getSelectedPublicCourse(state),
         nextPublicCourseId: getNextPublicCourseId(state),
-        dialogText: getLabels(state).pages.publicCoursePage.actionButtons,
     };
 }
 
@@ -57,16 +49,13 @@ function mapDispatchToProps(dispatch: IDispatch) {
     };
 }
 
-function mergeProps(stateProps: {
-    actionButtonsLabels: any; isSelectedPublicCourse: boolean; selectedPublicCourse: IPublicCourse; nextPublicCourseId: number; dialogText: any;
-}, dispatchProps: { dispatch: IDispatch }) {
+function mergeProps(stateProps: { isSelectedPublicCourse: boolean; selectedPublicCourse: IPublicCourse; nextPublicCourseId: number; },
+                    dispatchProps: { dispatch: IDispatch }) {
     return {
-        tooltip: stateProps.actionButtonsLabels.save,
+        tooltip: "שמור קורס",
         onClick: () => savePublicCourse(
             stateProps.selectedPublicCourse,
-            stateProps.actionButtonsLabels,
             stateProps.nextPublicCourseId,
-            stateProps.dialogText,
             dispatchProps.dispatch
         )
     };

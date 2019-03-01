@@ -1,12 +1,11 @@
 import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import * as _ from "lodash";
-import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import {getOrdersByOrganization} from "../../../../Store/Orders/Selectors";
 import {getValueOrEmptyString} from "../../../../Util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
 import IOrder, {IStringObject} from "../../../../Interfaces/IOrder";
+import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 
 export interface IContact extends IStringObject {
     contactFirstName: string;
@@ -72,40 +71,30 @@ function importContact(
 
 function mapStateToProps(state: IState, ownProps: ImportContactDialogContainerProps) {
     return {
-        dialogTitle: getOrderSectionsLabels(state).contacts.importContactsDialog.dialogTitle,
-        noContactsLabel: getOrderSectionsLabels(state).contacts.importContactsDialog.noContactsLabel as string,
         onRequestClose: ownProps.onRequestClose,
-
         contacts: getContacts(state),
-        tableHeaders: getOrderSectionsLabels(state).contacts.importContactsDialog.tableHeaders as IStringObject[],
+        tableHeaders: [
+            {pick: "בחר"},
+            {contactFirstName: "שם פרטי"},
+            {contactLastName: "שם משפחה"},
+            {contactJob: "תפקיד"},
+            {contactPhone1: "טלפון"},
+            {contactEmail: "דואר אלקטרוני"},
+        ] as IStringObject[],
     };
 }
 
 function mapDispatchToProps(dispatch: IDispatch, ownProps: ImportContactDialogContainerProps) {
+    const updateOrder = (key: string, value: string) => {
+        dispatch(updateSelectedOrder(key, value));
+    };
+    const getKey = (key: string) => ownProps.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key;
     return {
-        updateSelectedOrder: (key: string, value: string) => dispatch(updateSelectedOrder(key, value)),
-        getKey: (key: string) => ownProps.isFinancialContacts ? "financial" + key.charAt(0).toUpperCase() + key.slice(1) : key,
+        importContact: (contact: IContact) => importContact(contact, updateOrder, ownProps.onRequestClose, getKey)
     };
 }
 
-function mergeProps(stateProps: {
-    dialogTitle: any; noContactsLabel: string; onRequestClose: () => void; contacts: IContact[]; tableHeaders: IStringObject[];
-}, dispatchProps: {
-    updateSelectedOrder: (key: string, value: string) => void; getKey: (key: string) => string;
-}, ownProps: ImportContactDialogContainerProps) {
-    return {
-        dialogOpen: ownProps.dialogOpen,
-        dialogTitle: stateProps.dialogTitle,
-        noContactsLabel: stateProps.noContactsLabel,
-        contacts: stateProps.contacts,
-        tableHeaders: stateProps.tableHeaders,
-        onRequestClose: ownProps.onRequestClose,
-
-        importContact: (contact: IContact) => importContact(contact, dispatchProps.updateSelectedOrder, ownProps.onRequestClose, dispatchProps.getKey)
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ImportContactDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(ImportContactDialog);
 
 interface ImportContactDialogContainerProps {
     dialogOpen: boolean;

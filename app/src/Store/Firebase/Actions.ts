@@ -7,7 +7,6 @@ import {receiveLists} from "../Lists/Actions";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import {getLabels} from "../Labels/Selectors";
 import {receivePublicCourses} from "../PublicCourses/Actions";
 import {isLoggedIn} from "./Selectors";
 import {IDispatch, IGetState} from "../../Interfaces/ReduxInterfaces";
@@ -69,34 +68,32 @@ export function signInWithGoogle(errorCallback: (message: string) => void) {
 }
 
 export function signInRequest(email: string, password: string, errorCallback: (message: string) => void) {
-    return function signInRequest(dispatch: IDispatch, getState: IGetState) {
-        return firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(undefined, signInFailure);
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(undefined, signInFailure);
 
-        function signInFailure(error: firebase.auth.Error) {
-            switch (error.code) {
-                case "auth/invalid-email":
-                    errorCallback(getLabels(getState()).pages.loginPage.errors.invalidEmail);
-                    return;
+    function signInFailure(error: firebase.auth.Error) {
+        switch (error.code) {
+            case "auth/invalid-email":
+                errorCallback("דואר אלקטרוני לא תקין");
+                return;
 
-                case "auth/wrong-password":
-                    errorCallback(getLabels(getState()).pages.loginPage.errors.wrongPassword);
-                    return;
+            case "auth/wrong-password":
+                errorCallback("שם משתמש ו/או סיסמה אינם נכונים");
+                return;
 
-                case "auth/user-disabled":
-                    errorCallback(getLabels(getState()).pages.loginPage.errors.userDisabled);
-                    return;
+            case "auth/user-disabled":
+                errorCallback("המשתמש אינו תקין");
+                return;
 
-                case "auth/user-not-found":
-                    errorCallback(getLabels(getState()).pages.loginPage.errors.userNotFound);
-                    return;
+            case "auth/user-not-found":
+                errorCallback("משתמש אינו קיים");
+                return;
 
-                default:
-                    errorCallback(error.message);
-                    return;
-            }
+            default:
+                errorCallback(error.message);
+                return;
         }
-    };
+    }
 }
 
 export function afterSignedIn(user: firebase.User) {

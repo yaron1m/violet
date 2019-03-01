@@ -1,19 +1,12 @@
 import {connect} from "react-redux";
-import {
-    sendSelectedOrganizationToDatabase
-} from "../../../Store/SelectedOrganization/Actions";
-import {getLabels} from "../../../Store/Labels/Selectors";
+import {sendSelectedOrganizationToDatabase, setIsSelectedOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {getNextOrganizationId} from "../../../Store/Organizations/Selectors";
 import {openDialog, openSnackbar} from "../../../Store/Appearance/Actions";
 import SaveActionButton from "../../../Components/ActionButtons/SaveActionButton";
 import {getSelectedOrganization, isSelectedOrganization} from "../../../Store/SelectedOrganization/Selectors";
-import {setIsSelectedOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
-import {IStringObject} from "../../../Interfaces/IOrder";
 
 function saveExistingOrganization(
-    dialogText: IStringObject,
-    snackBarText: IStringObject,
     selectedOrganizationName: string,
     isSelectedOrganization: boolean,
     nextOrganizationId: number,
@@ -23,40 +16,31 @@ function saveExistingOrganization(
     sendSelectedOrganizationToDatabase: () => Promise<void>
 ) {
     if (!isSelectedOrganization) {
-        openDialog(
-            dialogText.noOrganizationSelectedTitle,
-            dialogText.noOrganizationSelectedContent);
+        openDialog("לא נבחר ארגון", "עדכון פרטי ארגון אפשרי רק עבור ארגונים קיימים, נסה לשמור ארגון חדש");
         return;
     }
     const promise = sendSelectedOrganizationToDatabase();
-    handleDatabasePromise(promise, dialogText, snackBarText, selectedOrganizationName, openDialog, openSnackbar, setIsSelectedOrganization);
+    handleDatabasePromise(promise, selectedOrganizationName, openDialog, openSnackbar, setIsSelectedOrganization);
 }
 
 function handleDatabasePromise(
     promise: Promise<void>,
-    dialogText: IStringObject,
-    snackBarText: IStringObject,
     selectedOrganizationName: string,
     openDialog: (title: string, content: string) => void,
     openSnackbar: (message: string) => void,
     setIsSelectedOrganization: () => void
 ) {
     promise.then(() => {
-        const snackbarMessage = snackBarText.savedSuccessfully.replace("{0}", selectedOrganizationName);
+        const snackbarMessage = `ארגון "${selectedOrganizationName}" נשמר בהצלחה`;
         openSnackbar(snackbarMessage);
         setIsSelectedOrganization();
     }).catch(() => {
-        openDialog(
-            dialogText.sendingToDatabaseFailedTitle,
-            dialogText.sendingToDatabaseFailedContent);
+        openDialog("שגיאה בשמירת פרטי ארגון", "חלה שגיאה בשמירת פרטי הארגון בשרת");
     });
 }
 
 function mapStateToProps(state: IState) {
     return {
-        tooltip: getLabels(state).pages.organizationPage.actionButtons.save as string,
-        dialogText: getLabels(state).pages.organizationPage.dialog as IStringObject,
-        snackBarText: getLabels(state).pages.organizationPage.snackBar,
         selectedOrganizationName: getSelectedOrganization(state).organizationName,
         isSelectedOrganization: isSelectedOrganization(state),
         nextOrganizationId: getNextOrganizationId(state),
@@ -73,9 +57,6 @@ function mapDispatchToProps(dispatch: IDispatch) {
 }
 
 function mergeProps(stateProps: {
-    tooltip: string;
-    dialogText: IStringObject;
-    snackBarText: IStringObject;
     selectedOrganizationName: string;
     isSelectedOrganization: boolean;
     nextOrganizationId: number;
@@ -86,10 +67,8 @@ function mergeProps(stateProps: {
     sendSelectedOrganizationToDatabase: () => Promise<void>;
 }) {
     return {
-        tooltip: stateProps.tooltip,
+        tooltip: "שמור ארגון",
         onClick: () => saveExistingOrganization(
-            stateProps.dialogText,
-            stateProps.snackBarText,
             stateProps.selectedOrganizationName,
             stateProps.isSelectedOrganization,
             stateProps.nextOrganizationId,

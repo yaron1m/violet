@@ -4,15 +4,13 @@ import {getOrganizationById} from "../Organizations/Selectors";
 import {isMatchingStatus} from "../../Util/OrderStatus/OrderStatusUtils";
 import {cutIfLong, isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import getActionRequiredOrdersArray from "./ActionRequiredOrderes";
-import {getLabels} from "../Labels/Selectors";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
-import {getOrderStatusLabel} from "../Labels/Selectors";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
 import {EntityType} from "../../Util/Constants/EntityType";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
-import {Status} from "../../Util/Constants/Status";
+import {getOrderStatusLabel, Status} from "../../Util/Constants/Status";
 import IOrder from "../../Interfaces/IOrder";
 import IPublicCourse from "../../Interfaces/IPublicCourse";
 
@@ -67,7 +65,7 @@ export function getFollowUpOrdersSummary(state: IState) {
     function map(order: IOrder) {
         const result: IFollowUpOrderSummary = {
             orderId: order.id,
-            status: getOrderStatusLabel(state, order),
+            status: getOrderStatusLabel(order),
             createdDate: order.createdDate,
             followUpDate: order.followUpDate,
             followUpDetails: cutIfLong(order.followUpDetails, 30),
@@ -75,7 +73,7 @@ export function getFollowUpOrdersSummary(state: IState) {
             topic: "",
         };
         if (isPublicCourseOrder(order)) {
-            result.topic = getLabels(state).orderTypes.publicCourse;
+            result.topic = "קורס ציבורי";
         } else {
             if (!_.isEmpty(order.lectureTimes)) {
                 result.topic = cutIfLong(order.lectureTimes[0].topic, 15);
@@ -107,7 +105,7 @@ export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
             date: lecture.date,
             topic: lecture.topic,
             orderId: course.courseName,
-            organizationName: getLabels(state).orderTypes.publicCourse,
+            organizationName: "קורס ציבורי",
 
             entityType: EntityType.publicCourse,
             entityId: course.id
@@ -145,16 +143,16 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
     function map(order: IOrder) {
         const result: IExpectedIncomeOrderSummary = {
             orderId: order.id,
-            status: cutIfLong(getOrderStatusLabel(state, order), 20),
+            status: cutIfLong(getOrderStatusLabel(order), 20),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             expectedPayDate: order.expectedPayDate,
-            totalSum: moneyFormat(order.totalSum, getLabels(state).currencyIcon),
+            totalSum: moneyFormat(order.totalSum),
             organizationName: cutIfLong(getOrganizationById(state, order.organizationId.toString()).organizationName, 25),
             topic: "",
             lectureDate: "",
         };
         if (isPublicCourseOrder(order)) {
-            result.topic = getLabels(state).orderTypes.publicCourse;
+            result.topic = "קורס ציבורי";
         } else {
             if (!_.isEmpty(order.lectureTimes)) {
                 result.lectureDate = order.lectureTimes[0].date;
@@ -182,7 +180,7 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
     function map(order: IOrder) {
         const result: IOrderSummary = {
             orderId: order.id,
-            status: getOrderStatusLabel(state, order),
+            status: getOrderStatusLabel(order),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
             date: "",
             topic: "",
@@ -195,7 +193,7 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
 
             const minLecture = _.minBy(publicCourse.lectures, lecture => new Date(lecture.date));
             result.date = minLecture && minLecture.date ? minLecture.date : "";
-            result.topic = getLabels(state).orderTypes.publicCourse + " " + publicCourse.courseName;
+            result.topic = "קורס ציבורי " + publicCourse.courseName;
         } else {
             if (!_.isEmpty(order.lectureTimes)) {
                 result.date = order.lectureTimes[0].date;

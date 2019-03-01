@@ -6,7 +6,6 @@ import {
     getSelectedPublicCourseParticipants,
     isSelectedPublicCourse
 } from "./Selectors";
-import * as labelSelectors from "../Labels/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 
 function getParticipant(id: number) {
@@ -89,7 +88,6 @@ const state = {
         10: {organizationName: "OrgA"},
         11: {organizationName: "OrgB"}
     },
-    labels: {currencyIcon: "X"}
 } as unknown as IState;
 
 const emptyState = {
@@ -146,7 +144,6 @@ describe("Store/selected/selectors", () => {
 
     it("should return summary of participants of matching course", () => {
         // @ts-ignore
-        labelSelectors.getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 
         expect(result).toHaveLength(4);
@@ -155,9 +152,9 @@ describe("Store/selected/selectors", () => {
             participantFirstName: "first1",
             participantLastName: "last1",
             numberOfLecturesAttending: 2,
-            participantCost: "100.00 X",
+            participantCost: "100.00 ₪",
             orderId: 123,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgA",
             proformaInvoiceNumber: "1122",
         });
@@ -165,9 +162,9 @@ describe("Store/selected/selectors", () => {
             participantFirstName: "first2",
             participantLastName: "last2",
             numberOfLecturesAttending: 2,
-            participantCost: "200.00 X",
+            participantCost: "200.00 ₪",
             orderId: 123,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgA",
             proformaInvoiceNumber: "1122",
         });
@@ -175,18 +172,18 @@ describe("Store/selected/selectors", () => {
             participantFirstName: "first5",
             participantLastName: "last5",
             numberOfLecturesAttending: 2,
-            participantCost: "500.00 X",
+            participantCost: "500.00 ₪",
             orderId: 125,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgB",
         });
         expect(result[3]).toEqual({
             participantFirstName: "first6",
             participantLastName: "last6",
             numberOfLecturesAttending: 2,
-            participantCost: "600.00 X",
+            participantCost: "600.00 ₪",
             orderId: 125,
-            status: undefined,
+            status: "פנייה",
             organizationName: "OrgB",
         });
     });

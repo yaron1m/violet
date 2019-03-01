@@ -11,7 +11,7 @@ import {
     updatePublicCourseParticipant,
     updateSelectedOrder
 } from "./Actions";
-import {HIDE_REQUIRED_FIELDS} from "../Appearance/ActionTypes";
+import {HIDE_REQUIRED_FIELDS, OPEN_SNACKBAR} from "../Appearance/ActionTypes";
 import {sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
 import {getMockedDispatch} from "../../Util/TestUtils";
 import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
@@ -681,15 +681,21 @@ describe("Selected order actions", () => {
         };
 
         const dispatch = jest.fn();
-        // thunkFunction(dispatch, getState);
 
         dispatch.mockReturnValue(Promise.resolve());
         await thunkFunction(dispatch, getState);
 
-        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenCalledTimes(5);
         expect(dispatch.mock.calls[0][0].name).toEqual("fillNewOrderMissingFields");
         expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
         expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
+        expect(dispatch).toHaveBeenNthCalledWith(4, {
+            type: OPEN_SNACKBAR,
+            message: "הזמנה מספר 123456 נשמרה בהצלחה"
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(5, {
+            type: SET_IS_SELECTED_ORDER
+        });
     });
 
     it("should save new order and update organization", async () => {
@@ -726,11 +732,18 @@ describe("Selected order actions", () => {
         dispatch.mockReturnValue(Promise.resolve());
         await thunkFunction(dispatch, getState);
 
-        expect(dispatch).toHaveBeenCalledTimes(4);
+        expect(dispatch).toHaveBeenCalledTimes(6);
         expect(dispatch.mock.calls[0][0].name).toEqual("fillNewOrderMissingFields");
         expect(dispatch.mock.calls[1][0].name).toEqual("sendSelectedOrderToDatabase");
         expect(dispatch.mock.calls[2][0].type).toEqual(HIDE_REQUIRED_FIELDS);
         expect(dispatch.mock.calls[3][0].name).toEqual("sendSelectedOrganizationToDatabase");
+        expect(dispatch).toHaveBeenNthCalledWith(5, {
+            type: OPEN_SNACKBAR,
+            message: "הזמנה מספר 123456 נשמרה בהצלחה"
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(6, {
+            type: SET_IS_SELECTED_ORDER
+        });
     });
 
     it("should calculate status after updating the order", () => {

@@ -4,7 +4,6 @@ import {composeWithDevTools} from "redux-devtools-extension";
 
 import appearance from "./Appearance/Reducer";
 import firebase from "./Firebase/Reducer";
-import labels from "./Labels/Reducer";
 import lists from "./Lists/Reducer";
 import orders from "./Orders/Reducer";
 import organizations from "./Organizations/Reducer";
@@ -17,7 +16,6 @@ import {initFirebase} from "./Firebase/Actions";
 const combinedReducers = combineReducers({
     appearance,
     firebase,
-    labels,
     lists,
     orders,
     organizations,

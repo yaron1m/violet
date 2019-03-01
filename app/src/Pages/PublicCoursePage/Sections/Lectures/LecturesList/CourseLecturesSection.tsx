@@ -6,7 +6,7 @@ import AddCourseLectureButtonContainer from "../AddLectureButton/AddCourseLectur
 
 export default function CourseLecturesSection(props: CourseLecturesSectionProps) {
     return (
-        <CustomPaper title={props.sectionName}>
+        <CustomPaper title="הרצאות">
             <AddCourseLectureButtonContainer/>
 
             {_.map(props.lecturesIds, (lectureId, index) =>
@@ -21,6 +21,5 @@ export default function CourseLecturesSection(props: CourseLecturesSectionProps)
 }
 
 interface CourseLecturesSectionProps {
-    sectionName: string;
     lecturesIds: number[];
 }

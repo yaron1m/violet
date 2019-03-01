@@ -1,13 +1,12 @@
 import _ from "lodash";
 import {connect} from "react-redux";
-import {getStatusLabels} from "../../Store/Labels/Selectors";
 import {Size} from "../../Util/Constants/Size";
 import CustomSelectField from "../../Components/CustomComponents/CustomSelectField";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import {Status} from "../../Util/Constants/Status";
+import {getStatusLabels, Status} from "../../Util/Constants/Status";
 
-function getStatuses(state: IState) {
-    const statusObjects = _.map(getStatusLabels(state),
+function getStatuses() {
+    const statusObjects = _.map(getStatusLabels(),
         (label, status) => {
             return {
                 key: status,
@@ -23,7 +22,7 @@ function mapStateToProps(state: IState, ownProps: FilterStatusSelectFieldProps) 
         title: "סנן לפי סטאטוס",
         value: ownProps.filterStatus as string,
         onChange: (value: string) => ownProps.updateStatus(value as Status),
-        options: getStatuses(state),
+        options: getStatuses(),
         size: Size.XL,
     };
 }

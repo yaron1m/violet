@@ -1,24 +1,23 @@
 import React from "react";
-import SearchBox from './SearchBox';
-import {connect} from 'react-redux';
-import {getLabels} from "../../../Store/Labels/Selectors";
+import SearchBox from "./SearchBox";
+import {connect} from "react-redux";
 import {getOrganizationById, getOrganizations} from "../../../Store/Organizations/Selectors";
 import {selectOrganization} from "../../../Store/SelectedOrganization/Actions";
 import {getOrders, getPublicCourseParticipantsSummary} from "../../../Store/Orders/Selectors";
 import {redirect} from "../../../Util/HistoryUtil";
 import Colors from "../../../Util/Constants/Colors";
 import * as _ from "lodash";
-import EventIcon from '@material-ui/icons/EventNote';
-import BusinessIcon from '@material-ui/icons/Business';
-import PersonIcon from '@material-ui/icons/Person';
+import EventIcon from "@material-ui/icons/EventNote";
+import BusinessIcon from "@material-ui/icons/Business";
+import PersonIcon from "@material-ui/icons/Person";
 import {flexStyle} from "../../../Components/CustomComponents/CustomPaper";
-import {IDispatch, IState} from '../../../Interfaces/ReduxInterfaces';
-import {ISuggestion} from '../../../Components/AutoSuggest';
+import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
+import {ISuggestion} from "../../../Components/AutoSuggest";
 import {EntityType} from "../../../Util/Constants/EntityType";
-import IOrganization from '../../../Interfaces/IOrganization';
-import IOrder from '../../../Interfaces/IOrder';
-import {selectOrder} from '../../../Store/SelectedOrder/Actions';
-import {Path} from '../../../Pages/Path';
+import IOrganization from "../../../Interfaces/IOrganization";
+import IOrder from "../../../Interfaces/IOrder";
+import {selectOrder} from "../../../Store/SelectedOrder/Actions";
+import {Path} from "../../../Pages/Path";
 
 export interface SearchSuggestion extends ISuggestion {
     entityType?: EntityType;
@@ -97,7 +96,12 @@ function renderSuggestion(suggestion: SearchSuggestion) {
 }
 
 export function getSuggestions(organizations: IOrganization[], orders: IOrder[],
-                               publicCourseParticipants: { orderId: number; organizationId: number; participantFirstName: string; participantLastName: string; publicCourseName: string; }[],
+                               publicCourseParticipants: {
+                                   orderId: number;
+                                   organizationId: number; participantFirstName:
+                                       string; participantLastName: string;
+                                   publicCourseName: string;
+                               }[],
                                getOrganizationName: (id: string) => string)
     : SearchSuggestion[] {
     if (_.isEmpty(organizations))
@@ -141,7 +145,6 @@ function mapStateToProps(state: IState) {
     const getOrganizationName = (id: string) => getOrganizationById(state, id).organizationName;
 
     return {
-        hintText: getLabels(state).header.searchLineHint,
         suggestions: getSuggestions(organizations, orders, publicCourseParticipantsSummary, getOrganizationName) as ISuggestion[],
     };
 }

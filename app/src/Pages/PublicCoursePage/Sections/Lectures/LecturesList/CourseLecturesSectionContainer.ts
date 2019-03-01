@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../../Store/Labels/Selectors";
 import CourseLecturesSection from "./CourseLecturesSection";
 import {getSelectedPublicCourse} from "../../../../../Store/SelectedPublicCourse/Selectors";
 import _ from "lodash";
@@ -20,7 +19,6 @@ function getLecturesIdsOrderedByDate(selectedPublicCourse: IPublicCourse) {
 
 function mapStateToProps(state: IState) {
     return {
-        sectionName: getLabels(state).pages.publicCoursePage.sections.courseLecturesSectionName,
         lecturesIds: getLecturesIdsOrderedByDate(getSelectedPublicCourse(state)),
     };
 }

@@ -1,16 +1,22 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
 import CustomPaperTable from "../../../../Components/Table/CustomPaperTable";
 import {getLecturesDetails} from "../../../../Store/SelectedPublicCourse/Selectors";
 import {IState} from "../../../../Interfaces/ReduxInterfaces";
+import {IStringObject} from "../../../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
     const details = getLecturesDetails(state);
     return {
-        title: getLabels(state).pages.publicCoursePage.sections.courseLectureDetailsSectionName,
+        title: "פרטי ההרצאות",
         elements: details,
-        tableHeaders: getLabels(state).pages.publicCoursePage.LectureDetailsTableHeaders,
         onEditButton: () => {},
+        tableHeaders: [
+            {date: "תאריך"},
+            {topic: "נושא"},
+            {participantsCount: "מספר משתתפים"},
+            {price: "מחיר ללקוח"},
+            {income: "הכנסות"},
+        ] as IStringObject[],
     };
 }
 

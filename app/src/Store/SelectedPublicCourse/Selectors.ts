@@ -1,10 +1,10 @@
 import {getOrders} from "../Orders/Selectors";
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {getLabels, getStatusLabel} from "../Labels/Selectors";
 import {isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
+import {getStatusLabel} from "../../Util/Constants/Status";
 
 export function getSelectedPublicCourse(state: IState) {
     return toMutable(state.selectedPublicCourse).publicCourse;
@@ -59,10 +59,10 @@ export function getSelectedPublicCourseParticipants(state: IState) {
             participantFirstName: participant.participantFirstName,
             participantLastName: participant.participantLastName,
             numberOfLecturesAttending: participant.lecturesAttending ? participant.lecturesAttending.length : 0,
-            participantCost: moneyFormat(participant.participantCost, getLabels(state).currencyIcon),
+            participantCost: moneyFormat(participant.participantCost),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             orderId: order.id,
-            status: getStatusLabel(state, order.status),
+            status: getStatusLabel(order.status),
             organizationName,
         } as ISelectedPublicCourseParticipantsSummary;
     });

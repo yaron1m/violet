@@ -1,6 +1,5 @@
 import * as Selectors from "./Selectors";
 import {Status} from "../../Util/Constants/Status";
-import * as labelsSelectors from "../Labels/Selectors";
 import * as organizationSelectors from "../Organizations/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {EntityType} from "../../Util/Constants/EntityType";
@@ -114,23 +113,20 @@ describe("Store/Orders/selectors", () => {
     });
 
     it("getFollowUpOrdersSummary - valid", () => {
-        // @ts-ignore
-        labelsSelectors.getOrderStatusLabel = jest.fn((state, order) => order.status);
-
         expect(Selectors.getFollowUpOrdersSummary(state))
             .toEqual([
                 {
                     orderId: 1002,
                     organizationName: "orgName",
                     topic: "topic",
-                    status: Status.order,
+                    status: "הזמנה + המשך טיפול",
                     followUpDate: 111,
                     followUpDetails: "bla",
                     createdDate: 123,
                 }, {
                     orderId: 1003,
                     organizationName: "orgName",
-                    status: Status.approvedOrder,
+                    status: "הזמנה מאושרת + המשך טיפול",
                     followUpDate: 222,
                     followUpDetails: "bla bla",
                     createdDate: 456,

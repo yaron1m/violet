@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import _ from "lodash";
 import {selectOrganization, updateSelectedOrganization} from "../../../../Store/SelectedOrganization/Actions";
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import {getOrganizations} from "../../../../Store/Organizations/Selectors";
 import OrganizationSection, {IOrganizationSuggestion} from "./OrganizationSection";
 import {toSuggestions} from "../../../../Components/AutoSuggest";
@@ -11,13 +10,14 @@ import {getReferralWays} from "../../../../Store/Lists/Selectors";
 import {createOptions} from "../../../../Components/CustomComponents/CustomSelectField";
 import {getSelectedOrganization} from "../../../../Store/SelectedOrganization/Selectors";
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
+import {paymentConditionLabels} from "../../../../Util/Constants/PaymentCondition";
 
 function mapStateToProps(state: IState, ownProps: { fullDetails: boolean }) {
     return {
         fullDetails: ownProps.fullDetails,
         organization: getSelectedOrganization(state),
         requiredFields: getRequiredFieldsObject(state).organization,
-        paymentConditionsSuggestions: toSuggestions(_.values(getOrderSectionsLabels(state).organization.paymentConditions)),
+        paymentConditionsSuggestions: toSuggestions(_.values(paymentConditionLabels)),
         referralWayOptions: createOptions(getReferralWays(state)),
         organizationSuggestions: getOrganizations(state).map(
             (org) => ({
