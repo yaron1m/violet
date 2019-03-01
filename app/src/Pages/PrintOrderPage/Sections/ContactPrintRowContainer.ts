@@ -2,10 +2,11 @@ import {connect} from "react-redux";
 import {getOrderSectionsLabels} from "../../../Store/Labels/Selectors";
 import ContactsPrintRow from "./ContactPrintRow";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
+import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 
 function mapStateToProps(state: IState, ownProps: { isFinancial: boolean }) {
     return {
-        financialContactTitle: getOrderSectionsLabels(state).payment.financialContactTitle,
+        selectedOrder: getSelectedOrder(state),
         isFinancial: ownProps.isFinancial
     };
 }

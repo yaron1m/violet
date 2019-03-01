@@ -7,7 +7,7 @@ import {IState} from "../../../Interfaces/ReduxInterfaces";
 function mapStateToProps(state: IState) {
     return {
         sectionName: getOrderSectionsLabels(state).followUp.sectionName,
-        display: getSelectedOrder(state).followUpRequired,
+        selectedOrder: getSelectedOrder(state),
     };
 }
 

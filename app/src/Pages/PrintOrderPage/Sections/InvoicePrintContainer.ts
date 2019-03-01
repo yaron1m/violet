@@ -1,11 +1,11 @@
 import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../Store/Labels/Selectors";
 import InvoicePrintSection from "./InvoicePrint";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
+import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 
 function mapStateToProps(state: IState) {
     return {
-        sectionName: getOrderSectionsLabels(state).invoice.sectionName,
+        selectedOrder: getSelectedOrder(state),
     };
 }
 

@@ -1,17 +1,19 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
-import {PrintOrganizationConnectedText} from "./ConnectedCustomComponents/PrintOrganizationConnectedFields";
+import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
+import IOrganization from "../../../Interfaces/IOrganization";
 
-export default function (props: { sectionName: string }) {
+export default function (props: { selectedOrganization: IOrganization }) {
     return (
-        <PrintSection title={props.sectionName}>
-            <PrintOrganizationConnectedText name="organizationName"/>
-            <PrintOrganizationConnectedText name="organizationAddress"/>
-            <PrintOrganizationConnectedText name="organizationCity"/>
-            <PrintOrganizationConnectedText name="organizationPostalCode"/>
-            <PrintOrganizationConnectedText name="companyId"/>
-            <PrintOrganizationConnectedText name="paymentConditions"/>
-            <PrintOrganizationConnectedText name="howReachedUs"/>
+        <PrintSection title="פרטי הארגון">
+            <PrintTextField value={props.selectedOrganization.organizationName} title="שם הארגון"/>
+            <PrintTextField value={props.selectedOrganization.organizationAddress} title="כתובת"/>
+            <PrintTextField value={props.selectedOrganization.organizationCity} title="עיר"/>
+            <PrintTextField value={props.selectedOrganization.organizationPostalCode} title="מיקוד"/>
+            <PrintTextField value={props.selectedOrganization.companyId} title="ח.פ / ע.מ"/>
+            <PrintTextField value={props.selectedOrganization.paymentConditions} title="תנאי תשלום"/>
+            <PrintTextField value={props.selectedOrganization.referralWay} title="איך הגיע אלינו"/>
+            <PrintTextField value={props.selectedOrganization.referralWayDetails} title="פרטי ההגעה"/>
         </PrintSection>
     );
 }

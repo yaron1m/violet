@@ -1,16 +1,19 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
-import {PrintOrderConnectedBoolean, PrintOrderConnectedDate, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
+import IOrder from "../../../Interfaces/IOrder";
+import PrintBoolean from "../../../Components/CustomComponents/OrderPrint/PrintBoolean";
+import PrintDate from "../../../Components/CustomComponents/OrderPrint/PrintDate";
+import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
 
-export default function (props: { sectionName: string, display: boolean }) {
-    if (!props.display)
+export default function (props: { selectedOrder: IOrder }) {
+    if (!props.selectedOrder.followUpRequired)
         return null;
 
     return (
-        <PrintSection title={props.sectionName}>
-            <PrintOrderConnectedBoolean name="followUpRequired"/>
-            <PrintOrderConnectedDate name="followUpDate"/>
-            <PrintOrderConnectedText name="followUpDetails"/>
+        <PrintSection title="המשך טיפול">
+            <PrintBoolean value={props.selectedOrder.followUpRequired} title="נדרש המשך טיפול"/>
+            <PrintDate value={props.selectedOrder.followUpDate} title="תאריך המשך טיפול"/>
+            <PrintTextField value={props.selectedOrder.followUpDetails} title="פרטי המשך טיפול"/>
         </PrintSection>
     );
 }

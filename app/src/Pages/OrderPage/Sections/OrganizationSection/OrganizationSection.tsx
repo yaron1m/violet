@@ -66,7 +66,7 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
             </div>
             <div style={flexStyle}>
                 <CustomSelectField
-                    title="איך הגיע אלינו ההגעה"
+                    title="איך הגיע אלינו"
                     value={org.referralWay}
                     isRequired={_.includes(props.requiredFields, "referralWay")}
                     onChange={props.onOrganizationChange("referralWay")}
