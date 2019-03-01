@@ -1,8 +1,8 @@
 import _ from "lodash";
 import IOrder from "../../../../Interfaces/IOrder";
 
-const travelKmCost = 5.34; // TODO extract to const
-const vatRate = 0.17; // TODO extract to const
+const travelKmCost = 5.34;
+const vatRate = 0.17;
 export default function calculateSum(selectedOrder: IOrder, updateSelectedOrder: (key: string, value: any) => void) {
 
     try {
