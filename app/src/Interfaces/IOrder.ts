@@ -34,7 +34,11 @@ export default interface IOrder {
     orderApproved: boolean;
     sameAudience: boolean;
     rejected: boolean;
+    rejectionReason: string;
+    rejectionDetails: string;
     cancelled: boolean;
+    cancellationReason: string;
+    cancellationDetails: string;
     lectureTimes: ILectureTime[];
 
     // Public course:
@@ -78,6 +82,63 @@ export default interface IOrder {
     notes: string;
 }
 
+export type IOrderBooleanField = "projector" |
+    "soundSystem" |
+    "microphone" |
+    "parking" |
+    "orderApproved" |
+    "sameAudience" |
+    "rejected" |
+    "cancelled" |
+    "followUpRequired";
+
+export type IOrderStringField =
+    "changedDate" |
+    "createdDate" |
+    "contactFirstName" |
+    "contactLastName" |
+    "contactPhone1" |
+    "contactPhone2" |
+    "contactEmail" |
+    "contactJob" |
+    "contactPhoneExtension" |
+    "contactFax" |
+    "street" |
+    "streetNumber" |
+    "city" |
+    "location" |
+    "audienceType" |
+    "daySchedule" |
+    "followUpDate" |
+    "followUpDetails" |
+    "cost" |
+    "oneWayDistance" |
+    "travelExpenses" |
+    "extraCosts" |
+    "sum" |
+    "vat" |
+    "totalSum" |
+    "financialContactFirstName" |
+    "financialContactLastName" |
+    "financialContactPhone1" |
+    "financialContactPhone2" |
+    "financialContactEmail" |
+    "financialContactJob" |
+    "financialContactPhoneExtension" |
+    "financialContactFax" |
+    "proformaInvoiceNumber" |
+    "proformaInvoiceDate" |
+    "expectedPayDate" |
+    "internalOrderNumber" |
+    "taxInvoiceNumber" |
+    "taxInvoiceDate" |
+    "receiptNumber" |
+    "notes" |
+    "rejectionReason" |
+    "rejectionDetails" |
+    "cancellationReason" |
+    "cancellationDetails";
+
 export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
 
 export type IStringObject = { [key: string]: string };
@@ -93,7 +154,7 @@ export interface ILectureTime {
     travelTime: string;
 }
 
-export type IPublicCourseParticipantField =
+export type IPublicCourseParticipantStringField =
     "idNumber"
     | "lecturesAttending"
     | "email"
@@ -106,8 +167,12 @@ export interface IPublicCourseParticipant {
     idNumber: string;
     lecturesAttending: number[];
     email: string;
+    job: string;
     participantCost: string;
     participantFirstName: string;
     participantLastName: string;
+    participantEnglishFirstName: string;
+    participantEnglishLastName: string;
     phone: string;
+    isqMember: boolean;
 }

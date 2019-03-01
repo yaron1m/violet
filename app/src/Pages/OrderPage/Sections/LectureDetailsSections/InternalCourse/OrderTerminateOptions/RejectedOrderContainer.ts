@@ -10,16 +10,18 @@ import {IDispatch, IState} from "../../../../../../Interfaces/ReduxInterfaces";
 function mapStateToProps(state: IState) {
     return {
         show: getSelectedOrder(state).rejected === true,
-        selectFieldName: "rejectionReason",
-        detailsFieldName: "rejectionDetails",
+        selectFieldName: "rejectionReason" as "rejectionReason",
+        selectFieldTitle: "סיבת דחיה",
+        detailsFieldName: "rejectionDetails" as "rejectionDetails",
+        detailsFieldTitle: "פרטי הדחיה",
         options: createOptions(getRejectionReasons(state)),
     };
 }
 
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
-        updateAction: (key: string, value: any) => {
-            dispatch(updateSelectedOrder(key, value));
+        onSelectFieldChange: (value: any) => {
+            dispatch(updateSelectedOrder("rejectionReason", value));
 
             // Allow only one terminating status
             if (value === true)

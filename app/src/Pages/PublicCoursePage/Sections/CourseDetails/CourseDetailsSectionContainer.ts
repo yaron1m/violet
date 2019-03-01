@@ -1,12 +1,20 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
 import CourseDetailsSection from "./CourseDetailsSection";
-import {IState} from "../../../../Interfaces/ReduxInterfaces";
+import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
+import {getSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Selectors";
+import {updateSelectedPublicCourse} from "../../../../Store/SelectedPublicCourse/Actions";
 
 function mapStateToProps(state: IState) {
     return {
-        sectionName: getLabels(state).pages.publicCoursePage.sections.courseDetailsSectionName,
+        selectedPublicCourse: getSelectedPublicCourse(state),
     };
 }
 
-export default connect(mapStateToProps)(CourseDetailsSection);
+function mapDispatchToProps(dispatch: IDispatch) {
+    return {
+        onChange: (key: string) => (value: string) => dispatch(updateSelectedPublicCourse(key, value)),
+        onChangeBoolean: (key: string) => (value: boolean) => dispatch(updateSelectedPublicCourse(key, value)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseDetailsSection);

@@ -1,8 +1,7 @@
 import React from "react";
 import CustomText, {CustomTextFieldProps} from "./CustomTextField";
-import {AbstractCustomFieldProps} from './AbstractCustomField';
 
-export default function CustomDatePicker(props: CustomTextFieldProps & AbstractCustomFieldProps) {
+export default function CustomDatePicker(props: CustomTextFieldProps) {
     return (
         <CustomText
             type="date"

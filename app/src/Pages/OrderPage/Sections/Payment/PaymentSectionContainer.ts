@@ -1,20 +1,13 @@
 import PaymentSection from "./PaymentSection";
 import {connect} from "react-redux";
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
 import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import calculateSum from "./CalculateSum";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
-import IOrder, {IStringObject} from "../../../../Interfaces/IOrder";
+import IOrder from "../../../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
-    const labels = getOrderSectionsLabels(state).payment as IStringObject;
-
     return {
-        sectionName: labels.sectionName,
-        financialContactTitle: labels.financialContactTitle,
-        buttonTooltip: labels.buttonTooltip,
-
         selectedOrder: getSelectedOrder(state),
     };
 }
@@ -25,15 +18,9 @@ function mapDispatchToProps(dispatch: IDispatch) {
     };
 }
 
-function mergeProps(stateProps: {
-    sectionName: string; financialContactTitle: string; buttonTooltip: string; selectedOrder: IOrder;
-}, dispatchProps: {
-    updateAction: (key: string, value: any) => void
-}) {
+function mergeProps(stateProps: { selectedOrder: IOrder },
+                    dispatchProps: { updateAction: (key: string, value: any) => void }) {
     return {
-        sectionName: stateProps.sectionName,
-        financialContactTitle: stateProps.financialContactTitle,
-        buttonTooltip: stateProps.buttonTooltip,
         calculateSum: () => calculateSum(stateProps.selectedOrder, dispatchProps.updateAction)
     };
 }

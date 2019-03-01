@@ -1,9 +1,9 @@
 import React from "react";
-import SingleLectureTime from "./SingleLectureTime";
+import SingleLectureTimeContainer from "./SingleLectureTimeContainer";
 import CustomPaper from "../../../../../../Components/CustomComponents/CustomPaper";
 import CustomDivider from "../../../../../../Components/CustomComponents/CustomDivider";
 import AddLectureTimeButtonContainer from "./AddLectureTimeButtonContainer";
-import {ISuggestion} from '../../../../../../Components/AutoSuggest';
+import {ISuggestion} from "../../../../../../Components/AutoSuggest";
 
 export default function LectureTimesDetails(props: LectureTimesDetails) {
     if (props.lectureTimesIndexes.length === 0)
@@ -15,11 +15,10 @@ export default function LectureTimesDetails(props: LectureTimesDetails) {
             <CustomPaper>
                 {props.lectureTimesIndexes.map((lectureTimeIndex, order) =>
                     <React.Fragment key={lectureTimeIndex}>
-                        <SingleLectureTime
+                        <SingleLectureTimeContainer
                             key={lectureTimeIndex}
                             index={order}
                             lectureTimeIndex={lectureTimeIndex}
-                            offeredLectures={props.offeredLectures}
                         />
 
                         {order < props.lectureTimesIndexes.length - 1 ? <CustomDivider/> : null}
@@ -32,5 +31,4 @@ export default function LectureTimesDetails(props: LectureTimesDetails) {
 
 interface LectureTimesDetails {
     lectureTimesIndexes: number[];
-    offeredLectures: ISuggestion[];
 }

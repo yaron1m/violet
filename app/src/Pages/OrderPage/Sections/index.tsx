@@ -4,13 +4,13 @@ import LectureDetailsSection from "./LectureDetailsSections/LecturesDetailsSecti
 import ContactsSection from "./ContactSection/ContactSectionContainer";
 import FollowUpSection from "./FollowUp/FollowUpSectionContainer";
 import PaymentSection from "./Payment/PaymentSectionContainer";
-import InvoiceSection from "./InvoiceSection/InvoiceSectionContainer";
-import NotesSection from "./Notes/NotesSectionContainer";
+import InvoiceSection from "./InvoiceSection/InvoiceSection";
+import NotesSection from "./Notes/NotesSection";
 
 export default function OrderForm() {
     return (
         <div>
-            <OrganizationSection/>
+            <OrganizationSection fullDetails={false}/>
 
             <ContactsSection/>
 

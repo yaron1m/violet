@@ -1,30 +1,26 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import AbstractCustomField from "./AbstractCustomField";
+import {AbstractCustomFieldProps} from "./AbstractCustomFieldProps";
 import AutoSuggest, {ISuggestion} from "../AutoSuggest";
+import {getFieldWidth} from "../../Util/Constants/Size";
 
-export default class CustomAutoComplete extends AbstractCustomField<CustomAutoCompleteProps> {
-
-    render() {
-        return (
-            <AutoSuggest
-                suggestions={this.props.suggestions ? this.props.suggestions : []}
-                helperText={this.title}
-                value={this.state.value ? this.state.value : ""} // A controlled element should not have null or undefined as value
-                onInputChange={(newValue) => this.handleChange(newValue)}
-                onSuggestionSelected={this.props.onSuggestionSelected ? this.props.onSuggestionSelected : function () {
-                }}
-                disabled={this.props.disabled}
-                fullWidth={this.props.fullWidth}
-                error={super.shouldShowError()}
-                width={this.width}
-            />
-        );
-
-    }
+export default function CustomAutoComplete(props: CustomAutoCompleteProps) {
+    return (
+        <AutoSuggest
+            suggestions={props.suggestions || []}
+            helperText={props.title}
+            value={props.value || ""} // A controlled element should not have null or undefined as value
+            onInputChange={props.onChange}
+            onSuggestionSelected={props.onSuggestionSelected || function () {
+            }}
+            disabled={props.disabled}
+            fullWidth={props.fullWidth}
+            error={props.isRequired && !props.value}
+            width={getFieldWidth(props.fullWidth, props.size)}
+        />
+    );
 }
 
-interface CustomAutoCompleteProps {
+interface CustomAutoCompleteProps extends AbstractCustomFieldProps<string> {
     suggestions?: ISuggestion[];
     fullWidth?: boolean;
     disabled?: boolean;

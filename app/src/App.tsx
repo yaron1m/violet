@@ -1,12 +1,12 @@
 import React from "react";
-import Header from './Containers/Header';
-import LoginPage from './Pages/LoginPage/LoginPageContainer';
-import AppDialog from './Containers/Messages/AppDialogContainer';
-import AppSnackbar from './Containers/Messages/AppSnackBarContainer';
-import {theme} from './ThemeDefault';
-import Colors from './Util/Constants/Colors';
-import {MuiThemeProvider} from '@material-ui/core/styles';
-import RTL from './jss-rtl';
+import Header from "./Containers/Header";
+import LoginPage from "./Pages/LoginPage/LoginPageContainer";
+import AppDialog from "./Containers/Messages/AppDialogContainer";
+import AppSnackbar from "./Containers/Messages/AppSnackBarContainer";
+import {theme} from "./ThemeDefault";
+import Colors from "./Util/Constants/Colors";
+import {MuiThemeProvider} from "@material-ui/core/styles";
+import RTL from "./jss-rtl";
 
 export default class App extends React.Component<AppProps> {
 
@@ -24,8 +24,8 @@ export default class App extends React.Component<AppProps> {
         const styles = {
             app: {
                 maxWidth: 1200,
-                marginRight: 'auto',
-                marginLeft: 'auto',
+                marginRight: "auto",
+                marginLeft: "auto",
                 marginTop: 80,
             },
             container: {
@@ -35,7 +35,7 @@ export default class App extends React.Component<AppProps> {
             footer: {
                 marginBottom: 5,
                 marginTop: 10,
-                textAlign: 'center' as 'center',
+                textAlign: "center" as "center",
                 fontSize: 10,
                 color: Colors.textGray,
             }
@@ -44,7 +44,7 @@ export default class App extends React.Component<AppProps> {
         return (
             <MuiThemeProvider theme={theme}>
                 <RTL>
-                    <div dir={this.props.rtl ? 'rtl' : ''}>
+                    <div dir={this.props.rtl ? "rtl" : ""}>
 
                         <Header/>
 
@@ -55,7 +55,7 @@ export default class App extends React.Component<AppProps> {
                         </div>
 
                         <div style={styles.footer}>
-                            Copyright v4.0.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
+                            Copyright v4.1.0 © {(new Date()).getFullYear()} C-Point LTD - All Rights Reserved
                         </div>
 
                         <AppDialog/>

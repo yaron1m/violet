@@ -1,14 +1,21 @@
 import {connect} from "react-redux";
-import PropTypes from "prop-types";
 import {getSelectedPublicCourseLecture} from "../../../../../Store/SelectedPublicCourse/Selectors";
 import GuestLecturerFields from "./GuestLecturerFields";
-import {IState} from "../../../../../Interfaces/ReduxInterfaces";
+import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
+import {updatePublicCourseLecture} from "../../../../../Store/SelectedPublicCourse/Actions";
 
-function mapStateToProps(state: IState, ownProps: {lectureId: number}) {
+function mapStateToProps(state: IState, ownProps: { lectureId: number }) {
     return {
-        lectureId: ownProps.lectureId,
-        showGuestLecturerDetails: getSelectedPublicCourseLecture(state, ownProps.lectureId).guestLecturer === true
+        publicCourseLecture: getSelectedPublicCourseLecture(state, ownProps.lectureId),
+        requiredFields: [],
     };
 }
 
-export default connect(mapStateToProps)(GuestLecturerFields);
+function mapDispatchToProps(dispatch: IDispatch, ownProps: { lectureId: number }) {
+    return {
+        onChange: (key: string) => (newValue: string) => dispatch(updatePublicCourseLecture(key, newValue, ownProps.lectureId)),
+        onChangeBoolean: (key: string) => (newValue: boolean) => dispatch(updatePublicCourseLecture(key, newValue, ownProps.lectureId)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GuestLecturerFields);

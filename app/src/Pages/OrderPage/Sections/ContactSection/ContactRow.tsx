@@ -1,10 +1,11 @@
 import React from "react";
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import ImportContactsDialogContainer from './ImportContactDialogContainer';
-import _ from 'lodash';
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
+import ImportContactsDialogContainer from "./ImportContactDialogContainer";
+import _ from "lodash";
 import {Size} from "../../../../Util/Constants/Size";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
+import {IOrderStringField} from "../../../../Interfaces/IOrder";
 
 export default class ContactRow extends React.Component<ContactRowProps> {
     state = {
@@ -13,7 +14,7 @@ export default class ContactRow extends React.Component<ContactRowProps> {
 
     openContactImportDialog = () => {
         if (!this.props.isSelectedOrganization) {
-            this.props.openDialog(this.props.dialogText.noOrganizationSelectedTitle, this.props.dialogText.noOrganizationSelectedContent);
+            this.props.openDialog("לא נבחר ארגון", "כדי לייבא אנשי קשר יש לבחור ארגון");
             return;
         }
 
@@ -35,33 +36,31 @@ export default class ContactRow extends React.Component<ContactRowProps> {
 
                 <CustomIconButton
                     onClick={this.openContactImportDialog}
-                    tooltip={this.props.buttonTooltip}
+                    tooltip="יבא איש קשר"
                     style={{marginBottom: 10, marginLeft: 10}}
                 >
                     <PersonAddIcon/>
                 </CustomIconButton>
 
-                <OrderCustomText name={getKey("contactFirstName", isFinancial)} size={Size.M}/>
-                <OrderCustomText name={getKey("contactLastName", isFinancial)} size={Size.M}/>
-                <OrderCustomText name={getKey("contactJob", isFinancial)} size={Size.M}/>
-                <OrderCustomText name={getKey("contactPhone1", isFinancial)} size={Size.M}/>
-                <OrderCustomText name={getKey("contactEmail", isFinancial)} size={Size.XL}/>
-                <OrderCustomText name={getKey("contactPhone2", isFinancial)} size={Size.M}/>
-                <OrderCustomText name={getKey("contactPhoneExtension", isFinancial)} size={Size.M}/>
-                <OrderCustomText name={getKey("contactFax", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="שם פרטי" name={getKey("contactFirstName", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="שם משפחה" name={getKey("contactLastName", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="תפקיד" name={getKey("contactJob", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="טלפון" name={getKey("contactPhone1", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="דואר אלקטרוני" name={getKey("contactEmail", isFinancial)} size={Size.XL}/>
+                <OrderCustomText title="טלפון נוסף" name={getKey("contactPhone2", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="שלוחה" name={getKey("contactPhoneExtension", isFinancial)} size={Size.M}/>
+                <OrderCustomText title="פקס" name={getKey("contactFax", isFinancial)} size={Size.M}/>
             </div>
         );
     }
 }
 
-export function getKey(key: string, isFinancial: boolean) {
-    return isFinancial ? "financial" + _.upperFirst(key) : key;
+export function getKey(key: IOrderStringField, isFinancial: boolean): IOrderStringField {
+    return (isFinancial ? "financial" + _.upperFirst(key) : key) as IOrderStringField;
 }
 
 interface ContactRowProps {
     isFinancialContacts: boolean;
-    dialogText: any;
     isSelectedOrganization: boolean;
-    buttonTooltip: string;
     openDialog: (title: string, content: string) => void;
 }

@@ -6,5 +6,7 @@ export default interface IOrganization {
     organizationAddress: string;
     organizationCity: string;
     organizationPostalCode: string;
-    internalOrderIdRequired?: boolean;
+    internalOrderIdRequired: boolean;
+    referralWay: string;
+    referralWayDetails: string;
 }

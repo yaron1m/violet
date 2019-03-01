@@ -6,14 +6,15 @@ export default function FollowUpSection(props: FollowUpSectionProps) {
     return (
         <CustomPaper title={props.sectionName}>
             <div style={flexStyle}>
-                <OrderCustomToggle name="followUpRequired"/>
+                <OrderCustomToggle title="נדרש המשך טיפול" name="followUpRequired"/>
 
-                <OrderCustomDatePicker name="followUpDate" disabled={!props.followUpRequired}/>
+                <OrderCustomDatePicker title="תאריך המשך טיפול" name="followUpDate" disabled={!props.followUpRequired}/>
             </div>
 
 
             <div>
                 <OrderCustomText
+                    title="פרטים"
                     name="followUpDetails"
                     fullWidth={true}
                     disabled={!props.followUpRequired}

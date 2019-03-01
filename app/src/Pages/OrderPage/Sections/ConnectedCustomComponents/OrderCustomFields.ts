@@ -1,8 +1,7 @@
 import {connect} from "react-redux";
 import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
-import {getOrderSectionsLabels} from "../../../../Store/Labels/Selectors";
-import CustomText from "../../../../Components/CustomComponents/CustomTextField";
+import CustomTextField from "../../../../Components/CustomComponents/CustomTextField";
 import CustomDatePicker from "../../../../Components/CustomComponents/CustomDatePicker";
 import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 import CustomCheckbox from "../../../../Components/CustomComponents/CustomCheckbox";
@@ -10,51 +9,74 @@ import CustomSelectField, {IOption} from "../../../../Components/CustomComponent
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
 import {Size} from "../../../../Util/Constants/Size";
-import {IPublicCourseLecture} from "../../../../Interfaces/IPublicCourse";
-import IOrder, {IStringObject} from "../../../../Interfaces/IOrder";
+import {IOrderBooleanField, IOrderStringField} from "../../../../Interfaces/IOrder";
+import _ from "lodash";
+import {TabKey} from "../../../../Util/Constants/Status";
 
-interface OrderCustomFieldsProps {
-    name: string;
+interface OrderFieldProps {
+    title: string,
     size?: Size;
-    updateAction?: (key: string, value: string | IPublicCourseLecture[]) => void;
     options?: IOption[],
     fullWidth?: boolean;
+    internalLectureField?: boolean;
 }
 
-function mapStateToProps(state: IState) {
-    return {
-        titles: getOrderSectionsLabels(state).titles,
-        values: getSelectedOrder(state),
-        requiredFields: getRequiredFieldsObject(state).order,
-    };
+interface OrderStringFieldProps extends OrderFieldProps {
+    name: IOrderStringField;
+    onChange?: (value: string) => void;
 }
 
-function mapDispatchToProps(dispatch: IDispatch) {
-    return {
-        updateAction: (key: string, value: any) => dispatch(updateSelectedOrder(key, value)),
-    };
+interface OrderBooleanFieldProps extends OrderFieldProps {
+    name: IOrderBooleanField;
+    onChange?: (value: boolean) => void;
 }
 
-function mergeProps(stateProps: {
-    titles: IStringObject; values: IOrder; requiredFields: string[];
-}, dispatchProps: {
-    updateAction: (key: string, value: string | IPublicCourseLecture[]) => void
-}, ownProps: OrderCustomFieldsProps) {
+function mapStateToPropsString(state: IState, ownProps: OrderStringFieldProps) {
     return {
-        titles: stateProps.titles,
-        values: stateProps.values,
-        requiredFields: stateProps.requiredFields,
-        updateAction: ownProps.updateAction ? ownProps.updateAction : dispatchProps.updateAction,
-        name: ownProps.name,
+        title: ownProps.title,
+        value: getSelectedOrder(state)[ownProps.name],
+        isRequired: isRequiredField(state, ownProps.name, ownProps.internalLectureField),
         size: ownProps.size,
+        fullWidth: ownProps.fullWidth,
         options: ownProps.options,
+    };
+}
+
+function mapDispatchToPropsString(dispatch: IDispatch, ownProps: OrderStringFieldProps) {
+    return {
+        onChange: (value: string) => dispatch(updateSelectedOrder(ownProps.name, value)),
+    };
+}
+
+export const OrderCustomText = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomTextField);
+export const OrderCustomDatePicker = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomDatePicker);
+export const OrderCustomSelectField = connect(mapStateToPropsString, mapDispatchToPropsString)(CustomSelectField);
+
+function mapStateToPropsBoolean(state: IState, ownProps: OrderBooleanFieldProps) {
+    return {
+        title: ownProps.title,
+        value: getSelectedOrder(state)[ownProps.name],
+        isRequired: isRequiredField(state, ownProps.name, ownProps.internalLectureField),
+        size: ownProps.size,
         fullWidth: ownProps.fullWidth,
     };
-
 }
 
-export const OrderCustomText = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomText);
-export const OrderCustomDatePicker = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomDatePicker);
-export const OrderCustomToggle = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomToggle);
-export const OrderCustomCheckBox = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomCheckbox);
-export const OrderCustomSelectField = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomSelectField);
+function mapDispatchToPropsBoolean(dispatch: IDispatch, ownProps: OrderBooleanFieldProps) {
+    return {
+        onChange: (value: boolean) => dispatch(updateSelectedOrder(ownProps.name, value)),
+    };
+}
+
+export const OrderCustomToggle = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomToggle);
+export const OrderCustomCheckBox = connect(mapStateToPropsBoolean, mapDispatchToPropsBoolean)(CustomCheckbox);
+
+function isRequiredField(state: IState, name: string, internalLectureField?: boolean) {
+    const requiredFieldsObject = getRequiredFieldsObject(state);
+    const tabKey = getSelectedOrder(state).lectureDetailsTabKey;
+
+    if (internalLectureField)
+        return tabKey === TabKey.internalTabKey ? _.includes(requiredFieldsObject.internalOrder, name) : false;
+
+    return _.includes(requiredFieldsObject.order, name);
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import CustomPaper from "../../../../../Components/CustomComponents/CustomPaper";
-import _ from 'lodash';
+import _ from "lodash";
 import CourseLecturesInstanceContainer from "./CourseLecturesInstanceContainer";
 import AddCourseLectureButtonContainer from "../AddLectureButton/AddCourseLectureButtonContainer";
 

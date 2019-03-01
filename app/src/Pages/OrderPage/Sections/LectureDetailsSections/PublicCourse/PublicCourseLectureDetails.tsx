@@ -1,5 +1,5 @@
 import React from "react";
-import _ from 'lodash';
+import _ from "lodash";
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import AddParticipantButtonContainer from "./AddParticipantButtonContainer";
 import PublicCourseParticipantContainer from "./PublicCourseParticipantContainer";
@@ -16,7 +16,7 @@ export default function PublicCourseLectureDetails(props: PublicCourseLectureDet
 
                 <AddParticipantButtonContainer/>
 
-                <OrderCustomToggle name="orderApproved"/>
+                <OrderCustomToggle title="הזמנה אושרה" name="orderApproved"/>
             </div>
 
             {_.map(_.range(props.numberOfParticipants), (participantId) =>

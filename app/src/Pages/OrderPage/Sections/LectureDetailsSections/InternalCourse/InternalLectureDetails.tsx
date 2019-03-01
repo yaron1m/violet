@@ -1,60 +1,58 @@
 import React from "react";
 import CustomPaper, {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import {Size} from "../../../../../Util/Constants/Size";
-import {OrderCustomCheckBox, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
+import {OrderCustomCheckBox, OrderCustomText, OrderCustomToggle} from "../../ConnectedCustomComponents/OrderCustomFields";
 import RejectedOrderContainer from "./OrderTerminateOptions/RejectedOrderContainer";
 import CancelledOrderContainer from "./OrderTerminateOptions/CancelledOrderContainer";
 import Colors from "../../../../../Util/Constants/Colors";
 import LectureTimesDetailsContainer from "./LectureTimes/LectureTimesDetailsContainer";
-import {InternalOrderCustomText, InternalOrderCustomToggle} from "../../ConnectedCustomComponents/InternalOrderCustomFields";
 
-export default class InternalLectureDetails extends React.Component<InternalLectureDetailsProps> {
-    state = {
-        dialogOpen: false,
-        selectedLectureTimeIndex: null,
-    };
+export default function InternalLectureDetails(props: InternalLectureDetailsProps) {
+    return (
+        <CustomPaper title="פרטי ההרצאה">
 
-    render() {
-        return (
-            <CustomPaper
-                title={this.props.sectionName}
-            >
+            <div>
+                <OrderCustomText title="רחוב" name="street" internalLectureField={true}/>
+                <OrderCustomText title="מספר" name="streetNumber" size={Size.S} internalLectureField={true}/>
+                <OrderCustomText title="עיר" name="city" internalLectureField={true}/>
+                <OrderCustomText title="מיקום" name="location" size={Size.XL} internalLectureField={true}/>
+                <OrderCustomText title="קהל יעד" name="audienceType" internalLectureField={true}/>
+                <OrderCustomText title='מהות היום + לו"ז' name="daySchedule" internalLectureField={true}/>
+            </div>
 
-                <div>
-                    <InternalOrderCustomText name="street"/>
-                    <InternalOrderCustomText name="streetNumber" size={Size.S}/>
-                    <InternalOrderCustomText name="city"/>
-                    <InternalOrderCustomText name="location" size={Size.XL}/>
-                    <InternalOrderCustomText name="audienceType"/>
-                    <InternalOrderCustomText name="daySchedule"/>
-                </div>
+            <div style={flexStyle}>
+                <OrderCustomToggle title="מקרן" name="projector" internalLectureField={true}/>
+                <OrderCustomToggle title="מערכת הגברה" name="soundSystem" internalLectureField={true}/>
+                <OrderCustomToggle title="מיקרופון דש" name="microphone" internalLectureField={true}/>
+                <OrderCustomToggle title="חניה" name="parking" internalLectureField={true}/>
+                <OrderCustomToggle title="הזמנה אושרה" name="orderApproved"/>
+                <OrderCustomToggle title="קהל יעד זהה" name="sameAudience" internalLectureField={true}/>
 
-                <div style={flexStyle}>
-                    <InternalOrderCustomToggle name="projector"/>
-                    <InternalOrderCustomToggle name="soundSystem"/>
-                    <InternalOrderCustomToggle name="microphone"/>
-                    <InternalOrderCustomToggle name="parking"/>
-                    <OrderCustomToggle name="orderApproved"/>
-                    <InternalOrderCustomToggle name="sameAudience"/>
+                <OrderCustomCheckBox
+                    title="הזמנה לא יצאה לפועל"
+                    name="rejected"
+                    checkedColor={Colors.red}
+                    internalLectureField={true}
+                />
 
-                    <OrderCustomCheckBox name="rejected" checkedColor={Colors.red}/>
+                {props.showCancelledCheckBox &&
+                <OrderCustomCheckBox
+                    title="הזמנה בוטלה"
+                    name="cancelled"
+                    checkedColor={Colors.red}
+                    internalLectureField={true}
+                />}
+            </div>
 
-                    {this.props.showCancelledCheckBox ?
-                        <OrderCustomCheckBox name="cancelled" checkedColor={Colors.red}/> : null}
+            <RejectedOrderContainer/>
 
-                </div>
+            <CancelledOrderContainer/>
 
-                <RejectedOrderContainer/>
-
-                <CancelledOrderContainer/>
-
-                <LectureTimesDetailsContainer/>
-            </CustomPaper>
-        );
-    }
+            <LectureTimesDetailsContainer/>
+        </CustomPaper>
+    );
 }
 
 interface InternalLectureDetailsProps {
-    sectionName: string,
     showCancelledCheckBox: boolean,
 }

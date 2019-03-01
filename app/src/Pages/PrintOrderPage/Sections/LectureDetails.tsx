@@ -1,31 +1,30 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
-import {PrintOrderConnectedBoolean, PrintOrderConnectedText} from "./ConnectedCustomComponents/PrintOrderConnectedFields";
 import CustomDivider from "../../../Components/CustomComponents/CustomDivider";
+import IOrder from "../../../Interfaces/IOrder";
+import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
+import PrintBoolean from "../../../Components/CustomComponents/OrderPrint/PrintBoolean";
 
-export default function (props: { sectionName: string, statusLabel: string }) {
+export default function (props: { statusLabel: string, selectedOrder: IOrder }) {
     return (
-        <PrintSection title={props.sectionName}>
-            <PrintOrderConnectedText name="street"/>
-            <PrintOrderConnectedText name="streetNumber"/>
-            <PrintOrderConnectedText name="city"/>
-            <PrintOrderConnectedText name="location"/>
-            <PrintOrderConnectedText name="audienceType"/>
-            <PrintOrderConnectedText name="daySchedule"/>
+        <PrintSection title="פרטי ההרצאה">
+            <PrintTextField value={props.selectedOrder.street} title="רחוב"/>
+            <PrintTextField value={props.selectedOrder.streetNumber} title="מספר"/>
+            <PrintTextField value={props.selectedOrder.city} title="עיר"/>
+            <PrintTextField value={props.selectedOrder.location} title="מיקום"/>
+            <PrintTextField value={props.selectedOrder.audienceType} title="קהל היעד"/>
+            <PrintTextField value={props.selectedOrder.daySchedule} title='מהות היום + לו"ז'/>
 
-            <PrintOrderConnectedText
-                name="status"
-                values={{status: props.statusLabel}}
-            />
+            <PrintTextField title="סטאטוס" value={props.statusLabel}/>
 
             <CustomDivider/>
 
-            <PrintOrderConnectedBoolean name="projector"/>
-            <PrintOrderConnectedBoolean name="soundSystem"/>
-            <PrintOrderConnectedBoolean name="microphone"/>
-            <PrintOrderConnectedBoolean name="parking"/>
-            <PrintOrderConnectedBoolean name="orderApproved"/>
-            <PrintOrderConnectedBoolean name="sameAudience"/>
+            <PrintBoolean value={props.selectedOrder.projector} title="מקרן"/>
+            <PrintBoolean value={props.selectedOrder.soundSystem} title="מערכת הגברה"/>
+            <PrintBoolean value={props.selectedOrder.microphone} title="מיקרופון דש"/>
+            <PrintBoolean value={props.selectedOrder.parking} title="חניה"/>
+            <PrintBoolean value={props.selectedOrder.orderApproved} title="הזמנה אושרה"/>
+            <PrintBoolean value={props.selectedOrder.sameAudience} title="קהל יעד זהה"/>
         </PrintSection>
     );
 }

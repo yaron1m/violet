@@ -17,4 +17,4 @@ function mapDispatchToProps(dispatch: IDispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(undefined, mapDispatchToProps)(LoginPage);

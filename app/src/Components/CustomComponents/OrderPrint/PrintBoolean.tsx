@@ -1,13 +1,14 @@
-import {isEmptyValue} from "../../../Util/StringUtil";
-import PrintField from "./PrintField";
+import React from "react";
+import PrintTextField from "./PrintTextField";
 
-export default class PrintBoolean extends PrintField {
-    getValue() {
-        const T = "V";
-        const F = "X";
-        if (isEmptyValue(this.state, "value"))
-            return F;
+export default function PrintBoolean(props: PrintBooleanProps) {
+    return <PrintTextField
+        value={props.value === true ? "V" : "X"}
+        title={props.title}
+    />;
+}
 
-        return super.getValue() ? T : F;
-    }
+interface PrintBooleanProps {
+    title: string;
+    value?: boolean;
 }
