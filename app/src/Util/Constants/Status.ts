@@ -1,5 +1,6 @@
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import {getLabels} from "../../Store/Labels/Selectors";
+import IOrder from "../../Interfaces/IOrder";
+import * as _ from "lodash";
 
 export enum terminatingStatuses {
     cancelled = "cancelled",
@@ -36,6 +37,24 @@ export enum Status {
 export enum TabKey {
     internalTabKey = "internalTab",
     publicCourseTabKey = "publicCourseTab"
+}
+
+export function getOrderStatusLabel(order: IOrder) {
+    const labels = getStatusLabels();
+    if (_.isEmpty(order))
+        return labels[progressiveStatuses.contact];
+
+    let status = labels[order.status];
+    if (order.followUpRequired)
+        status += labels.followUp;
+    return status;
+}
+
+export function getStatusLabel(status: Status) {
+    if (!status)
+        return getStatusLabels().contact;
+
+    return getStatusLabels()[status];
 }
 
 export function getStatusLabels() {

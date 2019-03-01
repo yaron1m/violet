@@ -6,7 +6,6 @@ import {
     getSelectedPublicCourseParticipants,
     isSelectedPublicCourse
 } from "./Selectors";
-import * as labelSelectors from "../Labels/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 
 function getParticipant(id: number) {
@@ -89,7 +88,6 @@ const state = {
         10: {organizationName: "OrgA"},
         11: {organizationName: "OrgB"}
     },
-    labels: {currencyIcon: "X"}
 } as unknown as IState;
 
 const emptyState = {
@@ -146,7 +144,6 @@ describe("Store/selected/selectors", () => {
 
     it("should return summary of participants of matching course", () => {
         // @ts-ignore
-        labelSelectors.getStatusLabel = jest.fn();
         const result = getSelectedPublicCourseParticipants(state);
 
         expect(result).toHaveLength(4);

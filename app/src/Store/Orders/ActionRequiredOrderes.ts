@@ -1,7 +1,6 @@
 import _ from "lodash";
-import {getOrderStatusLabel} from "../Labels/Selectors";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {Status} from "../../Util/Constants/Status";
+import {getOrderStatusLabel, getStatusLabel, Status} from "../../Util/Constants/Status";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
@@ -109,7 +108,7 @@ function addOrderToResult(state: IState, result: IActionRequiredOrder[], order: 
         createdDate: order.createdDate,
         issue,
         organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
-        status: getOrderStatusLabel(state, order),
+        status: getOrderStatusLabel(order),
     });
 }
 

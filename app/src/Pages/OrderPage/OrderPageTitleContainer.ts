@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
 import OrderPageTitle from "./OrderPageTitle";
-import {getSelectedOrderStatusLabel} from "../../Store/Labels/Selectors";
 import {getSelectedOrder, isSelectedOrder} from "../../Store/SelectedOrder/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
+import {getOrderStatusLabel} from "../../Util/Constants/Status";
 
 function mapStateToProps(state: IState) {
     return {
-        statusLabel: getSelectedOrderStatusLabel(state),
+        statusLabel: getOrderStatusLabel(getSelectedOrder(state)),
         title: isSelectedOrder(state) ? "הזמנה מספר " + getSelectedOrder(state).id : "הזמנה חדשה",
     };
 }

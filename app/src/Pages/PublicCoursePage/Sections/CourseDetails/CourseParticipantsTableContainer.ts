@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import {getLabels} from "../../../../Store/Labels/Selectors";
 import CustomPaperTable from "../../../../Components/Table/CustomPaperTable";
 import {getSelectedPublicCourseParticipants, ISelectedPublicCourseParticipantsSummary} from "../../../../Store/SelectedPublicCourse/Selectors";
 import {redirect} from "../../../../Util/HistoryUtil";
