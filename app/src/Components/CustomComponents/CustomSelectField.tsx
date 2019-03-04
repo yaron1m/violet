@@ -50,7 +50,7 @@ class CustomSelectField extends React.PureComponent<CustomSelectFieldProps> {
 }
 
 export interface IOption {
-    key: string;
+    key: string | number;
     label: string;
 }
 

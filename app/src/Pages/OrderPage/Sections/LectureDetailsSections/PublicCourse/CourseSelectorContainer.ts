@@ -13,7 +13,7 @@ import CustomSelectField, {IOption} from "../../../../../Components/CustomCompon
 
 function getOption(course: IPublicCourse): IOption {
     return {
-        key: course.id.toString(),
+        key: course.id,
         label: course.courseName,
     };
 }
