@@ -47,7 +47,7 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
                     value={org.organizationPostalCode}
                     isRequired={_.includes(props.requiredFields, "organizationPostalCode")}
                     onChange={props.onOrganizationChange("organizationPostalCode")}
-                    size={Size.S}
+                    size={Size.M}
                 />
                 <CustomTextField
                     title="ח.פ / ע.מ"

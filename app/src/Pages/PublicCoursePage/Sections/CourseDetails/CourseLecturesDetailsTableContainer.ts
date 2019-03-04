@@ -5,10 +5,9 @@ import {IState} from "../../../../Interfaces/ReduxInterfaces";
 import {IStringObject} from "../../../../Interfaces/IOrder";
 
 function mapStateToProps(state: IState) {
-    const details = getLecturesDetails(state);
     return {
         title: "פרטי ההרצאות",
-        elements: details,
+        elements: getLecturesDetails(state),
         onEditButton: () => {},
         tableHeaders: [
             {date: "תאריך"},

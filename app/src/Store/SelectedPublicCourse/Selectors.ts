@@ -76,7 +76,7 @@ export function getLecturesDetails(state: IState) {
     _.map(lectures, lecture => participantsCount[lecture.id] = 0);
 
     _.map(ordersAndParticipants, ({participant}) => {
-        _.map(participant.lecturesAttending, lectureId => participantsCount[lectureId] += 1);
+        _.map(participant.lecturesAttending, lectureId => participantsCount[lectureId]++);
     });
 
     return _.map(lectures, lecture => {
