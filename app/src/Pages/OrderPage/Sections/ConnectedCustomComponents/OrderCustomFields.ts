@@ -28,7 +28,6 @@ interface OrderStringFieldProps extends OrderFieldProps {
 
 interface OrderBooleanFieldProps extends OrderFieldProps {
     name: IOrderBooleanField;
-    onChange?: (value: boolean) => void;
 }
 
 function mapStateToPropsString(state: IState, ownProps: OrderStringFieldProps) {
@@ -44,7 +43,8 @@ function mapStateToPropsString(state: IState, ownProps: OrderStringFieldProps) {
 
 function mapDispatchToPropsString(dispatch: IDispatch, ownProps: OrderStringFieldProps) {
     return {
-        onChange: (value: string) => dispatch(updateSelectedOrder(ownProps.name, value)),
+        onChange: ownProps.onChange ? ownProps.onChange
+            : (value: string) => dispatch(updateSelectedOrder(ownProps.name, value)),
     };
 }
 
