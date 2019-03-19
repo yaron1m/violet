@@ -29,7 +29,7 @@ export default function Dashboard(props: DashboardProps) {
 
                 <NavigationButton title="כל ההזמנות" onClick={() => redirect(Path.allOrders)}/>
 
-                <NavigationButton title="כל ההזמנות" onClick={() => {
+                <NavigationButton title="קורס ציבורי חדש" onClick={() => {
                     redirect(Path.publicCourse);
                     props.clearSelectedPublicCourse();
                 }}/>
