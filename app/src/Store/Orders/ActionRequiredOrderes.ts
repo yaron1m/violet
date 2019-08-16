@@ -7,6 +7,7 @@ import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import IOrder from "../../Interfaces/IOrder";
 import {getOrders} from "./Selectors";
+import {toPrintableDateFormat} from "../../Util/TimeUtil";
 
 export interface IActionRequiredOrder {
     orderId: number;
@@ -34,7 +35,7 @@ export default function getActionRequiredOrdersArray(state: IState) {
             if (order.followUpRequired) {
                 if (new Date(order.followUpDate) < now)
                     addOrderToResult(state, result, order, issues.followUpRequired
-                        + " - " + new Date(order.followUpDate).toLocaleDateString());
+                        + " - " + toPrintableDateFormat(new Date(order.followUpDate)));
                 return;
             }
 

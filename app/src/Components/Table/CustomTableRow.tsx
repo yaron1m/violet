@@ -8,6 +8,7 @@ import * as _ from "lodash";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
 import {IStringObject} from "../../Interfaces/IOrder";
+import {toPrintableDateFormat} from "../../Util/TimeUtil";
 
 export default class CustomTableRow<TElement extends IStringObject> extends React.Component<CustomTableRowProps<TElement>> {
 
@@ -37,7 +38,7 @@ export default class CustomTableRow<TElement extends IStringObject> extends Reac
     getCellContent(headerKey: string) {
         if (headerKey.toLowerCase().includes("date"))
             return isEmptyValue(this.props.element, headerKey) ? "" :
-                new Date(this.props.element[headerKey]).toLocaleDateString();
+                toPrintableDateFormat(new Date(this.props.element[headerKey]));
 
         switch (headerKey) {
             case "edit":

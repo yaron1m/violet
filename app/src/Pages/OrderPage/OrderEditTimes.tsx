@@ -1,4 +1,5 @@
 import React from "react";
+import {toPrintableDateFormat} from "../../Util/TimeUtil";
 
 export default function OrderTimes(props: OrderTimesProps) {
     if (!props.isSelectedOrder)
@@ -12,10 +13,10 @@ export default function OrderTimes(props: OrderTimesProps) {
     return (
         <div style={style}>
             <span>תאריך יצירה - </span>
-            <span>{new Date(props.createdDate).toLocaleDateString()}</span>
+            <span>{toPrintableDateFormat(new Date(props.createdDate))}</span>
             <span>  ;  </span>
             <span>תאריך שינוי - </span>
-            <span>{new Date(props.changedDate).toLocaleDateString()}</span>
+            <span>{toPrintableDateFormat(new Date(props.changedDate))}</span>
         </div>
     );
 }

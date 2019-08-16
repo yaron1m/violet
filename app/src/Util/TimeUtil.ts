@@ -38,9 +38,18 @@ export function calculatePreparationTimes(lectureTime: ILectureTime) {
         arriveTime: timeToString(arriveTime),
         lectureStartTime: timeToString(lectureStartTime),
     };
-
 }
 
+export function toPrintableDateFormat(date: Date){
+    if (date.getHours() >= 20)
+        date.setHours(date.getHours() + 4); // Increment day by one for time zone change
+
+    const day = pad(date.getDate());
+    const month = pad(date.getMonth() + 1);
+    const year = date.getFullYear();
+
+    return day + "/" + month + "/" + year;
+}
 export function toDateFormat(date: Date) {
     if (date.getHours() >= 20)
         date.setHours(date.getHours() + 4); // Increment day by one for time zone change

@@ -8,6 +8,7 @@ import {IPublicCourseLecture} from "../../../../../Interfaces/IPublicCourse";
 import CustomTextField from "../../../../../Components/CustomComponents/CustomTextField";
 import {IPublicCourseParticipant} from "../../../../../Interfaces/IOrder";
 import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
+import {toPrintableDateFormat} from "../../../../../Util/TimeUtil";
 
 export default function PublicCourseParticipant(props: PublicCourseParticipantProps) {
     return (
@@ -88,7 +89,7 @@ export default function PublicCourseParticipant(props: PublicCourseParticipantPr
                             <CustomCheckbox
                                 key={props.courseId + "-" + lecture.id}
                                 value={isAttending}
-                                title={new Date(lecture.date).toLocaleDateString() + " - " + lecture.topic}
+                                title={toPrintableDateFormat(new Date(lecture.date)) + " - " + lecture.topic}
                                 onChange={(value: boolean) => props.onLectureCheck(lecture.id, value)}
                             />
                         );

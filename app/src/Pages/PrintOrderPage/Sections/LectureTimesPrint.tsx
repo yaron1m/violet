@@ -3,6 +3,7 @@ import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintS
 import _ from "lodash";
 import {isEmptyValue} from "../../../Util/StringUtil";
 import {ILectureTime, ILectureTimeField, IStringObject} from "../../../Interfaces/IOrder";
+import {toPrintableDateFormat} from "../../../Util/TimeUtil";
 
 export default function (props: LectureTimesPrintProps) {
     const style = {
@@ -42,7 +43,7 @@ export default function (props: LectureTimesPrintProps) {
                                             <td key={index2} style={style.value}>
 
                                             </td> :
-                                            <td key={index2} style={style.value}>{new Date(value).toLocaleDateString()}</td>;
+                                            <td key={index2} style={style.value}>{toPrintableDateFormat(new Date(value))}</td>;
 
                                     return <td key={index2} style={style.value}> {lectureTime[header]} </td>;
                                 }
