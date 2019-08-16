@@ -30,7 +30,7 @@ class CustomSelectField extends React.PureComponent<CustomSelectFieldProps> {
             >
                 <Select
                     value={this.props.value || ""}
-                    onChange={(event) => this.props.onChange(event.target.value)}
+                    onChange={(event) => this.props.onChange(event.target.value as string)}
                 >
 
                     {this.props.allowEmpty ?

@@ -106,6 +106,7 @@ function isExecuting(order: IOrder, publicCourse: IPublicCourse) {
     if (isPublicCourseOrder(order)) {
         datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
     } else {
+        // @ts-ignore TODO
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
@@ -119,6 +120,7 @@ function isExecuted(order: IOrder, publicCourse: IPublicCourse) {
     if (isPublicCourseOrder(order)) {
         datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
     } else {
+        // @ts-ignore TODO
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
