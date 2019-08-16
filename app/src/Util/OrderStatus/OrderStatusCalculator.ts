@@ -102,12 +102,11 @@ function isApprovedOrder(order: IOrder) {
 }
 
 function isExecuting(order: IOrder, publicCourse: IPublicCourse) {
-    let datesToCheck;
+    let datesToCheck  = [] as string[];
     if (isPublicCourseOrder(order)) {
         datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
     } else {
-        // @ts-ignore TODO
-        datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+        datesToCheck = _.map(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
     // At least one lectures is done
@@ -116,12 +115,11 @@ function isExecuting(order: IOrder, publicCourse: IPublicCourse) {
 
 function isExecuted(order: IOrder, publicCourse: IPublicCourse) {
     // All lectures passed
-    let datesToCheck;
+    let datesToCheck  = [] as string[];
     if (isPublicCourseOrder(order)) {
         datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
     } else {
-        // @ts-ignore TODO
-        datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
+        datesToCheck = _.map(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
     return _.every(datesToCheck, hasDatePassed);
