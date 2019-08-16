@@ -1,4 +1,3 @@
-import {IState} from "../../Interfaces/ReduxInterfaces";
 import IOrder from "../../Interfaces/IOrder";
 import * as _ from "lodash";
 

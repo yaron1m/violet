@@ -4,7 +4,7 @@ import CustomDivider from "../../../Components/CustomComponents/CustomDivider";
 import IOrder from "../../../Interfaces/IOrder";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
 import PrintBoolean from "../../../Components/CustomComponents/OrderPrint/PrintBoolean";
-import {getOrderStatusLabel, getStatusLabel} from "../../../Util/Constants/Status";
+import {getOrderStatusLabel} from "../../../Util/Constants/Status";
 
 export default function (props: {selectedOrder: IOrder }) {
     return (

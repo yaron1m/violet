@@ -1,7 +1,6 @@
 import React from "react";
 import {Size} from "../../../../Util/Constants/Size";
 import {OrderCustomDatePicker} from "../ConnectedCustomComponents/OrderCustomFields";
-import {IStringObject} from "../../../../Interfaces/IOrder";
 
 export default function ProformaInvoiceDate(props: ProformaInvoiceDate) {
     return (

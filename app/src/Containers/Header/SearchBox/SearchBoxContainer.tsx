@@ -28,7 +28,7 @@ export interface SearchSuggestion extends ISuggestion {
 export function handleRequest(chosenRequest: SearchSuggestion, dispatch: IDispatch) {
     switch (chosenRequest.entityType) {
         case EntityType.organization:
-            if (chosenRequest.organizationId == undefined) {
+            if (chosenRequest.organizationId === undefined) {
                 console.error("Undefined search property");
                 return;
             }
@@ -38,7 +38,7 @@ export function handleRequest(chosenRequest: SearchSuggestion, dispatch: IDispat
 
         case EntityType.order:
         case EntityType.publicCourseParticipant:
-            if (chosenRequest.orderId == undefined || chosenRequest.organizationId == undefined) {
+            if (chosenRequest.orderId === undefined || chosenRequest.organizationId === undefined) {
                 console.error("Undefined search property");
                 return;
             }

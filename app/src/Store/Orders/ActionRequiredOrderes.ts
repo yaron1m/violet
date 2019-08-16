@@ -1,6 +1,6 @@
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {getOrderStatusLabel, getStatusLabel, Status} from "../../Util/Constants/Status";
+import {getOrderStatusLabel, Status} from "../../Util/Constants/Status";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
