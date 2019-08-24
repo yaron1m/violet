@@ -103,13 +103,29 @@ export function afterSignedIn(user: firebase.User) {
             userId: user.uid,
             displayName: user.displayName,
             photoURL: user.photoURL,
-            isSuperUser: user.email ? !user.email.toLowerCase().includes("asaf") : false,
+            isSuperUser: isSuperUser(user.email),
         });
         dispatch(fetchData("organizations", receiveOrganizations));
         dispatch(fetchData("orders", receiveOrders));
         dispatch(fetchData("publicCourses", receivePublicCourses));
         dispatch(fetchData("lists", receiveLists));
     };
+}
+
+function isSuperUser(email: string | null) {
+    if (!email) {
+        return false;
+    }
+
+    if (email.toLowerCase().includes("asaf")) {
+        return false;
+    }
+
+    if (email.toLowerCase().includes("office")) {
+        return false;
+    }
+
+    return true;
 }
 
 export function signOutRequest() {

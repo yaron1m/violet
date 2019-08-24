@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "set CI=true && react-scripts test",
+    "test": "set CI=true && react-scripts test --watchAll=false",
     "dev-deploy": "npm test && npm run build && firebase deploy -P dev",
     "deploy": "npm test && npm run build && firebase deploy -P production",
     "demo-deploy": "npm test && npm run build && firebase deploy -P demo",
