@@ -100,7 +100,8 @@ export default function getActionRequiredOrdersArray(state: IState) {
         }
     );
 
-    return result;
+    // Put "Executed and no invoice" issues first
+    return _.sortBy(result, actionRequiredOrder => actionRequiredOrder.issue !== issues.executedAndNoInvoice);
 }
 
 function addOrderToResult(state: IState, result: IActionRequiredOrder[], order: IOrder, issue: string) {
