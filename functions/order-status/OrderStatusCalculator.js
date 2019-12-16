@@ -109,7 +109,8 @@ function isApprovedOrder(order) {
 function isExecuting(order, publicCourse) {
     let datesToCheck;
     if (isPublicCourseOrder(order)) {
-        datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
+        const activeLectures = _.filter(publicCourse.lectures, lecture => lecture.active);
+        datesToCheck = _.map(activeLectures, lecture => lecture.date);
     }
     else {
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
@@ -123,7 +124,8 @@ function isExecuted(order, publicCourse) {
     // All lectures passed
     let datesToCheck;
     if (isPublicCourseOrder(order)) {
-        datesToCheck = _.map(publicCourse.lectures, lecture => lecture.date);
+        const activeLectures = _.filter(publicCourse.lectures, lecture => lecture.active);
+        datesToCheck = _.map(activeLectures, lecture => lecture.date);
     }
     else {
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);

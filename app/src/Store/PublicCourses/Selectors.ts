@@ -58,8 +58,9 @@ export function getPublicCoursesSummary(state: IState) {
             date: "",
             courseIncome: "",
         };
-        if (!_.isEmpty(course.lectures)) {
-            const dates = _.map(course.lectures, x => x.date);
+        const activeLectures = _.filter(course.lectures, x => x.active);
+        if (!_.isEmpty(activeLectures)) {
+            const dates = _.map(activeLectures, x => x.date);
             result.date = dates.sort()[0];
         }
 
