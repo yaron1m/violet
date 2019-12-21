@@ -12,7 +12,7 @@ export default class CustomPaperTable<TElement extends { [key: string]: string }
     render() {
         let elements = this.props.elements;
 
-        if (this.props.limit !== undefined) {
+        if (this.props.limit !== undefined && this.props.limit !== -1) {
             elements = _.slice(elements, 0, this.props.limit);
         }
 
