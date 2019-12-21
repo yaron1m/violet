@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import * as ReactAutoSuggest from "react-autosuggest";
 import TextField from "@material-ui/core/TextField";
@@ -15,7 +16,6 @@ function renderInput(inputProps: ReactAutoSuggest.InputProps<ISuggestion>) {
             helperText={helperText}
             className={classes.textField}
 
-            // @ts-ignore
             InputProps={{
                 inputRef: ref,
                 classes: {
@@ -200,3 +200,4 @@ export function toSuggestions(suggestions: string[]): ISuggestion[] {
         label
     }));
 }
+// @ts-ignore-end
