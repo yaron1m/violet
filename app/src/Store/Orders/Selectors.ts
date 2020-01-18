@@ -170,6 +170,7 @@ export interface IOrderSummary {
     orderId: number;
     status: string;
     organizationName: string;
+    proformaInvoiceNumber: string;
     date: string;
     topic: string;
 }
@@ -182,6 +183,7 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
             orderId: order.id,
             status: getOrderStatusLabel(order),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
+            proformaInvoiceNumber: order.proformaInvoiceNumber,
             date: "",
             topic: "",
         };

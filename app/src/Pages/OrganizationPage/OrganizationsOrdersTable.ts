@@ -21,6 +21,7 @@ function mapStateToProps(state: IState) {
             {date: "תאריך הרצאה"},
             {topic: "נושא"},
             {status: "סטאטוס"},
+            {proformaInvoiceNumber: "חשבונית עסקה"},
             {edit: "עריכה"}
         ] as IStringObject[]
     };
