@@ -19,25 +19,30 @@ export interface IContact extends IStringObject {
 }
 
 function getContacts(state: IState) {
-    const allContacts: { [contactKey: string]: IContact } = {};
+    const allContacts: IContact[] = [];
+    const addedContacts: { [key: string]: boolean } = {};
     const orders = getOrdersByOrganization(state);
     if (!orders)
         return [];
 
-    for (let index = 0; index < orders.length; index++) {
-        addSingleContact(orders[index], allContacts, true);
-        addSingleContact(orders[index], allContacts, false);
+    // Show contacts from recent orders first
+    const sortedOrders = _.sortBy(orders, x => -x.id);
+
+    for (let index = 0; index < sortedOrders.length; index++) {
+        addSingleContact(sortedOrders[index], allContacts, addedContacts, true);
+        addSingleContact(sortedOrders[index], allContacts, addedContacts, false);
     }
     return _.map(allContacts, x => x);
 }
 
-function addSingleContact(order: IOrder, allContacts: { [contactKey: string]: IContact }, isFinancialContacts: boolean) {
+function addSingleContact(order: IOrder, allContacts: IContact[], addedContacts: { [key: string]: boolean }, isFinancialContacts: boolean) {
     const thisContact = getContactsFromOrder(order, isFinancialContacts);
     const thisContactKey = thisContact.contactFirstName.trim() + thisContact.contactLastName.trim();
-    if (thisContactKey === "" || allContacts.hasOwnProperty(thisContactKey))
+    if (thisContactKey === "" || addedContacts.hasOwnProperty(thisContactKey))
         return;
 
-    allContacts[thisContactKey] = thisContact;
+    allContacts.push(thisContact);
+    addedContacts[thisContactKey] = true;
 }
 
 function getContactsFromOrder(order: IOrder, isFinancialContacts: boolean): IContact {
