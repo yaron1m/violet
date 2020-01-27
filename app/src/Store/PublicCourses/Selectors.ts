@@ -13,8 +13,9 @@ export function getPublicCourses(state: IState) {
 }
 
 export function getActivePublicCourses(state: IState) {
-    return _.filter(getPublicCourses(state), course => {
-        return _.some(course.lectures, lecture => !hasDatePassed(lecture.date));
+    return _.filter(getPublicCourses(state), publicCourse => {
+        const activeLectures = _.filter(publicCourse.lectures, lecture => lecture.active);
+        return _.some(activeLectures, lecture => !hasDatePassed(lecture.date));
     });
 }
 
