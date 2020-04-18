@@ -1,7 +1,7 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 export default function (props: { selectedOrder: IOrder }) {
     return (

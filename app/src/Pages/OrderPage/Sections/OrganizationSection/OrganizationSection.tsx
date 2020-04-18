@@ -5,7 +5,7 @@ import {ISuggestion} from "../../../../Components/AutoSuggest";
 import CustomSelectField, {IOption} from "../../../../Components/CustomComponents/CustomSelectField";
 import CustomAutoComplete from "../../../../Components/CustomComponents/CustomAutoComplete";
 import CustomTextField from "../../../../Components/CustomComponents/CustomTextField";
-import IOrganization from "../../../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 import _ from "lodash";
 import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 

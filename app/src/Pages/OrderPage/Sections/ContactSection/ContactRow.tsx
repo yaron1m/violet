@@ -5,7 +5,7 @@ import _ from "lodash";
 import {Size} from "../../../../Util/Constants/Size";
 import {OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
 import {CustomIconButton} from "../../../../Components/CustomComponents/CustomButtons";
-import {IOrderStringField} from "../../../../Interfaces/IOrder";
+import {IOrderStringField} from "@violet/common";
 
 export default class ContactRow extends React.Component<ContactRowProps> {
     state = {

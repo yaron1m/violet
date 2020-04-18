@@ -1,5 +1,5 @@
 import {shouldSaveNewOrder} from "./ShouldSaveNewOrderDecider";
-import IOrganization from "../../../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 import React from "react";
 
 let openDialog: (title: string, content: string, actions?: React.ReactNode[]) => void;

@@ -1,5 +1,5 @@
 import * as actionTypes from "./ActionTypes";
-import IPublicCourse from "../../Interfaces/IPublicCourse";
+import {IPublicCourse} from "@violet/common";
 
 export function receivePublicCourses(courses: { [id: string]: IPublicCourse }) {
     return {

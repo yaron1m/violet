@@ -1,12 +1,15 @@
 import {connect} from "react-redux";
-import {sendSelectedPublicCourseToDatabase, updateSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Actions";
+import {
+    sendSelectedPublicCourseToDatabase,
+    updateSelectedPublicCourse
+} from "../../../Store/SelectedPublicCourse/Actions";
 import {getSelectedPublicCourse, isSelectedPublicCourse} from "../../../Store/SelectedPublicCourse/Selectors";
 import {openDialog, openSnackbar} from "../../../Store/Appearance/Actions";
 import SaveActionButton from "../../../Components/ActionButtons/SaveActionButton";
 import {getNextPublicCourseId} from "../../../Store/PublicCourses/Selectors";
 import {setIsSelectedOrder} from "../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
-import IPublicCourse from "../../../Interfaces/IPublicCourse";
+import {IPublicCourse} from "@violet/common";
 
 async function savePublicCourse(
     selectedPublicCourse: IPublicCourse,

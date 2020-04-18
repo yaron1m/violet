@@ -3,7 +3,7 @@ import _ from "lodash";
 import {Size} from "../../../../../Util/Constants/Size";
 import {flexStyle} from "../../../../../Components/CustomComponents/CustomPaper";
 import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
-import {IPublicCourseLecture} from "../../../../../Interfaces/IPublicCourse";
+import {IPublicCourseLecture} from "@violet/common";
 import CustomTextField from "../../../../../Components/CustomComponents/CustomTextField";
 
 export default function CourseLecturesInstance(props: CourseLecturesInstanceProps) {

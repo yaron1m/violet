@@ -1,5 +1,5 @@
 import _ from "lodash";
-import IOrder from "../../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 const travelKmCost = 5.34;
 const vatRate = 0.17;

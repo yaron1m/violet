@@ -4,7 +4,7 @@ import * as _ from "lodash";
 import SendOfferButton from "./SendOffer";
 import {getSelectedOrder, isSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 function getLink(selectedOrder: IOrder, selectedOrganizationName: string) {
     let topicsArray = _.map(selectedOrder.lectureTimes, lectureTime => lectureTime.topic);

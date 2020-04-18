@@ -4,9 +4,8 @@ import {Size} from "../../../../../Util/Constants/Size";
 import _ from "lodash";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {CustomIconButton} from "../../../../../Components/CustomComponents/CustomButtons";
-import {IPublicCourseLecture} from "../../../../../Interfaces/IPublicCourse";
+import {IPublicCourseLecture, IPublicCourseParticipant} from "@violet/common";
 import CustomTextField from "../../../../../Components/CustomComponents/CustomTextField";
-import {IPublicCourseParticipant} from "../../../../../Interfaces/IOrder";
 import CustomCheckbox from "../../../../../Components/CustomComponents/CustomCheckbox";
 import {toPrintableDateFormat} from "../../../../../Util/TimeUtil";
 

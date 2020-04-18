@@ -5,7 +5,7 @@ import {isEmptyValue} from "../../Util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import IOrder from "../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 import {getOrders} from "./Selectors";
 import {toPrintableDateFormat} from "../../Util/TimeUtil";
 

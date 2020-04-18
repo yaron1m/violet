@@ -1,7 +1,12 @@
 import * as actions from "./Actions";
 import {clearSelectedPublicCourse} from "./Actions";
 import * as firebaseActions from "../Firebase/Actions";
-import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from "./ActionTypes";
+import {
+    CLEAR_SELECTED_PUBLIC_COURSE,
+    SELECT_PUBLIC_COURSE,
+    SET_IS_SELECTED_PUBLIC_COURSE,
+    UPDATE_SELECTED_PUBLIC_COURSE
+} from "./ActionTypes";
 import {getMockedDispatch} from "../../Util/TestUtils";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 

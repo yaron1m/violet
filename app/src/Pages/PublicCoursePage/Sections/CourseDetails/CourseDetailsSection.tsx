@@ -1,7 +1,7 @@
 import React from "react";
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
 import {Size} from "../../../../Util/Constants/Size";
-import IPublicCourse from "../../../../Interfaces/IPublicCourse";
+import {IPublicCourse} from "@violet/common";
 import CustomTextField from "../../../../Components/CustomComponents/CustomTextField";
 import CustomToggle from "../../../../Components/CustomComponents/CustomToggle";
 

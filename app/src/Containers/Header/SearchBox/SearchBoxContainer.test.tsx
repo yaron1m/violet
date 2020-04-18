@@ -6,8 +6,7 @@ import * as _ from "lodash";
 import * as SelectedOrderActions from "../../../Store/SelectedOrder/Actions";
 import {IDispatch} from "../../../Interfaces/ReduxInterfaces";
 import {EntityType} from "../../../Util/Constants/EntityType";
-import IOrganization from "../../../Interfaces/IOrganization";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder, IOrganization} from "@violet/common";
 
 let dispatch: IDispatch;
 

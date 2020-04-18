@@ -7,7 +7,7 @@ import {
     getPublicCoursesSummary
 } from "./Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import IOrder from "../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 const sampleState = {
     publicCourses: {

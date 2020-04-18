@@ -2,12 +2,17 @@ import * as orderStatusUtil from "../../Util/OrderStatus/OrderStatusCalculator";
 import * as firebaseActions from "../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {
-    addNewLectureTime, clearSelectedOrder, fillNewOrderMissingFields, removeParticipant,
-    removeParticipantsFromAllLectures, saveNewOrder,
+    addNewLectureTime,
+    clearSelectedOrder,
+    fillNewOrderMissingFields,
+    removeParticipant,
+    removeParticipantsFromAllLectures,
+    saveNewOrder,
     selectOrder,
     sendSelectedOrderToDatabase,
     setIsSelectedOrder,
-    updateLectureTime, updatePublicCourseLectureParticipating,
+    updateLectureTime,
+    updatePublicCourseLectureParticipating,
     updatePublicCourseParticipant,
     updateSelectedOrder
 } from "./Actions";

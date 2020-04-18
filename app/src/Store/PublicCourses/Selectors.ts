@@ -5,8 +5,7 @@ import {moneyFormat} from "../../Util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
-import IOrder from "../../Interfaces/IOrder";
-import IPublicCourse from "../../Interfaces/IPublicCourse";
+import {IOrder, IPublicCourse} from "@violet/common";
 
 export function getPublicCourses(state: IState) {
     return toMutable(state.publicCourses);

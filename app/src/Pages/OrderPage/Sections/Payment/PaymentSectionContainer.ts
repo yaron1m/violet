@@ -4,7 +4,7 @@ import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import calculateSum from "./CalculateSum";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
-import IOrder from "../../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     return {

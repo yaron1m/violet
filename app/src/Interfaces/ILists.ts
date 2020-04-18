@@ -1,4 +1,4 @@
-import {IStringObject} from "./IOrder";
+import {IStringObject} from "@violet/common";
 
 export default interface ILists {
     offeredLectures: IStringObject;

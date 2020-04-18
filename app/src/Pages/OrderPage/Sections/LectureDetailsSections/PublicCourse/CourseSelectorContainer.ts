@@ -7,8 +7,7 @@ import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../../Util/StringUtil";
 import {removeParticipantsFromAllLectures, updateSelectedOrder} from "../../../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
-import IOrder from "../../../../../Interfaces/IOrder";
-import IPublicCourse from "../../../../../Interfaces/IPublicCourse";
+import {IOrder, IPublicCourse} from "@violet/common";
 import CustomSelectField, {IOption} from "../../../../../Components/CustomComponents/CustomSelectField";
 
 function getOption(course: IPublicCourse): IOption {

@@ -4,7 +4,7 @@ import {getSelectedOrder} from "../../../../Store/SelectedOrder/Selectors";
 import {isEmptyValue} from "../../../../Util/StringUtil";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
-import IOrder from "../../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 import * as React from "react";
 import {TabKey} from "../../../../Util/Constants/Status";
 

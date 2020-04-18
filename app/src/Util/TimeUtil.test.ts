@@ -1,5 +1,5 @@
 import {calculateDuration, calculatePreparationTimes, toDateFormat} from "./TimeUtil";
-import {ILectureTime} from "../Interfaces/IOrder";
+import {ILectureTime} from "@violet/common";
 
 describe("time-util", () => {
 

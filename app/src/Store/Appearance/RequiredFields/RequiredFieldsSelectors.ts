@@ -5,9 +5,8 @@ import {hasMissingFields, IRequiredFields, isRightTabKey, mergerRequiredFields} 
 import {shouldShowRequiredFields} from "../Selectors";
 import {getSelectedOrder} from "../../SelectedOrder/Selectors";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder, IOrganization} from "@violet/common";
 import {TabKey} from "../../../Util/Constants/Status";
-import IOrganization from "../../../Interfaces/IOrganization";
 
 export function getRequiredFieldsObject(state: IState) {
     return getRequiredFieldsStateObject(state, shouldShowRequiredFields(state));

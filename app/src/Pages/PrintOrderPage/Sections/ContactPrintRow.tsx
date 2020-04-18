@@ -1,6 +1,6 @@
 import React from "react";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
-import IOrder, {IOrderStringField} from "../../../Interfaces/IOrder";
+import {IOrder, IOrderStringField} from "@violet/common";
 import _ from "lodash";
 
 function getValue(key: string, selectedOrder: IOrder, isFinancial: boolean) {

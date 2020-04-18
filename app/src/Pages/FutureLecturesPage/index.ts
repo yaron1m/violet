@@ -9,7 +9,7 @@ import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
 import {EntityType} from "../../Util/Constants/EntityType";
 import {Path} from "../Path";
 import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 export function getFutureLectureTimes(state: IState) {
     const lectureTimes = getAllLectureTimes(state, [Status.approvedOrder, Status.isExecuting]);

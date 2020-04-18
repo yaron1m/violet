@@ -1,7 +1,7 @@
 import * as Target from ".";
 import {Status} from "../../Util/Constants/Status";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import IOrder from "../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 function getState(orders: { [key: string]: IOrder }) {
     return {

@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import IOrder from "../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 import {Status} from "../Constants/Status";
 
 export function existsAndNotEmpty(order: IOrder, key: string) {

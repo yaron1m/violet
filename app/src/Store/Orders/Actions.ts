@@ -1,5 +1,5 @@
 import * as actionTypes from "./ActionTypes";
-import IOrder from "../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 export function receiveOrders(orders: { [id: string]: IOrder }) {
     return {

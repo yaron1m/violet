@@ -9,7 +9,7 @@ import InfoBox from "./InfoBox";
 import Colors from "../../../Util/Constants/Colors";
 import {isEmptyValue, moneyFormat} from "../../../Util/StringUtil";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 import {Path} from "../../Path";
 
 function calculateExpectedIncome(isFetching: boolean, expectedIncomeOrders: IOrder[]) {

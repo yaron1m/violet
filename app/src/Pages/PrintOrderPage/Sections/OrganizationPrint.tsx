@@ -1,7 +1,7 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
-import IOrganization from "../../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 
 export default function (props: { selectedOrganization: IOrganization }) {
     return (

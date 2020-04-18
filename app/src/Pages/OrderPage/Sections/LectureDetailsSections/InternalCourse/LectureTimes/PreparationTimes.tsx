@@ -1,5 +1,5 @@
 import React from "react";
-import {ILectureTime} from "../../../../../../Interfaces/IOrder";
+import {ILectureTime} from "@violet/common";
 import {calculatePreparationTimes} from "../../../../../../Util/TimeUtil";
 
 export default function PreparationTimes(props: PreparationTimesProps) {

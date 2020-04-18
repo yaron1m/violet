@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import IOrder, {ILectureTime} from "../../../../../../Interfaces/IOrder";
+import {ILectureTime, IOrder} from "@violet/common";
 import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
 import SingleLectureTime from "./SingleLectureTime";
 import {IDispatch, IState} from "../../../../../../Interfaces/ReduxInterfaces";

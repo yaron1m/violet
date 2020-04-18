@@ -1,6 +1,6 @@
 import * as actions from "./Actions";
 import * as actionTypes from "./ActionTypes";
-import IOrganization from "../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 
 describe("organizations actions", () => {
     it("should create an action of received organizations", () => {

@@ -6,7 +6,7 @@ import {getOrdersByOrganization, getOrdersSummary, IOrderSummary} from "../../St
 import {isSelectedOrganization} from "../../Store/SelectedOrganization/Selectors";
 import {Path} from "../Path";
 import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     return {

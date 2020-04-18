@@ -2,7 +2,7 @@ import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import _ from "lodash";
 import {isEmptyValue} from "../../../Util/StringUtil";
-import {ILectureTime, ILectureTimeField, IStringObject} from "../../../Interfaces/IOrder";
+import {ILectureTime, ILectureTimeField, IStringObject} from "@violet/common";
 import {toPrintableDateFormat} from "../../../Util/TimeUtil";
 
 export default function (props: LectureTimesPrintProps) {

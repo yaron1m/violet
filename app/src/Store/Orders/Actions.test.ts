@@ -1,6 +1,6 @@
 import * as actions from "./Actions";
 import * as actionTypes from "./ActionTypes";
-import IOrder from "../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 describe("Store/Orders/actions", () => {
     it("should create an action of received orders", () => {

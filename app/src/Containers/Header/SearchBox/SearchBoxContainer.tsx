@@ -14,8 +14,7 @@ import {flexStyle} from "../../../Components/CustomComponents/CustomPaper";
 import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
 import {ISuggestion} from "../../../Components/AutoSuggest";
 import {EntityType} from "../../../Util/Constants/EntityType";
-import IOrganization from "../../../Interfaces/IOrganization";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder, IOrganization} from "@violet/common";
 import {selectOrder} from "../../../Store/SelectedOrder/Actions";
 import {Path} from "../../../Pages/Path";
 

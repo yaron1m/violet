@@ -4,7 +4,7 @@ import CustomTable from "../../../../Components/Table/CustomTable";
 import * as _ from "lodash";
 import CustomTableRow from "../../../../Components/Table/CustomTableRow";
 import {IContact} from "./ImportContactDialogContainer";
-import {IStringObject} from "../../../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 export default function ImportContactsDialog(props: ImportContactsDialogProps) {
     // TODO see if I can use my custom table

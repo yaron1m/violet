@@ -1,6 +1,6 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 import PrintBoolean from "../../../Components/CustomComponents/OrderPrint/PrintBoolean";
 import PrintDate from "../../../Components/CustomComponents/OrderPrint/PrintDate";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";

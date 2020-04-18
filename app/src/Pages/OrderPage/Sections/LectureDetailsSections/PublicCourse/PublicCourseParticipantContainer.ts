@@ -1,8 +1,15 @@
 import {connect} from "react-redux";
 import PublicCourseParticipant from "./PublicCourseParticipant";
 import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
-import {removeParticipant, updatePublicCourseLectureParticipating, updatePublicCourseParticipant} from "../../../../../Store/SelectedOrder/Actions";
-import {getSelectedPublicCourse, getSelectedPublicCourseLectures} from "../../../../../Store/SelectedPublicCourse/Selectors";
+import {
+    removeParticipant,
+    updatePublicCourseLectureParticipating,
+    updatePublicCourseParticipant
+} from "../../../../../Store/SelectedOrder/Actions";
+import {
+    getSelectedPublicCourse,
+    getSelectedPublicCourseLectures
+} from "../../../../../Store/SelectedPublicCourse/Selectors";
 import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
 import {TabKey} from "../../../../../Util/Constants/Status";
 import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";

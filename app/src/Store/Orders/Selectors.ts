@@ -11,8 +11,7 @@ import {EntityType} from "../../Util/Constants/EntityType";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
 import {getOrderStatusLabel, Status} from "../../Util/Constants/Status";
-import IOrder from "../../Interfaces/IOrder";
-import IPublicCourse from "../../Interfaces/IPublicCourse";
+import {IOrder, IPublicCourse} from "@violet/common";
 
 function getOrdersMap(state: IState) {
     return toMutable(state.orders);

@@ -3,8 +3,7 @@ import {progressiveStatuses, Status, terminatingStatuses} from "../Constants/Sta
 import {existsAndNotEmpty} from "./OrderStatusUtils";
 import {hasDatePassed} from "../TimeUtil";
 import {isPublicCourseOrder} from "../../Store/SelectedOrder/Selectors";
-import IOrder from "../../Interfaces/IOrder";
-import IPublicCourse from "../../Interfaces/IPublicCourse";
+import {IOrder, IPublicCourse} from "@violet/common";
 
 export default function calculateOrderStatus(order: IOrder, publicCourse: IPublicCourse) {
     // let possibleStatuses = _.values(terminatingStatuses);

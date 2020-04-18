@@ -1,5 +1,10 @@
 import {getSelectedOrganization} from "./Selectors";
-import {CLEAR_SELECTED_ORGANIZATION, SELECT_ORGANIZATION, SET_IS_SELECTED_ORGANIZATION, UPDATE_SELECTED_ORGANIZATION} from "./ActionTypes";
+import {
+    CLEAR_SELECTED_ORGANIZATION,
+    SELECT_ORGANIZATION,
+    SET_IS_SELECTED_ORGANIZATION,
+    UPDATE_SELECTED_ORGANIZATION
+} from "./ActionTypes";
 import {getNextOrganizationId, getOrganizationById} from "../Organizations/Selectors";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {closeDialog} from "../Appearance/Actions";

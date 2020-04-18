@@ -8,7 +8,7 @@ import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 import * as React from "react";
 import {Status} from "../../Util/Constants/Status";
 import {Path} from "../Path";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 export function getElements(state: IState, ownProps: AllOrdersTableContainerProps) {
     return _.reverse(getOrdersSummary(state, (state: IState) => getOrders(state, ownProps.filterStatus)));

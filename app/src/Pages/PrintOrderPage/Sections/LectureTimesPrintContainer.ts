@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {getSelectedOrder} from "../../../Store/SelectedOrder/Selectors";
 import LectureTimesPrintSection from "./LectureTimesPrint";
 import {IState} from "../../../Interfaces/ReduxInterfaces";
-import {IStringObject} from "../../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     return {

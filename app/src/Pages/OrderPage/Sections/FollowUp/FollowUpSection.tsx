@@ -1,6 +1,10 @@
 import React from "react";
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
-import {OrderCustomDatePicker, OrderCustomText, OrderCustomToggle} from "../ConnectedCustomComponents/OrderCustomFields";
+import {
+    OrderCustomDatePicker,
+    OrderCustomText,
+    OrderCustomToggle
+} from "../ConnectedCustomComponents/OrderCustomFields";
 
 export default function FollowUpSection(props: FollowUpSectionProps) {
     return (

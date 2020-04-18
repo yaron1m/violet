@@ -1,4 +1,6 @@
-import {Status, TabKey} from "../Util/Constants/Status";
+import {Status, TabKey} from "./Status";
+import {IPublicCourseParticipant} from "./IPublicCourseParticipant";
+import ILectureTime from "./ILectureTime";
 
 export default interface IOrder {
     id: number,
@@ -141,18 +143,8 @@ export type IOrderStringField =
 
 export type ILectureTimeField = "topic" | "audienceSize" | "date" | "duration" | "endTime" | "startTime";
 
-export type IStringObject = { [key: string]: string };
 
-export interface ILectureTime {
-    topic: string;
-    audienceSize: string;
-    date: string;
-    duration: string;
-    endTime: string;
-    startTime: string;
-    tie: string;
-    travelTime: string;
-}
+
 
 export type IPublicCourseParticipantStringField =
     "idNumber"
@@ -162,17 +154,3 @@ export type IPublicCourseParticipantStringField =
     | "participantFirstName"
     | "participantLastName"
     | "phone";
-
-export interface IPublicCourseParticipant {
-    idNumber: string;
-    lecturesAttending: number[];
-    email: string;
-    job: string;
-    participantCost: string;
-    participantFirstName: string;
-    participantLastName: string;
-    participantEnglishFirstName: string;
-    participantEnglishLastName: string;
-    phone: string;
-    isqMember: boolean;
-}

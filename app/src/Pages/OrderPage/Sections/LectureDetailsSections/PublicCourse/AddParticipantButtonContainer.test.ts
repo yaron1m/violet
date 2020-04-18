@@ -1,5 +1,5 @@
 import {addNewParticipant} from "./AddParticipantButtonContainer";
-import IOrder, {IPublicCourseParticipant} from "../../../../../Interfaces/IOrder";
+import {IOrder, IPublicCourseParticipant} from "@violet/common";
 
 describe("addNewParticipant", () => {
     let updateSelectedOrder: (name: string, value: any) => void;

@@ -3,8 +3,7 @@ import {getSelectedOrganization} from "../../Store/SelectedOrganization/Selector
 import PrintOrderPage from "./PrintOrderPage";
 import {getSelectedOrder, isSelectedOrder} from "../../Store/SelectedOrder/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import IOrder from "../../Interfaces/IOrder";
-import IOrganization from "../../Interfaces/IOrganization";
+import {IOrder, IOrganization} from "@violet/common";
 
 function getTitle(isSelectedOrder: boolean,  selectedOrder: IOrder, selectedOrganization: IOrganization): string {
     if (!isSelectedOrder)

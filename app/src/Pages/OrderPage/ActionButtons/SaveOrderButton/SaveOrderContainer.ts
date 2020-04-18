@@ -8,7 +8,7 @@ import {saveNewOrganization} from "../../../../Store/SelectedOrganization/Action
 import {saveNewOrder} from "../../../../Store/SelectedOrder/Actions";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
 import * as React from "react";
-import IOrganization from "../../../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     return {

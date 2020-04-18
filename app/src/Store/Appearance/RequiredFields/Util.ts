@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 import {TabKey} from "../../../Util/Constants/Status";
 
 function arrayMerge(objValue: string[], srcValue: string[]) {

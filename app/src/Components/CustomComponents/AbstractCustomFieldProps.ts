@@ -1,5 +1,5 @@
 import {Size} from "../../Util/Constants/Size";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 export interface AbstractCustomFieldProps<ValueType> {
     title: string;

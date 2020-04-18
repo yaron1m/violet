@@ -1,12 +1,10 @@
-import IOrganization from "./IOrganization";
 import IAppearance from "./IAppearance";
 import IFirebase from "./IFirebase";
-import IOrder from "./IOrder";
 import ILabels from "./ILabels";
 import ILists from "./ILists";
-import IPublicCourse from "./IPublicCourse";
 import {ThunkDispatch} from "redux-thunk";
 import {AnyAction} from "redux";
+import {IOrder, IOrganization, IPublicCourse} from "@violet/common";
 
 export type IState = {
     appearance: IAppearance;

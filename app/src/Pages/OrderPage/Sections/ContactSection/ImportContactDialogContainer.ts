@@ -4,7 +4,7 @@ import {getOrdersByOrganization} from "../../../../Store/Orders/Selectors";
 import {getValueOrEmptyString} from "../../../../Util/StringUtil";
 import ImportContactDialog from "./ImportContactDialog";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
-import IOrder, {IStringObject} from "../../../../Interfaces/IOrder";
+import {IOrder, IStringObject} from "@violet/common";
 import {updateSelectedOrder} from "../../../../Store/SelectedOrder/Actions";
 
 export interface IContact extends IStringObject {

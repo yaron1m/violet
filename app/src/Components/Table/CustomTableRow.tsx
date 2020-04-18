@@ -7,7 +7,7 @@ import CheckIcon from "@material-ui/icons/AddCircleOutline";
 import * as _ from "lodash";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 import {toPrintableDateFormat} from "../../Util/TimeUtil";
 
 export default class CustomTableRow<TElement extends IStringObject> extends React.Component<CustomTableRowProps<TElement>> {

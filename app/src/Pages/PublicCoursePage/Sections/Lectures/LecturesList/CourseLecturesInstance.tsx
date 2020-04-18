@@ -5,7 +5,7 @@ import GuestLecturerFieldsContainer from "./GuestLecturerFieldsContainer";
 import CustomDivider from "../../../../../Components/CustomComponents/CustomDivider";
 import IndexAvatar from "../../../../../Components/IndexAvatar";
 import {ISuggestion} from "../../../../../Components/AutoSuggest";
-import {IPublicCourseLecture} from "../../../../../Interfaces/IPublicCourse";
+import {IPublicCourseLecture} from "@violet/common";
 import CustomTextField from "../../../../../Components/CustomComponents/CustomTextField";
 import _ from "lodash";
 import CustomDatePicker from "../../../../../Components/CustomComponents/CustomDatePicker";

@@ -1,5 +1,5 @@
 import * as actionTypes from "./ActionTypes";
-import IOrganization from "../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 
 export function receiveOrganizations(organizations: { [id: string]: IOrganization }) {
     return {

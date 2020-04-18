@@ -1,7 +1,7 @@
 import React from "react";
 import {isEmptyValue} from "../../../../Util/StringUtil";
 import {CustomFlatButton} from "../../../../Components/CustomComponents/CustomButtons";
-import IOrganization from "../../../../Interfaces/IOrganization";
+import {IOrganization} from "@violet/common";
 
 export function shouldSaveNewOrder(
     isSelectedOrganization: boolean,

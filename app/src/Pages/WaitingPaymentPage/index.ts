@@ -6,7 +6,7 @@ import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {Status} from "../../Util/Constants/Status";
 import {Path} from "../Path";
 import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     return {

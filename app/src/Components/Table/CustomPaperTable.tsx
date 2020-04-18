@@ -4,7 +4,7 @@ import CustomPaper from "../CustomComponents/CustomPaper";
 import CustomTable from "./CustomTable";
 import CustomTableRow from "./CustomTableRow";
 import {CustomSingleCellRow} from "./CustomSingleCellRow";
-import {IStringObject} from "../../Interfaces/IOrder";
+import {IStringObject} from "@violet/common";
 
 export default class CustomPaperTable<TElement extends { [key: string]: string }>
     extends React.Component<CustomPaperTableProps<TElement>> {

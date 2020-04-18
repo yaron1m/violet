@@ -3,7 +3,7 @@ import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintS
 import ContactsPrintRow from "./ContactPrintRowContainer";
 import CustomDivider from "../../../Components/CustomComponents/CustomDivider";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
-import IOrder from "../../../Interfaces/IOrder";
+import {IOrder} from "@violet/common";
 
 export default function (props: { selectedOrder: IOrder }) {
     return (

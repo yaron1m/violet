@@ -3,9 +3,14 @@ import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {calculateDuration} from "../../Util/TimeUtil";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "./Selectors";
-import {CLEAR_SELECTED_PUBLIC_COURSE, SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE, UPDATE_SELECTED_PUBLIC_COURSE} from "./ActionTypes";
+import {
+    CLEAR_SELECTED_PUBLIC_COURSE,
+    SELECT_PUBLIC_COURSE,
+    SET_IS_SELECTED_PUBLIC_COURSE,
+    UPDATE_SELECTED_PUBLIC_COURSE
+} from "./ActionTypes";
 import {IDispatch, IGetState, IState} from "../../Interfaces/ReduxInterfaces";
-import {IPublicCourseLecture} from "../../Interfaces/IPublicCourse";
+import {IPublicCourseLecture} from "@violet/common";
 import {updateObject} from "../../Util/ObjectUpdater";
 
 export function selectPublicCourse(courseId: string) {

@@ -4,7 +4,7 @@ import {Size} from "../../../../../../Util/Constants/Size";
 import IndexAvatar from "../../../../../../Components/IndexAvatar";
 import DeleteLectureTimeButton from "./DeleteLectureTimeButton";
 import {ISuggestion} from "../../../../../../Components/AutoSuggest";
-import {ILectureTime} from "../../../../../../Interfaces/IOrder";
+import {ILectureTime} from "@violet/common";
 import CustomDatePicker from "../../../../../../Components/CustomComponents/CustomDatePicker";
 import CustomAutoComplete from "../../../../../../Components/CustomComponents/CustomAutoComplete";
 import CustomTextField from "../../../../../../Components/CustomComponents/CustomTextField";

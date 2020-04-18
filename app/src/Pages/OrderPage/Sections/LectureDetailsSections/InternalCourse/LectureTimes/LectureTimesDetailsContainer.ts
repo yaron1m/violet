@@ -3,7 +3,7 @@ import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors"
 import LectureTimesDetails from "./LectureTimesDetails";
 import _ from "lodash";
 import {IState} from "../../../../../../Interfaces/ReduxInterfaces";
-import {ILectureTime} from "../../../../../../Interfaces/IOrder";
+import {ILectureTime} from "@violet/common";
 
 function getLectureTimeIndexes(lectureTimes: ILectureTime[]) {
     if (!lectureTimes)

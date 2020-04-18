@@ -1,0 +1,14 @@
+{
+  "name": "@violet/common",
+  "version": "1.0.0",
+  "description": "Common code for Warranty Keeper",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib && tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
