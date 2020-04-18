@@ -8,7 +8,7 @@
     "start": "npm run shell",
     "build": "rm -rf lib && tsc",
     "deploy-dev": "firebase deploy -P development --only functions",
-    "deploy-prod": "firebase deploy -P default --only functions",
+    "deploy-prod": "firebase deploy -P production --only functions",
     "copyFromCommon": "cp -r ../common/src/ src/Common",
     "logs": "firebase functions:log"
   },
