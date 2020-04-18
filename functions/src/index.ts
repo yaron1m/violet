@@ -1,5 +1,5 @@
 import {validatedHttpFunction} from "./Util/AuthorizationValidator";
-import UpdateStatusFunction from "./order-status/UpdateStatusFunction";
+import UpdateStatusFunction from "./OrderStatus/UpdateStatusFunction";
 import * as functions from 'firebase-functions';
 import * as admin from "firebase-admin";
 

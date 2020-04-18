@@ -1,13 +1,14 @@
-const _ = require("lodash");
-const utils = require("./OrderStatusCalculatorUtils");
-const isPublicCourseOrder = utils.isPublicCourseOrder;
-const terminatingStatuses = utils.terminatingStatuses;
-const progressiveStatuses = utils.progressiveStatuses;
-const existsAndNotEmpty = utils.existsAndNotEmpty;
-const hasDatePassed = utils.hasDatePassed;
+import * as _ from 'lodash';
+import {
+    isPublicCourseOrder,
+    terminatingStatuses,
+    progressiveStatuses,
+    existsAndNotEmpty,
+    hasDatePassed
+} from './OrderStatusCalculatorUtils';
+import IOrder from "../IOrder";
 
-
-exports.calculateOrderStatus = function (order, publicCourses) {
+export function calculateOrderStatus(order: IOrder, publicCourses) {
 
     let publicCourse = null;
     if (isPublicCourseOrder(order)) {
@@ -27,8 +28,7 @@ exports.calculateOrderStatus = function (order, publicCourses) {
     for (let i = 0; i < possibleStatuses.length; i++) {
         if (meetsRequirements(order, publicCourse, possibleStatuses[i])) {
             status = possibleStatuses[i];
-        }
-        else {
+        } else {
             break;
         }
     }
@@ -111,8 +111,7 @@ function isExecuting(order, publicCourse) {
     if (isPublicCourseOrder(order)) {
         const activeLectures = _.filter(publicCourse.lectures, lecture => lecture.active);
         datesToCheck = _.map(activeLectures, lecture => lecture.date);
-    }
-    else {
+    } else {
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 
@@ -126,8 +125,7 @@ function isExecuted(order, publicCourse) {
     if (isPublicCourseOrder(order)) {
         const activeLectures = _.filter(publicCourse.lectures, lecture => lecture.active);
         datesToCheck = _.map(activeLectures, lecture => lecture.date);
-    }
-    else {
+    } else {
         datesToCheck = _.mapValues(order.lectureTimes, lectureTime => lectureTime.date);
     }
 

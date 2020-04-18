@@ -2,8 +2,7 @@ import * as _ from 'lodash';
 import * as express from "express";
 import * as admin from "firebase-admin";
 import IOrder from "../IOrder";
-
-const orderStatusCalculator = require("./OrderStatusCalculator");
+import {calculateOrderStatus} from "./OrderStatusCalculator";
 
 export default async function (
     request: express.Request,
@@ -20,7 +19,7 @@ export default async function (
 
         ordersSnapshot.forEach(order => {
             const thisOrder = order.val() as IOrder;
-            const calculatedStatus = orderStatusCalculator.calculateOrderStatus(thisOrder, publicCourses);
+            const calculatedStatus = calculateOrderStatus(thisOrder, publicCourses);
 
             if (!_.startsWith(calculatedStatus, thisOrder.status)) {
                 console.log("id: " + thisOrder.id + ", old status: " + thisOrder.status + ", new status: " + calculatedStatus);
