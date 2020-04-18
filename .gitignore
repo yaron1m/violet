@@ -27,3 +27,5 @@ firebase-debug.log
 # Backup script
 app/backup.sh
 
+**/package-lock.json
+**/lib/

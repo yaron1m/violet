@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "violet-36bed"
+    "production": "violet-36bed",
+    "dev": "violet-dev",
+    "demo": "violet-demo"
   }
 }
