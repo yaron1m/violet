@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as express from "express";
 import * as admin from "firebase-admin";
-import IOrder from "../IOrder";
+import {IOrder} from "../Common";
 import {calculateOrderStatus} from "./OrderStatusCalculator";
 
 export default async function (

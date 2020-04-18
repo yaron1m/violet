@@ -6,7 +6,7 @@ import {
     existsAndNotEmpty,
     hasDatePassed
 } from './OrderStatusCalculatorUtils';
-import IOrder from "../IOrder";
+import {IOrder} from "../Common";
 
 export function calculateOrderStatus(order: IOrder, publicCourses) {
 
@@ -34,7 +34,7 @@ export function calculateOrderStatus(order: IOrder, publicCourses) {
     }
 
     return status;
-};
+}
 
 function meetsRequirements(order, publicCourse, statusName) {
     switch (statusName) {
