@@ -5,12 +5,11 @@ import {isMatchingStatus} from "../../Util/OrderStatus/OrderStatusUtils";
 import {cutIfLong, isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import getActionRequiredOrdersArray from "./ActionRequiredOrderes";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
-import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selectors";
 import {EntityType} from "../../Util/Constants/EntityType";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
-import {getOrderStatusLabel, IOrder, IPublicCourse, Status} from "@violet/common";
+import {getOrderStatusLabel, IOrder, IPublicCourse, Status, isPublicCourseOrder} from "@violet/common";
 
 function getOrdersMap(state: IState) {
     return toMutable(state.orders);

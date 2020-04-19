@@ -1,3 +1,6 @@
+import IOrder from "./IOrder";
+import {TabKey} from "./Status";
+
 export default interface IPublicCourse {
     id: number;
     changedDate: string;
@@ -30,4 +33,8 @@ export interface IPublicCourseLecture {
     guestLecturer: boolean;
     guestLecturerName: string;
     guestLecturerCost: string;
+}
+
+export function isPublicCourseOrder(order: IOrder) {
+    return order.lectureDetailsTabKey === TabKey.publicCourseTabKey;
 }

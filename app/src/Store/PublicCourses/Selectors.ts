@@ -1,8 +1,7 @@
 import _ from "lodash";
-import {hasDatePassed, IOrder, IPublicCourse} from "@violet/common";
+import {hasDatePassed, IOrder, IPublicCourse, isPublicCourseOrder} from "@violet/common";
 import {getOrders} from "../Orders/Selectors";
 import {moneyFormat} from "../../Util/StringUtil";
-import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
 

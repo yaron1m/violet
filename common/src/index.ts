@@ -1,7 +1,15 @@
 import IOrder, {IOrderStringField, ILectureTimeField, IOrderBooleanField} from './Interfaces/IOrder';
-import {Status, TabKey, progressiveStatuses, terminatingStatuses, getStatusLabels, getOrderStatusLabel, getStatusLabel} from './Interfaces/Status';
+import {
+    Status,
+    TabKey,
+    progressiveStatuses,
+    terminatingStatuses,
+    getStatusLabels,
+    getOrderStatusLabel,
+    getStatusLabel
+} from './Interfaces/Status';
 import IOrganization from './Interfaces/IOrganization';
-import IPublicCourse, {IPublicCourseLecture} from './Interfaces/IPublicCourse';
+import IPublicCourse, {IPublicCourseLecture, isPublicCourseOrder} from './Interfaces/IPublicCourse';
 import IStringObject from "./Interfaces/IStringObject";
 import ILectureTime from './Interfaces/ILectureTime';
 import {IPublicCourseParticipant} from './Interfaces/IPublicCourseParticipant';
@@ -27,10 +35,13 @@ export {
     IOrderBooleanField,
 };
 
+// Utils
+export {isPublicCourseOrder};
+
 // Status
 export {
     Status, TabKey, progressiveStatuses, terminatingStatuses, getStatusLabels, getOrderStatusLabel, getStatusLabel
-}
+};
 
 // TimeUtil
-export {calculateDuration, calculatePreparationTimes, hasDatePassed, toDateFormat, toPrintableDateFormat}
+export {calculateDuration, calculatePreparationTimes, hasDatePassed, toDateFormat, toPrintableDateFormat};

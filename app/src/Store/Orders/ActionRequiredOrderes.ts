@@ -1,8 +1,7 @@
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {getOrderStatusLabel, IOrder, Status, toPrintableDateFormat} from "@violet/common";
+import {getOrderStatusLabel, IOrder, Status, toPrintableDateFormat, isPublicCourseOrder} from "@violet/common";
 import {isEmptyValue} from "../../Util/StringUtil";
-import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {getOrders} from "./Selectors";

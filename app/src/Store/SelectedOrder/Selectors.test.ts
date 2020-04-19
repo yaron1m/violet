@@ -1,6 +1,6 @@
-import {getSelectedOrder, isPublicCourseOrder, isSelectedOrder} from "./Selectors";
+import {getSelectedOrder, isSelectedOrder} from "./Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import {IOrder} from "@violet/common";
+import {IOrder, isPublicCourseOrder} from "@violet/common";
 
 const sampleState = {
     selectedOrder: {
