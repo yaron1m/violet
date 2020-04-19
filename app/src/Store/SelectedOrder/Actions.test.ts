@@ -1,4 +1,3 @@
-import * as orderStatusUtil from "../../Util/OrderStatus/OrderStatusCalculator";
 import * as firebaseActions from "../Firebase/Actions";
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {
@@ -21,8 +20,10 @@ import {sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Action
 import {getMockedDispatch} from "../../Util/TestUtils";
 import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
 import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../SelectedPublicCourse/ActionTypes";
-import {progressiveStatuses as Status} from "@violet/common";
+import * as Common from "@violet/common";
 import {IState} from "../../Interfaces/ReduxInterfaces";
+
+const Status = Common.progressiveStatuses;
 
 const id = 123456;
 const orgId = 555;
@@ -36,9 +37,9 @@ const status = "status";
 describe("Selected order actions", () => {
     beforeEach(() => {
         // @ts-ignore
-        orderStatusUtil.default = jest.fn();
+        Common.calculateOrderStatus = jest.fn();
         // @ts-ignore
-        orderStatusUtil.default.mockReturnValue(status);
+        Common.calculateOrderStatus.mockReturnValue(status);
     });
 
     it("should dispatch action with selected order and organization", () => {
@@ -753,7 +754,7 @@ describe("Selected order actions", () => {
 
     it("should calculate status after updating the order", () => {
         // @ts-ignore
-        orderStatusUtil.default = jest.fn(order => {
+        Common.calculateOrderStatus = jest.fn(order => {
             if (order.orderApproved)
                 return Status.approvedOrder;
 

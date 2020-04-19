@@ -4,7 +4,6 @@ import {getNextOrderId, getOrderById} from "../Orders/Selectors";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
 import * as _ from "lodash";
-import calculateOrderStatus from "../../Util/OrderStatus/OrderStatusCalculator";
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {selectOrganization, sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Actions";
 import {hideRequiredFields, openDialog, openSnackbar} from "../Appearance/Actions";
@@ -12,7 +11,7 @@ import {getOrganizationById} from "../Organizations/Selectors";
 import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 import {IDispatch, IGetState, IState} from "../../Interfaces/ReduxInterfaces";
-import {calculateDuration, ILectureTime, IPublicCourseParticipant, TabKey} from "@violet/common";
+import {calculateDuration, calculateOrderStatus, ILectureTime, IPublicCourseParticipant, TabKey} from "@violet/common";
 import * as firebase from "firebase";
 import {updateObject} from "../../Util/ObjectUpdater";
 

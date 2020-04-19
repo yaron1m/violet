@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import {getSelectedOrder} from "../../../../../Store/SelectedOrder/Selectors";
-import {Status} from "@violet/common";
-import {isMatchingStatus} from "../../../../../Util/OrderStatus/OrderStatusUtils";
+import {Status, isMatchingStatus} from "@violet/common";
 import InternalLectureDetails from "./InternalLectureDetails";
 import {IState} from "../../../../../Interfaces/ReduxInterfaces";
 

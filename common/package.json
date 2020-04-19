@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "test": "npx jest"
+    "test": "npx jest src"
   },
   "author": "",
   "license": "ISC",

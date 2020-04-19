@@ -1,7 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import _ from "lodash";
 import {getOrganizationById} from "../Organizations/Selectors";
-import {isMatchingStatus} from "../../Util/OrderStatus/OrderStatusUtils";
 import {cutIfLong, isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import getActionRequiredOrdersArray from "./ActionRequiredOrderes";
 import {getSelectedOrganization, isSelectedOrganization} from "../SelectedOrganization/Selectors";
@@ -9,7 +8,14 @@ import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selecto
 import {EntityType} from "../../Util/Constants/EntityType";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
-import {getOrderStatusLabel, IOrder, IPublicCourse, Status, isPublicCourseOrder} from "@violet/common";
+import {
+    getOrderStatusLabel,
+    IOrder,
+    IPublicCourse,
+    isMatchingStatus,
+    isPublicCourseOrder,
+    Status
+} from "@violet/common";
 
 function getOrdersMap(state: IState) {
     return toMutable(state.orders);

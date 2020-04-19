@@ -20,6 +20,8 @@ import {
     toDateFormat,
     toPrintableDateFormat
 } from './Util/TimeUtil';
+import calculateOrderStatus from './OrderStatus/OrderStatusCalculator';
+import {isMatchingStatus} from './OrderStatus/OrderStatusUtils';
 
 // Interfaces
 export {
@@ -45,3 +47,6 @@ export {
 
 // TimeUtil
 export {calculateDuration, calculatePreparationTimes, hasDatePassed, toDateFormat, toPrintableDateFormat};
+
+// OrderStatus
+export {calculateOrderStatus, isMatchingStatus}
