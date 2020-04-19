@@ -18,6 +18,7 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
+    "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
     "typescript": "^3.8.3"
   },
