@@ -1,5 +1,5 @@
 import * as Target from ".";
-import {Status} from "../../Util/Constants/Status";
+import {Status} from "@violet/common";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {IOrder} from "@violet/common";
 

@@ -6,7 +6,7 @@ import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
 import * as React from "react";
-import {Status} from "../../Util/Constants/Status";
+import {Status} from "@violet/common";
 import {Path} from "../Path";
 import {IStringObject} from "@violet/common";
 

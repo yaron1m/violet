@@ -1,10 +1,9 @@
 import React from "react";
 import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintSection";
 import CustomDivider from "../../../Components/CustomComponents/CustomDivider";
-import {IOrder} from "@violet/common";
+import {getOrderStatusLabel, IOrder} from "@violet/common";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
 import PrintBoolean from "../../../Components/CustomComponents/OrderPrint/PrintBoolean";
-import {getOrderStatusLabel} from "../../../Util/Constants/Status";
 
 export default function (props: {selectedOrder: IOrder }) {
     return (

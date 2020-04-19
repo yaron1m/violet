@@ -1,9 +1,8 @@
 import {connect} from "react-redux";
-import {ILectureTime, IOrder} from "@violet/common";
+import {ILectureTime, IOrder, TabKey} from "@violet/common";
 import {getSelectedOrder} from "../../../../../../Store/SelectedOrder/Selectors";
 import SingleLectureTime from "./SingleLectureTime";
 import {IDispatch, IState} from "../../../../../../Interfaces/ReduxInterfaces";
-import {TabKey} from "../../../../../../Util/Constants/Status";
 import {isRightTabKey} from "../../../../../../Store/Appearance/RequiredFields/Util";
 import {getRequiredFieldsObject} from "../../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {toSuggestions} from "../../../../../../Components/AutoSuggest";

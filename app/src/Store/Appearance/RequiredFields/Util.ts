@@ -1,6 +1,5 @@
 import * as _ from "lodash";
-import {IOrder} from "@violet/common";
-import {TabKey} from "../../../Util/Constants/Status";
+import {IOrder, TabKey} from "@violet/common";
 
 function arrayMerge(objValue: string[], srcValue: string[]) {
     if (_.isArray(objValue)) {

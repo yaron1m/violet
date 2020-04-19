@@ -1,5 +1,5 @@
 import {AllOrdersTableContainerProps, getElements} from "./AllOrdersTableContainer";
-import {Status} from "../../Util/Constants/Status";
+import {Status} from "@violet/common";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 
 const state = {

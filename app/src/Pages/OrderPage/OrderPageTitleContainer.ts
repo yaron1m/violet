@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import OrderPageTitle from "./OrderPageTitle";
 import {getSelectedOrder, isSelectedOrder} from "../../Store/SelectedOrder/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import {getOrderStatusLabel} from "../../Util/Constants/Status";
+import {getOrderStatusLabel} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     return {

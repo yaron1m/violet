@@ -4,7 +4,7 @@ import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
 import * as _ from "lodash";
 import {getAllLectureTimes, ILectureTimeSummary} from "../../Store/Orders/Selectors";
-import {Status} from "../../Util/Constants/Status";
+import {Status} from "@violet/common";
 import {selectPublicCourse} from "../../Store/SelectedPublicCourse/Actions";
 import {EntityType} from "../../Util/Constants/EntityType";
 import {Path} from "../Path";

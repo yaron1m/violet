@@ -21,7 +21,7 @@ import {sendSelectedOrganizationToDatabase} from "../SelectedOrganization/Action
 import {getMockedDispatch} from "../../Util/TestUtils";
 import {SELECT_ORGANIZATION} from "../SelectedOrganization/ActionTypes";
 import {SELECT_PUBLIC_COURSE, SET_IS_SELECTED_PUBLIC_COURSE} from "../SelectedPublicCourse/ActionTypes";
-import {progressiveStatuses as Status} from "../../Util/Constants/Status";
+import {progressiveStatuses as Status} from "@violet/common";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 
 const id = 123456;

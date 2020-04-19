@@ -3,7 +3,7 @@ import InternalLectureDetails from "./InternalCourse/InternalLectureDetailsConta
 import PublicCourseLectureDetails from "./PublicCourse/PublicCourseLectureDetailsContainer";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import {TabKey} from "../../../../Util/Constants/Status";
+import {TabKey} from "@violet/common";
 
 export default function LectureDetailsSection(props: LectureDetailsSectionProps) {
     return (

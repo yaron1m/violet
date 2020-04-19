@@ -1,5 +1,5 @@
 import * as Selectors from "./Selectors";
-import {Status} from "../../Util/Constants/Status";
+import {Status} from "@violet/common";
 import * as organizationSelectors from "../Organizations/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {EntityType} from "../../Util/Constants/EntityType";

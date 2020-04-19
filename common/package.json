@@ -14,5 +14,9 @@
     "jest": "^25.3.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.150",
+    "lodash": "^4.17.15"
   }
 }

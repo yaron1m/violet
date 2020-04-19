@@ -3,10 +3,9 @@ import {selectOrder} from "../../Store/SelectedOrder/Actions";
 import {getExpectedIncomeOrders, IExpectedIncomeOrderSummary} from "../../Store/Orders/Selectors";
 import {redirect} from "../../Util/HistoryUtil";
 import CustomPaperTable from "../../Components/Table/CustomPaperTable";
-import {Status} from "../../Util/Constants/Status";
+import {IStringObject, Status} from "@violet/common";
 import {Path} from "../Path";
 import {IDispatch, IState} from "../../Interfaces/ReduxInterfaces";
-import {IStringObject} from "@violet/common";
 
 function mapStateToProps(state: IState) {
     const acceptedStatuses = [Status.waitingPayment, Status.executed, Status.isExecuting, Status.approvedOrder];

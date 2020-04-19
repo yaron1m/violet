@@ -3,7 +3,7 @@ import AllOrdersTableContainer from "./AllOrdersTableContainer";
 import FilterStatusSelectField from "./FilterStatusSelectField";
 import CustomToggle from "../../Components/CustomComponents/CustomToggle";
 import {flexStyle} from "../../Components/CustomComponents/CustomPaper";
-import {Status} from "../../Util/Constants/Status";
+import {Status} from "@violet/common";
 
 export default class AllOrdersPage extends React.Component {
     state = {

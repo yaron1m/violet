@@ -3,7 +3,7 @@ import {redirect} from "../../../Util/HistoryUtil";
 import {getOrders} from "../../../Store/Orders/Selectors";
 import * as _ from "lodash";
 import {isFetching} from "../../../Store/Firebase/Selectors";
-import {Status} from "../../../Util/Constants/Status";
+import {Status} from "@violet/common";
 import PaymentIcon from "@material-ui/icons/AttachMoney";
 import InfoBox from "./InfoBox";
 import Colors from "../../../Util/Constants/Colors";

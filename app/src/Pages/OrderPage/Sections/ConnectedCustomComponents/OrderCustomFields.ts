@@ -9,9 +9,8 @@ import CustomSelectField, {IOption} from "../../../../Components/CustomComponent
 import {getRequiredFieldsObject} from "../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 import {IDispatch, IState} from "../../../../Interfaces/ReduxInterfaces";
 import {Size} from "../../../../Util/Constants/Size";
-import {IOrderBooleanField, IOrderStringField} from "@violet/common";
+import {IOrderBooleanField, IOrderStringField, TabKey} from "@violet/common";
 import _ from "lodash";
-import {TabKey} from "../../../../Util/Constants/Status";
 
 interface OrderFieldProps {
     title: string,

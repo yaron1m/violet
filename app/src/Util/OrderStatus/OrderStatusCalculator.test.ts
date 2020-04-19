@@ -1,5 +1,5 @@
 import calculateOrderStatus from "./OrderStatusCalculator";
-import {Status} from "../Constants/Status";
+import {Status} from "@violet/common";
 import {IOrder, IPublicCourse, toDateFormat} from "@violet/common";
 
 // TODO TEST - add tests for public course

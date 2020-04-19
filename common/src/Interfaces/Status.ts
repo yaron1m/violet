@@ -1,3 +1,6 @@
+import {IOrder} from "../index";
+import * as _ from 'lodash';
+
 export enum terminatingStatuses {
     cancelled = "cancelled",
     rejected = "rejected",
@@ -47,4 +50,22 @@ export function getStatusLabels() {
         rejected: "לא אושר",
         followUp: " + המשך טיפול",
     };
+}
+
+export function getOrderStatusLabel(order: IOrder) {
+    const labels = getStatusLabels();
+    if (_.isEmpty(order))
+        return labels[progressiveStatuses.contact];
+
+    let status = labels[order.status];
+    if (order.followUpRequired)
+        status += labels.followUp;
+    return status;
+}
+
+export function getStatusLabel(status: Status) {
+    if (!status)
+        return getStatusLabels().contact;
+
+    return getStatusLabels()[status];
 }

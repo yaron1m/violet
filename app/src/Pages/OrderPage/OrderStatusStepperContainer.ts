@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import OrderStatusStepper from "./OrderStatusStepper";
 import {getSelectedOrder} from "../../Store/SelectedOrder/Selectors";
-import {getStatusLabels, Status} from "../../Util/Constants/Status";
+import {getStatusLabels, Status} from "@violet/common";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 
 function getStatus(status: Status) {

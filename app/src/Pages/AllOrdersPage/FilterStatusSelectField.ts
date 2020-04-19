@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Size} from "../../Util/Constants/Size";
 import CustomSelectField from "../../Components/CustomComponents/CustomSelectField";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import {getStatusLabels, Status} from "../../Util/Constants/Status";
+import {getStatusLabels, Status} from "@violet/common";
 
 function getStatuses() {
     const statusObjects = _.map(getStatusLabels(),

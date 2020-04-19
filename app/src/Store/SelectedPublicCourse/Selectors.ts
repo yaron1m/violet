@@ -4,7 +4,7 @@ import {getOrganizationById} from "../Organizations/Selectors";
 import {isEmptyValue, moneyFormat} from "../../Util/StringUtil";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
-import {getStatusLabel} from "../../Util/Constants/Status";
+import {getStatusLabel} from "@violet/common";
 
 export function getSelectedPublicCourse(state: IState) {
     return toMutable(state.selectedPublicCourse).publicCourse;

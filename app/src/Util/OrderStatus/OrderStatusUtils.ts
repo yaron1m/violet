@@ -1,6 +1,5 @@
 import * as _ from "lodash";
-import {IOrder} from "@violet/common";
-import {Status} from "../Constants/Status";
+import {IOrder, Status} from "@violet/common";
 
 export function existsAndNotEmpty(order: IOrder, key: string) {
     // @ts-ignore

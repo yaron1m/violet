@@ -11,7 +11,7 @@ import {
     getSelectedPublicCourseLectures
 } from "../../../../../Store/SelectedPublicCourse/Selectors";
 import {IDispatch, IState} from "../../../../../Interfaces/ReduxInterfaces";
-import {TabKey} from "../../../../../Util/Constants/Status";
+import {TabKey} from "@violet/common";
 import {getRequiredFieldsObject} from "../../../../../Store/Appearance/RequiredFields/RequiredFieldsSelectors";
 
 interface PublicCourseParticipantContainerProps {

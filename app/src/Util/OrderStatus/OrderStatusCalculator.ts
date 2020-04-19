@@ -1,7 +1,6 @@
 import * as _ from "lodash";
-import {progressiveStatuses, Status, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
-import {hasDatePassed, IOrder, IPublicCourse} from "@violet/common";
+import {hasDatePassed, IOrder, IPublicCourse, progressiveStatuses, Status, terminatingStatuses} from "@violet/common";
 import {isPublicCourseOrder} from "../../Store/SelectedOrder/Selectors";
 
 export default function calculateOrderStatus(order: IOrder, publicCourse: IPublicCourse) {
