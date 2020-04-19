@@ -1,9 +1,8 @@
 import * as _ from "lodash";
 import {progressiveStatuses, Status, terminatingStatuses} from "../Constants/Status";
 import {existsAndNotEmpty} from "./OrderStatusUtils";
-import {hasDatePassed} from "../TimeUtil";
+import {hasDatePassed, IOrder, IPublicCourse} from "@violet/common";
 import {isPublicCourseOrder} from "../../Store/SelectedOrder/Selectors";
-import {IOrder, IPublicCourse} from "@violet/common";
 
 export default function calculateOrderStatus(order: IOrder, publicCourse: IPublicCourse) {
     // let possibleStatuses = _.values(terminatingStatuses);

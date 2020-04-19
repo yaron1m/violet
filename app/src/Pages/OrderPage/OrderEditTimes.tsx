@@ -1,5 +1,5 @@
 import React from "react";
-import {toPrintableDateFormat} from "../../Util/TimeUtil";
+import {toPrintableDateFormat} from "@violet/common";
 
 export default function OrderTimes(props: OrderTimesProps) {
     if (!props.isSelectedOrder)

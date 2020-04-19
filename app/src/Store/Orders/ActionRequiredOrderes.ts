@@ -5,9 +5,8 @@ import {isEmptyValue} from "../../Util/StringUtil";
 import {isPublicCourseOrder} from "../SelectedOrder/Selectors";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
 import {IState} from "../../Interfaces/ReduxInterfaces";
-import {IOrder} from "@violet/common";
+import {IOrder, toPrintableDateFormat} from "@violet/common";
 import {getOrders} from "./Selectors";
-import {toPrintableDateFormat} from "../../Util/TimeUtil";
 
 export interface IActionRequiredOrder {
     orderId: number;

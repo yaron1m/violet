@@ -1,5 +1,5 @@
 import {calculateDuration, calculatePreparationTimes, toDateFormat} from "./TimeUtil";
-import {ILectureTime} from "@violet/common";
+import {ILectureTime} from "../index";
 
 describe("time-util", () => {
 

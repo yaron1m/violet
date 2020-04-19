@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as express from "express";
 import * as admin from "firebase-admin";
-import {IOrder} from "../Common";
+import {IOrder, IPublicCourse} from "../Common";
 import {calculateOrderStatus} from "./OrderStatusCalculator";
 
 export default async function (
@@ -12,7 +12,7 @@ export default async function (
 ) {
     try {
         const publicCoursesSnapshot = await publicCoursesRef.once('value');
-        const publicCourses = publicCoursesSnapshot.val();
+        const publicCourses = publicCoursesSnapshot.val() as IPublicCourse;
         const ordersSnapshot = await ordersRef.once('value');
 
         const updatedOrders : {[id: number]: IOrder} = {};

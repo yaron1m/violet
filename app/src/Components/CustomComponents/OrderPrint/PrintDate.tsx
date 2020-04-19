@@ -1,6 +1,6 @@
 import React from "react";
 import PrintTextField, {PrintTextFieldProps} from "./PrintTextField";
-import {toPrintableDateFormat} from "../../../Util/TimeUtil";
+import {toPrintableDateFormat} from "@violet/common";
 
 export default function PrintDate(props: PrintTextFieldProps) {
     return <PrintTextField

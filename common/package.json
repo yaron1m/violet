@@ -4,11 +4,15 @@
   "description": "Common code for Warranty Keeper",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rm -rf lib && tsc"
+    "build": "rm -rf lib && tsc",
+    "test": "npx jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.3.0",
+    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   }
 }

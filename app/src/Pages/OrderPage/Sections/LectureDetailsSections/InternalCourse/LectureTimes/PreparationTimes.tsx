@@ -1,6 +1,5 @@
 import React from "react";
-import {ILectureTime} from "@violet/common";
-import {calculatePreparationTimes} from "../../../../../../Util/TimeUtil";
+import {ILectureTime, calculatePreparationTimes} from "@violet/common";
 
 export default function PreparationTimes(props: PreparationTimesProps) {
     const preparationTimes = calculatePreparationTimes(props.lectureTime);

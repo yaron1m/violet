@@ -1,6 +1,5 @@
 import {CLEAR_SELECTED_ORDER, SELECT_ORDER, SET_IS_SELECTED_ORDER, UPDATE_SELECTED_ORDER} from "./ActionTypes";
 import {getSelectedOrder} from "./Selectors";
-import {calculateDuration} from "../../Util/TimeUtil";
 import {getNextOrderId, getOrderById} from "../Orders/Selectors";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {selectPublicCourse} from "../SelectedPublicCourse/Actions";
@@ -14,7 +13,7 @@ import {getSelectedOrganization} from "../SelectedOrganization/Selectors";
 import {getSelectedPublicCourse} from "../SelectedPublicCourse/Selectors";
 import {IDispatch, IGetState, IState} from "../../Interfaces/ReduxInterfaces";
 import {TabKey} from "../../Util/Constants/Status";
-import {ILectureTime, IPublicCourseParticipant} from "@violet/common";
+import {ILectureTime, IPublicCourseParticipant, calculateDuration} from "@violet/common";
 import * as firebase from "firebase";
 import {updateObject} from "../../Util/ObjectUpdater";
 

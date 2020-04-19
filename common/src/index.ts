@@ -5,6 +5,13 @@ import IPublicCourse, {IPublicCourseLecture} from './Interfaces/IPublicCourse';
 import IStringObject from "./Interfaces/IStringObject";
 import ILectureTime from './Interfaces/ILectureTime';
 import {IPublicCourseParticipant} from './Interfaces/IPublicCourseParticipant';
+import {
+    calculateDuration,
+    calculatePreparationTimes,
+    hasDatePassed,
+    toDateFormat,
+    toPrintableDateFormat
+} from './Util/TimeUtil';
 
 // Interfaces
 export {
@@ -26,3 +33,6 @@ export {
 
 // Utils
 export {getStatusLabels};
+
+// TimeUtil
+export {calculateDuration, calculatePreparationTimes, hasDatePassed, toDateFormat, toPrintableDateFormat}

@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import {isEmpty} from "../../../../Util/StringUtil";
-import {toDateFormat} from "../../../../Util/TimeUtil";
+import {toDateFormat} from "@violet/common";
 import {PaymentCondition, paymentConditionLabels} from "../../../../Util/Constants/PaymentCondition";
 
 export default function calculatePayDate(proformaInvoiceValue: string, selectedPaymentConditions: string) {

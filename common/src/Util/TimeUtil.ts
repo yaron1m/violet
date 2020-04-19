@@ -1,4 +1,4 @@
-import {ILectureTime, IPublicCourseLecture} from "@violet/common";
+import {IPublicCourseLecture, ILectureTime} from "../index";
 
 interface ITime {
     hours: number;

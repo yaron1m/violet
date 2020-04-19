@@ -1,6 +1,5 @@
 import {sendDataToDatabase} from "../Firebase/Actions";
 import {getPublicCourseById} from "../PublicCourses/Selectors";
-import {calculateDuration} from "../../Util/TimeUtil";
 import * as _ from "lodash";
 import {getSelectedPublicCourse} from "./Selectors";
 import {
@@ -10,7 +9,7 @@ import {
     UPDATE_SELECTED_PUBLIC_COURSE
 } from "./ActionTypes";
 import {IDispatch, IGetState, IState} from "../../Interfaces/ReduxInterfaces";
-import {IPublicCourseLecture} from "@violet/common";
+import {IPublicCourseLecture, calculateDuration} from "@violet/common";
 import {updateObject} from "../../Util/ObjectUpdater";
 
 export function selectPublicCourse(courseId: string) {
