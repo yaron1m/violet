@@ -43,17 +43,17 @@ export function isOrderMissingFields(state: IState) {
 }
 
 function removeOrganizationBasedFields(requiredFieldsByEntity: IRequiredFields, selectedOrganization: IOrganization) {
-    if (selectedOrganization.internalOrderIdRequired && selectedOrganization.externalInvoiceReceiverRequired)
+    if (selectedOrganization.internalOrderIdRequired && selectedOrganization.externalInvoiceHandler)
         return requiredFieldsByEntity;
 
-    if (selectedOrganization.internalOrderIdRequired && !selectedOrganization.externalInvoiceReceiverRequired) {
+    if (selectedOrganization.internalOrderIdRequired && !selectedOrganization.externalInvoiceHandler) {
         return {
             ...requiredFieldsByEntity,
             order: _.without(requiredFieldsByEntity.order, "externalInvoiceSent")
         };
     }
 
-    if (!selectedOrganization.internalOrderIdRequired && selectedOrganization.externalInvoiceReceiverRequired) {
+    if (!selectedOrganization.internalOrderIdRequired && selectedOrganization.externalInvoiceHandler) {
         return {
             ...requiredFieldsByEntity,
             order: _.without(requiredFieldsByEntity.order, "internalOrderNumber")

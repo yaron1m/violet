@@ -81,20 +81,19 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
                     size={Size.XXL}
                 />
 
+                <CustomTextField
+                    title="חברת חשבוניות חיצונית"
+                    value={org.externalInvoiceHandler}
+                    isRequired={_.includes(props.requiredFields, "externalInvoiceHandler")}
+                    onChange={props.onOrganizationChange("externalInvoiceHandler")}
+                />
+
                 {props.fullDetails &&
                 <CustomToggle
                     title="נדרשת הזמנת רכש"
                     value={org.internalOrderIdRequired}
                     isRequired={_.includes(props.requiredFields, "internalOrderIdRequired")}
                     onChange={props.onOrganizationChangeBoolean("internalOrderIdRequired")}
-                />}
-
-                {props.fullDetails &&
-                <CustomToggle
-                    title="חשבונית עסקה לחברה חיצונית"
-                    value={org.externalInvoiceReceiverRequired}
-                    isRequired={_.includes(props.requiredFields, "externalInvoiceReceiverRequired")}
-                    onChange={props.onOrganizationChangeBoolean("externalInvoiceReceiverRequired")}
                 />}
             </div>
         </CustomPaper>
