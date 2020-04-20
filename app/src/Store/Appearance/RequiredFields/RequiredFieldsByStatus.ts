@@ -30,7 +30,7 @@ const isExecuting = mergerRequiredFields(approvedOrder);
 const executed = mergerRequiredFields(isExecuting);
 
 const waitingPayment = mergerRequiredFields(executed, {
-    order: ["totalSum", "expectedPayDate"]
+    order: ["totalSum", "expectedPayDate", "externalInvoiceSent"]
 });
 
 const payed = mergerRequiredFields(waitingPayment, {});

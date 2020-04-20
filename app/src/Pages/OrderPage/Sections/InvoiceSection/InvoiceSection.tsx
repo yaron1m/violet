@@ -1,7 +1,11 @@
 import React from "react";
 import {Size} from "../../../../Util/Constants/Size";
 import CustomPaper, {flexStyle} from "../../../../Components/CustomComponents/CustomPaper";
-import {OrderCustomDatePicker, OrderCustomText} from "../ConnectedCustomComponents/OrderCustomFields";
+import {
+    OrderCustomDatePicker,
+    OrderCustomText,
+    OrderCustomToggle
+} from "../ConnectedCustomComponents/OrderCustomFields";
 import ProformaInvoiceDateContainer from "./ProformaInvoiceDateContainer";
 import CustomDivider from "../../../../Components/CustomComponents/CustomDivider";
 
@@ -13,6 +17,7 @@ export default function InvoiceSection() {
                 <ProformaInvoiceDateContainer/>
                 <OrderCustomDatePicker title="תאריך לתשלום" name="expectedPayDate"/>
                 <OrderCustomText title="מספר הזמנת רכש" name="internalOrderNumber"/>
+                <OrderCustomToggle title="נשלחה חשבונית עסקה לחברה חיצונית" name="externalInvoiceSent"/>
             </div>
 
             <CustomDivider/>

@@ -16,6 +16,7 @@
     "build": "react-scripts build",
     "lint": "tslint src/**/*.ts --fix",
     "watch": "react-scripts test",
+    "install-common": "rm -rf node_modules/@violet && npm i ",
     "re-install": "rm -rf node_modules && rm package-lock.json && npm i "
   },
   "dependencies": {

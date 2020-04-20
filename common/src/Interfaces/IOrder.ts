@@ -76,6 +76,7 @@ export default interface IOrder {
     proformaInvoiceDate: string;
     expectedPayDate: string;
     internalOrderNumber: string;
+    externalInvoiceSent: boolean;
     taxInvoiceNumber: string;
     taxInvoiceDate: string;
     receiptNumber: string;
@@ -92,7 +93,8 @@ export type IOrderBooleanField = "projector" |
     "sameAudience" |
     "rejected" |
     "cancelled" |
-    "followUpRequired";
+    "followUpRequired" |
+    "externalInvoiceSent";
 
 export type IOrderStringField =
     "changedDate" |

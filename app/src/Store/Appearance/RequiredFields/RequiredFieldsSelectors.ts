@@ -15,7 +15,7 @@ function getRequiredFieldsStateObject(state: IState, showRequiredFields: boolean
     const selectedOrder = getSelectedOrder(state);
     const requiredFieldsByEntity = getRequiredFieldsByEntity(selectedOrder, showRequiredFields);
 
-    return removeInternalOrderNumber(requiredFieldsByEntity, getSelectedOrganization(state));
+    return removeOrganizationBasedFields(requiredFieldsByEntity, getSelectedOrganization(state));
 }
 
 export function isOrderMissingFields(state: IState) {
@@ -42,13 +42,27 @@ export function isOrderMissingFields(state: IState) {
     return false;
 }
 
-function removeInternalOrderNumber(requiredFieldsByEntity: IRequiredFields, selectedOrganization: IOrganization) {
-    if (selectedOrganization.internalOrderIdRequired)
+function removeOrganizationBasedFields(requiredFieldsByEntity: IRequiredFields, selectedOrganization: IOrganization) {
+    if (selectedOrganization.internalOrderIdRequired && selectedOrganization.externalInvoiceReceiverRequired)
         return requiredFieldsByEntity;
+
+    if (selectedOrganization.internalOrderIdRequired && !selectedOrganization.externalInvoiceReceiverRequired) {
+        return {
+            ...requiredFieldsByEntity,
+            order: _.without(requiredFieldsByEntity.order, "externalInvoiceSent")
+        };
+    }
+
+    if (!selectedOrganization.internalOrderIdRequired && selectedOrganization.externalInvoiceReceiverRequired) {
+        return {
+            ...requiredFieldsByEntity,
+            order: _.without(requiredFieldsByEntity.order, "internalOrderNumber")
+        };
+    }
 
     return {
         ...requiredFieldsByEntity,
-        order: _.without(requiredFieldsByEntity.order, "internalOrderNumber")
+        order: _.without(requiredFieldsByEntity.order, "internalOrderNumber", "externalInvoiceSent")
     };
 }
 

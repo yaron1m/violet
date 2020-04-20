@@ -3,6 +3,7 @@ import PrintSection from "../../../Components/CustomComponents/OrderPrint/PrintS
 import CustomDivider from "../../../Components/CustomComponents/CustomDivider";
 import PrintTextField from "../../../Components/CustomComponents/OrderPrint/PrintTextField";
 import {IOrder} from "@violet/common";
+import PrintBoolean from "../../../Components/CustomComponents/OrderPrint/PrintBoolean";
 
 export default function (props: { selectedOrder: IOrder }) {
     return (
@@ -11,6 +12,7 @@ export default function (props: { selectedOrder: IOrder }) {
              <PrintTextField value={props.selectedOrder.proformaInvoiceDate} title="תאריך חשבונית עסקה"/>
              <PrintTextField value={props.selectedOrder.expectedPayDate} title="תאריך לתשלום"/>
              <PrintTextField value={props.selectedOrder.internalOrderNumber} title="מספר הזמנת רכש"/>
+             <PrintBoolean value={props.selectedOrder.externalInvoiceSent} title="נשלחה חשבונית עסקה לחברה חיצונית"/>
 
             <CustomDivider/>
 

@@ -88,6 +88,14 @@ export default function OrganizationSection(props: OrganizationSectionProps) {
                     isRequired={_.includes(props.requiredFields, "internalOrderIdRequired")}
                     onChange={props.onOrganizationChangeBoolean("internalOrderIdRequired")}
                 />}
+
+                {props.fullDetails &&
+                <CustomToggle
+                    title="חשבונית עסקה לחברה חיצונית"
+                    value={org.externalInvoiceReceiverRequired}
+                    isRequired={_.includes(props.requiredFields, "externalInvoiceReceiverRequired")}
+                    onChange={props.onOrganizationChangeBoolean("externalInvoiceReceiverRequired")}
+                />}
             </div>
         </CustomPaper>
     );
