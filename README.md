@@ -1,7 +1,4 @@
 # Violet 
-[![Build Status](https://travis-ci.org/yaron1m/violet.svg?branch=master)](https://travis-ci.org/yaron1m/violet?branch=master)
-[![dependencies Status](https://david-dm.org/yaron1m/violet/status.svg?path=app)](https://david-dm.org/yaron1m/violet?path=app)
-[![devDependencies Status](https://david-dm.org/yaron1m/violet/dev-status.svg?path=app)](https://david-dm.org/yaron1m/violet?type=dev&path=app)
 
 Customer Relationship Management System (CRM) tailor made to C-Point LTD.
 
