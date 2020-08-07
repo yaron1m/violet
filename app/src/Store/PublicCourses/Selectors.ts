@@ -4,6 +4,7 @@ import {getOrders} from "../Orders/Selectors";
 import {moneyFormat} from "../../Util/StringUtil";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
+import {calculateMathValue} from "../../Pages/OrderPage/Sections/Payment/CalculateSum";
 
 export function getPublicCourses(state: IState) {
     return toMutable(state.publicCourses);
@@ -64,7 +65,7 @@ export function getPublicCoursesSummary(state: IState) {
 
         const orders = getOrders(state);
         const publicCourseOrders = _.filter(orders, order => isPublicCourseOrder(order) && order.publicCourseId === course.id);
-        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => _.toNumber(x.cost)).toString());
+        result.courseIncome = moneyFormat(_.sumBy(publicCourseOrders, x => calculateMathValue(x.cost)).toString());
 
         return result;
     }
