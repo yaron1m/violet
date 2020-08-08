@@ -21,7 +21,7 @@ function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) 
         beforeTable: ownProps.beforeTable,
         limit: ownProps.limit,
         tableHeaders: [
-            {orderId: "מספר הזמנה"},
+            {id: "מספר הזמנה"},
             {organizationName: "שם הארגון"},
             {date: "תאריך הרצאה"},
             {topic: "נושא"},
@@ -34,7 +34,7 @@ function mapStateToProps(state: IState, ownProps: AllOrdersTableContainerProps) 
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (summary: IOrderSummary) => {
-            dispatch(selectOrder(summary.orderId));
+            dispatch(selectOrder(summary.id));
             redirect(Path.order);
         },
     };

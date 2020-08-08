@@ -153,7 +153,7 @@ describe("Store/selected/selectors", () => {
             participantLastName: "last1",
             numberOfLecturesAttending: 2,
             participantCost: "100.00 ₪",
-            orderId: 123,
+            id: 123,
             status: "פנייה",
             organizationName: "OrgA",
             proformaInvoiceNumber: "1122",
@@ -163,7 +163,7 @@ describe("Store/selected/selectors", () => {
             participantLastName: "last2",
             numberOfLecturesAttending: 2,
             participantCost: "200.00 ₪",
-            orderId: 123,
+            id: 123,
             status: "פנייה",
             organizationName: "OrgA",
             proformaInvoiceNumber: "1122",
@@ -173,7 +173,7 @@ describe("Store/selected/selectors", () => {
             participantLastName: "last5",
             numberOfLecturesAttending: 2,
             participantCost: "500.00 ₪",
-            orderId: 125,
+            id: 125,
             status: "פנייה",
             organizationName: "OrgB",
         });
@@ -182,7 +182,7 @@ describe("Store/selected/selectors", () => {
             participantLastName: "last6",
             numberOfLecturesAttending: 2,
             participantCost: "600.00 ₪",
-            orderId: 125,
+            id: 125,
             status: "פנייה",
             organizationName: "OrgB",
         });
@@ -195,12 +195,14 @@ describe("Store/selected/selectors", () => {
 
         expect(result[0]).toEqual({
             date: "2018-05-01",
+            id: 3,
             topic: "T4",
             participantsCount: 0,
             price: "4000",
             income: 0,
         });
         expect(result[1]).toEqual({
+            id: 0,
             date: "2018-07-01",
             topic: "T1",
             participantsCount: 4,
@@ -208,6 +210,7 @@ describe("Store/selected/selectors", () => {
             income: 4000,
         });
         expect(result[2]).toEqual({
+            id: 1,
             date: "2018-08-01",
             topic: "T2",
             participantsCount: 4,

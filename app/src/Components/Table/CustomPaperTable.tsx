@@ -6,7 +6,7 @@ import CustomTableRow from "./CustomTableRow";
 import {CustomSingleCellRow} from "./CustomSingleCellRow";
 import {IStringObject} from "@violet/common";
 
-export default class CustomPaperTable<TElement extends { [key: string]: string }>
+export default class CustomPaperTable<TElement extends ITableElement>
     extends React.Component<CustomPaperTableProps<TElement>> {
 
     render() {
@@ -46,7 +46,9 @@ export default class CustomPaperTable<TElement extends { [key: string]: string }
     }
 }
 
-interface CustomPaperTableProps<TElement> {
+export type ITableElement = {id?: number} & IStringObject;
+
+interface CustomPaperTableProps<TElement extends ITableElement> {
     title?: string,
     elements: TElement[],
     hideEdit?: boolean,

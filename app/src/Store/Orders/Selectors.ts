@@ -53,7 +53,7 @@ export function getOrdersByOrganization(state: IState) {
 }
 
 export interface IFollowUpOrderSummary {
-    orderId: number;
+    id: number;
     status: string;
     createdDate: string;
     followUpDate: string;
@@ -67,7 +67,7 @@ export function getFollowUpOrdersSummary(state: IState) {
 
     function map(order: IOrder) {
         const result: IFollowUpOrderSummary = {
-            orderId: order.id,
+            id: order.id,
             status: getOrderStatusLabel(order),
             createdDate: order.createdDate,
             followUpDate: order.followUpDate,
@@ -97,7 +97,7 @@ export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
             orderId: order.id.toString(),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
             entityType: EntityType.order,
-            entityId: order.id,
+            id: order.id,
         }));
     }
 
@@ -111,7 +111,7 @@ export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
             organizationName: "קורס ציבורי",
 
             entityType: EntityType.publicCourse,
-            entityId: course.id
+            id: course.id
         }));
     }
 
@@ -126,11 +126,11 @@ export interface ILectureTimeSummary {
     topic: string;
     organizationName: string;
     entityType: EntityType;
-    entityId: number;
+    id: number; // OrderId
 }
 
 export interface IExpectedIncomeOrderSummary {
-    orderId: number;
+    id: number;
     status: string;
     proformaInvoiceNumber: string;
     expectedPayDate: string;
@@ -145,7 +145,7 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
 
     function map(order: IOrder) {
         const result: IExpectedIncomeOrderSummary = {
-            orderId: order.id,
+            id: order.id,
             status: cutIfLong(getOrderStatusLabel(order), 20),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             expectedPayDate: order.expectedPayDate,
@@ -170,7 +170,7 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
 }
 
 export interface IOrderSummary {
-    orderId: number;
+    id: number;
     status: string;
     organizationName: string;
     proformaInvoiceNumber: string;
@@ -183,7 +183,7 @@ export function getOrdersSummary(state: IState, getOrdersFunction: (state: IStat
 
     function map(order: IOrder) {
         const result: IOrderSummary = {
-            orderId: order.id,
+            id: order.id,
             status: getOrderStatusLabel(order),
             organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
             proformaInvoiceNumber: order.proformaInvoiceNumber,

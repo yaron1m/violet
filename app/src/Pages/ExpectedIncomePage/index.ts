@@ -14,7 +14,7 @@ function mapStateToProps(state: IState) {
         title: "הזמנות מאושרות",
         elements: getExpectedIncomeOrders(state, acceptedStatuses),
         tableHeaders: [
-            {orderId: "מספר הזמנה"},
+            {id: "מספר הזמנה"},
             {organizationName: "שם הארגון"},
             {lectureDate: "תאריך הרצאה"},
             {topic: "נושא"},
@@ -28,7 +28,7 @@ function mapStateToProps(state: IState) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (summary: IExpectedIncomeOrderSummary) => {
-            dispatch(selectOrder(summary.orderId));
+            dispatch(selectOrder(summary.id));
             redirect(Path.order);
         },
     };

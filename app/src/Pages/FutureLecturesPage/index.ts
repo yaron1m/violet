@@ -41,12 +41,12 @@ function mapDispatchToProps(dispatch: IDispatch) {
         onEditButton: (summary: ILectureTimeSummary) => {
             switch (summary.entityType) {
                 case EntityType.order:
-                    dispatch(selectOrder(summary.entityId));
+                    dispatch(selectOrder(summary.id));
                     redirect(Path.order);
                     return;
 
                 case EntityType.publicCourse:
-                    dispatch(selectPublicCourse(summary.entityId.toString()));
+                    dispatch(selectPublicCourse(summary.id.toString()));
                     redirect(Path.publicCourse);
                     return;
 

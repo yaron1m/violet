@@ -17,7 +17,7 @@ function mapStateToProps(state: IState) {
         singleCellRowText: "הוסף הזמנה חדשה",
 
         tableHeaders: [
-            {orderId: "מספר הזמנה"},
+            {id: "מספר הזמנה"},
             {date: "תאריך הרצאה"},
             {topic: "נושא"},
             {status: "סטאטוס"},
@@ -30,7 +30,7 @@ function mapStateToProps(state: IState) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (summary: IOrderSummary) => {
-            dispatch(selectOrder(summary.orderId));
+            dispatch(selectOrder(summary.id));
             redirect(Path.order);
         },
         singleCellRowOnClick: () => {

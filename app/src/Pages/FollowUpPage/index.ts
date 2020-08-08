@@ -13,7 +13,7 @@ function mapStateToProps(state: IState) {
         title: "המשך טיפול - טבלת מעקב",
         elements: _.sortBy(getFollowUpOrdersSummary(state), x => x.followUpDate),
         tableHeaders: [
-            {orderId: "מספר הזמנה"},
+            {id: "מספר הזמנה"},
             {organizationName: "שם הארגון"},
             {createdDate: "תאריך יצירה"},
             {topic: "נושא"},
@@ -27,7 +27,7 @@ function mapStateToProps(state: IState) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (summary: IFollowUpOrderSummary) => {
-            dispatch(selectOrder(summary.orderId));
+            dispatch(selectOrder(summary.id));
             redirect(Path.order);
         },
     };

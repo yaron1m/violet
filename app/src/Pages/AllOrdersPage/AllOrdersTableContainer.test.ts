@@ -68,10 +68,10 @@ describe("AllOrdersTableContainer", () => {
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(4);
-        expect(orders[0].orderId).toBe(1003);
-        expect(orders[1].orderId).toBe(1002);
-        expect(orders[2].orderId).toBe(1001);
-        expect(orders[3].orderId).toBe(1000);
+        expect(orders[0].id).toBe(1003);
+        expect(orders[1].id).toBe(1002);
+        expect(orders[2].id).toBe(1001);
+        expect(orders[3].id).toBe(1000);
     });
 
     it("elements prop - no filter - show right organization name", () => {
@@ -128,7 +128,7 @@ describe("AllOrdersTableContainer", () => {
 
         const orders = getElements(state, props);
         expect(orders).toHaveLength(2);
-        expect(orders[0].orderId).toBe(1002);
-        expect(orders[1].orderId).toBe(1001);
+        expect(orders[0].id).toBe(1002);
+        expect(orders[1].id).toBe(1001);
     });
 });

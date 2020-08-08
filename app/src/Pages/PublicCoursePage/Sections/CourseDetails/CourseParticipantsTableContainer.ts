@@ -15,7 +15,7 @@ function mapStateToProps(state: IState) {
         title: "משתתפים",
         elements: getSelectedPublicCourseParticipants(state),
         tableHeaders: [
-            {orderId: "מספר הזמנה"},
+            {id: "מספר הזמנה"},
             {participantFirstName: "שם פרטי"},
             {participantLastName: "שם משפחה"},
             {organizationName: "ארגון"},
@@ -30,7 +30,7 @@ function mapStateToProps(state: IState) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (summary: ISelectedPublicCourseParticipantsSummary) => {
-            dispatch(selectOrder(summary.orderId));
+            dispatch(selectOrder(summary.id));
             redirect(Path.order);
         },
     };

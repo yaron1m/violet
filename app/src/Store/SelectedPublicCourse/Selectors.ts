@@ -46,7 +46,7 @@ export interface ISelectedPublicCourseParticipantsSummary {
     numberOfLecturesAttending: number;
     participantCost: string;
     proformaInvoiceNumber: string;
-    orderId: number;
+    id: number; // Order id
     status: string;
     organizationName: string;
 }
@@ -61,7 +61,7 @@ export function getSelectedPublicCourseParticipants(state: IState) {
             numberOfLecturesAttending: participant.lecturesAttending ? participant.lecturesAttending.length : 0,
             participantCost: moneyFormat(participant.participantCost),
             proformaInvoiceNumber: order.proformaInvoiceNumber,
-            orderId: order.id,
+            id: order.id,
             status: getStatusLabel(order.status),
             organizationName,
         } as ISelectedPublicCourseParticipantsSummary;
@@ -81,6 +81,7 @@ export function getLecturesDetails(state: IState) {
 
     return _.map(lectures, lecture => {
         return {
+            id: lecture.id,
             date: lecture.date,
             topic: lecture.topic,
             participantsCount: participantsCount[lecture.id],

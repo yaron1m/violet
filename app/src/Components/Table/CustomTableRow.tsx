@@ -8,8 +8,9 @@ import * as _ from "lodash";
 import {isEmptyValue} from "../../Util/StringUtil";
 import {CustomIconButton} from "../CustomComponents/CustomButtons";
 import {IStringObject, toPrintableDateFormat} from "@violet/common";
+import {ITableElement} from "./CustomPaperTable";
 
-export default class CustomTableRow<TElement extends IStringObject> extends React.Component<CustomTableRowProps<TElement>> {
+export default class CustomTableRow<TElement extends ITableElement> extends React.Component<CustomTableRowProps<TElement>> {
 
     getCell(headerKey: string) {
         function clickAction(onEditButton: (element: TElement) => void, element: TElement) {

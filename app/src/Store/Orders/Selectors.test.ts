@@ -116,7 +116,7 @@ describe("Store/Orders/selectors", () => {
         expect(Selectors.getFollowUpOrdersSummary(state))
             .toEqual([
                 {
-                    orderId: 1002,
+                    id: 1002,
                     organizationName: "orgName",
                     topic: "topic",
                     status: "הזמנה + המשך טיפול",
@@ -124,7 +124,7 @@ describe("Store/Orders/selectors", () => {
                     followUpDetails: "bla",
                     createdDate: 123,
                 }, {
-                    orderId: 1003,
+                    id: 1003,
                     organizationName: "orgName",
                     status: "הזמנה מאושרת + המשך טיפול",
                     followUpDate: 222,
@@ -145,13 +145,13 @@ describe("Store/Orders/selectors", () => {
         expect(Selectors.getAllLectureTimes(state))
             .toEqual([
                 {
-                    entityId: 1000,
+                    id: 1000,
                     entityType: EntityType.order,
                     orderId: "1000",
                     topic: "lecture",
                     organizationName: "orgName",
                 }, {
-                    entityId: 1002,
+                    id: 1002,
                     entityType: EntityType.order,
                     orderId: "1002",
                     topic: "topic",
@@ -164,7 +164,7 @@ describe("Store/Orders/selectors", () => {
         expect(Selectors.getAllLectureTimes(state, Status.contact))
             .toEqual([
                 {
-                    entityId: 1000,
+                    id: 1000,
                     entityType: EntityType.order,
                     orderId: "1000",
                     topic: "lecture",

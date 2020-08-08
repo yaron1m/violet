@@ -13,7 +13,7 @@ function mapStateToProps(state: IState) {
         title: "הזמנות שדורשות פעולה",
         elements: getActionRequiredOrders(state),
         tableHeaders: [
-            {orderId: "מספר הזמנה"},
+            {id: "מספר הזמנה"},
             {createdDate: "תאריך יצירת הזמנה"},
             {organizationName: "שם הארגון"},
             {status: "סטאטוס הזמנה"},
@@ -26,7 +26,7 @@ function mapStateToProps(state: IState) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         onEditButton: (orderSummary: IActionRequiredOrder) => {
-            dispatch(selectOrder(orderSummary.orderId));
+            dispatch(selectOrder(orderSummary.id));
             redirect(Path.order);
         },
     };
