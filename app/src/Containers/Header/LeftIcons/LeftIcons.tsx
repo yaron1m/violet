@@ -2,6 +2,7 @@ import React from "react";
 import Badge from "@material-ui/core/Badge";
 import {redirect} from "../../../Util/HistoryUtil";
 import ExitIcon from "@material-ui/icons/ExitToApp";
+import PieChartIcon from "@material-ui/icons/PieChart";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Colors from "../../../Util/Constants/Colors";
 import {CustomIconButton} from "../../../Components/CustomComponents/CustomButtons";
@@ -30,6 +31,11 @@ export default function LeftIcons(props: LeftIconsProps) {
     return (
 
         <div style={style.container}>
+            <CustomIconButton
+                onClick={props.goToBiScreen}
+            >
+                <PieChartIcon style={style.icon}/>
+            </CustomIconButton>
 
             <CustomIconButton
                 onClick={() => redirect(Path.actionRequired)}
@@ -57,4 +63,5 @@ interface LeftIconsProps {
     notificationCount: number;
     isProduction: boolean;
     signOut: () => void;
+    goToBiScreen: () => void;
 }

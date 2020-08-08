@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import {signOutRequest} from "../../../Store/Firebase/Actions";
 import {getActionRequiredOrders} from "../../../Store/Orders/Selectors";
 import {IDispatch, IState} from "../../../Interfaces/ReduxInterfaces";
+import {redirect} from "../../../Util/HistoryUtil";
+import {Path} from "../../../Pages/Path";
 
 function mapStateToProps(state: IState) {
     return {
@@ -14,6 +16,7 @@ function mapStateToProps(state: IState) {
 function mapDispatchToProps(dispatch: IDispatch) {
     return {
         signOut: () => dispatch(signOutRequest()),
+        goToBiScreen: () => redirect(Path.bi),
     };
 }
 
