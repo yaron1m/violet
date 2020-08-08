@@ -8,14 +8,8 @@ import {getPublicCourseByOrder, getPublicCourses} from "../PublicCourses/Selecto
 import {EntityType} from "../../Util/Constants/EntityType";
 import {IState} from "../../Interfaces/ReduxInterfaces";
 import {toMutable} from "../../Util/ObjectUpdater";
-import {
-    getOrderStatusLabel,
-    IOrder,
-    IPublicCourse,
-    isMatchingStatus,
-    isPublicCourseOrder,
-    Status
-} from "@violet/common";
+import {getOrderStatusLabel, IOrder, IPublicCourse, isMatchingStatus, isPublicCourseOrder, Status} from "@violet/common";
+import {ITableElement} from "../../Components/Table/CustomPaperTable";
 
 function getOrdersMap(state: IState) {
     return toMutable(state.orders);
@@ -169,26 +163,30 @@ export function getExpectedIncomeOrders(state: IState, status: Status | Status[]
     return _.sortBy(_.map(orders, map), x => x.expectedPayDate);
 }
 
-export interface IOrderSummary {
+export interface IOrderSummary extends ITableElement {
     id: number;
     status: string;
     organizationName: string;
     proformaInvoiceNumber: string;
     date: string;
     topic: string;
+    orgReferralWay: string;
 }
 
 export function getOrdersSummary(state: IState, getOrdersFunction: (state: IState) => IOrder[]) {
     const orders = getOrdersFunction(state);
 
     function map(order: IOrder) {
+        const organization = getOrganizationById(state, order.organizationId.toString());
+
         const result: IOrderSummary = {
             id: order.id,
             status: getOrderStatusLabel(order),
-            organizationName: getOrganizationById(state, order.organizationId.toString()).organizationName,
+            organizationName: organization.organizationName,
             proformaInvoiceNumber: order.proformaInvoiceNumber,
             date: "",
             topic: "",
+            orgReferralWay: organization.referralWay,
         };
 
         if (isPublicCourseOrder(order)) {

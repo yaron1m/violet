@@ -9,6 +9,7 @@ import WaitingPaymentPage from "./Pages/WaitingPaymentPage";
 import ExpectedIncomePage from "./Pages/ExpectedIncomePage";
 import FutureLecturesPage from "./Pages/FutureLecturesPage";
 import AllOrdersPage from "./Pages/AllOrdersPage";
+import BiPage from "./Pages/BiPage";
 import AllPublicCoursesPage from "./Pages/AllPublicCoursesPage";
 import ActionRequiredPage from "./Pages/ActionRequiredPage";
 import PrintOrderPage from "./Pages/PrintOrderPage/PrintOrderPageContainer";
@@ -32,6 +33,7 @@ export default function Routes(props: RoutesProps) {
                 <Route path={Path.allOrders} component={AllOrdersPage}/>
                 <Route path={Path.allPublicCourses} component={AllPublicCoursesPage}/>
                 <Route path={Path.print} component={PrintOrderPage}/>
+                <Route path={Path.bi} component={BiPage}/>
             </App>
         </Router>
     );

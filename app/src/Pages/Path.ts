@@ -11,4 +11,5 @@ export enum Path {
     publicCourse = "/publicCourse",
     actionRequired = "/actionRequired",
     print = "/print",
+    bi = "/bi",
 }

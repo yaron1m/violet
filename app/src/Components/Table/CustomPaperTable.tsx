@@ -46,7 +46,7 @@ export default class CustomPaperTable<TElement extends ITableElement>
     }
 }
 
-export type ITableElement = {id?: number} & IStringObject;
+export type ITableElement = { [key: string]: (string | number) };
 
 interface CustomPaperTableProps<TElement extends ITableElement> {
     title?: string,
