@@ -8,6 +8,7 @@ import CustomSelectField from "../../Components/CustomComponents/CustomSelectFie
 import {Size} from "../../Util/Constants/Size";
 import * as _ from "lodash";
 import {getStatusLabels} from "@violet/common/lib";
+import ReferralWayChart from "./ReferralWayChart";
 
 // TODO move this to common - duplicate code
 function getStatuses() {
@@ -27,29 +28,34 @@ export default function (props: BiPageContentProps) {
     const filters = (
         <div style={{
             marginTop: 20,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "stretch"
         }}>
-            <CustomDatePicker
-                title="תאריך התחלה"
-                value={props.startDate}
-                onChange={props.setStartDate}
-            />
+            <div>
+                <CustomDatePicker
+                    title="תאריך התחלה"
+                    value={props.startDate}
+                    onChange={props.setStartDate}
+                />
 
-            <CustomDatePicker
-                title="תאריך סיום"
-                value={props.endDate}
-                onChange={props.setEndDate}
-            />
+                <CustomDatePicker
+                    title="תאריך סיום"
+                    value={props.endDate}
+                    onChange={props.setEndDate}
+                />
 
-            <CustomSelectField
-                title="סנן לפי סטאטוס"
-                value={props.filterStatus as string}
-                onChange={(value: string) => props.setFilterStatus(value as Status)}
-                options={getStatuses()}
-                size={Size.XL}
-                allowEmpty={true}
-            />
+                <CustomSelectField
+                    title="סנן לפי סטאטוס"
+                    value={props.filterStatus as string}
+                    onChange={(value: string) => props.setFilterStatus(value as Status)}
+                    options={getStatuses()}
+                    size={Size.XL}
+                    allowEmpty={true}
+                />
+            </div>
 
-            {/*{JSON.stringify(props.referralWayCounters)}*/}
+            <ReferralWayChart referralWayCounters={props.referralWayCounters}/>
 
         </div>
     );

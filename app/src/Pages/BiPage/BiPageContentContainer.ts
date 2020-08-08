@@ -26,10 +26,11 @@ export function getData(state: IState, ownProps: BiPageContentContainerProps): [
         const orderDate = new Date(order.date);
         const shouldShow = startDate <= orderDate && orderDate <= endDate;
         if (shouldShow) {
-            if (!(order.orgReferralWay in referralWayCounters)) {
-                referralWayCounters[order.orgReferralWay] = 0;
+            const referralWay = order.orgReferralWay || "ללא";
+            if (!(referralWay in referralWayCounters)) {
+                referralWayCounters[referralWay] = 0;
             }
-            referralWayCounters[order.orgReferralWay]++;
+            referralWayCounters[referralWay]++;
         }
 
         return shouldShow;
