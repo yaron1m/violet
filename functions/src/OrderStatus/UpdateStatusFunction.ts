@@ -3,9 +3,22 @@ import * as express from "express";
 import * as admin from "firebase-admin";
 import {IOrder, IPublicCourse, calculateOrderStatus, isPublicCourseOrder} from "../Common";
 
-export default async function (
+export async function handleHttp(
     request: express.Request,
     response: express.Response,
+    ordersRef: admin.database.Reference,
+    publicCoursesRef: admin.database.Reference
+) {
+    try {
+        const changelog = await handle(ordersRef, publicCoursesRef);
+        response.send("Done, changelog: " + JSON.stringify(changelog));
+    } catch (error) {
+        console.error(error);
+        response.status(400).send(error);
+    }
+}
+
+export async function handle(
     ordersRef: admin.database.Reference,
     publicCoursesRef: admin.database.Reference
 ) {
@@ -33,8 +46,7 @@ export default async function (
         });
 
         if (_.isEmpty(updatedOrders)) {
-            response.send("Done, No changes.");
-            return;
+            return "No changes";
         }
 
         await ordersRef.update(updatedOrders);
@@ -45,10 +57,13 @@ export default async function (
             }
         });
 
-        response.send("Done, changelog: " + JSON.stringify(changelog));
+        console.log(changelog);
+
+        return changelog;
+
     } catch (error) {
         console.error(error);
-        response.status(400).send(error);
+        return error.message;
     }
 }
 
