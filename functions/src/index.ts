@@ -11,7 +11,7 @@ const publicCoursesRef = database.ref("publicCourses");
 
 export const updateStatusFunction = validatedHttpFunction(UpdateStatusFunction.handleHttp, ordersRef, publicCoursesRef);
 export const updateStatusCron = functions.pubsub
-    .schedule("0 12 * * *")
+    .schedule("0 4 * * *")
     .timeZone("Asia/Jerusalem")
     .onRun(async (context) => {
         await UpdateStatusFunction.handle(ordersRef, publicCoursesRef);

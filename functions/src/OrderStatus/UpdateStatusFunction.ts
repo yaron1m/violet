@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as express from "express";
 import * as admin from "firebase-admin";
+import * as functions from "firebase-functions";
 import {IOrder, IPublicCourse, calculateOrderStatus, isPublicCourseOrder} from "../Common";
 
 export async function handleHttp(
@@ -46,6 +47,7 @@ export async function handle(
         });
 
         if (_.isEmpty(updatedOrders)) {
+            functions.logger.info("No changes");
             return "No changes";
         }
 
@@ -57,7 +59,7 @@ export async function handle(
             }
         });
 
-        console.log(changelog);
+        functions.logger.info("Status update: ", changelog);
 
         return changelog;
 
