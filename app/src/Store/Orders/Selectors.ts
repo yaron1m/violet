@@ -98,7 +98,7 @@ export function getAllLectureTimes(state: IState, status?: Status | Status[]) {
     const internalLectures = _.flatMap(getOrders(state, status), getMappedLectureTimes);
 
     function mapPublicCourses(course: IPublicCourse): ILectureTimeSummary[] {
-        return _.map(course.lectures, lecture => ({
+        return _.map(_.filter(course.lectures, l => l.active), lecture => ({
             date: lecture.date,
             topic: lecture.topic,
             orderId: course.courseName,
